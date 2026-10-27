@@ -24,7 +24,8 @@ never count as hardware qualification. See [status](docs/status.md),
 [provenance](provenance/README.md), and [changelog](CHANGELOG.md).
 The [kernel overlap audit](docs/kernel-overlap.md) compares duplicated tasks,
 contract differences, canonical owners and required consolidation checks.
-See [packaging](docs/packaging.md) for Python wheels and C++/CMake integration.
+See [packaging](docs/packaging.md) for Python wheels and C++/CMake integration,
+and [consumer migrations](docs/consumer-migrations.md) for delivery and adoption evidence.
 
 Core adapters borrow application devices and command contexts. Standalone test
 and benchmark tools explicitly own their test resources. Production callers own

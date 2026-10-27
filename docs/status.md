@@ -21,7 +21,7 @@ cross-vendor qualification remain incomplete. Evidence below was obtained on
 | Packaging | Universal Python wheel installs and validates outside checkout without GPU dependencies; CMake source/header install available; optional native runtime packages remain separate |
 | Overlap audit | 22 semantic groups reviewed; one exact algebra duplicate, 14 same-operation/different-contract groups, 5 shared helpers and 2 related-only groups. Not an exhaustive audit of all 249 accessible repositories |
 | NVIDIA | Selected RTX 3090 workstation unreachable; execution pending |
-| Release lifecycle | [0.1.0 is published and immutable](https://github.com/bjoernellens1/sintergpu/releases/tag/v0.1.0); hosted attestations and released checksums verified. Initial downstream registration delivery is in progress. Automatic publisher-App and downstream-App execution require dedicated configuration and remain unverified |
+| Release lifecycle | [0.1.0 is published and immutable](https://github.com/bjoernellens1/sintergpu/releases/tag/v0.1.0); hosted attestations and released checksums verified. Seven registration PRs delivered; a real retry reused all seven PR URLs and commit hashes. StereoForge integrity checks passed; six private consumers' hosted checks were blocked before starting by account billing/spending restrictions. Automatic publisher-App and downstream-App execution require dedicated configuration and remain unverified |
 
 Do not infer full application, physical camera, tracking accuracy or cross-vendor
 qualification from a kernel fixture, CPU test, compiler pass or historical result.

@@ -1,0 +1,103 @@
+{
+  "tag": "v0.1.0",
+  "results": [
+    {
+      "repository": "bjoernellens1/stereoforge",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/stereoforge/pull/2",
+      "head_sha": "647f9b6fd3dc5f18975dabc0f3d286c7e749dfed",
+      "base_sha": "63562137d1aaf9b324260d3bacfded30d2a0dc69",
+      "checks_url": "https://github.com/bjoernellens1/stereoforge/pull/2/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "integrity_check": "passed",
+      "application_ci": "Existing benchmark import-path failure; migration PR fixes the invocation separately"
+    },
+    {
+      "repository": "bjoernellens1/eligsir-sim",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/eligsir-sim/pull/42",
+      "head_sha": "6186c7e6c042c4217f1c252cecde25ed27ab84c0",
+      "base_sha": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+      "checks_url": "https://github.com/bjoernellens1/eligsir-sim/pull/42/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "integrity_check": "blocked-before-job-start",
+      "hosted_failure_annotations": [
+        "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings"
+      ]
+    },
+    {
+      "repository": "bjoernellens1/eligsir-native",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/eligsir-native/pull/11",
+      "head_sha": "5fe7d4b24bc0ce5b7a980ec6e5f5d76a496ab37a",
+      "base_sha": "85e054104262c7775509bb060d710df32195de76",
+      "checks_url": "https://github.com/bjoernellens1/eligsir-native/pull/11/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "integrity_check": "blocked-before-job-start",
+      "hosted_failure_annotations": [
+        "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings"
+      ]
+    },
+    {
+      "repository": "bjoernellens1/vkl",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/vkl/pull/131",
+      "head_sha": "30d69d9f89f5dd64b779546b8735f44c38cbc8c0",
+      "base_sha": "3384023a311651ea4260cf12ddab1567972f89f3",
+      "checks_url": "https://github.com/bjoernellens1/vkl/pull/131/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "integrity_check": "blocked-before-job-start",
+      "hosted_failure_annotations": [
+        "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings"
+      ]
+    },
+    {
+      "repository": "bjoernellens1/slang-rgbd-slam",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/slang-rgbd-slam/pull/2",
+      "head_sha": "505312d460538114786cc206394794cd90376156",
+      "base_sha": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+      "checks_url": "https://github.com/bjoernellens1/slang-rgbd-slam/pull/2/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "integrity_check": "blocked-before-job-start",
+      "hosted_failure_annotations": [
+        "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings"
+      ]
+    },
+    {
+      "repository": "bjoernellens1/caspar-slang",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/caspar-slang/pull/2",
+      "head_sha": "56f403ebeefdaeb92f5e65bf36902f693fa6e15f",
+      "base_sha": "cab53390aa111cd5526cb30c9aef484e73521186",
+      "checks_url": "https://github.com/bjoernellens1/caspar-slang/pull/2/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "integrity_check": "blocked-before-job-start",
+      "hosted_failure_annotations": [
+        "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings"
+      ]
+    },
+    {
+      "repository": "bjoernellens1/locus",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/locus/pull/13",
+      "head_sha": "8c89f634a4bf6142047e4fbb9c12c80ad3ac0514",
+      "base_sha": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+      "checks_url": "https://github.com/bjoernellens1/locus/pull/13/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "integrity_check": "blocked-before-job-start",
+      "hosted_failure_annotations": [
+        "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings"
+      ]
+    }
+  ],
+  "api_attempts": 77,
+  "scope": "Initial owner-authorized registration delivery; not a kernel migration or App-token execution qualification",
+  "idempotent_retry": {
+    "status": "passed",
+    "same_pr_urls": 7,
+    "same_head_commits": 7,
+    "new_prs": 0,
+    "new_commits": 0
+  }
+}
