@@ -154,6 +154,8 @@ Run three controlled trials and compare valid baselines before performance adopt
 
 [Full pyramid/depth resampling](vkl-depth-resampling.md) now composes the released level source with native initialization and direct labels.
 
-The other 38 substantive retained reference modules have no Slang translation here, including alignment, temporal/reprojection, compaction,
+[Binary feature ports](vkl-binary-features.md) add BRIEF and radius-gated Hamming matching with exact integer output semantics and native int64 coordinates. Eleven of the 47 frozen modules now have forward Slang coverage.
+
+The other 36 substantive retained reference modules have no Slang translation here, including alignment, temporal/reprojection, compaction,
 voxel/mesh, pose reductions and tracking/landmark policy. The retained Triton
 argmin has no new Slang port here. The photometric reductions/backward remain pending. RTX3090 verification is pending.

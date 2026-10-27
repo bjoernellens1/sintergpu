@@ -16,10 +16,12 @@
         {
           "symbol": "brief_describe",
           "source_line": 34,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Return deterministic unpacked BRIEF comparisons at integer keypoints.",
+          "disposition": "specialized_variant",
+          "reason": "Native Slang float32/int64 forward profile with exact frozen-reference parity on Radeon8060S, preserving original pattern, masks, ties and chunking. Other dtypes, broader runtime and cross-vendor qualification remain pending.",
           "numerical_contract": "Return deterministic unpacked BRIEF comparisons at integer keypoints.\n\n``pixels_valid`` preserves fixed-capacity detector validity. ``rgb_valid``\ncarries camera-conditioning validity into the descriptor patch. A descriptor\nis valid only when its keypoint center and every requested comparison sample\nlie inside the image on finite, valid RGB support.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.brief.briefDescribe"
+          ]
         }
       ],
       "private_helpers": [
@@ -614,10 +616,17 @@
         {
           "symbol": "binary_local_match",
           "source_line": 10,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Choose descriptor-qualified candidates inside projected pixel gates.",
+          "disposition": "specialized_variant",
+          "reason": "Native Slang float32/int64 forward profile with exact frozen-reference parity on Radeon8060S, preserving original pattern, masks, ties and chunking. Other dtypes, broader runtime and cross-vendor qualification remain pending.",
           "numerical_contract": "Choose descriptor-qualified candidates inside projected pixel gates.\n\nMatching is mutual by default so one candidate cannot silently own multiple\npersistent landmark tracks. ``max_hamming_distance`` is explicit rather\nthan hidden policy. ``candidate_chunk_size`` is an exact memory-control knob:\nchunking changes only temporary allocation, not matching semantics.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.binary_match.packBinary",
+            "vkl.binary_match.initializeMatch",
+            "vkl.binary_match.matchPairs",
+            "vkl.binary_match.rowMinimum",
+            "vkl.binary_match.reverseMinimum",
+            "vkl.binary_match.finalizeMatch"
+          ]
         }
       ],
       "private_helpers": []

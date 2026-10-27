@@ -179,6 +179,8 @@ The one directly actionable exact algebra duplicate is G18. “Same operation, d
 
 **Required before deduplication:** Pattern hash/version, fixed image/keypoints, orientation rotations, exact bit order/packing, equality comparisons, invalid sample and border masks, arbitrary bit counts.
 
+VKL now has a separate float32/int64 Slang port and exact frozen-donor CPU/GPU probes; see [binary feature contracts](vkl-binary-features.md). The original SLAM pattern remains unchanged.
+
 ### G16: Binary matching
 
 **Classification: same operation different contract.** SLAM globally matches fixed256-bit packed descriptors with absolute Hamming bound, strict best/second ratio and mutual nearest-neighbor; it requires at least two target descriptors. VKL uses boolean arbitrary-bit descriptors and geometric radius gating, optional mutual ownership and no ratio criterion; chunking is intended to preserve exact results. Both keep first index on equal best distance through strict improvement, but candidate domains differ.
@@ -188,6 +190,8 @@ The one directly actionable exact algebra duplicate is G18. “Same operation, d
 **Owner and retained variants:** features owns packed Hamming distance/tiled search helper and separately named global-ratio/local-radius matching policies. Keep ratio, mutual, spatial gates, descriptor format and missing-match sentinel semantics.
 
 **Required before deduplication:** Empty/single targets, ties/best-second equality, radius boundary, ratio boundary, max Hamming endpoints, mutual collisions, packing and chunk-size invariance.
+
+The VKL port retains radius gating, first-index ties, optional mutual ownership and bounded candidate chunking. Its seven dispatch entries include BRIEF plus six matching stages; these are retained variants, not duplicate aliases of SLAM.
 
 ### G17: ICP association and fused normal-equation assembly
 

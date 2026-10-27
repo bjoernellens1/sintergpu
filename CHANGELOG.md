@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.9 — 2026-10-27
+
+- Add VKL BRIEF and bounded radius-gated binary matching as seven experimental Slang entries, preserving donor patterns, native int64 coordinates, exact masks/ties and float32 subnormal decisions.
+- Add independent NumPy references, frozen Torch differential tests and borrowed-encoder recording recipes. Keep SLAM patterns and global-ratio matching as separate contracts.
+- Add paired per-entry CPU/GPU timing recipes and refresh existing measurements for the expanded source tree; retain raw samples and explicit pending coverage.
+
 ## 0.1.8 — 2026-10-27
 
 - Fix optional native radix CMake installation with caller-local `volk` targets, without requiring callers to export their dependencies.

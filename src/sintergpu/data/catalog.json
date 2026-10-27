@@ -4122,6 +4122,258 @@
       "fixture": "voxel_insert"
     },
     {
+      "id": "vkl.binary_match.finalizeMatch",
+      "path": "kernels/vkl/binary_match.slang",
+      "entrypoint": "finalizeMatch",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/local_match.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-binary-features-forward-f32-i64",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+        "numerical_behavior": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents",
+        "shaderInt64"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.binary_match.initializeMatch",
+      "path": "kernels/vkl/binary_match.slang",
+      "entrypoint": "initializeMatch",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/local_match.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-binary-features-forward-f32-i64",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+        "numerical_behavior": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents",
+        "shaderInt64"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.binary_match.matchPairs",
+      "path": "kernels/vkl/binary_match.slang",
+      "entrypoint": "matchPairs",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/local_match.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-binary-features-forward-f32-i64",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+        "numerical_behavior": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents",
+        "shaderInt64"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.binary_match.packBinary",
+      "path": "kernels/vkl/binary_match.slang",
+      "entrypoint": "packBinary",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/local_match.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-binary-features-forward-f32-i64",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+        "numerical_behavior": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents",
+        "shaderInt64"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.binary_match.reverseMinimum",
+      "path": "kernels/vkl/binary_match.slang",
+      "entrypoint": "reverseMinimum",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/local_match.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-binary-features-forward-f32-i64",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+        "numerical_behavior": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents",
+        "shaderInt64"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.binary_match.rowMinimum",
+      "path": "kernels/vkl/binary_match.slang",
+      "entrypoint": "rowMinimum",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/local_match.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-binary-features-forward-f32-i64",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+        "numerical_behavior": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents",
+        "shaderInt64"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.brief.briefDescribe",
+      "path": "kernels/vkl/brief.slang",
+      "entrypoint": "briefDescribe",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "60e627e96653eef9e02645fea25a6f83c63bbd371c2c71a1fa5a47befab356d2",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/brief.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-binary-features-forward-f32-i64",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+        "numerical_behavior": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents",
+        "shaderInt64"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
       "id": "vkl.depth_convert.depthConvert",
       "path": "kernels/vkl/depth_convert.slang",
       "entrypoint": "depthConvert",
