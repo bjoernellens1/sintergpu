@@ -9,7 +9,7 @@ cross-vendor qualification remain incomplete. Evidence below was obtained on
 | Catalog | 121 dispatch entries with source hashes, numerical contracts and lineage; all remain experimental |
 | Locus | 17 operations; 28 GPU fixture cases through SlangPy 0.43.1 on Radeon 8060S; original scalar suite passes |
 | Shared reduction | Float SUM with 5 channels and uint MIN with 1 channel preserve the 256-thread tree in exact GPU probes |
-| Consumer migrations | StereoForge and EliGSiR-native opt-in branches pass differential probes; release pinning, PR delivery, review and adoption remain pending |
+| Consumer migrations | Released-wheel differential probes pass: [StereoForge opt-in PR](https://github.com/bjoernellens1/stereoforge/pull/3), [EliGSiR-native opt-in PR](https://github.com/bjoernellens1/eligsir-native/pull/10). Both pin exact release URL/hash; downstream review/adoption and cross-vendor qualification remain pending |
 | VKL | 47 executable Torch reference modules packaged; 4 partial forward Slang profiles; 43 substantive Slang translations remain pending. Three strict expected failures document extreme-depth denormal flushing; no tolerance was weakened |
 | Caspar/SLAM | 11 standalone composed modules, retained generators and frozen CPU references; 5 generated math modules reproduced exactly. GPU-dependent skips, full tracking/trajectory and gradient qualification remain pending |
 | xsplat | Analytic compositing gradient probe passes on local GPU; full renderer qualification is outside this library |
@@ -21,7 +21,7 @@ cross-vendor qualification remain incomplete. Evidence below was obtained on
 | Packaging | Universal Python wheel installs and validates outside checkout without GPU dependencies; CMake source/header install available; optional native runtime packages remain separate |
 | Overlap audit | 22 semantic groups reviewed; one exact algebra duplicate, 14 same-operation/different-contract groups, 5 shared helpers and 2 related-only groups. Not an exhaustive audit of all 249 accessible repositories |
 | NVIDIA | Selected RTX 3090 workstation unreachable; execution pending |
-| Release lifecycle | Local lifecycle tests pass; immutable publication, hosted attestations and live downstream delivery still require execution. Recurring cross-repository delivery requires a dedicated GitHub App configuration |
+| Release lifecycle | [0.1.0 is published and immutable](https://github.com/bjoernellens1/sintergpu/releases/tag/v0.1.0); hosted attestations and released checksums verified. Initial downstream registration delivery is in progress. Automatic publisher-App and downstream-App execution require dedicated configuration and remain unverified |
 
 Do not infer full application, physical camera, tracking accuracy or cross-vendor
 qualification from a kernel fixture, CPU test, compiler pass or historical result.

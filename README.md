@@ -6,6 +6,11 @@ A Slang-first library consolidating reusable image, depth, geometry, tracking,
 reconstruction and optimization operations from existing projects. Kernels,
 independent references, provenance and device-specific evidence travel together.
 
+[Experimental 0.1.0 release](https://github.com/bjoernellens1/sintergpu/releases/tag/v0.1.0)
+includes a Python wheel, source packages, checksums, attestations and scoped
+qualification metadata. Full consolidation and cross-vendor qualification remain
+in progress.
+
 ```sh
 python -m pip install .
 sinter list
