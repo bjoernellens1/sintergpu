@@ -14,10 +14,12 @@ target_include_directories(sintergpu_kernels INTERFACE
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 # Applications can include only selected shader modules. No runtime is linked.
 set(SINTERGPU_KERNEL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/sintergpu/kernels")
+set(SINTERGPU_DATA_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/sintergpu/data")
 install(TARGETS sintergpu_kernels EXPORT sintergpuTargets)
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(DIRECTORY src/sintergpu/kernels/ DESTINATION ${CMAKE_INSTALL_DATADIR}/sintergpu/kernels)
 install(DIRECTORY LICENSES/ DESTINATION ${CMAKE_INSTALL_DATADIR}/sintergpu/licenses)
+install(FILES src/sintergpu/data/catalog.json src/sintergpu/data/timings.json DESTINATION ${CMAKE_INSTALL_DATADIR}/sintergpu/data)
 install(FILES LICENSE NOTICE VERSION DESTINATION ${CMAKE_INSTALL_DATADIR}/sintergpu)
 install(EXPORT sintergpuTargets NAMESPACE sintergpu:: DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sintergpu)
 if(SINTERGPU_BUILD_RADIX)

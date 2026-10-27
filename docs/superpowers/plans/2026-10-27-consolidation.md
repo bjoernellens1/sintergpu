@@ -61,3 +61,17 @@ validation. Measure local8060S, retry selected3090without assuming access.
 Release only accurately labeled evidence; complete expanded program only when
 all port batches, real migrations, both-vendor qualification and lifecycle pass.
 Independent final review required. Record unfinished gates explicitly.
+
+## User extension: CPU and GPU timing reference
+
+User requested a table or database with CPU and GPU execution times for every
+kernel. Maintain a versioned machine-readable timing registry and a generated
+searchable table covering every current operation/variant, with explicit pending
+reasons until a valid workload is measured. Record actual CPU reference wall time
+and GPU timestamp kernel time separately; retain resident-pipeline and full
+transfer-inclusive costs when measured. Bind each record to exact source,
+reference/workload, compiler, hardware/software environment and raw samples.
+Never copy a pipeline time onto its stages or substitute donor timings. Reuse
+existing correctness fixtures and benchmark recipes; extend workload coverage
+alongside ports and qualification. Complete baseline coverage is part of the
+end-to-end goal, not satisfied by an empty registry or unmeasured placeholders.
