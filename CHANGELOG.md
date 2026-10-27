@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.5 — unreleased
+
+- Compare shared reflection ABI fields across both pinned compiler lanes in required CI.
+- Include hash-verified release changelog excerpts and explicit registration/adoption instructions in downstream update PRs.
+- Upgrade only untouched legacy machine PR descriptions; preserve human edits and confirm ambiguous update responses without repeating writes.
+
 ## 0.1.4 — 2026-10-27
 
 - Add native depth initialization, nearest depth lift, conservative RGB-guided filling and direct-provenance labeling.

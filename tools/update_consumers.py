@@ -8,6 +8,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import tarfile
 import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -175,7 +176,43 @@ def make_lock(manifest, directory, consumer):
     return json.dumps(lock, indent=2, sort_keys=True)+'\n'
 
 
-def deliver_one(api, item, lock, register=False, dry_run=False):
+def release_context(manifest, directory):
+    """Read release notes from the already attested, hash-pinned source bundle."""
+    tag=manifest['tag'];version=release.validate_version(tag,manifest['version'])
+    name=f'sintergpu-{version}-source.tar.gz'
+    assets=[a for a in manifest['assets'] if a['name']==name]
+    path=Path(directory)/name
+    if len(assets)!=1 or not path.is_file() or path.stat().st_size!=assets[0]['size'] or release.sha256(path)!=assets[0]['sha256']:
+        raise ValueError('verified release source bundle mismatch')
+    with tarfile.open(path) as archive:
+        entries=[m for m in archive.getmembers() if m.name==f'sintergpu-{version}/CHANGELOG.md']
+        if len(entries)!=1 or not entries[0].isfile() or entries[0].size>262144:
+            raise ValueError('release changelog missing, duplicate or oversized')
+        text=archive.extractfile(entries[0]).read().decode('utf-8')
+    section=re.search(r'^## '+re.escape(version)+r'\b([^\n]*)\n(.*?)(?=^## |\Z)',text,re.M|re.S)
+    if not section or 'unreleased' in section[1].lower() or not re.search(r'^- .+',section[2],re.M) or len(section[2])>20000:
+        raise ValueError('released changelog section required')
+    return section[2].strip()
+
+
+def release_body(item, tag, release_notes=None):
+    """Keep the exact legacy form recognizable; enrich only verified releases."""
+    marker = f'<!-- sintergpu-release:{release.REPO}:{tag} -->'
+    body = f'{marker}\n\nPins immutable release source, manifest and artifact hashes.\n\nIntegration state: {item["integration_state"]}. Kernel migration pending: {item["integration_state"] == "registered"}.\nRelease integrity verification is separate from consumer native tests and GPU qualification.\n\nVerification argv: `{json.dumps(item["verification_argv"])}`\nConsumer integration argv: `{json.dumps(item["integration_argv"])}`\nNo automatic merge.\n'
+    prefix = f'https://github.com/{release.REPO}/blob/{tag}/'
+    body += f'\n[Changelog]({prefix}CHANGELOG.md) · [Migration instructions]({prefix}docs/integration.md) · [Correctness/performance scope]({prefix}docs/status.md) · [Qualification metadata](https://github.com/{release.REPO}/releases/download/{tag}/sintergpu-{tag[1:]}-manifest.json).\n'
+    if release_notes is not None:
+        if not isinstance(release_notes,str) or not release_notes.strip():
+            raise ValueError('nonempty verified release notes required')
+        body+='\nRelease changes (from the verified source bundle):\n\n'+release_notes.strip()+'\n'
+        if item['integration_state']=='registered':
+            body+='\nRegistration only: No kernel code is migrated by this PR. Review the new numerical contracts before selecting an experimental profile; then pin the chosen package/source hash and add frozen-donor parity checks in a separate adoption PR. Keep the existing device, encoder and buffer ownership.\n'
+        else:
+            body+='\nAdoption instructions: Review the changes above against these consumed modules: '+json.dumps(item['consumed_modules'])+'. Update only the pinned release after correctness parity and configuration-specific performance checks. Retain existing device/command ownership and explicit experimental opt-in. Run the consumer integration argv above; merge control stays downstream.\n'
+    return body
+
+
+def deliver_one(api, item, lock, register=False, dry_run=False, release_notes=None):
     repo = item['repository']; tag = json.loads(lock)['tag']; head = 'sintergpu/'+tag
     marker = f'<!-- sintergpu-release:{release.REPO}:{tag} -->'
     base = api(f'repos/{repo}')['default_branch']
@@ -242,13 +279,22 @@ def deliver_one(api, item, lock, register=False, dry_run=False):
                 raise
         old = commit['sha']
     title = f'Register SinterGPU {tag} release metadata (kernel migration pending)' if item['integration_state'] == 'registered' else f'Update SinterGPU to {tag}'
-    body = f'{marker}\n\nPins immutable release source, manifest and artifact hashes.\n\nIntegration state: {item["integration_state"]}. Kernel migration pending: {item["integration_state"] == "registered"}.\nRelease integrity verification is separate from consumer native tests and GPU qualification.\n\nVerification argv: `{json.dumps(item["verification_argv"])}`\nConsumer integration argv: `{json.dumps(item["integration_argv"])}`\nNo automatic merge.\n'
-    prefix = f'https://github.com/{release.REPO}/blob/{tag}/'
-    body += f'\n[Changelog]({prefix}CHANGELOG.md) · [Migration instructions]({prefix}docs/integration.md) · [Correctness/performance scope]({prefix}docs/status.md) · [Qualification metadata](https://github.com/{release.REPO}/releases/download/{tag}/sintergpu-{tag[1:]}-manifest.json).\n'
+    body = release_body(item,tag,release_notes)
     if state == 'open':
-        if prs[0].get('body') != body or prs[0]['head']['sha'] != old:
-            raise ValueError('human-modified PR body or stale head conflict')
         pr = prs[0]
+        if pr['head']['sha'] != old:
+            raise ValueError('human-modified PR body or stale head conflict')
+        if pr.get('body') != body:
+            if release_notes is None or pr.get('body') != release_body(item,tag):
+                raise ValueError('human-modified PR body or stale head conflict')
+            endpoint=f'repos/{repo}/pulls/{pr["number"]}'
+            try:
+                pr=api(endpoint,'PATCH',{'body':body})
+            except RuntimeError:
+                # An ambiguous response may have applied; read, never retry a write.
+                pr=api(endpoint)
+            if pr.get('body') != body or pr['head']['sha'] != old:
+                raise ValueError('PR body update was not confirmed; investigate')
     else:
         try:
             pr = api(f'repos/{repo}/pulls', 'POST', {'title': title, 'body': body, 'head': head, 'base': base})
@@ -274,11 +320,12 @@ def main():
         with tempfile.TemporaryDirectory() as temp:
             directory = Path(temp)
             manifest = release.verify_download(args.tag, directory)
+            notes=release_context(manifest,directory)
             for item in entries:
                 if args.repository and item['repository'] != args.repository:
                     continue
                 try:
-                    result = deliver_one(api, item, make_lock(manifest, directory, item), args.register, args.dry_run)
+                    result = deliver_one(api, item, make_lock(manifest, directory, item), args.register, args.dry_run, notes)
                 except Exception as error:
                     result = {'repository': item['repository'], 'status': 'failed', 'error': str(error)}
                 results.append(result)

@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "entries": 130,
+  "scope": "All 2026.12 reflection fields match 2026.19 exactly, including types, bindings, offsets, sizes, strides, ordering and workgroups. New-only metadata is retained in compiler records but has no cross-version counterpart. Compared the immutable attested 0.1.4 compiler records; 0.1.5 changes no kernel source.",
+  "known_schema_additions": {
+    "sizes": 7123,
+    "scope": 130,
+    "globalScope": 130,
+    "version": 130
+  },
+  "compiler_sha256": {
+    "2026.12": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+    "2026.19": "b13606619c8959bbd490cb87e6e549e366a22a13c6cbd46cce3f798264778b60"
+  },
+  "recorded_at": "2026-10-27T19:55:01.420328+00:00",
+  "source_commit": "bab51da5d399300314966adba1f89e11f8bc3d71",
+  "source_tag": "v0.1.4",
+  "manifest_url": "https://github.com/bjoernellens1/sintergpu/releases/download/v0.1.4/sintergpu-0.1.4-manifest.json",
+  "manifest_sha256": "b758869b321e48c563d763b05f97e2dd8e60c04103fe4cc2c840fa6aee650d1d",
+  "shader_tree_sha256": "3bf2939d4aa7112ef436bf10b2ff9f95b1638d2a57569075a9f63e497b350e9c"
+}
