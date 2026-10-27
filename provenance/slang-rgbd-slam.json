@@ -1,0 +1,641 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/slang-rgbd-slam",
+  "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+  "license": "Apache-2.0",
+  "author": "see retained source copyright and notices",
+  "authorization": "Original owner code may be Apache-2.0 per direct user authorization on 2026-10-27; third-party terms unchanged.",
+  "files": [
+    {
+      "source_path": "LICENSE",
+      "destination": "references/donors/slang-rgbd-slam/LICENSE",
+      "source_sha256": "51b1d183a5e90b0fdfb36d9bce5e41b7e2e5269860ace7f106d1af37e8c50ad7",
+      "imported_sha256": "51b1d183a5e90b0fdfb36d9bce5e41b7e2e5269860ace7f106d1af37e8c50ad7",
+      "changes": []
+    },
+    {
+      "source_path": "docs/PERFORMANCE.md",
+      "destination": "references/donors/slang-rgbd-slam/docs/PERFORMANCE.md",
+      "source_sha256": "a60ce02ff11f2092a446233a95d97bdb94d2ead062addace48501b632160d149",
+      "imported_sha256": "a60ce02ff11f2092a446233a95d97bdb94d2ead062addace48501b632160d149",
+      "changes": []
+    },
+    {
+      "source_path": "pyproject.toml",
+      "destination": "references/donors/slang-rgbd-slam/pyproject.toml",
+      "source_sha256": "468101b31cc57e1112428866150fea5b3eb7713591e543e2177da2b888b70277",
+      "imported_sha256": "468101b31cc57e1112428866150fea5b3eb7713591e543e2177da2b888b70277",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/__init__.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/__init__.py",
+      "source_sha256": "4f0fc5fbd53cf93c7a1a92740995a1cc95c0975b7c23710ade8f9121b68e7e74",
+      "imported_sha256": "4f0fc5fbd53cf93c7a1a92740995a1cc95c0975b7c23710ade8f9121b68e7e74",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/benchmark.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/benchmark.py",
+      "source_sha256": "e70dd30c14c17fcc77ffc84b2da8f32fd6c52d6cc4b9da2b57f07faa1b26c027",
+      "imported_sha256": "e70dd30c14c17fcc77ffc84b2da8f32fd6c52d6cc4b9da2b57f07faa1b26c027",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/cli.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/cli.py",
+      "source_sha256": "b543543031d012c0b8987889dd68ce8071820bf2ef9101eebf1239a3a66c91b9",
+      "imported_sha256": "b543543031d012c0b8987889dd68ce8071820bf2ef9101eebf1239a3a66c91b9",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/comparison.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/comparison.py",
+      "source_sha256": "a5ec78bb6d7049645c3ea69ebc5e961e845b988af9486daac98b6356a182c88d",
+      "imported_sha256": "a5ec78bb6d7049645c3ea69ebc5e961e845b988af9486daac98b6356a182c88d",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/cpu.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/cpu.py",
+      "source_sha256": "480cf57b30fe2bbc46a7d60b772a55120145ca0fcc9554697f7d5483a17171bf",
+      "imported_sha256": "480cf57b30fe2bbc46a7d60b772a55120145ca0fcc9554697f7d5483a17171bf",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/cpu_hybrid.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/cpu_hybrid.py",
+      "source_sha256": "c6d6cb49deec1c271715fc76e74d589cbe09048d8930388905f5fc1254426cd7",
+      "imported_sha256": "c6d6cb49deec1c271715fc76e74d589cbe09048d8930388905f5fc1254426cd7",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/dataset.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/dataset.py",
+      "source_sha256": "4bdd0172c9ee2e4418702139617b23d1b54f704eef8a701f5b0652943179feb6",
+      "imported_sha256": "4bdd0172c9ee2e4418702139617b23d1b54f704eef8a701f5b0652943179feb6",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/dense_ba.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/dense_ba.py",
+      "source_sha256": "9dd403720d2768809696b9f840c65efd261f89e3ec3b3d40066930f35f471ea8",
+      "imported_sha256": "9dd403720d2768809696b9f840c65efd261f89e3ec3b3d40066930f35f471ea8",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/dense_tracker.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/dense_tracker.py",
+      "source_sha256": "d847214f6e904b8c025205450001f2760f81aba6882ed9c6ca6be6e4ec4076f6",
+      "imported_sha256": "d847214f6e904b8c025205450001f2760f81aba6882ed9c6ca6be6e4ec4076f6",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/feature_reference.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/feature_reference.py",
+      "source_sha256": "6d7b0d9eec7167b785399e81cab2fcb264ddec578fb0eff9fdfd53d797ac5cf7",
+      "imported_sha256": "6d7b0d9eec7167b785399e81cab2fcb264ddec578fb0eff9fdfd53d797ac5cf7",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/features.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/features.py",
+      "source_sha256": "05bf8603cb4b68c9f4b9dc2e7a130cc10d13f32f38b2bb50a0327f8332686828",
+      "imported_sha256": "05bf8603cb4b68c9f4b9dc2e7a130cc10d13f32f38b2bb50a0327f8332686828",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/gpu_mapping.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/gpu_mapping.py",
+      "source_sha256": "80d66c03ea0290e038594eb2644bf5d3055c580fc131eff69fb5527f8033b5e2",
+      "imported_sha256": "80d66c03ea0290e038594eb2644bf5d3055c580fc131eff69fb5527f8033b5e2",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/gpu_slam.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/gpu_slam.py",
+      "source_sha256": "6e9ace7cbf0174597f5b76e65a37bc10f8fa5e241934389de971b35d9c2ad188",
+      "imported_sha256": "6e9ace7cbf0174597f5b76e65a37bc10f8fa5e241934389de971b35d9c2ad188",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/hardware.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/hardware.py",
+      "source_sha256": "7c5fecc41a127369d0d243fbf11f79657931287ea00b2ba362d0a1689b8d1212",
+      "imported_sha256": "7c5fecc41a127369d0d243fbf11f79657931287ea00b2ba362d0a1689b8d1212",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/hybrid.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/hybrid.py",
+      "source_sha256": "de27ec4e722e7ae8f3e857288395bdba4379d80e014c23dd6fe3215925ef1ca8",
+      "imported_sha256": "de27ec4e722e7ae8f3e857288395bdba4379d80e014c23dd6fe3215925ef1ca8",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/hybrid_comparison.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/hybrid_comparison.py",
+      "source_sha256": "86185e2822ee7b81df8a6a8143fa74e20ae287b36d6fb362f7faf23513f426d7",
+      "imported_sha256": "86185e2822ee7b81df8a6a8143fa74e20ae287b36d6fb362f7faf23513f426d7",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/keyframes.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/keyframes.py",
+      "source_sha256": "148408ccf63d31f3fd567f35238bdecef1d5ce8f8c42d217d12a3176cec46c92",
+      "imported_sha256": "148408ccf63d31f3fd567f35238bdecef1d5ce8f8c42d217d12a3176cec46c92",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/loop_verification.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/loop_verification.py",
+      "source_sha256": "9eb2b395cafea43ceca8f300c0787778c81f7c4b6cb1ca10fb9628ab1affa3ca",
+      "imported_sha256": "9eb2b395cafea43ceca8f300c0787778c81f7c4b6cb1ca10fb9628ab1affa3ca",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/mapping.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/mapping.py",
+      "source_sha256": "9f233773208e7fa78b8b674cdf279e4ef428746e0989ba37b4013650ab108160",
+      "imported_sha256": "9f233773208e7fa78b8b674cdf279e4ef428746e0989ba37b4013650ab108160",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/dense_ba.slang",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/dense_ba.slang",
+      "source_sha256": "883db1bab91d43518ca2f2d3fa075c785371a7bda4c2b5b0b0c310762f3a72a9",
+      "imported_sha256": "883db1bab91d43518ca2f2d3fa075c785371a7bda4c2b5b0b0c310762f3a72a9",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/dense_ba.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang",
+      "source_sha256": "883db1bab91d43518ca2f2d3fa075c785371a7bda4c2b5b0b0c310762f3a72a9",
+      "imported_sha256": "883db1bab91d43518ca2f2d3fa075c785371a7bda4c2b5b0b0c310762f3a72a9",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/dense_tracker.slang",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/dense_tracker.slang",
+      "source_sha256": "fde5b0a5e14d2cc87e31c5f8eb6d58cad63e48d2757382554de3de8d0c0cf953",
+      "imported_sha256": "fde5b0a5e14d2cc87e31c5f8eb6d58cad63e48d2757382554de3de8d0c0cf953",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/dense_tracker.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang",
+      "source_sha256": "fde5b0a5e14d2cc87e31c5f8eb6d58cad63e48d2757382554de3de8d0c0cf953",
+      "imported_sha256": "fde5b0a5e14d2cc87e31c5f8eb6d58cad63e48d2757382554de3de8d0c0cf953",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/features.slang",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/features.slang",
+      "source_sha256": "36b43a0652ffdaea6f4a620a9811680092925b9a22e8aaa521fea41bbcd676e4",
+      "imported_sha256": "36b43a0652ffdaea6f4a620a9811680092925b9a22e8aaa521fea41bbcd676e4",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/features.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/features.slang",
+      "source_sha256": "36b43a0652ffdaea6f4a620a9811680092925b9a22e8aaa521fea41bbcd676e4",
+      "imported_sha256": "36b43a0652ffdaea6f4a620a9811680092925b9a22e8aaa521fea41bbcd676e4",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/gpu_pipeline.slang",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/gpu_pipeline.slang",
+      "source_sha256": "f324808caf70b25b97b9a42d763567e480d3c81d27748d6c5ca43eede62316cd",
+      "imported_sha256": "f324808caf70b25b97b9a42d763567e480d3c81d27748d6c5ca43eede62316cd",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/gpu_pipeline.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/gpu_pipeline.slang",
+      "source_sha256": "f324808caf70b25b97b9a42d763567e480d3c81d27748d6c5ca43eede62316cd",
+      "imported_sha256": "f324808caf70b25b97b9a42d763567e480d3c81d27748d6c5ca43eede62316cd",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/keyframes.slang",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/keyframes.slang",
+      "source_sha256": "733b9020fee47e87fa765be9da7b7ea4d58d983b76db1ec853a9c86c4da85660",
+      "imported_sha256": "733b9020fee47e87fa765be9da7b7ea4d58d983b76db1ec853a9c86c4da85660",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/keyframes.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/keyframes.slang",
+      "source_sha256": "733b9020fee47e87fa765be9da7b7ea4d58d983b76db1ec853a9c86c4da85660",
+      "imported_sha256": "733b9020fee47e87fa765be9da7b7ea4d58d983b76db1ec853a9c86c4da85660",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/loop_pipeline.slang",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/loop_pipeline.slang",
+      "source_sha256": "0d7db7ba5e9a9e9a9d25268731fca302db9ebfab00a9b1b20b36232e5ac23059",
+      "imported_sha256": "0d7db7ba5e9a9e9a9d25268731fca302db9ebfab00a9b1b20b36232e5ac23059",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/loop_pipeline.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/loop_pipeline.slang",
+      "source_sha256": "0d7db7ba5e9a9e9a9d25268731fca302db9ebfab00a9b1b20b36232e5ac23059",
+      "imported_sha256": "0d7db7ba5e9a9e9a9d25268731fca302db9ebfab00a9b1b20b36232e5ac23059",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/loop_verification.slang",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/loop_verification.slang",
+      "source_sha256": "e24a03113f75ec6880bcf5d5f2237c9e303a4489f52362bf7bb3be33b2473057",
+      "imported_sha256": "e24a03113f75ec6880bcf5d5f2237c9e303a4489f52362bf7bb3be33b2473057",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/loop_verification.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang",
+      "source_sha256": "e24a03113f75ec6880bcf5d5f2237c9e303a4489f52362bf7bb3be33b2473057",
+      "imported_sha256": "e24a03113f75ec6880bcf5d5f2237c9e303a4489f52362bf7bb3be33b2473057",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/tracker.slang",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/tracker.slang",
+      "source_sha256": "d6575a6d6f73df2dbc98e23c3b935ce0eb9e697112c64dd85f096fad649b690a",
+      "imported_sha256": "d6575a6d6f73df2dbc98e23c3b935ce0eb9e697112c64dd85f096fad649b690a",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/tracker.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang",
+      "source_sha256": "d6575a6d6f73df2dbc98e23c3b935ce0eb9e697112c64dd85f096fad649b690a",
+      "imported_sha256": "d6575a6d6f73df2dbc98e23c3b935ce0eb9e697112c64dd85f096fad649b690a",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/tsdf.slang",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/tsdf.slang",
+      "source_sha256": "e31cf00bd2af9c7c8e49e82e2f1cf2bf437ccf66985a4cb8a30e6f5fb02f436d",
+      "imported_sha256": "e31cf00bd2af9c7c8e49e82e2f1cf2bf437ccf66985a4cb8a30e6f5fb02f436d",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/shaders/tsdf.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang",
+      "source_sha256": "e31cf00bd2af9c7c8e49e82e2f1cf2bf437ccf66985a4cb8a30e6f5fb02f436d",
+      "imported_sha256": "e31cf00bd2af9c7c8e49e82e2f1cf2bf437ccf66985a4cb8a30e6f5fb02f436d",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/slam.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/slam.py",
+      "source_sha256": "0a027c6cb7afd726282f1dbad336cb49f3b6a2c0b129fb58ddadddbcf9e1247f",
+      "imported_sha256": "0a027c6cb7afd726282f1dbad336cb49f3b6a2c0b129fb58ddadddbcf9e1247f",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/synthetic.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/synthetic.py",
+      "source_sha256": "13931ba96afcffd72b17fc7f7e545617807076ca28ddc2a924036c42c1487a88",
+      "imported_sha256": "13931ba96afcffd72b17fc7f7e545617807076ca28ddc2a924036c42c1487a88",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/textured_synthetic.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/textured_synthetic.py",
+      "source_sha256": "ed66075ac7a7a176a0f7267dacd32fae1404521fe9dd2fddeaee2e67230f6e00",
+      "imported_sha256": "ed66075ac7a7a176a0f7267dacd32fae1404521fe9dd2fddeaee2e67230f6e00",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/tracker.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/tracker.py",
+      "source_sha256": "00601a3d4c53c169b4780be2ca848e08474dd6ca523b51fb6e85936f14846ea8",
+      "imported_sha256": "00601a3d4c53c169b4780be2ca848e08474dd6ca523b51fb6e85936f14846ea8",
+      "changes": []
+    },
+    {
+      "source_path": "src/slang_rgbd_slam/trajectory.py",
+      "destination": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/trajectory.py",
+      "source_sha256": "57a1a9a6faf7af989f0105b0347487c6da8b9513d6b2b2e202a0c79a682b3c59",
+      "imported_sha256": "57a1a9a6faf7af989f0105b0347487c6da8b9513d6b2b2e202a0c79a682b3c59",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_cli.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_cli.py",
+      "source_sha256": "7913f417d4b1f034308818e938a943d9ced4cdfcc7b1ba0cac69d9748a72a3eb",
+      "imported_sha256": "7913f417d4b1f034308818e938a943d9ced4cdfcc7b1ba0cac69d9748a72a3eb",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_comparison.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_comparison.py",
+      "source_sha256": "a2814712bcdb2af7da404d3286ee1c9cecdf0edbb0b3f640d3da63200c2d9afa",
+      "imported_sha256": "a2814712bcdb2af7da404d3286ee1c9cecdf0edbb0b3f640d3da63200c2d9afa",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_cpu.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_cpu.py",
+      "source_sha256": "6c7b09a4c87c178ff51082b65807bcace382e09a9c4fa0ae3a9460b0f4d0fbe1",
+      "imported_sha256": "6c7b09a4c87c178ff51082b65807bcace382e09a9c4fa0ae3a9460b0f4d0fbe1",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_cpu_hybrid.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_cpu_hybrid.py",
+      "source_sha256": "8855b771c2818427c738c3571e7afdf71ca8126335553cd3feffc58eb1e853b1",
+      "imported_sha256": "8855b771c2818427c738c3571e7afdf71ca8126335553cd3feffc58eb1e853b1",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_dataset.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_dataset.py",
+      "source_sha256": "75a76b81ca380ea4cb0afe8b9db72bd96c409c38573ba2fbd59c0e9b2d813e41",
+      "imported_sha256": "75a76b81ca380ea4cb0afe8b9db72bd96c409c38573ba2fbd59c0e9b2d813e41",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_dense_ba.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_dense_ba.py",
+      "source_sha256": "ba4b3593a81f07f9b4d709a87dd36dbd6c84a506f7af1037e40083e37168b51c",
+      "imported_sha256": "ba4b3593a81f07f9b4d709a87dd36dbd6c84a506f7af1037e40083e37168b51c",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_dense_tracker.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_dense_tracker.py",
+      "source_sha256": "62d249a679348d11904b2571664c9cae7a884fb57420af8a9ddeccb2c432ad27",
+      "imported_sha256": "62d249a679348d11904b2571664c9cae7a884fb57420af8a9ddeccb2c432ad27",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_device_ingest.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_device_ingest.py",
+      "source_sha256": "7f6b94032df82978dc8d55c8c50cc322a8e8ba5b75225554a02c0c1d234fec08",
+      "imported_sha256": "7f6b94032df82978dc8d55c8c50cc322a8e8ba5b75225554a02c0c1d234fec08",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_feature_performance.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_feature_performance.py",
+      "source_sha256": "1a64edcf9e698c2d9734957fa143e177e6fc009b893f3224de6cca610c217ed2",
+      "imported_sha256": "1a64edcf9e698c2d9734957fa143e177e6fc009b893f3224de6cca610c217ed2",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_feature_reference.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_feature_reference.py",
+      "source_sha256": "82611771ad0cfaacf7ff08f4b6fb1072a864d8e913ac6693eced42fdb823fadd",
+      "imported_sha256": "82611771ad0cfaacf7ff08f4b6fb1072a864d8e913ac6693eced42fdb823fadd",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_features.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_features.py",
+      "source_sha256": "54c49642839bd76877ea5fb94686c22aaf53d827046c2a178c4346b10e423863",
+      "imported_sha256": "54c49642839bd76877ea5fb94686c22aaf53d827046c2a178c4346b10e423863",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_gpu_mapping.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_gpu_mapping.py",
+      "source_sha256": "1850da4ad68db7ae6021f7c7a78693fdac050e28ac4e2ff6819643e896a2ff0e",
+      "imported_sha256": "1850da4ad68db7ae6021f7c7a78693fdac050e28ac4e2ff6819643e896a2ff0e",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_gpu_performance.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_gpu_performance.py",
+      "source_sha256": "13e7ba770b13d449d44e160a8af1133b50e9b0b64e5c131ece285e76fe9fed2c",
+      "imported_sha256": "13e7ba770b13d449d44e160a8af1133b50e9b0b64e5c131ece285e76fe9fed2c",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_gpu_slam.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_gpu_slam.py",
+      "source_sha256": "64ecba913a8ac359ad12f138e5dd406f6313bb827636ff63616fb12fdf372d8f",
+      "imported_sha256": "64ecba913a8ac359ad12f138e5dd406f6313bb827636ff63616fb12fdf372d8f",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_hardware.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_hardware.py",
+      "source_sha256": "7e7d4e283c436b1707f422486482df79fe1016cac5b02a47026666f4cb9e3587",
+      "imported_sha256": "7e7d4e283c436b1707f422486482df79fe1016cac5b02a47026666f4cb9e3587",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_hot_path.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_hot_path.py",
+      "source_sha256": "26f5a6732bdeacc348e6e2ba67bf999de7e88bd2188b1cdb20e7acf96e24334f",
+      "imported_sha256": "26f5a6732bdeacc348e6e2ba67bf999de7e88bd2188b1cdb20e7acf96e24334f",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_hybrid.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_hybrid.py",
+      "source_sha256": "ed3fd096c74b4b4a81683d3b0318dc31b32437522824da477ffda19f05794d6f",
+      "imported_sha256": "ed3fd096c74b4b4a81683d3b0318dc31b32437522824da477ffda19f05794d6f",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_hybrid_comparison.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_hybrid_comparison.py",
+      "source_sha256": "d73d138a1be5677db4477a2e3be93d769ea5d213a2bcf6a708bd2a1729b0cd5f",
+      "imported_sha256": "d73d138a1be5677db4477a2e3be93d769ea5d213a2bcf6a708bd2a1729b0cd5f",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_keyframe_performance.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_keyframe_performance.py",
+      "source_sha256": "0fcce3296be344fb591bc48d8bbfc1e654b0036674bcd41e9a475bea10b63373",
+      "imported_sha256": "0fcce3296be344fb591bc48d8bbfc1e654b0036674bcd41e9a475bea10b63373",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_loop_verification.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_loop_verification.py",
+      "source_sha256": "aad4a21bb4d16ee772bee23244fda56302de5f0a77ae656d4c430b91ec572783",
+      "imported_sha256": "aad4a21bb4d16ee772bee23244fda56302de5f0a77ae656d4c430b91ec572783",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_mapping.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_mapping.py",
+      "source_sha256": "c916f4590eb83a8f3ad38a3e0b4f7f92103d51f3258f48e86053e57b623649c2",
+      "imported_sha256": "c916f4590eb83a8f3ad38a3e0b4f7f92103d51f3258f48e86053e57b623649c2",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_slam.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_slam.py",
+      "source_sha256": "3d44837a275f3a2d97f0464baa36bbd70e0b4cb0263e73770ff991ca59ad6145",
+      "imported_sha256": "3d44837a275f3a2d97f0464baa36bbd70e0b4cb0263e73770ff991ca59ad6145",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_synthetic.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_synthetic.py",
+      "source_sha256": "d1aedc7ec371dd1d6282ea7c5e5d529a9837ed99c5b27a4062bb84269f0df8de",
+      "imported_sha256": "d1aedc7ec371dd1d6282ea7c5e5d529a9837ed99c5b27a4062bb84269f0df8de",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_textured_synthetic.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_textured_synthetic.py",
+      "source_sha256": "99005ac9c7ff11d74de37162635e7e0a2be78023769a5d6676b8b992434f6718",
+      "imported_sha256": "99005ac9c7ff11d74de37162635e7e0a2be78023769a5d6676b8b992434f6718",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_tracker.py",
+      "destination": "references/donors/slang-rgbd-slam/tests/test_tracker.py",
+      "source_sha256": "46571be6cae14b9b34f84b142ea50bb0fa424d44bda5c0f26593f3f378c8105f",
+      "imported_sha256": "46571be6cae14b9b34f84b142ea50bb0fa424d44bda5c0f26593f3f378c8105f",
+      "changes": []
+    },
+    {
+      "source_path": "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/composed/tracker.slang",
+      "source_sha256": null,
+      "imported_sha256": "de1df19749ada629f8d92e47021cc60e248ec872b428abc219cea904cc94451c",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {},
+      "inputs": [
+        "src/sintergpu/kernels/generated/primitives.generated.slang",
+        "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang"
+      ]
+    },
+    {
+      "source_path": "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/composed/features.slang",
+      "source_sha256": null,
+      "imported_sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {
+        "MATCH_GROUP_SIZE": 64
+      },
+      "inputs": [
+        "src/sintergpu/kernels/generated/primitives.generated.slang",
+        "src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+      ]
+    },
+    {
+      "source_path": "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/composed/tsdf.slang",
+      "source_sha256": null,
+      "imported_sha256": "5cd88272b3bb9f376728e4cae9967365b6c182e944286af36b3da3a1140a8cc0",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {},
+      "inputs": [
+        "src/sintergpu/kernels/generated/primitives.generated.slang",
+        "src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang"
+      ]
+    },
+    {
+      "source_path": "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/composed/loop_verification.slang",
+      "source_sha256": null,
+      "imported_sha256": "8e06effceb0f23087ee79d976f183dbc8767c847ce219b9f613dd547d6e4c183",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {},
+      "inputs": [
+        "src/sintergpu/kernels/generated/primitives.generated.slang",
+        "src/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang"
+      ]
+    },
+    {
+      "source_path": "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "source_sha256": null,
+      "imported_sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {},
+      "inputs": [
+        "src/sintergpu/kernels/generated/dense_factors.generated.slang",
+        "src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+      ]
+    },
+    {
+      "source_path": "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang",
+      "source_sha256": null,
+      "imported_sha256": "1141e7fd11e82abff8265f44e994c0a2ffb51d7e56079d725efdd9d98a888a36",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {
+        "DENSE_GROUP_SIZE": 64,
+        "DENSE_USE_WAVE": 0,
+        "DENSE_MIN_WAVE_SIZE": 1
+      },
+      "inputs": [
+        "src/sintergpu/kernels/generated/dense_factors.generated.slang",
+        "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang",
+        "src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+      ]
+    },
+    {
+      "source_path": "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang",
+      "destination": "src/sintergpu/kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang",
+      "source_sha256": null,
+      "imported_sha256": "9971486e4632113d3b0bea934aac4fa026ac6818059352fdcb22214905aed815",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {
+        "DENSE_GROUP_SIZE": 64,
+        "DENSE_USE_WAVE": 1,
+        "DENSE_MIN_WAVE_SIZE": 1
+      },
+      "inputs": [
+        "src/sintergpu/kernels/generated/dense_factors.generated.slang",
+        "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang",
+        "src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+      ]
+    }
+  ],
+  "qualification": "Imported source and historical evidence; requires new SinterGPU verification."
+}

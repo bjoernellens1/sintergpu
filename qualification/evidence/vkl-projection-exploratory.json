@@ -1,0 +1,59 @@
+{
+  "operation": "vkl.project_depth_evidence",
+  "status": "measurement_only",
+  "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+  "slangpy": "0.43.1",
+  "compiler_libraries_sha256": {
+    "/home/bjoern/git/caspar-slang/.venv/lib/python3.13/site-packages/slangpy/libslang-compiler.so.0.2026.12": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+  },
+  "source_sha256": "48419b4308fcafc4682a92233bcbf85618d7148f4c09763dff28387a88f8bc27",
+  "points": 307201,
+  "iterations": 30,
+  "warmups": 5,
+  "gpu_resident_ms": {
+    "median": 0.022382527249424453,
+    "p95": 0.023083859795288243,
+    "samples": [
+      0.026530408306390307,
+      0.023083859795288243,
+      0.02244264146764135,
+      0.022282336885729625,
+      0.022282336885729625,
+      0.02252279375859721,
+      0.022402565322163417,
+      0.02216210844929583,
+      0.022001803867384106,
+      0.023083859795288243,
+      0.02248271761311928,
+      0.022282336885729625,
+      0.022362489176685485,
+      0.02252279375859721,
+      0.022322413031207557,
+      0.022322413031207557,
+      0.02252279375859721,
+      0.022683098340508932,
+      0.022282336885729625,
+      0.022362489176685485,
+      0.021841499285472382,
+      0.022643022195031004,
+      0.02220218459477376,
+      0.022001803867384106,
+      0.021881575430950314,
+      0.02252279375859721,
+      0.02256286990407514,
+      0.02252279375859721,
+      0.021881575430950314,
+      0.022723174485986864
+    ]
+  },
+  "host_record_submit_wait_ms_per_dispatch": 0.06971166666666666,
+  "measured_submissions": 1,
+  "excluded": [
+    "compile",
+    "allocation",
+    "upload",
+    "readback",
+    "transfer-inclusive latency"
+  ],
+  "limits": "Single local AMD GPU; no baseline comparison, confidence interval, transfer-inclusive benefit or vendor qualification"
+}

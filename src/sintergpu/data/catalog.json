@@ -1,0 +1,4371 @@
+{
+  "schema_version": 1,
+  "operations": [
+    {
+      "id": "caspar_slang.gn.reducePartials",
+      "path": "kernels/caspar_slang/composed/gn.slang",
+      "entrypoint": "reducePartials",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "7b5b4792c16747e8ea149ba55f75ce81a2bd7e39b65fcfbe21dac2bba1136448",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/caspar_slang/gn.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.gn.reduceResidual",
+      "path": "kernels/caspar_slang/composed/gn.slang",
+      "entrypoint": "reduceResidual",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "7b5b4792c16747e8ea149ba55f75ce81a2bd7e39b65fcfbe21dac2bba1136448",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/caspar_slang/gn.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.gn.reduceResidualSubgroup",
+      "path": "kernels/caspar_slang/composed/gn.slang",
+      "entrypoint": "reduceResidualSubgroup",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "7b5b4792c16747e8ea149ba55f75ce81a2bd7e39b65fcfbe21dac2bba1136448",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/caspar_slang/gn.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.gn.solveSystem",
+      "path": "kernels/caspar_slang/composed/gn.slang",
+      "entrypoint": "solveSystem",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "7b5b4792c16747e8ea149ba55f75ce81a2bd7e39b65fcfbe21dac2bba1136448",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/caspar_slang/gn.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.point_plane_residual.computeMain",
+      "path": "kernels/caspar_slang/composed/point_plane_residual.slang",
+      "entrypoint": "computeMain",
+      "workgroup": [
+        1024,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "b425f7562662c7d4fedfa9c0ca5c8c83ac45b764bf75ca1bf8d2cb50147eeeb6",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/point_plane_residual.generated.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.checkCost",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "checkCost",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.evaluateEdges",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "evaluateEdges",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.initializeCG",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "initializeCG",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.initializeMeasurements",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "initializeMeasurements",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.linearizeEdges",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "linearizeEdges",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.operatorEdges",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "operatorEdges",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.operatorNodes",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "operatorNodes",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.pcgStep",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "pcgStep",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.resetEdgeCount",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "resetEdgeCount",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.resetGraph",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "resetGraph",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.rollbackNodes",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "rollbackNodes",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.pose_graph.updateNodes",
+      "path": "kernels/caspar_slang/composed/pose_graph.slang",
+      "entrypoint": "updateNodes",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.reprojection.buildReprojection",
+      "path": "kernels/caspar_slang/composed/reprojection.slang",
+      "entrypoint": "buildReprojection",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "b35001e919b5566b5185a005d63a4bea3fdb58e39a0777682626c75687e59922",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/reprojection_factors.generated.slang+src/sintergpu/kernels/caspar_slang/reprojection.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.reprojection.evaluateReprojection",
+      "path": "kernels/caspar_slang/composed/reprojection.slang",
+      "entrypoint": "evaluateReprojection",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "b35001e919b5566b5185a005d63a4bea3fdb58e39a0777682626c75687e59922",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/reprojection_factors.generated.slang+src/sintergpu/kernels/caspar_slang/reprojection.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.reprojection.resetReprojection",
+      "path": "kernels/caspar_slang/composed/reprojection.slang",
+      "entrypoint": "resetReprojection",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "b35001e919b5566b5185a005d63a4bea3fdb58e39a0777682626c75687e59922",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/reprojection_factors.generated.slang+src/sintergpu/kernels/caspar_slang/reprojection.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.reprojection.resetReprojectionCount",
+      "path": "kernels/caspar_slang/composed/reprojection.slang",
+      "entrypoint": "resetReprojectionCount",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "b35001e919b5566b5185a005d63a4bea3fdb58e39a0777682626c75687e59922",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/reprojection_factors.generated.slang+src/sintergpu/kernels/caspar_slang/reprojection.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "caspar_slang.reprojection.updateReprojection",
+      "path": "kernels/caspar_slang/composed/reprojection.slang",
+      "entrypoint": "updateReprojection",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "b35001e919b5566b5185a005d63a4bea3fdb58e39a0777682626c75687e59922",
+      "source": {
+        "repository": "bjoernellens1/caspar-slang",
+        "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+        "paths": [
+          "src/sintergpu/kernels/generated/reprojection_factors.generated.slang+src/sintergpu/kernels/caspar_slang/reprojection.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "caspar-slang-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/caspar-slang/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "depth.bilateral",
+      "path": "kernels/locus/preprocess/bilateral.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/preprocess/bilateral.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "bilateral"
+    },
+    {
+      "id": "depth.register",
+      "path": "kernels/locus/preprocess/depth_register.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/preprocess/depth_register.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "depth_register"
+    },
+    {
+      "id": "depth.resolve",
+      "path": "kernels/locus/preprocess/depth_resolve.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "e5416309a1d2e09a5549e558a74f42baad0af9a96ad4721c46c467f300cf9ea4",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/preprocess/depth_resolve.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "depth_resolve"
+    },
+    {
+      "id": "depth.validity",
+      "path": "kernels/locus/preprocess/invalid_depth.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/preprocess/invalid_depth.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "invalid_depth"
+    },
+    {
+      "id": "geometry.backproject",
+      "path": "kernels/locus/geometry/backproject.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/geometry/backproject.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "backproject"
+    },
+    {
+      "id": "geometry.coverage_heatmap",
+      "path": "kernels/locus/guidance/coverage_heatmap.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "b23581c8b5348522c3ee7ad05b2f9b97d954e7d9c5070fa80341fe52216d94d8",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/guidance/coverage_heatmap.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "coverage_heatmap"
+    },
+    {
+      "id": "geometry.coverage_points",
+      "path": "kernels/locus/guidance/coverage_render.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "5e8ea4892df9d48caae31b75885f49f6fd63b4170a75c2a411688a052149a30c",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/guidance/coverage_render.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "coverage_render"
+    },
+    {
+      "id": "geometry.transform_points",
+      "path": "kernels/locus/geometry/transform_points.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/geometry/transform_points.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "transform_points"
+    },
+    {
+      "id": "image.crop_normalize",
+      "path": "kernels/locus/semantics/normalize.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/semantics/normalize.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "normalize"
+    },
+    {
+      "id": "image.nv12_to_rgb",
+      "path": "kernels/image/camera_color.slang",
+      "entrypoint": "nv12Decode",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "source": {
+        "repository": "bjoernellens1/eligsir-sim",
+        "revision": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+        "paths": [
+          "src/eligsir_sim/video/colour.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "portable-fp32-u8",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/color.md",
+        "numerical_behavior": {
+          "matrices": [
+            "bt601",
+            "bt709"
+          ],
+          "ranges": [
+            "limited",
+            "full"
+          ],
+          "decode_siting": "cosited-nearest",
+          "encode_siting": "centered-2x2-box",
+          "rounding": "clamp then nearest-even",
+          "oracle_tolerance_lsb": 1,
+          "exact_hip_compatible": false,
+          "gradients": "not claimed"
+        }
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "image.planar_yuv_to_rgb",
+      "path": "kernels/locus/preprocess/yuv_to_rgb.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/preprocess/yuv_to_rgb.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "yuv_to_rgb"
+    },
+    {
+      "id": "image.remap_bilinear",
+      "path": "kernels/image/camera_color.slang",
+      "entrypoint": "remapBilinear",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "source": {
+        "repository": "bjoernellens1/eligsir-sim",
+        "revision": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+        "paths": [
+          "src/eligsir_sim/video/colour.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "portable-fp32-u8",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/color.md",
+        "numerical_behavior": {
+          "matrices": [
+            "bt601",
+            "bt709"
+          ],
+          "ranges": [
+            "limited",
+            "full"
+          ],
+          "decode_siting": "cosited-nearest",
+          "encode_siting": "centered-2x2-box",
+          "rounding": "clamp then nearest-even",
+          "oracle_tolerance_lsb": 1,
+          "exact_hip_compatible": false,
+          "gradients": "not claimed"
+        }
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "image.resize_bilinear",
+      "path": "kernels/image/camera_color.slang",
+      "entrypoint": "resizeBilinear",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "source": {
+        "repository": "bjoernellens1/eligsir-sim",
+        "revision": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+        "paths": [
+          "src/eligsir_sim/video/colour.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "portable-fp32-u8",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/color.md",
+        "numerical_behavior": {
+          "matrices": [
+            "bt601",
+            "bt709"
+          ],
+          "ranges": [
+            "limited",
+            "full"
+          ],
+          "decode_siting": "cosited-nearest",
+          "encode_siting": "centered-2x2-box",
+          "rounding": "clamp then nearest-even",
+          "oracle_tolerance_lsb": 1,
+          "exact_hip_compatible": false,
+          "gradients": "not claimed"
+        }
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "image.resize_nearest",
+      "path": "kernels/locus/preprocess/resize.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/preprocess/resize.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "resize"
+    },
+    {
+      "id": "image.rgb_to_nv12",
+      "path": "kernels/image/camera_color.slang",
+      "entrypoint": "nv12Encode",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "source": {
+        "repository": "bjoernellens1/eligsir-sim",
+        "revision": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+        "paths": [
+          "src/eligsir_sim/video/colour.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "portable-fp32-u8",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/color.md",
+        "numerical_behavior": {
+          "matrices": [
+            "bt601",
+            "bt709"
+          ],
+          "ranges": [
+            "limited",
+            "full"
+          ],
+          "decode_siting": "cosited-nearest",
+          "encode_siting": "centered-2x2-box",
+          "rounding": "clamp then nearest-even",
+          "oracle_tolerance_lsb": 1,
+          "exact_hip_compatible": false,
+          "gradients": "not claimed"
+        }
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "image.undistort",
+      "path": "kernels/locus/preprocess/undistort.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/preprocess/undistort.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "undistort"
+    },
+    {
+      "id": "image.yuyv_remap_fused",
+      "path": "kernels/image/camera_color.slang",
+      "entrypoint": "fusedYUYVRemap",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "source": {
+        "repository": "bjoernellens1/eligsir-sim",
+        "revision": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+        "paths": [
+          "src/eligsir_sim/video/colour.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "portable-fp32-u8",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/color.md",
+        "numerical_behavior": {
+          "matrices": [
+            "bt601",
+            "bt709"
+          ],
+          "ranges": [
+            "limited",
+            "full"
+          ],
+          "decode_siting": "cosited-nearest",
+          "encode_siting": "centered-2x2-box",
+          "rounding": "clamp then nearest-even",
+          "oracle_tolerance_lsb": 1,
+          "exact_hip_compatible": false,
+          "gradients": "not claimed"
+        }
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "image.yuyv_to_rgb",
+      "path": "kernels/image/camera_color.slang",
+      "entrypoint": "yuyvDecode",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "source": {
+        "repository": "bjoernellens1/eligsir-sim",
+        "revision": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+        "paths": [
+          "src/eligsir_sim/video/colour.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "portable-fp32-u8",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/color.md",
+        "numerical_behavior": {
+          "matrices": [
+            "bt601",
+            "bt709"
+          ],
+          "ranges": [
+            "limited",
+            "full"
+          ],
+          "decode_siting": "cosited-nearest",
+          "encode_siting": "centered-2x2-box",
+          "rounding": "clamp then nearest-even",
+          "oracle_tolerance_lsb": 1,
+          "exact_hip_compatible": false,
+          "gradients": "not claimed"
+        }
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "perception.cosine_similarity",
+      "path": "kernels/locus/semantics/similarity.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/semantics/similarity.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "similarity"
+    },
+    {
+      "id": "perception.mask_postprocess",
+      "path": "kernels/locus/semantics/mask_postprocess.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "5de5a3648d315cd126e40e181aa11ec2b3b479583be57f77605def4e5d772688",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/semantics/mask_postprocess.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "mask_postprocess"
+    },
+    {
+      "id": "primitives.compact.compactPrepare",
+      "path": "kernels/primitives/compact.slang",
+      "entrypoint": "compactPrepare",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb",
+      "source": {
+        "repository": "bjoernellens1/nerfacc-rocm",
+        "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+        "paths": [
+          "nerfacc/scan.py"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "segmented-hierarchical-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/primitives.md",
+        "numerical_behavior": [
+          "Forward only; no gradients or normalization",
+          "Contiguous nondecreasing uint32 segment IDs, dense batches represented by IDs",
+          "Hierarchical tree changes floating point parenthesization; parity tolerance required",
+          "No CUB/HIP/CUDA/PyTorch dependencies copied"
+        ]
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "primitives.compact.compactScatter",
+      "path": "kernels/primitives/compact.slang",
+      "entrypoint": "compactScatter",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb",
+      "source": {
+        "repository": "bjoernellens1/nerfacc-rocm",
+        "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+        "paths": [
+          "nerfacc/scan.py"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "segmented-hierarchical-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/primitives.md",
+        "numerical_behavior": [
+          "Forward only; no gradients or normalization",
+          "Contiguous nondecreasing uint32 segment IDs, dense batches represented by IDs",
+          "Hierarchical tree changes floating point parenthesization; parity tolerance required",
+          "No CUB/HIP/CUDA/PyTorch dependencies copied"
+        ]
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "primitives.scan.scanBlocks",
+      "path": "kernels/primitives/scan.slang",
+      "entrypoint": "scanBlocks",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "source": {
+        "repository": "bjoernellens1/nerfacc-rocm",
+        "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+        "paths": [
+          "nerfacc/scan.py"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "segmented-hierarchical-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/primitives.md",
+        "numerical_behavior": [
+          "Forward only; no gradients or normalization",
+          "Contiguous nondecreasing uint32 segment IDs, dense batches represented by IDs",
+          "Hierarchical tree changes floating point parenthesization; parity tolerance required",
+          "No CUB/HIP/CUDA/PyTorch dependencies copied"
+        ]
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "primitives.scan.scanCarry",
+      "path": "kernels/primitives/scan.slang",
+      "entrypoint": "scanCarry",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "source": {
+        "repository": "bjoernellens1/nerfacc-rocm",
+        "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+        "paths": [
+          "nerfacc/scan.py"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "segmented-hierarchical-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/primitives.md",
+        "numerical_behavior": [
+          "Forward only; no gradients or normalization",
+          "Contiguous nondecreasing uint32 segment IDs, dense batches represented by IDs",
+          "Hierarchical tree changes floating point parenthesization; parity tolerance required",
+          "No CUB/HIP/CUDA/PyTorch dependencies copied"
+        ]
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "primitives.scan.scanExclusive",
+      "path": "kernels/primitives/scan.slang",
+      "entrypoint": "scanExclusive",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "source": {
+        "repository": "bjoernellens1/nerfacc-rocm",
+        "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+        "paths": [
+          "nerfacc/scan.py"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "segmented-hierarchical-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/primitives.md",
+        "numerical_behavior": [
+          "Forward only; no gradients or normalization",
+          "Contiguous nondecreasing uint32 segment IDs, dense batches represented by IDs",
+          "Hierarchical tree changes floating point parenthesization; parity tolerance required",
+          "No CUB/HIP/CUDA/PyTorch dependencies copied"
+        ]
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "primitives.scan_uint.scanBlocks",
+      "path": "kernels/primitives/scan_uint.slang",
+      "entrypoint": "scanBlocks",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "source": {
+        "repository": "bjoernellens1/nerfacc-rocm",
+        "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+        "paths": [
+          "nerfacc/scan.py"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "segmented-hierarchical-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/primitives.md",
+        "numerical_behavior": [
+          "Forward only; no gradients or normalization",
+          "Contiguous nondecreasing uint32 segment IDs, dense batches represented by IDs",
+          "Hierarchical tree changes floating point parenthesization; parity tolerance required",
+          "No CUB/HIP/CUDA/PyTorch dependencies copied"
+        ]
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "primitives.scan_uint.scanCarry",
+      "path": "kernels/primitives/scan_uint.slang",
+      "entrypoint": "scanCarry",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "source": {
+        "repository": "bjoernellens1/nerfacc-rocm",
+        "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+        "paths": [
+          "nerfacc/scan.py"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "segmented-hierarchical-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/primitives.md",
+        "numerical_behavior": [
+          "Forward only; no gradients or normalization",
+          "Contiguous nondecreasing uint32 segment IDs, dense batches represented by IDs",
+          "Hierarchical tree changes floating point parenthesization; parity tolerance required",
+          "No CUB/HIP/CUDA/PyTorch dependencies copied"
+        ]
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "primitives.scan_uint.scanExclusive",
+      "path": "kernels/primitives/scan_uint.slang",
+      "entrypoint": "scanExclusive",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "source": {
+        "repository": "bjoernellens1/nerfacc-rocm",
+        "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+        "paths": [
+          "nerfacc/scan.py"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "segmented-hierarchical-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/primitives.md",
+        "numerical_behavior": [
+          "Forward only; no gradients or normalization",
+          "Contiguous nondecreasing uint32 segment IDs, dense batches represented by IDs",
+          "Hierarchical tree changes floating point parenthesization; parity tolerance required",
+          "No CUB/HIP/CUDA/PyTorch dependencies copied"
+        ]
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "quality.metrics",
+      "path": "kernels/locus/quality/metrics.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/quality/metrics.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "metrics"
+    },
+    {
+      "id": "quality.reduce",
+      "path": "kernels/locus/quality/reduce.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/quality/reduce.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "reduce"
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.commitDensePoses",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "commitDensePoses",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.finalizeDense",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "finalizeDense",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.initializeDense",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "initializeDense",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.latchDenseFailure",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "latchDenseFailure",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.linearizeSchur",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "linearizeSchur",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.reduceSchur",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "reduceSchur",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.rollbackDense",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "rollbackDense",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.saveInitialCost",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "saveInitialCost",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.solveSchur",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "solveSchur",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.updateDenseDepth",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "updateDenseDepth",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_ba.updateDensePoses",
+      "path": "kernels/slang_rgbd_slam/composed/dense_ba.slang",
+      "entrypoint": "updateDensePoses",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "6421ae8fab64cd052e2bf140030131a4b9101b2d6a265a1ab64c87916eae5727",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_subgroup.associate",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang",
+      "entrypoint": "associate",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "9971486e4632113d3b0bea934aac4fa026ac6818059352fdcb22214905aed815",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_subgroup.downsample",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang",
+      "entrypoint": "downsample",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "9971486e4632113d3b0bea934aac4fa026ac6818059352fdcb22214905aed815",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_subgroup.downsampleIntensity",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang",
+      "entrypoint": "downsampleIntensity",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "9971486e4632113d3b0bea934aac4fa026ac6818059352fdcb22214905aed815",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_subgroup.fusedAssociate",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang",
+      "entrypoint": "fusedAssociate",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "9971486e4632113d3b0bea934aac4fa026ac6818059352fdcb22214905aed815",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_subgroup.makeNormals",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang",
+      "entrypoint": "makeNormals",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "9971486e4632113d3b0bea934aac4fa026ac6818059352fdcb22214905aed815",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_subgroup.makeVertices",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang",
+      "entrypoint": "makeVertices",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "9971486e4632113d3b0bea934aac4fa026ac6818059352fdcb22214905aed815",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_subgroup.resetCount",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang",
+      "entrypoint": "resetCount",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "9971486e4632113d3b0bea934aac4fa026ac6818059352fdcb22214905aed815",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_subgroup.rgbIntensity",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang",
+      "entrypoint": "rgbIntensity",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "9971486e4632113d3b0bea934aac4fa026ac6818059352fdcb22214905aed815",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_subgroup.updatePose",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang",
+      "entrypoint": "updatePose",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "9971486e4632113d3b0bea934aac4fa026ac6818059352fdcb22214905aed815",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_workgroup.associate",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang",
+      "entrypoint": "associate",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1141e7fd11e82abff8265f44e994c0a2ffb51d7e56079d725efdd9d98a888a36",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_workgroup.downsample",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang",
+      "entrypoint": "downsample",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1141e7fd11e82abff8265f44e994c0a2ffb51d7e56079d725efdd9d98a888a36",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_workgroup.downsampleIntensity",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang",
+      "entrypoint": "downsampleIntensity",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1141e7fd11e82abff8265f44e994c0a2ffb51d7e56079d725efdd9d98a888a36",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_workgroup.fusedAssociate",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang",
+      "entrypoint": "fusedAssociate",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1141e7fd11e82abff8265f44e994c0a2ffb51d7e56079d725efdd9d98a888a36",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_workgroup.makeNormals",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang",
+      "entrypoint": "makeNormals",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1141e7fd11e82abff8265f44e994c0a2ffb51d7e56079d725efdd9d98a888a36",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_workgroup.makeVertices",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang",
+      "entrypoint": "makeVertices",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1141e7fd11e82abff8265f44e994c0a2ffb51d7e56079d725efdd9d98a888a36",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_workgroup.resetCount",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang",
+      "entrypoint": "resetCount",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1141e7fd11e82abff8265f44e994c0a2ffb51d7e56079d725efdd9d98a888a36",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_workgroup.rgbIntensity",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang",
+      "entrypoint": "rgbIntensity",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1141e7fd11e82abff8265f44e994c0a2ffb51d7e56079d725efdd9d98a888a36",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.dense_tracker_workgroup.updatePose",
+      "path": "kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang",
+      "entrypoint": "updatePose",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1141e7fd11e82abff8265f44e994c0a2ffb51d7e56079d725efdd9d98a888a36",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/dense_factors.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang+src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.describe",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "describe",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.downsampleGray",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "downsampleGray",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.fastDetect",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "fastDetect",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.filterMatches",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "filterMatches",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.matchForward",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "matchForward",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.matchReverse",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "matchReverse",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.nonmaxHarris",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "nonmaxHarris",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.resetFeatures",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "resetFeatures",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.resetMatchCount",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "resetMatchCount",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.rgbToGray",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "rgbToGray",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.features.selectCells",
+      "path": "kernels/slang_rgbd_slam/composed/features.slang",
+      "entrypoint": "selectCells",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "0e471afc5448ab2c194090f3a2187c6682ceb4111fe6bbd1fdaf1f916fe7128a",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/features.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.loop_verification.buildRefinement",
+      "path": "kernels/slang_rgbd_slam/composed/loop_verification.slang",
+      "entrypoint": "buildRefinement",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "8e06effceb0f23087ee79d976f183dbc8767c847ce219b9f613dd547d6e4c183",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.loop_verification.compactPairs",
+      "path": "kernels/slang_rgbd_slam/composed/loop_verification.slang",
+      "entrypoint": "compactPairs",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "8e06effceb0f23087ee79d976f183dbc8767c847ce219b9f613dd547d6e4c183",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.loop_verification.finishVerification",
+      "path": "kernels/slang_rgbd_slam/composed/loop_verification.slang",
+      "entrypoint": "finishVerification",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "8e06effceb0f23087ee79d976f183dbc8767c847ce219b9f613dd547d6e4c183",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.loop_verification.resetVerification",
+      "path": "kernels/slang_rgbd_slam/composed/loop_verification.slang",
+      "entrypoint": "resetVerification",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "8e06effceb0f23087ee79d976f183dbc8767c847ce219b9f613dd547d6e4c183",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.loop_verification.scoreHypotheses",
+      "path": "kernels/slang_rgbd_slam/composed/loop_verification.slang",
+      "entrypoint": "scoreHypotheses",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "8e06effceb0f23087ee79d976f183dbc8767c847ce219b9f613dd547d6e4c183",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.loop_verification.selectHypothesis",
+      "path": "kernels/slang_rgbd_slam/composed/loop_verification.slang",
+      "entrypoint": "selectHypothesis",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "8e06effceb0f23087ee79d976f183dbc8767c847ce219b9f613dd547d6e4c183",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tracker.associate",
+      "path": "kernels/slang_rgbd_slam/composed/tracker.slang",
+      "entrypoint": "associate",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "de1df19749ada629f8d92e47021cc60e248ec872b428abc219cea904cc94451c",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tracker.downsample",
+      "path": "kernels/slang_rgbd_slam/composed/tracker.slang",
+      "entrypoint": "downsample",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "de1df19749ada629f8d92e47021cc60e248ec872b428abc219cea904cc94451c",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tracker.makeNormals",
+      "path": "kernels/slang_rgbd_slam/composed/tracker.slang",
+      "entrypoint": "makeNormals",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "de1df19749ada629f8d92e47021cc60e248ec872b428abc219cea904cc94451c",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tracker.makeVertices",
+      "path": "kernels/slang_rgbd_slam/composed/tracker.slang",
+      "entrypoint": "makeVertices",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "de1df19749ada629f8d92e47021cc60e248ec872b428abc219cea904cc94451c",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tracker.resetCount",
+      "path": "kernels/slang_rgbd_slam/composed/tracker.slang",
+      "entrypoint": "resetCount",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "de1df19749ada629f8d92e47021cc60e248ec872b428abc219cea904cc94451c",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tracker.updatePose",
+      "path": "kernels/slang_rgbd_slam/composed/tracker.slang",
+      "entrypoint": "updatePose",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "de1df19749ada629f8d92e47021cc60e248ec872b428abc219cea904cc94451c",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tracker.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tsdf.allocateBlocks",
+      "path": "kernels/slang_rgbd_slam/composed/tsdf.slang",
+      "entrypoint": "allocateBlocks",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5cd88272b3bb9f376728e4cae9967365b6c182e944286af36b3da3a1140a8cc0",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tsdf.collectBlocks",
+      "path": "kernels/slang_rgbd_slam/composed/tsdf.slang",
+      "entrypoint": "collectBlocks",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5cd88272b3bb9f376728e4cae9967365b6c182e944286af36b3da3a1140a8cc0",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tsdf.extractSurface",
+      "path": "kernels/slang_rgbd_slam/composed/tsdf.slang",
+      "entrypoint": "extractSurface",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5cd88272b3bb9f376728e4cae9967365b6c182e944286af36b3da3a1140a8cc0",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tsdf.initialize",
+      "path": "kernels/slang_rgbd_slam/composed/tsdf.slang",
+      "entrypoint": "initialize",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5cd88272b3bb9f376728e4cae9967365b6c182e944286af36b3da3a1140a8cc0",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tsdf.integrateVoxels",
+      "path": "kernels/slang_rgbd_slam/composed/tsdf.slang",
+      "entrypoint": "integrateVoxels",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5cd88272b3bb9f376728e4cae9967365b6c182e944286af36b3da3a1140a8cc0",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tsdf.prepareFusion",
+      "path": "kernels/slang_rgbd_slam/composed/tsdf.slang",
+      "entrypoint": "prepareFusion",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5cd88272b3bb9f376728e4cae9967365b6c182e944286af36b3da3a1140a8cc0",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tsdf.raycast",
+      "path": "kernels/slang_rgbd_slam/composed/tsdf.slang",
+      "entrypoint": "raycast",
+      "workgroup": [
+        16,
+        16,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5cd88272b3bb9f376728e4cae9967365b6c182e944286af36b3da3a1140a8cc0",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tsdf.resetFrame",
+      "path": "kernels/slang_rgbd_slam/composed/tsdf.slang",
+      "entrypoint": "resetFrame",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5cd88272b3bb9f376728e4cae9967365b6c182e944286af36b3da3a1140a8cc0",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "slang_rgbd_slam.tsdf.resetSurface",
+      "path": "kernels/slang_rgbd_slam/composed/tsdf.slang",
+      "entrypoint": "resetSurface",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5cd88272b3bb9f376728e4cae9967365b6c182e944286af36b3da3a1140a8cc0",
+      "source": {
+        "repository": "bjoernellens1/slang-rgbd-slam",
+        "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+        "paths": [
+          "src/sintergpu/kernels/generated/primitives.generated.slang+src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "slang-rgbd-slam-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/slang-rgbd-slam/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "spatial.voxel_insert",
+      "path": "kernels/locus/geometry/voxel_insert.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        8,
+        8,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
+      "source": {
+        "repository": "bjoernellens1/locus",
+        "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+        "paths": [
+          "gpu/geometry/voxel_insert.slang"
+        ],
+        "license": "MIT"
+      },
+      "contract": {
+        "profile": "locus-float4-abi1",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/locus/gpu/README.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": "voxel_insert"
+    },
+    {
+      "id": "vkl.depth_convert.depthConvert",
+      "path": "kernels/vkl/depth_convert.slang",
+      "entrypoint": "depthConvert",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "2ced5aa077ac8484e0bbd2426f468caf69ce707b25f740b206541303fb2a18f5",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/depth_convert.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-forward-partial",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-ports.md",
+        "numerical_behavior": "numeric profile only; status/validation caller-owned; all-float32 domain unqualified because local SlangPy denormal mode flushes extreme cases; strict expected-failure tests retained"
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.depth_pyramid.depthPyramidLevel",
+      "path": "kernels/vkl/depth_pyramid.slang",
+      "entrypoint": "depthPyramidLevel",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "55fea213f1f1614ed3307a6c7a2a3e62765e20db86fbe7da9790c1379f4d4aa2",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/depth_pyramid.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-forward-partial",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-ports.md",
+        "numerical_behavior": "one ceil-half level; no base cleanup or level scheduler; first-minimum confidence ties; masked-INF maximum behavior retained"
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.photometric_isp.photometricISP",
+      "path": "kernels/vkl/photometric_isp.slang",
+      "entrypoint": "photometricISP",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "2cda8c2b898d3dea595b547d5de4fcd83acf4799711a826bdc6c9b2a6328474e",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/photometric_isp.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-forward-partial",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-ports.md",
+        "numerical_behavior": "forward observed RGB only; planar B3HW float32; no evidence reductions or gradients; caller validation; explicit option flags/epsilon"
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.project_depth_evidence.projectDepthEvidence",
+      "path": "kernels/vkl/project_depth_evidence.slang",
+      "entrypoint": "projectDepthEvidence",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "48419b4308fcafc4682a92233bcbf85618d7148f4c09763dff28387a88f8bc27",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/project_depth_evidence.py",
+          "src/vkl/kernels/triton/project_depth_evidence.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-forward-partial",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-ports.md",
+        "numerical_behavior": "float32 contiguous BxN xyz; uint32 logical masks; prevalidated rigid row-major cameras; finite guards; explicit dtype epsilon; ties-even pixel lookup; strict thresholds; dimensions <=2^24; uint32-safe indices; all six outputs overwritten"
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "xsplat_vk.adam.main",
+      "path": "kernels/xsplat_vk/adam.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        32,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "4126871d8bd132c9741bb1f2dadc9e305ed7d54e7db3c7e6bb10b0cd119549c1",
+      "source": {
+        "repository": "bjoernellens1/xsplat-vk",
+        "revision": "5c41a47c9e6ec1ad666d06abd239f1c02424624b",
+        "paths": [
+          "shaders/adam.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "xsplat-vk-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/xsplat-vk/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "xsplat_vk.backward_probe.backwardProbeMain",
+      "path": "kernels/xsplat_vk/backward_probe.slang",
+      "entrypoint": "backwardProbeMain",
+      "workgroup": [
+        1,
+        1,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "640781cf476034479008631ce8ba704283499edd2f6c6f75837dbe53868bb5f6",
+      "source": {
+        "repository": "bjoernellens1/xsplat-vk",
+        "revision": "5c41a47c9e6ec1ad666d06abd239f1c02424624b",
+        "paths": [
+          "shaders/backward_probe.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "xsplat-vk-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/xsplat-vk/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "xsplat_vk.project.projectMain",
+      "path": "kernels/xsplat_vk/project.slang",
+      "entrypoint": "projectMain",
+      "workgroup": [
+        128,
+        1,
+        1
+      ],
+      "variant": "portable-imported",
+      "sha256": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+      "source": {
+        "repository": "bjoernellens1/xsplat-vk",
+        "revision": "5c41a47c9e6ec1ad666d06abd239f1c02424624b",
+        "paths": [
+          "shaders/project.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "xsplat-vk-source-compatible",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/xsplat-vk/docs/VALIDATION.md",
+        "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    }
+  ]
+}

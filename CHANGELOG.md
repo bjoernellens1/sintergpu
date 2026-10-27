@@ -1,0 +1,21 @@
+# Changelog
+
+## 0.1.0 — 2026-10-27
+
+- Consolidate Locus image/depth/geometry/perception kernels with scalar fixtures.
+- Package Caspar/SLAM shader compositions, generated math and independent references.
+- Preserve VKL reference/Triton and EliGSiR-sim color/HIP resources with provenance.
+- Add standalone xsplat Adam/Gaussian resources and repair its differentiable probe.
+- Add catalog, CLI, borrowed SlangPy/Vulkan/Daxa adapters and CMake export.
+- Add fixed256-lane shared reduction and numerical GPU probes.
+- Package sources for Python and C++ with one version and retained notices.
+- Add four partial forward VKL Slang profiles and 47 optional Torch reference modules.
+- Add hierarchical segmented scan, stable compaction and optional MIT vrdx source target.
+- Add portable camera color/sampling profiles and experimental byte-parity YUYV/remap fusion.
+- Document 22 semantic overlap groups and bind the review to its source input hashes.
+- Require classified changelog fragments and version transitions in PR CI.
+- Add immutable release, checksum/attestation verification and idempotent consumer PR tooling.
+
+Qualification: experimental library. Local tests and exact hardware/compiler
+records are scoped evidence. NVIDIA, consumer migrations and full campaign gates
+remain pending until their records pass.

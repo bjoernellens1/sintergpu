@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "consumers": [
+    {
+      "repository": "bjoernellens1/stereoforge",
+      "base_branch": "main",
+      "lock_path": ".sintergpu/lock.json",
+      "integration_state": "registered",
+      "consumed_modules": [],
+      "verification_argv": [
+        "python3",
+        ".sintergpu/verify_lock.py",
+        "--lock",
+        ".sintergpu/lock.json"
+      ],
+      "integration_argv": []
+    },
+    {
+      "repository": "bjoernellens1/eligsir-sim",
+      "base_branch": "main",
+      "lock_path": ".sintergpu/lock.json",
+      "integration_state": "registered",
+      "consumed_modules": [],
+      "verification_argv": [
+        "python3",
+        ".sintergpu/verify_lock.py",
+        "--lock",
+        ".sintergpu/lock.json"
+      ],
+      "integration_argv": []
+    },
+    {
+      "repository": "bjoernellens1/eligsir-native",
+      "base_branch": "main",
+      "lock_path": ".sintergpu/lock.json",
+      "integration_state": "registered",
+      "consumed_modules": [],
+      "verification_argv": [
+        "python3",
+        ".sintergpu/verify_lock.py",
+        "--lock",
+        ".sintergpu/lock.json"
+      ],
+      "integration_argv": []
+    },
+    {
+      "repository": "bjoernellens1/vkl",
+      "base_branch": "main",
+      "lock_path": ".sintergpu/lock.json",
+      "integration_state": "registered",
+      "consumed_modules": [],
+      "verification_argv": [
+        "python3",
+        ".sintergpu/verify_lock.py",
+        "--lock",
+        ".sintergpu/lock.json"
+      ],
+      "integration_argv": []
+    },
+    {
+      "repository": "bjoernellens1/slang-rgbd-slam",
+      "base_branch": "main",
+      "lock_path": ".sintergpu/lock.json",
+      "integration_state": "registered",
+      "consumed_modules": [],
+      "verification_argv": [
+        "python3",
+        ".sintergpu/verify_lock.py",
+        "--lock",
+        ".sintergpu/lock.json"
+      ],
+      "integration_argv": []
+    },
+    {
+      "repository": "bjoernellens1/caspar-slang",
+      "base_branch": "main",
+      "lock_path": ".sintergpu/lock.json",
+      "integration_state": "registered",
+      "consumed_modules": [],
+      "verification_argv": [
+        "python3",
+        ".sintergpu/verify_lock.py",
+        "--lock",
+        ".sintergpu/lock.json"
+      ],
+      "integration_argv": []
+    },
+    {
+      "repository": "bjoernellens1/locus",
+      "base_branch": "main",
+      "lock_path": ".sintergpu/lock.json",
+      "integration_state": "registered",
+      "consumed_modules": [],
+      "verification_argv": [
+        "python3",
+        ".sintergpu/verify_lock.py",
+        "--lock",
+        ".sintergpu/lock.json"
+      ],
+      "integration_argv": []
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+@PACKAGE_INIT@
+if(@SINTERGPU_BUILD_RADIX@)
+    include(CMakeFindDependencyMacro)
+    find_dependency(Vulkan)
+    if(NOT TARGET volk AND NOT TARGET volk::volk)
+        find_dependency(volk CONFIG)
+    endif()
+endif()
+include("${CMAKE_CURRENT_LIST_DIR}/sintergpuTargets.cmake")
+set_and_check(SINTERGPU_KERNEL_DIR "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_DATADIR@/sintergpu/kernels")
+check_required_components(sintergpu)

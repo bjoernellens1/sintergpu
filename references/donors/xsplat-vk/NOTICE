@@ -1,0 +1,8 @@
+xsplat-vk
+
+This project includes or builds against work derived from / informed by:
+
+- VkSplat by Jingxiang Chen et al. (Apache License 2.0), pinned read-only under `third_party/vksplat`.
+- NVIDIA `vk_gaussian_splatting` (Apache License 2.0) as a Vulkan/Slang rendering reference.
+
+See THIRD_PARTY.md for scope and provenance. Spirula Studio is used only as an architectural reference; GPL implementation code is not included.

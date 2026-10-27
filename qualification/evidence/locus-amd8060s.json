@@ -1,0 +1,555 @@
+{
+  "status": "passed",
+  "backend": "vulkan",
+  "scope": "GPU fixture parity, not full hardware/application qualification",
+  "environment": {
+    "python": "3.13.12",
+    "version": "0.1.0",
+    "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+    "api": "Vulkan",
+    "vendor_id": 4098,
+    "device_id": 5510,
+    "slangpy": "0.43.1",
+    "compiler": "SlangPy bundled compiler; compiler binary digest recorded separately by qualification tooling"
+  },
+  "cases": [
+    {
+      "operation": "image.planar_yuv_to_rgb",
+      "case": "yuv-matrix0-range0",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 9.578201570548117,
+        "p95_us": 11.862539395224303,
+        "p99_us": 11.862539395224303
+      },
+      "host_submit_complete": {
+        "p50_us": 220.815,
+        "p95_us": 285.618,
+        "p99_us": 285.618
+      },
+      "fixture_setup_dispatch_readback_us": 36268.164,
+      "uploaded_bytes": 592,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "image.planar_yuv_to_rgb",
+      "case": "yuv-matrix0-range1",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 2.6049492589663714,
+        "p95_us": 2.8854810807388276,
+        "p99_us": 2.8854810807388276
+      },
+      "host_submit_complete": {
+        "p50_us": 64.721,
+        "p95_us": 91.773,
+        "p99_us": 91.773
+      },
+      "fixture_setup_dispatch_readback_us": 962.433,
+      "uploaded_bytes": 592,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "image.planar_yuv_to_rgb",
+      "case": "yuv-matrix1-range0",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.0057126423344016,
+        "p95_us": 3.2461648515891284,
+        "p99_us": 3.2461648515891284
+      },
+      "host_submit_complete": {
+        "p50_us": 101.0,
+        "p95_us": 134.423,
+        "p99_us": 134.423
+      },
+      "fixture_setup_dispatch_readback_us": 885.167,
+      "uploaded_bytes": 592,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "image.planar_yuv_to_rgb",
+      "case": "yuv-matrix1-range1",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.166016540490091,
+        "p95_us": 3.3663964131847024,
+        "p99_us": 3.3663964131847024
+      },
+      "host_submit_complete": {
+        "p50_us": 90.791,
+        "p95_us": 91.252,
+        "p99_us": 91.252
+      },
+      "fixture_setup_dispatch_readback_us": 922.387,
+      "uploaded_bytes": 592,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "image.resize_nearest",
+      "case": "resize-odd-pitched",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.4064723877236247,
+        "p95_us": 3.7671561585739255,
+        "p99_us": 3.7671561585739255
+      },
+      "host_submit_complete": {
+        "p50_us": 118.343,
+        "p95_us": 136.076,
+        "p99_us": 136.076
+      },
+      "fixture_setup_dispatch_readback_us": 19488.003,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "image.undistort",
+      "case": "identity-undistort",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 12.704138498520479,
+        "p95_us": 12.984670320292935,
+        "p99_us": 12.984670320292935
+      },
+      "host_submit_complete": {
+        "p50_us": 221.617,
+        "p95_us": 228.41,
+        "p99_us": 228.41
+      },
+      "fixture_setup_dispatch_readback_us": 22982.183,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "image.undistort",
+      "case": "distortion-outside",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.326316800666973,
+        "p95_us": 3.32632043864578,
+        "p99_us": 3.32632043864578
+      },
+      "host_submit_complete": {
+        "p50_us": 144.362,
+        "p95_us": 165.262,
+        "p99_us": 165.262
+      },
+      "fixture_setup_dispatch_readback_us": 1942.608,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "depth.validity",
+      "case": "invalid-depth-nan",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 12.664062523981556,
+        "p95_us": 16.831982065923512,
+        "p99_us": 16.831982065923512
+      },
+      "host_submit_complete": {
+        "p50_us": 256.984,
+        "p95_us": 268.025,
+        "p99_us": 268.025
+      },
+      "fixture_setup_dispatch_readback_us": 20966.536,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "depth.bilateral",
+      "case": "bilateral-invalid",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 15.46939165564254,
+        "p95_us": 24.326222046511248,
+        "p99_us": 24.326222046511248
+      },
+      "host_submit_complete": {
+        "p50_us": 120.968,
+        "p95_us": 198.514,
+        "p99_us": 198.514
+      },
+      "fixture_setup_dispatch_readback_us": 30146.205,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "depth.register",
+      "case": "identity-registration",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.446548362262547,
+        "p95_us": 13.024746294831857,
+        "p99_us": 13.024746294831857
+      },
+      "host_submit_complete": {
+        "p50_us": 90.35,
+        "p95_us": 221.006,
+        "p99_us": 221.006
+      },
+      "fixture_setup_dispatch_readback_us": 24252.936,
+      "uploaded_bytes": 816,
+      "readback_bytes": 240
+    },
+    {
+      "operation": "depth.register",
+      "case": "nearest-depth-collision",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.446548362262547,
+        "p95_us": 3.446548362262547,
+        "p99_us": 3.446548362262547
+      },
+      "host_submit_complete": {
+        "p50_us": 59.733,
+        "p95_us": 67.386,
+        "p99_us": 67.386
+      },
+      "fixture_setup_dispatch_readback_us": 695.009,
+      "uploaded_bytes": 132,
+      "readback_bytes": 36
+    },
+    {
+      "operation": "depth.resolve",
+      "case": "resolve-invalid",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 11.98276731884107,
+        "p95_us": 12.744214473059401,
+        "p99_us": 12.744214473059401
+      },
+      "host_submit_complete": {
+        "p50_us": 223.631,
+        "p95_us": 229.362,
+        "p99_us": 229.362
+      },
+      "fixture_setup_dispatch_readback_us": 19215.199,
+      "uploaded_bytes": 816,
+      "readback_bytes": 240
+    },
+    {
+      "operation": "quality.metrics",
+      "case": "quality-metrics",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 13.505657989298925,
+        "p95_us": 14.78810008848086,
+        "p99_us": 14.78810008848086
+      },
+      "host_submit_complete": {
+        "p50_us": 342.235,
+        "p95_us": 357.283,
+        "p99_us": 357.283
+      },
+      "fixture_setup_dispatch_readback_us": 28105.792,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "quality.metrics",
+      "case": "quality-nan",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.927463694708422,
+        "p95_us": 4.0076156437862664,
+        "p99_us": 4.0076156437862664
+      },
+      "host_submit_complete": {
+        "p50_us": 140.023,
+        "p95_us": 156.254,
+        "p99_us": 156.254
+      },
+      "fixture_setup_dispatch_readback_us": 1260.003,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "quality.reduce",
+      "case": "quality-reduction",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 9.898809366859496,
+        "p95_us": 12.14307121699676,
+        "p99_us": 12.14307121699676
+      },
+      "host_submit_complete": {
+        "p50_us": 213.482,
+        "p95_us": 221.948,
+        "p99_us": 221.948
+      },
+      "fixture_setup_dispatch_readback_us": 21693.837,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "geometry.backproject",
+      "case": "optical-backproject",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.847311745630577,
+        "p95_us": 13.30528175458312,
+        "p99_us": 13.30528175458312
+      },
+      "host_submit_complete": {
+        "p50_us": 170.421,
+        "p95_us": 223.942,
+        "p99_us": 223.942
+      },
+      "fixture_setup_dispatch_readback_us": 20651.163,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "geometry.transform_points",
+      "case": "transform-validity",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 11.902615369763225,
+        "p95_us": 12.784290447598323,
+        "p99_us": 12.784290447598323
+      },
+      "host_submit_complete": {
+        "p50_us": 100.199,
+        "p95_us": 226.447,
+        "p99_us": 226.447
+      },
+      "fixture_setup_dispatch_readback_us": 19164.313,
+      "uploaded_bytes": 208,
+      "readback_bytes": 64
+    },
+    {
+      "operation": "spatial.voxel_insert",
+      "case": "voxel-contention",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.32632043864578,
+        "p95_us": 3.847311745630577,
+        "p99_us": 3.847311745630577
+      },
+      "host_submit_complete": {
+        "p50_us": 91.342,
+        "p95_us": 140.264,
+        "p99_us": 140.264
+      },
+      "fixture_setup_dispatch_readback_us": 25146.108,
+      "uploaded_bytes": 716,
+      "readback_bytes": 236
+    },
+    {
+      "operation": "spatial.voxel_insert",
+      "case": "voxel-capacity-overflow",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.1660129025112838,
+        "p95_us": 3.4064723877236247,
+        "p99_us": 3.4064723877236247
+      },
+      "host_submit_complete": {
+        "p50_us": 90.25,
+        "p95_us": 90.561,
+        "p99_us": 90.561
+      },
+      "fixture_setup_dispatch_readback_us": 867.053,
+      "uploaded_bytes": 148,
+      "readback_bytes": 52
+    },
+    {
+      "operation": "geometry.coverage_heatmap",
+      "case": "coverage-pitched",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.5267003113403916,
+        "p95_us": 9.297662472818047,
+        "p99_us": 9.297662472818047
+      },
+      "host_submit_complete": {
+        "p50_us": 90.942,
+        "p95_us": 132.86,
+        "p99_us": 132.86
+      },
+      "fixture_setup_dispatch_readback_us": 17415.76,
+      "uploaded_bytes": 864,
+      "readback_bytes": 288
+    },
+    {
+      "operation": "geometry.coverage_points",
+      "case": "coverage-point-preview",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 2.8454087441787124,
+        "p95_us": 12.664062523981556,
+        "p99_us": 12.664062523981556
+      },
+      "host_submit_complete": {
+        "p50_us": 217.149,
+        "p95_us": 225.786,
+        "p99_us": 225.786
+      },
+      "fixture_setup_dispatch_readback_us": 16960.903,
+      "uploaded_bytes": 288,
+      "readback_bytes": 144
+    },
+    {
+      "operation": "image.crop_normalize",
+      "case": "crop-normalize",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 11.902615369763225,
+        "p95_us": 13.585813576355577,
+        "p99_us": 13.585813576355577
+      },
+      "host_submit_complete": {
+        "p50_us": 106.22,
+        "p95_us": 202.642,
+        "p99_us": 202.642
+      },
+      "fixture_setup_dispatch_readback_us": 19780.402,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "perception.cosine_similarity",
+      "case": "similarity-count0",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.206092515029013,
+        "p95_us": 11.942691344302148,
+        "p99_us": 11.942691344302148
+      },
+      "host_submit_complete": {
+        "p50_us": 88.927,
+        "p95_us": 200.959,
+        "p99_us": 200.959
+      },
+      "fixture_setup_dispatch_readback_us": 20999.359,
+      "uploaded_bytes": 1216,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "perception.cosine_similarity",
+      "case": "similarity-count3",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.0057126423344016,
+        "p95_us": 3.687004209496081,
+        "p99_us": 3.687004209496081
+      },
+      "host_submit_complete": {
+        "p50_us": 62.067,
+        "p95_us": 99.768,
+        "p99_us": 99.768
+      },
+      "fixture_setup_dispatch_readback_us": 780.45,
+      "uploaded_bytes": 1216,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "perception.cosine_similarity",
+      "case": "similarity-nan-zero",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 2.9656366677954793,
+        "p95_us": 3.3663964131847024,
+        "p99_us": 3.3663964131847024
+      },
+      "host_submit_complete": {
+        "p50_us": 91.352,
+        "p95_us": 114.817,
+        "p99_us": 114.817
+      },
+      "fixture_setup_dispatch_readback_us": 727.25,
+      "uploaded_bytes": 1216,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "perception.mask_postprocess",
+      "case": "mask-mode0",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.3663964131847024,
+        "p95_us": 3.8873877201694995,
+        "p99_us": 3.8873877201694995
+      },
+      "host_submit_complete": {
+        "p50_us": 66.435,
+        "p95_us": 141.086,
+        "p99_us": 141.086
+      },
+      "fixture_setup_dispatch_readback_us": 20664.468,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "perception.mask_postprocess",
+      "case": "mask-mode1",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.6469318729359657,
+        "p95_us": 3.8873840821906924,
+        "p99_us": 3.8873840821906924
+      },
+      "host_submit_complete": {
+        "p50_us": 59.592,
+        "p95_us": 91.232,
+        "p99_us": 91.232
+      },
+      "fixture_setup_dispatch_readback_us": 715.617,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    },
+    {
+      "operation": "perception.mask_postprocess",
+      "case": "mask-mode2",
+      "status": "passed",
+      "iterations": 3,
+      "gpu_kernel": {
+        "p50_us": 3.566776285879314,
+        "p95_us": 4.0076156437862664,
+        "p99_us": 4.0076156437862664
+      },
+      "host_submit_complete": {
+        "p50_us": 59.071,
+        "p95_us": 76.724,
+        "p99_us": 76.724
+      },
+      "fixture_setup_dispatch_readback_us": 714.325,
+      "uploaded_bytes": 784,
+      "readback_bytes": 208
+    }
+  ],
+  "unavailable_operations": [],
+  "tolerance": {
+    "absolute": 0.0002,
+    "relative": 0.0002
+  },
+  "nvidia_qualification": "pending"
+}

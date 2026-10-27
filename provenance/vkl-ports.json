@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0",
+  "author": "Original owner code; explicit user license authorization 2026-10-27",
+  "authorization": "User authorized their original code under Apache-2.0; dependency licenses unchanged.",
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/triton/project_depth_evidence.py",
+      "destination": "src/sintergpu/kernels/vkl/project_depth_evidence.slang",
+      "source_sha256": "b5552b5ed38647f35e42fac3690eb13951c400e30d738fe7d062e5176ed56e35",
+      "imported_sha256": "48419b4308fcafc4682a92233bcbf85618d7148f4c09763dff28387a88f8bc27",
+      "changes": [
+        "New typed standalone Slang compute port; caller owns resources and submission",
+        "float32 contiguous BxN xyz; uint32 logical masks; prevalidated rigid row-major cameras; finite guards; explicit dtype epsilon; ties-even pixel lookup; strict thresholds; dimensions <=2^24; uint32-safe indices; all six outputs overwritten"
+      ],
+      "entry_points": [
+        "projectDepthEvidence"
+      ],
+      "workgroup_size": [
+        256,
+        1,
+        1
+      ],
+      "contract_limits": "float32 contiguous BxN xyz; uint32 logical masks; prevalidated rigid row-major cameras; finite guards; explicit dtype epsilon; ties-even pixel lookup; strict thresholds; dimensions <=2^24; uint32-safe indices; all six outputs overwritten",
+      "qualification": "experimental; see docs/vkl-ports.md for exact cases and known pending failures"
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/project_depth_evidence.py",
+      "destination": "src/sintergpu/kernels/vkl/project_depth_evidence.slang",
+      "source_sha256": "4632772d858a95bd6305420ccbf38ed1d0313e370e58915f301909d59bd4a60f",
+      "imported_sha256": "48419b4308fcafc4682a92233bcbf85618d7148f4c09763dff28387a88f8bc27",
+      "changes": [
+        "New typed standalone Slang compute port; caller owns resources and submission",
+        "float32 contiguous BxN xyz; uint32 logical masks; prevalidated rigid row-major cameras; finite guards; explicit dtype epsilon; ties-even pixel lookup; strict thresholds; dimensions <=2^24; uint32-safe indices; all six outputs overwritten"
+      ],
+      "entry_points": [
+        "projectDepthEvidence"
+      ],
+      "workgroup_size": [
+        256,
+        1,
+        1
+      ],
+      "contract_limits": "float32 contiguous BxN xyz; uint32 logical masks; prevalidated rigid row-major cameras; finite guards; explicit dtype epsilon; ties-even pixel lookup; strict thresholds; dimensions <=2^24; uint32-safe indices; all six outputs overwritten",
+      "qualification": "experimental; see docs/vkl-ports.md for exact cases and known pending failures"
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/project_depth_evidence.py",
+      "destination": "src/sintergpu/references/vkl/numpy.py",
+      "source_sha256": "4632772d858a95bd6305420ccbf38ed1d0313e370e58915f301909d59bd4a60f",
+      "imported_sha256": "c1f6fd9f7aad6fc47b6c5f4eddbe090578c54cc151fcf61fa144472e5863820f",
+      "changes": [
+        "Independent NumPy scalar/array oracle; no donor Torch runtime dependency",
+        "Profile project_depth_evidence: float32 contiguous BxN xyz; uint32 logical masks; prevalidated rigid row-major cameras; finite guards; explicit dtype epsilon; ties-even pixel lookup; strict thresholds; dimensions <=2^24; uint32-safe indices; all six outputs overwritten",
+        "Move independent NumPy shader oracle under vkl.numpy; disparity follows Torch reciprocal-then-multiply order"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/photometric_isp.py",
+      "destination": "src/sintergpu/kernels/vkl/photometric_isp.slang",
+      "source_sha256": "1bfb9f6c4536c0382aa913ae17e0d34c01227d13b406e9e4042ad4cf9e225b33",
+      "imported_sha256": "2cda8c2b898d3dea595b547d5de4fcd83acf4799711a826bdc6c9b2a6328474e",
+      "changes": [
+        "New typed standalone Slang compute port; caller owns resources and submission",
+        "forward observed RGB only; planar B3HW float32; no evidence reductions or gradients; caller validation; explicit option flags/epsilon"
+      ],
+      "entry_points": [
+        "photometricISP"
+      ],
+      "workgroup_size": [
+        256,
+        1,
+        1
+      ],
+      "contract_limits": "forward observed RGB only; planar B3HW float32; no evidence reductions or gradients; caller validation; explicit option flags/epsilon",
+      "qualification": "experimental; see docs/vkl-ports.md for exact cases and known pending failures"
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/photometric_isp.py",
+      "destination": "src/sintergpu/references/vkl/numpy.py",
+      "source_sha256": "1bfb9f6c4536c0382aa913ae17e0d34c01227d13b406e9e4042ad4cf9e225b33",
+      "imported_sha256": "c1f6fd9f7aad6fc47b6c5f4eddbe090578c54cc151fcf61fa144472e5863820f",
+      "changes": [
+        "Independent NumPy scalar/array oracle; no donor Torch runtime dependency",
+        "Profile photometric_isp: forward observed RGB only; planar B3HW float32; no evidence reductions or gradients; caller validation; explicit option flags/epsilon",
+        "Move independent NumPy shader oracle under vkl.numpy; disparity follows Torch reciprocal-then-multiply order"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_convert.py",
+      "destination": "src/sintergpu/kernels/vkl/depth_convert.slang",
+      "source_sha256": "855bfcc01ede01e0dd17d5d7420337d9b7ab88668e3ab5c5ab42e8339ac803ae",
+      "imported_sha256": "2ced5aa077ac8484e0bbd2426f468caf69ce707b25f740b206541303fb2a18f5",
+      "changes": [
+        "New typed standalone Slang compute port; caller owns resources and submission",
+        "numeric profile only; status/validation caller-owned; all-float32 domain unqualified because local SlangPy denormal mode flushes extreme cases; strict expected-failure tests retained"
+      ],
+      "entry_points": [
+        "depthConvert"
+      ],
+      "workgroup_size": [
+        256,
+        1,
+        1
+      ],
+      "contract_limits": "numeric profile only; status/validation caller-owned; all-float32 domain unqualified because local SlangPy denormal mode flushes extreme cases; strict expected-failure tests retained",
+      "qualification": "experimental; see docs/vkl-ports.md for exact cases and known pending failures"
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_convert.py",
+      "destination": "src/sintergpu/references/vkl/numpy.py",
+      "source_sha256": "855bfcc01ede01e0dd17d5d7420337d9b7ab88668e3ab5c5ab42e8339ac803ae",
+      "imported_sha256": "c1f6fd9f7aad6fc47b6c5f4eddbe090578c54cc151fcf61fa144472e5863820f",
+      "changes": [
+        "Independent NumPy scalar/array oracle; no donor Torch runtime dependency",
+        "Profile depth_convert: numeric profile only; status/validation caller-owned; all-float32 domain unqualified because local SlangPy denormal mode flushes extreme cases; strict expected-failure tests retained",
+        "Move independent NumPy shader oracle under vkl.numpy; disparity follows Torch reciprocal-then-multiply order"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_pyramid.py",
+      "destination": "src/sintergpu/kernels/vkl/depth_pyramid.slang",
+      "source_sha256": "a1e7fdd46785607a9b52f98819469e5ebe7192558df2c574a583c553b33b6ed1",
+      "imported_sha256": "55fea213f1f1614ed3307a6c7a2a3e62765e20db86fbe7da9790c1379f4d4aa2",
+      "changes": [
+        "New typed standalone Slang compute port; caller owns resources and submission",
+        "one ceil-half level; no base cleanup or level scheduler; first-minimum confidence ties; masked-INF maximum behavior retained"
+      ],
+      "entry_points": [
+        "depthPyramidLevel"
+      ],
+      "workgroup_size": [
+        256,
+        1,
+        1
+      ],
+      "contract_limits": "one ceil-half level; no base cleanup or level scheduler; first-minimum confidence ties; masked-INF maximum behavior retained",
+      "qualification": "experimental; see docs/vkl-ports.md for exact cases and known pending failures"
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_pyramid.py",
+      "destination": "src/sintergpu/references/vkl/numpy.py",
+      "source_sha256": "a1e7fdd46785607a9b52f98819469e5ebe7192558df2c574a583c553b33b6ed1",
+      "imported_sha256": "c1f6fd9f7aad6fc47b6c5f4eddbe090578c54cc151fcf61fa144472e5863820f",
+      "changes": [
+        "Independent NumPy scalar/array oracle; no donor Torch runtime dependency",
+        "Profile depth_pyramid: one ceil-half level; no base cleanup or level scheduler; first-minimum confidence ties; masked-INF maximum behavior retained",
+        "Move independent NumPy shader oracle under vkl.numpy; disparity follows Torch reciprocal-then-multiply order"
+      ]
+    }
+  ],
+  "qualification": "Experimental four-module partial profiles, not 47-module tracker port. Local CPU, compiler matrix and AMD numerical cases verified; three extreme-conversion expected failures, gradients and RTX3090 pending.",
+  "coverage": {
+    "retained_reference_python_files": 48,
+    "substantive_reference_modules": 47,
+    "partially_ported_modules": 4,
+    "remaining_substantive_modules": 43
+  },
+  "evidence": {
+    "cpu": "15 passed; 15 GPU skips",
+    "gpu": "21 passed; 6 Torch skips; 3 extreme-depth expected failures",
+    "performance_review": "/tmp/sintergpu-vkl-perf-review.md",
+    "benchmark": "/tmp/sintergpu-vkl-projection-bench.json",
+    "slangpy_compiler_sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+  }
+}

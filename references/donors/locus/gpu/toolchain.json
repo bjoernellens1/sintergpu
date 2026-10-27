@@ -1,0 +1,21 @@
+{
+  "version": "2026.19",
+  "targets": {
+    "spirv": "spirv_1_3",
+    "metal": "metal"
+  },
+  "archives": {
+    "linux-x86_64": {
+      "file": "slang-2026.19-linux-x86_64.tar.gz",
+      "sha256": "bd6cfc47b7353b2cffa36a866b1584749f76f4b2dbebf6dda26bc3fb40dc3c0e"
+    },
+    "macos-aarch64": {
+      "file": "slang-2026.19-macos-aarch64.tar.gz",
+      "sha256": "fa46822c92d81404a7951de3746093985c1e6f520f4b533e2aa3bea576f0f2f0"
+    },
+    "macos-x86_64": {
+      "file": "slang-2026.19-macos-x86_64.tar.gz",
+      "sha256": "490b6447e3ea6c8fa9dfc45b1dc227db7cf80a60981c4390ed0fdc8ddbedee11"
+    }
+  }
+}

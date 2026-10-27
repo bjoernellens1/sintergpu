@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sintergpu"
+dynamic = ["version"]
+description = "Composable GPU kernels. Measured performance."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "LICENSES/*"]
+authors = [{name = "Björn Ellensohn"}]
+dependencies = []
+
+[project.optional-dependencies]
+gpu = ["slangpy==0.43.1", "numpy>=2"]
+torch = ["torch>=2.5"]
+test = ["pytest>=8", "numpy>=2"]
+
+[project.scripts]
+sinter = "sintergpu.cli:main"
+
+[project.urls]
+Repository = "https://github.com/bjoernellens1/sintergpu"
+
+[tool.setuptools.dynamic]
+version = {file = "VERSION"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sintergpu = ["data/*.json", "data/VERSION", "kernels/**/*.slang", "fixtures/locus/*.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

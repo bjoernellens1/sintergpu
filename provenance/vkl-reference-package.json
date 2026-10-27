@@ -1,0 +1,451 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0",
+  "author": "Original VKL owner code",
+  "authorization": "Explicit user owner authorization 2026-10-27; third-party dependency terms unchanged.",
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/__init__.py",
+      "destination": "src/sintergpu/references/vkl/__init__.py",
+      "source_sha256": "ee77ee329819c27982ae79997f9ce3d24797f3c35c0d93a52786777a0a780313",
+      "imported_sha256": "f94ddbfbef869a805e5e083a64dd6935d5a9a30098cc8c7b47a18a8e955e4527",
+      "changes": [
+        "Preserve original __all__ and eager sibling exports when Torch is installed",
+        "Catch only missing Torch so NumPy-only shader oracles remain usable without the optional dependency",
+        "Add explicit owner-authorized Apache-2.0 SPDX header"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/brief.py",
+      "destination": "src/sintergpu/references/vkl/brief.py",
+      "source_sha256": "470e9da056cfdfd945a563ffe4bb6ed392d9a24693a164335b559a0247cfbcfe",
+      "imported_sha256": "6fa0780921a098b950348cab3cf50e2c3e6fa5845b56f381066f547ae0b0c868",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/camera_registration.py",
+      "destination": "src/sintergpu/references/vkl/camera_registration.py",
+      "source_sha256": "648628355f4b86cc708f0c22d04e3cb6bd21ad85a8cd51868b37b1e1fd05ad3c",
+      "imported_sha256": "dd68ab3a2031b6f059aee2607cfe907dbd27448595904afc42a3883a3e71217b",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/compact.py",
+      "destination": "src/sintergpu/references/vkl/compact.py",
+      "source_sha256": "f4a323c1940f32a61a50dbe61d4669658804d7e82df040fd7d7940ac4bb62aff",
+      "imported_sha256": "5f1d1a115247ff375d46c8eb8b281612e53b4217dc8f8283fc7ebb2e07ebdf9b",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/contract.py",
+      "destination": "src/sintergpu/references/vkl/contract.py",
+      "source_sha256": "ac5e00f7c4e7c1189923134f601ff1cf4a1efd6f4370e7492f27a46788528649",
+      "imported_sha256": "85b1ad1fffbdedc6cfd52c9e1052703af787aca21bf8c068a8d80570af2ff515",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/dense_depth_regularize.py",
+      "destination": "src/sintergpu/references/vkl/dense_depth_regularize.py",
+      "source_sha256": "586e2b2e8dfd2a0991f836fb640a7c976fefca14c39dcb6abbf64d44f52d3351",
+      "imported_sha256": "e834ef16a8a82498c7945b5985fe6268f890c3e96f618b5c5c0bf8c517e87921",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/dense_pose_depth.py",
+      "destination": "src/sintergpu/references/vkl/dense_pose_depth.py",
+      "source_sha256": "ad92795845f8a091f971b5629e860082e50bb5339c7e55e21c7431bac43146a9",
+      "imported_sha256": "16a041ad3a16079de49457f891e07e8da92b5276684686fc0a5bf78bd7d11ffb",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/dense_track_reduce.py",
+      "destination": "src/sintergpu/references/vkl/dense_track_reduce.py",
+      "source_sha256": "64550890984811c785bc26ab9bcbfab71a752de7c47a68f4e75134d7fd388d35",
+      "imported_sha256": "6ca49420e9d2786aedd61565d8d9093935ba936bce0df93132b82192c439ee5c",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_align.py",
+      "destination": "src/sintergpu/references/vkl/depth_align.py",
+      "source_sha256": "dcd110e2b0952a4a9284b5965cb5b38f5ddbfac69daf76a03e6b79b902a4e782",
+      "imported_sha256": "390a9f9e5316a5ad1d9133affe8d2c08b179cd33f79885ad808f5e8fe6385b13",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_convert.py",
+      "destination": "src/sintergpu/references/vkl/depth_convert.py",
+      "source_sha256": "855bfcc01ede01e0dd17d5d7420337d9b7ab88668e3ab5c5ab42e8339ac803ae",
+      "imported_sha256": "5f057f1116c8b3e5a93707c543f386d0d6e2ea08eddd9a2e2930a23bd2c57ece",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_cost_volume.py",
+      "destination": "src/sintergpu/references/vkl/depth_cost_volume.py",
+      "source_sha256": "6585f2d5d6acd6c5336167d0d96045f4b313e4e4d6998209f662866306c78460",
+      "imported_sha256": "56820bdfc1f9c66d9f80ef8635868b5492acbf608e74f36dd9ebad9cab957a00",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_densify.py",
+      "destination": "src/sintergpu/references/vkl/depth_densify.py",
+      "source_sha256": "05b1ed1a441693cc65acf0711783287aba4ade29e66ce53fac5be3672c9e0e73",
+      "imported_sha256": "a1397f8916b1ce3372f6b25707999c16390614deb0bbdee595e20b3f100a4405",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_evidence.py",
+      "destination": "src/sintergpu/references/vkl/depth_evidence.py",
+      "source_sha256": "5976e426e33d1e1430cc5c233bd351fe7e226f2289c1cd43966a34392957fe18",
+      "imported_sha256": "2ef24ca71d51a4f5d9e9a9ba978a75287444a64eee39b13883aea772decd175c",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_fuse.py",
+      "destination": "src/sintergpu/references/vkl/depth_fuse.py",
+      "source_sha256": "b22b3c3bdc46d2aaeab78aa9680a45f4a62bd84c6651f8c20c6bf1fd93f62fa7",
+      "imported_sha256": "e709d8cdf470c75a0989f5b4ce5775bc67df6b06e77b701e899e8a4a64b167cf",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_pyramid.py",
+      "destination": "src/sintergpu/references/vkl/depth_pyramid.py",
+      "source_sha256": "a1e7fdd46785607a9b52f98819469e5ebe7192558df2c574a583c553b33b6ed1",
+      "imported_sha256": "19a406b21e0e16070c5711b07b7fbe2f425896fa95cd5f43f4687b3c9d3a14e3",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/direct_pose_depth.py",
+      "destination": "src/sintergpu/references/vkl/direct_pose_depth.py",
+      "source_sha256": "2bf54837d36684e377b5931546d6135911f6e929c021d3dd585b77884ecfbf24",
+      "imported_sha256": "8d1a6e8f39c44d848ce563b97ddbebd2bb2b8c216c1c24bf82e1c045dbbf54a2",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/evidence.py",
+      "destination": "src/sintergpu/references/vkl/evidence.py",
+      "source_sha256": "e45b7c912309878299d7303ac8887b4967565606d9042c3beb11dadaa5afb500",
+      "imported_sha256": "df7da8bd9ee4cb7f32061739df192d6339dc33f1f98b9cdbca78395db8d4176b",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/geometry.py",
+      "destination": "src/sintergpu/references/vkl/geometry.py",
+      "source_sha256": "72b9d246b18f078516834b3a8a15f608772e1554ae9c31fd8d3824f1fd85151c",
+      "imported_sha256": "c23788f036ddf99554ffd4f3cdd3f083d1cc3b35551b26cbbede983cb1c62100",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/keyframe_filter.py",
+      "destination": "src/sintergpu/references/vkl/keyframe_filter.py",
+      "source_sha256": "3a9c38ce4f2fef65761a4e1ff3bbeae8ed02efd6c6f1bfb17833e67510b6b7b0",
+      "imported_sha256": "34219d49bff76d8c66298ed87a338f76c3343379218fab3c5d1c53e53a95c0c6",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/keypoint_evidence.py",
+      "destination": "src/sintergpu/references/vkl/keypoint_evidence.py",
+      "source_sha256": "e47f27082af85a5546d035a3193da22d84a91a0d520f97f825c0226abfe877f7",
+      "imported_sha256": "10a360b3575fded240837b193e7c8f02ee18aa4867ff3774f32bc9fcfe89f9c7",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/keypoint_selectors.py",
+      "destination": "src/sintergpu/references/vkl/keypoint_selectors.py",
+      "source_sha256": "2b4c35909460f31e06f2b01d7c7dccbe272bf84c48a75ea41869b778ec7fed1d",
+      "imported_sha256": "082a724045c3540337b374b47adffb74c0227ca2a7a52550d03ff206b7e5ca91",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/landmark_update.py",
+      "destination": "src/sintergpu/references/vkl/landmark_update.py",
+      "source_sha256": "ffd060bcdd442d6b48bd966da944a44a3900cd2c7c39fbdaed60c66bd12d235e",
+      "imported_sha256": "51b587e3f35f0f81bfe1937b9ffc94008b63c0fe28a25e090a85c92a905e373d",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/landmark_validate.py",
+      "destination": "src/sintergpu/references/vkl/landmark_validate.py",
+      "source_sha256": "8993fe6ff17b4a4dc1f1631d4db05b061ecde082a71f6a7b902a6aef28b89a5a",
+      "imported_sha256": "5ef10b9ac932627bedd77596d8225adccfd4d3309527a3a1cdfccbc07c4c9090",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/lk.py",
+      "destination": "src/sintergpu/references/vkl/lk.py",
+      "source_sha256": "a92ad3d95784ad0a872af049d743a8a2ecc4fb03fafb474236907c3f3031b34e",
+      "imported_sha256": "5ff92e782c2fe8ace4f9496b212ed975b2a6cd7041e49d2b0e905d595360e9ad",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/local_match.py",
+      "destination": "src/sintergpu/references/vkl/local_match.py",
+      "source_sha256": "7801ee5e7e6cbe7016b6aec3b66db10f081c6e1432643b144de827b2fa477755",
+      "imported_sha256": "1bc22161ec3cc32fc3190f2c67d1a1414c99651a8d6bc92a009f649a7ea825e8",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/mesh.py",
+      "destination": "src/sintergpu/references/vkl/mesh.py",
+      "source_sha256": "89d444a3baf79cf88a804491b13075ecd88b6ac687a7862fd1d16208650f7b98",
+      "imported_sha256": "3672f9ec9bb6cf52595637a84dc43f81586842176548235a5e77135fb77dae88",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/photometric_isp.py",
+      "destination": "src/sintergpu/references/vkl/photometric_isp.py",
+      "source_sha256": "1bfb9f6c4536c0382aa913ae17e0d34c01227d13b406e9e4042ad4cf9e225b33",
+      "imported_sha256": "6d5b31a0b450f0b08433b29b56e74d6d6bd58cb8e664186aee078ca94500ce3e",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/point_render.py",
+      "destination": "src/sintergpu/references/vkl/point_render.py",
+      "source_sha256": "d89b3c7a2a4376802cc200ab4558c1ff66662426af03302f9c03e6b08a5ce2fe",
+      "imported_sha256": "c1decd19159c36f98cc6e51e09197ed6688dcc3f803b0a5dcafbe8f6d54f6e3d",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/project_depth_evidence.py",
+      "destination": "src/sintergpu/references/vkl/project_depth_evidence.py",
+      "source_sha256": "4632772d858a95bd6305420ccbf38ed1d0313e370e58915f301909d59bd4a60f",
+      "imported_sha256": "f8d2bd4944bf7c79755efe57f10572e85c98bd9fd270319cd4c5557dbd367f3b",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/pyramid.py",
+      "destination": "src/sintergpu/references/vkl/pyramid.py",
+      "source_sha256": "550861b5609b8e48ff54a3516c9a3a5c9cb39780ecb9ca8ba3eab07ceabd3ab9",
+      "imported_sha256": "691c411470ea2a7889157dc84e03c398df2345a7ddf6aaf20207fe981da52cdb",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/reproject.py",
+      "destination": "src/sintergpu/references/vkl/reproject.py",
+      "source_sha256": "9e40eed34717ffb14c81b79df9c7b3000f6c6e3102d4b809c19fabf66e36a94d",
+      "imported_sha256": "1d76726f14b5614ed72b0dab5c9d63012b3ec9dbdf95b117df3e1e17c6698062",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/rescale.py",
+      "destination": "src/sintergpu/references/vkl/rescale.py",
+      "source_sha256": "b1c8c219f2b56f5b3d0de60e65826e85ac17c72010b792c713ecb49874b76192",
+      "imported_sha256": "74077982bd23155cca8a3272fdb6ee2ae3f2875c9c733cd5979cb6b82b38ce37",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/residual.py",
+      "destination": "src/sintergpu/references/vkl/residual.py",
+      "source_sha256": "cc6e7d67b369204d95b4774dc5f7dda6c902f2b831e67b4a8d07d6cde3e78faa",
+      "imported_sha256": "d1c40ab48f915611e9108016bd6154e239510d2039c889c67b4cf5e26f8b9606",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/rigid_alignment.py",
+      "destination": "src/sintergpu/references/vkl/rigid_alignment.py",
+      "source_sha256": "d9c9d1ac115bf8fc6ef7a22f37710d3d1a9a5a4ea4b607da18f04c460c053bed",
+      "imported_sha256": "1145572ea1c662f451623ef590d8e13da4a7ea118774163bfb607522e40e4bc8",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/sparse_geometry.py",
+      "destination": "src/sintergpu/references/vkl/sparse_geometry.py",
+      "source_sha256": "c56224f9313c21c0fa4315ae09f14a1e43e61417a3cd4819a5ac096395a56fc9",
+      "imported_sha256": "6eb20d1caf0874828a87e71d415be9760982a41a3bef4f39467ffa07f96c479c",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/sparse_pose_reduce.py",
+      "destination": "src/sintergpu/references/vkl/sparse_pose_reduce.py",
+      "source_sha256": "c9c4e6089f4378337f2b97bfd29bee0f9e45d5434617c5ea75dc15cadb9f2adb",
+      "imported_sha256": "092abcbc0df0693953a1bad5dfa1795ed30868d951cb7bc4332dabc785779737",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/spatial.py",
+      "destination": "src/sintergpu/references/vkl/spatial.py",
+      "source_sha256": "82e42ec2d3801208559710b5aed14047494de8a5de9dabb40462beef1fcfdc10",
+      "imported_sha256": "01034e61930e714f664d4bbd991350a7f95f488b738d84496a1fc1ec59d22886",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal.py",
+      "destination": "src/sintergpu/references/vkl/temporal.py",
+      "source_sha256": "c52644bc813074585e802954fd81ffbfc8dc22a4a836f6a515712ecb9559c029",
+      "imported_sha256": "e5ef796f62d96edefaee8e965422519db8c7853802f461f2071fb4f1eadf67ed",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal_best.py",
+      "destination": "src/sintergpu/references/vkl/temporal_best.py",
+      "source_sha256": "085bdcebefb0c61473319eeac3420581263cf2ed032f544408fc16861312350d",
+      "imported_sha256": "7cd3ab52bc7f60335fb268f1eb15e8b339c22a76cf56d9cf614c6de790db4e22",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal_compare.py",
+      "destination": "src/sintergpu/references/vkl/temporal_compare.py",
+      "source_sha256": "f1b6160fe4da4882d676dc7a241f3e19956d7d64fccf24b38907f0aa4d395e7c",
+      "imported_sha256": "b133b9f97c101b2ac08889698b3fa34b1cabbdccec08d570f031180898f5230e",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal_depth_fuse.py",
+      "destination": "src/sintergpu/references/vkl/temporal_depth_fuse.py",
+      "source_sha256": "72b316a30402843b8eec506f15d58ab37a25eb5fa516483fda602e3935cf5e6c",
+      "imported_sha256": "081694caefe889296232a9a8a4663cb97966e63e3307fab64adb8f8e982e3ca4",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal_reproject.py",
+      "destination": "src/sintergpu/references/vkl/temporal_reproject.py",
+      "source_sha256": "19e38b1583f5225aab3ad098239dbedda655a891607d348d3ecbca051cdf8166",
+      "imported_sha256": "81ed308ede66ad381443676bfb24588175c14d7cabe97d0e29ebfd957c647f7b",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/tracking_health.py",
+      "destination": "src/sintergpu/references/vkl/tracking_health.py",
+      "source_sha256": "0366b93f17de437479153a38ad44eabe8b32064a9abbab64f3665113b1932420",
+      "imported_sha256": "741c7ad2fe51a2884c9d4e3e8d602039eec5afdb70c20be8ca3f79f0cc67b854",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/tracking_prepare.py",
+      "destination": "src/sintergpu/references/vkl/tracking_prepare.py",
+      "source_sha256": "31628118592ec2e61dd2c6b981fef84643244398563584d7481aad17d2cdb863",
+      "imported_sha256": "5dacc3c6c42fa6b0bb6441fc7a2cf574c9623683a38cc3ac26fb3f65ae941e6b",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/tracking_reference.py",
+      "destination": "src/sintergpu/references/vkl/tracking_reference.py",
+      "source_sha256": "eeb3292f36307cdb6b0093c8527bda1fa1451229c6969d6e84d8df5bd1a47125",
+      "imported_sha256": "10c21f3a532b666d9b17c7ff1e55ce04e3971a561232d7b6225e2f42fec88fac",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/tracking_solve.py",
+      "destination": "src/sintergpu/references/vkl/tracking_solve.py",
+      "source_sha256": "ba3299310a59cbae74bfd4470c3a8697b5eb333226766073a72852c1d56934ff",
+      "imported_sha256": "4ffef34f7e69f9ee04b17388097d8e3fce4b4c6fc78ffd180e2b8fc559b30461",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/tracking_transaction.py",
+      "destination": "src/sintergpu/references/vkl/tracking_transaction.py",
+      "source_sha256": "fd0d521e3f56fb0c59b74d4b5420392fb5973b33adeb8cd1506b4696a6185d7b",
+      "imported_sha256": "4c6d13b68ef471ddb6405daba896e190ac97858642f4f32100b0b4c9fbdf16fc",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/triangulate.py",
+      "destination": "src/sintergpu/references/vkl/triangulate.py",
+      "source_sha256": "991644959b14bc0ecfd5a9f00cc82f89d516fba13fcc55296db10bc696dd8cfb",
+      "imported_sha256": "8536ea7232f3973c6eaf725992b8821ea9c47a9d4c4d09437014faa1ef4a46b7",
+      "changes": [
+        "Add explicit owner-authorized Apache-2.0 SPDX header only; executable implementation unchanged"
+      ]
+    }
+  ],
+  "coverage": {
+    "substantive_torch_reference_modules": 47,
+    "package_initializers": 1,
+    "slang_profiles_partially_translated": 4,
+    "substantive_slang_translations_remaining": 43
+  },
+  "qualification": "Executable donor references packaged without numerical changes; differential CPU/autograd verification recorded separately. Torch GPU behavior preserved by identical implementation but not newly qualified across all modules/devices."
+}

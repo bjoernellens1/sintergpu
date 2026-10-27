@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/caspar-slang",
+  "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+  "license": "Apache-2.0",
+  "author": "see retained source copyright and notices",
+  "authorization": "Original owner code may be Apache-2.0 per direct user authorization on 2026-10-27; third-party terms unchanged.",
+  "files": [
+    {
+      "source_path": "LICENSE",
+      "destination": "references/donors/caspar-slang/LICENSE",
+      "source_sha256": "51b1d183a5e90b0fdfb36d9bce5e41b7e2e5269860ace7f106d1af37e8c50ad7",
+      "imported_sha256": "51b1d183a5e90b0fdfb36d9bce5e41b7e2e5269860ace7f106d1af37e8c50ad7",
+      "changes": []
+    },
+    {
+      "source_path": "docs/PERFORMANCE_REVIEW.md",
+      "destination": "references/donors/caspar-slang/docs/PERFORMANCE_REVIEW.md",
+      "source_sha256": "c6dfb945f3647246e4d0b4e2119caab5c4579105d9882d73d574f41d4f8a3f32",
+      "imported_sha256": "c6dfb945f3647246e4d0b4e2119caab5c4579105d9882d73d574f41d4f8a3f32",
+      "changes": []
+    },
+    {
+      "source_path": "docs/VALIDATION.md",
+      "destination": "references/donors/caspar-slang/docs/VALIDATION.md",
+      "source_sha256": "59d7352166d65d977814146c5588ad1a297d2ddffae43ac750b21ce6f0d5ba70",
+      "imported_sha256": "59d7352166d65d977814146c5588ad1a297d2ddffae43ac750b21ce6f0d5ba70",
+      "changes": []
+    },
+    {
+      "source_path": "docs/VALIDATION_SCOPE.md",
+      "destination": "references/donors/caspar-slang/docs/VALIDATION_SCOPE.md",
+      "source_sha256": "f58e5fe145c83a0c953db6ad1d96221903b7d00827f622bc7b7e23b9e1db511c",
+      "imported_sha256": "f58e5fe145c83a0c953db6ad1d96221903b7d00827f622bc7b7e23b9e1db511c",
+      "changes": []
+    },
+    {
+      "source_path": "pyproject.toml",
+      "destination": "references/donors/caspar-slang/pyproject.toml",
+      "source_sha256": "301e14769e1f7c5989b606894e021a58092dbaf5fc9b1831dfb7cc8aaa4c8bb6",
+      "imported_sha256": "301e14769e1f7c5989b606894e021a58092dbaf5fc9b1831dfb7cc8aaa4c8bb6",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/__init__.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/__init__.py",
+      "source_sha256": "c99f764adaee862dbcf188c7184071745cf8f0c63bc8a41b095cd8a4bed7f645",
+      "imported_sha256": "c99f764adaee862dbcf188c7184071745cf8f0c63bc8a41b095cd8a4bed7f645",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/benchmark.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/benchmark.py",
+      "source_sha256": "3f1383ff5b589f2a9e6b93b28a7e2eeb0320c9fbebf1aced6910ce6bf324e9b1",
+      "imported_sha256": "3f1383ff5b589f2a9e6b93b28a7e2eeb0320c9fbebf1aced6910ce6bf324e9b1",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/caspar_adapter.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/caspar_adapter.py",
+      "source_sha256": "582e5bcb017e83d58c2e81ec3d888b1072e6b9c7ad9bab190785f4e508958f52",
+      "imported_sha256": "582e5bcb017e83d58c2e81ec3d888b1072e6b9c7ad9bab190785f4e508958f52",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/cli.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/cli.py",
+      "source_sha256": "8f24fd2fb3d0f189f56f7b62ffaded25007f3d2b17f115885180454c51ad5436",
+      "imported_sha256": "8f24fd2fb3d0f189f56f7b62ffaded25007f3d2b17f115885180454c51ad5436",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/compiler.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/compiler.py",
+      "source_sha256": "8a67111ba8ba12f4aacbdaf8fb854ceff46ef54486bd1634db3d63f21f0cd166",
+      "imported_sha256": "8a67111ba8ba12f4aacbdaf8fb854ceff46ef54486bd1634db3d63f21f0cd166",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/demo.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/demo.py",
+      "source_sha256": "8c38e8900a08f4ccf0fdac43fb0e0ace1bc475f7e8797748409d9baf2b83d4b5",
+      "imported_sha256": "8c38e8900a08f4ccf0fdac43fb0e0ace1bc475f7e8797748409d9baf2b83d4b5",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/emitter.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/emitter.py",
+      "source_sha256": "4ebc5cb2b44bcd6d648be39d589b7c9ae3bc7c579eba924ef7ef12aa73d49f5a",
+      "imported_sha256": "4ebc5cb2b44bcd6d648be39d589b7c9ae3bc7c579eba924ef7ef12aa73d49f5a",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/gn.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/gn.py",
+      "source_sha256": "76c34c3273326037c75f692bc8513bc9a19117e4428754440d5bd2465a17ab7e",
+      "imported_sha256": "76c34c3273326037c75f692bc8513bc9a19117e4428754440d5bd2465a17ab7e",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/intrinsics.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/intrinsics.py",
+      "source_sha256": "8cfbc6247c5f8e6810fffea3cd78c33843fb80814cd604e91c15466ac2d24a33",
+      "imported_sha256": "8cfbc6247c5f8e6810fffea3cd78c33843fb80814cd604e91c15466ac2d24a33",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/ir.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/ir.py",
+      "source_sha256": "3565dabb63b2c9aedbae0d9eb3bd7a11f53799d49e6e3555ec5ec8a7d313f5c2",
+      "imported_sha256": "3565dabb63b2c9aedbae0d9eb3bd7a11f53799d49e6e3555ec5ec8a7d313f5c2",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/layout.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/layout.py",
+      "source_sha256": "d32325aaefaa37df324645683b2e2ff5dfaa39391b53b04bae46c034ff0d93c2",
+      "imported_sha256": "d32325aaefaa37df324645683b2e2ff5dfaa39391b53b04bae46c034ff0d93c2",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/pose_graph.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/pose_graph.py",
+      "source_sha256": "cfc9c168d3cf58fb25069914fb16c109ce21ba41155b80a1df001ed82ac8fab5",
+      "imported_sha256": "cfc9c168d3cf58fb25069914fb16c109ce21ba41155b80a1df001ed82ac8fab5",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/primitives.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/primitives.py",
+      "source_sha256": "0a7c31f91c15ee28036ce90d00a09bb70b87d42f7169e2b1eea280a8a3678344",
+      "imported_sha256": "0a7c31f91c15ee28036ce90d00a09bb70b87d42f7169e2b1eea280a8a3678344",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/reprojection.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/reprojection.py",
+      "source_sha256": "5aa9596180798c0f8ca1a45654fc8996477fd745e5c6cf042dd7d8316c0809a1",
+      "imported_sha256": "5aa9596180798c0f8ca1a45654fc8996477fd745e5c6cf042dd7d8316c0809a1",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/runtime.py",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/runtime.py",
+      "source_sha256": "124d8e04d7c1dc93b12336d3848cee3d726d880bd8d7bda51e5582dad3dff319",
+      "imported_sha256": "124d8e04d7c1dc93b12336d3848cee3d726d880bd8d7bda51e5582dad3dff319",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/shaders/gn.slang",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/shaders/gn.slang",
+      "source_sha256": "a8189cffd5b3e6f839976962e1410f3b50c7a57fa2fe02a69d15bc7a9e4a8b5e",
+      "imported_sha256": "a8189cffd5b3e6f839976962e1410f3b50c7a57fa2fe02a69d15bc7a9e4a8b5e",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/shaders/gn.slang",
+      "destination": "src/sintergpu/kernels/caspar_slang/gn.slang",
+      "source_sha256": "a8189cffd5b3e6f839976962e1410f3b50c7a57fa2fe02a69d15bc7a9e4a8b5e",
+      "imported_sha256": "a8189cffd5b3e6f839976962e1410f3b50c7a57fa2fe02a69d15bc7a9e4a8b5e",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/caspar_slang/shaders/pose_graph.slang",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/shaders/pose_graph.slang",
+      "source_sha256": "29845891ee77d54b7ab8bda5849b8e21ed9fa056cef756c21155c426434b3695",
+      "imported_sha256": "29845891ee77d54b7ab8bda5849b8e21ed9fa056cef756c21155c426434b3695",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/shaders/pose_graph.slang",
+      "destination": "src/sintergpu/kernels/caspar_slang/pose_graph.slang",
+      "source_sha256": "29845891ee77d54b7ab8bda5849b8e21ed9fa056cef756c21155c426434b3695",
+      "imported_sha256": "29845891ee77d54b7ab8bda5849b8e21ed9fa056cef756c21155c426434b3695",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/caspar_slang/shaders/reprojection.slang",
+      "destination": "references/donors/caspar-slang/src/caspar_slang/shaders/reprojection.slang",
+      "source_sha256": "01874c7338f686e1e0ca9e776b1ddaab9010394a885001f14c88b024a273ee01",
+      "imported_sha256": "01874c7338f686e1e0ca9e776b1ddaab9010394a885001f14c88b024a273ee01",
+      "changes": []
+    },
+    {
+      "source_path": "src/caspar_slang/shaders/reprojection.slang",
+      "destination": "src/sintergpu/kernels/caspar_slang/reprojection.slang",
+      "source_sha256": "01874c7338f686e1e0ca9e776b1ddaab9010394a885001f14c88b024a273ee01",
+      "imported_sha256": "01874c7338f686e1e0ca9e776b1ddaab9010394a885001f14c88b024a273ee01",
+      "changes": [],
+      "dispatchable": false
+    },
+    {
+      "source_path": "tests/test_adapter_memory.py",
+      "destination": "references/donors/caspar-slang/tests/test_adapter_memory.py",
+      "source_sha256": "13a5abafcb4d1d9174b4b2dd7f466228dcc4534731b1ff361c728c23b1aca733",
+      "imported_sha256": "13a5abafcb4d1d9174b4b2dd7f466228dcc4534731b1ff361c728c23b1aca733",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_caspar_optional.py",
+      "destination": "references/donors/caspar-slang/tests/test_caspar_optional.py",
+      "source_sha256": "2ef45163b60d0b022b21490926d002a1f872285788c6437b804c020fbe7fb450",
+      "imported_sha256": "2ef45163b60d0b022b21490926d002a1f872285788c6437b804c020fbe7fb450",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_cli_gpu.py",
+      "destination": "references/donors/caspar-slang/tests/test_cli_gpu.py",
+      "source_sha256": "76d521dc7c5548f78daa6bb68590645f145332549b37704491a1770179e976da",
+      "imported_sha256": "76d521dc7c5548f78daa6bb68590645f145332549b37704491a1770179e976da",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_emitter.py",
+      "destination": "references/donors/caspar-slang/tests/test_emitter.py",
+      "source_sha256": "c98ae5a8ede7a8daabc771f8e1cf3b7fee025352e7803d837d84a0386af6d762",
+      "imported_sha256": "c98ae5a8ede7a8daabc771f8e1cf3b7fee025352e7803d837d84a0386af6d762",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_gn.py",
+      "destination": "references/donors/caspar-slang/tests/test_gn.py",
+      "source_sha256": "b633a5ec72d421fa872c922e9ff29d95812f786f90c585cb62c7ec3d8e6fd6b4",
+      "imported_sha256": "b633a5ec72d421fa872c922e9ff29d95812f786f90c585cb62c7ec3d8e6fd6b4",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_gpu.py",
+      "destination": "references/donors/caspar-slang/tests/test_gpu.py",
+      "source_sha256": "2b8725e3886f33704100d5808c45de71ee26d4421f17b3872e2d248f8763b033",
+      "imported_sha256": "2b8725e3886f33704100d5808c45de71ee26d4421f17b3872e2d248f8763b033",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_hot_path.py",
+      "destination": "references/donors/caspar-slang/tests/test_hot_path.py",
+      "source_sha256": "4c18fc341aad5adae0ff442187343ad7eac09976e95dfd27639dea65d001f1c6",
+      "imported_sha256": "4c18fc341aad5adae0ff442187343ad7eac09976e95dfd27639dea65d001f1c6",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_intrinsics.py",
+      "destination": "references/donors/caspar-slang/tests/test_intrinsics.py",
+      "source_sha256": "72c06436226777a7748315f2a08d7797913c71964b94a320f1bdf233511c01ac",
+      "imported_sha256": "72c06436226777a7748315f2a08d7797913c71964b94a320f1bdf233511c01ac",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_layout.py",
+      "destination": "references/donors/caspar-slang/tests/test_layout.py",
+      "source_sha256": "3f26d320fbcf04bb394f72f9ca5d08f7893c3c2f562f0c8b77b90bfe5010d6c5",
+      "imported_sha256": "3f26d320fbcf04bb394f72f9ca5d08f7893c3c2f562f0c8b77b90bfe5010d6c5",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_pose_graph.py",
+      "destination": "references/donors/caspar-slang/tests/test_pose_graph.py",
+      "source_sha256": "33ac3bac8976925f0bed6530ff9293da3cf9e06aa86c196ce0ea59b6e6ce64ab",
+      "imported_sha256": "33ac3bac8976925f0bed6530ff9293da3cf9e06aa86c196ce0ea59b6e6ce64ab",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_primitives.py",
+      "destination": "references/donors/caspar-slang/tests/test_primitives.py",
+      "source_sha256": "32520713d0813825379ba4f56e79b5caadc43d571540469db7626ba48b2fbb51",
+      "imported_sha256": "32520713d0813825379ba4f56e79b5caadc43d571540469db7626ba48b2fbb51",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_reprojection.py",
+      "destination": "references/donors/caspar-slang/tests/test_reprojection.py",
+      "source_sha256": "b0256a35c6f3521d12e0a876b498ed191b0fb62ca6ad364bdeab898a16287278",
+      "imported_sha256": "b0256a35c6f3521d12e0a876b498ed191b0fb62ca6ad364bdeab898a16287278",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_runtime.py",
+      "destination": "references/donors/caspar-slang/tests/test_runtime.py",
+      "source_sha256": "cbc0449060056d29769cbead692d5d7d0428b8ecb32e8bdf467d4f6c16782cc0",
+      "imported_sha256": "cbc0449060056d29769cbead692d5d7d0428b8ecb32e8bdf467d4f6c16782cc0",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_slangc_optional.py",
+      "destination": "references/donors/caspar-slang/tests/test_slangc_optional.py",
+      "source_sha256": "a54c897aac1ef38d09e305f2120593cf40eace9a064561f04ade661f40c3aa17",
+      "imported_sha256": "a54c897aac1ef38d09e305f2120593cf40eace9a064561f04ade661f40c3aa17",
+      "changes": []
+    },
+    {
+      "source_path": "tests/test_spirv_gn.py",
+      "destination": "references/donors/caspar-slang/tests/test_spirv_gn.py",
+      "source_sha256": "474510fae421d02cc3b3fa34a20a70db5f89e2648c576967aac561bacc4a63d0",
+      "imported_sha256": "474510fae421d02cc3b3fa34a20a70db5f89e2648c576967aac561bacc4a63d0",
+      "changes": []
+    },
+    {
+      "source_path": "src/sintergpu/kernels/caspar_slang/gn.slang",
+      "destination": "src/sintergpu/kernels/caspar_slang/composed/gn.slang",
+      "source_sha256": null,
+      "imported_sha256": "7b5b4792c16747e8ea149ba55f75ce81a2bd7e39b65fcfbe21dac2bba1136448",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {},
+      "inputs": [
+        "src/sintergpu/kernels/caspar_slang/gn.slang"
+      ]
+    },
+    {
+      "source_path": "src/sintergpu/kernels/generated/point_plane_residual.generated.slang",
+      "destination": "src/sintergpu/kernels/caspar_slang/composed/point_plane_residual.slang",
+      "source_sha256": null,
+      "imported_sha256": "b425f7562662c7d4fedfa9c0ca5c8c83ac45b764bf75ca1bf8d2cb50147eeeb6",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {},
+      "inputs": [
+        "src/sintergpu/kernels/generated/point_plane_residual.generated.slang"
+      ]
+    },
+    {
+      "source_path": "src/sintergpu/kernels/generated/reprojection_factors.generated.slang+src/sintergpu/kernels/caspar_slang/reprojection.slang",
+      "destination": "src/sintergpu/kernels/caspar_slang/composed/reprojection.slang",
+      "source_sha256": null,
+      "imported_sha256": "b35001e919b5566b5185a005d63a4bea3fdb58e39a0777682626c75687e59922",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {},
+      "inputs": [
+        "src/sintergpu/kernels/generated/reprojection_factors.generated.slang",
+        "src/sintergpu/kernels/caspar_slang/reprojection.slang"
+      ]
+    },
+    {
+      "source_path": "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang+src/sintergpu/kernels/caspar_slang/pose_graph.slang",
+      "destination": "src/sintergpu/kernels/caspar_slang/composed/pose_graph.slang",
+      "source_sha256": null,
+      "imported_sha256": "dcb72e7714dc43d057fec4c9dc02da4103208826315dfa4a69c172028cb43bcf",
+      "changes": [
+        "prepend retained generated resource-independent math",
+        "compose shader fragments",
+        "explicit variant defines"
+      ],
+      "generator": "tools/materialize_shaders.py",
+      "defines": {},
+      "inputs": [
+        "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang",
+        "src/sintergpu/kernels/caspar_slang/pose_graph.slang"
+      ]
+    }
+  ],
+  "qualification": "Imported source and historical evidence; requires new SinterGPU verification."
+}
