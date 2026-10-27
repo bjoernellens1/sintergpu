@@ -269,7 +269,7 @@ The one directly actionable exact algebra duplicate is G18. “Same operation, d
 
 ## Geometry/depth port follow-up
 
-The four forward profiles added for 0.1.1 retain these distinctions from the
+The four forward profiles added for 0.1.2 retain these distinctions from the
 original review; they do not collapse similarly named operations into aliases.
 
 | New profile | Existing overlap | Disposition |

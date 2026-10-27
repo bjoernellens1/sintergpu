@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.1 — unreleased
+## 0.1.2 — unreleased
 
 - Add VKL depth geometry, rigid transforms, same-grid fusion and complete forward temporal depth fusion.
 - Preserve NaN confidence, signed-zero and constant-depth invariants; add explicit capacity/dispatch planning.
