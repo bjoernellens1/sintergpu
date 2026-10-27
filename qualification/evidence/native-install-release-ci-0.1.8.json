@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "status": "hosted-native-static-link-passed",
+  "source_commit": "c604794c176902bf4ecad40da19198b8198cbfaa",
+  "workflow_run": 40586937424,
+  "recorded_at": "2026-10-27T21:31:37.674597+00:00",
+  "scope": "Exact release source: four archive builds and sixteen relocated external consumer static-link/CPU-probe configurations in hosted Linux CI under both pinned Slang versions and CMake3.25.2. No Vulkan initialization, GPU runtime, numerical sort correctness, timing or cross-vendor qualification.",
+  "records": [
+    {
+      "slang_release": "2026.12",
+      "build_kind": "namespace",
+      "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "volk_revision": "59d26900f53c7621a8ba8ab0e3f18d3bd883fa9a",
+      "consumer_modes": 4,
+      "scope": "Real archive compilation, relocated install, static linking and CPU-only link probe; no Vulkan initialization/GPU execution",
+      "library_version": "0.1.8",
+      "cmake_version": "cmake version 3.25.2",
+      "cxx_compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "archive_sha256": "264c21708019be236da1a5fcc5633067f25cb24d1a8183ac38fa845a1ffd332d",
+      "generated_shader_headers_sha256": {
+        "downsweep_slang.h": "4749aa1946e06cabbab47e3158646e2356a8f852a31cdb0c204d0d0c9049ce77",
+        "downsweep_key_value_slang.h": "5f7856d07c61b299464871f09ee411d9a43553471bacc248e199ab3df09c9001",
+        "upsweep_slang.h": "5fb54f3df2c6bd51529e45dd4adff3b97352f4980bf672826cc8ca40ca667230",
+        "spine_slang.h": "7cf8bbd9d202c59a4d1c2aec6933bfb914f7aa805ad902aba6490ffd5cb03c63"
+      },
+      "volk_files_sha256": {
+        "volk.c": "a7dd4404fa43f31602b9c657d9df0e9106ddf52e3df3e0d3d26d65bc267c5729",
+        "volk.h": "0cde6969d9447e6043c867c324251ad362e4bea56d45be11301c53b829f94b74"
+      },
+      "source_sha256": {
+        "VERSION": "76f81f64ece28d0bcfe39dd35f6d14f3c87fe000b77aee11561e18d1919f607e",
+        "CMakeLists.txt": "a9741c01cdab7d1f0721eda294a874f10c0d1204fca900ef9f876d668cd50f2c",
+        "cmake/SinterGPURadix.cmake": "1fa0a84e190c706ca0b0bd887a510205f2831bbb342a5c069b6bc7751579199c",
+        "cmake/sintergpuConfig.cmake.in": "9af016c2b5bc9cf56164a88bd0d62e495867442d24980cfe2d0eec6d446b0c18",
+        "third_party/vrdx/src/vk_radix_sort.cc": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa",
+        "third_party/vrdx/include/vk_radix_sort.h": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+        "third_party/vrdx/src/shader/constants.slang": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+        "third_party/vrdx/src/shader/downsweep.slang": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+        "third_party/vrdx/src/shader/spine.slang": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+        "third_party/vrdx/src/shader/upsweep.slang": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be"
+      }
+    },
+    {
+      "slang_release": "2026.12",
+      "build_kind": "plain",
+      "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "volk_revision": "59d26900f53c7621a8ba8ab0e3f18d3bd883fa9a",
+      "consumer_modes": 4,
+      "scope": "Real archive compilation, relocated install, static linking and CPU-only link probe; no Vulkan initialization/GPU execution",
+      "library_version": "0.1.8",
+      "cmake_version": "cmake version 3.25.2",
+      "cxx_compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "archive_sha256": "264c21708019be236da1a5fcc5633067f25cb24d1a8183ac38fa845a1ffd332d",
+      "generated_shader_headers_sha256": {
+        "downsweep_slang.h": "4749aa1946e06cabbab47e3158646e2356a8f852a31cdb0c204d0d0c9049ce77",
+        "downsweep_key_value_slang.h": "5f7856d07c61b299464871f09ee411d9a43553471bacc248e199ab3df09c9001",
+        "upsweep_slang.h": "5fb54f3df2c6bd51529e45dd4adff3b97352f4980bf672826cc8ca40ca667230",
+        "spine_slang.h": "7cf8bbd9d202c59a4d1c2aec6933bfb914f7aa805ad902aba6490ffd5cb03c63"
+      },
+      "volk_files_sha256": {
+        "volk.c": "a7dd4404fa43f31602b9c657d9df0e9106ddf52e3df3e0d3d26d65bc267c5729",
+        "volk.h": "0cde6969d9447e6043c867c324251ad362e4bea56d45be11301c53b829f94b74"
+      },
+      "source_sha256": {
+        "VERSION": "76f81f64ece28d0bcfe39dd35f6d14f3c87fe000b77aee11561e18d1919f607e",
+        "CMakeLists.txt": "a9741c01cdab7d1f0721eda294a874f10c0d1204fca900ef9f876d668cd50f2c",
+        "cmake/SinterGPURadix.cmake": "1fa0a84e190c706ca0b0bd887a510205f2831bbb342a5c069b6bc7751579199c",
+        "cmake/sintergpuConfig.cmake.in": "9af016c2b5bc9cf56164a88bd0d62e495867442d24980cfe2d0eec6d446b0c18",
+        "third_party/vrdx/src/vk_radix_sort.cc": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa",
+        "third_party/vrdx/include/vk_radix_sort.h": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+        "third_party/vrdx/src/shader/constants.slang": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+        "third_party/vrdx/src/shader/downsweep.slang": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+        "third_party/vrdx/src/shader/spine.slang": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+        "third_party/vrdx/src/shader/upsweep.slang": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be"
+      }
+    },
+    {
+      "slang_release": "2026.19",
+      "build_kind": "namespace",
+      "compiler_sha256": "b13606619c8959bbd490cb87e6e549e366a22a13c6cbd46cce3f798264778b60",
+      "volk_revision": "59d26900f53c7621a8ba8ab0e3f18d3bd883fa9a",
+      "consumer_modes": 4,
+      "scope": "Real archive compilation, relocated install, static linking and CPU-only link probe; no Vulkan initialization/GPU execution",
+      "library_version": "0.1.8",
+      "cmake_version": "cmake version 3.25.2",
+      "cxx_compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "archive_sha256": "264c21708019be236da1a5fcc5633067f25cb24d1a8183ac38fa845a1ffd332d",
+      "generated_shader_headers_sha256": {
+        "downsweep_key_value_slang.h": "5f7856d07c61b299464871f09ee411d9a43553471bacc248e199ab3df09c9001",
+        "downsweep_slang.h": "4749aa1946e06cabbab47e3158646e2356a8f852a31cdb0c204d0d0c9049ce77",
+        "spine_slang.h": "7cf8bbd9d202c59a4d1c2aec6933bfb914f7aa805ad902aba6490ffd5cb03c63",
+        "upsweep_slang.h": "5fb54f3df2c6bd51529e45dd4adff3b97352f4980bf672826cc8ca40ca667230"
+      },
+      "volk_files_sha256": {
+        "volk.c": "a7dd4404fa43f31602b9c657d9df0e9106ddf52e3df3e0d3d26d65bc267c5729",
+        "volk.h": "0cde6969d9447e6043c867c324251ad362e4bea56d45be11301c53b829f94b74"
+      },
+      "source_sha256": {
+        "VERSION": "76f81f64ece28d0bcfe39dd35f6d14f3c87fe000b77aee11561e18d1919f607e",
+        "CMakeLists.txt": "a9741c01cdab7d1f0721eda294a874f10c0d1204fca900ef9f876d668cd50f2c",
+        "cmake/SinterGPURadix.cmake": "1fa0a84e190c706ca0b0bd887a510205f2831bbb342a5c069b6bc7751579199c",
+        "cmake/sintergpuConfig.cmake.in": "9af016c2b5bc9cf56164a88bd0d62e495867442d24980cfe2d0eec6d446b0c18",
+        "third_party/vrdx/src/vk_radix_sort.cc": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa",
+        "third_party/vrdx/include/vk_radix_sort.h": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+        "third_party/vrdx/src/shader/constants.slang": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+        "third_party/vrdx/src/shader/downsweep.slang": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+        "third_party/vrdx/src/shader/spine.slang": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+        "third_party/vrdx/src/shader/upsweep.slang": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be"
+      }
+    },
+    {
+      "slang_release": "2026.19",
+      "build_kind": "plain",
+      "compiler_sha256": "b13606619c8959bbd490cb87e6e549e366a22a13c6cbd46cce3f798264778b60",
+      "volk_revision": "59d26900f53c7621a8ba8ab0e3f18d3bd883fa9a",
+      "consumer_modes": 4,
+      "scope": "Real archive compilation, relocated install, static linking and CPU-only link probe; no Vulkan initialization/GPU execution",
+      "library_version": "0.1.8",
+      "cmake_version": "cmake version 3.25.2",
+      "cxx_compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "archive_sha256": "264c21708019be236da1a5fcc5633067f25cb24d1a8183ac38fa845a1ffd332d",
+      "generated_shader_headers_sha256": {
+        "downsweep_key_value_slang.h": "5f7856d07c61b299464871f09ee411d9a43553471bacc248e199ab3df09c9001",
+        "downsweep_slang.h": "4749aa1946e06cabbab47e3158646e2356a8f852a31cdb0c204d0d0c9049ce77",
+        "spine_slang.h": "7cf8bbd9d202c59a4d1c2aec6933bfb914f7aa805ad902aba6490ffd5cb03c63",
+        "upsweep_slang.h": "5fb54f3df2c6bd51529e45dd4adff3b97352f4980bf672826cc8ca40ca667230"
+      },
+      "volk_files_sha256": {
+        "volk.c": "a7dd4404fa43f31602b9c657d9df0e9106ddf52e3df3e0d3d26d65bc267c5729",
+        "volk.h": "0cde6969d9447e6043c867c324251ad362e4bea56d45be11301c53b829f94b74"
+      },
+      "source_sha256": {
+        "VERSION": "76f81f64ece28d0bcfe39dd35f6d14f3c87fe000b77aee11561e18d1919f607e",
+        "CMakeLists.txt": "a9741c01cdab7d1f0721eda294a874f10c0d1204fca900ef9f876d668cd50f2c",
+        "cmake/SinterGPURadix.cmake": "1fa0a84e190c706ca0b0bd887a510205f2831bbb342a5c069b6bc7751579199c",
+        "cmake/sintergpuConfig.cmake.in": "9af016c2b5bc9cf56164a88bd0d62e495867442d24980cfe2d0eec6d446b0c18",
+        "third_party/vrdx/src/vk_radix_sort.cc": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa",
+        "third_party/vrdx/include/vk_radix_sort.h": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+        "third_party/vrdx/src/shader/constants.slang": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+        "third_party/vrdx/src/shader/downsweep.slang": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+        "third_party/vrdx/src/shader/spine.slang": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+        "third_party/vrdx/src/shader/upsweep.slang": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be"
+      }
+    }
+  ]
+}

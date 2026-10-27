@@ -97,3 +97,7 @@ qualification records must retain compiler/device/source identities, raw timing
 samples and workload scope. All entries remain experimental. Full pipeline,
 individual stages and transfers must be measured separately. Tracking trajectories,
 consumer adoption and cross-vendor execution remain separate gates.
+
+The Radeon 8060S SlangPy float32/int64 profile passes 38 CPU/GPU tests, including frozen Torch parity, custom/default BRIEF pairs, subnormal arithmetic, native int64 extremes, mutual/tie/chunk behavior and untouched output tails. Both pinned standalone Slang compilers compile all137 entries with identical shared reflection ABI. These are fixture-scoped results, not trajectory or cross-vendor qualification.
+
+The [timing table](kernel-timings.md) and packaged JSON retain ten per-entry feature workloads across seven entries, including three final single-candidate chunks. Each has50rawsamples after5warmups, exact full output/state/tail parity, CPU NumPy reference wall time, GPU timestamp, host completion and full binding upload/readback cost. CPU pair-distance computes some work even for masked pairs that the GPU skips; no optimizedCPU speedup is claimed.
