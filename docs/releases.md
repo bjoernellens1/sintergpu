@@ -161,11 +161,13 @@ no kernel code migrates in the metadata PR. Integrated consumers see their
 consumed modules and registered integration argv, and retain downstream merge
 control and device/command ownership.
 
-An exact untouched legacy machine description can receive this context once,
-without changing the dependency commit. Retries then write nothing. Any different
-body is a human-edit conflict and is preserved. An ambiguous body-update response
-is confirmed by a read instead of blindly repeating the write. Missing, mismatched
-or unreleased notes prevent delivery to all consumers and produce failure records.
+Existing PR descriptions are never rewritten: human edits can occur during
+verification, and the tool has no atomic body-ownership update mechanism. Exact
+legacy descriptions remain valid historical deliveries and are reported as
+`legacy description retained`; new PRs include the enriched context. Any other
+existing body is a human-edit conflict and is preserved. Retries create no new
+dependency commit or description write. Missing, mismatched, duplicate or
+unreleased changelog sections prevent delivery and produce failure records.
 
 PR CI now also compares all shared reflected fields from both pinned compiler
 artifacts: descriptor bindings, scalar/resource types, field offsets/sizes,

@@ -240,3 +240,12 @@ def test_hosted_resolver_checks_out_exact_tag_helper_before_using_it():
     assert 'source=remote_tag_commit(tag)' in resolver
     assert resolver.index('uses: actions/checkout@')<resolver.index('from release import remote_tag_commit')
     assert 'persist-credentials: false' in resolver
+
+
+@pytest.mark.parametrize('headers',[['0.1.0-rc.1'],['0.1.0.1'],['0.1.0','0.1.0']])
+def test_prepare_rejects_wrong_or_duplicate_release_sections_before_git(tmp_path,headers):
+    (tmp_path/'src/sintergpu/data').mkdir(parents=True)
+    for name in ('VERSION','src/sintergpu/data/VERSION'):(tmp_path/name).write_text('0.1.0\n')
+    (tmp_path/'CHANGELOG.md').write_text('\n'.join('## '+h+' — 2026-10-27\n\n- A change.\n' for h in headers))
+    with pytest.raises(ValueError,match='changelog'):
+        r.prepare('v0.1.0',tmp_path/'dist',{},[],root=tmp_path)

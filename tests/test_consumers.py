@@ -269,7 +269,7 @@ def test_delivery_enriched_notes_idempotent_without_extra_commit(monkeypatch):
     assert '- New release detail.' in api.pr['body']
 
 
-def test_exact_legacy_body_can_upgrade_once_but_human_edits_are_preserved(monkeypatch):
+def test_legacy_body_is_retained_without_writes_and_human_edits_are_preserved(monkeypatch):
     monkeypatch.setattr(u.subprocess,'run',lambda *args,**kwargs:None)
     api=FakeGitHub();lock='{"tag":"v0.1.0"}'
     u.deliver_one(api,consumer(),lock,register=True)
@@ -280,16 +280,16 @@ def test_exact_legacy_body_can_upgrade_once_but_human_edits_are_preserved(monkey
             api.writes.append((method,endpoint));api.pr['body']=data['body'];return api.pr
         return api(endpoint,method,data,missing)
     u.deliver_one(update,consumer(),lock,register=True,release_notes='- New release detail.')
-    assert api.writes==writes+[('PATCH','repos/bjoernellens1/locus/pulls/1')]
+    assert api.writes==writes and api.pr['body']==original
     u.deliver_one(update,consumer(),lock,register=True,release_notes='- New release detail.')
-    assert len(api.writes)==len(writes)+1
+    assert len(api.writes)==len(writes)
     api.pr['body']=original+'\nHuman comment: retain me.\n';before=list(api.writes)
     with pytest.raises(ValueError,match='human-modified'):
         u.deliver_one(update,consumer(),lock,register=True,release_notes='- New release detail.')
     assert api.pr['body'].endswith('Human comment: retain me.\n') and api.writes==before
 
 
-def test_ambiguous_legacy_body_upgrade_reads_confirmation_without_retry(monkeypatch):
+def test_legacy_delivery_never_needs_a_body_update_confirmation(monkeypatch):
     monkeypatch.setattr(u.subprocess,'run',lambda *args,**kwargs:None)
     api=FakeGitHub();lock='{"tag":"v0.1.0"}';u.deliver_one(api,consumer(),lock,register=True)
     updates=[]
@@ -301,7 +301,7 @@ def test_ambiguous_legacy_body_upgrade_reads_confirmation_without_retry(monkeypa
             return api.pr
         return api(endpoint,method,data,missing)
     result=u.deliver_one(ambiguous,consumer(),lock,register=True,release_notes='- Verified detail.')
-    assert result['status']=='delivered' and updates==['PATCH','GET']
+    assert result['status']=='delivered' and updates==[] and result['release_context']=='legacy description retained'
 
 
 def test_unverified_release_notes_prevent_all_delivery_writes(tmp_path,monkeypatch):
@@ -315,3 +315,29 @@ def test_unverified_release_notes_prevent_all_delivery_writes(tmp_path,monkeypat
     assert u.main()==1
     records=json.loads(result.read_text())['results']
     assert len(records)==7 and all(r['status']=='failed' and 'changelog' in r['error'] for r in records)
+
+
+def test_human_body_edit_during_verification_is_never_overwritten(monkeypatch):
+    import copy
+    monkeypatch.setattr(u.subprocess,'run',lambda *args,**kwargs:None)
+    api=FakeGitHub();lock='{"tag":"v0.1.0"}';u.deliver_one(api,consumer(),lock,register=True)
+    writes=[]
+    def snapshot_api(endpoint,method='GET',data=None,missing=False):
+        if method=='PATCH':
+            writes.append(method);api.pr['body']=data['body'];return copy.deepcopy(api.pr)
+        return copy.deepcopy(api(endpoint,method,data,missing))
+    def verify(*args,**kwargs):api.pr['body']+='\nHuman note during verification.\n'
+    monkeypatch.setattr(u.subprocess,'run',verify)
+    u.deliver_one(snapshot_api,consumer(),lock,register=True,release_notes='- Verified detail.')
+    assert api.pr['body'].endswith('Human note during verification.\n') and not writes
+
+
+@pytest.mark.parametrize('header',['0.1.4-rc.1','0.1.4.1'])
+def test_release_context_never_matches_other_version_tokens(tmp_path,header):
+    manifest=release_bundle(tmp_path,'## '+header+' — 2026-10-27\n\n- Wrong release.\n')
+    with pytest.raises(ValueError,match='changelog'):u.release_context(manifest,tmp_path)
+
+
+def test_duplicate_release_sections_are_rejected(tmp_path):
+    manifest=release_bundle(tmp_path,'## 0.1.4 — 2026-10-27\n\n- First.\n\n## 0.1.4 — 2026-10-27\n\n- Conflicting second.\n')
+    with pytest.raises(ValueError,match='changelog'):u.release_context(manifest,tmp_path)

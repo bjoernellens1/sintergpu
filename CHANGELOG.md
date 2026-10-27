@@ -1,10 +1,11 @@
 # Changelog
 
-## 0.1.5 — unreleased
+## 0.1.5 — 2026-10-27
 
 - Compare shared reflection ABI fields across both pinned compiler lanes in required CI.
 - Include hash-verified release changelog excerpts and explicit registration/adoption instructions in downstream update PRs.
-- Upgrade only untouched legacy machine PR descriptions; preserve human edits and confirm ambiguous update responses without repeating writes.
+- Preserve existing PR descriptions throughout verification, including legacy deliveries; write enriched context only on new PRs.
+- Require one exact released changelog heading for publication and delivery, rejecting lookalike and duplicate versions.
 
 ## 0.1.4 — 2026-10-27
 

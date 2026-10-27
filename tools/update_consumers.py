@@ -189,10 +189,9 @@ def release_context(manifest, directory):
         if len(entries)!=1 or not entries[0].isfile() or entries[0].size>262144:
             raise ValueError('release changelog missing, duplicate or oversized')
         text=archive.extractfile(entries[0]).read().decode('utf-8')
-    section=re.search(r'^## '+re.escape(version)+r'\b([^\n]*)\n(.*?)(?=^## |\Z)',text,re.M|re.S)
-    if not section or 'unreleased' in section[1].lower() or not re.search(r'^- .+',section[2],re.M) or len(section[2])>20000:
-        raise ValueError('released changelog section required')
-    return section[2].strip()
+    notes=release.released_changelog_section(text,version)
+    if len(notes)>20000:raise ValueError('release changelog oversized')
+    return notes
 
 
 def release_body(item, tag, release_notes=None):
@@ -284,17 +283,12 @@ def deliver_one(api, item, lock, register=False, dry_run=False, release_notes=No
         pr = prs[0]
         if pr['head']['sha'] != old:
             raise ValueError('human-modified PR body or stale head conflict')
-        if pr.get('body') != body:
-            if release_notes is None or pr.get('body') != release_body(item,tag):
-                raise ValueError('human-modified PR body or stale head conflict')
-            endpoint=f'repos/{repo}/pulls/{pr["number"]}'
-            try:
-                pr=api(endpoint,'PATCH',{'body':body})
-            except RuntimeError:
-                # An ambiguous response may have applied; read, never retry a write.
-                pr=api(endpoint)
-            if pr.get('body') != body or pr['head']['sha'] != old:
-                raise ValueError('PR body update was not confirmed; investigate')
+        if pr.get('body') != body and (release_notes is None or pr.get('body') != release_body(item,tag)):
+            raise ValueError('human-modified PR body or stale head conflict')
+        # Never rewrite an existing PR description: human edits can occur during
+        # verification, and body PATCH has no atomic ownership check here.
+        # Exact legacy descriptions remain valid historical deliveries; new PRs
+        # contain the verified excerpt and adoption instructions.
     else:
         try:
             pr = api(f'repos/{repo}/pulls', 'POST', {'title': title, 'body': body, 'head': head, 'base': base})
@@ -305,7 +299,8 @@ def deliver_one(api, item, lock, register=False, dry_run=False, release_notes=No
                 raise
             pr = found[0]
     return {'repository': repo, 'status': 'delivered', 'url': pr['html_url'], 'head_sha': old, 'base_sha': base_sha,
-            'checks_url': f'https://github.com/{repo}/pull/{pr["number"]}/checks', 'consumer_checks': 'pending downstream CI; native qualification not inferred'}
+            'checks_url': f'https://github.com/{repo}/pull/{pr["number"]}/checks', 'consumer_checks': 'pending downstream CI; native qualification not inferred',
+            'release_context': 'legacy description retained' if pr.get('body') != body else 'current description'}
 
 
 def main():
