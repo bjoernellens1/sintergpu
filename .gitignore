@@ -1,0 +1,12 @@
+/.worktrees/
+/.superpowers/
+/graft/
+/build*/
+/.venv/
+/.tools/
+/.cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+/dist/
+.pytest_cache/
