@@ -26,7 +26,9 @@
     "result": "258 passed, 3 xfailed, 181 subtests passed",
     "log_sha256": "581f1dd7de09b68bce643be1a909414c4f6d1f91ef364b0a8b4d64e9aacee402",
     "new_geometry_depth_cases": 57,
-    "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification"
+    "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification",
+    "new_geometry_depth_gpu_cases": 27,
+    "new_geometry_depth_cpu_source_cases": 30
   },
   "benchmarks": {
     "qualification/evidence/vkl-geometry-depth-2-invalid.json": "bc7c7e86fe2e9d7d0e3eaf484e86334082e9af5f8a2917df09cc0e446132fe08",

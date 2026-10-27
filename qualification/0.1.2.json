@@ -501,7 +501,7 @@
     "qualification/evidence/vkl-geometry-depth-all.json": "4e7418df0f8a8bc213f5d2b908e5fa9e613d70a13711e27dee078825fdb439aa",
     "qualification/evidence/vkl-geometry-depth-mixed.json": "c33ffa709e9928db6dab936c447de1497ab9bc05c5f236fd8ea946b3824898df",
     "qualification/evidence/vkl-geometry-depth-none.json": "de7155ea82f32bb187b81e15f4a7cc199b2bb02244db0862e036e4cf38df6207",
-    "qualification/evidence/vkl-geometry-depth-parity.json": "75f2123758b192240a43cd69c35145df19368367299234e521a8db71041c1199"
+    "qualification/evidence/vkl-geometry-depth-parity.json": "5c013d42bd6859437d2264c43638cfff02eb42c1e7726f617e6d38411b3ce6ca"
   },
   "pending_gates": [
     "NVIDIA RTX 3090 execution: selected workstation unreachable",
