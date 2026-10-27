@@ -59,3 +59,34 @@ The initial raw dataset was collected with runner revision
 `1890894c70ef87ed7b6c29a4e356c38c5231f20a`; its recorded runner hash identifies
 that collector. The subsequent optional-driver-diagnostic fallback changes no
 measured region or shader/reference inputs.
+
+## Camera-color workloads
+
+The color baseline adds 30 workloads across all six camera-color catalog entries.
+Twenty-four use padded 6×4 inputs across BT.601/BT.709 and limited/full range,
+with odd 7×5 remap/resize outputs. Six use padded 640×480 inputs in BT.709 limited
+range: decode/encode outputs retain the full input extent, while remap, resize
+and fused decode/remap produce 64×48 outputs. Synthetic maps include nonfinite
+coordinates. These dimensions and pitches are part of each workload identity;
+a 64×48 output is not a full VGA-output benchmark.
+
+CPU samples include independent NumPy float64 reference computation, validation
+and seeded-output copies; resize also includes reference map construction. GPU
+parity checks every live byte against the existing 1-LSB float64-oracle contract,
+and every padding byte exactly. Allocation/compilation and output resets stay
+outside isolated kernel timing. Transfer timing includes every input/map/output
+seed upload and both output-plane readbacks for NV12 encode. Its transfer path
+has independent warmups. Driver diagnostics are optional; exact compiler and
+hardware identities remain required.
+
+```sh
+SINTERGPU_GPU_TESTS=1 PYTHONPATH=src:. python benchmarks/color_timings.py --gpu \
+  --iterations 50 --warmups 5 --output color-paired-timings.json
+python tools/update_timings.py --input color-paired-timings.json
+```
+
+The initial color run uses collector revision `eb661d9` and retains its full runner
+hash plus the imported CPU sampling helper hash. It passes all numerical/padding
+checks on Radeon 8060S. This increases paired coverage to 23/130 portable entries;
+107 portable entries and four optional native variants still need baselines.
+The new run does not replace existing Locus samples or promote any optimized path.

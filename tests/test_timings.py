@@ -122,3 +122,19 @@ def test_missing_optional_driver_diagnostic_preserves_collection_and_closes_devi
     report=module.run(gpu=True,iterations=1,warmups=1)
     assert Device.closed and report['measurements']==[]
     assert 'unavailable' in report['environment']['vulkaninfo_summary']
+
+
+def test_current_release_qualification_counts_agree_with_timing_database():
+    import json,re
+    from pathlib import Path
+    root=Path(__file__).resolve().parents[1]
+    db=json.loads((root/'src/sintergpu/data/timings.json').read_text())
+    qualification=json.loads((root/'qualification'/f"{db['library_version']}.json").read_text())
+    reference=qualification['timing_reference']
+    assert reference['catalog_entries']==db['coverage']['catalog_entries']
+    assert reference['paired_cpu_gpu_entries']==db['coverage']['both_measured']
+    assert reference['pending_portable_entries']==db['coverage']['pending']
+    assert reference['additional_native_pending']==len(db['additional_pending_targets'])
+    for gate in qualification['pending_gates']:
+        count=re.search(r'CPU/GPU baseline timing coverage for (\d+) remaining portable',gate)
+        if count:assert int(count[1])==db['coverage']['pending']
