@@ -93,6 +93,31 @@ jobs:
         run: |
           python tools/compile_shaders.py --slangc /tmp/slang/bin/slangc --output "build/compile-${SLANG_VERSION}"
           python -c 'import json,os,pathlib; p=pathlib.Path("build/compile-"+os.environ["SLANG_VERSION"]+"/results.json"); r=json.loads(p.read_text()); r["pinned_release"]=os.environ["SLANG_VERSION"]; p.write_text(json.dumps(r,indent=2)+"\n")'
+      - name: Build and consume relocated optional native package
+        env:
+          SINTERGPU_NATIVE_PACKAGE_TESTS: '1'
+          SINTERGPU_TEST_VOLK: ${{ github.workspace }}/build/native-volk
+          SINTERGPU_SLANGC: /tmp/slang/bin/slangc
+          SINTERGPU_NATIVE_TEST_EVIDENCE: build/native-packaging-${{ matrix.version }}
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libvulkan-dev
+          python -m pip install pytest 'cmake==3.25.2'
+          python - <<'PYDEPS'
+          import json,pathlib,urllib.request
+          pin=json.loads(pathlib.Path('tests/native/volk.json').read_text())
+          out=pathlib.Path('build/native-volk');out.mkdir(parents=True,exist_ok=True)
+          for name in pin['files']:
+              url='https://raw.githubusercontent.com/zeux/volk/'+pin['revision']+'/'+name
+              (out/name).write_bytes(urllib.request.urlopen(url,timeout=30).read())
+          PYDEPS
+          # Tests verify dependency bytes before compiling any downloaded code.
+          python -m pytest tests/test_native_packaging.py -q
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-packaging-${{ matrix.version }}
+          path: build/native-packaging-${{ matrix.version }}
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

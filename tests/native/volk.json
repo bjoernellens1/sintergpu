@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/zeux/volk",
+  "revision": "59d26900f53c7621a8ba8ab0e3f18d3bd883fa9a",
+  "files": {
+    "volk.c": "a7dd4404fa43f31602b9c657d9df0e9106ddf52e3df3e0d3d26d65bc267c5729",
+    "volk.h": "0cde6969d9447e6043c867c324251ad362e4bea56d45be11301c53b829f94b74"
+  }
+}

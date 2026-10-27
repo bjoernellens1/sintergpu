@@ -42,7 +42,11 @@ target_include_directories(sintergpu_radix PUBLIC
     $<BUILD_INTERFACE:${_sintergpu_vrdx}/include>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/sintergpu/radix>
     PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/vrdx" ${Vulkan_INCLUDE_DIRS})
-target_link_libraries(sintergpu_radix PUBLIC ${_sintergpu_volk})
+# A caller-local source target need not be installed or exported by SinterGPU.
+# The installed config resolves either supported spelling to a private bridge.
+target_link_libraries(sintergpu_radix PUBLIC Vulkan::Headers
+    $<BUILD_INTERFACE:${_sintergpu_volk}>
+    $<INSTALL_INTERFACE:sintergpu::radix_volk>)
 install(TARGETS sintergpu_radix EXPORT sintergpuTargets ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(FILES "${_sintergpu_vrdx}/include/vk_radix_sort.h" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sintergpu/radix)
 install(FILES "${_sintergpu_vrdx}/LICENSE" DESTINATION ${CMAKE_INSTALL_DATADIR}/sintergpu/licenses RENAME vrdx-LICENSE)
