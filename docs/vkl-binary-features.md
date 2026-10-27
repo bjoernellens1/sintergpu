@@ -85,8 +85,7 @@ must be checked by the binding adapter in addition to the setup capacities.
 
 The new feature paths use resource-independent integer binary32 helpers for
 round-to-nearest/even operations. They preserve subnormals and signed zero even
-when native GPU FP32 arithmetic flushes denormals. NaN arithmetic results are
-canonicalized; comparisons with NaN return false. This preserves grayscale
+when native GPU FP32 arithmetic flushes denormals. Input NaN payloads are unspecified; comparisons with NaN return false. This preserves grayscale
 comparison and squared-radius decisions without relaxing binary output equality.
 These helpers are original implementations, not imports of unresolved RTG code.
 

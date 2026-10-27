@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.10 — 2026-10-27
+
+- Add paired CPU/GPU baseline recipes for the remaining 13 already-ported VKL entries, with 38 seeded workloads covering projection, image conditioning, depth conversion/pyramids/geometry/fusion, temporal selection and depth resampling.
+- Retain exact output/mask/tail and existing floating-point parity requirements, separate kernel/host/transfer timing, and full workload/source/compiler identities. No optimized CPU or complete pipeline claim.
+- Clarify that the reusable binary32 helper does not specify input NaN payloads; feature numerical behavior is unchanged.
+
 ## 0.1.9 — 2026-10-27
 
 - Add VKL BRIEF and bounded radius-gated binary matching as seven experimental Slang entries, preserving donor patterns, native int64 coordinates, exact masks/ties and float32 subnormal decisions.
