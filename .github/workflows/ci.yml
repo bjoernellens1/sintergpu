@@ -31,6 +31,7 @@ jobs:
           python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
           python -m pytest tests/test_vkl*.py -q
       - run: python tools/check_provenance.py
+      - run: python tools/update_timings.py --check
       - name: Require changelog classification and versioning
         if: github.event_name == 'pull_request'
         env:

@@ -35,3 +35,5 @@ the new forward profiles and their explicit numerical and qualification limits.
 Core adapters borrow application devices and command contexts. Standalone test
 and benchmark tools explicitly own their test resources. Production callers own
 allocation, submission, synchronization and lifetimes.
+
+[CPU/GPU timing reference](docs/kernel-timings.md) lists every catalog entry, with explicit workload/configuration samples and pending coverage. Query installed data with `sinter timings [operation] --json`; C++ source installs include the same JSON under `share/sintergpu/data`.

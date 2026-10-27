@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6 — 2026-10-27
+
+- Add a source-bound CPU/GPU timing registry and generated table covering every catalog entry, with explicit missing/stale baselines.
+- Record paired timings for 28 Locus fixtures across 17 operations, retaining raw samples, hardware/compiler/workload identity and separate kernel/transfer costs.
+- Expose timing data through `sinter timings`, Python package resources and CMake data installation.
+
 ## 0.1.5 — 2026-10-27
 
 - Compare shared reflection ABI fields across both pinned compiler lanes in required CI.
