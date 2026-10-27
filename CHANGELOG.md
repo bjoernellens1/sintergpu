@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.7 — unreleased
+
+- Add paired CPU/GPU timing recipes for all six camera color, resize and remap operations, retaining numerical-profile, padding and transfer-cost boundaries.
+
 ## 0.1.6 — 2026-10-27
 
 - Add a source-bound CPU/GPU timing registry and generated table covering every catalog entry, with explicit missing/stale baselines.

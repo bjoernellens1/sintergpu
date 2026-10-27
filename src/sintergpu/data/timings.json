@@ -9048,7 +9048,7 @@
       "current_source": true
     }
   ],
-  "library_version": "0.1.6",
+  "library_version": "0.1.7",
   "additional_pending_targets": [
     {
       "operation": "vrdx.upsweep",
