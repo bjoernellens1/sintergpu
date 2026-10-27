@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/xsplat-vk",
+  "revision": "5c41a47c9e6ec1ad666d06abd239f1c02424624b",
+  "license": "Apache-2.0",
+  "author": "see retained source copyright and notices",
+  "authorization": "Original owner code may be Apache-2.0 per direct user authorization on 2026-10-27; third-party terms unchanged.",
+  "files": [
+    {
+      "source_path": "LICENSE",
+      "destination": "references/donors/xsplat-vk/LICENSE",
+      "source_sha256": "1cf513e53a57ca97f113c992ed1fe7eaad31b667c4747c63eff528c660cea300",
+      "imported_sha256": "1cf513e53a57ca97f113c992ed1fe7eaad31b667c4747c63eff528c660cea300",
+      "changes": []
+    },
+    {
+      "source_path": "NOTICE",
+      "destination": "references/donors/xsplat-vk/NOTICE",
+      "source_sha256": "7768d6a7f69c7ac4a401251ff22b7d1fd4be6615808e627e9f8317cadc734eed",
+      "imported_sha256": "7768d6a7f69c7ac4a401251ff22b7d1fd4be6615808e627e9f8317cadc734eed",
+      "changes": []
+    },
+    {
+      "source_path": "THIRD_PARTY.md",
+      "destination": "references/donors/xsplat-vk/THIRD_PARTY.md",
+      "source_sha256": "9c4203037a80a67c3d78e8c693a7fed629afff0110b0d308e4dcfbb06f191250",
+      "imported_sha256": "9c4203037a80a67c3d78e8c693a7fed629afff0110b0d308e4dcfbb06f191250",
+      "changes": []
+    },
+    {
+      "source_path": "shaders/adam.slang",
+      "destination": "references/donors/xsplat-vk/shaders/adam.slang",
+      "source_sha256": "f87992ab4863944b1e601e117f3365dfeaa41559b71baa48a1d8ac98911744df",
+      "imported_sha256": "f87992ab4863944b1e601e117f3365dfeaa41559b71baa48a1d8ac98911744df",
+      "changes": []
+    },
+    {
+      "source_path": "shaders/adam.slang",
+      "destination": "src/sintergpu/kernels/xsplat_vk/adam.slang",
+      "source_sha256": "f87992ab4863944b1e601e117f3365dfeaa41559b71baa48a1d8ac98911744df",
+      "imported_sha256": "4126871d8bd132c9741bb1f2dadc9e305ed7d54e7db3c7e6bb10b0cd119549c1",
+      "changes": [
+        "Default standalone Adam workgroup to32 when caller does not specialize"
+      ]
+    },
+    {
+      "source_path": "shaders/backward_probe.slang",
+      "destination": "references/donors/xsplat-vk/shaders/backward_probe.slang",
+      "source_sha256": "640781cf476034479008631ce8ba704283499edd2f6c6f75837dbe53868bb5f6",
+      "imported_sha256": "640781cf476034479008631ce8ba704283499edd2f6c6f75837dbe53868bb5f6",
+      "changes": []
+    },
+    {
+      "source_path": "shaders/backward_probe.slang",
+      "destination": "src/sintergpu/kernels/xsplat_vk/backward_probe.slang",
+      "source_sha256": "640781cf476034479008631ce8ba704283499edd2f6c6f75837dbe53868bb5f6",
+      "imported_sha256": "640781cf476034479008631ce8ba704283499edd2f6c6f75837dbe53868bb5f6",
+      "changes": []
+    },
+    {
+      "source_path": "shaders/common.slang",
+      "destination": "references/donors/xsplat-vk/shaders/common.slang",
+      "source_sha256": "a2b6ea15bbf158a59e7915c675ef344c717747693a32ce1a204d811cd7bf0998",
+      "imported_sha256": "a2b6ea15bbf158a59e7915c675ef344c717747693a32ce1a204d811cd7bf0998",
+      "changes": []
+    },
+    {
+      "source_path": "shaders/common.slang",
+      "destination": "src/sintergpu/kernels/xsplat_vk/common.slang",
+      "source_sha256": "a2b6ea15bbf158a59e7915c675ef344c717747693a32ce1a204d811cd7bf0998",
+      "imported_sha256": "a2b6ea15bbf158a59e7915c675ef344c717747693a32ce1a204d811cd7bf0998",
+      "changes": []
+    },
+    {
+      "source_path": "shaders/composite.slang",
+      "destination": "references/donors/xsplat-vk/shaders/composite.slang",
+      "source_sha256": "3c214b80c24d44a146bb38c2ec28abd4383376e30b955c1a2a103c44402e3190",
+      "imported_sha256": "3c214b80c24d44a146bb38c2ec28abd4383376e30b955c1a2a103c44402e3190",
+      "changes": []
+    },
+    {
+      "source_path": "shaders/composite.slang",
+      "destination": "src/sintergpu/kernels/xsplat_vk/composite.slang",
+      "source_sha256": "3c214b80c24d44a146bb38c2ec28abd4383376e30b955c1a2a103c44402e3190",
+      "imported_sha256": "a8dd28f7f596e4687302b8889991d1e5294307d034d50835baba170db17b6ce7",
+      "changes": [
+        "Declare composite state differentiable"
+      ]
+    },
+    {
+      "source_path": "shaders/gaussian_math.slang",
+      "destination": "references/donors/xsplat-vk/shaders/gaussian_math.slang",
+      "source_sha256": "7c0a1de4e4623966cdd26ff709e1d42d5553722d5ac6e590a6a8e7e3c9e67643",
+      "imported_sha256": "7c0a1de4e4623966cdd26ff709e1d42d5553722d5ac6e590a6a8e7e3c9e67643",
+      "changes": []
+    },
+    {
+      "source_path": "shaders/gaussian_math.slang",
+      "destination": "src/sintergpu/kernels/xsplat_vk/gaussian_math.slang",
+      "source_sha256": "7c0a1de4e4623966cdd26ff709e1d42d5553722d5ac6e590a6a8e7e3c9e67643",
+      "imported_sha256": "7c0a1de4e4623966cdd26ff709e1d42d5553722d5ac6e590a6a8e7e3c9e67643",
+      "changes": []
+    },
+    {
+      "source_path": "shaders/project.slang",
+      "destination": "references/donors/xsplat-vk/shaders/project.slang",
+      "source_sha256": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+      "imported_sha256": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+      "changes": []
+    },
+    {
+      "source_path": "shaders/project.slang",
+      "destination": "src/sintergpu/kernels/xsplat_vk/project.slang",
+      "source_sha256": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+      "imported_sha256": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+      "changes": []
+    },
+    {
+      "source_path": "src/reference.cpp",
+      "destination": "references/donors/xsplat-vk/src/reference.cpp",
+      "source_sha256": "6fcb83f45ed7da72b85167e6d71bb92c09d48321fa4110408b67076eedefc442",
+      "imported_sha256": "6fcb83f45ed7da72b85167e6d71bb92c09d48321fa4110408b67076eedefc442",
+      "changes": []
+    },
+    {
+      "source_path": "tests/passes_test.cpp",
+      "destination": "references/donors/xsplat-vk/tests/passes_test.cpp",
+      "source_sha256": "121856f605f1bebb8977e10225de4ac9a662dbca4ed57f0e03077f1507458832",
+      "imported_sha256": "121856f605f1bebb8977e10225de4ac9a662dbca4ed57f0e03077f1507458832",
+      "changes": []
+    },
+    {
+      "source_path": "tests/reference_test.cpp",
+      "destination": "references/donors/xsplat-vk/tests/reference_test.cpp",
+      "source_sha256": "e1bfa585ac8f9c0bd948724cde18bfef4688596c840dc91a8af703ba52f21f71",
+      "imported_sha256": "e1bfa585ac8f9c0bd948724cde18bfef4688596c840dc91a8af703ba52f21f71",
+      "changes": []
+    }
+  ],
+  "qualification": "Imported source and historical evidence; requires new SinterGPU verification."
+}

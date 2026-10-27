@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/locus",
+  "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+  "license": "MIT",
+  "author": "see retained source copyright and notices",
+  "authorization": "Original owner code may be Apache-2.0 per direct user authorization on 2026-10-27; third-party terms unchanged.",
+  "files": [
+    {
+      "source_path": "LICENSE",
+      "destination": "references/donors/locus/LICENSE",
+      "source_sha256": "ad6f24d841e05d057a746f7d452b896ad9dbeb6d621d5c2efd8813aa810bb6b8",
+      "imported_sha256": "ad6f24d841e05d057a746f7d452b896ad9dbeb6d621d5c2efd8813aa810bb6b8",
+      "changes": []
+    },
+    {
+      "source_path": "THIRD_PARTY.md",
+      "destination": "references/donors/locus/THIRD_PARTY.md",
+      "source_sha256": "80b12101b9dfb69fa8f375c13428d40865ace6eae7a0f426a0865f4ab3410213",
+      "imported_sha256": "80b12101b9dfb69fa8f375c13428d40865ace6eae7a0f426a0865f4ab3410213",
+      "changes": []
+    },
+    {
+      "source_path": "android/app/src/orbbec/assets/licenses/orbbec/LICENSE.txt",
+      "destination": "references/donors/locus/android/app/src/orbbec/assets/licenses/orbbec/LICENSE.txt",
+      "source_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "imported_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "changes": []
+    },
+    {
+      "source_path": "android/app/src/realsense/assets/licenses/realsense/LICENSE",
+      "destination": "references/donors/locus/android/app/src/realsense/assets/licenses/realsense/LICENSE",
+      "source_sha256": "c7aa1fdf0e38c4827fef17859ddbfac800b8995f3ec875a06dd23c79135f956d",
+      "imported_sha256": "c7aa1fdf0e38c4827fef17859ddbfac800b8995f3ec875a06dd23c79135f956d",
+      "changes": []
+    },
+    {
+      "source_path": "android/app/src/realsense/assets/licenses/realsense/NOTICE.md",
+      "destination": "references/donors/locus/android/app/src/realsense/assets/licenses/realsense/NOTICE.md",
+      "source_sha256": "2955878353b9db9088123bf86bbbe346a9330035a13f2c21a5e4d4c1bc877aed",
+      "imported_sha256": "2955878353b9db9088123bf86bbbe346a9330035a13f2c21a5e4d4c1bc877aed",
+      "changes": []
+    },
+    {
+      "source_path": "docs/IMPORT_PROVENANCE.json",
+      "destination": "references/donors/locus/docs/IMPORT_PROVENANCE.json",
+      "source_sha256": "63cb72112ac29acad9b9f09496b6b95e2a582c462b64c644e3bc48f69834214b",
+      "imported_sha256": "63cb72112ac29acad9b9f09496b6b95e2a582c462b64c644e3bc48f69834214b",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/README.md",
+      "destination": "references/donors/locus/gpu/README.md",
+      "source_sha256": "746853e492073c1c27da4377f7bbed7797d4411721521c3385c10fc34ed54e81",
+      "imported_sha256": "746853e492073c1c27da4377f7bbed7797d4411721521c3385c10fc34ed54e81",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/common/abi.slang",
+      "destination": "references/donors/locus/gpu/common/abi.slang",
+      "source_sha256": "8f46c43030f9f1c1e4a73da59188779d930dfdefec9eaf23bf1f5d95793a284c",
+      "imported_sha256": "8f46c43030f9f1c1e4a73da59188779d930dfdefec9eaf23bf1f5d95793a284c",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/common/abi.slang",
+      "destination": "src/sintergpu/kernels/locus/common/abi.slang",
+      "source_sha256": "8f46c43030f9f1c1e4a73da59188779d930dfdefec9eaf23bf1f5d95793a284c",
+      "imported_sha256": "8f46c43030f9f1c1e4a73da59188779d930dfdefec9eaf23bf1f5d95793a284c",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/geometry/backproject.slang",
+      "destination": "references/donors/locus/gpu/geometry/backproject.slang",
+      "source_sha256": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
+      "imported_sha256": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/geometry/backproject.slang",
+      "destination": "src/sintergpu/kernels/locus/geometry/backproject.slang",
+      "source_sha256": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
+      "imported_sha256": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/geometry/transform_points.slang",
+      "destination": "references/donors/locus/gpu/geometry/transform_points.slang",
+      "source_sha256": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
+      "imported_sha256": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/geometry/transform_points.slang",
+      "destination": "src/sintergpu/kernels/locus/geometry/transform_points.slang",
+      "source_sha256": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
+      "imported_sha256": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/geometry/voxel_insert.slang",
+      "destination": "references/donors/locus/gpu/geometry/voxel_insert.slang",
+      "source_sha256": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
+      "imported_sha256": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/geometry/voxel_insert.slang",
+      "destination": "src/sintergpu/kernels/locus/geometry/voxel_insert.slang",
+      "source_sha256": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
+      "imported_sha256": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/guidance/coverage_heatmap.slang",
+      "destination": "references/donors/locus/gpu/guidance/coverage_heatmap.slang",
+      "source_sha256": "b23581c8b5348522c3ee7ad05b2f9b97d954e7d9c5070fa80341fe52216d94d8",
+      "imported_sha256": "b23581c8b5348522c3ee7ad05b2f9b97d954e7d9c5070fa80341fe52216d94d8",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/guidance/coverage_heatmap.slang",
+      "destination": "src/sintergpu/kernels/locus/guidance/coverage_heatmap.slang",
+      "source_sha256": "b23581c8b5348522c3ee7ad05b2f9b97d954e7d9c5070fa80341fe52216d94d8",
+      "imported_sha256": "b23581c8b5348522c3ee7ad05b2f9b97d954e7d9c5070fa80341fe52216d94d8",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/guidance/coverage_render.slang",
+      "destination": "references/donors/locus/gpu/guidance/coverage_render.slang",
+      "source_sha256": "5e8ea4892df9d48caae31b75885f49f6fd63b4170a75c2a411688a052149a30c",
+      "imported_sha256": "5e8ea4892df9d48caae31b75885f49f6fd63b4170a75c2a411688a052149a30c",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/guidance/coverage_render.slang",
+      "destination": "src/sintergpu/kernels/locus/guidance/coverage_render.slang",
+      "source_sha256": "5e8ea4892df9d48caae31b75885f49f6fd63b4170a75c2a411688a052149a30c",
+      "imported_sha256": "5e8ea4892df9d48caae31b75885f49f6fd63b4170a75c2a411688a052149a30c",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/kernels.json",
+      "destination": "references/donors/locus/gpu/kernels.json",
+      "source_sha256": "4c24f3c9da9e8b80bfa2b71d3d9df7e76473d5bd22d3b4a26c6cd87e27776bfa",
+      "imported_sha256": "4c24f3c9da9e8b80bfa2b71d3d9df7e76473d5bd22d3b4a26c6cd87e27776bfa",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/bilateral.slang",
+      "destination": "references/donors/locus/gpu/preprocess/bilateral.slang",
+      "source_sha256": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
+      "imported_sha256": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/bilateral.slang",
+      "destination": "src/sintergpu/kernels/locus/preprocess/bilateral.slang",
+      "source_sha256": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
+      "imported_sha256": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/depth_register.slang",
+      "destination": "references/donors/locus/gpu/preprocess/depth_register.slang",
+      "source_sha256": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
+      "imported_sha256": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/depth_register.slang",
+      "destination": "src/sintergpu/kernels/locus/preprocess/depth_register.slang",
+      "source_sha256": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
+      "imported_sha256": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/depth_resolve.slang",
+      "destination": "references/donors/locus/gpu/preprocess/depth_resolve.slang",
+      "source_sha256": "e5416309a1d2e09a5549e558a74f42baad0af9a96ad4721c46c467f300cf9ea4",
+      "imported_sha256": "e5416309a1d2e09a5549e558a74f42baad0af9a96ad4721c46c467f300cf9ea4",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/depth_resolve.slang",
+      "destination": "src/sintergpu/kernels/locus/preprocess/depth_resolve.slang",
+      "source_sha256": "e5416309a1d2e09a5549e558a74f42baad0af9a96ad4721c46c467f300cf9ea4",
+      "imported_sha256": "e5416309a1d2e09a5549e558a74f42baad0af9a96ad4721c46c467f300cf9ea4",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/invalid_depth.slang",
+      "destination": "references/donors/locus/gpu/preprocess/invalid_depth.slang",
+      "source_sha256": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
+      "imported_sha256": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/invalid_depth.slang",
+      "destination": "src/sintergpu/kernels/locus/preprocess/invalid_depth.slang",
+      "source_sha256": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
+      "imported_sha256": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/resize.slang",
+      "destination": "references/donors/locus/gpu/preprocess/resize.slang",
+      "source_sha256": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
+      "imported_sha256": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/resize.slang",
+      "destination": "src/sintergpu/kernels/locus/preprocess/resize.slang",
+      "source_sha256": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
+      "imported_sha256": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/undistort.slang",
+      "destination": "references/donors/locus/gpu/preprocess/undistort.slang",
+      "source_sha256": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
+      "imported_sha256": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/undistort.slang",
+      "destination": "src/sintergpu/kernels/locus/preprocess/undistort.slang",
+      "source_sha256": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
+      "imported_sha256": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/yuv_to_rgb.slang",
+      "destination": "references/donors/locus/gpu/preprocess/yuv_to_rgb.slang",
+      "source_sha256": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
+      "imported_sha256": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/preprocess/yuv_to_rgb.slang",
+      "destination": "src/sintergpu/kernels/locus/preprocess/yuv_to_rgb.slang",
+      "source_sha256": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
+      "imported_sha256": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/quality/metrics.slang",
+      "destination": "references/donors/locus/gpu/quality/metrics.slang",
+      "source_sha256": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
+      "imported_sha256": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/quality/metrics.slang",
+      "destination": "src/sintergpu/kernels/locus/quality/metrics.slang",
+      "source_sha256": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
+      "imported_sha256": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/quality/reduce.slang",
+      "destination": "references/donors/locus/gpu/quality/reduce.slang",
+      "source_sha256": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
+      "imported_sha256": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/quality/reduce.slang",
+      "destination": "src/sintergpu/kernels/locus/quality/reduce.slang",
+      "source_sha256": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
+      "imported_sha256": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/semantics/mask_postprocess.slang",
+      "destination": "references/donors/locus/gpu/semantics/mask_postprocess.slang",
+      "source_sha256": "5de5a3648d315cd126e40e181aa11ec2b3b479583be57f77605def4e5d772688",
+      "imported_sha256": "5de5a3648d315cd126e40e181aa11ec2b3b479583be57f77605def4e5d772688",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/semantics/mask_postprocess.slang",
+      "destination": "src/sintergpu/kernels/locus/semantics/mask_postprocess.slang",
+      "source_sha256": "5de5a3648d315cd126e40e181aa11ec2b3b479583be57f77605def4e5d772688",
+      "imported_sha256": "5de5a3648d315cd126e40e181aa11ec2b3b479583be57f77605def4e5d772688",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/semantics/normalize.slang",
+      "destination": "references/donors/locus/gpu/semantics/normalize.slang",
+      "source_sha256": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
+      "imported_sha256": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/semantics/normalize.slang",
+      "destination": "src/sintergpu/kernels/locus/semantics/normalize.slang",
+      "source_sha256": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
+      "imported_sha256": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/semantics/similarity.slang",
+      "destination": "references/donors/locus/gpu/semantics/similarity.slang",
+      "source_sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975",
+      "imported_sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/semantics/similarity.slang",
+      "destination": "src/sintergpu/kernels/locus/semantics/similarity.slang",
+      "source_sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975",
+      "imported_sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975",
+      "changes": []
+    },
+    {
+      "source_path": "gpu/toolchain.json",
+      "destination": "references/donors/locus/gpu/toolchain.json",
+      "source_sha256": "4e57bca931e0d1938a008acb39c1916f4031c01e8273fc0c7b35799c7ee7cef8",
+      "imported_sha256": "4e57bca931e0d1938a008acb39c1916f4031c01e8273fc0c7b35799c7ee7cef8",
+      "changes": []
+    },
+    {
+      "source_path": "tests/gpu/cases.py",
+      "destination": "references/donors/locus/tests/gpu/cases.py",
+      "source_sha256": "87eaf627afe5965fba06b5b5965ea276829853b794f87682888214ff597fd575",
+      "imported_sha256": "87eaf627afe5965fba06b5b5965ea276829853b794f87682888214ff597fd575",
+      "changes": []
+    },
+    {
+      "source_path": "tests/gpu/cases.py",
+      "destination": "src/sintergpu/fixtures/locus/cases.py",
+      "source_sha256": "87eaf627afe5965fba06b5b5965ea276829853b794f87682888214ff597fd575",
+      "imported_sha256": "5b0e54bf148b5e81511c823980643632d63f134c3ea3407353eec27608e8944e",
+      "changes": [
+        "package-relative reference import"
+      ]
+    },
+    {
+      "source_path": "tests/gpu/reference.py",
+      "destination": "references/donors/locus/tests/gpu/reference.py",
+      "source_sha256": "c432378ec1f2e2235f61996b39b8dbbfec0328a4583a3f3935070b32c8dba7b4",
+      "imported_sha256": "c432378ec1f2e2235f61996b39b8dbbfec0328a4583a3f3935070b32c8dba7b4",
+      "changes": []
+    },
+    {
+      "source_path": "tests/gpu/reference.py",
+      "destination": "src/sintergpu/fixtures/locus/reference.py",
+      "source_sha256": "c432378ec1f2e2235f61996b39b8dbbfec0328a4583a3f3935070b32c8dba7b4",
+      "imported_sha256": "c432378ec1f2e2235f61996b39b8dbbfec0328a4583a3f3935070b32c8dba7b4",
+      "changes": []
+    },
+    {
+      "source_path": "tests/gpu/run-fixtures.py",
+      "destination": "references/donors/locus/tests/gpu/run-fixtures.py",
+      "source_sha256": "95b9efa9665b968aa7df9145ffa833bc05588d370b5fec239dfea1e842455c21",
+      "imported_sha256": "95b9efa9665b968aa7df9145ffa833bc05588d370b5fec239dfea1e842455c21",
+      "changes": []
+    },
+    {
+      "source_path": "tests/gpu/test_reference.py",
+      "destination": "references/donors/locus/tests/gpu/test_reference.py",
+      "source_sha256": "476cd06bed70c32c761da55cece8b523068c093d8b6e50f724445b3a1d027593",
+      "imported_sha256": "476cd06bed70c32c761da55cece8b523068c093d8b6e50f724445b3a1d027593",
+      "changes": []
+    },
+    {
+      "source_path": "tests/gpu/test_toolchain.py",
+      "destination": "references/donors/locus/tests/gpu/test_toolchain.py",
+      "source_sha256": "fd2358049c700af0183f853aa93571776087d0d0d2526b408fb2b526de0eac4e",
+      "imported_sha256": "fd2358049c700af0183f853aa93571776087d0d0d2526b408fb2b526de0eac4e",
+      "changes": []
+    }
+  ],
+  "qualification": "Imported source and historical evidence; requires new SinterGPU verification."
+}

@@ -1,0 +1,182 @@
+name: Immutable release and delivery
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing exact release tag to publish or retry delivery
+        required: true
+        type: string
+concurrency:
+  group: sintergpu-release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+permissions:
+  contents: read
+  actions: read
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.resolve.outputs.tag }}
+      source: ${{ steps.resolve.outputs.source }}
+      published: ${{ steps.resolve.outputs.published }}
+      prepared_run: ${{ steps.resolve.outputs.prepared_run }}
+    steps:
+      - name: Resolve existing remote tag without moving it
+        id: resolve
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+          WORKFLOW_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os, re, subprocess
+          tag = os.environ['TAG']
+          if not re.fullmatch(r'v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)', tag):
+              raise SystemExit('strict release SemVer required')
+          def api(endpoint):
+              return json.loads(subprocess.check_output(['gh','api',endpoint],text=True))
+          source=api('repos/bjoernellens1/sintergpu/commits/'+tag)['sha']
+          pages=json.loads(subprocess.check_output(['gh','api','--paginate','--slurp','repos/bjoernellens1/sintergpu/releases?per_page=100'],text=True))
+          matches=[r for page in pages for r in page if r['tag_name']==tag]
+          published=bool(matches and not matches[0]['draft'])
+          if not published and source != os.environ['WORKFLOW_SHA']:
+              raise SystemExit('Run unpublished-tag dispatch with --ref TAG so attestation source matches the release')
+          # Recover the original byte-identical prepared set after any interrupted
+          # upload. Rebuilding a wheel or attestation would change its identity.
+          artifacts=api('repos/bjoernellens1/sintergpu/actions/artifacts?name=sintergpu-release-'+tag)['artifacts']
+          candidates=[a for a in artifacts if not a['expired'] and a['workflow_run']['head_sha']==source]
+          prepared_run=str(candidates[0]['workflow_run']['id']) if candidates and not published else ''
+          if matches and matches[0]['draft'] and not prepared_run:
+              raise SystemExit('Draft recovery payload unavailable; restore original artifact set before retrying')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write(f'tag={tag}\nsource={source}\npublished={str(published).lower()}\nprepared_run={prepared_run}\n')
+          PY
+  checks:
+    needs: resolve
+    if: needs.resolve.outputs.published != 'true'
+    uses: ./.github/workflows/ci.yml
+    with:
+      source_ref: ${{ needs.resolve.outputs.source }}
+  publish:
+    needs: [resolve, checks]
+    if: always() && needs.resolve.result == 'success' && (needs.checks.result == 'success' || needs.resolve.outputs.published == 'true')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ needs.resolve.outputs.source }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        if: needs.resolve.outputs.published != 'true' && needs.resolve.outputs.prepared_run == ''
+        with:
+          name: packages
+          path: dist
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        if: needs.resolve.outputs.published != 'true' && needs.resolve.outputs.prepared_run == ''
+        with:
+          pattern: compiler-*
+          path: build/compiler-records
+      - name: Restore exact previously prepared release bytes
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        if: needs.resolve.outputs.prepared_run != ''
+        with:
+          name: sintergpu-release-${{ needs.resolve.outputs.tag }}
+          path: dist
+          run-id: ${{ needs.resolve.outputs.prepared_run }}
+          github-token: ${{ github.token }}
+      - name: Prepare source bundle and bound evidence
+        if: needs.resolve.outputs.published != 'true' && needs.resolve.outputs.prepared_run == ''
+        env:
+          TAG: ${{ needs.resolve.outputs.tag }}
+        run: |
+          python tools/release.py prepare --tag "$TAG" --qualification "qualification/${TAG#v}.json" --compiler build/compiler-records/compiler-2026.12/results.json --compiler build/compiler-records/compiler-2026.19/results.json
+      - name: Attest exact prepared payloads, manifest and checksums
+        id: attest
+        if: needs.resolve.outputs.published != 'true' && needs.resolve.outputs.prepared_run == ''
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
+        with:
+          subject-path: dist/*
+      - name: Preserve attestation bundle
+        if: needs.resolve.outputs.published != 'true' && needs.resolve.outputs.prepared_run == ''
+        env:
+          BUNDLE: ${{ steps.attest.outputs.bundle-path }}
+        run: cp "$BUNDLE" dist/attestation.jsonl
+      - name: Retain immutable prepared set before any release upload
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: needs.resolve.outputs.published != 'true' && needs.resolve.outputs.prepared_run == ''
+        with:
+          name: sintergpu-release-${{ needs.resolve.outputs.tag }}
+          path: dist/*
+          retention-days: 90
+      - name: Verify existing publication or publish immutable draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.resolve.outputs.tag }}
+          PUBLISHED: ${{ needs.resolve.outputs.published }}
+        run: |
+          if [ "$PUBLISHED" = true ]; then
+            python tools/release.py verify --tag "$TAG" --output /tmp/published
+          else
+            python tools/release.py publish --tag "$TAG"
+          fi
+  delivery:
+    needs: [resolve, publish]
+    if: always() && needs.publish.result == 'success'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        repository: [stereoforge, eligsir-sim, eligsir-native, vkl, slang-rgbd-slam, caspar-slang, locus]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ needs.resolve.outputs.source }}
+          persist-credentials: false
+      - name: Require dedicated cross-repository App configuration
+        env:
+          APP_ID: ${{ vars.SINTERGPU_APP_ID }}
+          APP_KEY: ${{ secrets.SINTERGPU_APP_PRIVATE_KEY }}
+        run: test -n "$APP_ID" && test -n "$APP_KEY" || { echo 'Missing SINTERGPU App configuration; recurring delivery is not configured'; exit 1; }
+      - uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2
+        id: app
+        with:
+          app-id: ${{ vars.SINTERGPU_APP_ID }}
+          private-key: ${{ secrets.SINTERGPU_APP_PRIVATE_KEY }}
+          owner: bjoernellens1
+          repositories: ${{ matrix.repository }}
+          permission-contents: write
+          permission-pull-requests: write
+      - name: Deliver lock update only
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          TAG: ${{ needs.resolve.outputs.tag }}
+          TARGET_REPOSITORY: bjoernellens1/${{ matrix.repository }}
+        run: python3 tools/update_consumers.py --tag "$TAG" --deliver --repository "$TARGET_REPOSITORY"
+      - name: Always record delivery result including configuration failures
+        if: always()
+        env:
+          TARGET_REPOSITORY: bjoernellens1/${{ matrix.repository }}
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('delivery-results.json')
+          if not p.exists(): p.write_text(json.dumps({'results':[{'repository':os.environ['TARGET_REPOSITORY'],'status':'failed','error':'App configuration, token minting or release verification failed; inspect job logs'}]},indent=2))
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as summary: summary.write('```json\n'+p.read_text()+'\n```\n')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: delivery-${{ matrix.repository }}
+          path: delivery-results.json

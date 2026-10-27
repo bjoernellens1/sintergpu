@@ -1,0 +1,86 @@
+{
+  "repository": "bjoernellens1/nerfacc-rocm",
+  "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+  "reference_artifacts": {
+    "nerfacc/scan.py": "b3cc44428ff299f786850ba1033962c5987a8228b826d143527309d2708c0c1b",
+    "nerfacc/cuda/csrc/scan.cu": "767240e462ceb887d33e4a579b74ee0a467dbc99019e1fed41f64dfa6b4efcdb",
+    "nerfacc/cuda/csrc/include/utils_scan.cuh": "ec273f83c8fc05ed60682542ecf1f0747cbc01ae62e68e357c726fd645a5c24b",
+    "tests/test_scan.py": "88c281b7fb07d6611f040ca7fe9f4335e5702c86d89776b12f2307f895c49e9d"
+  },
+  "license": "MIT",
+  "notices": {
+    "LICENSE": "MIT License\n\nCopyright (c) 2022 Ruilong Li\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\nTHIS SOFTWARE AND/OR DATA WAS DEPOSITED IN THE BAIR OPEN RESEARCH COMMONS \nREPOSITORY ON 05/08/2023.\n",
+    "LICENSE.AMD": "MIT License\n\nCopyright (c) 2025 AMD-AIOSS\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "lineage": "nerfacc utils_scan.cuh cites PyTorch ScanUtils.cuh at 06a64f7eaa47ce430a3fa61016010075b59b18a7. No CUDA/PyTorch implementation text copied: shader is a new hierarchical adaptation of segmented scan semantics, CPU oracle independent serial implementation.",
+  "coverage": [
+    "inclusive_sum",
+    "exclusive_sum",
+    "inclusive_product",
+    "exclusive_product",
+    "uint32 stable compaction"
+  ],
+  "differences": [
+    "Forward only; no gradients or normalization",
+    "Contiguous nondecreasing uint32 segment IDs, dense batches represented by IDs",
+    "Hierarchical tree changes floating point parenthesization; parity tolerance required",
+    "No CUB/HIP/CUDA/PyTorch dependencies copied"
+  ],
+  "qualification": "Independent static performance review cleared bounded GPU validation; Slang2026.12 and2026.19 SPIRV compile; SlangPy0.43.1 actual AMD Radeon8060S parity passed; cross-vendor/performance/gradients unqualified.",
+  "parent_repository": "https://github.com/nerfstudio-project/nerfacc",
+  "artifacts": {
+    "src/sintergpu/kernels/primitives/scan.slang": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+    "src/sintergpu/kernels/primitives/compact.slang": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb",
+    "src/sintergpu/primitives.py": "d0de6d6767c857bb03b1ed23bb39d681b823d8e37d15528bde71914d5b71dbe8",
+    "src/sintergpu/references/scan.py": "08aaf01aad5c6261fc00b27700f32967db2eec217d17baaefa55101303d7ccb6"
+  },
+  "operation_prefix": "primitives",
+  "files": [
+    {
+      "source_path": "nerfacc/scan.py",
+      "source_sha256": "b3cc44428ff299f786850ba1033962c5987a8228b826d143527309d2708c0c1b",
+      "destination": "src/sintergpu/kernels/primitives/scan.slang",
+      "imported_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "changes": [
+        "new hierarchical Slang adaptation; no CUDA implementation text copied; forward contract differs as documented"
+      ]
+    },
+    {
+      "source_path": "nerfacc/scan.py",
+      "source_sha256": "b3cc44428ff299f786850ba1033962c5987a8228b826d143527309d2708c0c1b",
+      "destination": "src/sintergpu/kernels/primitives/compact.slang",
+      "imported_sha256": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb",
+      "changes": [
+        "new hierarchical Slang adaptation; no CUDA implementation text copied; forward contract differs as documented"
+      ]
+    },
+    {
+      "source_path": "nerfacc/scan.py",
+      "source_sha256": "b3cc44428ff299f786850ba1033962c5987a8228b826d143527309d2708c0c1b",
+      "destination": "src/sintergpu/primitives.py",
+      "imported_sha256": "d0de6d6767c857bb03b1ed23bb39d681b823d8e37d15528bde71914d5b71dbe8",
+      "changes": [
+        "new hierarchical Slang adaptation; no CUDA implementation text copied; forward contract differs as documented"
+      ]
+    },
+    {
+      "source_path": "nerfacc/scan.py",
+      "source_sha256": "b3cc44428ff299f786850ba1033962c5987a8228b826d143527309d2708c0c1b",
+      "destination": "src/sintergpu/references/scan.py",
+      "imported_sha256": "08aaf01aad5c6261fc00b27700f32967db2eec217d17baaefa55101303d7ccb6",
+      "changes": [
+        "new hierarchical Slang adaptation; no CUDA implementation text copied; forward contract differs as documented"
+      ]
+    },
+    {
+      "source_path": "nerfacc/scan.py",
+      "source_sha256": "b3cc44428ff299f786850ba1033962c5987a8228b826d143527309d2708c0c1b",
+      "destination": "src/sintergpu/kernels/primitives/scan_uint.slang",
+      "imported_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "changes": [
+        "specialize hierarchical scan for exact uint32 compaction counts"
+      ],
+      "generator": "tools/materialize_shaders.py"
+    }
+  ]
+}

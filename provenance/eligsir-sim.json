@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/eligsir-sim",
+  "revision": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+  "license": "Apache-2.0",
+  "author": "see retained source copyright and notices",
+  "authorization": "Original owner code may be Apache-2.0 per direct user authorization on 2026-10-27; third-party terms unchanged.",
+  "files": [
+    {
+      "source_path": "LICENSE",
+      "destination": "references/donors/eligsir-sim/LICENSE",
+      "source_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "imported_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "changes": []
+    },
+    {
+      "source_path": "NOTICE",
+      "destination": "references/donors/eligsir-sim/NOTICE",
+      "source_sha256": "1753f75e18088a2f6383d494821e0f2eaf6c89c18360508a0e3c4069a8a0cfbe",
+      "imported_sha256": "1753f75e18088a2f6383d494821e0f2eaf6c89c18360508a0e3c4069a8a0cfbe",
+      "changes": []
+    },
+    {
+      "source_path": "src/eligsir_sim/video/_colour_hip_ext.py",
+      "destination": "references/donors/eligsir-sim/src/eligsir_sim/video/_colour_hip_ext.py",
+      "source_sha256": "799072e1ef2f2bbf5ce3dd4548d67d7e79ccac44a38182b888b6826d1c5df162",
+      "imported_sha256": "799072e1ef2f2bbf5ce3dd4548d67d7e79ccac44a38182b888b6826d1c5df162",
+      "changes": []
+    },
+    {
+      "source_path": "src/eligsir_sim/video/colour.py",
+      "destination": "references/donors/eligsir-sim/src/eligsir_sim/video/colour.py",
+      "source_sha256": "617fd104c67646a2e390da5899f42ee43720a83d9114d8bd63fdd21d67caee37",
+      "imported_sha256": "617fd104c67646a2e390da5899f42ee43720a83d9114d8bd63fdd21d67caee37",
+      "changes": []
+    },
+    {
+      "source_path": "tests/video/test_colour.py",
+      "destination": "references/donors/eligsir-sim/tests/video/test_colour.py",
+      "source_sha256": "c9b6abc33ec07c5e154e1d7c3ab533fa87039f8d67634e3e9dce4f7d20ebe286",
+      "imported_sha256": "c9b6abc33ec07c5e154e1d7c3ab533fa87039f8d67634e3e9dce4f7d20ebe286",
+      "changes": []
+    },
+    {
+      "source_path": "tests/video/test_colour_fp32_exactness.py",
+      "destination": "references/donors/eligsir-sim/tests/video/test_colour_fp32_exactness.py",
+      "source_sha256": "cebcef518c98fa83ca9bb33eb235ffebff9f1deb83a6c43172fee24fa4882754",
+      "imported_sha256": "cebcef518c98fa83ca9bb33eb235ffebff9f1deb83a6c43172fee24fa4882754",
+      "changes": []
+    },
+    {
+      "source_path": "tests/video/test_colour_kernel_benchmark.py",
+      "destination": "references/donors/eligsir-sim/tests/video/test_colour_kernel_benchmark.py",
+      "source_sha256": "3e19505703b4198e8774e7d61fa45cfcde0377a5abe12ef45b692af8f2dfe66e",
+      "imported_sha256": "3e19505703b4198e8774e7d61fa45cfcde0377a5abe12ef45b692af8f2dfe66e",
+      "changes": []
+    }
+  ],
+  "qualification": "Imported source and historical evidence; requires new SinterGPU verification."
+}

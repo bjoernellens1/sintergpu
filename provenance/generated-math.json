@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/caspar-slang",
+  "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+  "license": "Apache-2.0",
+  "generation": {
+    "repository": "bjoernellens1/caspar-slang",
+    "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+    "symforce": "0.12.0",
+    "slangpy": "0.43.1",
+    "command": "Regenerate with retained caspar_slang definitions and SymForce0.12.0; see tools/regenerate_math.py",
+    "outputs": [
+      {
+        "path": "src/sintergpu/kernels/generated/point_plane_residual.generated.slang",
+        "sha256": "0da870c2a40263cdb18950157730387fad9d751c177d4b7d509733bc6114fef6"
+      },
+      {
+        "path": "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang",
+        "sha256": "a9e3e4cbd66c30b0d1225c612bd571f7ef02ae194a1380199979d9de938b3e52"
+      },
+      {
+        "path": "src/sintergpu/kernels/generated/reprojection_factors.generated.slang",
+        "sha256": "113fadec9040b57b6d91a1ce07b3585cf9dd6f4a74918c30930dabec92f7ccee"
+      },
+      {
+        "path": "src/sintergpu/kernels/generated/dense_factors.generated.slang",
+        "sha256": "2afa8aeab83a06678792ba93a918ac14e41d945336f629ebba41f777e1793f44"
+      },
+      {
+        "path": "src/sintergpu/kernels/generated/primitives.generated.slang",
+        "sha256": "0cba624d734902ce6a788b5c37b5fe332a4e2d1b81a1fb2d149a1a101edb8f44"
+      }
+    ]
+  },
+  "files": []
+}

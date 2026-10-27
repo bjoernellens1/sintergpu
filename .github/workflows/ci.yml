@@ -1,0 +1,93 @@
+name: CI
+on:
+  push:
+    branches: ['main', 'impl/**']
+  pull_request:
+  workflow_call:
+    inputs:
+      source_ref:
+        type: string
+        default: ''
+permissions:
+  contents: read
+jobs:
+  cpu-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          ref: ${{ inputs.source_ref || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install '.[test]' build
+      - run: python -m pytest tests -q
+      - run: python tools/check_provenance.py
+      - name: Require changelog classification and versioning
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python tools/check_changes.py --base "$BASE_SHA"
+      - run: python -m build
+      - name: Build a C++ consumer from a relocated installation
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libvulkan-dev
+          cmake -S . -B build/cmake -DCMAKE_INSTALL_PREFIX=/tmp/sintergpu-install
+          cmake --install build/cmake
+          mv /tmp/sintergpu-install /tmp/sintergpu-relocated
+          cmake -S examples/cmake -B build/consumer -DCMAKE_PREFIX_PATH=/tmp/sintergpu-relocated
+          cmake --build build/consumer
+      - name: Verify source and wheel installs without GPU extras
+        run: |
+          python -m venv /tmp/sintergpu-wheel
+          /tmp/sintergpu-wheel/bin/pip install dist/*.whl
+          cd /tmp
+          /tmp/sintergpu-wheel/bin/python -c "import sintergpu; from sintergpu.catalog import validate_catalog; assert not validate_catalog()"
+          python -m venv /tmp/sintergpu-source
+          /tmp/sintergpu-source/bin/pip install "$GITHUB_WORKSPACE"/dist/*.tar.gz
+          /tmp/sintergpu-source/bin/python -c "import sintergpu; from sintergpu.catalog import validate_catalog; assert not validate_catalog()"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: packages
+          path: dist/*
+  compiler:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - version: '2026.12'
+            sha256: 2409ecc7b6710783e05fd59792558c275c637e3e3c37fb5054fcfc858e570d82
+          - version: '2026.19'
+            sha256: bd6cfc47b7353b2cffa36a866b1584749f76f4b2dbebf6dda26bc3fb40dc3c0e
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ inputs.source_ref || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.11'
+      - name: Fetch checksum-pinned compiler
+        env:
+          SLANG_VERSION: ${{ matrix.version }}
+          SLANG_SHA256: ${{ matrix.sha256 }}
+        run: |
+          curl --fail --location --retry 3 "https://github.com/shader-slang/slang/releases/download/v${SLANG_VERSION}/slang-${SLANG_VERSION}-linux-x86_64.tar.gz" -o /tmp/slang.tar.gz
+          echo "${SLANG_SHA256}  /tmp/slang.tar.gz" | sha256sum --check
+          mkdir /tmp/slang
+          tar -xzf /tmp/slang.tar.gz -C /tmp/slang
+      - name: Compile and reflect every catalog entry
+        env:
+          SLANG_VERSION: ${{ matrix.version }}
+        run: |
+          python tools/compile_shaders.py --slangc /tmp/slang/bin/slangc --output "build/compile-${SLANG_VERSION}"
+          python -c 'import json,os,pathlib; p=pathlib.Path("build/compile-"+os.environ["SLANG_VERSION"]+"/results.json"); r=json.loads(p.read_text()); r["pinned_release"]=os.environ["SLANG_VERSION"]; p.write_text(json.dumps(r,indent=2)+"\n")'
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: compiler-${{ matrix.version }}
+          path: build/compile-${{ matrix.version }}/results.json

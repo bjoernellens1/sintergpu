@@ -1,0 +1,184 @@
+{
+  "abi": 1,
+  "parameter_bytes": 128,
+  "bindings": {
+    "input0": 0,
+    "input1": 1,
+    "input2": 2,
+    "output0": 3,
+    "state": 4,
+    "Parameters": 5
+  },
+  "kernels": [
+    {
+      "name": "yuv_to_rgb",
+      "source": "gpu/preprocess/yuv_to_rgb.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "resize",
+      "source": "gpu/preprocess/resize.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "undistort",
+      "source": "gpu/preprocess/undistort.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "invalid_depth",
+      "source": "gpu/preprocess/invalid_depth.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "bilateral",
+      "source": "gpu/preprocess/bilateral.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "depth_register",
+      "source": "gpu/preprocess/depth_register.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "depth_resolve",
+      "source": "gpu/preprocess/depth_resolve.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "metrics",
+      "source": "gpu/quality/metrics.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "reduce",
+      "source": "gpu/quality/reduce.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "backproject",
+      "source": "gpu/geometry/backproject.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "transform_points",
+      "source": "gpu/geometry/transform_points.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "voxel_insert",
+      "source": "gpu/geometry/voxel_insert.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "coverage_heatmap",
+      "source": "gpu/guidance/coverage_heatmap.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "coverage_render",
+      "source": "gpu/guidance/coverage_render.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "normalize",
+      "source": "gpu/semantics/normalize.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "similarity",
+      "source": "gpu/semantics/similarity.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "name": "mask_postprocess",
+      "source": "gpu/semantics/mask_postprocess.slang",
+      "entry": "main",
+      "threads": [
+        8,
+        8,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/eligsir-sim",
+  "revision": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+  "license": "Apache-2.0",
+  "operation_prefix": "image",
+  "authorization": "Original owner code authorized Apache-2.0 on 2026-10-27; retained original donor and independent oracles remain separate.",
+  "profiles": {
+    "portable-fp32": {
+      "matrices": [
+        "bt601",
+        "bt709"
+      ],
+      "ranges": [
+        "limited",
+        "full"
+      ],
+      "decode_siting": "cosited-nearest",
+      "encode_siting": "centered-2x2-box",
+      "rounding": "clamp then nearest-even",
+      "oracle_tolerance_lsb": 1,
+      "exact_hip_compatible": false,
+      "gradients": "not claimed"
+    }
+  },
+  "files": [
+    {
+      "source_path": "src/eligsir_sim/video/colour.py",
+      "source_sha256": "617fd104c67646a2e390da5899f42ee43720a83d9114d8bd63fdd21d67caee37",
+      "destination": "src/sintergpu/kernels/image/camera_color.slang",
+      "imported_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "changes": [
+        "New portable FP32 profile with explicit byte pitches and uint8-packed RGB; retained HIP exact profile unchanged.",
+        "Nearest-cosited NV12 decode and centered-box encode; YUYV4:2:2 and bilinear half-pixel resize/calibrated-map additions.",
+        "Race-free disjoint-byte atomic writes preserve allocation/row padding.",
+        "Fused YUYV samples quantized RGB corners before interpolation; independent NumPy float64 scalar/vector oracles and bounded fixture harness."
+      ]
+    },
+    {
+      "source_path": "src/eligsir_sim/video/colour.py",
+      "source_sha256": "617fd104c67646a2e390da5899f42ee43720a83d9114d8bd63fdd21d67caee37",
+      "destination": "src/sintergpu/references/color.py",
+      "imported_sha256": "08ffeb68c979fecbd6c40d276d88d3a635de38b33023675ef6a893af7e945213",
+      "changes": [
+        "New portable FP32 profile with explicit byte pitches and uint8-packed RGB; retained HIP exact profile unchanged.",
+        "Nearest-cosited NV12 decode and centered-box encode; YUYV4:2:2 and bilinear half-pixel resize/calibrated-map additions.",
+        "Race-free disjoint-byte atomic writes preserve allocation/row padding.",
+        "Fused YUYV samples quantized RGB corners before interpolation; independent NumPy float64 scalar/vector oracles and bounded fixture harness."
+      ]
+    },
+    {
+      "source_path": "src/eligsir_sim/video/colour.py",
+      "source_sha256": "617fd104c67646a2e390da5899f42ee43720a83d9114d8bd63fdd21d67caee37",
+      "destination": "tests/test_color.py",
+      "imported_sha256": "83d2a923590af697986e6f06887145f8c0acd351f51ee54e9b5bc152077f85eb",
+      "changes": [
+        "New portable FP32 profile with explicit byte pitches and uint8-packed RGB; retained HIP exact profile unchanged.",
+        "Nearest-cosited NV12 decode and centered-box encode; YUYV4:2:2 and bilinear half-pixel resize/calibrated-map additions.",
+        "Race-free disjoint-byte atomic writes preserve allocation/row padding.",
+        "Fused YUYV samples quantized RGB corners before interpolation; independent NumPy float64 scalar/vector oracles and bounded fixture harness."
+      ]
+    },
+    {
+      "source_path": "src/eligsir_sim/video/colour.py",
+      "source_sha256": "617fd104c67646a2e390da5899f42ee43720a83d9114d8bd63fdd21d67caee37",
+      "destination": "tests/test_color_hot_path.py",
+      "imported_sha256": "3e0af6c0c9fc270826280d39dcc7411544bd7a5f4006a0104c0c15b5a600e0a0",
+      "changes": [
+        "New portable FP32 profile with explicit byte pitches and uint8-packed RGB; retained HIP exact profile unchanged.",
+        "Nearest-cosited NV12 decode and centered-box encode; YUYV4:2:2 and bilinear half-pixel resize/calibrated-map additions.",
+        "Race-free disjoint-byte atomic writes preserve allocation/row padding.",
+        "Fused YUYV samples quantized RGB corners before interpolation; independent NumPy float64 scalar/vector oracles and bounded fixture harness."
+      ]
+    },
+    {
+      "source_path": "src/eligsir_sim/video/colour.py",
+      "source_sha256": "617fd104c67646a2e390da5899f42ee43720a83d9114d8bd63fdd21d67caee37",
+      "destination": "benchmarks/color_pipeline.py",
+      "imported_sha256": "0114d7b800bafde382e8be421ea1bd10755e6729b8de6c60d55187cb916c2a16",
+      "changes": [
+        "New portable FP32 profile with explicit byte pitches and uint8-packed RGB; retained HIP exact profile unchanged.",
+        "Nearest-cosited NV12 decode and centered-box encode; YUYV4:2:2 and bilinear half-pixel resize/calibrated-map additions.",
+        "Race-free disjoint-byte atomic writes preserve allocation/row padding.",
+        "Fused YUYV samples quantized RGB corners before interpolation; independent NumPy float64 scalar/vector oracles and bounded fixture harness."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+SinterGPU
+Copyright 2026 Björn Ellensohn and the respective source authors.
+
+This distribution contains sources consolidated from Locus (MIT), Caspar-Slang,
+Slang-RGBD-SLAM, EliGSiR-sim and xsplat-vk (Apache-2.0), and original VKL code
+published under Apache-2.0 with the owner's authorization on 2026-10-27.
+Original authorship, revisions, source hashes, modifications and notices are
+recorded in provenance/ and references/donors/. Original source headers and
+third-party notices are retained. A source import is not hardware qualification.
+
+Generated Caspar expressions retain their generation definitions and versions.
+Third-party dependencies retain their own licenses; SinterGPU's license does not
+relicense upstream code. Restricted sources are referenced, never bundled.

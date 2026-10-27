@@ -1,0 +1,2114 @@
+{
+  "source_repository": "/home/bjoern/git/data-rig-android",
+  "source_revision": "a19596538483f7b5242073e60e62db9961668a17",
+  "import_baseline_revision": "369d628ae06431ff8b8f000da456f5b8bb6bc47d",
+  "files": [
+    {
+      "old_path": ".gitattributes",
+      "new_path": ".gitattributes",
+      "source_sha256": "65b1023623fb87849b0d7e7a39141bd9d2662d98dcd55fefc9e8bf1683d2d934",
+      "imported_sha256": "f178da9024701f51558933751aa2d03500824d3147963f2b265eda918057d72c",
+      "change_reason": "Keep wrapper line endings identical to imported Git blobs across fresh checkouts for SHA256 integrity."
+    },
+    {
+      "old_path": ".github/workflows/ci.yml",
+      "new_path": ".github/workflows/ci.yml",
+      "source_sha256": "a685bf9e8d9e1975433b66c5c2edf9c85408378e63554b7fa6b1499f94ca9795",
+      "imported_sha256": "d2c318c2ec86d6f9bf5ee69e07b0fee651cc26eb5d0b5713e9b8e7a6c22bd5dd",
+      "change_reason": "Integrate ABI 1 shared Rust timing/CDR production JNI and portable MCAP/session C facade; verify parity, session artifacts and independent reader; provision Rust and working Android tools in CI. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": ".gitignore",
+      "new_path": ".gitignore",
+      "source_sha256": "fc9fe149ce29a62ea2419f5b19ef49f9d16184bf3964572889da5ce88f33e3da",
+      "imported_sha256": "3d92a3c70bc1ce78180b54778df11f48d110b69dcbf3b635d2a99c3ff2acce07",
+      "change_reason": "Integrate ABI 1 shared Rust timing/CDR production JNI and portable MCAP/session C facade; verify parity, session artifacts and independent reader; provision Rust and working Android tools in CI."
+    },
+    {
+      "old_path": "LICENSE",
+      "new_path": "LICENSE",
+      "source_sha256": "ad6f24d841e05d057a746f7d452b896ad9dbeb6d621d5c2efd8813aa810bb6b8"
+    },
+    {
+      "old_path": "MANIFEST.sha256",
+      "new_path": "docs/history/source-verification/MANIFEST.sha256",
+      "source_sha256": "6b4af988341a2297bd58d3dc6ded0e69b7acc29aaf2d61be10aede52c595e4c8"
+    },
+    {
+      "old_path": "README.md",
+      "new_path": "README.md",
+      "source_sha256": "517aba169920eff30ec9fea77617ed1829c12fe154242cef7b19575211633ce3",
+      "imported_sha256": "896551a9a4a26fd2a047161c5d7e8c2446cf81f82a29527c4b626585437cbc88",
+      "change_reason": "Locus cross-platform ownership, current verification scope, and platform timing contract; historical source evidence explicitly labelled. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes. Enable guidance visualization by default per user request while retaining on-demand statistics; verify initial toggle label and hidden stats panel."
+    },
+    {
+      "old_path": "THIRD_PARTY.md",
+      "new_path": "THIRD_PARTY.md",
+      "source_sha256": "80b12101b9dfb69fa8f375c13428d40865ace6eae7a0f426a0865f4ab3410213"
+    },
+    {
+      "old_path": "app/build.gradle.kts",
+      "new_path": "android/app/build.gradle.kts",
+      "source_sha256": "de6b0fdc8880f4bd3dfa31e2c76ab283bd5a96c682fab3850b44d80f75769965",
+      "imported_sha256": "06043d2d57cba8874193589ae1feda6194d3342e480d057e7d73e18e0f800936",
+      "change_reason": "Resolve root native CMake project from relocated Android app. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/libs.README.md",
+      "new_path": "android/app/libs.README.md",
+      "source_sha256": "37ed949c46bdfd0c0699b012b9d32a7e5b8f0885cb174f82c40b6635dccc104c"
+    },
+    {
+      "old_path": "app/proguard-rules.pro",
+      "new_path": "android/app/proguard-rules.pro",
+      "source_sha256": "54dd4bb027ab5226b4cf932594ded4bcbfa3a694f6ab0616a1af3662d17b4638",
+      "imported_sha256": "81c16a89f62fb135872474f2c5f2785c8e1799117f015495c2d8a09bd8d44d19",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/androidTest/java/dev/datarig/app/Camera2DirectInstrumentedTest.kt",
+      "new_path": "android/app/src/androidTest/java/dev/locus/app/Camera2DirectInstrumentedTest.kt",
+      "source_sha256": "a196340b78205a6f9e7f34032eeace6bce849c695636e763cce8d646df2f058d",
+      "imported_sha256": "d9ce1aa3ed525aed22eaf930ed93fa2556bdedda1373e816ea136758427a2951",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/androidTest/java/dev/datarig/app/GpuEncoderInstrumentedTest.kt",
+      "new_path": "android/app/src/androidTest/java/dev/locus/app/GpuEncoderInstrumentedTest.kt",
+      "source_sha256": "36069e602f41664ec41543ad03762296b2d9f092d5d5d87398d1ede3518536ce",
+      "imported_sha256": "40362a01f8a0b19b1730cde51a429375d5554879607bac46b93c9dd7d9015dba",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/androidTest/java/dev/datarig/app/OusterNetworkInstrumentedTest.kt",
+      "new_path": "android/app/src/androidTest/java/dev/locus/app/OusterNetworkInstrumentedTest.kt",
+      "source_sha256": "eee019e1969992e41aa915875da96c71cdf5a16256debebe44b487ebb40e1a23",
+      "imported_sha256": "603a609ba66480ca55af0084d75c05e2621cda0b5edf3f25eb7d66f241216f34",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/androidTest/java/dev/datarig/app/RecorderInstrumentedTest.kt",
+      "new_path": "android/app/src/androidTest/java/dev/locus/app/RecorderInstrumentedTest.kt",
+      "source_sha256": "dfb54240059d369f2d3ef64cfac4f45acdc284edd99482b394311b194ea83741",
+      "imported_sha256": "f4a507cf062642f7908e3dbec0b0da18b0dc50287a2b7eb9a5f80b1f6c53bd46",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes. Enable guidance visualization by default per user request while retaining on-demand statistics; verify initial toggle label and hidden stats panel."
+    },
+    {
+      "old_path": "app/src/androidTest/java/dev/datarig/app/replay/ReplayRasterInstrumentedTest.kt",
+      "new_path": "android/app/src/androidTest/java/dev/locus/app/replay/ReplayRasterInstrumentedTest.kt",
+      "source_sha256": "fe4efcc3282ebbdd641c6adb30cd78acf28d8555f0fe2914bc68945880bcb769",
+      "imported_sha256": "0ab1847a95b7ff706cbb42003e23922cb78e971aeca9bee039c398f254069ef2",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/AndroidManifest.xml",
+      "new_path": "android/app/src/main/AndroidManifest.xml",
+      "source_sha256": "7ace91ac386d4454bf74c2e64a5cc632a7fbc27a34fbb1fc6d9cfa59914848f5",
+      "imported_sha256": "8ba34d53ab6d98c392e1e10e0a8342dc9bf96141f933f470baa8ca04cf779148",
+      "change_reason": "Apply approved Locus label, retaining dev.datarig.app package identity. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/assets/licenses/ros2/Asio.txt",
+      "new_path": "android/app/src/main/assets/licenses/ros2/Asio.txt",
+      "source_sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+    },
+    {
+      "old_path": "app/src/main/assets/licenses/ros2/Boost.txt",
+      "new_path": "android/app/src/main/assets/licenses/ros2/Boost.txt",
+      "source_sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b"
+    },
+    {
+      "old_path": "app/src/main/assets/licenses/ros2/Fast-CDR.txt",
+      "new_path": "android/app/src/main/assets/licenses/ros2/Fast-CDR.txt",
+      "source_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "old_path": "app/src/main/assets/licenses/ros2/Fast-DDS.txt",
+      "new_path": "android/app/src/main/assets/licenses/ros2/Fast-DDS.txt",
+      "source_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "old_path": "app/src/main/assets/licenses/ros2/Filewatch.txt",
+      "new_path": "android/app/src/main/assets/licenses/ros2/Filewatch.txt",
+      "source_sha256": "abf819cb52a3f37430a30e37e61185af2f2178b3c86a9377ab59fcd38da8d3f8"
+    },
+    {
+      "old_path": "app/src/main/assets/licenses/ros2/OptionParser.txt",
+      "new_path": "android/app/src/main/assets/licenses/ros2/OptionParser.txt",
+      "source_sha256": "8f25d4def2637545e0f778a6719fd9b61ec9656c6327d89b9fc5d0652c31ff3e"
+    },
+    {
+      "old_path": "app/src/main/assets/licenses/ros2/PEGTL.txt",
+      "new_path": "android/app/src/main/assets/licenses/ros2/PEGTL.txt",
+      "source_sha256": "a94ab6afe6cdeaa454fe132edb8b6b82192e87a2c9d2a2a9d60d48bfcee03a05"
+    },
+    {
+      "old_path": "app/src/main/assets/licenses/ros2/TinyXML2.txt",
+      "new_path": "android/app/src/main/assets/licenses/ros2/TinyXML2.txt",
+      "source_sha256": "abfe06a1d599efba7f7d546c3ce288bbb4d9cd9429d3f455f22268914e75705b"
+    },
+    {
+      "old_path": "app/src/main/assets/licenses/ros2/foonathan-memory.txt",
+      "new_path": "android/app/src/main/assets/licenses/ros2/foonathan-memory.txt",
+      "source_sha256": "43988333e64e64c6bcf0a25b01c72acadcd41469cfa508c98cfdb5ace69b0650"
+    },
+    {
+      "old_path": "app/src/main/assets/licenses/ros2/nlohmann-json.txt",
+      "new_path": "android/app/src/main/assets/licenses/ros2/nlohmann-json.txt",
+      "source_sha256": "cfa4951480d40f909114f18f298ca2228e7fbbff940797b6e624754514cea430"
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/MainActivity.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/MainActivity.kt",
+      "source_sha256": "2606ede54adebcddee8e43b3ca11eec939046448c8c3002d7287edd27926e0fc",
+      "imported_sha256": "a7c281da93e1129839f56e305c516b1b24301589a450a46d755a378f34ad0da5",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/ArCaptureView.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/ArCaptureView.kt",
+      "source_sha256": "45ca0358f4d83c438c0ad42c3075d0da1e0cb5f9319d10ca102e26f0be7bc652",
+      "imported_sha256": "acdcf0652f9bbb4b70f3f1bbdf6eea42fd41c7041df179a6d90351f1413917b4",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes. Enable guidance visualization by default per user request while retaining on-demand statistics; verify initial toggle label and hidden stats panel."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/ArCoreRecording.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/ArCoreRecording.kt",
+      "source_sha256": "dac7b16f8f8b98a3d7ba60d764b27e782dec6395f2bd8b2e7d96183eb74b26a1",
+      "imported_sha256": "65b70e064c0127ca1d1aeef0f8562e89b3307c6f27e619f1fbaa1a08cbb91886",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/Camera2DirectSession.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/Camera2DirectSession.kt",
+      "source_sha256": "ae76a2c8f7ecf2a6554041996b3d6307828575cc40ba2007e80933fbc5685c72",
+      "imported_sha256": "f527b488c51434080fec8f9c85dd9b0ce8cc15d95bc8b032ad6496e42959eca7",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/Camera2GpuView.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/Camera2GpuView.kt",
+      "source_sha256": "fe7d952e27f4ee7c68436762bf110ea23d499140fff8aaede73153e0ad8e4a43",
+      "imported_sha256": "5c1bad0f7173a9f3e45bdc25379166c8b4dfa6bd448b9a6e223ec996c5d3993e",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/Camera2Preview.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/Camera2Preview.kt",
+      "source_sha256": "31355b506c608643f5bc375cbebf92492ce7a8d1384e084f041f6ebf6965c40e",
+      "imported_sha256": "4e3d8d8d94a3126a316cc34ffde8de99c8d02c8c87a333120125d98eeabae472",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/CameraMetadata.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/CameraMetadata.kt",
+      "source_sha256": "f042285e13e170f28c24b9291271ae79e384db903f02c4525a0db073f3109d7f",
+      "imported_sha256": "a5ff741770666214a1654dd8cc6fbfbb7e42a543e1dea62005d29cea30978314",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/CaptureService.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/CaptureService.kt",
+      "source_sha256": "316f01a9aeb2910ead09b6364a02f074fc872f95a0def378c69997c7f63fced1",
+      "imported_sha256": "9bf25548cf41231bb975e46666576bd294c16f0ca11552f37d2b783fdb2b37fb",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/CodecCapabilityProbe.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/CodecCapabilityProbe.kt",
+      "source_sha256": "11588d0b30e25d5241e33d04e7a83b3ef3e8f5c9950dffc3fd080b993df84654",
+      "imported_sha256": "256013a5dc074909324fb434022f8b59b62dde1d2a5f79bdd1d534f0fd21af23",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/CodecVideoDrain.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/CodecVideoDrain.kt",
+      "source_sha256": "a8c46297e624643fcdf540c15c19e82d931c8b21d4fa6bb2239948d01b97b35b",
+      "imported_sha256": "f244c564466e8ec594d4cf71cfee9f2d68700cc1c943db0a5734dbcff8840133",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/Config.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/Config.kt",
+      "source_sha256": "cb35a458a394ddc7a042d7bd500e729e082288eb3edf3a64fd67a5f076d41bfd",
+      "imported_sha256": "1642160cb30b5f917ebaff3594f6f343bd391d9adf44cfcf216cf5196c60252b",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/CoverageRenderer.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/CoverageRenderer.kt",
+      "source_sha256": "14c4b8f70c4d4967262d3e1d97402965a22f44ceee183a82e35325bc91d9c55b",
+      "imported_sha256": "6a931e114d73f6678bff8d46bc33c2d113ea5232cca3df7cb8f29a5bb3d066b1",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/GlVideoEncoder.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/GlVideoEncoder.kt",
+      "source_sha256": "01e819f3fc6d18cef90d01a007c7aae13ac8f997ccb1bcd1975f5cd3b19bba4c",
+      "imported_sha256": "b53c79177ffaeea6beb60240542f87b28adaef89d1e3168558f1c0803e4829e1",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/ImageEncoder.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/ImageEncoder.kt",
+      "source_sha256": "60fb52b3829fc40baad4ae4e0734f6fb0f621815cc54c1663ddcedcb23ac2a02",
+      "imported_sha256": "94f49c4981d5fac7cb6bdbf8b8a616a2c2de5a076ccb2783e2ed1d09f0a6a9ed",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/Io.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/Io.kt",
+      "source_sha256": "c375fe544bae6351df7eb48f1ad03bd09c80ce08c527c8d5a1eb5f3c848a0f87",
+      "imported_sha256": "8cf9c6553709c468a2c92b9b553f7da61fcc72dbf93bb491f0e8221a3c1c4f0e",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/OrbbecConnection.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/OrbbecConnection.kt",
+      "source_sha256": "68da7299279482bd699f4692af9b4b7624359982f343263d0227cf83ca751c1f",
+      "imported_sha256": "88a90c99f62d5105f75dcb6980f37c707108db89e575cf024c734b150dbd8c25",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/OusterPlugin.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/OusterPlugin.kt",
+      "source_sha256": "d5468a737520c8e5a16a736a16257ed2da3909aca71f94ed06f41bf06fe6fc67",
+      "imported_sha256": "4a7e1e83c56ad00b5ce5df4bf776e7ca4a63cfc20a97ca674928852e4c764fc1",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/PhoneGnss.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/PhoneGnss.kt",
+      "source_sha256": "cb74b45484d7fbe2514ad5ff20a68ed3aefc2db018678e380451ebc5b16d0f2a",
+      "imported_sha256": "f2e31f14449f3edb7bab1a3a8638f5c3ce53ae18ddcccb89cdafb6cca9f8223d",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/PhoneSensors.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/PhoneSensors.kt",
+      "source_sha256": "74b171839a0206f0ec0ba3fc353952faa22f8b325afa537a01925510b8f81e67",
+      "imported_sha256": "dc975c334667e2a866c0d9a3e2de446ee9edb269d29b7dc855416a0d51ac68b5",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/RecordableConfigChooser.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/RecordableConfigChooser.kt",
+      "source_sha256": "452cfe1e77257bce04118b49a6e9c5a746dfe8941daa37a4eae239526b37beeb",
+      "imported_sha256": "71272555818515908e2ee3e43a2caeb4daf39f40245b84431ffb73913dab9ee3",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/RecordingSession.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/RecordingSession.kt",
+      "source_sha256": "c3575e250a014514f6e09cbc2d3e21a455d3c48d68e4e2912d9cb871d0923475",
+      "imported_sha256": "371ff287b411f4b7e2d0250024ffde9a625648e46fe8700b53cabe217ba9f5d8",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/RigRuntime.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/LocusRuntime.kt",
+      "source_sha256": "7a407b10e4c2f179b9e6f3460f8363ac7def5a81211ca7e7d7bf0bf01211382f",
+      "imported_sha256": "5d7efee283c0f4ffae2d479edf0082d72e52543efb971ad4be765894faba6a77",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/RplidarPlugin.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/RplidarPlugin.kt",
+      "source_sha256": "3343eb896442ee0b37d835f2f3a1cf024b232e6ba2eae11b8f12033112f99d9e",
+      "imported_sha256": "ae4a75205e40b5af413149e671db728f88231c198d1ce1af4c66fa550ecf7d7f",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/SharedCameraController.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/SharedCameraController.kt",
+      "source_sha256": "3868b75b4001c399d0441b2a235967dccd51334682021557177cfca89ae8e262",
+      "imported_sha256": "dfd24d73df58ec1dab73aeaa297068c06b1ccefc9afd29494d64fd08240a4bed",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/SurfaceVideoEncoder.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/SurfaceVideoEncoder.kt",
+      "source_sha256": "dc1021b594d0d7d8db345059a516663714a57de8f65e71acd7a9baa24cc51cc9",
+      "imported_sha256": "1d302c572c796f44351b99326e9e04a043d01fd647a445c2cf38f6a150cbc73b",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/capture/VendorMetadata.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/capture/VendorMetadata.kt",
+      "source_sha256": "a6c5798953a640f199022ec80aead45b3d441f363f9f7558854139b90154edbf",
+      "imported_sha256": "0c4d5de4ce771f5b4e576cd2fca1509a8009736462f2f3ee34ed394746144d4b",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/DepthRegistration.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/DepthRegistration.kt",
+      "source_sha256": "25789b56ed082f5f51f1f9fc23b376796d0150d9a920ff3b31a18387fe404006",
+      "imported_sha256": "42f0b87203bc2c94b8201b91511b69deaf8e9806f00ef1b9fcacd6262800e86b",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/RegisteredDepthImage.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/RegisteredDepthImage.kt",
+      "source_sha256": "76aaf482ae06cf8eb349a9e50ef54cb300f6e14676f9b228aa5030ccc7e7158f",
+      "imported_sha256": "d400e03acc3272679b22fc0a29883ce865ed79730db3840606e2c70b78400d35",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayController.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayController.kt",
+      "source_sha256": "584f8c2ab3a094fc73a6ffe6d6258e090487348aefe8411434b52d9103353e37",
+      "imported_sha256": "a5e88b698deea2fc432543b5d09ea304e4054f423a2642bef54ea3f5edfdb2fd",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayData.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayData.kt",
+      "source_sha256": "fa2a86dd6c610a88a5b3b54b053544aa5758e5c35c505565e06dd3222b43af5a",
+      "imported_sha256": "5fe65063b2a6baffed3fe9336114f113b631446858415afa03e88f22ecdb1285",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayDepthRegistration.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayDepthRegistration.kt",
+      "source_sha256": "bdc0e1f381bc60f2394ca0eba1b30cf4aded0051db533790fcd8998c417e3e8b",
+      "imported_sha256": "d4f58cfb37cd4f483a3fe24da4c84c9ad15a27f8a2958744d200a7f3d193931a",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayInspection.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayInspection.kt",
+      "source_sha256": "9be85628d3edf492529deafd426c37dbf9e625e96832fb841fa632c4d8a846ea",
+      "imported_sha256": "8d7eddd3275d259124beff01bba4f7ceb78e405a8e0bc2248b74b392419c689d",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayMedia.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayMedia.kt",
+      "source_sha256": "36179fed58bb81b65cce007fb5809333a51a8df7bb40a5c8537ad65690c8a923",
+      "imported_sha256": "9eb49fbf1a933169506242aa836871a1b97edc329fa555ed37082bc0b1349b51",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayOrientation.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayOrientation.kt",
+      "source_sha256": "bc9d997d1b56d23d1e5126ae616016cb8731e5ce0cdde47a7137d580f638604e",
+      "imported_sha256": "cabea48c93ef43beef6cc3d0abde8b78fecd84b73171548e1e7e19f117253fcf",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayProjection.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayProjection.kt",
+      "source_sha256": "7270a36d0e3fb3b568511a7f6034dbc8d468ecd610fed9e7925f774057287804",
+      "imported_sha256": "212ee0d271bb5c7b7a0b57bf40e4efa96f38b506355b1afae3e8dd1cf7f380b5",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayRenderTiming.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayRenderTiming.kt",
+      "source_sha256": "bfc856c4e31ee7eed23e529e65dee70e7584eedc343ff5ee3ff84ccb5eebcdd9",
+      "imported_sha256": "a5226f1078600e9f00b416eb62b42302ddb490604e6343199e78a31d2b708042",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayRos2Publisher.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayRos2Publisher.kt",
+      "source_sha256": "5e4ce6420f4e798d986b462531dc2095a993f05e2629217b904a597229efa013",
+      "imported_sha256": "8525c884b3459a31f21876413d25d58f0c2a965788b5624ed66b12ac6955c865",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayRos2Sheet.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayRos2Sheet.kt",
+      "source_sha256": "bc059dffc15843d1d24c4588f4b9b5594537d97655575ede69e39a4a59322143",
+      "imported_sha256": "eb543490231a823d023aa48a88a8a15c0a39da442be4fd4f96465c2e258813c2",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayScene.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayScene.kt",
+      "source_sha256": "3d5e96f21460f6a2ea72e6c899c85cc350be453de28ea9249b98b9014164865b",
+      "imported_sha256": "de26b36bcd6bcba02482eb56c1de213a5902a6f8c069734388f7ac2c866504c2",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayScreen.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayScreen.kt",
+      "source_sha256": "6d7fc41942b4402accd470e3316b61d94f8a4721f84d8b272fabee02b3ed1603",
+      "imported_sha256": "1b46bcb16c39d9fd95fba62e422862ce719db88dde38c0f59c1b46538514498f",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayState.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayState.kt",
+      "source_sha256": "f1d2b171ffef5ffaf0141a21101d8586b9ac71401caad668741171c72eba01b5",
+      "imported_sha256": "2c2b3fef17c2533a7b64fb09811ba9cbcd0ebae852968e98224e45935b2b732d",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/ReplayValues.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/ReplayValues.kt",
+      "source_sha256": "4221f6661d87c10f30593237692e2d04bcaa801ff1a6202cb45eb5b14ddc5a6d",
+      "imported_sha256": "aa0f27dfcc15d9084d52eeee4619d9b812f114d18cba01d4763d0cd920fcda47",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/replay/SessionLibrary.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/replay/SessionLibrary.kt",
+      "source_sha256": "e657d988c3d8d4166202f7b6943b6138009e0d60a55f506a124d42cf6507b0de",
+      "imported_sha256": "c1c08f987dc6861efeb4d2c8e7af47f9f81aaa92d0c4d3d69168a48236f5dcaf",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/ui/InspectionComponents.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/ui/InspectionComponents.kt",
+      "source_sha256": "993ccfcf9c98e1e567a45d7cb4bc74f72f794a99cda90f7e231049caba966edf",
+      "imported_sha256": "aa121e7f776e7dfde3f637c2635867287b83cbc33d715ab9b799658143d3bde9",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/java/dev/datarig/app/ui/RigApp.kt",
+      "new_path": "android/app/src/main/java/dev/locus/app/ui/LocusApp.kt",
+      "source_sha256": "63101f94f00ae7b32908d9ed41fb45610d3206996ccaf44b061092b7ec39dbbe",
+      "imported_sha256": "b7c65759ad693857e9b61adb677ff3145289d2bccf748e517773c895ddbccfe1",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes. Enable guidance visualization by default per user request while retaining on-demand statistics; verify initial toggle label and hidden stats panel."
+    },
+    {
+      "old_path": "app/src/main/res/drawable/ic_rig.xml",
+      "new_path": "android/app/src/main/res/drawable/ic_locus.xml",
+      "source_sha256": "66efb65b388dc87ff1983ebc64e77c426c435ef55ba599392a429f0c8a147b3f",
+      "change_reason": " Rebrand the Android launcher resource path to Locus."
+    },
+    {
+      "old_path": "app/src/main/res/layout/replay_player_view.xml",
+      "new_path": "android/app/src/main/res/layout/replay_player_view.xml",
+      "source_sha256": "6cb243c2f80efef08f7eaa93915186027ff40aa4fef061a5cbcaa8874662c1f6"
+    },
+    {
+      "old_path": "app/src/main/res/values/styles.xml",
+      "new_path": "android/app/src/main/res/values/styles.xml",
+      "source_sha256": "8fe0b0414e9b497abf71093b3b78ef1802d8ed02240ffbe2cc3b6814675ff96e",
+      "imported_sha256": "b9186389c3ab755898f69553994f1b30c84b360cf6edf3ca6db6d1f2263f2317",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/main/res/xml/file_paths.xml",
+      "new_path": "android/app/src/main/res/xml/file_paths.xml",
+      "source_sha256": "67f415915beb8f00c455e4442a1c68f1bfb64a2d8e9bd78ce9ca128607852ddf"
+    },
+    {
+      "old_path": "app/src/main/res/xml/network_security_config.xml",
+      "new_path": "android/app/src/main/res/xml/network_security_config.xml",
+      "source_sha256": "42efd16de3cd0257e10cef1d70dfcaf56ec324b64f70fc964f4e45cfff1b1ebc"
+    },
+    {
+      "old_path": "app/src/orbbec/assets/licenses/orbbec/LICENSE.txt",
+      "new_path": "android/app/src/orbbec/assets/licenses/orbbec/LICENSE.txt",
+      "source_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "old_path": "app/src/orbbec/java/dev/datarig/app/capture/OrbbecPlugin.kt",
+      "new_path": "android/app/src/orbbec/java/dev/locus/app/capture/OrbbecPlugin.kt",
+      "source_sha256": "791b626821d850b84db5e2945e901ef13ee56cf6c5f9fda4c39ea45c309ec0a9",
+      "imported_sha256": "603d31f36b07936748ccf8e12acf55e8d85b376b84fdeec90eecee85811d8e2f",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/realsense/assets/licenses/realsense/LICENSE",
+      "new_path": "android/app/src/realsense/assets/licenses/realsense/LICENSE",
+      "source_sha256": "c7aa1fdf0e38c4827fef17859ddbfac800b8995f3ec875a06dd23c79135f956d"
+    },
+    {
+      "old_path": "app/src/realsense/assets/licenses/realsense/NOTICE.md",
+      "new_path": "android/app/src/realsense/assets/licenses/realsense/NOTICE.md",
+      "source_sha256": "2955878353b9db9088123bf86bbbe346a9330035a13f2c21a5e4d4c1bc877aed"
+    },
+    {
+      "old_path": "app/src/realsense/assets/licenses/realsense/nlohmann-json-LICENSE.MIT",
+      "new_path": "android/app/src/realsense/assets/licenses/realsense/nlohmann-json-LICENSE.MIT",
+      "source_sha256": "46a65cffd1ea955132d95a8dd921640714a8d6b537d2e4e482d31145ae95b603"
+    },
+    {
+      "old_path": "app/src/realsense/assets/licenses/realsense/third-party-rapidxml-LICENSE",
+      "new_path": "android/app/src/realsense/assets/licenses/realsense/third-party-rapidxml-LICENSE",
+      "source_sha256": "79a6fceeefbf14164c91faf4310b5553669bb04733b61346585e73db41ceec7f"
+    },
+    {
+      "old_path": "app/src/realsense/assets/licenses/realsense/third-party-realsense-file-lz4-LICENSE",
+      "new_path": "android/app/src/realsense/assets/licenses/realsense/third-party-realsense-file-lz4-LICENSE",
+      "source_sha256": "d15d99c8dc6b0ec22174c0e563a95bc40f9363ca7f9d9d793bb5c5a8e8d0af71"
+    },
+    {
+      "old_path": "app/src/realsense/java/dev/datarig/app/capture/RealSensePlugin.kt",
+      "new_path": "android/app/src/realsense/java/dev/locus/app/capture/RealSensePlugin.kt",
+      "source_sha256": "a6dc5aca8d664361ec4ea5edb815304f48b92fb727d247bdbc8231ccfd96f184",
+      "imported_sha256": "dc9ff2166b459e925ab4ae3536f36a5d56160fa1e6869c14d3756118f3d2af9a",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/test/java/dev/datarig/app/capture/CaptureConfigDepthTest.kt",
+      "new_path": "android/app/src/test/java/dev/locus/app/capture/CaptureConfigDepthTest.kt",
+      "source_sha256": "fa64bed431f138930324e462cf7939dca6256fd82fe1bda41011728e30698f64",
+      "imported_sha256": "1d92b933cb12b0ba0fd98bbb220e08eb4e65ea65f380ca6d91d5d78c9374ed56",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/test/java/dev/datarig/app/capture/OrbbecConnectionTest.kt",
+      "new_path": "android/app/src/test/java/dev/locus/app/capture/OrbbecConnectionTest.kt",
+      "source_sha256": "d92b94bc5bcbab7cc943478984bc9e209c796f0ff2e874b3cecf6cc2d83e23a1",
+      "imported_sha256": "cf8f11c6eae3d4398d27a14a8f379d4ddeb15ba6b1f3ec3056988b172a29f7d7",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/test/java/dev/datarig/app/capture/OusterMetadataTest.kt",
+      "new_path": "android/app/src/test/java/dev/locus/app/capture/OusterMetadataTest.kt",
+      "source_sha256": "206cb4911aea810ccc537af091cf349abfffd56ae5662d5881ea4abcaaaa39d0",
+      "imported_sha256": "7b5b7911ef8896543e47967bba6c7bbc20867fa36f6438f84cb57465c6ce8db8",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/test/java/dev/datarig/app/replay/DepthRegistrationTest.kt",
+      "new_path": "android/app/src/test/java/dev/locus/app/replay/DepthRegistrationTest.kt",
+      "source_sha256": "5093e092a3cd23317246cc16f9991c64436845b9e5727f402016185b4242f355",
+      "imported_sha256": "270138376f1c313cf5cf4ad4b1857fe25f353f64932815e10e2fa97eb9538452",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/test/java/dev/datarig/app/replay/RegisteredDepthRecordingTest.kt",
+      "new_path": "android/app/src/test/java/dev/locus/app/replay/RegisteredDepthRecordingTest.kt",
+      "source_sha256": "8e7cc40ddf042a93608881991fc3c1e9229b112e02195b3a3ff1ead116ab88d7",
+      "imported_sha256": "49cbd199cac7999be8ea59579659ece182442b6f7b0b0dc885b491ee5245e337",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/test/java/dev/datarig/app/replay/ReplayDepthRegistrationTest.kt",
+      "new_path": "android/app/src/test/java/dev/locus/app/replay/ReplayDepthRegistrationTest.kt",
+      "source_sha256": "64280b10e243f6f46af21662410beec07d5f638f16ceae444b91ff9f01764c61",
+      "imported_sha256": "1516299cb68365f4c49e028e87e2e236440975495361eb96c3990bd070725840",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/test/java/dev/datarig/app/replay/ReplayProjectionTest.kt",
+      "new_path": "android/app/src/test/java/dev/locus/app/replay/ReplayProjectionTest.kt",
+      "source_sha256": "38db2ca02a449d82d61d492f4535ad31d54f730ac56740a73d591faf954aac16",
+      "imported_sha256": "2a4bbe24548ccb272d55b36c1f11d42d2ad8353aadbca1636f2e6d6f9f54382a",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "app/src/test/java/dev/datarig/app/replay/ReplayRenderTimingTest.kt",
+      "new_path": "android/app/src/test/java/dev/locus/app/replay/ReplayRenderTimingTest.kt",
+      "source_sha256": "2b2f3c56452ffae6c25f912553be47a340a63b84b5711cb8bfbc47c50051e918",
+      "imported_sha256": "3921ddb93c49b0e7cd7c6d7619e3681e946787e61caa3aa8692ae813ccda8a1f",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "build.gradle.kts",
+      "new_path": "android/build.gradle.kts",
+      "source_sha256": "265a07289acf8aac36f0429751dda5f44e5b30e38b981d22762d6d994410f001"
+    },
+    {
+      "old_path": "core/build.gradle.kts",
+      "new_path": "android/core/build.gradle.kts",
+      "source_sha256": "53ec3d0293940259048f11666a06fbe20a9ebe1411646904a1c2a0fd8fcc283c",
+      "imported_sha256": "d5f046a56e0d2de55542f8c0090cd0d129855d1c448eb75710f9653a58880e76",
+      "change_reason": "Keep JNI, portable fixtures and test jar at repository-root build. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/ArGeometryDiagnostics.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/ArGeometryDiagnostics.kt",
+      "source_sha256": "afee62c879f8ffaf8a321504392c52fad3d3b6247e9d62f7e4472b5df59d6508",
+      "imported_sha256": "d7ac8c1a6e5e9cb594efdc6972f3fbbd6bae39b38438f889b849b03a37d2bdde",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/ArtifactLedger.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/ArtifactLedger.kt",
+      "source_sha256": "020097f62541db2dd920b3447b0d50e293315a82220538cbf07c36b9b47128f5",
+      "imported_sha256": "d680d8303962b98ec5522b0ebf4b3a25fdf53e561ea9aa610e2a06404c93cb9b",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/CameraIdentity.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/CameraIdentity.kt",
+      "source_sha256": "9e46eac25bf52547f4015e451fc059eab2afb36dd190b54df6029410db82734a",
+      "imported_sha256": "64d209f3a460e134a7c436134b5a97e692516844da9566d863fe539427db5115",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/CameraLeaseQueue.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/CameraLeaseQueue.kt",
+      "source_sha256": "a26d0c631427ac33baf7fc1e2da49a7b35da60484aef410e80b4c76d02e62e9a",
+      "imported_sha256": "b69efcd0cbb5d9e36c45e741aad73cabb2af7dcbeb6524e8eb050268242b8e86",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Cdr.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Cdr.kt",
+      "source_sha256": "b18eeb92079e590a4daff9fb92efa1e6f2ac1d3f4981108637e0105a13caebb7",
+      "imported_sha256": "5cee5779d08d49f3c3ff23f5ff975682e4c062917e6880696e1c3addb214382e",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Clock.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Clock.kt",
+      "source_sha256": "6a4bda685be4a04f0f2de6c5985d788d7ef1a7411e815e2a126d433bbbf31691",
+      "imported_sha256": "0e70af446f6a233bc8361a7db14724f98813030432273d5a38a39c5e7e9bc62d",
+      "change_reason": "Integrate ABI 1 shared Rust timing/CDR production JNI and portable MCAP/session C facade; verify parity, session artifacts and independent reader; provision Rust and working Android tools in CI. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/CodecRanking.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/CodecRanking.kt",
+      "source_sha256": "9459083158c09f7022f19cfec1e8954e97dee080e03b870f1dc9b1d9cf306201",
+      "imported_sha256": "f8f334072608da3f6e4f435032221cfb47aeddb6b5ff2710f2bd1e0dcec49339",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Coverage.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Coverage.kt",
+      "source_sha256": "5741923e14b0eeb960fb35f909459a2d3195d6bdffbf3301ee8916fa56c570de",
+      "imported_sha256": "a418f5f0385b16d60cd11ec8d5a7d8a3f7d9e211987a66bd95d578fd4522d11d",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Depth.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Depth.kt",
+      "source_sha256": "8c662e2eea13b9743798e953088385050ae2fa5c55ed4607143ef247f35713b8",
+      "imported_sha256": "69b23cc54180d48f08013e6794037774e4c163ff0520c136ca8c466b15d61642",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Finalization.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Finalization.kt",
+      "source_sha256": "c5d300758573a758bc4645b8193dd96e4944a0e25c16708a53f8038b68170f17",
+      "imported_sha256": "6a46b8156638c696f2bf71cb17432a40c1956adf924e6bb6346711fd83ce8612",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Geometry.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Geometry.kt",
+      "source_sha256": "741816141cd7bbc91527cb119344ab998d2dc2ab5933894eaa21718b4b8c3e31",
+      "imported_sha256": "11f1f99c4b19c0b1204e68092f2764c9c9492a5bf521798b6f5a6589ce31260d",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Json.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Json.kt",
+      "source_sha256": "df00725f8630f0660a7f36e360ef3fde1076d907230e59d0d105f19bb565ee0c",
+      "imported_sha256": "77e0005678269a58f87b312f06a1a15beb5f7a4214f547c8396dd887206b2abd",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Keyframes.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Keyframes.kt",
+      "source_sha256": "4c2262137cf8910273a1eb1ab24052b83daef6df68e0bd3bdce280c2f57a7fc8",
+      "imported_sha256": "d510dd45883996f66af5ad5bf958815b37b6cf4ac066b0f76a6b8f0df7397dd4",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Messages.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Messages.kt",
+      "source_sha256": "410ec20737650ca42af4717671e8bd6b1c4b99a365dfba0c7595bb4419fe7668",
+      "imported_sha256": "afc26f1d1a5074d425f2dbe10ed4547df7826cf1719e1ed49da7159e9b7c224f",
+      "change_reason": "Integrate ABI 1 shared Rust timing/CDR production JNI and portable MCAP/session C facade; verify parity, session artifacts and independent reader; provision Rust and working Android tools in CI. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/NativeDepthStream.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/NativeDepthStream.kt",
+      "source_sha256": "58faeb1f43888bc132d5691dfed3e30d9033e1cdd1d3c3c94a8fc6b6e2bc2c14",
+      "imported_sha256": "ce8c722ce4c1be8dd4685a21870f4df921ae9c7e59095f1239a7b051f8129042",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/NativeEncodedVideo.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/NativeEncodedVideo.kt",
+      "source_sha256": "6eeb3ef53b78c25f133b47d9888e0abe0e37fa81239be9fff0933409210385cd",
+      "imported_sha256": "60216d0a868dbd74bd9d62e7ce3bad91be5390f9e5222622cd5f93f931170770",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/NativeSink.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/NativeSink.kt",
+      "source_sha256": "2d75bf75f55646c5237e050b18bd9f361506b2c787eb458875ec3ebbbecb51b0",
+      "imported_sha256": "647907b4115d63f315b4403781bb4decb1b72209bce11775e96dca8ef71b8c86",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Payload.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Payload.kt",
+      "source_sha256": "fbb041f26149404665610ed247a8e1728338ab269b4c4d0aac5f91880121d753",
+      "imported_sha256": "e1f10fc4c1924f62e337758dcab5d00fdb589647e3edc1792dc309f12ad41259",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Recorder.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Recorder.kt",
+      "source_sha256": "a8eec92610d78212e4a336685bb27166f70d432d4f4b126cd029a5161324d161",
+      "imported_sha256": "616f5eeaadde09d37426bfe094af9c2e9344ca950b03bc3af56ef374487680a8",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Rplidar.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Rplidar.kt",
+      "source_sha256": "935ea85c629ca59606ef264654ee9572f3f3fba88778ff4db1d15e5b6fecf505",
+      "imported_sha256": "dc8891c187d7f967b02a7834f59ff5bacc8ea5735cb821cf767ea3eee00d1a29",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Schemas.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Schemas.kt",
+      "source_sha256": "641f9d479ee42f7b9fd2a28944a1efdb0d39f0df086613dd4bd0baa89771f4ba",
+      "imported_sha256": "83aa58058029e230c1c43f683ab6096b5e53ebd4a4fe2bcd8a24941812357a4f",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/SensorVideoTimeline.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/SensorVideoTimeline.kt",
+      "source_sha256": "717200972db488fa45ed5d609b1a43b92005f3d3dc756a20650f4984ba287a29",
+      "imported_sha256": "2f37c6008283bd7d9ec1755bd42186faf84107cbaca6f22a83730ecfcaaf8b8a",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/UdpCapture.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/UdpCapture.kt",
+      "source_sha256": "a5cf5c84e35ab73b84269aaf5d53437807fcd5cd8c9c6ff980eecb1030aafc99",
+      "imported_sha256": "07f7375feb15bed487c326a2bb074d4d742c557855ba09c5b6d16eb2227ae5a2",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/VendorCalibration.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/VendorCalibration.kt",
+      "source_sha256": "5637476d85ce0207f31b7209b228067a8dffc6edc21d4c95ff55b9d069804f3b",
+      "imported_sha256": "8500f184656713ac304c976c80cb8a37235c4a70083e8f2ebfe1006a787db410",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/Video.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/Video.kt",
+      "source_sha256": "4b2e6a8e2c4caf760ef86051c133418ed451ab4da697df556ed245685b954897",
+      "imported_sha256": "40bbf9d6bfd901ca96ed2ac8a9f9aafa4892943420615b00cd373423bb196598",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/replay/ReplayArchive.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/replay/ReplayArchive.kt",
+      "source_sha256": "2787b9feeb270730e16627a07587753dd8b8ed5812998cfc4c90369fccdcc6a4",
+      "imported_sha256": "476cb3d885ac20836e367c50c27b39b4e383220c64f7eeea7d40188549b8450d",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/replay/ReplayCdr.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/replay/ReplayCdr.kt",
+      "source_sha256": "afbc38ed75d12e848726436529449549dc80067c48b14dabe4f9cba6ceac87f2",
+      "imported_sha256": "219d30bc59ee3bca535f5edc6e4bd1706f62482b8a24a26c17edb8f74bd3bbae",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/replay/ReplayIndex.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/replay/ReplayIndex.kt",
+      "source_sha256": "74b9a1bece09dfb2715af052713f47fa322d15f2f12a04f0739b46541f68418d",
+      "imported_sha256": "c32f5e1019455720d9fd45d5ea8f32cee52e6eece798b3017ca4d713686cbaba",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/replay/VideoIdentity.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/replay/VideoIdentity.kt",
+      "source_sha256": "001d0e3c9294bd9affdb24e621f625a263ce296be9090e0cd6a15e8079b56125",
+      "imported_sha256": "1f52fba6801316d4df9ced509ccc46f1dfe213f368d876ab0ed62feebce1df42",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/ros2/NativeRosPublisher.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/ros2/NativeRosPublisher.kt",
+      "source_sha256": "5a4d870cb34001e61beb4d253af2fa9ed02f517633b64552070465830c541682",
+      "imported_sha256": "25841d5eb3290a9be18ac7d7875f7e3ec2c4fb72e2eb4d369717a5388b8b2e32",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/main/kotlin/dev/datarig/core/ros2/ReplayPublicationControl.kt",
+      "new_path": "android/core/src/main/kotlin/dev/locus/core/ros2/ReplayPublicationControl.kt",
+      "source_sha256": "d6cbe651c66d99104ab68072dead569ec210fb5370c007411a35fc7b66047bbd",
+      "imported_sha256": "05527801ec5346334e2da664aacae8829238e5dc51cb514d424fd6878e9d9229",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/AdvancedTests.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/AdvancedTests.kt",
+      "source_sha256": "544903d7c1f512001806009d406e561683785766f4e2e8265243009ae6d509bf",
+      "imported_sha256": "25821afa357402980168c28ae6677e9206c70ef499a2e7825c43bde479489cf7",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/ArGeometryDiagnosticsTests.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/ArGeometryDiagnosticsTests.kt",
+      "source_sha256": "3c99e2c5a04f2cd70ad184dc134b31ea64cb1454a33af71a37f5094d28d417a6",
+      "imported_sha256": "8c3e18d03478dc43d4bbc242aebdd16c6b4fe28746428ce16e04e160f2d794e1",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/CodecRankingTests.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/CodecRankingTests.kt",
+      "source_sha256": "fbe6b1afebfb9d13a3febe9b18264104f7c2fa5f5d62409e4498040ab56d1222",
+      "imported_sha256": "189b169d871922931a769cf53253a53e873c5d5b5adb7ec51a7fbf3a7cf693e2",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/CoreTests.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/CoreTests.kt",
+      "source_sha256": "ae2a2576a8c741e8ff6cc8687132265942ba39475ad59bd64cfef190636ab112",
+      "imported_sha256": "1f4785826697bd90d80e86850c145af778c8a05f58e6df241970198ddf3a39b1",
+      "change_reason": "Integrate ABI 1 shared Rust timing/CDR production JNI and portable MCAP/session C facade; verify parity, session artifacts and independent reader; provision Rust and working Android tools in CI. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/DirectPayloadBenchmark.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/DirectPayloadBenchmark.kt",
+      "source_sha256": "4ad0c04990fdd76637fab5e5c221186ca7e961fd10998e4ba6a546b260d03142",
+      "imported_sha256": "9a58852d7641655d02a818b2304dd12753d688c077452567124c894e984157b8",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/DirectPayloadTests.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/DirectPayloadTests.kt",
+      "source_sha256": "aa21cfc78afcfbcd5e155c58e3bbea424f29d1ece0ddc050f9ed86316d99e3f2",
+      "imported_sha256": "0d3bd4aba3a939263c6ef4e6ad5a59a805cbee027bfec6c5bd9f5e1366168915",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/NativeDepthTests.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/NativeDepthTests.kt",
+      "source_sha256": "358cf447e8ad6360a301e941a9f6878a07552f0adfe4cdf02b6b7cd0bddbb7c6",
+      "imported_sha256": "30e4096a5d50e3741126086c780a62caa284faf75ee10944b3ea5a8487f9ada6",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/ReplayPublicationTests.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/ReplayPublicationTests.kt",
+      "source_sha256": "b54772ce72a8ff51e0d5a35f36e2962d1f6e6e76dc8062da2b406157ed63c3b3",
+      "imported_sha256": "a49ae0647fe2c45ad7a609115c650e46258f8aa1f6886f7f00cda197af880eb2",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/ReplayRos2Tests.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/ReplayRos2Tests.kt",
+      "source_sha256": "ec9a84e867d26bf0bda14f81a5be8d0c18ddb71aebfc069fd16a78c9c17a2ab0",
+      "imported_sha256": "4074f2af6f6addcdbcdd0d38e8bb572886eb28e17303a26c0b56f20a3db796f7",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/SensorVideoTimelineTests.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/SensorVideoTimelineTests.kt",
+      "source_sha256": "2546b0fa010f6adc4e5fa4dcae88b7caf434f0f5e8ac0f239d2ba59754157ae4",
+      "imported_sha256": "a8b97a276d547a3fea0b6173462334bdb36708c3b2e05beb8354a3bfeb96649d",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/VideoIdentityTests.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/VideoIdentityTests.kt",
+      "source_sha256": "bd72fd38b07a1956e5e34185f1b8c3e2e73e27c67a95f3b9ab55d8629b514341",
+      "imported_sha256": "04905774157196d4972093a48ab603ff4da51bbe71d499608ae737aaae09966f",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "core/src/test/kotlin/dev/datarig/core/VideoRoundTripFixture.kt",
+      "new_path": "android/core/src/test/kotlin/dev/locus/core/VideoRoundTripFixture.kt",
+      "source_sha256": "cff4095e499e72ee48bc4064ea2d3e543bdc169a8d83aa6f750d66391668cac3",
+      "imported_sha256": "66d3404255a9f5ac012dbd523179d3854d496072f969ad4d0e6669708e7eae80",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "docs/ARCHITECTURE.md",
+      "new_path": "docs/ARCHITECTURE.md",
+      "source_sha256": "59cc3ef3990a3d2022d1f4c5c2cae4371c38be634c86117d9551856f6075ee05",
+      "imported_sha256": "b8972b3b69e021a3e280607e93c4b7b6da275fbfd626a8b6e295a8af68eb366d",
+      "change_reason": "Locus cross-platform ownership, current verification scope, and platform timing contract; historical source evidence explicitly labelled.; reviewed Locus migration documentation, immersive capture UI, guidance refinement and project naming integration"
+    },
+    {
+      "old_path": "docs/DATA_CONTRACT.md",
+      "new_path": "docs/DATA_CONTRACT.md",
+      "source_sha256": "01b49808e5cbbf61b465673b279843d38d80f692c746694a1e523694a874659e",
+      "imported_sha256": "ffa7700dbd33be7a7729d499caf9aae4ae5c5a44978e4e222b63d24810eabff5",
+      "change_reason": "Locus cross-platform ownership, current verification scope, and platform timing contract; historical source evidence explicitly labelled."
+    },
+    {
+      "old_path": "docs/EXTERNAL_SENSORS.md",
+      "new_path": "docs/EXTERNAL_SENSORS.md",
+      "source_sha256": "48c1f7043192d1a098f4868129e3a4b613a16f14e6131672091e8ef338556164",
+      "imported_sha256": "d9d7c75ccbf04ffa356956ef645bbca3605dd85991a161cf185c5e8e880d2402",
+      "change_reason": "Update operational Android/protocol paths for relocated layout. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "docs/HARDWARE_QUALIFICATION.md",
+      "new_path": "docs/HARDWARE_QUALIFICATION.md",
+      "source_sha256": "15b464d538a1043cee2552bf32ac5b497fde38decbecc53c9c4b0842020397ae",
+      "imported_sha256": "51d3d9aeb117edcd2c9fceccf6d5cf282d164b4bec006041553aa3fa37fb474e",
+      "change_reason": "Update operational Android/protocol paths for relocated layout. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "docs/LIMITATIONS.md",
+      "new_path": "docs/LIMITATIONS.md",
+      "source_sha256": "b1f59ee250098593a7c13d88d2d6c3bac9adcff31b9c4b42782738b8a2f3b4df",
+      "imported_sha256": "0bc8dbb7e2e413ce1aa6bdc28fe0a9368f899440f4b77e2cc62d959b518abb06",
+      "change_reason": "Locus cross-platform ownership, current verification scope, and platform timing contract; historical source evidence explicitly labelled.; reviewed Locus migration documentation, immersive capture UI, guidance refinement and project naming integration"
+    },
+    {
+      "old_path": "docs/PHONE_UI_VALIDATION.md",
+      "new_path": "docs/PHONE_UI_VALIDATION.md",
+      "source_sha256": "9cf03d6d8f442fbcb6fd4c6a4695ecd3a5114eca58afb54997dfd0d7fc9afbe5"
+    },
+    {
+      "old_path": "docs/REVIEW_PASSES.md",
+      "new_path": "docs/REVIEW_PASSES.md",
+      "source_sha256": "e5301df6d04ade25380abc1c400f6a6f89c96470c1c636c687f26aa0bbfa37e0"
+    },
+    {
+      "old_path": "docs/ROS2_NATIVE_BUILD.md",
+      "new_path": "docs/ROS2_NATIVE_BUILD.md",
+      "source_sha256": "43f0f87c6f66f2057488da3c4420f4212cf7eb91a74416941158d3b785e0b06f",
+      "imported_sha256": "dd718d535f3bc91b9664a92d33aadb25d28222eb3159ecccdad383a2e10e85a0",
+      "change_reason": "Update operational Android/protocol paths for relocated layout. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "docs/ROS2_NATIVE_VERIFICATION.md",
+      "new_path": "docs/ROS2_NATIVE_VERIFICATION.md",
+      "source_sha256": "595d65fc218c20f0527d27cb378f79d101ee8cfa8d217fac3e49639ec5fb7cc2"
+    },
+    {
+      "old_path": "docs/ROS2_REPLAY_VALIDATION.md",
+      "new_path": "docs/ROS2_REPLAY_VALIDATION.md",
+      "source_sha256": "67f496fcd3b1fe5d540c41cf6f04298aa2b15b18d317ddd0055273e84a0f4c16"
+    },
+    {
+      "old_path": "docs/SESSION_REPLAY_VALIDATION.md",
+      "new_path": "docs/SESSION_REPLAY_VALIDATION.md",
+      "source_sha256": "07768c63025f9b6754324471854405695401fc13ec06e7ee32b9a0f1c1f82b34"
+    },
+    {
+      "old_path": "docs/SOURCES.md",
+      "new_path": "docs/SOURCES.md",
+      "source_sha256": "acb5e221b984dc1dbfaed602f5c52e4ce24d0d8b1210e9b3ac96681b055835c9"
+    },
+    {
+      "old_path": "docs/TEST_REPORT.md",
+      "new_path": "docs/TEST_REPORT.md",
+      "source_sha256": "1c7b5b8d7573e4783927f1ed417576daa6afb8d8b032d76f10e46cf6228da3e8",
+      "imported_sha256": "42b2ccc889901d99ad0dbadd6894e7024bfa06c4093bc5e2376bdccf8b26f176",
+      "change_reason": "Locus cross-platform ownership, current verification scope, and platform timing contract; historical source evidence explicitly labelled.; reviewed Locus migration documentation, immersive capture UI, guidance refinement and project naming integration"
+    },
+    {
+      "old_path": "docs/ci/android-smoke.md",
+      "new_path": "docs/ci/android-smoke.md",
+      "source_sha256": "02f28a26e42b29260e27dcb5bd763db0a1268dbde8be0f979f3764d55fe16fbd"
+    },
+    {
+      "old_path": "docs/design/live-3d-feasibility.md",
+      "new_path": "docs/design/live-3d-feasibility.md",
+      "source_sha256": "39817a19ae96ecf3d79969122fcbde6635d9443cba50348472f15980c4147af7"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-arcore-geometry.md",
+      "new_path": "docs/performance/2026-09-25-arcore-geometry.md",
+      "source_sha256": "c0b88d5609ffe3df165db04bd518ac0569c4d2d0b194ec4ea31a5e82b67c5f38"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-camera2-direct.md",
+      "new_path": "docs/performance/2026-09-25-camera2-direct.md",
+      "source_sha256": "112e23bf0f34352aa8219b969a25069b8f4ea31afd68a51da2d70a42e106c97d"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-camera2-stop-investigation.md",
+      "new_path": "docs/performance/2026-09-25-camera2-stop-investigation.md",
+      "source_sha256": "13e7d8af085c9bfd0f42af09ad0eebdac484dbef4ba404184c25a0a7f26f1542"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-capture-fast-paths-plan.md",
+      "new_path": "docs/performance/2026-09-25-capture-fast-paths-plan.md",
+      "source_sha256": "a1a71208f30cccfa3adc7f8fcb87c55b25157e3b812271b14852fb094be3cae6"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-codec-probe-report.md",
+      "new_path": "docs/performance/2026-09-25-codec-probe-report.md",
+      "source_sha256": "efc1f9a1ec5147489b9cbe7a32b9c79d13d0157281d0e9a53cc6258425c3903f"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-crc-implementation-report.md",
+      "new_path": "docs/performance/2026-09-25-crc-implementation-report.md",
+      "source_sha256": "602fe697c755eec41557d4f02cf6c33b0cf5b48593e9edd8fba05d07373d48e3"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-device-integration.md",
+      "new_path": "docs/performance/2026-09-25-device-integration.md",
+      "source_sha256": "75afc09a57a49b8c463ffa16f727e4d693916f4d3081bf217b4449dfe0d88316"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-external-sdk.md",
+      "new_path": "docs/performance/2026-09-25-external-sdk.md",
+      "source_sha256": "485874a58d0da2a924388dcff8785183216e6c846124af7714cb9ceb18ce13a1"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-native-buffer-path.md",
+      "new_path": "docs/performance/2026-09-25-native-buffer-path.md",
+      "source_sha256": "673974dd2e741d88e27793bd172e8f92a1593f8837ba049a15f3b7317dd71c73"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-native-depth.md",
+      "new_path": "docs/performance/2026-09-25-native-depth.md",
+      "source_sha256": "bc27525c98e4a129f05d4edd5f2516c5819a0797ba7d2361df6314899156674e"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-network-emulation.md",
+      "new_path": "docs/performance/2026-09-25-network-emulation.md",
+      "source_sha256": "84952b71e5995f895359a0396688eeeeb33f6a17f0de21cc625a7ccdc23dc318"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-orbbec-network.md",
+      "new_path": "docs/performance/2026-09-25-orbbec-network.md",
+      "source_sha256": "756545e8f8910dcd021d7b05f4bf418f383deebe9f80083afb7fb113af995306"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-pass1-task-briefs.md",
+      "new_path": "docs/performance/2026-09-25-pass1-task-briefs.md",
+      "source_sha256": "d6b8c42dc659c421f92b86e464c443b7530276fc1348729c4ae5c6bafb9144ae"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-pixel-qualification.md",
+      "new_path": "docs/performance/2026-09-25-pixel-qualification.md",
+      "source_sha256": "0cf80756e2c56cd4d5669c264930b073044ebc7a4a2ab170b687b96035137876"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-registered-depth.md",
+      "new_path": "docs/performance/2026-09-25-registered-depth.md",
+      "source_sha256": "c9a3e310d7e273086439a11d0449e32e0b9ddca377a3f83ad68f5c4442f5abdf"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-replay-overlays.md",
+      "new_path": "docs/performance/2026-09-25-replay-overlays.md",
+      "source_sha256": "232c2788e4d8b974db95e87c08a48f501d4e4ea150cbf51df26b571c936989d5"
+    },
+    {
+      "old_path": "docs/performance/2026-09-25-trace-tooling.md",
+      "new_path": "docs/performance/2026-09-25-trace-tooling.md",
+      "source_sha256": "dbbf5e52b8907bcdb21f248aae204d6006ff3bf13078ec0d3c50a83aa03c6800"
+    },
+    {
+      "old_path": "docs/performance/measurement-template.md",
+      "new_path": "docs/performance/measurement-template.md",
+      "source_sha256": "a065e9d8cf34530b3a9a5a54178816acc823436b5e592ede9cbe72d5850a30d0"
+    },
+    {
+      "old_path": "docs/superpowers/plans/2026-09-25-session-replay.md",
+      "new_path": "docs/superpowers/plans/2026-09-25-session-replay.md",
+      "source_sha256": "1bd929817d53aebdc5b22fee0de956985dd3b1b0ec89fc569b4d3dd726d1c155"
+    },
+    {
+      "old_path": "docs/superpowers/plans/2026-10-05-cross-platform-base.md",
+      "new_path": "docs/superpowers/plans/2026-10-05-cross-platform-base.md",
+      "source_sha256": "3ab36ba5158647a4722ec9b9248e67ce7ecb6996c196b9e85615767de3ee760a"
+    },
+    {
+      "old_path": "docs/superpowers/specs/2026-09-25-session-replay-design.md",
+      "new_path": "docs/superpowers/specs/2026-09-25-session-replay-design.md",
+      "source_sha256": "266dd320edbc197b2120cf358621f5d3544b7d00f291fc9047401396ac70c3d1"
+    },
+    {
+      "old_path": "docs/superpowers/specs/2026-10-05-cross-platform-base-design.md",
+      "new_path": "docs/superpowers/specs/2026-10-05-cross-platform-base-design.md",
+      "source_sha256": "aa522b7fd34c73da1968c030a453f5411ecdb32bd6ecf147f46428148472e75e"
+    },
+    {
+      "old_path": "fixtures/cdr/camera_info.cdr",
+      "new_path": "fixtures/cdr/camera_info.cdr",
+      "source_sha256": "b6e32d4ab76164e5c2e121fa4cbeb985940112e2d2a8911a26b8d715edeee31a"
+    },
+    {
+      "old_path": "fixtures/cdr/camera_info.msg",
+      "new_path": "fixtures/cdr/camera_info.msg",
+      "source_sha256": "c9de122ac6d9a84acf2472a638cd0d53f8493a72ca70b84f09daa9d40d8a74f0"
+    },
+    {
+      "old_path": "fixtures/cdr/fix.cdr",
+      "new_path": "fixtures/cdr/fix.cdr",
+      "source_sha256": "c60401ae0c4e6720ff3457d30ac784b7f3e9ec9e37564fca8069eb6dc22eb0ca"
+    },
+    {
+      "old_path": "fixtures/cdr/fix.msg",
+      "new_path": "fixtures/cdr/fix.msg",
+      "source_sha256": "8a67b15a62a3cc61d7d4e13c7255f863586ba0a0e9dd928d8153b2fbfffbf4f6"
+    },
+    {
+      "old_path": "fixtures/cdr/image.cdr",
+      "new_path": "fixtures/cdr/image.cdr",
+      "source_sha256": "8fd9ffeb29ba17b18f1bc7469b60c47b9429cc0989a6e3a55ab7dedf2065faba"
+    },
+    {
+      "old_path": "fixtures/cdr/image.msg",
+      "new_path": "fixtures/cdr/image.msg",
+      "source_sha256": "aeaa3a151d96543ba747adeb7cc0260eac1a6798b7f8db10bf29c30057b61aa2"
+    },
+    {
+      "old_path": "fixtures/cdr/imu_accel.cdr",
+      "new_path": "fixtures/cdr/imu_accel.cdr",
+      "source_sha256": "c14f2a76689fe34a7473a24d3e86fe3d791401ecbf5441cf49ae7769fa46bfcc"
+    },
+    {
+      "old_path": "fixtures/cdr/imu_accel.msg",
+      "new_path": "fixtures/cdr/imu_accel.msg",
+      "source_sha256": "c5d169489261050667512173d2ee7a04dd31f9a0b615358dab69055cd28bf7fd"
+    },
+    {
+      "old_path": "fixtures/cdr/imu_gyro.cdr",
+      "new_path": "fixtures/cdr/imu_gyro.cdr",
+      "source_sha256": "2a1c56ec55477e6cab36d6b5c50f54aaba74be1fa7d5b1e2e39a71dd79e268b0"
+    },
+    {
+      "old_path": "fixtures/cdr/imu_gyro.msg",
+      "new_path": "fixtures/cdr/imu_gyro.msg",
+      "source_sha256": "c5d169489261050667512173d2ee7a04dd31f9a0b615358dab69055cd28bf7fd"
+    },
+    {
+      "old_path": "fixtures/cdr/jpeg.cdr",
+      "new_path": "fixtures/cdr/jpeg.cdr",
+      "source_sha256": "e3fbcec2d03a04371bcd2456abc2920d1f21637bcd8504854c35a7f29bf6f02e"
+    },
+    {
+      "old_path": "fixtures/cdr/jpeg.msg",
+      "new_path": "fixtures/cdr/jpeg.msg",
+      "source_sha256": "af8418e3e41d5d9dc2f12efa9b938db08fd0128846bf13c57e34ab9017d066f5"
+    },
+    {
+      "old_path": "fixtures/cdr/magnetic.cdr",
+      "new_path": "fixtures/cdr/magnetic.cdr",
+      "source_sha256": "e19d37b03386ab98c584dd776b0a596343cc9b1261a31f4da3886607db7c16a9"
+    },
+    {
+      "old_path": "fixtures/cdr/magnetic.msg",
+      "new_path": "fixtures/cdr/magnetic.msg",
+      "source_sha256": "351320133941932071fa6b52a62eb6fe764c2fa3c0f5242ae72ebbcbc809bd3b"
+    },
+    {
+      "old_path": "fixtures/cdr/manifest.tsv",
+      "new_path": "fixtures/cdr/manifest.tsv",
+      "source_sha256": "a73c30b2e4b2fb12f6ea9f97f22723ecec453f1d59a75fa1dad2b42519664b4d"
+    },
+    {
+      "old_path": "fixtures/cdr/packet.cdr",
+      "new_path": "fixtures/cdr/packet.cdr",
+      "source_sha256": "6f97b45f66c9b5b4520f1166c3159c84dd0696cd33c91557682a62a6588d50b7"
+    },
+    {
+      "old_path": "fixtures/cdr/packet.msg",
+      "new_path": "fixtures/cdr/packet.msg",
+      "source_sha256": "f986caff0b21f61b88b73ddb0ad9f05ad072dfc95f2a31689c31d72f6a80f229"
+    },
+    {
+      "old_path": "fixtures/cdr/points.cdr",
+      "new_path": "fixtures/cdr/points.cdr",
+      "source_sha256": "a9654d80247269c1f4c79a5d07178a69978c53092286ea94a5c56b348c7be1de"
+    },
+    {
+      "old_path": "fixtures/cdr/points.msg",
+      "new_path": "fixtures/cdr/points.msg",
+      "source_sha256": "0ec7f08f0a7a52bdc8c2008f89fa0ea241477b2ba4482d3a06ccba217cfdd035"
+    },
+    {
+      "old_path": "fixtures/cdr/pose.cdr",
+      "new_path": "fixtures/cdr/pose.cdr",
+      "source_sha256": "c7abcea7f8b7270be4cf8f7fec75a2695eb0f6e588269030a3275a7a8015f320"
+    },
+    {
+      "old_path": "fixtures/cdr/pose.msg",
+      "new_path": "fixtures/cdr/pose.msg",
+      "source_sha256": "f845547df6f236bab0861d74cf98c387aa22b13be8b4a7155be256548ac05ee2"
+    },
+    {
+      "old_path": "fixtures/cdr/pressure.cdr",
+      "new_path": "fixtures/cdr/pressure.cdr",
+      "source_sha256": "37cea9784a1c1e87cdcb9fd44fb981a9528d23b9bd6c47e333a61f85393206dd"
+    },
+    {
+      "old_path": "fixtures/cdr/pressure.msg",
+      "new_path": "fixtures/cdr/pressure.msg",
+      "source_sha256": "f1653d7849c68a21e0b78dba3f4564e99ac1a670e3ef3d8a2ca84495470d5d39"
+    },
+    {
+      "old_path": "fixtures/cdr/rational_info.cdr",
+      "new_path": "fixtures/cdr/rational_info.cdr",
+      "source_sha256": "cd24d38dc0a87ba9c298673d4fb202096a2e69aec15d4ec2a1d70f29f2313eb3"
+    },
+    {
+      "old_path": "fixtures/cdr/rational_info.msg",
+      "new_path": "fixtures/cdr/rational_info.msg",
+      "source_sha256": "c9de122ac6d9a84acf2472a638cd0d53f8493a72ca70b84f09daa9d40d8a74f0"
+    },
+    {
+      "old_path": "fixtures/cdr/raw.cdr",
+      "new_path": "fixtures/cdr/raw.cdr",
+      "source_sha256": "65e695a3127bcb9dd35dc31c34f037d655142915be5c6d441cea44c6e0f1ac2f"
+    },
+    {
+      "old_path": "fixtures/cdr/raw.msg",
+      "new_path": "fixtures/cdr/raw.msg",
+      "source_sha256": "204567ebaa4222494f7ca8765f0abd15d4d6346cbe4d88525a64fada4a881cc3"
+    },
+    {
+      "old_path": "fixtures/cdr/scan.cdr",
+      "new_path": "fixtures/cdr/scan.cdr",
+      "source_sha256": "94594bd6ee20e49a56e1a1ccf9860ebfa4bcd12658709a2c40097ee55a328f89"
+    },
+    {
+      "old_path": "fixtures/cdr/scan.msg",
+      "new_path": "fixtures/cdr/scan.msg",
+      "source_sha256": "3134beda4543fba7ff66bc601b3151dd3db3bfe7e5901aa2ac3091273978d6b3"
+    },
+    {
+      "old_path": "fixtures/cdr/sensor.cdr",
+      "new_path": "fixtures/cdr/sensor.cdr",
+      "source_sha256": "06c6dfa141a5ec1aaaf2fd5a8ba8b5ef19a0c290f3b94d0bd06818329524a0dc"
+    },
+    {
+      "old_path": "fixtures/cdr/sensor.msg",
+      "new_path": "fixtures/cdr/sensor.msg",
+      "source_sha256": "69ab14caac2694f7f42082121ccd1dcc1d3b88776f46f29154c896e11ae43ad9"
+    },
+    {
+      "old_path": "fixtures/cdr/text.cdr",
+      "new_path": "fixtures/cdr/text.cdr",
+      "source_sha256": "24e3ae0086e5be5a3ebc24f806865479ad7fdb550d0b3c71eabefb2d2d2abe21"
+    },
+    {
+      "old_path": "fixtures/cdr/text.msg",
+      "new_path": "fixtures/cdr/text.msg",
+      "source_sha256": "8d7bb56baf93c614a97f38518ec46615ad1265c4ee5f4e84173d86fcf4130b6e"
+    },
+    {
+      "old_path": "fixtures/cdr/tf.cdr",
+      "new_path": "fixtures/cdr/tf.cdr",
+      "source_sha256": "a940d6cfce5a67f8ad4854b2a7af65ff11cf5dbac78084e391d2a9b0c2b023cf"
+    },
+    {
+      "old_path": "fixtures/cdr/tf.msg",
+      "new_path": "fixtures/cdr/tf.msg",
+      "source_sha256": "da6bceb36b5c6858d35e8b3bb4d7fca2a7d069fa222062ef3e81305e605a0f07"
+    },
+    {
+      "old_path": "fixtures/cdr/tf_aggregate.cdr",
+      "new_path": "fixtures/cdr/tf_aggregate.cdr",
+      "source_sha256": "1c70c271d90d79f46047bc7fddd8446cdf9feb988df9ec75cebecd5741909681"
+    },
+    {
+      "old_path": "fixtures/cdr/tf_aggregate.msg",
+      "new_path": "fixtures/cdr/tf_aggregate.msg",
+      "source_sha256": "da6bceb36b5c6858d35e8b3bb4d7fca2a7d069fa222062ef3e81305e605a0f07"
+    },
+    {
+      "old_path": "fixtures/cdr/timing.cdr",
+      "new_path": "fixtures/cdr/timing.cdr",
+      "source_sha256": "9584791bd90dacff041c07afc21cea4075a5c9c395bba80ba6aab966cc2cd09d"
+    },
+    {
+      "old_path": "fixtures/cdr/timing.msg",
+      "new_path": "fixtures/cdr/timing.msg",
+      "source_sha256": "f15dc9ecb17b3bf0cbb38c42f97d51ec92955dad9462169fcb5a4bcb6b2c43b6"
+    },
+    {
+      "old_path": "fixtures/cdr/tracking.cdr",
+      "new_path": "fixtures/cdr/tracking.cdr",
+      "source_sha256": "ecfe1dcc40b1d28749a8afac3aba1c82835c86a4147bd6d0c6b358d1aa851142"
+    },
+    {
+      "old_path": "fixtures/cdr/tracking.msg",
+      "new_path": "fixtures/cdr/tracking.msg",
+      "source_sha256": "ab33b6d8fdddd90c707c864d0a0dc419cfe4c22eefcad84d01b6f683d7bf0297"
+    },
+    {
+      "old_path": "fixtures/cdr/video.cdr",
+      "new_path": "fixtures/cdr/video.cdr",
+      "source_sha256": "6b9d002002e9702484b3bf47993ec55bd7a86e8f48f1912b0647a81d475fa1fb"
+    },
+    {
+      "old_path": "fixtures/cdr/video.msg",
+      "new_path": "fixtures/cdr/video.msg",
+      "source_sha256": "4acdc46a3d52eca937a7d4c39b550ee05774c6c82e5901f21b1c96664a220f86"
+    },
+    {
+      "old_path": "fixtures/synthetic.mcap",
+      "new_path": "fixtures/synthetic.mcap",
+      "source_sha256": "58e8af96f68b75bb5227ff4d2ea52c092b301297bcd336e00af359ee6c62c14f"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/README.md",
+      "new_path": "fixtures/video-roundtrip/README.md",
+      "source_sha256": "7f288fa295581b3f4115d36cf4c3f72283f7902c61276503ff929ba834d1ad98"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/original.h264",
+      "new_path": "fixtures/video-roundtrip/original.h264",
+      "source_sha256": "7b5a8cb9150b78239591abdf5722bd6130cb621b4b4658f35515218368a5ad1c"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/recording/capture_00000.mcap",
+      "new_path": "fixtures/video-roundtrip/recording/capture_00000.mcap",
+      "source_sha256": "0f93614a18be35c4ed650255267f113b3e781c9022bae2bfa80af8a6aa011075"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/recording/capture_00001.mcap",
+      "new_path": "fixtures/video-roundtrip/recording/capture_00001.mcap",
+      "source_sha256": "86c9a5a82f939698271e37c666647fa8288f83b041d9dd2690984a3c4b247629"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/recording/capture_00002.mcap",
+      "new_path": "fixtures/video-roundtrip/recording/capture_00002.mcap",
+      "source_sha256": "44690e8c73ded41308626e053c6bea6fe144f5547e08683c634463cf38d2c619"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/recording/capture_00003.mcap",
+      "new_path": "fixtures/video-roundtrip/recording/capture_00003.mcap",
+      "source_sha256": "b7f3006b8cef15271e260a77ba786654fa30cd51baa240bc230985eba38db1a8"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/recording/capture_00004.mcap",
+      "new_path": "fixtures/video-roundtrip/recording/capture_00004.mcap",
+      "source_sha256": "e542399266e575c4427bc7998ee772a7393952987f5315062f9512f931a7b688"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/recording/capture_00005.mcap",
+      "new_path": "fixtures/video-roundtrip/recording/capture_00005.mcap",
+      "source_sha256": "dd68a79ba5819abef24700d11a35110674a5533b7ec4629dc34d1d23a3912e53"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/recording/session.json",
+      "new_path": "fixtures/video-roundtrip/recording/session.json",
+      "source_sha256": "1b8fb2d1584ce95fc2f643dca5275834bdba5f340f4684a151a81bfa93171be4"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/recovered.h264",
+      "new_path": "fixtures/video-roundtrip/recovered.h264",
+      "source_sha256": "7b5a8cb9150b78239591abdf5722bd6130cb621b4b4658f35515218368a5ad1c"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/recovered.h264.frames.jsonl",
+      "new_path": "fixtures/video-roundtrip/recovered.h264.frames.jsonl",
+      "source_sha256": "1a41bbb7d451d8beb8ce24f6598ca530e62c1c5fb92b95fb4745df72c42d7def"
+    },
+    {
+      "old_path": "fixtures/video-roundtrip/recovered.h264.json",
+      "new_path": "fixtures/video-roundtrip/recovered.h264.json",
+      "source_sha256": "5bf7b8de9b3e3c04df8358b1fdbb81e26076922e11dd01864a9ef8f4f9f11074"
+    },
+    {
+      "old_path": "gradle.properties",
+      "new_path": "android/gradle.properties",
+      "source_sha256": "c3dd36c5091ae2fb8fd2a0ddbf98e2679ef85b3e1a4672fbbf136bc7734aa42a"
+    },
+    {
+      "old_path": "gradle/wrapper/gradle-wrapper.jar",
+      "new_path": "android/gradle/wrapper/gradle-wrapper.jar",
+      "source_sha256": "2db75c40782f5e8ba1fc278a5574bab070adccb2d21ca5a6e5ed840888448046"
+    },
+    {
+      "old_path": "gradle/wrapper/gradle-wrapper.properties",
+      "new_path": "android/gradle/wrapper/gradle-wrapper.properties",
+      "source_sha256": "fe90ff0d9944879f591a8c37b6dbaf5046d1051ccbb6b26b22081692c321f432"
+    },
+    {
+      "old_path": "gradlew",
+      "new_path": "android/gradlew",
+      "source_sha256": "a3648413b47ef77af21d5ebc36c687c7d103aaef3e17f33de7d4f080a6f300a3"
+    },
+    {
+      "old_path": "gradlew.bat",
+      "new_path": "android/gradlew.bat",
+      "source_sha256": "2209f919a22528af59a2af2ad97e8d056cca18e39f7d87aa3fd549a73b180150"
+    },
+    {
+      "old_path": "native/CMakeLists.txt",
+      "new_path": "native/CMakeLists.txt",
+      "source_sha256": "3006dc5a585ff8d2e3c56bbf19ab9647914dfcab39955cae66937e7f24707ac4",
+      "imported_sha256": "9b1dc31ea1573370b6556c74dd6c32e929c516e943586a70b6548b4bac481c29",
+      "change_reason": "Integrate ABI 1 shared Rust timing/CDR production JNI and portable MCAP/session C facade; verify parity, session artifacts and independent reader; provision Rust and working Android tools in CI. Add bounded shared hot-path regression tests and a dedicated Release epoch/CDR/session benchmark. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/include/rig/crc.hpp",
+      "new_path": "native/include/locus/crc.hpp",
+      "source_sha256": "9ab1d1ac32959b8317a10bf066f25fb97e5a853b138a96b376fa828945feba10",
+      "imported_sha256": "a758cf4fc935d763b4ad7c3f6a17bbda328846df9d7b2930bba9bf57de6212be",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/include/rig/encoded_video.hpp",
+      "new_path": "native/include/locus/encoded_video.hpp",
+      "source_sha256": "31f74d66593b54a20f50c7a98c86d675d55b6a65dde167c22ac30c704b6867e4",
+      "imported_sha256": "320e4406e95323f8a1b4d2509e8d8d09d45ea412023c16f4e8da7b6571ead255",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/include/rig/mcap.hpp",
+      "new_path": "native/include/locus/mcap.hpp",
+      "source_sha256": "ce3eae7de453fd012e9103ccecb9803b8c27ca7995da7fca87f08a827f57f7d4",
+      "imported_sha256": "2d877d680448ffad4264cb87ba00e219388f16ffb1693460369b275a547f82d6",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/src/crc.cpp",
+      "new_path": "native/src/crc.cpp",
+      "source_sha256": "fd1f7c3a7e8d46b693010998dd7563c4b518c2508d6735f80d4b07ad07b58e61",
+      "imported_sha256": "45cd088e898ade58846ba86c3eae1a7ac1def0e7fd1c2f5eb2caac879d040916",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/src/crc_arm.cpp",
+      "new_path": "native/src/crc_arm.cpp",
+      "source_sha256": "6ee09443a206e49589e4abaa3c8cc75093fe291d3af9dc6c01a2cc7139700b2d",
+      "imported_sha256": "25d4d601d1bc3d7b0ee67e9ccd5e3db00bc73db0b3ba2ba4e3e189d8a82eb5b8",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/src/encoded_video.cpp",
+      "new_path": "native/src/encoded_video.cpp",
+      "source_sha256": "d0245f1c80d7cfcb0f023fdd55ec91cfcfc0bf06160106f8165761aa61cf36ad",
+      "imported_sha256": "abbd90466e2119c89526265d1288a3cdba42b2b51fe93034fb3e3c37d251fda4",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/src/jni.cpp",
+      "new_path": "native/src/jni.cpp",
+      "source_sha256": "30df2f71eb33a07c8d75d619e995d30e821a6b26a8cf5bbdcd36643986aefacd",
+      "imported_sha256": "c93fd07e7a479928147bdfdbf17ff5c96fc8b22915f2f499b0116d9df3976e08",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/src/mcap.cpp",
+      "new_path": "native/src/mcap.cpp",
+      "source_sha256": "3ccacdd3f3d339ee50aabca887979bebb23d3521ae5287a6f8dfa7d4da74a46a",
+      "imported_sha256": "284c815bb4aaf5237af28f22a79a56c0a472321315f849d6e9b8d246bfd5281a",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/src/ros2_jni.cpp",
+      "new_path": "native/src/ros2_jni.cpp",
+      "source_sha256": "e3fffc21abd7c58f6cfb8bceb2459bb43758afd0dc8ffae6f531e1c42c577d05",
+      "imported_sha256": "315bf4bada9c2895b9a1a407f6988e8fb28f5dc088562c4b2ea2952a0f5e042a",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/tests/benchmark.cpp",
+      "new_path": "native/tests/benchmark.cpp",
+      "source_sha256": "aed5df4dc93c28c2c150b0890ee91f6ab771ec98be44a60cfeb22f43e4d58bca",
+      "imported_sha256": "94e83c752f3def0e3d15e5aeb4028bc5fe606545b0912e0b86c61a520cd1b95a",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/tests/benchmark_crc.cpp",
+      "new_path": "native/tests/benchmark_crc.cpp",
+      "source_sha256": "1b845a43c43d8b2bf6b7dea3d2111cbe1ef5b278fdb1cde6996a8ee5a37c3acf",
+      "imported_sha256": "7c9f705813477823080b17921d2cd5f412fa56186774b93d6715e85ace6d2f08",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/tests/check_crc_build.py",
+      "new_path": "native/tests/check_crc_build.py",
+      "source_sha256": "ff4db1cc38da6f137eb6d029b8f221eca6fbb94a4878cacef16c66b69cde56df"
+    },
+    {
+      "old_path": "native/tests/fixture.cpp",
+      "new_path": "native/tests/fixture.cpp",
+      "source_sha256": "e9a11ec23b0f6b1426407effef4f2766bd8156d1ec38c3b98510c0c7474182bd",
+      "imported_sha256": "7ed2c4aeb01ff691de014a49d6bb70bd602b4712a24121fc154ff216eff36b0e",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/tests/test_crc.cpp",
+      "new_path": "native/tests/test_crc.cpp",
+      "source_sha256": "acb8308bd1ff4cf381d713879c359a5a7735d9bf6d9b18e10623bcc499287484",
+      "imported_sha256": "27c1b330d618b449bd9e3407030fbca4bae92112a73c8276da4ff395a947f6e5",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/tests/test_encoded_video.cpp",
+      "new_path": "native/tests/test_encoded_video.cpp",
+      "source_sha256": "9e511583e6ca40725ee208fffe5f1e9358cd7857b87049d823455ff78a236407",
+      "imported_sha256": "6797e9799c6f3fea6632e016478ea8b210264412c601904cc553ca422d5a03fd",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "native/tests/test_mcap.cpp",
+      "new_path": "native/tests/test_mcap.cpp",
+      "source_sha256": "72d8a36f45f7c418a899da3334d8327f579e9602e7b9aa9363c440f86f9bac14",
+      "imported_sha256": "fc36efc34a6df3f3c11969ed7a1f182ad0e3127ac5f2ef2ec882a34121ea4572",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "renovate.json",
+      "new_path": "renovate.json",
+      "source_sha256": "e80b4e42a3043bc12fa0640db4bac392d2bf770acf841360d7c8ceeeac2ec1a9"
+    },
+    {
+      "old_path": "ros2/datarig_msgs/CMakeLists.txt",
+      "new_path": "protocol/ros2/datarig_msgs/CMakeLists.txt",
+      "source_sha256": "eae25dd4c680d9611d23a9a0e88442f47d94cdaa34b717afb4fb9ed982ccf197"
+    },
+    {
+      "old_path": "ros2/datarig_msgs/msg/CaptureTime.msg",
+      "new_path": "protocol/ros2/datarig_msgs/msg/CaptureTime.msg",
+      "source_sha256": "f15dc9ecb17b3bf0cbb38c42f97d51ec92955dad9462169fcb5a4bcb6b2c43b6"
+    },
+    {
+      "old_path": "ros2/datarig_msgs/msg/EncodedVideo.msg",
+      "new_path": "protocol/ros2/datarig_msgs/msg/EncodedVideo.msg",
+      "source_sha256": "c0885ff81719ee85420ae0eef3c409ba4008a59e2bd93f451f263ff7b3f91a09"
+    },
+    {
+      "old_path": "ros2/datarig_msgs/msg/RawPacket.msg",
+      "new_path": "protocol/ros2/datarig_msgs/msg/RawPacket.msg",
+      "source_sha256": "68442a5b42dccf7b399b58040d463b0025c79356614aee79dd8c65351209c7ea"
+    },
+    {
+      "old_path": "ros2/datarig_msgs/msg/SensorSample.msg",
+      "new_path": "protocol/ros2/datarig_msgs/msg/SensorSample.msg",
+      "source_sha256": "d24971b356f175c02cb997dca37eb4d9fa22d03b37d0bbc97cf3d42673d069db"
+    },
+    {
+      "old_path": "ros2/datarig_msgs/msg/TrackingState.msg",
+      "new_path": "protocol/ros2/datarig_msgs/msg/TrackingState.msg",
+      "source_sha256": "63ddcac7b482eae913897a7694bfe9ecaa045b5ffea1c0d5967f10796a6d94ec"
+    },
+    {
+      "old_path": "ros2/datarig_msgs/package.xml",
+      "new_path": "protocol/ros2/datarig_msgs/package.xml",
+      "source_sha256": "b94f5998468148da7e991e7c06e63fb2e8e82037762fc22daf757c39a960f0ba"
+    },
+    {
+      "old_path": "schemas/rig-calibration.example.json",
+      "new_path": "protocol/schemas/rig-calibration.example.json",
+      "source_sha256": "26f089b753dcc0f092c3253ca6225cbd9d748bc9d60de33a00ab34af2805552b"
+    },
+    {
+      "old_path": "schemas/ros2/builtin_interfaces/Time.msg",
+      "new_path": "protocol/schemas/ros2/builtin_interfaces/Time.msg",
+      "source_sha256": "82b2ca3410fad5ba6c127315e0a554f7561f19c01883f0e58d7530bdd481e557"
+    },
+    {
+      "old_path": "schemas/ros2/datarig_msgs/CaptureTime.msg",
+      "new_path": "protocol/schemas/ros2/datarig_msgs/CaptureTime.msg",
+      "source_sha256": "f15dc9ecb17b3bf0cbb38c42f97d51ec92955dad9462169fcb5a4bcb6b2c43b6"
+    },
+    {
+      "old_path": "schemas/ros2/datarig_msgs/RawPacket.msg",
+      "new_path": "protocol/schemas/ros2/datarig_msgs/RawPacket.msg",
+      "source_sha256": "68442a5b42dccf7b399b58040d463b0025c79356614aee79dd8c65351209c7ea"
+    },
+    {
+      "old_path": "schemas/ros2/datarig_msgs/SensorSample.msg",
+      "new_path": "protocol/schemas/ros2/datarig_msgs/SensorSample.msg",
+      "source_sha256": "d24971b356f175c02cb997dca37eb4d9fa22d03b37d0bbc97cf3d42673d069db"
+    },
+    {
+      "old_path": "schemas/ros2/datarig_msgs/TrackingState.msg",
+      "new_path": "protocol/schemas/ros2/datarig_msgs/TrackingState.msg",
+      "source_sha256": "63ddcac7b482eae913897a7694bfe9ecaa045b5ffea1c0d5967f10796a6d94ec"
+    },
+    {
+      "old_path": "schemas/ros2/geometry_msgs/Point.msg",
+      "new_path": "protocol/schemas/ros2/geometry_msgs/Point.msg",
+      "source_sha256": "fb6346cb209ce2d812819cfbf43b99e3c695a4a8dd15f1e67ce63999b6f1c793"
+    },
+    {
+      "old_path": "schemas/ros2/geometry_msgs/Pose.msg",
+      "new_path": "protocol/schemas/ros2/geometry_msgs/Pose.msg",
+      "source_sha256": "76eaa040947dac477abb4c7a985997445824bdb2eb122aa126bcd2243bd3571b"
+    },
+    {
+      "old_path": "schemas/ros2/geometry_msgs/PoseStamped.msg",
+      "new_path": "protocol/schemas/ros2/geometry_msgs/PoseStamped.msg",
+      "source_sha256": "79caa48b10d27397d0f5779497ea35ad2cd589708a5020c502925331ba983d48"
+    },
+    {
+      "old_path": "schemas/ros2/geometry_msgs/Quaternion.msg",
+      "new_path": "protocol/schemas/ros2/geometry_msgs/Quaternion.msg",
+      "source_sha256": "010b5de32446052fde14d0d54248564d6da0f3c28719ac922c43a77d95e6131e"
+    },
+    {
+      "old_path": "schemas/ros2/geometry_msgs/Transform.msg",
+      "new_path": "protocol/schemas/ros2/geometry_msgs/Transform.msg",
+      "source_sha256": "15a2737615e00d222d6d3f013f3c7f25fdff54641928eeac4f6a99e4a8432384"
+    },
+    {
+      "old_path": "schemas/ros2/geometry_msgs/TransformStamped.msg",
+      "new_path": "protocol/schemas/ros2/geometry_msgs/TransformStamped.msg",
+      "source_sha256": "99530c27d1de7c19705f0c594861dd8a3cec01f1056449b05f8982e73aa2d7e0"
+    },
+    {
+      "old_path": "schemas/ros2/geometry_msgs/Vector3.msg",
+      "new_path": "protocol/schemas/ros2/geometry_msgs/Vector3.msg",
+      "source_sha256": "fb6346cb209ce2d812819cfbf43b99e3c695a4a8dd15f1e67ce63999b6f1c793"
+    },
+    {
+      "old_path": "schemas/ros2/ouster_sensor_msgs/PacketMsg.msg",
+      "new_path": "protocol/schemas/ros2/ouster_sensor_msgs/PacketMsg.msg",
+      "source_sha256": "f986caff0b21f61b88b73ddb0ad9f05ad072dfc95f2a31689c31d72f6a80f229"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/CameraInfo.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/CameraInfo.msg",
+      "source_sha256": "c93db83a0b9ac3a28b33501e45009a87e9ecf61376958833ab6f5253276e9f8d"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/CompressedImage.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/CompressedImage.msg",
+      "source_sha256": "8b1f9eed44970bd183d6b2476682ec678fac8c4b22bae35add665a887b756b8a"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/FluidPressure.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/FluidPressure.msg",
+      "source_sha256": "4c780ea36e786ac4856da1d06341406d4b5f82e34222b5567b63bb8d6e190ed0"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/Image.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/Image.msg",
+      "source_sha256": "49b8078fec525cc8d39f15e15c58c6f6daa2802ea0c005d711d1e1f269a1588e"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/Imu.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/Imu.msg",
+      "source_sha256": "a39a6f465142c9eccc40cb0da59ad79a7311465cd5d804efa6eafeb9ae8d006f"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/LaserScan.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/LaserScan.msg",
+      "source_sha256": "d9359193edc65ec763d342baa720be2d25a104e4bfb9d03ece5839aa2050ba74"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/MagneticField.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/MagneticField.msg",
+      "source_sha256": "03637a5bc0e7f1031f2cc4361729f99b0f02448560790af0961dc290ab3cdc12"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/NavSatFix.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/NavSatFix.msg",
+      "source_sha256": "3d7e3e9fd15e68e614edb91803e4f8b6b088931f6d5c43f7e9cdedb51dab0570"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/NavSatStatus.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/NavSatStatus.msg",
+      "source_sha256": "e81ddf51b3047df1b63f063e55a3bd62405209f73ec656fe08d1b044ced159f2"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/PointCloud2.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/PointCloud2.msg",
+      "source_sha256": "1fcec62d08fee07878e2b680e96c30436590ffab3434dcd8a7c7c4e10d1d3791"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/PointField.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/PointField.msg",
+      "source_sha256": "12ce5dee759e611009669c367b66987aba72b27af06aed8623c37dd11751cdd8"
+    },
+    {
+      "old_path": "schemas/ros2/sensor_msgs/RegionOfInterest.msg",
+      "new_path": "protocol/schemas/ros2/sensor_msgs/RegionOfInterest.msg",
+      "source_sha256": "2860eae8e1372e6a14e3379c6f06de48a8744e2c18b01f8b508e1c10f61c6fb7"
+    },
+    {
+      "old_path": "schemas/ros2/std_msgs/Header.msg",
+      "new_path": "protocol/schemas/ros2/std_msgs/Header.msg",
+      "source_sha256": "3c9d8d2c89b657fe7030bfdbd2ba88349330360879a31f52468898ae2a5f4aad"
+    },
+    {
+      "old_path": "schemas/ros2/std_msgs/String.msg",
+      "new_path": "protocol/schemas/ros2/std_msgs/String.msg",
+      "source_sha256": "8d7bb56baf93c614a97f38518ec46615ad1265c4ee5f4e84173d86fcf4130b6e"
+    },
+    {
+      "old_path": "schemas/ros2/tf2_msgs/TFMessage.msg",
+      "new_path": "protocol/schemas/ros2/tf2_msgs/TFMessage.msg",
+      "source_sha256": "f3fca610a59b31ee4c7b740522ecdd0fd8c76002170088111409e4df513f1dfc"
+    },
+    {
+      "old_path": "settings.gradle.kts",
+      "new_path": "android/settings.gradle.kts",
+      "source_sha256": "12a5c32e922d415c4f8cc20f7b7c8e1cbf056a240fb68ae2f64d4f6cc963199a",
+      "imported_sha256": "45399be6b7ce4b636506e6d25f514db9d8d07204ad5174a8f28d54f37961fdec",
+      "change_reason": "Rename Android build display name to Locus."
+    },
+    {
+      "old_path": "tests/test_interop.py",
+      "new_path": "tests/test_interop.py",
+      "source_sha256": "f1b23c9442071ad372a22ff4d49e18cee558e7df49159c134e12a9412bb9544a"
+    },
+    {
+      "old_path": "tests/test_ui_preview.py",
+      "new_path": "tests/test_ui_preview.py",
+      "source_sha256": "2ea6fe8ae66ed7fff83f3724cf1fa2a8a19cc15c4a48291fc52ccb7e4e192108"
+    },
+    {
+      "old_path": "tests/test_video_export.py",
+      "new_path": "tests/test_video_export.py",
+      "source_sha256": "190c89eb0e0344f586ff568a5508c1bae6e94077a86740bc84edfc583ed01f7f",
+      "imported_sha256": "ebd376e33f5e561cfe0a8c1836da9dacf375f79a8e44ea64d8ecaee7d7b2ad1a",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/ParseKotlin.kt",
+      "new_path": "tools/ParseKotlin.kt",
+      "source_sha256": "4044a0cef64c4b35c1039d66ebd14a7f209c59f3922672a612f5028a95ffa217"
+    },
+    {
+      "old_path": "tools/camera2/check_direct_path.py",
+      "new_path": "tools/camera2/check_direct_path.py",
+      "source_sha256": "96cbffff1633d8c1aea863866071f59248595a6987036c383d7b7a2c8ccd29c1",
+      "imported_sha256": "58a022fc5cda78919b796fe612292132f3eca6635aff42e267369d48635e298e",
+      "change_reason": "Resolve relocated camera sources. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/check-kotlin-syntax.sh",
+      "new_path": "tools/check-kotlin-syntax.sh",
+      "source_sha256": "4063fa883ba8f20d5f4ef578de447f58081bf1d36f94025c05be05aaea70d67d",
+      "imported_sha256": "7928ceba23d7d365693059be6ee8c84c45c6ed51d46de6e25edfaca99a3aff1d",
+      "change_reason": "Check relocated Android sources."
+    },
+    {
+      "old_path": "tools/ci-android-smoke.sh",
+      "new_path": "tools/ci-android-smoke.sh",
+      "source_sha256": "132a6104b1780bbf2921a0887755ae6374e83512b99ba4fc6f54523491f67204",
+      "imported_sha256": "aee6312bee7f34c29ece2bfe6dba1a76b648903cf44f0596070a5c8fe147c2bd",
+      "change_reason": "Resolve relocated Gradle project and instrumentation reports. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/export_video.py",
+      "new_path": "tools/export_video.py",
+      "source_sha256": "e49ba9ad75ae935b97f0f53725140b05d4a680037b757a62b5d634f28fe8ce82"
+    },
+    {
+      "old_path": "tools/mcap_tool.py",
+      "new_path": "tools/mcap_tool.py",
+      "source_sha256": "812aa8f4a978ab99c37ea83f478019fe90c8ce2d6c2677d8e556d7506191b765"
+    },
+    {
+      "old_path": "tools/official_reader_check.py",
+      "new_path": "tools/official_reader_check.py",
+      "source_sha256": "d6664f3317eb00ac576b3c2b98993557d1af841bcb38052143ee7cad70ab74d0",
+      "imported_sha256": "63ba27ee000a51036b82f421ade3212e4acebafa05e44a328953d77f0f065b12",
+      "change_reason": "Integrate ABI 1 shared Rust timing/CDR production JNI and portable MCAP/session C facade; verify parity, session artifacts and independent reader; provision Rust and working Android tools in CI."
+    },
+    {
+      "old_path": "tools/perfetto/README.md",
+      "new_path": "tools/perfetto/README.md",
+      "source_sha256": "d5b3858d7fa67408d0af09b28ffccc432d2c44089799ae61ce46ad1c687722a8"
+    },
+    {
+      "old_path": "tools/perfetto/account_session.py",
+      "new_path": "tools/perfetto/account_session.py",
+      "source_sha256": "7ab882f3f0db7820897fffcd6249c57af9649f9362c796b61153e0f8d6c6f9cf"
+    },
+    {
+      "old_path": "tools/perfetto/collect.py",
+      "new_path": "tools/perfetto/collect.py",
+      "source_sha256": "418d172d8901c765fdd24264bbce784a1134e9fd5284b2b64a64fa3ba50959d9",
+      "imported_sha256": "d1b88a26fcd5224df07fd4191db0103f06b701fd4c35c90b68335e7c1ca8a9c4",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/perfetto/configs/art-alloc.pbtxt",
+      "new_path": "tools/perfetto/configs/art-alloc.pbtxt",
+      "source_sha256": "29c4d58fc2109db8db6367f76a0ab4b89f3ca2a84d6db1cc66c5d7e39df674cd"
+    },
+    {
+      "old_path": "tools/perfetto/configs/native-alloc.pbtxt",
+      "new_path": "tools/perfetto/configs/native-alloc.pbtxt",
+      "source_sha256": "382f87765c0b467d5a08c0b68d62f6913449276c035afbb1c79560e7f429a356"
+    },
+    {
+      "old_path": "tools/perfetto/configs/throughput.pbtxt",
+      "new_path": "tools/perfetto/configs/throughput.pbtxt",
+      "source_sha256": "3bb48f8af49587c6f1676a1271b3c9e72ed25aeaacaa851a537558cf5acf4bf5"
+    },
+    {
+      "old_path": "tools/perfetto/profile.example.json",
+      "new_path": "tools/perfetto/profile.example.json",
+      "source_sha256": "796c3baceb54d6352fc25d7ab2ee5efda9245112cb40977fe5d1f43b54807a93"
+    },
+    {
+      "old_path": "tools/perfetto/schema-lock.json",
+      "new_path": "tools/perfetto/schema-lock.json",
+      "source_sha256": "99dd3db942f49d61c91bab54b7e6e956fcf1683521f14fb1568068118d6d9738"
+    },
+    {
+      "old_path": "tools/perfetto/test_account_session.py",
+      "new_path": "tools/perfetto/test_account_session.py",
+      "source_sha256": "472744375dd906451a9e7ac142af32a6291de8631e9216fbf6ed0716872098bd"
+    },
+    {
+      "old_path": "tools/perfetto/test_collect.py",
+      "new_path": "tools/perfetto/test_collect.py",
+      "source_sha256": "e9d266276a16d9c813634052e013ce61da454ca01fbaa19b4525485538b08443",
+      "imported_sha256": "000037cda3b96c2bb992e0c0edf5a3e17fb3b6da28efb291d80932f4db40d5a4",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/perfetto/test_sql.py",
+      "new_path": "tools/perfetto/test_sql.py",
+      "source_sha256": "9bfe921a0a7d7a2221f9a47ad51e8a6690d6b106b57a8327ad532419823a9a80"
+    },
+    {
+      "old_path": "tools/perfetto/trace_checks.sql",
+      "new_path": "tools/perfetto/trace_checks.sql",
+      "source_sha256": "1e2f12a8219995e60531029761878d1f171f368ad070549ac76b48b4c3322e08",
+      "imported_sha256": "82620e31906ba3ac21b7f8dbf7228d7dedafca2e905391fd0d7e6c26bb953820",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/perfetto/validate_configs.py",
+      "new_path": "tools/perfetto/validate_configs.py",
+      "source_sha256": "200bf69d8d968f7e1b20920d1b7fc3cc27ac4f926d139ddb6244c14766297218",
+      "imported_sha256": "8080d836c401be7701eba83fef732bd1a5c9b705da92495b339cb3b26bd33a94",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/ros2-deps.sh",
+      "new_path": "tools/ros2-deps.sh",
+      "source_sha256": "7cc3e81f21ff7c7a56d36ea9fab8c941350caa7f98722e61017bef29b89a12d3",
+      "imported_sha256": "54cc5107587892c7baf3dc87213dd52508e39d41f527c8512ae416ae60f0aeb5",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/ros2/stress_check.py",
+      "new_path": "tools/ros2/stress_check.py",
+      "source_sha256": "5bc72f5682b486489eef17bd6abdd5c7d264cc6c2e24c21b8f32fcfd4bacc541",
+      "imported_sha256": "7746ed3f2a0e3df9e4fe07016252d6e227a8382d3c8d562e662ed4045e428a1b",
+      "change_reason": "Rename active project identifiers and tool paths to Locus; preserve protocol wire names and historical source identities."
+    },
+    {
+      "old_path": "tools/ros2/subscriber_check.py",
+      "new_path": "tools/ros2/subscriber_check.py",
+      "source_sha256": "5b7ffd7d54e57f76911b0f42b74a3d35f2dd13e5f17505bede28f17b8ba70b13",
+      "imported_sha256": "fe833eccfa65960848c725c0654f9ec78d762bffc0da5c353b1a2b4f29a11deb",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/start-arcore-emulator.sh",
+      "new_path": "tools/start-arcore-emulator.sh",
+      "source_sha256": "353890e7bedce64490a497a6ebc0da9383312ca7e028a1e193fa752dc6cc7cd6",
+      "imported_sha256": "84aba04e10dcd6a02085fd69087e7c8d5d65f5822f6aed222dbf4ae6760bd12f",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/test-host.sh",
+      "new_path": "tools/test-host.sh",
+      "source_sha256": "228385f1cb3f8d6176d5f79a90e4d9aaa3f0df7ede271f02e61281d31be84d49",
+      "imported_sha256": "a117f86ca6bff0228e9421a5f33c20e4618405449f0927c06ab91ea9f76e462c",
+      "change_reason": "Integrate ABI 1 shared Rust timing/CDR production JNI and portable MCAP/session C facade; verify parity, session artifacts and independent reader; provision Rust and working Android tools in CI. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/vendor-deps.sh",
+      "new_path": "tools/vendor-deps.sh",
+      "source_sha256": "db50d380e5ded1064e7b0e40627553a3859a756db33774ccf3bf2fb6ac36f369",
+      "imported_sha256": "2c6562558625a4449988a9c96aa560a0b31dd086680d85db64f1d280992ad533",
+      "change_reason": "Stage AARs under Android app and use relocated wrapper. Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/vendor/audit_aar.py",
+      "new_path": "tools/vendor/audit_aar.py",
+      "source_sha256": "ffc9c8b3cadafc71ff9d7f4322256d47ebdeaa3f7a3fb236ac05eda73a9b1dcd"
+    },
+    {
+      "old_path": "tools/vendor/lock.json",
+      "new_path": "tools/vendor/lock.json",
+      "source_sha256": "ca1ea3397b2bdc70a3aaa5ee902cb967858c4f06416ab7271e543f59b35f5d9e"
+    },
+    {
+      "old_path": "tools/vendor/realsense/build.gradle",
+      "new_path": "tools/vendor/realsense/build.gradle",
+      "source_sha256": "06a68d31982703cb4cb9bbb583729aab9380bb59ab8f54837ea81cedbf0d73ba"
+    },
+    {
+      "old_path": "tools/vendor/realsense/gradle.properties",
+      "new_path": "tools/vendor/realsense/gradle.properties",
+      "source_sha256": "ecb1816c5caa6644d0c944a64ed26d4867cadf3d576b6402e4b18fe56b6e586e"
+    },
+    {
+      "old_path": "tools/vendor/realsense/settings.gradle",
+      "new_path": "tools/vendor/realsense/settings.gradle",
+      "source_sha256": "b3a843f5b8b6394556c27fed12eeec6d9078985c4ed6fc69dfa2f40083346559",
+      "imported_sha256": "f7b0683745e593dd90173b412bafaa830b732aaea03f79058d2c0bd089565b61",
+      "change_reason": " Rebrand active Locus project names, packages, libraries and tooling; retain recording wire identities and historical source hashes."
+    },
+    {
+      "old_path": "tools/vendor/test_audit_aar.py",
+      "new_path": "tools/vendor/test_audit_aar.py",
+      "source_sha256": "1b3dba936a75e4b2d169a63e5c004e21191ff31ebf0f63839b6743fb62b3a823"
+    },
+    {
+      "old_path": "ui-preview/capture-preview.png",
+      "new_path": "ui-preview/capture-preview.png",
+      "source_sha256": "3063da9fe11f643c7df75365bac086cec468d8def931260baaba75a2ba804ee4"
+    },
+    {
+      "old_path": "ui-preview/desktop-preview.png",
+      "new_path": "ui-preview/desktop-preview.png",
+      "source_sha256": "7e3317ea6e6bc547914f4f15ca696be756433e702c3a706fb689624a0f883784"
+    },
+    {
+      "old_path": "ui-preview/index.html",
+      "new_path": "ui-preview/index.html",
+      "source_sha256": "fc83937f738a7f6e0aaafa823a6ed29558cdf02d57414bf0fcbef47963421810"
+    },
+    {
+      "old_path": "ui-preview/sensors-preview.png",
+      "new_path": "ui-preview/sensors-preview.png",
+      "source_sha256": "fd7ec18cb3dc44187407c736263dc6b1e10b5b94270e089d7067016571191451"
+    },
+    {
+      "old_path": "ui-preview/sessions-preview.png",
+      "new_path": "ui-preview/sessions-preview.png",
+      "source_sha256": "3a00d4c1bab46790b60e40a615086c6cc3c729dbf6257969181900a47afdacc3"
+    },
+    {
+      "old_path": "ui-preview/setup-preview.png",
+      "new_path": "ui-preview/setup-preview.png",
+      "source_sha256": "cfca6b31adc446e305618304a766ae9f1318e9e731e156fe7504aba801f838ff"
+    },
+    {
+      "old_path": "verification/all-python-tests.xml",
+      "new_path": "docs/history/source-verification/all-python-tests.xml",
+      "source_sha256": "5e4e1f4d224b4c279928868698e628ca813b8363453a0b2216c173dc72f8143f"
+    },
+    {
+      "old_path": "verification/android-build-attempt.log",
+      "new_path": "docs/history/source-verification/android-build-attempt.log",
+      "source_sha256": "7484af767ca6d9ada8672cd3f51f29af69ff4e68554ec475706ef3ea1765f809"
+    },
+    {
+      "old_path": "verification/benchmark-validation.json",
+      "new_path": "docs/history/source-verification/benchmark-validation.json",
+      "source_sha256": "372a57727a4eeb767e4d39a6afc40f6d0b5964add845e311482db6f67fdc1f44"
+    },
+    {
+      "old_path": "verification/benchmark.json",
+      "new_path": "docs/history/source-verification/benchmark.json",
+      "source_sha256": "1a200587700127af1d6ffb209ea1c10c269c63e94079764c892721e138257ef0"
+    },
+    {
+      "old_path": "verification/fixture-validation.json",
+      "new_path": "docs/history/source-verification/fixture-validation.json",
+      "source_sha256": "b14abd4e770b3402822d8617a72ac84557562cb45d62a9f0db1cf858226e70b6"
+    },
+    {
+      "old_path": "verification/kotlin-build.log",
+      "new_path": "docs/history/source-verification/kotlin-build.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "old_path": "verification/kotlin-results.json",
+      "new_path": "docs/history/source-verification/kotlin-results.json",
+      "source_sha256": "9329a9a5772fe030bf1963ec295046466063cdcc2faab49cfc5a5c224bd47b08"
+    },
+    {
+      "old_path": "verification/kotlin-test.log",
+      "new_path": "docs/history/source-verification/kotlin-test.log",
+      "source_sha256": "edc5e21e66090717d8b3f627ac4c026a61617bfd599fd3bf9cadc8986bf6d0b9"
+    },
+    {
+      "old_path": "verification/native-build.log",
+      "new_path": "docs/history/source-verification/native-build.log",
+      "source_sha256": "561cd0a5af1cf057875b4aee6d80f0455fa69549b2128c6eb68ab180fd8b1308"
+    },
+    {
+      "old_path": "verification/native-test.log",
+      "new_path": "docs/history/source-verification/native-test.log",
+      "source_sha256": "c96177e9af8c2a1de2ba8736bbaa0aacab39be88cad38061667811f0f15a9d2f"
+    },
+    {
+      "old_path": "verification/python-test.log",
+      "new_path": "docs/history/source-verification/python-test.log",
+      "source_sha256": "72ae5fca932cefec61dfe01b8953eb8463dad8db59ffd27321a7e159e0c13fc8"
+    },
+    {
+      "old_path": "verification/sanitize-build.log",
+      "new_path": "docs/history/source-verification/sanitize-build.log",
+      "source_sha256": "52d5112d73d870805fd354bf65775e2146afe339476e2c8afb5786cf797b97ca"
+    },
+    {
+      "old_path": "verification/sanitize-test.log",
+      "new_path": "docs/history/source-verification/sanitize-test.log",
+      "source_sha256": "1761d4e40a355ff28249d1e37a374079b2ca953ac4a82cd7e9366560215f33dd"
+    },
+    {
+      "old_path": "verification/summary.json",
+      "new_path": "docs/history/source-verification/summary.json",
+      "source_sha256": "d143e26094a4f9e86599ff59b29f0c025fb997ee16acce93f92722653542c546"
+    },
+    {
+      "old_path": "verification/v2/android-build-attempt.log",
+      "new_path": "docs/history/source-verification/v2/android-build-attempt.log",
+      "source_sha256": "0525c0082a6fa6d64f0d0b96412eca491b167c5d4f9d37e7f92897763e886640"
+    },
+    {
+      "old_path": "verification/v2/baseline.log",
+      "new_path": "docs/history/source-verification/v2/baseline.log",
+      "source_sha256": "329ab01dc1ec746861caac04d4f75f305617870026a0d4845fadf77a3cf45e5f"
+    },
+    {
+      "old_path": "verification/v2/kotlin-results.json",
+      "new_path": "docs/history/source-verification/v2/kotlin-results.json",
+      "source_sha256": "beceaef6e698594e688f1e92e944baadf277e07a249c34e14084d3b5af10654e"
+    },
+    {
+      "old_path": "verification/v2/kotlin-syntax.log",
+      "new_path": "docs/history/source-verification/v2/kotlin-syntax.log",
+      "source_sha256": "58aafec3b5f77bb8c9ab2b99486cd734eb0e2f7a27c7ac97d1e9cdc751d75636"
+    },
+    {
+      "old_path": "verification/v2/native-sanitizers.log",
+      "new_path": "docs/history/source-verification/v2/native-sanitizers.log",
+      "source_sha256": "156649c2894003030417fdbba7f04d3d6f47732f0fe0be66403e7a613a6050ca"
+    },
+    {
+      "old_path": "verification/v2/pass1-before-new-tests.log",
+      "new_path": "docs/history/source-verification/v2/pass1-before-new-tests.log",
+      "source_sha256": "a2502e8afe8f91fe64af7a4ad69517f1384a406c94deee1c8a66bb22faeb4018"
+    },
+    {
+      "old_path": "verification/v2/pass1-first.log",
+      "new_path": "docs/history/source-verification/v2/pass1-first.log",
+      "source_sha256": "0c2e6087eef60f44f5071cbc7f99930dee7a7ec452a24a11e4b4bd2234a84844"
+    },
+    {
+      "old_path": "verification/v2/pass1.log",
+      "new_path": "docs/history/source-verification/v2/pass1.log",
+      "source_sha256": "37025a4f9eb198822dd63810081f29e459967203b73cfd1fc9139ea9ddbec5f7"
+    },
+    {
+      "old_path": "verification/v2/pass2.log",
+      "new_path": "docs/history/source-verification/v2/pass2.log",
+      "source_sha256": "4ca4cb6cf282a0e19dd1d45aa84f9335e47cf81c5b36ce4cd0f8756a7f75bd9f"
+    },
+    {
+      "old_path": "verification/v2/pass3-final.log",
+      "new_path": "docs/history/source-verification/v2/pass3-final.log",
+      "source_sha256": "2d3bcf07000c5127360854f1c84cbab6f6544cd6b56fa8bdc9d1dc1fff521fe8"
+    },
+    {
+      "old_path": "verification/v2/pass3-initial.log",
+      "new_path": "docs/history/source-verification/v2/pass3-initial.log",
+      "source_sha256": "795c1fc5ea478d6483bc24138a2bf5ee914ba60978751f6cbb31d55289d6a9ad"
+    },
+    {
+      "old_path": "verification/v2/syntax-pass1.log",
+      "new_path": "docs/history/source-verification/v2/syntax-pass1.log",
+      "source_sha256": "48172629cbcc346110ce8d736bb99d1e623c70f42d2682c7b3943b0e128b0a48"
+    },
+    {
+      "old_path": "verification/v2/syntax-pass2.log",
+      "new_path": "docs/history/source-verification/v2/syntax-pass2.log",
+      "source_sha256": "793f3145138490d37a4953792ae863d84147c1310f6de3a25cbae98a10df11fe"
+    },
+    {
+      "old_path": "verification/v2/ui-pass3.log",
+      "new_path": "docs/history/source-verification/v2/ui-pass3.log",
+      "source_sha256": "bd42b33812c4a481197743757a76aa52be309967e48816af5d1a2a2822b7a39d"
+    },
+    {
+      "old_path": "verification/v2/ui-tests.xml",
+      "new_path": "docs/history/source-verification/v2/ui-tests.xml",
+      "source_sha256": "707f26abf1dd9c6a1b7a106c88921f45d9ed6ebf040a15ceb6ac907c7b329541"
+    }
+  ],
+  "source_file_count": 360,
+  "source_inventory_sha256": "7379d820190b4a818a113d3d267d07d799e1938dd8387cbb470d0b8176385401"
+}

@@ -1,0 +1,670 @@
+{
+  "schema_version": 1,
+  "scope": "22 targeted semantic overlap groups, plus byte comparison of36 imported/frozen shader pairs; not an audit of all inventory entries",
+  "method": "Read-only source/formula/ABI comparison; graft first returned no hits; no execution tests run for this review",
+  "frozen_revisions": {
+    "locus": {
+      "repository": "bjoernellens1/locus",
+      "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+      "provenance_path": "provenance/locus.json"
+    },
+    "caspar-slang": {
+      "repository": "bjoernellens1/caspar-slang",
+      "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+      "provenance_path": "provenance/caspar-slang.json"
+    },
+    "slang-rgbd-slam": {
+      "repository": "bjoernellens1/slang-rgbd-slam",
+      "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+      "provenance_path": "provenance/slang-rgbd-slam.json"
+    },
+    "vkl": {
+      "repository": "bjoernellens1/vkl",
+      "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+      "provenance_path": "provenance/vkl.json"
+    },
+    "eligsir-sim": {
+      "repository": "bjoernellens1/eligsir-sim",
+      "revision": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+      "provenance_path": "provenance/eligsir-sim.json"
+    },
+    "xsplat-vk": {
+      "repository": "bjoernellens1/xsplat-vk",
+      "revision": "5c41a47c9e6ec1ad666d06abd239f1c02424624b",
+      "provenance_path": "provenance/xsplat-vk.json"
+    },
+    "vrdx": {
+      "repository": "bjoernellens1/vk_gaussian_splatting",
+      "revision": "d2f603251b1b007c94ee07dd9c5579b7492af6fe",
+      "provenance_path": "provenance/vrdx.json"
+    },
+    "primitives": {
+      "repository": "bjoernellens1/nerfacc-rocm",
+      "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+      "provenance_path": "provenance/primitives.json"
+    }
+  },
+  "counts": {
+    "same_operation_different_contract": 14,
+    "shared_algorithm_device_helper": 5,
+    "exact_duplicate": 1,
+    "related_only": 2
+  },
+  "structural_copy_audit": {
+    "pairs_compared": 36,
+    "byte_identical": 34,
+    "pairs": [
+      {
+        "canonical": "src/sintergpu/kernels/locus/common/abi.slang",
+        "frozen_reference": "references/donors/locus/gpu/common/abi.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/geometry/backproject.slang",
+        "frozen_reference": "references/donors/locus/gpu/geometry/backproject.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/geometry/transform_points.slang",
+        "frozen_reference": "references/donors/locus/gpu/geometry/transform_points.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/geometry/voxel_insert.slang",
+        "frozen_reference": "references/donors/locus/gpu/geometry/voxel_insert.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/guidance/coverage_heatmap.slang",
+        "frozen_reference": "references/donors/locus/gpu/guidance/coverage_heatmap.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/guidance/coverage_render.slang",
+        "frozen_reference": "references/donors/locus/gpu/guidance/coverage_render.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/preprocess/bilateral.slang",
+        "frozen_reference": "references/donors/locus/gpu/preprocess/bilateral.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/preprocess/depth_register.slang",
+        "frozen_reference": "references/donors/locus/gpu/preprocess/depth_register.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/preprocess/depth_resolve.slang",
+        "frozen_reference": "references/donors/locus/gpu/preprocess/depth_resolve.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/preprocess/invalid_depth.slang",
+        "frozen_reference": "references/donors/locus/gpu/preprocess/invalid_depth.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/preprocess/resize.slang",
+        "frozen_reference": "references/donors/locus/gpu/preprocess/resize.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/preprocess/undistort.slang",
+        "frozen_reference": "references/donors/locus/gpu/preprocess/undistort.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/preprocess/yuv_to_rgb.slang",
+        "frozen_reference": "references/donors/locus/gpu/preprocess/yuv_to_rgb.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/quality/metrics.slang",
+        "frozen_reference": "references/donors/locus/gpu/quality/metrics.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/quality/reduce.slang",
+        "frozen_reference": "references/donors/locus/gpu/quality/reduce.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/semantics/mask_postprocess.slang",
+        "frozen_reference": "references/donors/locus/gpu/semantics/mask_postprocess.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/semantics/normalize.slang",
+        "frozen_reference": "references/donors/locus/gpu/semantics/normalize.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/locus/semantics/similarity.slang",
+        "frozen_reference": "references/donors/locus/gpu/semantics/similarity.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/caspar_slang/gn.slang",
+        "frozen_reference": "references/donors/caspar-slang/src/caspar_slang/shaders/gn.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/caspar_slang/pose_graph.slang",
+        "frozen_reference": "references/donors/caspar-slang/src/caspar_slang/shaders/pose_graph.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/caspar_slang/reprojection.slang",
+        "frozen_reference": "references/donors/caspar-slang/src/caspar_slang/shaders/reprojection.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang",
+        "frozen_reference": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/dense_ba.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang",
+        "frozen_reference": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/dense_tracker.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/slang_rgbd_slam/features.slang",
+        "frozen_reference": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/features.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/slang_rgbd_slam/gpu_pipeline.slang",
+        "frozen_reference": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/gpu_pipeline.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/slang_rgbd_slam/keyframes.slang",
+        "frozen_reference": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/keyframes.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/slang_rgbd_slam/loop_pipeline.slang",
+        "frozen_reference": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/loop_pipeline.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang",
+        "frozen_reference": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/loop_verification.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang",
+        "frozen_reference": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/tracker.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang",
+        "frozen_reference": "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/tsdf.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/xsplat_vk/adam.slang",
+        "frozen_reference": "references/donors/xsplat-vk/shaders/adam.slang",
+        "byte_identical": false
+      },
+      {
+        "canonical": "src/sintergpu/kernels/xsplat_vk/backward_probe.slang",
+        "frozen_reference": "references/donors/xsplat-vk/shaders/backward_probe.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/xsplat_vk/common.slang",
+        "frozen_reference": "references/donors/xsplat-vk/shaders/common.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/xsplat_vk/composite.slang",
+        "frozen_reference": "references/donors/xsplat-vk/shaders/composite.slang",
+        "byte_identical": false
+      },
+      {
+        "canonical": "src/sintergpu/kernels/xsplat_vk/gaussian_math.slang",
+        "frozen_reference": "references/donors/xsplat-vk/shaders/gaussian_math.slang",
+        "byte_identical": true
+      },
+      {
+        "canonical": "src/sintergpu/kernels/xsplat_vk/project.slang",
+        "frozen_reference": "references/donors/xsplat-vk/shaders/project.slang",
+        "byte_identical": true
+      }
+    ],
+    "interpretation": "Frozen reference mirrors are intentional evidence. They are not counted as independently maintained semantic duplicates. Two XSplat port differences require migration provenance, not automatic deletion."
+  },
+  "groups": [
+    {
+      "id": "G01",
+      "title": "YUV/RGB decode and NV12 encode",
+      "classification": "same_operation_different_contract",
+      "finding": "The camera shader decodes pitched byte NV12/YUYV into packed RGB8 and explicitly rounds ties to even; Locus takes three float4 planes containing byte-valued floats and outputs normalized float RGB using rounded decimal coefficients. EliGSiR supports interpolated left/center chroma and P010, with fixed-point fast paths and fp64 guard-band fallbacks targeting zero-LSB parity. Even nearest chroma is not enough to prove FP32 and fp64 outputs identical. Encoding shares 2x2 centered chroma averaging, but float32 versus double input normalization/operation order remain observable.",
+      "evidence": [
+        "src/sintergpu/kernels/image/camera_color.slang:21-48",
+        "src/sintergpu/kernels/image/camera_color.slang:61-77",
+        "src/sintergpu/kernels/image/camera_color.slang:141-166",
+        "src/sintergpu/kernels/locus/preprocess/yuv_to_rgb.slang:5-13",
+        "references/donors/eligsir-sim/src/eligsir_sim/video/colour.py:826-857",
+        "references/donors/eligsir-sim/src/eligsir_sim/video/_colour_hip_ext.py:87-121"
+      ],
+      "canonical_owner_recommendation": "image/camera_color.slang owns the portable packed-byte profile; retained EliGSiR implementation owns the exact HIP/P010 profile. Factor matrix/range metadata, not the rounding chain.",
+      "preserve_variant_reason": "Preserve normalized float Locus and exact HIP routes as named profiles until callers can change layout/exactness deliberately.",
+      "verification_required_before_deduplication": "Exhaustive YUV byte/tie cases, both matrices/ranges, left/center/nearest/interpolated chroma, chroma edges, P010, padded pitches, RGB encode corner accumulation order and zero-LSB profile gates."
+    },
+    {
+      "id": "G02",
+      "title": "Resize, remap and fused decode/remap",
+      "classification": "same_operation_different_contract",
+      "finding": "Camera resize uses half-pixel coordinates with -0.5, clamped borders and bilinear RGB8 interpolation. Locus resize maps output centers without -0.5 then truncates to nearest texel. VKL RGB pyramid uses antialiased bilinear at ceil-sized scales; canonical_rescale also normalizes by resized validity weights. Camera fusedYUYVRemap intentionally reproduces decode-to-RGB8 then remap by quantizing each source corner first.",
+      "evidence": [
+        "src/sintergpu/kernels/image/camera_color.slang:101-117",
+        "src/sintergpu/kernels/image/camera_color.slang:171-209",
+        "src/sintergpu/kernels/locus/preprocess/resize.slang:5-7",
+        "src/sintergpu/references/vkl/pyramid.py:14-18",
+        "src/sintergpu/references/vkl/pyramid.py:34-37",
+        "src/sintergpu/references/vkl/rescale.py:153-182"
+      ],
+      "canonical_owner_recommendation": "image family owns a coordinate/border policy vocabulary and sampling helpers; retain separate nearest, bilinear-RGB8 and antialiased validity-weighted profiles.",
+      "preserve_variant_reason": "Fused versus two-pass is intentional pipeline equivalence, not redundant independently maintained math: they already call the same readYUYV/bilinear helpers.",
+      "verification_required_before_deduplication": "Impulse/checkerboard, up/downsample, odd/1-pixel sizes, invalid maps, all borders, validity holes, RGB8 quantization ties; fused/separate bit equality before any fusion arithmetic change."
+    },
+    {
+      "id": "G03",
+      "title": "Brown-Conrady distortion/rectification",
+      "classification": "shared_algorithm_device_helper",
+      "finding": "Locus and VKL implement the same forward radial/tangential polynomial. Their complete operations differ: Locus uses same-grid intrinsics and nearest sampling; VKL separates reusable grids/sampling and additionally performs a five-step inverse distortion iteration. Generic camera remap consumes a precomputed grid and does not compute distortion itself.",
+      "evidence": [
+        "src/sintergpu/kernels/locus/preprocess/undistort.slang:6-11",
+        "src/sintergpu/references/vkl/camera_registration.py:107-135",
+        "src/sintergpu/references/vkl/camera_registration.py:234-267",
+        "src/sintergpu/kernels/image/camera_color.slang:171-179"
+      ],
+      "canonical_owner_recommendation": "camera geometry should own the forward polynomial helper plus independently named inverse/grid builders; image sampler owns remap.",
+      "preserve_variant_reason": "Preserve inverse direction, iteration count, coefficient ordering k1,k2,p1,p2,k3 versus Locus parameter placement, nearest versus bilinear.",
+      "verification_required_before_deduplication": "Zero coefficients, radial/tangential fixtures, forward/inverse roundtrip with tolerances, pixel-center/border agreement, warped validity and Torch gradient checks for floating sampling."
+    },
+    {
+      "id": "G04",
+      "title": "Depth validity, representation conversion and bilateral cleanup",
+      "classification": "same_operation_different_contract",
+      "finding": "All use finite positive depth as a basic predicate, but Locus invalid_depth also applies inclusive min/max after scale and outputs (depth,valid) in float4. VKL depthConvert accepts depth/inverse/disparity, explicit uint validity/confidence, returns depth and inverse and leaves metric status to host policy. SLAM makeVertices checks z>0 at shader level and relies on validated upstream input. Bilateral is a 3x3 spatial/range Gaussian weighted average, not a substitute for either conversion or a pyramid discontinuity rule.",
+      "evidence": [
+        "src/sintergpu/kernels/locus/common/abi.slang:9-9",
+        "src/sintergpu/kernels/locus/preprocess/invalid_depth.slang:5-8",
+        "src/sintergpu/kernels/locus/preprocess/bilateral.slang:5-11",
+        "src/sintergpu/kernels/vkl/depth_convert.slang:18-25",
+        "src/sintergpu/references/vkl/depth_convert.py:52-77",
+        "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang:23-28"
+      ],
+      "canonical_owner_recommendation": "depth family owns finite-positive predicate and explicit conversion/validity profiles; keep bilateral a separate filter.",
+      "preserve_variant_reason": "Do not silently add/drop range masks, confidence, metric-status policy or reciprocal/disparity handling.",
+      "verification_required_before_deduplication": "NaN/Inf/negative/zero, exact range endpoints, reciprocal overflow, confidence propagation, unit scales, padded rows, holes and bilateral edge/invalid-center cases."
+    },
+    {
+      "id": "G05",
+      "title": "Depth pyramids",
+      "classification": "same_operation_different_contract",
+      "finding": "VKL keeps any supported block valid: uses nearest positive depth unless all four samples are valid and the spread is within eps*32, in which case it averages and propagates mean confidence. Its reference masks missing samples to INF before maximum. SLAM averages the valid members when spread <= configurable depthJump, otherwise returns zero; it assumes exactly 2x input dimensions and has no confidence output. They can differ on partial support containing multiple unequal values, odd-sized border blocks and depth discontinuities. A block with only one valid finite value has the same depth value, but output confidence/layout still differ.",
+      "evidence": [
+        "src/sintergpu/kernels/vkl/depth_pyramid.slang:15-35",
+        "src/sintergpu/references/vkl/depth_pyramid.py:13-33",
+        "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang:10-19"
+      ],
+      "canonical_owner_recommendation": "depth/pyramid owns two documented policies: validity-preserving nearest-surface and tracking average-or-reject.",
+      "preserve_variant_reason": "Preserve ceil versus divisible sizing, sparse support, confidence winner selection, absolute epsilon versus application metre threshold.",
+      "verification_required_before_deduplication": "All 16 valid masks, odd sizes, ties for nearest confidence, near-equal values around eps*32, jump threshold endpoints, confidence and no-support outputs."
+    },
+    {
+      "id": "G06",
+      "title": "Grayscale, quality luminance and image pyramids",
+      "classification": "same_operation_different_contract",
+      "finding": "SLAM feature gray uses .299/.587/.114 in byte-scale values and its next level uses separable 5x5 [1,4,6,4,1]/256. Dense tracking uses the same gray coefficients divided by255, and a 2x2 mean with negative invalid sentinel. VKL/Locus quality luminance uses .2126/.7152/.0722; VKL resolution pyramid is antialiased bilinear RGB. The gray dot product is shareable only with explicit weights/scale; pyramid filters are different.",
+      "evidence": [
+        "src/sintergpu/kernels/slang_rgbd_slam/features.slang:25-38",
+        "src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang:26-40",
+        "src/sintergpu/kernels/locus/quality/metrics.slang:8-14",
+        "src/sintergpu/references/vkl/dense_track_reduce.py:34-35",
+        "src/sintergpu/references/vkl/pyramid.py:34-37"
+      ],
+      "canonical_owner_recommendation": "image family owns configurable luminance helper; retain named pyramid filters and intensity validity conventions.",
+      "preserve_variant_reason": "Preserve brightness scale because FAST/photometric thresholds are calibrated against it; no replacement of Gaussian with box/bilinear.",
+      "verification_required_before_deduplication": "Color primaries, constant gray, impulse frequency response, boundary clamps, negative sentinel propagation, odd dimensions and unchanged detector/tracker outputs."
+    },
+    {
+      "id": "G07",
+      "title": "Pinhole backprojection",
+      "classification": "shared_algorithm_device_helper",
+      "finding": "The same algebra ((u-cx)*z/fx,(v-cy)*z/fy,z) appears in generated Caspar scalar math, Locus and VKL. Dispatch contracts differ: Caspar scalar helper is unguarded; Locus applies depth unit/calibration and finite xyz checks with float4 validity; VKL supports batched planar Torch geometry and masks invalid depth. SLAM already calls caspar_backproject instead of defining the algebra again.",
+      "evidence": [
+        "references/donors/caspar-slang/src/caspar_slang/primitives.py:79-81",
+        "src/sintergpu/kernels/locus/geometry/backproject.slang:5-9",
+        "src/sintergpu/references/vkl/geometry.py:39-55",
+        "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang:23-28"
+      ],
+      "canonical_owner_recommendation": "generated Caspar geometry scalar helper owns the common algebra; keep caller-specific validation/layout wrappers and independent CPU reference.",
+      "preserve_variant_reason": "Changing division/multiplication order may change FP32 rounding; unit scale, finite checks and optical conventions remain wrapper contracts.",
+      "verification_required_before_deduplication": "Same calibrated pixels/depth in all layouts, non-unit focal length, invalid/huge inputs, unit conversion, numeric error/bit profile, and gradients before replacing Torch routes."
+    },
+    {
+      "id": "G08",
+      "title": "Rigid point transforms",
+      "classification": "shared_algorithm_device_helper",
+      "finding": "All compute Rp+t, but Locus returns zero if input validity is absent or transformed xyz is nonfinite; VKL world_transform always applies translation even to a zero coordinate and its depth_geometry wrapper remasks afterward. Caspar scalar functions take explicit row-major coefficients; XSplat uses matrix multiplication on Gaussian means, then projects covariance too.",
+      "evidence": [
+        "src/sintergpu/kernels/locus/common/abi.slang:14-14",
+        "src/sintergpu/kernels/locus/geometry/transform_points.slang:5-6",
+        "src/sintergpu/references/vkl/geometry.py:81-102",
+        "references/donors/caspar-slang/src/caspar_slang/primitives.py:84-104",
+        "src/sintergpu/kernels/xsplat_vk/project.slang:15-32"
+      ],
+      "canonical_owner_recommendation": "geometry scalar helper for Rp+t with explicit row-major contract; validity remains in dispatch wrappers.",
+      "preserve_variant_reason": "Do not translate invalid origin points into valid positions; maintain c2w/w2c direction and scalar/matrix memory layout.",
+      "verification_required_before_deduplication": "Nonzero translation with invalid points, random rigid transforms, row/column orientation, pose inverses, nonfinite output and differential/gradient parity."
+    },
+    {
+      "id": "G09",
+      "title": "Depth normal maps",
+      "classification": "same_operation_different_contract",
+      "finding": "VKL uses forward (right/down) differences, a relative 25% depth-jump gate, eps1e-8 normalization, and flips normals to face the camera. SLAM uses central neighbors, an absolute configurable depthJump, length>1e-10, and no camera-facing flip. For a fronto-parallel optical-camera plane the formulas therefore imply opposite signs. Boundary invalid regions also differ (right/bottom only versus all four image edges).",
+      "evidence": [
+        "src/sintergpu/references/vkl/geometry.py:17-21",
+        "src/sintergpu/references/vkl/geometry.py:54-67",
+        "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang:32-42"
+      ],
+      "canonical_owner_recommendation": "geometry/normal_map should expose explicit stencil/orientation/discontinuity profiles, preserving current consumers.",
+      "preserve_variant_reason": "These are not interchangeable merely because ICP can sometimes absorb a sign flip; orientation and support masks are observable.",
+      "verification_required_before_deduplication": "Plane sign/orientation, all boundaries, sparse holes, depth-dependent discontinuities, degeneracy, confidence and downstream correspondence/pose parity."
+    },
+    {
+      "id": "G10",
+      "title": "Depth registration and z-buffer reprojection",
+      "classification": "same_operation_different_contract",
+      "finding": "Locus projects undistorted positive z with floor(uv+.5), accepts half-pixel edge bounds, atomic-mins positive float bits, and requires INF state initialization. VKL registration supports distortion and depth ranges, uses torch round ties-to-even, and records deterministic smallest-source-index winners for equal z. VKL rasterize_reprojection additionally aggregates confidence/support over epsilon-close depth winners. Shared nearest-z idea does not establish matching pixels or metadata.",
+      "evidence": [
+        "src/sintergpu/kernels/locus/preprocess/depth_register.slang:5-12",
+        "src/sintergpu/references/vkl/camera_registration.py:433-452",
+        "src/sintergpu/references/vkl/camera_registration.py:465-517",
+        "src/sintergpu/references/vkl/reproject.py:85-106"
+      ],
+      "canonical_owner_recommendation": "geometry/depth_register owns projection and z-buffer helpers with explicit rounding, support and winner profiles.",
+      "preserve_variant_reason": "Preserve ties, half-pixel support, distortion, source-index provenance and confidence; reset/resolve is a caller-visible multipass contract.",
+      "verification_required_before_deduplication": "Half-integer projections including negative edge, equal-depth collisions/source indices, epsilon-close winners, distortion, ranges, empty state, sparse confidence/support and two-pass barriers."
+    },
+    {
+      "id": "G11",
+      "title": "Workgroup reductions and quality accumulators",
+      "classification": "same_operation_different_contract",
+      "finding": "SinterGPU block_reduce is a fixed256 stride-halving tree over channel-major caller storage. Caspar GN uses64 lanes,43 terms and AoSoA Jacobian access; subgroup variants do WaveActiveSum before the tree. Dense tracker changes term construction and uses32/64/128/256 specializations. Locus quality uses uint atomic sums of clamped fixed-point metrics, not floating normal-equation sums. VKL solve uses adjacent-pair left-to-right reduction, a different addition order from stride-halving.",
+      "evidence": [
+        "src/sintergpu/kernels/common/block_reduce.slang:2-17",
+        "src/sintergpu/kernels/caspar_slang/gn.slang:8-38",
+        "src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang:68-87",
+        "src/sintergpu/kernels/locus/quality/reduce.slang:7-10",
+        "src/sintergpu/references/vkl/tracking_solve.py:10-16"
+      ],
+      "canonical_owner_recommendation": "primitives owns parameterized reduction implementation only when lane count, layout, identity, wave policy and exact addition tree are preserved.",
+      "preserve_variant_reason": "Retain numerical variants; changing trees or introducing waves changes rounding, and fixed-point counts have separate saturation/overflow semantics.",
+      "verification_required_before_deduplication": "Tail lengths around every block size, zero count, NaN policy, cancellation/high dynamic range, wave32/64, integer overflow limits and unchanged optimizer/status/pose gates."
+    },
+    {
+      "id": "G12",
+      "title": "Segmented scan versus radix-sort internal prefix sums",
+      "classification": "shared_algorithm_device_helper",
+      "finding": "Public scan supports contiguous nondecreasing segment IDs, sum/product, float/uint and hierarchical carries; exclusive output is a separate pass. VRDX prefix sums are integer histogram offsets embedded in radix passes with512-lane workgroups and radix256, including full-workgroup barrier requirements. They share prefix-sum mechanics but have different storage, launch and stability obligations.",
+      "evidence": [
+        "src/sintergpu/kernels/primitives/scan.slang:6-25",
+        "src/sintergpu/kernels/primitives/scan.slang:27-66",
+        "third_party/vrdx/src/shader/spine.slang:25-59",
+        "third_party/vrdx/src/shader/spine.slang:62-90"
+      ],
+      "canonical_owner_recommendation": "primitives/scan owns public generic scan; keep VRDX vendor implementation independently versioned/patched.",
+      "preserve_variant_reason": "Do not replace vendor prefix stages merely to remove repeated sums; sorting stability and synchronization are part of the full algorithm.",
+      "verification_required_before_deduplication": "Segment boundaries spanning blocks, repeated versus monotone IDs rejection, sum/product identities/zeros, exclusive behavior, uint wrap policy and full stable radix-sort parity under device wave sizes."
+    },
+    {
+      "id": "G13",
+      "title": "Stable compaction versus feature append/selection",
+      "classification": "same_operation_different_contract",
+      "finding": "Public compact uses inclusive uint prefixes to scatter payloads stably and reports total selection count; output capacity is caller-owned. VKL select_compact is batched, arbitrary payload dtype/shape, bounded capacity, zero-filled unused slots and returns source indices/action codes; its count is truncated retained count. SLAM cell selection uses an atomic reservation per cell and top-K tie-breaking, so cross-cell append order is not a stable original-input ordering guarantee.",
+      "evidence": [
+        "src/sintergpu/kernels/primitives/compact.slang:2-25",
+        "src/sintergpu/references/vkl/compact.py:17-36",
+        "src/sintergpu/kernels/slang_rgbd_slam/features.slang:99-119"
+      ],
+      "canonical_owner_recommendation": "primitives/compact owns stable flags/prefix/scatter; add a bounded batched wrapper for VKL instead of changing the count contract.",
+      "preserve_variant_reason": "Preserve capacity truncation, total-versus-retained count, zero-fill and ordering; feature detection selection remains a distinct producer policy.",
+      "verification_required_before_deduplication": "Zero/all/none selected, stable indices, capacities0/less-than-selected, arbitrary payload fields, batch boundaries, poisoned padding and feature-order independence/descriptor association."
+    },
+    {
+      "id": "G14",
+      "title": "FAST detection and spatial keypoint selection",
+      "classification": "same_operation_different_contract",
+      "finding": "Both evaluate the same16-point radius3 ring/FAST9 predicate. SLAM score is maximum over arc minima with byte-scale threshold, border19; NMS resolves equal scores by smaller linear index, then Harris scoring and bounded cell quota with depth gating. VKL supports arc1..16, normalized threshold, scores maximum ring contrast after detection, keeps equal local-max plateaus, and uses bounded tensor top-K/margin/domain erosion.",
+      "evidence": [
+        "src/sintergpu/kernels/slang_rgbd_slam/features.slang:22-23",
+        "src/sintergpu/kernels/slang_rgbd_slam/features.slang:45-73",
+        "src/sintergpu/kernels/slang_rgbd_slam/features.slang:81-119",
+        "src/sintergpu/references/vkl/keypoint_selectors.py:77-79",
+        "src/sintergpu/references/vkl/keypoint_selectors.py:175-200",
+        "src/sintergpu/references/vkl/keypoint_selectors.py:103-125"
+      ],
+      "canonical_owner_recommendation": "features owns shared ring predicate, while detector score/NMS/Harris/quota are explicit profiles.",
+      "preserve_variant_reason": "Same FAST name does not mean identical candidate ranking or selected features. Preserve margin, tie-breaks, depth support and normalized/byte thresholds.",
+      "verification_required_before_deduplication": "Threshold ties, all16 arc starts, plateaus, image borders, depth holes, per-cell quotas and exact selected coordinates/ranking under each profile."
+    },
+    {
+      "id": "G15",
+      "title": "BRIEF descriptors",
+      "classification": "same_operation_different_contract",
+      "finding": "SLAM rotates an original256-pair Gaussian-disk pattern by intensity-centroid orientation and packs eight uint32 words; samples clamp to image bounds. VKL default is an affine enumeration of distinct ordered pairs over31x31, no orientation, arbitrary bit count and unpacked bool output; descriptor validity requires every comparison sample to be in-bounds/finite/valid. Packing conversion alone cannot make these descriptors comparable.",
+      "evidence": [
+        "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/features.py:1-21",
+        "src/sintergpu/kernels/slang_rgbd_slam/features.slang:123-138",
+        "src/sintergpu/kernels/slang_rgbd_slam/features.slang:23-23",
+        "src/sintergpu/references/vkl/brief.py:15-50",
+        "src/sintergpu/references/vkl/brief.py:87-125"
+      ],
+      "canonical_owner_recommendation": "features/brief owns explicit pattern/version/orientation/border/packing contracts; retain separate original patterns.",
+      "preserve_variant_reason": "Do not call either OpenCV-ORB-compatible or compare Hamming distances between different patterns.",
+      "verification_required_before_deduplication": "Pattern hash/version, fixed image/keypoints, orientation rotations, exact bit order/packing, equality comparisons, invalid sample and border masks, arbitrary bit counts."
+    },
+    {
+      "id": "G16",
+      "title": "Binary matching",
+      "classification": "same_operation_different_contract",
+      "finding": "SLAM globally matches fixed256-bit packed descriptors with absolute Hamming bound, strict best/second ratio and mutual nearest-neighbor; it requires at least two target descriptors. VKL uses boolean arbitrary-bit descriptors and geometric radius gating, optional mutual ownership and no ratio criterion; chunking is intended to preserve exact results. Both keep first index on equal best distance through strict improvement, but candidate domains differ.",
+      "evidence": [
+        "src/sintergpu/kernels/slang_rgbd_slam/features.slang:145-183",
+        "src/sintergpu/references/vkl/local_match.py:25-30",
+        "src/sintergpu/references/vkl/local_match.py:110-145"
+      ],
+      "canonical_owner_recommendation": "features owns packed Hamming distance/tiled search helper and separately named global-ratio/local-radius matching policies.",
+      "preserve_variant_reason": "Keep ratio, mutual, spatial gates, descriptor format and missing-match sentinel semantics.",
+      "verification_required_before_deduplication": "Empty/single targets, ties/best-second equality, radius boundary, ratio boundary, max Hamming endpoints, mutual collisions, packing and chunk-size invariance."
+    },
+    {
+      "id": "G17",
+      "title": "ICP association and fused normal-equation assembly",
+      "classification": "same_operation_different_contract",
+      "finding": "SLAM unfused association uses projective nearest match, distance+normal gates and square-root Huber weights before Caspar GN. Fused tracking computes the same geometric residual/Jacobian directly and optionally adds photometric terms, avoiding materialized residual tensors; it is an optimization variant of that pipeline. VKL dense reduction shares point-to-plane algebra but orders translation before rotation; Caspar/SLAM order rotation before translation. VKL camera-local c2w right update also differs from SLAM left action on reference_from_current. Sparse VKL uses point-to-point3D residuals and explicitly adjusts sign to its pose convention.",
+      "evidence": [
+        "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang:70-115",
+        "src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang:43-87",
+        "src/sintergpu/references/vkl/dense_track_reduce.py:38-54",
+        "src/sintergpu/references/vkl/tracking_reference.py:56-79",
+        "src/sintergpu/references/vkl/sparse_pose_reduce.py:22-26",
+        "src/sintergpu/references/vkl/sparse_pose_reduce.py:107-113",
+        "references/donors/caspar-slang/src/caspar_slang/gn.py:53-59"
+      ],
+      "canonical_owner_recommendation": "optimization owns explicit Jacobian/tangent/frame convention metadata and common term helper; retain fused/unfused profiles.",
+      "preserve_variant_reason": "Do not directly feed VKL H,b/delta into Caspar solver/update without permutation and pose-frame/sign transforms; retain application acceptance/rollback policies.",
+      "verification_required_before_deduplication": "Independent finite differences, tangent permutation/adjoint checks, asymmetric poses, correspondence masks/counts, H,b,cost and final pose, robust thresholds, fused/no-photo parity, near singular cases."
+    },
+    {
+      "id": "G18",
+      "title": "Duplicate point-to-plane symbolic definitions",
+      "classification": "exact_duplicate",
+      "finding": "Caspar gn.residual_kernel and reprojection.factor_kernels.point_plane independently define the same r=n dot(p+omega cross p+translation-q), differentiated at zero, with rotation-first6-vector. One returns a residual+V6 for AoSoA dispatch, the other seven scalars for inline fusion. This is exact duplicated symbolic algebra, not identical dispatch ABI. Both are maintained definitions in the donor generation source; generated emitted/composed copies are a separate provenance concern.",
+      "evidence": [
+        "references/donors/caspar-slang/src/caspar_slang/gn.py:43-59",
+        "references/donors/caspar-slang/src/caspar_slang/reprojection.py:85-94",
+        "references/donors/caspar-slang/src/caspar_slang/caspar_adapter.py:22-34"
+      ],
+      "canonical_owner_recommendation": "One symbolic residual/Jacobian expression factory in the Caspar generator; preserve AoSoA and scalar export adapters.",
+      "preserve_variant_reason": "Preserve both ABI exports and independent NumPy analytic/finite-difference oracle; deleting that oracle would weaken validation.",
+      "verification_required_before_deduplication": "Compare emitted residual and all6 Jacobian components for randomized/tail/indexed/duplicate-gather cases, exact convention, generated source/compiler drift and existing downstream fused/unfused tolerances."
+    },
+    {
+      "id": "G19",
+      "title": "TSDF fusion, occupancy counts and depth fusion",
+      "classification": "related_only",
+      "finding": "SLAM integrates truncated normalized signed distance in sparse8x8x8 blocks, uses depth-dependent observation mass and separately accumulated surface color. Locus voxel_insert only hashes quantized cells and increments observation counts; it has no signed-distance surface model. VKL depth_fuse combines same-grid depth with consistency/confidence and provenance statuses; temporal fusion adds cross-frame evidence/cluster support. A weighted average appears in each but the represented quantities and rejection/retention policies differ.",
+      "evidence": [
+        "src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang:113-130",
+        "references/donors/caspar-slang/src/caspar_slang/primitives.py:111-120",
+        "src/sintergpu/kernels/locus/geometry/voxel_insert.slang:5-14",
+        "src/sintergpu/references/vkl/depth_fuse.py:43-65",
+        "src/sintergpu/references/vkl/temporal_depth_fuse.py:93-129"
+      ],
+      "canonical_owner_recommendation": "Keep mapping/tsdf, mapping/voxel_counts and depth/fusion separate; common tsdf_fuse scalar helper already serves distance and color.",
+      "preserve_variant_reason": "Preserve actual mass before confidence capping, truncation sign, color-weight isolation, coordinate/probe/capacity limits and overflow reporting.",
+      "verification_required_before_deduplication": "Repeated capped-weight observations, plane/slanted surfaces, free-space without color, map bounds/overflow/probe exhaustion, conflicting temporal depths and provenance/confidence selection."
+    },
+    {
+      "id": "G20",
+      "title": "Point projection, sensor evidence, reprojection factors and Gaussian projection",
+      "classification": "related_only",
+      "finding": "Pinhole pixel formulas recur but outputs differ. Caspar reprojection produces2D residuals and pose/landmark Jacobians; VKL projectDepthEvidence performs eligibility, ties-even pixel lookup and sensor support/conflict decisions; XSplat projects mean plus3D covariance to2D conic with dilation and differentiable covariance functions. They cannot substitute for each other. Shared scalar pinhole/rigid math must retain caller z guards, matrix conventions and derivative routes.",
+      "evidence": [
+        "references/donors/caspar-slang/src/caspar_slang/reprojection.py:204-212",
+        "src/sintergpu/kernels/caspar_slang/reprojection.slang:28-61",
+        "src/sintergpu/kernels/vkl/project_depth_evidence.slang:42-70",
+        "src/sintergpu/kernels/xsplat_vk/project.slang:15-33",
+        "src/sintergpu/kernels/xsplat_vk/gaussian_math.slang:9-50"
+      ],
+      "canonical_owner_recommendation": "geometry scalar helpers own projection math; keep evidence, optimization residual and Gaussian renderer operation families separate.",
+      "preserve_variant_reason": "Preserve covariance/conic gradients, sensor conflict asymmetry, z epsilon and eligible/projected/sensor-valid distinctions.",
+      "verification_required_before_deduplication": "Finite-difference pose/landmark and Gaussian VJP, covariance rotation/conic dilation, half-pixel evidence ties, behind-camera/huge projections, support/conflict threshold strictness."
+    },
+    {
+      "id": "G21",
+      "title": "Cholesky solves, Schur systems, pose graph PCG and Adam",
+      "classification": "shared_algorithm_device_helper",
+      "finding": "Caspar6x6 and SLAM Schur up-to18-DOF use the same left-looking damped Cholesky loop pattern and zero invalid updates, but dimensions/storage stride and observation-count guards differ. VKL6x6 additionally symmetrizes H and rejects by undamped eigenvalue/condition_max before accepting a damped solve. Pose graph is matrix-free PCG with anchor node and cost rollback, while XSplat Adam updates first/second moments with bias correction; those are related optimization tasks, not alternative implementations of one solver.",
+      "evidence": [
+        "src/sintergpu/kernels/caspar_slang/gn.slang:69-103",
+        "src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang:135-155",
+        "src/sintergpu/references/vkl/tracking_solve.py:53-73",
+        "src/sintergpu/kernels/caspar_slang/pose_graph.slang:120-169",
+        "src/sintergpu/kernels/xsplat_vk/adam.slang:29-36"
+      ],
+      "canonical_owner_recommendation": "optimization owns a parameterized small-SPD Cholesky helper preserving exact arithmetic loop order; health policy, Schur construction, PCG and Adam stay distinct.",
+      "preserve_variant_reason": "A damped invertible system may still fail VKL health policy. Do not make success statuses equivalent or replace PCG/Adam with Cholesky.",
+      "verification_required_before_deduplication": "Dimension6/18, singular/indefinite/ill-conditioned inputs, damping boundaries, nonfinite propagation, exact zero failure update, condition gates, rollback, PCG anchor and Adam step/bias-correction sequences."
+    },
+    {
+      "id": "G22",
+      "title": "Photometric ISP and normalization",
+      "classification": "same_operation_different_contract",
+      "finding": "VKL Slang ISP matches the forward Torch operation order: exposure,gain,vignette,color transform, nonnegative power-response floor and clamp. Slang explicitly supplies epsilon and flattened parameters and omits image-wide diagnostics/backward. Torch has a deliberate finite gradient at black and optional evidence outputs. Locus normalize is crop+nearest sampling+per-channel mean/std, so it is related preprocessing, not a replacement ISP.",
+      "evidence": [
+        "src/sintergpu/kernels/vkl/photometric_isp.slang:27-56",
+        "src/sintergpu/references/vkl/photometric_isp.py:94-125",
+        "src/sintergpu/references/vkl/photometric_isp.py:132-151",
+        "src/sintergpu/kernels/locus/semantics/normalize.slang:6-10"
+      ],
+      "canonical_owner_recommendation": "image/photometric_isp owns forward policy, with Torch oracle and explicit backward/evidence capabilities; tensor/normalize remains separate.",
+      "preserve_variant_reason": "Preserve dtype-dependent epsilon, singleton linspace=-1, gradient path, diagnostic availability and crop sampler semantics.",
+      "verification_required_before_deduplication": "All optional transforms/order, black with gamma<1, saturation,1x1 dimensions, per-batch/channel metadata, forward errors, Torch gradients and evidence results before any route replacement."
+    }
+  ],
+  "generated_composition_policy": "Generated math and composed standalone shader outputs are derivative build/release artifacts. They must be regenerated from one owner input and hash checked, never independently edited. Repeated generated prefixes across composed modules are not counted as separate maintained implementations.",
+  "recommendation": "Consolidate operation ownership and shared algebra with explicitly named numerical/layout/capability profiles. First unify the duplicate Caspar point-plane symbolic expression behind two export adapters. Preserve frozen references and alternate contracts; route consumers through qualified profiles only after differential and performance gates.",
+  "alternatives_rejected": [
+    {
+      "alternative": "Delete/replace every same-named kernel with one implementation",
+      "reason": "Normal orientation, tangent order, rounding, confidence, capacity and gradient contracts observably differ."
+    },
+    {
+      "alternative": "Keep all imported kernels as independent permanent APIs with no shared ownership",
+      "reason": "Leaves real duplicate algebra and untracked profile drift; central ownership/generation is needed."
+    },
+    {
+      "alternative": "Treat snapshot and generated byte repetition as redundant kernels to delete",
+      "reason": "Erases provenance/independent oracles or compile-ready composition; generation/hash checks address maintenance without deleting evidence."
+    }
+  ],
+  "limitations": [
+    "No test or benchmark was run for this semantic review; proposed dedup gates remain outstanding.",
+    "VKL Torch functions are references and potential autograd routes, not proof that a corresponding canonical Slang GPU implementation exists for every operation.",
+    "No claim that all inventory source files or all249 entries were audited.",
+    "Exact_duplicate means exact symbolic residual/Jacobian algebra in G18, not identical resource/dispatch ABI."
+  ],
+  "published_document": "docs/kernel-overlap.md",
+  "reviewed_git_base_head": "99d5a640fadb16c848ad4ae63244fedafa9eb744",
+  "audit_state": "working-tree source audit; final release manifest binds source hashes",
+  "audit_inputs_sha256": {
+    "references/donors/caspar-slang/src/caspar_slang/caspar_adapter.py": "582e5bcb017e83d58c2e81ec3d888b1072e6b9c7ad9bab190785f4e508958f52",
+    "references/donors/caspar-slang/src/caspar_slang/gn.py": "76c34c3273326037c75f692bc8513bc9a19117e4428754440d5bd2465a17ab7e",
+    "references/donors/caspar-slang/src/caspar_slang/primitives.py": "0a7c31f91c15ee28036ce90d00a09bb70b87d42f7169e2b1eea280a8a3678344",
+    "references/donors/caspar-slang/src/caspar_slang/reprojection.py": "5aa9596180798c0f8ca1a45654fc8996477fd745e5c6cf042dd7d8316c0809a1",
+    "references/donors/eligsir-sim/src/eligsir_sim/video/_colour_hip_ext.py": "799072e1ef2f2bbf5ce3dd4548d67d7e79ccac44a38182b888b6826d1c5df162",
+    "references/donors/eligsir-sim/src/eligsir_sim/video/colour.py": "617fd104c67646a2e390da5899f42ee43720a83d9114d8bd63fdd21d67caee37",
+    "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/features.py": "05bf8603cb4b68c9f4b9dc2e7a130cc10d13f32f38b2bb50a0327f8332686828",
+    "src/sintergpu/kernels/caspar_slang/gn.slang": "a8189cffd5b3e6f839976962e1410f3b50c7a57fa2fe02a69d15bc7a9e4a8b5e",
+    "src/sintergpu/kernels/caspar_slang/pose_graph.slang": "29845891ee77d54b7ab8bda5849b8e21ed9fa056cef756c21155c426434b3695",
+    "src/sintergpu/kernels/caspar_slang/reprojection.slang": "01874c7338f686e1e0ca9e776b1ddaab9010394a885001f14c88b024a273ee01",
+    "src/sintergpu/kernels/common/block_reduce.slang": "b963fc6f1cad8365068c60579f57b55c73c1ad3c3a696a1d3573b0cf627d9388",
+    "src/sintergpu/kernels/image/camera_color.slang": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+    "src/sintergpu/kernels/locus/common/abi.slang": "8f46c43030f9f1c1e4a73da59188779d930dfdefec9eaf23bf1f5d95793a284c",
+    "src/sintergpu/kernels/locus/geometry/backproject.slang": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
+    "src/sintergpu/kernels/locus/geometry/transform_points.slang": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
+    "src/sintergpu/kernels/locus/geometry/voxel_insert.slang": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
+    "src/sintergpu/kernels/locus/preprocess/bilateral.slang": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
+    "src/sintergpu/kernels/locus/preprocess/depth_register.slang": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
+    "src/sintergpu/kernels/locus/preprocess/invalid_depth.slang": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
+    "src/sintergpu/kernels/locus/preprocess/resize.slang": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
+    "src/sintergpu/kernels/locus/preprocess/undistort.slang": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
+    "src/sintergpu/kernels/locus/preprocess/yuv_to_rgb.slang": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
+    "src/sintergpu/kernels/locus/quality/metrics.slang": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
+    "src/sintergpu/kernels/locus/quality/reduce.slang": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
+    "src/sintergpu/kernels/locus/semantics/normalize.slang": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
+    "src/sintergpu/kernels/primitives/compact.slang": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb",
+    "src/sintergpu/kernels/primitives/scan.slang": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+    "src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang": "883db1bab91d43518ca2f2d3fa075c785371a7bda4c2b5b0b0c310762f3a72a9",
+    "src/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang": "fde5b0a5e14d2cc87e31c5f8eb6d58cad63e48d2757382554de3de8d0c0cf953",
+    "src/sintergpu/kernels/slang_rgbd_slam/features.slang": "36b43a0652ffdaea6f4a620a9811680092925b9a22e8aaa521fea41bbcd676e4",
+    "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang": "d6575a6d6f73df2dbc98e23c3b935ce0eb9e697112c64dd85f096fad649b690a",
+    "src/sintergpu/kernels/slang_rgbd_slam/tsdf.slang": "e31cf00bd2af9c7c8e49e82e2f1cf2bf437ccf66985a4cb8a30e6f5fb02f436d",
+    "src/sintergpu/kernels/vkl/depth_convert.slang": "2ced5aa077ac8484e0bbd2426f468caf69ce707b25f740b206541303fb2a18f5",
+    "src/sintergpu/kernels/vkl/depth_pyramid.slang": "55fea213f1f1614ed3307a6c7a2a3e62765e20db86fbe7da9790c1379f4d4aa2",
+    "src/sintergpu/kernels/vkl/photometric_isp.slang": "2cda8c2b898d3dea595b547d5de4fcd83acf4799711a826bdc6c9b2a6328474e",
+    "src/sintergpu/kernels/vkl/project_depth_evidence.slang": "48419b4308fcafc4682a92233bcbf85618d7148f4c09763dff28387a88f8bc27",
+    "src/sintergpu/kernels/xsplat_vk/adam.slang": "4126871d8bd132c9741bb1f2dadc9e305ed7d54e7db3c7e6bb10b0cd119549c1",
+    "src/sintergpu/kernels/xsplat_vk/gaussian_math.slang": "7c0a1de4e4623966cdd26ff709e1d42d5553722d5ac6e590a6a8e7e3c9e67643",
+    "src/sintergpu/kernels/xsplat_vk/project.slang": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+    "src/sintergpu/references/vkl/brief.py": "6fa0780921a098b950348cab3cf50e2c3e6fa5845b56f381066f547ae0b0c868",
+    "src/sintergpu/references/vkl/camera_registration.py": "dd68ab3a2031b6f059aee2607cfe907dbd27448595904afc42a3883a3e71217b",
+    "src/sintergpu/references/vkl/compact.py": "5f1d1a115247ff375d46c8eb8b281612e53b4217dc8f8283fc7ebb2e07ebdf9b",
+    "src/sintergpu/references/vkl/dense_track_reduce.py": "6ca49420e9d2786aedd61565d8d9093935ba936bce0df93132b82192c439ee5c",
+    "src/sintergpu/references/vkl/depth_convert.py": "5f057f1116c8b3e5a93707c543f386d0d6e2ea08eddd9a2e2930a23bd2c57ece",
+    "src/sintergpu/references/vkl/depth_fuse.py": "e709d8cdf470c75a0989f5b4ce5775bc67df6b06e77b701e899e8a4a64b167cf",
+    "src/sintergpu/references/vkl/depth_pyramid.py": "19a406b21e0e16070c5711b07b7fbe2f425896fa95cd5f43f4687b3c9d3a14e3",
+    "src/sintergpu/references/vkl/geometry.py": "c23788f036ddf99554ffd4f3cdd3f083d1cc3b35551b26cbbede983cb1c62100",
+    "src/sintergpu/references/vkl/keypoint_selectors.py": "082a724045c3540337b374b47adffb74c0227ca2a7a52550d03ff206b7e5ca91",
+    "src/sintergpu/references/vkl/local_match.py": "1bc22161ec3cc32fc3190f2c67d1a1414c99651a8d6bc92a009f649a7ea825e8",
+    "src/sintergpu/references/vkl/photometric_isp.py": "6d5b31a0b450f0b08433b29b56e74d6d6bd58cb8e664186aee078ca94500ce3e",
+    "src/sintergpu/references/vkl/pyramid.py": "691c411470ea2a7889157dc84e03c398df2345a7ddf6aaf20207fe981da52cdb",
+    "src/sintergpu/references/vkl/reproject.py": "1d76726f14b5614ed72b0dab5c9d63012b3ec9dbdf95b117df3e1e17c6698062",
+    "src/sintergpu/references/vkl/rescale.py": "74077982bd23155cca8a3272fdb6ee2ae3f2875c9c733cd5979cb6b82b38ce37",
+    "src/sintergpu/references/vkl/sparse_pose_reduce.py": "092abcbc0df0693953a1bad5dfa1795ed30868d951cb7bc4332dabc785779737",
+    "src/sintergpu/references/vkl/temporal_depth_fuse.py": "081694caefe889296232a9a8a4663cb97966e63e3307fab64adb8f8e982e3ca4",
+    "src/sintergpu/references/vkl/tracking_reference.py": "10c21f3a532b666d9b17c7ff1e55ce04e3971a561232d7b6225e2f42fec88fac",
+    "src/sintergpu/references/vkl/tracking_solve.py": "4ffef34f7e69f9ee04b17388097d8e3fce4b4c6fc78ffd180e2b8fc559b30461",
+    "third_party/vrdx/src/shader/spine.slang": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a"
+  }
+}

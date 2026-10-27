@@ -1,0 +1,102 @@
+{
+  "upstream_repository": "https://github.com/bjoernellens1/vk_gaussian_splatting",
+  "revision": "d2f603251b1b007c94ee07dd9c5579b7492af6fe",
+  "path": "3rdparty/vrdx/",
+  "license": "MIT",
+  "modifications": "None; exact frozen bytes. Optional standalone dependency; no sort algorithm rewrite.",
+  "artifacts": {
+    "third_party/vrdx/.clang-format": "2b01e0225a52d00fceb3a0d76034134be8ac22602040290465a8c28456443975",
+    "third_party/vrdx/.gitignore": "7c09799e786526309783ea4f6b12c5183e8a402af611939530a5d23a796a7ec2",
+    "third_party/vrdx/CMakeLists.txt": "4b07a47bba60ee22fa4d1a26d325fd637e7523b33018f6a01cdf575ae1f745f4",
+    "third_party/vrdx/LICENSE": "32f91cf10528c086854c5b7235ae1915304bb7fdc1379c6b61f4f243a4ca89c8",
+    "third_party/vrdx/README.md": "8f4803beb09d6660004824f998cde7ffd5e05e008306c431143f00716eadd0b3",
+    "third_party/vrdx/include/vk_radix_sort.h": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+    "third_party/vrdx/src/shader/constants.slang": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+    "third_party/vrdx/src/shader/downsweep.slang": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+    "third_party/vrdx/src/shader/spine.slang": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+    "third_party/vrdx/src/shader/upsweep.slang": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be",
+    "third_party/vrdx/src/vk_radix_sort.cc": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa"
+  },
+  "qualification": "Source extraction and all4 shader variants SPIRV compile on Slang2026.12/2026.19 only; native C++ build/runtime and cross-vendor sort qualification pending.",
+  "parent_repository": "https://github.com/nvpro-samples/vk_gaussian_splatting",
+  "repository": "bjoernellens1/vk_gaussian_splatting",
+  "files": [
+    {
+      "source_path": "3rdparty/vrdx/.clang-format",
+      "destination": "third_party/vrdx/.clang-format",
+      "source_sha256": "2b01e0225a52d00fceb3a0d76034134be8ac22602040290465a8c28456443975",
+      "imported_sha256": "2b01e0225a52d00fceb3a0d76034134be8ac22602040290465a8c28456443975",
+      "changes": []
+    },
+    {
+      "source_path": "3rdparty/vrdx/.gitignore",
+      "destination": "third_party/vrdx/.gitignore",
+      "source_sha256": "7c09799e786526309783ea4f6b12c5183e8a402af611939530a5d23a796a7ec2",
+      "imported_sha256": "7c09799e786526309783ea4f6b12c5183e8a402af611939530a5d23a796a7ec2",
+      "changes": []
+    },
+    {
+      "source_path": "3rdparty/vrdx/CMakeLists.txt",
+      "destination": "third_party/vrdx/CMakeLists.txt",
+      "source_sha256": "4b07a47bba60ee22fa4d1a26d325fd637e7523b33018f6a01cdf575ae1f745f4",
+      "imported_sha256": "4b07a47bba60ee22fa4d1a26d325fd637e7523b33018f6a01cdf575ae1f745f4",
+      "changes": []
+    },
+    {
+      "source_path": "3rdparty/vrdx/LICENSE",
+      "destination": "third_party/vrdx/LICENSE",
+      "source_sha256": "32f91cf10528c086854c5b7235ae1915304bb7fdc1379c6b61f4f243a4ca89c8",
+      "imported_sha256": "32f91cf10528c086854c5b7235ae1915304bb7fdc1379c6b61f4f243a4ca89c8",
+      "changes": []
+    },
+    {
+      "source_path": "3rdparty/vrdx/README.md",
+      "destination": "third_party/vrdx/README.md",
+      "source_sha256": "8f4803beb09d6660004824f998cde7ffd5e05e008306c431143f00716eadd0b3",
+      "imported_sha256": "8f4803beb09d6660004824f998cde7ffd5e05e008306c431143f00716eadd0b3",
+      "changes": []
+    },
+    {
+      "source_path": "3rdparty/vrdx/include/vk_radix_sort.h",
+      "destination": "third_party/vrdx/include/vk_radix_sort.h",
+      "source_sha256": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+      "imported_sha256": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+      "changes": []
+    },
+    {
+      "source_path": "3rdparty/vrdx/src/shader/constants.slang",
+      "destination": "third_party/vrdx/src/shader/constants.slang",
+      "source_sha256": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+      "imported_sha256": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+      "changes": []
+    },
+    {
+      "source_path": "3rdparty/vrdx/src/shader/downsweep.slang",
+      "destination": "third_party/vrdx/src/shader/downsweep.slang",
+      "source_sha256": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+      "imported_sha256": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+      "changes": []
+    },
+    {
+      "source_path": "3rdparty/vrdx/src/shader/spine.slang",
+      "destination": "third_party/vrdx/src/shader/spine.slang",
+      "source_sha256": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+      "imported_sha256": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+      "changes": []
+    },
+    {
+      "source_path": "3rdparty/vrdx/src/shader/upsweep.slang",
+      "destination": "third_party/vrdx/src/shader/upsweep.slang",
+      "source_sha256": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be",
+      "imported_sha256": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be",
+      "changes": []
+    },
+    {
+      "source_path": "3rdparty/vrdx/src/vk_radix_sort.cc",
+      "destination": "third_party/vrdx/src/vk_radix_sort.cc",
+      "source_sha256": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa",
+      "imported_sha256": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa",
+      "changes": []
+    }
+  ]
+}
