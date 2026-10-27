@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-27T19:46:44.232366+00:00",
+  "status": "fixture-parity-passed",
+  "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+  "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+  "adapter": "SlangPy 0.43.1 / Vulkan",
+  "compiler": {
+    "version": "2026.12 (SlangPy bundled)",
+    "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+  },
+  "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+  "setup_source_sha256": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f",
+  "test_source_sha256": {
+    "tests/test_vkl_depth_resampling.py": "4d3d5c7a44985daea50ec65b7ab665de04f1dd377d70ac849ecca20660a66c16"
+  },
+  "verification": {
+    "command": "SINTERGPU_GPU_TESTS=1 PYTHONPATH=src .cache/vkl-qualification-venv/bin/python -m pytest tests -q",
+    "result": "438 passed, 3 xfailed, 186 subtests passed",
+    "log_sha256": "aff73b77bf58741019118ff3121cdabc4e8c513c6f8ccd721319dc6b0e73e815",
+    "new_cases": 128,
+    "new_gpu_cases": 98,
+    "new_cpu_source_cases": 30,
+    "scope": "Frozen Torch and independent NumPy forward outputs; nearest float32 mapping, 1/3-channel RGB, 1/2/4 passes and retained initial direct masks, NaN/Inf inputs and thresholds, exact inclusive threshold boundaries, optional direct/confidence dummies, all pyramid levels and no-copy downsample labels, flat power-of-two depths, thread tails and poisoned output padding. Not gradients, general extreme values, other devices or full application qualification. Three explicit division-decision counterexamples and four 4096-batch rounded-threshold differential sets preserve frozen-Torch masks."
+  },
+  "compiler_checks": {
+    "2026.12": {
+      "entries": 130,
+      "result": "passed",
+      "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "record_sha256": "48da60cfc61cd01a0d225465ef76f8f523af50acfb585cf3e8102c2fa4365cbd"
+    },
+    "2026.19": {
+      "entries": 130,
+      "result": "passed",
+      "compiler_sha256": "19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145",
+      "record_sha256": "9b5739e047a690522e547c04035141441b0765da3847c99ab5e3f742d0bdc9ac"
+    },
+    "optional_64bit_shader_capabilities": "Absent from all four new SPIR-V entrypoints under both pinned compilers"
+  },
+  "benchmarks": {
+    "qualification/evidence/vkl-resampling-densify-240-320-2-dense.json": "0a96c2a7fb146f4be23131f6ae82ee511207f1a117a4aa28db53396c35990bc6",
+    "qualification/evidence/vkl-resampling-densify-240-320-2-edges.json": "cf7978fc5cdb99ef998744178d8833a0764f0981391334eecc04e2df28f45cfc",
+    "qualification/evidence/vkl-resampling-densify-240-320-2-invalid.json": "bca9743b6354d7e169de6c8c34232267ce74f40a71d99303c81917916c887fec",
+    "qualification/evidence/vkl-resampling-densify-240-320-2-sparse.json": "992f3350068daf4f2c073bd8dc42149dbe7b75763287e16531719449ff146712",
+    "qualification/evidence/vkl-resampling-densify-480-640-1-holes.json": "b5c2979d6359388ecb32d424c661935de99ee78a57cfc58cae73c8ca4ff677df",
+    "qualification/evidence/vkl-resampling-densify-480-640-2-holes.json": "646f7f36315f741c63a6c07b3b0de8c40fc46ba2a62d7d3f22ea3b26c3c7c2d9",
+    "qualification/evidence/vkl-resampling-densify-480-640-4-holes.json": "a34fece8b4c562fdee00d351e1e67af051c54865a91b4e45ebcfcba8a61b74e7",
+    "qualification/evidence/vkl-resampling-downsample-481-639-1-holes.json": "9c3ebff8583958eab7df87d945d3cc4c079bbb80db0a32713cb21703d95dfff4",
+    "qualification/evidence/vkl-resampling-lift-240-320-1-holes.json": "e6d0a99d3f89a18e94e05bea0a93450eb4e6d539a5a21638481d274c1c3cb3a4",
+    "qualification/evidence/vkl-resampling-pyramid-481-639-1-holes.json": "e4c16b162c659703b698c2372eb5562d30bbe8783b1ac0ca47f2fe4fc9160813"
+  },
+  "performance_status": "measurement_only; shared device, no controlled speedup or optimization selection",
+  "review_correction": {
+    "finding": "Approximate GPU division changed ordinary-depth inclusive spread decisions",
+    "regression_red": "7 failed, 121 deselected",
+    "regression_green": "7 passed, 121 deselected",
+    "red_log_sha256": "e8e82072c5e872a7da3929316045765b19970656925a84d2468145154a72dbaf",
+    "green_log_sha256": "48be05373310be18f74954db1d6049531614befd292a0555e0f7d1507c6455cb",
+    "implementation": "Exact comparison to next-float rounding midpoint with two uint32 limbs and ties-to-even; no shaderFloat64 or shaderInt64"
+  }
+}

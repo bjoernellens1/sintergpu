@@ -294,3 +294,12 @@ or integrate a TSDF. Keep `vkl.temporal_best.temporalBest` separate from the G19
 fusion family; see [its contract](vkl-temporal-best.md) and
 [hash-bound lineage](../provenance/vkl-temporal-best.json). Shared row-reduction
 helpers would need to preserve these ordering and NaN rules before deduplication.
+
+The [depth resampling profiles](vkl-depth-resampling.md) reuse the exact released
+pyramid-level shader and its existing independent NumPy oracle. New composition
+adds initialization and provenance labels; it does not duplicate the level
+implementation. Nearest depth lifting shares a task name with image resize but
+uses finite-positive masking and propagated labels, so it cannot substitute for
+Locus float4 image nearest sampling or bilinear remap. RGB-guided densification
+is a lower-median hole fill, distinct from bilateral filtering, same-grid weighted
+fusion and temporal clustering; its initial direct mask persists across passes.

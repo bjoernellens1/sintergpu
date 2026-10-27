@@ -4262,6 +4262,146 @@
       "fixture": null
     },
     {
+      "id": "vkl.depth_resampling.densifyDepth",
+      "path": "kernels/vkl/depth_resampling.slang",
+      "entrypoint": "densifyDepth",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/depth_densify.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-depth-resampling-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-depth-resampling.md",
+        "numerical_behavior": "Float32 B1HW depth/confidence, typed uint32 masks/provenance; float32 nearest lift labels every valid output propagated; direct-label pass aliases existing depth outputs; RGB-guided 3x3 lower-median fill preserves initial direct mask across explicit ping-pong passes, all seven outputs and inclusive thresholds including donor NaN/Inf threshold behavior. No gradients."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.depth_resampling.depthUpsample",
+      "path": "kernels/vkl/depth_resampling.slang",
+      "entrypoint": "depthUpsample",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/depth_densify.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-depth-resampling-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-depth-resampling.md",
+        "numerical_behavior": "Float32 B1HW depth/confidence, typed uint32 masks/provenance; float32 nearest lift labels every valid output propagated; direct-label pass aliases existing depth outputs; RGB-guided 3x3 lower-median fill preserves initial direct mask across explicit ping-pong passes, all seven outputs and inclusive thresholds including donor NaN/Inf threshold behavior. No gradients."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.depth_resampling.initializeDepth",
+      "path": "kernels/vkl/depth_resampling.slang",
+      "entrypoint": "initializeDepth",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/depth_pyramid.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-depth-resampling-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-depth-resampling.md",
+        "numerical_behavior": "Sanitized native float32 B1HW depth/valid/confidence; optional confidence defaults to validity; reusable full /1,/2,/4,/8 plan uses unchanged depthPyramidLevel source, ceil-half dimensions and original masked-INF maximum."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.depth_resampling.labelDirectDepth",
+      "path": "kernels/vkl/depth_resampling.slang",
+      "entrypoint": "labelDirectDepth",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/depth_densify.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-depth-resampling-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-depth-resampling.md",
+        "numerical_behavior": "Float32 B1HW depth/confidence, typed uint32 masks/provenance; float32 nearest lift labels every valid output propagated; direct-label pass aliases existing depth outputs; RGB-guided 3x3 lower-median fill preserves initial direct mask across explicit ping-pong passes, all seven outputs and inclusive thresholds including donor NaN/Inf threshold behavior. No gradients."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
       "id": "vkl.geometry.depthGeometry",
       "path": "kernels/vkl/geometry.slang",
       "entrypoint": "depthGeometry",

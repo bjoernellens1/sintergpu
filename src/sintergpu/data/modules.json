@@ -215,6 +215,10 @@
     "path": "kernels/vkl/depth_pyramid.slang",
     "sha256": "55fea213f1f1614ed3307a6c7a2a3e62765e20db86fbe7da9790c1379f4d4aa2"
   },
+  "vkl.depth_resampling": {
+    "path": "kernels/vkl/depth_resampling.slang",
+    "sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2"
+  },
   "vkl.geometry": {
     "path": "kernels/vkl/geometry.slang",
     "sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2"

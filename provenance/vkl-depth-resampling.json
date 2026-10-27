@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0 (original owner authorization2026-10-27)",
+  "author": "Original owner code; independent SinterGPU ports and NumPy oracles",
+  "operation_prefix": "vkl",
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/depth_pyramid.py",
+      "destination": "src/sintergpu/kernels/vkl/depth_resampling.slang",
+      "source_sha256": "a1e7fdd46785607a9b52f98819469e5ebe7192558df2c574a583c553b33b6ed1",
+      "imported_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "entry_points": [
+        "initializeDepth"
+      ],
+      "contract_profile": "vkl-depth-resampling-forward",
+      "contract_limits": "Sanitized native float32 B1HW depth/valid/confidence; optional confidence defaults to validity; reusable full /1,/2,/4,/8 plan uses unchanged depthPyramidLevel source, ceil-half dimensions and original masked-INF maximum.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-depth-resampling.md",
+      "changes": [
+        "Independent portable float32 forward shader/oracle; caller-owned stages and scalar32 ABI. Frozen Torch sources unchanged. Downsample oracle and GPU plan reuse existing pyramid-level implementations."
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_pyramid.py",
+      "destination": "src/sintergpu/references/depth_resampling_numeric.py",
+      "source_sha256": "a1e7fdd46785607a9b52f98819469e5ebe7192558df2c574a583c553b33b6ed1",
+      "imported_sha256": "a01025af6ecd0cacac84af865ccc5cc3bfd9d01fb6f229f043155ff70ae2a075",
+      "entry_points": [
+        "initializeDepth"
+      ],
+      "contract_profile": "vkl-depth-resampling-forward",
+      "contract_limits": "Sanitized native float32 B1HW depth/valid/confidence; optional confidence defaults to validity; reusable full /1,/2,/4,/8 plan uses unchanged depthPyramidLevel source, ceil-half dimensions and original masked-INF maximum.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-depth-resampling.md",
+      "changes": [
+        "Independent portable float32 forward shader/oracle; caller-owned stages and scalar32 ABI. Frozen Torch sources unchanged. Downsample oracle and GPU plan reuse existing pyramid-level implementations."
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_densify.py",
+      "destination": "src/sintergpu/kernels/vkl/depth_resampling.slang",
+      "source_sha256": "05b1ed1a441693cc65acf0711783287aba4ade29e66ce53fac5be3672c9e0e73",
+      "imported_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "entry_points": [
+        "depthUpsample",
+        "labelDirectDepth",
+        "densifyDepth"
+      ],
+      "contract_profile": "vkl-depth-resampling-forward",
+      "contract_limits": "Float32 B1HW depth/confidence, typed uint32 masks/provenance; float32 nearest lift labels every valid output propagated; direct-label pass aliases existing depth outputs; RGB-guided 3x3 lower-median fill preserves initial direct mask across explicit ping-pong passes, all seven outputs and inclusive thresholds including donor NaN/Inf threshold behavior. No gradients.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-depth-resampling.md",
+      "changes": [
+        "Independent portable float32 forward shader/oracle; caller-owned stages and scalar32 ABI. Frozen Torch sources unchanged. Downsample oracle and GPU plan reuse existing pyramid-level implementations."
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_densify.py",
+      "destination": "src/sintergpu/references/depth_resampling_numeric.py",
+      "source_sha256": "05b1ed1a441693cc65acf0711783287aba4ade29e66ce53fac5be3672c9e0e73",
+      "imported_sha256": "a01025af6ecd0cacac84af865ccc5cc3bfd9d01fb6f229f043155ff70ae2a075",
+      "entry_points": [
+        "depthUpsample",
+        "labelDirectDepth",
+        "densifyDepth"
+      ],
+      "contract_profile": "vkl-depth-resampling-forward",
+      "contract_limits": "Float32 B1HW depth/confidence, typed uint32 masks/provenance; float32 nearest lift labels every valid output propagated; direct-label pass aliases existing depth outputs; RGB-guided 3x3 lower-median fill preserves initial direct mask across explicit ping-pong passes, all seven outputs and inclusive thresholds including donor NaN/Inf threshold behavior. No gradients.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-depth-resampling.md",
+      "changes": [
+        "Independent portable float32 forward shader/oracle; caller-owned stages and scalar32 ABI. Frozen Torch sources unchanged. Downsample oracle and GPU plan reuse existing pyramid-level implementations."
+      ]
+    }
+  ]
+}

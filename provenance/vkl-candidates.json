@@ -257,26 +257,34 @@
         {
           "symbol": "depth_downsample",
           "source_line": 27,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Downsample by 2, 4, or 8 with the validity-aware depth pyramid rule.",
+          "disposition": "specialized_variant",
+          "reason": "Float32 forward profile with complete caller-owned stage plans and numerical/provenance outputs; unchanged Torch validation/autograd retained. Other devices, gradients and full application qualification pending.",
           "numerical_contract": "Downsample by 2, 4, or 8 with the validity-aware depth pyramid rule.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.depth_resampling.initializeDepth",
+            "vkl.depth_pyramid.depthPyramidLevel",
+            "vkl.depth_resampling.labelDirectDepth"
+          ]
         },
         {
           "symbol": "depth_upsample",
           "source_line": 49,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Nearest-neighbour depth lift; every lifted value is labelled propagated, never direct.",
+          "disposition": "specialized_variant",
+          "reason": "Float32 forward profile with complete caller-owned stage plans and numerical/provenance outputs; unchanged Torch validation/autograd retained. Other devices, gradients and full application qualification pending.",
           "numerical_contract": "Nearest-neighbour depth lift; every lifted value is labelled propagated, never direct.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.depth_resampling.depthUpsample"
+          ]
         },
         {
           "symbol": "depth_densify",
           "source_line": 119,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Fill only RGB- and local-depth-consistent holes, retaining direct/propgated provenance.",
+          "disposition": "specialized_variant",
+          "reason": "Float32 forward profile with complete caller-owned stage plans and numerical/provenance outputs; unchanged Torch validation/autograd retained. Other devices, gradients and full application qualification pending.",
           "numerical_contract": "Fill only RGB- and local-depth-consistent holes, retaining direct/propgated provenance.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.depth_resampling.densifyDepth"
+          ]
         }
       ],
       "private_helpers": [
@@ -333,9 +341,10 @@
           "symbol": "depth_pyramid",
           "source_line": 35,
           "disposition": "specialized_variant",
-          "reason": "Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification.",
+          "reason": "Float32 forward profile with complete caller-owned stage plans and numerical/provenance outputs; unchanged Torch validation/autograd retained. Other devices, gradients and full application qualification pending.",
           "numerical_contract": "Return native and bounded half/quarter/eighth validity-aware depth levels.",
           "slang_operations": [
+            "vkl.depth_resampling.initializeDepth",
             "vkl.depth_pyramid.depthPyramidLevel"
           ]
         }
