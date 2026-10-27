@@ -1,6 +1,7 @@
 # Experimental VKL forward profiles
 
-Four donor modules have new reusable Slang profiles. This is **not** a port of
+The initial four donor modules have reusable Slang profiles. Three more donor
+modules (four new entries) are covered by [geometry/depth fusion profiles](vkl-geometry-depth.md). This is **not** a port of
 all 47 substantive retained reference modules (48 Python files including the package initializer) or of the complete tracker. All profiles remain
 experimental; there is no runtime selection. The donor revision is
 `3384023a311651ea4260cf12ddab1567972f89f3`. Original owner code is Apache-2.0 by
@@ -149,8 +150,7 @@ These are single-device measurements, excluding upload/readback/transfer latency
 there is no baseline, confidence bound, speedup, fusion or cross-vendor claim.
 Run three controlled trials and compare valid baselines before performance adoption.
 
-The other 43 substantive retained reference modules remain unported here, including geometry
-backprojection/normals, alignment/fusion, temporal/reprojection, compaction,
+The other 40 substantive retained reference modules have no Slang translation here, including alignment, temporal/reprojection, compaction,
 voxel/mesh, pose reductions and tracking/landmark policy. The retained Triton
 argmin has no new Slang port here. The photometric reductions/backward and full
 pyramid dispatch wrapper are also pending. RTX3090 verification is pending.

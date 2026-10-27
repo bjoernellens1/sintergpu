@@ -42,6 +42,8 @@ def main():
             symbols = {k:int(v) for k,v in re.findall(r'^#define\s+(\w+)\s+(\d+)\s*$', text, re.M)}
             pattern = r'\[numthreads\(([^)]*)\)\]\s*(?:\[[^\]]+\]\s*)*void\s+(\w+)\s*\('
             for threads, entry in re.findall(pattern, text):
+                if record.get('entry_points') is not None and entry not in record['entry_points']:
+                    continue
                 name = LOCUS_IDS[path.stem] if donor == 'locus' else COLOR_IDS[entry] if provenance.get('operation_prefix') == 'image' else provenance.get('operation_prefix', donor.replace('-', '_')) + '.' + path.stem + '.' + entry
                 profile = 'locus-float4-abi1' if donor == 'locus' else donor+'-source-compatible'
                 behavior = 'Preserve imported source behavior; no cross-profile substitution.'
@@ -51,9 +53,9 @@ def main():
                     behavior = provenance['profiles']['portable-fp32']
                     documentation = 'https://github.com/bjoernellens1/sintergpu/blob/main/docs/color.md'
                 elif record.get('contract_limits'):
-                    profile = 'vkl-forward-partial'
+                    profile = record.get('contract_profile', 'vkl-forward-partial')
                     behavior = record['contract_limits']
-                    documentation = 'https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-ports.md'
+                    documentation = record.get('contract_documentation', 'https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-ports.md')
                 elif provenance.get('operation_prefix') == 'primitives':
                     profile = 'segmented-hierarchical-forward'
                     behavior = provenance['differences']

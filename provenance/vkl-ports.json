@@ -151,12 +151,12 @@
       ]
     }
   ],
-  "qualification": "Experimental four-module partial profiles, not 47-module tracker port. Local CPU, compiler matrix and AMD numerical cases verified; three extreme-conversion expected failures, gradients and RTX3090 pending.",
+  "qualification": "Seven-module forward coverage including provenance/vkl-geometry-depth.json. Initial four profiles and their extreme-conversion failures remain unchanged; gradients and RTX3090 pending.",
   "coverage": {
     "retained_reference_python_files": 48,
     "substantive_reference_modules": 47,
-    "partially_ported_modules": 4,
-    "remaining_substantive_modules": 43
+    "partially_ported_modules": 7,
+    "remaining_substantive_modules": 40
   },
   "evidence": {
     "cpu": "15 passed; 15 GPU skips",

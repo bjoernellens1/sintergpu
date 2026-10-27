@@ -2,6 +2,9 @@
 
 ## 0.1.1 — unreleased
 
+- Add VKL depth geometry, rigid transforms, same-grid fusion and complete forward temporal depth fusion.
+- Preserve NaN confidence, signed-zero and constant-depth invariants; add explicit capacity/dispatch planning.
+
 - Address draft releases by immutable release ID instead of the published-tag endpoint.
 - Require a dedicated publisher App for the administrative immutability preflight.
 

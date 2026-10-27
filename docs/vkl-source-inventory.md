@@ -1,0 +1,85 @@
+# VKL operation candidate dispositions
+
+Every public operation in the 47 frozen reference modules is listed below. All
+references are packaged with unchanged executable AST; specialized variants are
+experimental forward Slang profiles, not full Torch replacements. Deferred means
+required GPU work remains. Reference-only entries explicitly preserve the approved
+consumer-policy/transaction boundary. Private helpers are retained with their
+modules.
+
+The [machine-readable inventory](../provenance/vkl-candidates.json) contains exact
+source revision, paths, source lines/hashes and donor numerical-contract docstrings.
+The [overlap audit](kernel-overlap.md) governs equivalence decisions. New math
+ports require independent references, layout/capacity tests and fresh qualification.
+
+| Candidate | Disposition | Reason / remaining gate |
+| --- | --- | --- |
+| `brief.brief_describe` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Return deterministic unpacked BRIEF comparisons at integer keypoints. |
+| `camera_registration.camera_rectify_grid` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Build reusable source-pixel coordinates for target-pinhole rectification. |
+| `camera_registration.camera_rectify_from_grid` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Rectify an image from reusable source-pixel coordinates and validity. |
+| `camera_registration.camera_rectify` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Sample an explicit target pinhole grid from a pinhole or Brown source camera. |
+| `camera_registration.depth_camera_rays` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Build reusable undistorted normalized depth-camera rays ``[B,H,W,2]``. |
+| `camera_registration.depth_register` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Register metric depth to an RGB grid using nearest positive RGB-camera Z. |
+| `compact.select_compact` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Compact ``[B,N,...]`` values in stable order into ``[B,capacity,...]``. |
+| `contract.validate_frame_batch` | reference-only | Host tensor/camera validation belongs at the consumer transaction boundary, not a GPU dispatch with hidden readback. |
+| `dense_depth_regularize.regularize_dense_depth` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Remove isolated plane-sweep labels without crossing strong RGB edges. |
+| `dense_pose_depth.dense_pose_depth` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Estimate semi-dense depth by streaming plane-sweep hypotheses on GPU. |
+| `dense_track_reduce.dense_track_reduce` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Accumulate fixed point-to-plane SE(3) normal equations without a Jacobian map. |
+| `depth_align.align_depth` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Fit relative depth to metric anchors without modifying the raw prediction. |
+| `depth_convert.depth_convert` | specialized_variant | Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification. |
+| `depth_cost_volume.aggregate_depth_cost_volume` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Return four-direction SGM-style aggregation of ``[B,D,H,W]`` costs. |
+| `depth_densify.depth_downsample` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Downsample by 2, 4, or 8 with the validity-aware depth pyramid rule. |
+| `depth_densify.depth_upsample` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Nearest-neighbour depth lift; every lifted value is labelled propagated, never direct. |
+| `depth_densify.depth_densify` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Fill only RGB- and local-depth-consistent holes, retaining direct/propgated provenance. |
+| `depth_evidence.depth_evidence` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Return support-normalized evidence; local variance is per-pair population variance. |
+| `depth_fuse.fuse_depth` | specialized_variant | Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification. |
+| `depth_pyramid.depth_pyramid` | specialized_variant | Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification. |
+| `direct_pose_depth.dso_select_points` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Select bounded gradient-supported D6a points as ``[B,P,2]`` xy indices. |
+| `direct_pose_depth.direct_pose_depth_dso` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Fixed-pose DSO depth from sparse inverse-depth photometric consistency. |
+| `direct_pose_depth.direct_pose_depth_tensorized` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Tensorized D6 comparison reference with no Python neighbour loop. |
+| `evidence.rgbd_evidence` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Reduce RGB-D into validity-aware frame and tile evidence. |
+| `geometry.depth_geometry` | specialized_variant | Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification. |
+| `geometry.world_transform` | specialized_variant | Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification. |
+| `keyframe_filter.keyframe_filter` | reference-only | Keyframe/admission policy remains in consumers per approved scope; reusable evidence kernels are tracked separately. |
+| `keypoint_evidence.keypoint_evidence` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Reduce keypoint/depth-anchor outputs into point, tile, and frame evidence. |
+| `keypoint_selectors.spatial_select_points` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Apply a common per-tile quota to an overcomplete selector candidate set. |
+| `keypoint_selectors.uniform_select` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Deterministic no-saliency control with the common selector contract. |
+| `keypoint_selectors.shi_tomasi_select` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Shi--Tomasi structure-tensor corners with a bounded common output. |
+| `keypoint_selectors.fast_select` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Tensorized FAST-9/16 score, followed by the common bounded selection. |
+| `keypoint_selectors.pose_observable_select` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Select pixels whose image gradient constrains known-pose depth search. |
+| `landmark_update.landmark_update` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Fuse matched world observations; lifetime and ID policy stay external. |
+| `landmark_validate.landmark_multiview_validate` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Accept landmarks supported by multiple consistent posed RGB-D views. |
+| `lk.lk_track` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Refine known-pose projected pixels with fixed-iteration translational LK. |
+| `local_match.binary_local_match` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Choose descriptor-qualified candidates inside projected pixel gates. |
+| `mesh.voxelize_points` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Compact valid [B,N,3] points into world voxels without cross-batch merging. |
+| `mesh.world_voxel_reduce` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Compact world voxels and retain only evidence from distinct source IDs. |
+| `mesh.fit_local_planes` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Fit one least-squares plane per point from explicit fixed-size neighborhoods. |
+| `mesh.voxel_surface_mesh` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Extract exposed faces of occupied voxels as a triangle-mesh candidate. |
+| `photometric_isp.photometric_isp` | specialized_variant | Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification. |
+| `point_render.point_splat_render` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Nearest-depth rasterize colored points into a diagnostic image. |
+| `project_depth_evidence.project_depth_evidence` | specialized_variant | Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification. |
+| `pyramid.resolution_pyramid` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Build native, half, quarter, and eighth-resolution RGB images. |
+| `reproject.reproject_rgbd` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Project source depth into a target camera; visibility is in-bounds and front-facing. |
+| `reproject.rasterize_reprojection` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Z-buffer source depth/confidence into target pixels using D4 geometry. |
+| `rescale.canonical_rescale` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Rescale RGB-D while keeping conditioning and measurement validity distinct. |
+| `residual.residual_evidence` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Return RGB-D residual maps plus bounded frame and tile aggregates. |
+| `rigid_alignment.rigid_align_3d` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Fit camera-to-world rigid poses from matched 3D points. |
+| `sparse_geometry.sparse_depth_validate` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Validate sensor depth only at supplied pixels using a 3x3 local stencil. |
+| `sparse_geometry.sparse_rgbd_observation` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Convert sparse pixel/depth observations into camera and optional world XYZ. |
+| `sparse_geometry.project_landmarks` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Project world landmarks into one camera and report local-search eligibility. |
+| `sparse_pose_reduce.sparse_pose_reduce` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Reduce matched world-to-camera 3D residuals into fixed SE(3) partials. |
+| `spatial.spatial_bin_reduce` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Reduce valid ``[B,N,3]`` points into lexicographically ordered voxel cells. |
+| `temporal.temporal_restore_rgb` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Restore target detail from already aligned, equivalent RGB observations. |
+| `temporal.temporal_restore_rgbd` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Confidence-fuse current RGB with caller-aligned temporal context. |
+| `temporal_best.temporal_best_observation` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Select the highest-quality equivalent observation, retaining target fallback. |
+| `temporal_compare.temporal_frame_compare` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Compare aligned observations and return explicit temporal evidence. |
+| `temporal_depth_fuse.temporal_depth_fuse` | specialized_variant | Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification. |
+| `temporal_reproject.temporal_reproject_rgb` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Sample ``[B,N]`` source RGB frames into target pixels using D4 geometry. |
+| `temporal_reproject.temporal_rgbd_reference` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Build a target-camera RGB-D reference from prior RGB-D observations only. |
+| `tracking_health.tracking_health` | reference-only | Tracking health/acceptance policy remains in the consumer; underlying residual/reduction primitives are separate candidates. |
+| `tracking_prepare.tracking_prepare` | reference-only | Frame packing, validation and pyramid scheduling remain caller-owned; individual image/depth operations are tracked separately. |
+| `tracking_reference.select_tracking_reference` | reference-only | Reference/keyframe ownership and selection remain consumer policy; this is not a new device operation. |
+| `tracking_reference.apply_camera_local_tracking_update` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Apply a TR1/TR2 camera-local update to a camera-to-world pose. |
+| `tracking_solve.deterministic_reduce_solve` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Reduce fixed partials and solve ``H delta = -b`` with explicit health. |
+| `tracking_transaction.compose_tracking_solve` | reference-only | Composes kernel scheduling and transaction outputs; acceptance/scheduling remain consumer-owned. |
+| `triangulate.triangulate_depth` | deferred | Slang translation and differential verification are missing for this frozen numerical operation. Triangulate compact ``[B,N,2]`` pixel correspondences from c2w poses. |
