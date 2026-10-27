@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-27T19:40:41.625268+00:00",
+  "status": "fixture-parity-passed",
+  "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+  "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+  "adapter": "SlangPy 0.43.1 / Vulkan",
+  "compiler": {
+    "version": "2026.12 (SlangPy bundled)",
+    "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+  },
+  "source_sha256": "9846b4bf1f702b21b99dba73d5f9f9d54c1b464eeec0cbafe6ec841578dd3f29",
+  "setup_source_sha256": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f",
+  "test_source_sha256": {
+    "tests/test_vkl_depth_resampling.py": "d522bf02e08b8960c4181c7d47b7a53d62ed084f948681791540763bc3d9483c"
+  },
+  "verification": {
+    "command": "SINTERGPU_GPU_TESTS=1 PYTHONPATH=src .cache/vkl-qualification-venv/bin/python -m pytest tests -q",
+    "result": "431 passed, 3 xfailed, 186 subtests passed",
+    "log_sha256": "5d825167eba6d5c807edf282dd8e500d46f614e7af66a47cd415af8d06f72762",
+    "new_cases": 121,
+    "new_gpu_cases": 91,
+    "new_cpu_source_cases": 30,
+    "scope": "Frozen Torch and independent NumPy forward outputs; nearest float32 mapping, 1/3-channel RGB, 1/2/4 passes and retained initial direct masks, NaN/Inf inputs and thresholds, exact inclusive threshold boundaries, optional direct/confidence dummies, all pyramid levels and no-copy downsample labels, flat power-of-two depths, thread tails and poisoned output padding. Not gradients, general extreme values, other devices or full application qualification."
+  },
+  "compiler_checks": {
+    "2026.12": {
+      "entries": 130,
+      "result": "passed",
+      "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "record_sha256": "c67a37d2209b8f399c934ca18d90ad69f913fbfe91967685e6872772f0e3fd34"
+    },
+    "2026.19": {
+      "entries": 130,
+      "result": "passed",
+      "compiler_sha256": "19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145",
+      "record_sha256": "caaab2ee85507e12d84b913e27cf22574af83d02a7518610542248dda506bddd"
+    }
+  },
+  "benchmarks": {
+    "qualification/evidence/vkl-resampling-densify-240-320-2-dense.json": "6f661fd2f1bd57e10b3f5e95948771979b1abf0d637671e7c2c8afbddddfc01e",
+    "qualification/evidence/vkl-resampling-densify-240-320-2-edges.json": "1c43bccbd823925f0c527fe4e91df6c38cef19b956a0d5668914bd137d497cef",
+    "qualification/evidence/vkl-resampling-densify-240-320-2-invalid.json": "4a67d9af07df4db2414de077cb8009e66e0dc4f2a903af537fe163edfdb1dcb7",
+    "qualification/evidence/vkl-resampling-densify-240-320-2-sparse.json": "6e6e9049f1efa0bcf402a044fa230fff9ad426200af36cbe3474f7bb12424db8",
+    "qualification/evidence/vkl-resampling-densify-480-640-1-holes.json": "74759a7a2439d64195cdfef99a5ef3d68954252b8953433cc76dd3108c879c7a",
+    "qualification/evidence/vkl-resampling-densify-480-640-2-holes.json": "f4c48865b4401bc761a226a801c4c3527e52a4a22137612798104890a1e240aa",
+    "qualification/evidence/vkl-resampling-densify-480-640-4-holes.json": "8d893191c68bcad71e5cbe655bb5cdf4e8c72675305a8602dccf4f7d9145e8b7",
+    "qualification/evidence/vkl-resampling-downsample-481-639-1-holes.json": "0a3e9d80b2b27a5aeaca9e5cb8cd3a39e716b06752b95b9a03c96ebf709526b5",
+    "qualification/evidence/vkl-resampling-lift-240-320-1-holes.json": "45b97d34fe05e692550704befbad63706c7c1fdab5f26bbde149c3b2208ee8fa",
+    "qualification/evidence/vkl-resampling-pyramid-481-639-1-holes.json": "6d8d9e119f70b83e42608f62b04aae2e4400080a3cd2a86526575a3fbb2e82d2"
+  },
+  "performance_status": "measurement_only; shared device, no controlled speedup or optimization selection"
+}

@@ -669,7 +669,9 @@
     "src/sintergpu/kernels/vkl/geometry.slang": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
     "src/sintergpu/kernels/vkl/depth_fusion.slang": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
     "src/sintergpu/kernels/vkl/temporal_best.slang": "20b0ebc40ee1d96c45bd4ea2a3fb281b46a614d6514571b36f003142d68b65fa",
-    "src/sintergpu/references/vkl/temporal_best.py": "7cd3ab52bc7f60335fb268f1eb15e8b339c22a76cf56d9cf614c6de790db4e22"
+    "src/sintergpu/references/vkl/temporal_best.py": "7cd3ab52bc7f60335fb268f1eb15e8b339c22a76cf56d9cf614c6de790db4e22",
+    "src/sintergpu/kernels/vkl/depth_resampling.slang": "9846b4bf1f702b21b99dba73d5f9f9d54c1b464eeec0cbafe6ec841578dd3f29",
+    "src/sintergpu/references/depth_resampling_numeric.py": "a01025af6ecd0cacac84af865ccc5cc3bfd9d01fb6f229f043155ff70ae2a075"
   },
   "follow_up_profiles": {
     "documentation": "docs/kernel-overlap.md#geometrydepth-port-follow-up",
@@ -677,6 +679,11 @@
     "provenance": [
       "provenance/vkl-geometry-depth.json",
       "provenance/vkl-temporal-best.json"
-    ]
+    ],
+    "vkl-depth-resampling-forward": {
+      "contract": "docs/vkl-depth-resampling.md",
+      "lineage": "provenance/vkl-depth-resampling.json",
+      "disposition": "Reuse unchanged pyramid level and existing independent level oracle; nearest depth lift and RGB lower-median hole filling retain distinct masking, confidence and provenance contracts. Initial direct mask retained across passes; no alias to image resize, bilateral or weighted fusion."
+    }
   }
 }

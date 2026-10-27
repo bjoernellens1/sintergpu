@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4 — 2026-10-27
+
+- Add native depth initialization, nearest depth lift, conservative RGB-guided filling and direct-provenance labeling.
+- Compose full bounded pyramids and downsample outputs from the unchanged released pyramid-level source, with explicit caller-owned buffers and no intermediate readback.
+- Preserve initial direct masks across repeated filling and verify threshold, invalid-value, capacity and exact flat-depth cases.
+
 ## 0.1.3 — 2026-10-27
 
 - Add the VKL temporal best-observation forward profile, independent NumPy oracle, bounded setup and full-output differential tests.

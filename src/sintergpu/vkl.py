@@ -5,6 +5,7 @@ validate tensor contents/camera contracts and establish storage visibility. Quer
 max_workgroups_x from the existing device; this module never chooses a device.
 """
 import math
+import numbers
 
 UINT_MAX=0xffffffff
 INT_MAX=0x7fffffff
@@ -81,3 +82,74 @@ def temporal_best_layout(batches,neighbors,*,max_workgroups_x,quality=False,conf
                               pairwise_quality=count*neighbors if quality else 1,
                               pairwise_confidence=count*neighbors if confidence else 1,
                               best_indexOut=count,best_qualityOut=count,replaceabilityOut=count,replacement_confidenceOut=count))
+
+
+def _resampling_params(batches,height,width,output_height=None,output_width=None):
+    return dict(batches=batches,height=height,width=width,
+                outputHeight=height if output_height is None else output_height,
+                outputWidth=width if output_width is None else output_width,
+                channels=1,firstStep=1,useDirect=0,useConfidence=1,minSupport=2,
+                scaleX=1.0,scaleY=1.0,maxRGBDifference=.15,maxRelativeSpread=.1)
+
+
+def depth_lift_layout(batches,height,width,output_height,output_width,*,max_workgroups_x):
+    inputs=_dispatch(batches,height,width,max_workgroups_x=UINT_MAX)
+    count=_dispatch(batches,output_height,output_width,max_workgroups_x)
+    if max(height,width,output_height,output_width)>2**24:
+        raise ValueError('float32 nearest coordinates require dimensions<=2**24')
+    params=_resampling_params(batches,height,width,output_height,output_width)
+    params.update(scaleX=width/output_width,scaleY=height/output_height)
+    return dict(entrypoint='depthUpsample',thread_count=(count,1,1),params=params,
+                elements=dict(depth=inputs,valid=inputs,confidence=inputs,
+                              **{k+'Out':count for k in ('depth','valid','confidence','direct_valid','propagated_valid','provenance')}))
+
+
+def depth_densify_plan(batches,height,width,*,max_workgroups_x,channels=3,steps=1,direct=False,
+                       max_rgb_difference=.15,max_relative_spread=.1,min_support=2):
+    count=_dispatch(batches,height,width,max_workgroups_x)
+    if channels not in (1,3) or type(channels) is not int:raise ValueError('RGB channels must be1or3')
+    if count*channels>UINT_MAX or max(height,width)>INT_MAX-1:raise ValueError('RGB offsets or neighbor coordinates overflow')
+    _integer('steps',steps,1,INT_MAX);_integer('min_support',min_support,1,INT_MAX)
+    if type(direct) is not bool:raise ValueError('direct must beboolean')
+    for name,value in [('max_rgb_difference',max_rgb_difference),('max_relative_spread',max_relative_spread)]:
+        if isinstance(value,bool) or not isinstance(value,numbers.Real) or value<0:raise ValueError(name+' must be nonnegative float32')
+    plans=[]
+    for n in range(steps):
+        params=_resampling_params(batches,height,width)
+        params.update(channels=channels,firstStep=int(n==0),useDirect=int(direct or n>0),minSupport=min_support,
+                      maxRGBDifference=float(max_rgb_difference),maxRelativeSpread=float(max_relative_spread))
+        plans.append(dict(entrypoint='densifyDepth',thread_count=(count,1,1),params=params,
+                          elements=dict(depth=count,valid=count,confidence=count,rgb=channels*count,
+                                        direct_valid=count if direct or n>0 else 1,
+                                        **{k+'Out':count for k in ('depth','valid','confidence','direct_valid','propagated_valid','provenance','support')})))
+    return plans
+
+
+def depth_pyramid_plan(batches,height,width,*,max_workgroups_x,scale=None,confidence=True):
+    count=_dispatch(batches,height,width,max_workgroups_x)
+    if max(height,width)>INT_MAX-1:raise ValueError('pyramid ceil dimensions overflow')
+    if type(confidence) is not bool:raise ValueError('confidence must beboolean')
+    if scale is not None and (type(scale) is not int or scale not in (2,4,8)):raise ValueError('scale must be2,4or8')
+    params=_resampling_params(batches,height,width);params['useConfidence']=int(confidence)
+    plans=[dict(level=1,shape=(batches,1,height,width),entrypoint='initializeDepth',thread_count=(count,1,1),params=params,
+                elements=dict(depth=count,valid=count,confidence=count if confidence else 1,
+                              depthOut=count,validOut=count,confidenceOut=count))]
+    level=1
+    while level<(8 if scale is None else scale) and (height,width)!=(1,1):
+        oh,ow=(height+1)//2,(width+1)//2;output=_dispatch(batches,oh,ow,max_workgroups_x);level*=2
+        plans.append(dict(level=level,shape=(batches,1,oh,ow),entrypoint='depthPyramidLevel',thread_count=(output,1,1),
+                          params=dict(batches=batches,height=height,width=width,epsilon=1.1920928955078125e-7),
+                          elements=dict(depth=count,valid=count,confidence=count,depthOut=output,validOut=output,confidenceOut=output)))
+        height,width,count=oh,ow,output
+    if scale is not None and plans[-1]['level']!=scale:raise ValueError('scale exceeds available depth pyramid levels')
+    return plans
+
+
+def depth_downsample_plan(batches,height,width,*,scale,max_workgroups_x):
+    stages=depth_pyramid_plan(batches,height,width,scale=scale,max_workgroups_x=max_workgroups_x)
+    shape=stages[-1]['shape'];count=batches*shape[-2]*shape[-1];level_index=len(stages)-1
+    labels=dict(entrypoint='labelDirectDepth',thread_count=(count,1,1),params=_resampling_params(batches,*shape[-2:]),
+                shape=shape,level=scale,elements=dict(valid=count,direct_validOut=count,propagated_validOut=count,provenanceOut=count))
+    stages.append(labels)
+    return dict(stages=stages,shape=shape,outputs={**{name:dict(stage=level_index,binding=name+'Out') for name in ('depth','valid','confidence')},
+                **{name:dict(stage=level_index+1,binding=name+'Out') for name in ('direct_valid','propagated_valid','provenance')}})
