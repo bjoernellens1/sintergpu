@@ -532,7 +532,7 @@
     "qualification/evidence/vkl-temporal-best-65536-32-nan.json": "f704aa3695fca73f64ea176e0c86e01d07cf6f684a907cbdbc9051de2c5d524b",
     "qualification/evidence/vkl-temporal-best-65536-32-sparse.json": "aa3f63d03474c63107e6dd16bca62ede74e085e833da6f747b571783c63af2e6",
     "qualification/evidence/vkl-temporal-best-8192-256-dense.json": "465fc8cbc62c9848f7dadbd65e04a6d152dbb484f6ba6060f516fe59ab6bac12",
-    "qualification/evidence/vkl-temporal-best-parity.json": "a0c1a7f89dd90a61db2fffe9d22312989c67b49f12d640063fbd45135351f2d6",
+    "qualification/evidence/vkl-temporal-best-parity.json": "80d63dca0234e2fc07958cef2e179c34d79e5beab960037396a49e488fc73bd3",
     "qualification/delivery-0.1.2.json": "4b249ea02fac50cee1bf42c4a2b37f0a4a0be9f728e2f0cdf59b0d400a9815d3"
   },
   "pending_gates": [

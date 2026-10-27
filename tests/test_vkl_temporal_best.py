@@ -24,7 +24,9 @@ def case(seed,neighbors):
     equiv[:7]=True
     quality[0]=np.nan;quality[1]=np.inf;quality[2]=-np.inf
     target[3]=np.nan;target[4]=-np.inf;target[5]=np.inf
-    quality[6]=.5;target[6]=.5
+    quality[6]=.5;target[6]=-.5
+    confidence[6]=np.linspace(0,1,neighbors,dtype=np.float32)
+    equiv[8]=True;quality[8]=.5;target[8]=.5
     equiv[7]=False
     confidence[4]=0
     return equiv,target,quality,confidence
@@ -112,3 +114,13 @@ def test_gpu_temporal_best_full_outputs(neighbors,quality_enabled,confidence_ena
             if name=='best_index':np.testing.assert_array_equal(actual[:t.size],expected[name])
             else:np.testing.assert_allclose(actual[:t.size],expected[name],rtol=8e-6,atol=5e-7,equal_nan=True,err_msg=name)
     finally:device.close()
+
+
+def test_tied_neighbor_fixture_proves_first_index_and_gathered_confidence():
+    eq,target,quality,confidence=case(1,7)
+    assert eq[6].all() and target[6]<quality[6].min(), 'tie must beat target to exercise neighbor ordering'
+    assert np.unique(confidence[6]).size==7, 'gathered confidence must distinguish tied neighbors'
+    oracle=load(ROOT/'src/sintergpu/references/temporal_best_numeric.py','best_numeric')
+    actual=oracle.temporal_best_observation(eq,target,quality,pairwise_confidence=confidence)
+    assert actual['best_index'][6]==1
+    assert actual['replacement_confidence'][6]==confidence[6,0]*(quality[6,0]-target[6])

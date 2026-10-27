@@ -12,16 +12,16 @@
   },
   "source_sha256": "20b0ebc40ee1d96c45bd4ea2a3fb281b46a614d6514571b36f003142d68b65fa",
   "test_source_sha256": {
-    "tests/test_vkl_temporal_best.py": "3fe034d00a8b01201272323f12608cb0c8207678b1852c3aca2dc88a77348117"
+    "tests/test_vkl_temporal_best.py": "62d14dc9ca8ea3495f2d32ce9d43e7386925a601fae1c2885795bb58754d29a0"
   },
   "verification": {
     "command": "SINTERGPU_GPU_TESTS=1 PYTHONPATH=src .cache/vkl-qualification-venv/bin/python -m pytest tests -q",
-    "result": "300 passed, 3 xfailed, 182 subtests passed",
-    "log_sha256": "dac7c22fa50cda2cc0323bd37435f7a18c1d941e1bc054012beac322024189bb",
-    "new_cases": 41,
+    "result": "310 passed, 3 xfailed, 182 subtests passed",
+    "log_sha256": "f55230d717c620314a0662307d1f985f2a065ef44d10ff39042065021c94b8c3",
+    "new_cases": 42,
     "new_gpu_cases": 16,
-    "new_cpu_source_cases": 25,
-    "scope": "Frozen Torch/NumPy full forward outputs, NaN/infinity/tie/fallback behavior, N1/2/7/33, four independent optional flag combinations, actual oneelement unused buffers, output padding and thread tails; not gradients, application or full extreme-value qualification"
+    "new_cpu_source_cases": 26,
+    "scope": "Frozen Torch/NumPy full forward outputs, NaN/infinity/tie/fallback behavior, N1/2/7/33, four independent optional flag combinations, actual oneelement unused buffers, output padding and thread tails; not gradients, application or full extreme-value qualification; explicit tied neighbors above target with distinct confidence and a separate target-tie row"
   },
   "benchmarks": {
     "qualification/evidence/vkl-temporal-best-65536-2-dense.json": "6339ca5e17e124b675ed483d05bd602ce2f3764013d014b6c3b46b45834b6316",
