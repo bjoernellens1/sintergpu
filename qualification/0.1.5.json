@@ -643,7 +643,9 @@
     "qualification/evidence/vkl-depth-resampling-parity.json": "7f3029f26311c9bf30ad8f41559188d8e7e4c45c64eafdc4cb03972a6197d7cf",
     "qualification/delivery-0.1.3.json": "1a6c5c54a67cf97e9cd09e8e54144e60c7da189077e9a0baef4a464d7e8ccc88",
     "qualification/evidence/vrdx-native-build.json": "c94bce7f1468470e97b1051e9034a9ccdca5b2918a103f28898e10b18ef2415c",
-    "qualification/evidence/reflection-compatibility-0.1.4.json": "5981d085e63ae42a50d02aeec52733db84a7ff7d4142e8c27a5c31ebf32dc0e9"
+    "qualification/evidence/reflection-compatibility-0.1.4.json": "5981d085e63ae42a50d02aeec52733db84a7ff7d4142e8c27a5c31ebf32dc0e9",
+    "qualification/delivery-0.1.4.json": "1ebf9ba2f835ca21325a07f122b9f163ed362239f5dca3967680383d10da78b7",
+    "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf"
   },
   "pending_gates": [
     "NVIDIA RTX 3090 execution: selected workstation unreachable",
