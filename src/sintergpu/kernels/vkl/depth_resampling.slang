@@ -19,6 +19,54 @@ RWStructuredBuffer<uint> propagated_validOut;
 RWStructuredBuffer<uint> provenanceOut;
 RWStructuredBuffer<int> supportOut;
 bool usableDepth(uint i) { return valid[i]!=0&&isfinite(depth[i])&&depth[i]>0; }
+// Exact uint32 limbs avoid requiring shaderFloat64 or shaderInt64. Inputs to the
+// product are <=24 and <=25 bits, so its <=49-bit result fits two limbs.
+uint2 multiplySignificands(uint a,uint b)
+{
+    uint lowProduct=(a&65535)*(b&65535);
+    uint cross=(a>>16)*(b&65535)+(a&65535)*(b>>16);
+    uint low=lowProduct+(cross<<16);
+    uint high=(a>>16)*(b>>16)+(cross>>16)+uint(low<lowProduct);
+    return uint2(low,high);
+}
+uint2 normalizeLimbs(uint2 value,uint highest)
+{
+    uint shift=63-highest;
+    if(shift==0)return value;
+    if(shift>=32)return uint2(0,value.x<<(shift-32));
+    return uint2(value.x<<shift,(value.y<<shift)|(value.x>>(32-shift)));
+}
+// Compare roundToNearestEven(numerator/denominator) <= threshold, as float32
+// Torch does. A raw cross product would compare the unrounded real quotient.
+// Instead compare against the exact midpoint between threshold and its next
+// float; ties choose threshold only when its significand is even.
+// The caller supplies nonnegative numerator, positive finite denominator and a
+// nonnegative threshold. No approximate floating-point divide decides the mask.
+bool roundedRatioWithin(float numerator,float denominator,float threshold)
+{
+    if(isnan(threshold)||threshold<0)return false;
+    if(isinf(threshold))return true;
+    if(numerator==0)return true;
+    if(!isfinite(numerator))return false;
+    uint a=asuint(numerator),b=asuint(denominator),t=asuint(threshold);
+    uint ae=(a>>23)&255,be=(b>>23)&255,te=(t>>23)&255;
+    uint am=(a&0x7fffff)|(ae!=0?0x800000:0);
+    uint bm=(b&0x7fffff)|(be!=0?0x800000:0);
+    uint tm=(t&0x7fffff)|(te!=0?0x800000:0);
+    int ax=ae!=0?int(ae)-150:-149;
+    int bx=be!=0?int(be)-150:-149;
+    int midpointExponent=te!=0?int(te)-151:-150;
+    uint2 product=multiplySignificands(bm,2*tm+1);
+    uint aTop=uint(firstbithigh(am));
+    uint pTop=product.y!=0?32+uint(firstbithigh(product.y)):uint(firstbithigh(product.x));
+    int aExponent=ax+int(aTop),pExponent=bx+midpointExponent+int(pTop);
+    if(aExponent!=pExponent)return aExponent<pExponent;
+    uint2 left=normalizeLimbs(uint2(am,0),aTop),right=normalizeLimbs(product,pTop);
+    if(left.y!=right.y)return left.y<right.y;
+    if(left.x!=right.x)return left.x<right.x;
+    return (t&1)==0;
+}
+
 [shader("compute")]
 [numthreads(256,1,1)]
 void initializeDepth(uint3 tid : SV_DispatchThreadID)
@@ -84,8 +132,7 @@ void densifyDepth(uint3 tid : SV_DispatchThreadID)
         for(uint pass=0;pass<8;pass++)for(uint k=0;k<8-pass;k++)
             if(values[k]>values[k+1]){float tmp=values[k];values[k]=values[k+1];values[k+1]=tmp;}
         selected=values[(support-1)/2];
-        float spread=(maximum-minimum)/max(selected,1.1920928955078125e-7);
-        fill=spread<=params.maxRelativeSpread;
+        fill=roundedRatioWithin(maximum-minimum,max(selected,1.1920928955078125e-7),params.maxRelativeSpread);
         fillConfidence=(sumConfidence/float(support))*(float(support)/9.0);
     }
     bool outValid=centerValid||fill,propagated=outValid&&!direct;

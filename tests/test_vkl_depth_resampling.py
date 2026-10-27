@@ -183,6 +183,34 @@ class TestDepthResamplingGPU:
         device.submit_command_buffer(encoder.finish())
         self.close(self.read(states[(steps-1)%2],d.shape),expected)
 
+    @pytest.mark.parametrize('median,maximum,threshold',[
+        (6.558398723602295,7.21423864364624,.1),
+        (.49824270606040955,.9964854121208191,1.0),
+        (6.347546100616455,8.251810073852539,.3)])
+    def test_spread_division_rounding_decisions(self,device,median,maximum,threshold):
+        self.check_spread_decisions(device,np.array([median],np.float32),np.array([maximum],np.float32),threshold)
+
+    @pytest.mark.parametrize('threshold',[.1,.3,.6,1.0])
+    def test_spread_rounded_boundaries_broad_frozen_differential(self,device,threshold):
+        median=np.random.default_rng(837).uniform(.1,10,4096).astype(np.float32)
+        maximum=np.float32(median*np.float32(1+threshold))
+        self.check_spread_decisions(device,median,maximum,threshold)
+
+    def check_spread_decisions(self,device,median,maximum,threshold):
+        torch=pytest.importorskip('torch')
+        from sintergpu.vkl import depth_densify_plan
+        d=np.broadcast_to(median[:,None,None,None],(len(median),1,3,3)).copy()
+        d[:,0,0,0]=maximum;d[:,0,1,1]=np.nan
+        v=np.ones(d.shape,bool);c=np.ones(d.shape,np.float32);rgb=np.zeros(d.shape,np.float32)
+        kwargs=dict(min_support=8,max_relative_spread=threshold)
+        expected={k:a.numpy() for k,a in frozen().depth_densify(torch.from_numpy(d),torch.from_numpy(v),torch.from_numpy(c),torch.from_numpy(rgb),**kwargs).items()}
+        self.close(oracle().depth_densify(d,v,c,rgb,**kwargs),expected)
+        plan=depth_densify_plan(len(median),3,3,channels=1,max_workgroups_x=int(device.info.limits.max_compute_dispatch_thread_groups[0]),**kwargs)[0]
+        bindings={k:self.buffer(device,a) for k,a in dict(depth=d,valid=v.astype(np.uint32),confidence=c,rgb=rgb,direct_valid=np.zeros(1,np.uint32)).items()}
+        out=self.outputs(device,d.shape,expected)
+        self.kernel(device,'densifyDepth').dispatch(list(plan['thread_count']),vars={'params':plan['params'],**bindings,**{k+'Out':a[0] for k,a in out.items()}})
+        self.close(self.read(out,d.shape),expected)
+
     @pytest.mark.parametrize('scale',[2,4,8])
     def test_downsample_composes_released_level_source(self,device,scale):
         from sintergpu.vkl import depth_downsample_plan

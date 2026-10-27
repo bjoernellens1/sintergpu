@@ -89,7 +89,11 @@ caller retains RGB and establishes each storage dependency on the same encoder.
 At each pixel, count usable neighbors in the clipped 3x3 stencil whose maximum
 absolute per-channel RGB difference is inclusively within the RGB threshold.
 For holes with enough support, select the lower median (index (support-1)//2),
-then accept an inclusive relative spread bound. Filled confidence retains the
+then accept an inclusive relative spread bound. The acceptance test preserves
+rounded float32 division using an exact integer comparison to the midpoint
+between the threshold and its next float, including ties to even. It uses two
+uint32 limbs, requiring neither float64 nor int64 shader capabilities; a raw
+cross-product inequality would incorrectly omit the donor rounding step. Filled confidence retains the
 donor expression `(sumConfidence/support)*(support/9)`, without algebraically
 replacing it with `/9`. Current valid values/confidences remain unchanged.
 Support is written for every pixel, including already-valid pixels. Zero
