@@ -67,7 +67,7 @@ def main():
                     'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
                     'source': {'repository': repository, 'revision': provenance['revision'], 'paths': [record['source_path']], 'license': provenance['license']},
                     'contract': {'profile': profile, 'documentation': documentation, 'numerical_behavior': behavior},
-                    'requirements': ['Vulkan compute', 'reflected resource layout', 'caller-owned initialized state and validated extents'],
+                    'requirements': ['Vulkan compute', 'reflected resource layout', 'caller-owned initialized state and validated extents']+record.get('requirements',[]),
                     'qualification': {'status': 'experimental', 'records': []},
                     'fixture': path.stem if donor == 'locus' else None,
                 })

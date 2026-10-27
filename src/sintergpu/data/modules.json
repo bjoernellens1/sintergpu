@@ -31,6 +31,14 @@
     "path": "kernels/common/block_reduce.slang",
     "sha256": "b963fc6f1cad8365068c60579f57b55c73c1ad3c3a696a1d3573b0cf627d9388"
   },
+  "common.brief_pattern": {
+    "path": "kernels/common/brief_pattern.slang",
+    "sha256": "3275ffd0c3d0e643fba26d8b68f6e70b38fc82a3da8ca2d39d2c9eeb86e8f770"
+  },
+  "common.float32_bits": {
+    "path": "kernels/common/float32_bits.slang",
+    "sha256": "d82c66e6543b3fe890a7c02f4680918038e336269fd0f939798c192f1c5c2729"
+  },
   "generated.dense_factors.generated": {
     "path": "kernels/generated/dense_factors.generated.slang",
     "sha256": "2afa8aeab83a06678792ba93a918ac14e41d945336f629ebba41f777e1793f44"
@@ -202,6 +210,14 @@
   "slang_rgbd_slam.tsdf": {
     "path": "kernels/slang_rgbd_slam/tsdf.slang",
     "sha256": "e31cf00bd2af9c7c8e49e82e2f1cf2bf437ccf66985a4cb8a30e6f5fb02f436d"
+  },
+  "vkl.binary_match": {
+    "path": "kernels/vkl/binary_match.slang",
+    "sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757"
+  },
+  "vkl.brief": {
+    "path": "kernels/vkl/brief.slang",
+    "sha256": "60e627e96653eef9e02645fea25a6f83c63bbd371c2c71a1fa5a47befab356d2"
   },
   "vkl.depth_convert": {
     "path": "kernels/vkl/depth_convert.slang",

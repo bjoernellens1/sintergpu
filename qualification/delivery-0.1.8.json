@@ -1,0 +1,440 @@
+{
+  "tag": "v0.1.8",
+  "results": [
+    {
+      "repository": "bjoernellens1/stereoforge",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/stereoforge/pull/10",
+      "head_sha": "eaa6ad7f841253f172ab96635ca4ac05b7edd797",
+      "base_sha": "5a2390d500961c21fd4f8faf264756b0dd9eda2c",
+      "checks_url": "https://github.com/bjoernellens1/stereoforge/pull/10/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description",
+      "context_verified": "Exact release excerpt and registration-only adoption boundary present in remote PR body",
+      "checks": [
+        {
+          "id": 122483460045,
+          "name": "cpu",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/stereoforge/actions/runs/40587704743/job/122483460045",
+          "annotations": [
+            {
+              "message": "Process completed with exit code 2.",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122483459306,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success",
+          "details_url": "https://github.com/bjoernellens1/stereoforge/actions/runs/40587704478/job/122483459306"
+        },
+        {
+          "id": 122483436787,
+          "name": "cpu",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/stereoforge/actions/runs/40587697191/job/122483436787",
+          "annotations": [
+            {
+              "message": "Process completed with exit code 2.",
+              "annotation_level": "failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/eligsir-sim",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/eligsir-sim/pull/49",
+      "head_sha": "376579fae3a45b71ef17a8ff5aa30794c2c684d8",
+      "base_sha": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+      "checks_url": "https://github.com/bjoernellens1/eligsir-sim/pull/49/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description",
+      "context_verified": "Exact release excerpt and registration-only adoption boundary present in remote PR body",
+      "checks": [
+        {
+          "id": 122485825927,
+          "name": "test (3.12)",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-sim/actions/runs/40588375398/job/122485825927",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122485825615,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-sim/actions/runs/40588375518/job/122485825615",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122485825382,
+          "name": "test (3.13)",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-sim/actions/runs/40588375398/job/122485825382",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122483668944,
+          "name": "test (3.13)",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-sim/actions/runs/40587749832/job/122483668944",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122483608519,
+          "name": "test (3.12)",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-sim/actions/runs/40587749832/job/122483608519",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/eligsir-native",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/eligsir-native/pull/18",
+      "head_sha": "f624f94a9dc25b40d75a8f81f9e36a66d24e5a3f",
+      "base_sha": "85e054104262c7775509bb060d710df32195de76",
+      "checks_url": "https://github.com/bjoernellens1/eligsir-native/pull/18/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description",
+      "context_verified": "Exact release excerpt and registration-only adoption boundary present in remote PR body",
+      "checks": [
+        {
+          "id": 122483797895,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-native/actions/runs/40587798241/job/122483797895",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/vkl",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/vkl/pull/138",
+      "head_sha": "fb44a2ea31ba0262c75d5cb718bb0ad88c38485a",
+      "base_sha": "3384023a311651ea4260cf12ddab1567972f89f3",
+      "checks_url": "https://github.com/bjoernellens1/vkl/pull/138/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description",
+      "context_verified": "Exact release excerpt and registration-only adoption boundary present in remote PR body",
+      "checks": [
+        {
+          "id": 122484004935,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/vkl/actions/runs/40587856235/job/122484004935",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122484003628,
+          "name": "container-test",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/vkl/actions/runs/40587856096/job/122484003628",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122483979703,
+          "name": "container-test",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/vkl/actions/runs/40587849323/job/122483979703",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/slang-rgbd-slam",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/slang-rgbd-slam/pull/9",
+      "head_sha": "07daf958c163015a7605ecb3082ad874b9a69377",
+      "base_sha": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+      "checks_url": "https://github.com/bjoernellens1/slang-rgbd-slam/pull/9/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description",
+      "context_verified": "Exact release excerpt and registration-only adoption boundary present in remote PR body",
+      "checks": [
+        {
+          "id": 122484192053,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/slang-rgbd-slam/actions/runs/40587908905/job/122484192053",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122484191822,
+          "name": "portable",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/slang-rgbd-slam/actions/runs/40587908802/job/122484191822",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122484171657,
+          "name": "portable",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/slang-rgbd-slam/actions/runs/40587902797/job/122484171657",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/caspar-slang",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/caspar-slang/pull/9",
+      "head_sha": "9ae35cde246de995b08c35d2539c795ebc012fad",
+      "base_sha": "cab53390aa111cd5526cb30c9aef484e73521186",
+      "checks_url": "https://github.com/bjoernellens1/caspar-slang/pull/9/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description",
+      "context_verified": "Exact release excerpt and registration-only adoption boundary present in remote PR body",
+      "checks": [
+        {
+          "id": 122484383757,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/caspar-slang/actions/runs/40587963559/job/122484383757",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122484383448,
+          "name": "vulkan-software",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/caspar-slang/actions/runs/40587963531/job/122484383448",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122484383079,
+          "name": "python",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/caspar-slang/actions/runs/40587963531/job/122484383079",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122484358509,
+          "name": "python",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/caspar-slang/actions/runs/40587956161/job/122484358509",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122484357886,
+          "name": "vulkan-software",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/caspar-slang/actions/runs/40587956161/job/122484357886",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/locus",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/locus/pull/20",
+      "head_sha": "c5d1e7654897745d5effd23cbce2eb9edfefabc4",
+      "base_sha": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+      "checks_url": "https://github.com/bjoernellens1/locus/pull/20/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description",
+      "context_verified": "Exact release excerpt and registration-only adoption boundary present in remote PR body",
+      "checks": [
+        {
+          "id": 122484621631,
+          "name": "ros2",
+          "status": "completed",
+          "conclusion": "skipped",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40588029739/job/122484621631"
+        },
+        {
+          "id": 122484603389,
+          "name": "optional-orbbec",
+          "status": "completed",
+          "conclusion": "skipped",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40588029739/job/122484603389"
+        },
+        {
+          "id": 122484601263,
+          "name": "portable",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40588029739/job/122484601263",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122484601202,
+          "name": "Android UI and JNI smoke (software GPU)",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40588029739/job/122484601202",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122484600638,
+          "name": "android",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40588029739/job/122484600638",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122484600295,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40588029872/job/122484600295",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "api_attempts": 92,
+  "recovery_attempts": [
+    {
+      "repository": "bjoernellens1/eligsir-sim",
+      "status": "failed",
+      "error": "GitHub API failure transport POST repos/bjoernellens1/eligsir-sim/pulls",
+      "resolution": "Reconciled authoritative head-filtered PR list: no PR; branch exact. Resume explicitly authorized registration with unchanged branch commit."
+    },
+    {
+      "repository": "bjoernellens1/eligsir-sim",
+      "status": "failed",
+      "error": "Normal retry without registration correctly refused partial registration with no existing PR; no writes performed."
+    }
+  ],
+  "recorded_at": "2026-10-27T21:38:15.666014+00:00",
+  "scope": "Release announcement/registration only; actual consumer adoption and native qualification not inferred. Merge control retained downstream.",
+  "release": {
+    "url": "https://github.com/bjoernellens1/sintergpu/releases/tag/v0.1.8",
+    "source_commit": "c604794c176902bf4ecad40da19198b8198cbfaa",
+    "immutable": true,
+    "workflow_run": 40586937424,
+    "manifest_sha256": "3bbe4fd9144a1645c0d82c94c6001da324433420d3524a09e84688d52cccd2c2",
+    "verification": "All downloaded checksums, immutable assets and hosted attestations verified with tools/release.py verify. Hosted prepared set recovered owner-locally after missing publisher-App gate, without rebuilding payloads."
+  }
+}

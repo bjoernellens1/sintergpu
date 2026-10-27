@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0",
+  "authorship": "Original VKL owner code; port authorized by owner. See frozen notices and provenance/vkl.json.",
+  "operation_prefix": "vkl",
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/brief.py",
+      "destination": "src/sintergpu/kernels/vkl/brief.slang",
+      "source_sha256": "470e9da056cfdfd945a563ffe4bb6ed392d9a24693a164335b559a0247cfbcfe",
+      "imported_sha256": "60e627e96653eef9e02645fea25a6f83c63bbd371c2c71a1fa5a47befab356d2",
+      "entry_points": [
+        "briefDescribe"
+      ],
+      "dispatchable": true,
+      "changes": [
+        "Independent float32/native-int64 full-forward binary feature profile; frozen Torch references unchanged."
+      ],
+      "contract_profile": "vkl-binary-features-forward-f32-i64",
+      "contract_limits": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+      "requirements": [
+        "shaderInt64"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/local_match.py",
+      "destination": "src/sintergpu/kernels/vkl/binary_match.slang",
+      "source_sha256": "7801ee5e7e6cbe7016b6aec3b66db10f081c6e1432643b144de827b2fa477755",
+      "imported_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "entry_points": [
+        "packBinary",
+        "initializeMatch",
+        "matchPairs",
+        "rowMinimum",
+        "reverseMinimum",
+        "finalizeMatch"
+      ],
+      "dispatchable": true,
+      "changes": [
+        "Independent float32/native-int64 full-forward binary feature profile; frozen Torch references unchanged."
+      ],
+      "contract_profile": "vkl-binary-features-forward-f32-i64",
+      "contract_limits": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+      "requirements": [
+        "shaderInt64"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/brief.py",
+      "destination": "src/sintergpu/kernels/common/brief_pattern.slang",
+      "source_sha256": "470e9da056cfdfd945a563ffe4bb6ed392d9a24693a164335b559a0247cfbcfe",
+      "imported_sha256": "3275ffd0c3d0e643fba26d8b68f6e70b38fc82a3da8ca2d39d2c9eeb86e8f770",
+      "entry_points": [],
+      "dispatchable": false,
+      "changes": [
+        "Independent float32/native-int64 full-forward binary feature profile; frozen Torch references unchanged."
+      ],
+      "contract_profile": "vkl-binary-features-forward-f32-i64",
+      "contract_limits": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+      "requirements": [
+        "shaderInt64"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/brief.py",
+      "destination": "src/sintergpu/references/features_numeric.py",
+      "source_sha256": "470e9da056cfdfd945a563ffe4bb6ed392d9a24693a164335b559a0247cfbcfe",
+      "imported_sha256": "53c7866e4864f0f50f1d712fde74bacc92c702867f1994dbad08ed0fd3bec8d0",
+      "entry_points": [],
+      "dispatchable": false,
+      "changes": [
+        "Independent float32/native-int64 full-forward binary feature profile; frozen Torch references unchanged."
+      ],
+      "contract_profile": "vkl-binary-features-forward-f32-i64",
+      "contract_limits": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+      "requirements": [
+        "shaderInt64"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/local_match.py",
+      "destination": "src/sintergpu/references/features_numeric.py",
+      "source_sha256": "7801ee5e7e6cbe7016b6aec3b66db10f081c6e1432643b144de827b2fa477755",
+      "imported_sha256": "53c7866e4864f0f50f1d712fde74bacc92c702867f1994dbad08ed0fd3bec8d0",
+      "entry_points": [],
+      "dispatchable": false,
+      "changes": [
+        "Independent float32/native-int64 full-forward binary feature profile; frozen Torch references unchanged."
+      ],
+      "contract_profile": "vkl-binary-features-forward-f32-i64",
+      "contract_limits": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+      "requirements": [
+        "shaderInt64"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/brief.py",
+      "destination": "src/sintergpu/kernels/common/float32_bits.slang",
+      "source_sha256": "470e9da056cfdfd945a563ffe4bb6ed392d9a24693a164335b559a0247cfbcfe",
+      "imported_sha256": "d82c66e6543b3fe890a7c02f4680918038e336269fd0f939798c192f1c5c2729",
+      "entry_points": [],
+      "dispatchable": false,
+      "changes": [
+        "Independent float32/native-int64 full-forward binary feature profile; frozen Torch references unchanged."
+      ],
+      "contract_profile": "vkl-binary-features-forward-f32-i64",
+      "contract_limits": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+      "requirements": [
+        "shaderInt64"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/local_match.py",
+      "destination": "src/sintergpu/kernels/common/float32_bits.slang",
+      "source_sha256": "7801ee5e7e6cbe7016b6aec3b66db10f081c6e1432643b144de827b2fa477755",
+      "imported_sha256": "d82c66e6543b3fe890a7c02f4680918038e336269fd0f939798c192f1c5c2729",
+      "entry_points": [],
+      "dispatchable": false,
+      "changes": [
+        "Independent float32/native-int64 full-forward binary feature profile; frozen Torch references unchanged."
+      ],
+      "contract_profile": "vkl-binary-features-forward-f32-i64",
+      "contract_limits": "Unpacked uint32 logical descriptors/masks, float32 CHW RGB/projections, native int64 point/pair coordinates and output indices/distances; shaderInt64 device feature required. Exact VKL default pattern, all comparison support/finite masks, inclusive radius/distance gates, first-index and mutual ties. Candidate chunking preserves output semantics. No SLAM-pattern substitution or gradient/float64 claim.",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-binary-features.md",
+      "requirements": [
+        "shaderInt64"
+      ]
+    }
+  ]
+}
