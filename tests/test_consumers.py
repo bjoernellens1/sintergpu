@@ -208,6 +208,7 @@ def test_delivery_aggregates_all_seven_after_failure(tmp_path,monkeypatch):
     monkeypatch.setattr(u.sys,'argv',['update_consumers.py','--tag','v0.1.0','--registry',str(registry),'--deliver','--results',str(results)])
     monkeypatch.setattr(u.release,'verify_download',lambda tag,path:{'tag':tag})
     monkeypatch.setattr(u,'make_lock',lambda manifest,path,item:'lock')
+    monkeypatch.setattr(u,'release_context',lambda manifest,path:'- Verified release notes.')
     visited=[]
     def deliver(api,item,*args):
         visited.append(item['repository'])
@@ -219,3 +220,124 @@ def test_delivery_aggregates_all_seven_after_failure(tmp_path,monkeypatch):
     report=json.loads(results.read_text())
     assert len(report['results'])==7
     assert sum(x['status']=='failed' for x in report['results'])==1
+
+
+def release_bundle(tmp_path, changelog=None):
+    import io,tarfile,json
+    version='0.1.4';path=tmp_path/f'sintergpu-{version}-source.tar.gz'
+    text=changelog or '# Changelog\n\n## 0.1.4 — 2026-10-27\n\n- Add conservative depth filling.\n- Preserve initial direct masks.\n\n## 0.1.3 — 2026-10-27\n\n- Older unrelated change.\n'
+    with tarfile.open(path,'w:gz') as archive:
+        data=text.encode();entry=tarfile.TarInfo(f'sintergpu-{version}/CHANGELOG.md');entry.size=len(data);archive.addfile(entry,io.BytesIO(data))
+    return {'tag':'v'+version,'version':version,'assets':[{'name':path.name,'sha256':u.release.sha256(path),'size':path.stat().st_size}]}
+
+
+def test_release_context_uses_hash_verified_exact_version_changelog(tmp_path):
+    manifest=release_bundle(tmp_path)
+    context=u.release_context(manifest,tmp_path)
+    assert 'Add conservative depth filling.' in context
+    assert 'Older unrelated change' not in context
+    (tmp_path/manifest['assets'][0]['name']).write_bytes(b'tampered')
+    with pytest.raises(ValueError,match='source'):
+        u.release_context(manifest,tmp_path)
+
+
+@pytest.mark.parametrize('section',['## 0.1.4 — unreleased\n\n- Not published.\n','## 0.1.3 — 2026-10-27\n\n- Wrong version.\n'])
+def test_release_context_rejects_missing_or_unreleased_notes(tmp_path,section):
+    with pytest.raises(ValueError,match='changelog'):
+        u.release_context(release_bundle(tmp_path,section),tmp_path)
+
+
+def test_release_body_gives_registered_and_integrated_consumers_actionable_scope():
+    item=consumer();notes='- Add conservative depth filling.'
+    body=u.release_body(item,'v0.1.4',notes)
+    assert notes in body and 'Registration only' in body
+    assert 'No kernel code is migrated by this PR' in body
+    assert 'docs/vkl' not in body # No invented per-consumer operation claims.
+    item.update(integration_state='integrated',consumed_modules=['reductions/float_sum_256.slang'],integration_argv=['python','-m','pytest','tests/test_reductions.py'])
+    body=u.release_body(item,'v0.1.4',notes)
+    assert 'reductions/float_sum_256.slang' in body and 'tests/test_reductions.py' in body
+    assert 'No automatic merge' in body and 'GPU qualification' in body
+
+
+def test_delivery_enriched_notes_idempotent_without_extra_commit(monkeypatch):
+    monkeypatch.setattr(u.subprocess,'run',lambda *args,**kwargs:None)
+    api=FakeGitHub();lock='{"tag":"v0.1.0"}'
+    first=u.deliver_one(api,consumer(),lock,register=True,release_notes='- New release detail.')
+    writes=list(api.writes)
+    second=u.deliver_one(api,consumer(),lock,register=True,release_notes='- New release detail.')
+    assert first['head_sha']==second['head_sha'] and api.writes==writes
+    assert '- New release detail.' in api.pr['body']
+
+
+def test_legacy_body_is_retained_without_writes_and_human_edits_are_preserved(monkeypatch):
+    monkeypatch.setattr(u.subprocess,'run',lambda *args,**kwargs:None)
+    api=FakeGitHub();lock='{"tag":"v0.1.0"}'
+    u.deliver_one(api,consumer(),lock,register=True)
+    original=api.pr['body'];writes=list(api.writes)
+    def update(endpoint,method='GET',data=None,missing=False):
+        if method=='PATCH':
+            assert endpoint.endswith('/pulls/1') and list(data)==['body']
+            api.writes.append((method,endpoint));api.pr['body']=data['body'];return api.pr
+        return api(endpoint,method,data,missing)
+    u.deliver_one(update,consumer(),lock,register=True,release_notes='- New release detail.')
+    assert api.writes==writes and api.pr['body']==original
+    u.deliver_one(update,consumer(),lock,register=True,release_notes='- New release detail.')
+    assert len(api.writes)==len(writes)
+    api.pr['body']=original+'\nHuman comment: retain me.\n';before=list(api.writes)
+    with pytest.raises(ValueError,match='human-modified'):
+        u.deliver_one(update,consumer(),lock,register=True,release_notes='- New release detail.')
+    assert api.pr['body'].endswith('Human comment: retain me.\n') and api.writes==before
+
+
+def test_legacy_delivery_never_needs_a_body_update_confirmation(monkeypatch):
+    monkeypatch.setattr(u.subprocess,'run',lambda *args,**kwargs:None)
+    api=FakeGitHub();lock='{"tag":"v0.1.0"}';u.deliver_one(api,consumer(),lock,register=True)
+    updates=[]
+    def ambiguous(endpoint,method='GET',data=None,missing=False):
+        if endpoint.endswith('/pulls/1'):
+            updates.append(method)
+            if method=='PATCH':
+                api.pr['body']=data['body'];raise RuntimeError('response lost after applying')
+            return api.pr
+        return api(endpoint,method,data,missing)
+    result=u.deliver_one(ambiguous,consumer(),lock,register=True,release_notes='- Verified detail.')
+    assert result['status']=='delivered' and updates==[] and result['release_context']=='legacy description retained'
+
+
+def test_unverified_release_notes_prevent_all_delivery_writes(tmp_path,monkeypatch):
+    import json
+    result=tmp_path/'delivery.json'
+    monkeypatch.setattr(u.sys,'argv',['update_consumers.py','--tag','v0.1.0','--registry',str(Path(__file__).resolve().parents[1]/'consumers.json'),'--deliver','--results',str(result)])
+    monkeypatch.setattr(u.release,'verify_download',lambda *args:{'tag':'v0.1.0'})
+    def fail(*args):raise ValueError('verified release changelog unavailable')
+    monkeypatch.setattr(u,'release_context',fail)
+    monkeypatch.setattr(u,'deliver_one',lambda *args:pytest.fail('delivery before notes verification'))
+    assert u.main()==1
+    records=json.loads(result.read_text())['results']
+    assert len(records)==7 and all(r['status']=='failed' and 'changelog' in r['error'] for r in records)
+
+
+def test_human_body_edit_during_verification_is_never_overwritten(monkeypatch):
+    import copy
+    monkeypatch.setattr(u.subprocess,'run',lambda *args,**kwargs:None)
+    api=FakeGitHub();lock='{"tag":"v0.1.0"}';u.deliver_one(api,consumer(),lock,register=True)
+    writes=[]
+    def snapshot_api(endpoint,method='GET',data=None,missing=False):
+        if method=='PATCH':
+            writes.append(method);api.pr['body']=data['body'];return copy.deepcopy(api.pr)
+        return copy.deepcopy(api(endpoint,method,data,missing))
+    def verify(*args,**kwargs):api.pr['body']+='\nHuman note during verification.\n'
+    monkeypatch.setattr(u.subprocess,'run',verify)
+    u.deliver_one(snapshot_api,consumer(),lock,register=True,release_notes='- Verified detail.')
+    assert api.pr['body'].endswith('Human note during verification.\n') and not writes
+
+
+@pytest.mark.parametrize('header',['0.1.4-rc.1','0.1.4.1'])
+def test_release_context_never_matches_other_version_tokens(tmp_path,header):
+    manifest=release_bundle(tmp_path,'## '+header+' — 2026-10-27\n\n- Wrong release.\n')
+    with pytest.raises(ValueError,match='changelog'):u.release_context(manifest,tmp_path)
+
+
+def test_duplicate_release_sections_are_rejected(tmp_path):
+    manifest=release_bundle(tmp_path,'## 0.1.4 — 2026-10-27\n\n- First.\n\n## 0.1.4 — 2026-10-27\n\n- Conflicting second.\n')
+    with pytest.raises(ValueError,match='changelog'):u.release_context(manifest,tmp_path)

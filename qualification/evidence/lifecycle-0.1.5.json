@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-27T20:03:56.624315+00:00",
+  "status": "checks-passed",
+  "version": "0.1.5",
+  "scope": "Lifecycle/CI checks; kernel, setup, adapter and header sources unchanged from immutable 0.1.4. Existing hardware qualification scopes and pending gates remain in force.",
+  "source_sha256": {
+    "tools/compare_reflection.py": "9ddd38928e7c148e58d99db4f24f5633785fc5a75b45b1c8d68fdb9fe5498bc8",
+    "tools/update_consumers.py": "054bc500c2c4277daa4e23de2f34215fa94ed09e38cac3d8ac5b15ce4223d9d1",
+    "tools/release.py": "5ebcc013ed01c342a843021bc322a0b1bea34475eafd51b6b7ab4c6f6d24e23a",
+    "tests/test_consumers.py": "68818b7bed1fba0a7ee0a5abc43e597bae77f5b1488c7dce1f94da17ec888747",
+    "tests/test_reflection_compatibility.py": "d8c2a9de6f913e1c706a1f68d2907e0c9ca9ab606098a3981b2fad09d23ad3c9",
+    "tests/test_release.py": "ce1e51ac5c214bf6a2f3eeeb70657ebf8fd3f55769756afb76587356e1794db1",
+    ".github/workflows/ci.yml": "42d8716b9d691e19faf129e800cc81b77421f840cddc63de795beb15cd1fa3d5"
+  },
+  "verification": {
+    "cpu": "308 passed, 163 skipped, 135 subtests passed",
+    "gpu_enabled": "468 passed, 3 pre-existing strict xfailed, 186 subtests passed",
+    "cpu_log_sha256": "6963cd744e8e15f0d00f97a0325b6caaf5880ff0353a36a412d49f6c53a65b3d",
+    "gpu_log_sha256": "68d9388d10991db81751d2babfaa303033a52423b9d938686fa49e1c44364d8d",
+    "review_focused": "77 passed",
+    "regressions": "Concurrent human PR edit preserved; wrong-token and duplicate release headings rejected for both prepare and delivery; ABI type/offset/size/binding/ordering/workgroup/source/compiler mutations rejected"
+  },
+  "shader_tree_sha256": "3bf2939d4aa7112ef436bf10b2ff9f95b1638d2a57569075a9f63e497b350e9c",
+  "reflection_evidence": "qualification/evidence/reflection-compatibility-0.1.4.json",
+  "downstream_evidence": "qualification/delivery-0.1.4.json",
+  "automatic_publication": "Publisher App and downstream App configuration remain pending; owner-local recovery reused original hosted set."
+}

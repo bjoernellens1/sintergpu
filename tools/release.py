@@ -123,14 +123,21 @@ def verify_package_sources(root, package, kind):
         raise ValueError(kind+' source bytes do not match tracked release sources')
 
 
+def released_changelog_section(text, version):
+    """Select one exact released version, never a prefix or duplicate section."""
+    validate_version('v'+version,version)
+    sections=list(re.finditer(r'^## '+re.escape(version)+r'(?=[ \t]|$)([^\n]*)\n(.*?)(?=^## |\Z)',text,re.M|re.S))
+    if len(sections)!=1 or 'unreleased' in sections[0][1].lower() or not re.search(r'^- .+',sections[0][2],re.M):
+        raise ValueError('commit one exact released changelog section before tagging')
+    return sections[0][2].strip()
+
+
 def prepare(tag, output, qualification, compilers, root=ROOT):
     version = validate_version(tag, (root/'VERSION').read_text().strip())
     if (root/'src/sintergpu/data/VERSION').read_text().strip() != version:
         raise ValueError('packaged VERSION mismatch')
     changelog = (root/'CHANGELOG.md').read_text()
-    section = re.search(r'^## '+re.escape(version)+r'\b([^\n]*)\n(.*?)(?=^## |\Z)', changelog, re.M | re.S)
-    if not section or 'unreleased' in section.group(1).lower() or not re.search(r'^- .+', section.group(2), re.M):
-        raise ValueError('commit a released changelog section before tagging')
+    released_changelog_section(changelog,version)
     source = run(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
     if run(['git', 'rev-list', '-n', '1', tag], cwd=root, text=True).strip() != source:
         raise ValueError('checkout is not tag commit')

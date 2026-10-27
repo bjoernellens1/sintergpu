@@ -149,3 +149,31 @@ of drafts. Its initial publication used owner-authorized local recovery of the
 original hosted, attested bytes. Draft inspection uses the release ID returned by
 the authenticated release list. Automatic publisher-App and downstream-App
 execution remain pending configuration.
+
+
+## Release context in update PRs
+
+The delivery tool reads only the requested version's released changelog section
+from the attested source bundle after checking its manifest hash and size. PRs
+include that excerpt, exact-tag documentation and qualification links, and
+registration/adoption instructions. Registered consumers are told explicitly that
+no kernel code migrates in the metadata PR. Integrated consumers see their
+consumed modules and registered integration argv, and retain downstream merge
+control and device/command ownership.
+
+Existing PR descriptions are never rewritten: human edits can occur during
+verification, and the tool has no atomic body-ownership update mechanism. Exact
+legacy descriptions remain valid historical deliveries and are reported as
+`legacy description retained`; new PRs include the enriched context. Any other
+existing body is a human-edit conflict and is preserved. Retries create no new
+dependency commit or description write. Missing, mismatched, duplicate or
+unreleased changelog sections prevent delivery and produce failure records.
+
+PR CI now also compares all shared reflected fields from both pinned compiler
+artifacts: descriptor bindings, scalar/resource types, field offsets/sizes,
+strides, ordering and workgroup dimensions. Missing fields or unknown schema
+additions fail the gate. Slang 2026.19's known additional `sizes`, root schema/
+global-scope and entrypoint-scope metadata are retained in the compiler records;
+these new-only fields have no 2026.12 counterpart and are explicitly outside the
+cross-version comparison. This gate establishes reflected ABI agreement, not
+runtime parity, gradient accuracy or a merged compiler version.
