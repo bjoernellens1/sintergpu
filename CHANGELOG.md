@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 — unreleased
+
+- Address draft releases by immutable release ID instead of the published-tag endpoint.
+- Require a dedicated publisher App for the administrative immutability preflight.
+
 ## 0.1.0 — 2026-10-27
 
 - Consolidate Locus image/depth/geometry/perception kernels with scalar fixtures.

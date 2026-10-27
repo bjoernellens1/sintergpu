@@ -6,6 +6,11 @@ A Slang-first library consolidating reusable image, depth, geometry, tracking,
 reconstruction and optimization operations from existing projects. Kernels,
 independent references, provenance and device-specific evidence travel together.
 
+[Experimental 0.1.0 release](https://github.com/bjoernellens1/sintergpu/releases/tag/v0.1.0)
+includes a Python wheel, source packages, checksums, attestations and scoped
+qualification metadata. Full consolidation and cross-vendor qualification remain
+in progress.
+
 ```sh
 python -m pip install .
 sinter list
@@ -19,7 +24,8 @@ never count as hardware qualification. See [status](docs/status.md),
 [provenance](provenance/README.md), and [changelog](CHANGELOG.md).
 The [kernel overlap audit](docs/kernel-overlap.md) compares duplicated tasks,
 contract differences, canonical owners and required consolidation checks.
-See [packaging](docs/packaging.md) for Python wheels and C++/CMake integration.
+See [packaging](docs/packaging.md) for Python wheels and C++/CMake integration,
+and [consumer migrations](docs/consumer-migrations.md) for delivery and adoption evidence.
 
 Core adapters borrow application devices and command contexts. Standalone test
 and benchmark tools explicitly own their test resources. Production callers own

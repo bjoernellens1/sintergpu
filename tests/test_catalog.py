@@ -11,7 +11,7 @@ class CatalogTests(unittest.TestCase):
         from sintergpu.catalog import list_operations, validate_catalog
         operations = list_operations()
         self.assertGreaterEqual(len(operations), 17)
-        self.assertEqual(sintergpu.__version__, '0.1.0')
+        self.assertEqual(sintergpu.__version__, (Path(__file__).resolve().parents[1]/'VERSION').read_text().strip())
         self.assertEqual(validate_catalog(), [])
         for operation in operations:
             with self.subTest(operation['id']):
