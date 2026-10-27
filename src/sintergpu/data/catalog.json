@@ -4403,6 +4403,41 @@
       "fixture": null
     },
     {
+      "id": "vkl.temporal_best.temporalBest",
+      "path": "kernels/vkl/temporal_best.slang",
+      "entrypoint": "temporalBest",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "20b0ebc40ee1d96c45bd4ea2a3fb281b46a614d6514571b36f003142d68b65fa",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/temporal_best.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-temporal-best-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-temporal-best.md",
+        "numerical_behavior": "Row-major BxN qualities/equivalence; first maximum with NaN propagation, target fallback on nonfinite winning candidate or ties; optional pairwise quality/confidence, all four numeric outputs; caller validates finite [0,1] confidence and nonempty neighbors. No gradients."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
       "id": "xsplat_vk.adam.main",
       "path": "kernels/xsplat_vk/adam.slang",
       "entrypoint": "main",

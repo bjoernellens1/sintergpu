@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-27T18:52:05.216362+00:00",
+  "status": "fixture-parity-passed",
+  "operation": "vkl.temporal_best.temporalBest",
+  "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+  "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+  "adapter": "SlangPy0.43.1 / Vulkan",
+  "compiler": {
+    "version": "2026.12 (SlangPy bundled)",
+    "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+  },
+  "source_sha256": "20b0ebc40ee1d96c45bd4ea2a3fb281b46a614d6514571b36f003142d68b65fa",
+  "test_source_sha256": {
+    "tests/test_vkl_temporal_best.py": "3fe034d00a8b01201272323f12608cb0c8207678b1852c3aca2dc88a77348117"
+  },
+  "verification": {
+    "command": "SINTERGPU_GPU_TESTS=1 PYTHONPATH=src .cache/vkl-qualification-venv/bin/python -m pytest tests -q",
+    "result": "300 passed, 3 xfailed, 182 subtests passed",
+    "log_sha256": "dac7c22fa50cda2cc0323bd37435f7a18c1d941e1bc054012beac322024189bb",
+    "new_cases": 41,
+    "new_gpu_cases": 16,
+    "new_cpu_source_cases": 25,
+    "scope": "Frozen Torch/NumPy full forward outputs, NaN/infinity/tie/fallback behavior, N1/2/7/33, four independent optional flag combinations, actual oneelement unused buffers, output padding and thread tails; not gradients, application or full extreme-value qualification"
+  },
+  "benchmarks": {
+    "qualification/evidence/vkl-temporal-best-65536-2-dense.json": "6339ca5e17e124b675ed483d05bd602ce2f3764013d014b6c3b46b45834b6316",
+    "qualification/evidence/vkl-temporal-best-65536-32-early.json": "01c353c8db38db1302fb7e5276123bc1607eb4f88d9b7e513697541871f4c325",
+    "qualification/evidence/vkl-temporal-best-65536-32-late.json": "c9379a64a0a79e72db3407437f9c08329de7e59502c229960041b6e829446c4e",
+    "qualification/evidence/vkl-temporal-best-65536-32-nan.json": "f704aa3695fca73f64ea176e0c86e01d07cf6f684a907cbdbc9051de2c5d524b",
+    "qualification/evidence/vkl-temporal-best-65536-32-sparse.json": "aa3f63d03474c63107e6dd16bca62ede74e085e833da6f747b571783c63af2e6",
+    "qualification/evidence/vkl-temporal-best-8192-256-dense.json": "465fc8cbc62c9848f7dadbd65e04a6d152dbb484f6ba6060f516fe59ab6bac12"
+  },
+  "performance_status": "measurement_only; sharedGPU, no controlled speedup or optimization selection"
+}

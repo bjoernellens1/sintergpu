@@ -29,6 +29,7 @@ and [consumer migrations](docs/consumer-migrations.md) for delivery and adoption
 The [VKL source inventory](docs/vkl-source-inventory.md) records all 69 public
 reference candidates; [geometry/depth contracts](docs/vkl-geometry-depth.md) describe
 the new forward profiles and their explicit numerical and qualification limits.
+[Temporal evidence selection](docs/vkl-temporal-best.md) has its own forward contract.
 
 Core adapters borrow application devices and command contexts. Standalone test
 and benchmark tools explicitly own their test resources. Production callers own

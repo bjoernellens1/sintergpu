@@ -68,3 +68,16 @@ def validate_capacities(layout,capacities):
     for name,count in layout['elements'].items():
         capacity=capacities.get(name)
         if type(capacity) is not int or capacity<count:raise ValueError(f'insufficient scalar32 capacity for {name}: need {count}')
+
+
+def temporal_best_layout(batches,neighbors,*,max_workgroups_x,quality=False,confidence=False):
+    count=_dispatch(batches,1,1,max_workgroups_x)
+    _integer('neighbors',neighbors,1,INT_MAX)
+    if count*neighbors>UINT_MAX:raise ValueError('neighbor fields overflow uint32 offsets')
+    if type(quality) is not bool or type(confidence) is not bool:raise ValueError('quality/confidence must be booleans')
+    return dict(entrypoint='temporalBest',thread_count=(count,1,1),
+                params=dict(batches=count,neighbors=neighbors,useQuality=int(quality),useConfidence=int(confidence)),
+                elements=dict(equivalence=count*neighbors,target_quality=count,neighbor_quality=1 if quality else count*neighbors,
+                              pairwise_quality=count*neighbors if quality else 1,
+                              pairwise_confidence=count*neighbors if confidence else 1,
+                              best_indexOut=count,best_qualityOut=count,replaceabilityOut=count,replacement_confidenceOut=count))

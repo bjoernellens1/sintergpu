@@ -235,9 +235,14 @@ def publish(tag, directory):
         with tempfile.TemporaryDirectory() as temp:
             return verify_download(tag, Path(temp))
     if not match:
-        gh('release', 'create', tag, '-R', REPO, '--draft', '--verify-tag', '--title', tag, '--notes', 'Experimental kernels; see manifest qualification and pending gates.')
-        releases = json.loads(gh('api', '--paginate', '--slurp', f'repos/{REPO}/releases?per_page=100'))
-        match = [r for page in releases for r in page if r['tag_name'] == tag]
+        # Use the mutation response directly: GitHub's release list can lag a
+        # successful draft creation. The exact remote tag was verified above.
+        created = json.loads(gh('api', f'repos/{REPO}/releases', '--method', 'POST',
+                                '-f', 'tag_name='+tag, '-F', 'draft=true', '-f', 'name='+tag,
+                                '-f', 'body=Experimental kernels; see manifest qualification and pending gates.'))
+        if created.get('tag_name') != tag or not created.get('draft') or not created.get('id'):
+            raise ValueError('draft creation response mismatch; inspect remote state before retrying')
+        match = [created]
     if len(match) != 1:
         raise ValueError('exactly one draft release required')
     endpoint = f'repos/{REPO}/releases/{match[0]["id"]}'
