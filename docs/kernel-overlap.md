@@ -266,3 +266,23 @@ The one directly actionable exact algebra duplicate is G18. “Same operation, d
 - VKL Torch functions are references and potential autograd routes, not proof that a corresponding canonical Slang GPU implementation exists for every operation.
 - No claim that all inventory source files or all249 entries were audited.
 - Exact_duplicate means exact symbolic residual/Jacobian algebra in G18, not identical resource/dispatch ABI.
+
+## Geometry/depth port follow-up
+
+The four forward profiles added for 0.1.2 retain these distinctions from the
+original review; they do not collapse similarly named operations into aliases.
+
+| New profile | Existing overlap | Disposition |
+| --- | --- | --- |
+| `vkl.geometry.depthGeometry` | Locus backprojection and SLAM normal generation | Same task with different layout, invalid-depth masking, right/down stencil and camera-facing normal contracts; retain a named profile |
+| `vkl.geometry.worldTransform` | Locus point transformation and depthGeometry world output | Standalone transform always applies Rp+t, while depthGeometry remasks invalid depth; retain separate entry points |
+| `vkl.depth_fusion.fuseDepth` | G19 depth/TSDF/occupancy fusion | Same-grid confidence-weighted depth and first-max provenance; distinct from signed-distance integration and voxel counts |
+| `vkl.depth_fusion.temporalDepthFuse` | G19 temporal evidence | Asymmetric pairwise clusters, explicit trust and eleven forward outputs; retain specialized profile |
+
+See [the numerical contracts](vkl-geometry-depth.md) and
+[hash-bound lineage](../provenance/vkl-geometry-depth.json). New differential
+tests compare all forward outputs with the frozen VKL implementations, including
+logical/provenance values and invalid outputs. A borrowed-encoder fusion→geometry
+test checks composition. These checks do not qualify cross-vendor behavior,
+gradients, application results or performance, and do not replace the original
+22-group review with a claim of an exhaustive audit.

@@ -24,6 +24,12 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install '.[test]' build
       - run: python -m pytest tests -q
+      - name: Run frozen VKL Torch references on CPU
+        env:
+          PYTHONPATH: src
+        run: |
+          python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+          python -m pytest tests/test_vkl*.py -q
       - run: python tools/check_provenance.py
       - name: Require changelog classification and versioning
         if: github.event_name == 'pull_request'

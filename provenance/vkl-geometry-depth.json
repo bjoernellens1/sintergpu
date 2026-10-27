@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0 (original owner authorization 2026-10-27)",
+  "author": "Original owner code; standalone ports and independent NumPy oracles in SinterGPU",
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/geometry.py",
+      "destination": "src/sintergpu/kernels/vkl/geometry.slang",
+      "source_sha256": "72b9d246b18f078516834b3a8a15f608772e1554ae9c31fd8d3824f1fd85151c",
+      "imported_sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+      "changes": [
+        "Independent portable float32 forward port/oracle; typed scalar32 ABI; no changes to retained Torch source",
+        "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics"
+      ],
+      "contract_limits": "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics",
+      "contract_profile": "vkl-geometry-depth-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
+      "entry_points": [
+        "depthGeometry",
+        "worldTransform"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/geometry.py",
+      "destination": "src/sintergpu/references/geometry_depth_numeric.py",
+      "source_sha256": "72b9d246b18f078516834b3a8a15f608772e1554ae9c31fd8d3824f1fd85151c",
+      "imported_sha256": "eda2512206fd5e34334846f07b9bdaebcbc5ae1c513c8e6bd3e1f0bc6b25c5d4",
+      "changes": [
+        "Independent portable float32 forward port/oracle; typed scalar32 ABI; no changes to retained Torch source",
+        "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics"
+      ],
+      "contract_limits": "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics",
+      "contract_profile": "vkl-geometry-depth-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
+      "entry_points": [
+        "depthGeometry",
+        "worldTransform"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_fuse.py",
+      "destination": "src/sintergpu/kernels/vkl/depth_fusion.slang",
+      "source_sha256": "b22b3c3bdc46d2aaeab78aa9680a45f4a62bd84c6651f8c20c6bf1fd93f62fa7",
+      "imported_sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "changes": [
+        "Independent portable float32 forward port/oracle; typed scalar32 ABI; no changes to retained Torch source",
+        "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned"
+      ],
+      "contract_limits": "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned",
+      "contract_profile": "vkl-geometry-depth-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
+      "entry_points": [
+        "fuseDepth"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_fuse.py",
+      "destination": "src/sintergpu/references/geometry_depth_numeric.py",
+      "source_sha256": "b22b3c3bdc46d2aaeab78aa9680a45f4a62bd84c6651f8c20c6bf1fd93f62fa7",
+      "imported_sha256": "eda2512206fd5e34334846f07b9bdaebcbc5ae1c513c8e6bd3e1f0bc6b25c5d4",
+      "changes": [
+        "Independent portable float32 forward port/oracle; typed scalar32 ABI; no changes to retained Torch source",
+        "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned"
+      ],
+      "contract_limits": "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned",
+      "contract_profile": "vkl-geometry-depth-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
+      "entry_points": [
+        "fuseDepth"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal_depth_fuse.py",
+      "destination": "src/sintergpu/kernels/vkl/depth_fusion.slang",
+      "source_sha256": "72b316a30402843b8eec506f15d58ab37a25eb5fa516483fda602e3935cf5e6c",
+      "imported_sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "changes": [
+        "Independent portable float32 forward port/oracle; typed scalar32 ABI; no changes to retained Torch source",
+        "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation"
+      ],
+      "contract_limits": "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation",
+      "contract_profile": "vkl-geometry-depth-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
+      "entry_points": [
+        "temporalDepthFuse"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal_depth_fuse.py",
+      "destination": "src/sintergpu/references/geometry_depth_numeric.py",
+      "source_sha256": "72b316a30402843b8eec506f15d58ab37a25eb5fa516483fda602e3935cf5e6c",
+      "imported_sha256": "eda2512206fd5e34334846f07b9bdaebcbc5ae1c513c8e6bd3e1f0bc6b25c5d4",
+      "changes": [
+        "Independent portable float32 forward port/oracle; typed scalar32 ABI; no changes to retained Torch source",
+        "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation"
+      ],
+      "contract_limits": "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation",
+      "contract_profile": "vkl-geometry-depth-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
+      "entry_points": [
+        "temporalDepthFuse"
+      ]
+    }
+  ],
+  "qualification": "Experimental forward profiles; CPU independent/frozen Torch differential and local GPU fixtures; no gradients, optimization selection, full-application or cross-vendor qualification claimed",
+  "coverage": {
+    "newly_forward_ported_modules": [
+      "geometry",
+      "depth_fuse",
+      "temporal_depth_fuse"
+    ],
+    "entrypoints": 4
+  },
+  "evidence": {
+    "tests": "tests/test_vkl_geometry_depth.py",
+    "layouts": "tests/test_vkl_layouts.py",
+    "static_guards": "tests/test_vkl_hot_path.py",
+    "benchmark": "benchmarks/vkl_geometry_depth.py"
+  }
+}

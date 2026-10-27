@@ -6,18 +6,18 @@ cross-vendor qualification remain incomplete. Evidence below was obtained on
 
 | Area | Verified scope / remaining gate |
 | --- | --- |
-| Catalog | 121 dispatch entries with source hashes, numerical contracts and lineage; all remain experimental |
+| Catalog | 125 dispatch entries with source hashes, numerical contracts and lineage; all remain experimental |
 | Locus | 17 operations; 28 GPU fixture cases through SlangPy 0.43.1 on Radeon 8060S; original scalar suite passes |
 | Shared reduction | Float SUM with 5 channels and uint MIN with 1 channel preserve the 256-thread tree in exact GPU probes |
 | Consumer migrations | Released-wheel differential probes pass: [StereoForge opt-in PR](https://github.com/bjoernellens1/stereoforge/pull/3), [EliGSiR-native opt-in PR](https://github.com/bjoernellens1/eligsir-native/pull/10). Both pin exact release URL/hash; downstream review/adoption and cross-vendor qualification remain pending |
-| VKL | 47 executable Torch reference modules packaged; 4 partial forward Slang profiles; 43 substantive Slang translations remain pending. Three strict expected failures document extreme-depth denormal flushing; no tolerance was weakened |
+| VKL | 47 executable Torch reference modules packaged; seven modules have forward Slang coverage (including four new geometry/depth entries); 40 modules remain without Slang translations. Three strict expected failures document extreme-depth denormal flushing; no tolerance was weakened |
 | Caspar/SLAM | 11 standalone composed modules, retained generators and frozen CPU references; 5 generated math modules reproduced exactly. GPU-dependent skips, full tracking/trajectory and gradient qualification remain pending |
 | xsplat | Analytic compositing gradient probe passes on local GPU; full renderer qualification is outside this library |
 | Primitives | Segmented hierarchical scan and stable compaction pass CPU/GPU probes, including multilevel irregular extents; forward tree differs from donor and gradients remain pending |
 | Radix sort | Compatible MIT standalone vrdx sources retained; 4 shader variants compile. Optional C++ build/runtime and device qualification pending |
 | Camera color | NV12/RGB, YUYV/RGB, bilinear resize/remap and fused YUYV/remap have independent CPU and local GPU parity tests; portable FP32 profile permits 1 LSB against float64 and does not replace exact HIP semantics |
 | Fusion adoption | Separate/fused outputs match; exploratory shared-device runs do not meet the controlled three-run transfer-inclusive acceptance gate. Separate pass stays the default |
-| Compiler matrix | All 121 catalog entries compile and reflect under pinned Slang 2026.12 and 2026.19; SlangPy's bundled compiler identity is recorded separately |
+| Compiler matrix | All 125 catalog entries compile and reflect under pinned Slang 2026.12 and 2026.19; SlangPy's bundled compiler identity is recorded separately |
 | Packaging | Universal Python wheel installs and validates outside checkout without GPU dependencies; CMake source/header install available; optional native runtime packages remain separate |
 | Overlap audit | 22 semantic groups reviewed; one exact algebra duplicate, 14 same-operation/different-contract groups, 5 shared helpers and 2 related-only groups. Not an exhaustive audit of all 249 accessible repositories |
 | NVIDIA | Selected RTX 3090 workstation unreachable; execution pending |

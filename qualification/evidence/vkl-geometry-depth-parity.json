@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-27T18:34:53.786412+00:00",
+  "status": "fixture-parity-passed",
+  "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+  "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+  "adapter": "SlangPy 0.43.1 / Vulkan",
+  "compiler": {
+    "version": "2026.12 (SlangPy bundled)",
+    "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+  },
+  "operation_source_sha256": {
+    "vkl.geometry.depthGeometry": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+    "vkl.geometry.worldTransform": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+    "vkl.depth_fusion.fuseDepth": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+    "vkl.depth_fusion.temporalDepthFuse": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089"
+  },
+  "test_source_sha256": {
+    "tests/test_vkl_geometry_depth.py": "5302f18b182a36a304ef22f665a5969289debd544211ccbf5c6887e08bf02013",
+    "tests/test_vkl_layouts.py": "2412bb0c13f0cee9bc810146d00230b9979e79bf08c2a6de3525994d98130470",
+    "tests/test_vkl_hot_path.py": "da507919da7496625db51f17b0611cd0132805498cc24347ad7af07df281e73d",
+    "tests/test_vkl_inventory.py": "b1a9a753bb14ed59c8d1540dc3b6a85456e34d20be07cfd74b52f57ef1aa6c44"
+  },
+  "verification": {
+    "command": "SINTERGPU_GPU_TESTS=1 PYTHONPATH=src .cache/vkl-qualification-venv/bin/python -m pytest tests -q",
+    "result": "258 passed, 3 xfailed, 181 subtests passed",
+    "log_sha256": "581f1dd7de09b68bce643be1a909414c4f6d1f91ef364b0a8b4d64e9aacee402",
+    "new_geometry_depth_cases": 57,
+    "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification",
+    "new_geometry_depth_gpu_cases": 27,
+    "new_geometry_depth_cpu_source_cases": 30
+  },
+  "benchmarks": {
+    "qualification/evidence/vkl-geometry-depth-2-invalid.json": "bc7c7e86fe2e9d7d0e3eaf484e86334082e9af5f8a2917df09cc0e446132fe08",
+    "qualification/evidence/vkl-geometry-depth-9-conflict.json": "27a65d40843c246f07833466dec788265e38799b3764cd5eb17d184b47b9de90",
+    "qualification/evidence/vkl-geometry-depth-all.json": "4e7418df0f8a8bc213f5d2b908e5fa9e613d70a13711e27dee078825fdb439aa",
+    "qualification/evidence/vkl-geometry-depth-mixed.json": "c33ffa709e9928db6dab936c447de1497ab9bc05c5f236fd8ea946b3824898df",
+    "qualification/evidence/vkl-geometry-depth-none.json": "de7155ea82f32bb187b81e15f4a7cc199b2bb02244db0862e036e4cf38df6207"
+  },
+  "performance_status": "measurement_only; shared GPU, no controlled-baseline speedup or optimized selection",
+  "pending": [
+    "Other compiler/device runtime configurations including NVIDIA",
+    "Extreme/denormal and backward qualification",
+    "Full consumer/application behavior and controlled performance adoption"
+  ]
+}

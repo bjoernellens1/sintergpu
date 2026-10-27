@@ -1,0 +1,1130 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0 by original-owner authorization; third-party terms unchanged",
+  "authorship": "See retained source and provenance/vkl.json",
+  "scope": "Every public operation candidate in the 47 frozen reference modules. This is not an audit of all 249 accessible GitHub repositories.",
+  "modules": [
+    {
+      "module": "brief",
+      "source_path": "src/vkl/kernels/reference/brief.py",
+      "source_sha256": "470e9da056cfdfd945a563ffe4bb6ed392d9a24693a164335b559a0247cfbcfe",
+      "reference_destination": "src/sintergpu/references/vkl/brief.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "brief_describe",
+          "source_line": 34,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Return deterministic unpacked BRIEF comparisons at integer keypoints.",
+          "numerical_contract": "Return deterministic unpacked BRIEF comparisons at integer keypoints.\n\n``pixels_valid`` preserves fixed-capacity detector validity. ``rgb_valid``\ncarries camera-conditioning validity into the descriptor patch. A descriptor\nis valid only when its keypoint center and every requested comparison sample\nlie inside the image on finite, valid RGB support.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_default_pairs"
+      ]
+    },
+    {
+      "module": "camera_registration",
+      "source_path": "src/vkl/kernels/reference/camera_registration.py",
+      "source_sha256": "648628355f4b86cc708f0c22d04e3cb6bd21ad85a8cd51868b37b1e1fd05ad3c",
+      "reference_destination": "src/sintergpu/references/vkl/camera_registration.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "camera_rectify_grid",
+          "source_line": 164,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Build reusable source-pixel coordinates for target-pinhole rectification.",
+          "numerical_contract": "Build reusable source-pixel coordinates for target-pinhole rectification.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "camera_rectify_from_grid",
+          "source_line": 232,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Rectify an image from reusable source-pixel coordinates and validity.",
+          "numerical_contract": "Rectify an image from reusable source-pixel coordinates and validity.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "camera_rectify",
+          "source_line": 268,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Sample an explicit target pinhole grid from a pinhole or Brown source camera.",
+          "numerical_contract": "Sample an explicit target pinhole grid from a pinhole or Brown source camera.\n\nBrown coefficients are ordered ``k1,k2,p1,p2,k3``. ``sampling`` is caller\npolicy: use bilinear for RGB and normally nearest for metric depth. Public\ncalls validate calibration by default; prevalidated compiled hot paths may\npass ``validate=False`` to avoid data-dependent Python checks.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "depth_camera_rays",
+          "source_line": 310,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Build reusable undistorted normalized depth-camera rays ``[B,H,W,2]``.",
+          "numerical_contract": "Build reusable undistorted normalized depth-camera rays ``[B,H,W,2]``.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "depth_register",
+          "source_line": 351,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Register metric depth to an RGB grid using nearest positive RGB-camera Z.",
+          "numerical_contract": "Register metric depth to an RGB grid using nearest positive RGB-camera Z.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_output_hw",
+        "_intrinsics",
+        "_transform",
+        "_coefficients",
+        "_distort",
+        "_undistort",
+        "_sample_preclamped_grid"
+      ]
+    },
+    {
+      "module": "compact",
+      "source_path": "src/vkl/kernels/reference/compact.py",
+      "source_sha256": "f4a323c1940f32a61a50dbe61d4669658804d7e82df040fd7d7940ac4bb62aff",
+      "reference_destination": "src/sintergpu/references/vkl/compact.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "select_compact",
+          "source_line": 8,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Compact ``[B,N,...]`` values in stable order into ``[B,capacity,...]``.",
+          "numerical_contract": "Compact ``[B,N,...]`` values in stable order into ``[B,capacity,...]``.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "contract",
+      "source_path": "src/vkl/kernels/reference/contract.py",
+      "source_sha256": "ac5e00f7c4e7c1189923134f601ff1cf4a1efd6f4370e7492f27a46788528649",
+      "reference_destination": "src/sintergpu/references/vkl/contract.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "validate_frame_batch",
+          "source_line": 63,
+          "disposition": "reference-only",
+          "reason": "Host tensor/camera validation belongs at the consumer transaction boundary, not a GPU dispatch with hidden readback.",
+          "numerical_contract": "Validate the capability-composed FrameBatch boundary without copying.\n\nRaw RGB and depth may have different spatial resolutions before camera\nconditioning. Image-space tensors/calibration share RGB device/dtype, while\ntimestamps are float64 so absolute dataset clocks retain frame-scale\nprecision independently of image precision.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_floating_batch",
+        "_pinhole",
+        "_rigid"
+      ]
+    },
+    {
+      "module": "dense_depth_regularize",
+      "source_path": "src/vkl/kernels/reference/dense_depth_regularize.py",
+      "source_sha256": "586e2b2e8dfd2a0991f836fb640a7c976fefca14c39dcb6abbf64d44f52d3351",
+      "reference_destination": "src/sintergpu/references/vkl/dense_depth_regularize.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "regularize_dense_depth",
+          "source_line": 7,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Remove isolated plane-sweep labels without crossing strong RGB edges.",
+          "numerical_contract": "Remove isolated plane-sweep labels without crossing strong RGB edges.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "dense_pose_depth",
+      "source_path": "src/vkl/kernels/reference/dense_pose_depth.py",
+      "source_sha256": "ad92795845f8a091f971b5629e860082e50bb5339c7e55e21c7431bac43146a9",
+      "reference_destination": "src/sintergpu/references/vkl/dense_pose_depth.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "dense_pose_depth",
+          "source_line": 15,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Estimate semi-dense depth by streaming plane-sweep hypotheses on GPU.",
+          "numerical_contract": "Estimate semi-dense depth by streaming plane-sweep hypotheses on GPU.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_gray"
+      ]
+    },
+    {
+      "module": "dense_track_reduce",
+      "source_path": "src/vkl/kernels/reference/dense_track_reduce.py",
+      "source_sha256": "64550890984811c785bc26ab9bcbfab71a752de7c47a68f4e75134d7fd388d35",
+      "reference_destination": "src/sintergpu/references/vkl/dense_track_reduce.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "dense_track_reduce",
+          "source_line": 55,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Accumulate fixed point-to-plane SE(3) normal equations without a Jacobian map.",
+          "numerical_contract": "Accumulate fixed point-to-plane SE(3) normal equations without a Jacobian map.\n\nThe source/reference contract serves F2F and F2M equally. ``source_pose_c2w``\nis the candidate pose; the fixed reference pose determines the camera in\nwhich residuals and the left-perturbation Jacobian are evaluated.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_pose",
+        "_sample",
+        "_rgb",
+        "_luminance",
+        "_normal_equations"
+      ]
+    },
+    {
+      "module": "depth_align",
+      "source_path": "src/vkl/kernels/reference/depth_align.py",
+      "source_sha256": "dcd110e2b0952a4a9284b5965cb5b38f5ddbfac69daf76a03e6b79b902a4e782",
+      "reference_destination": "src/sintergpu/references/vkl/depth_align.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "align_depth",
+          "source_line": 13,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Fit relative depth to metric anchors without modifying the raw prediction.",
+          "numerical_contract": "Fit relative depth to metric anchors without modifying the raw prediction.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_check_field"
+      ]
+    },
+    {
+      "module": "depth_convert",
+      "source_path": "src/vkl/kernels/reference/depth_convert.py",
+      "source_sha256": "855bfcc01ede01e0dd17d5d7420337d9b7ab88668e3ab5c5ab42e8339ac803ae",
+      "reference_destination": "src/sintergpu/references/vkl/depth_convert.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "depth_convert",
+          "source_line": 8,
+          "disposition": "specialized_variant",
+          "reason": "Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification.",
+          "numerical_contract": "Convert a floating depth representation to canonical depth tensors.\n\n``scale`` converts source units to metres for ``DEPTH`` and reciprocal\nmetres for ``INVERSE_DEPTH``. ``baseline`` is in metres.",
+          "slang_operations": [
+            "vkl.depth_convert.depthConvert"
+          ]
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "depth_cost_volume",
+      "source_path": "src/vkl/kernels/reference/depth_cost_volume.py",
+      "source_sha256": "6585f2d5d6acd6c5336167d0d96045f4b313e4e4d6998209f662866306c78460",
+      "reference_destination": "src/sintergpu/references/vkl/depth_cost_volume.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "aggregate_depth_cost_volume",
+          "source_line": 38,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Return four-direction SGM-style aggregation of ``[B,D,H,W]`` costs.",
+          "numerical_contract": "Return four-direction SGM-style aggregation of ``[B,D,H,W]`` costs.\n\nLarge/non-finite candidate costs remain unsupported; they are converted to a\nfinite sentinel only for the dynamic-programming recurrence.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_gray",
+        "_scan"
+      ]
+    },
+    {
+      "module": "depth_densify",
+      "source_path": "src/vkl/kernels/reference/depth_densify.py",
+      "source_sha256": "05b1ed1a441693cc65acf0711783287aba4ade29e66ce53fac5be3672c9e0e73",
+      "reference_destination": "src/sintergpu/references/vkl/depth_densify.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "depth_downsample",
+          "source_line": 27,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Downsample by 2, 4, or 8 with the validity-aware depth pyramid rule.",
+          "numerical_contract": "Downsample by 2, 4, or 8 with the validity-aware depth pyramid rule.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "depth_upsample",
+          "source_line": 49,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Nearest-neighbour depth lift; every lifted value is labelled propagated, never direct.",
+          "numerical_contract": "Nearest-neighbour depth lift; every lifted value is labelled propagated, never direct.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "depth_densify",
+          "source_line": 119,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Fill only RGB- and local-depth-consistent holes, retaining direct/propgated provenance.",
+          "numerical_contract": "Fill only RGB- and local-depth-consistent holes, retaining direct/propgated provenance.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_check",
+        "_propagate_once"
+      ]
+    },
+    {
+      "module": "depth_evidence",
+      "source_path": "src/vkl/kernels/reference/depth_evidence.py",
+      "source_sha256": "5976e426e33d1e1430cc5c233bd351fe7e226f2289c1cd43966a34392957fe18",
+      "reference_destination": "src/sintergpu/references/vkl/depth_evidence.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "depth_evidence",
+          "source_line": 7,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Return support-normalized evidence; local variance is per-pair population variance.",
+          "numerical_contract": "Return support-normalized evidence; local variance is per-pair population variance.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "depth_fuse",
+      "source_path": "src/vkl/kernels/reference/depth_fuse.py",
+      "source_sha256": "b22b3c3bdc46d2aaeab78aa9680a45f4a62bd84c6651f8c20c6bf1fd93f62fa7",
+      "reference_destination": "src/sintergpu/references/vkl/depth_fuse.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "fuse_depth",
+          "source_line": 8,
+          "disposition": "specialized_variant",
+          "reason": "Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification.",
+          "numerical_contract": "Fuse same-grid depth fields, weighting consistent values and rejecting conflicts.",
+          "slang_operations": [
+            "vkl.depth_fusion.fuseDepth"
+          ]
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "depth_pyramid",
+      "source_path": "src/vkl/kernels/reference/depth_pyramid.py",
+      "source_sha256": "a1e7fdd46785607a9b52f98819469e5ebe7192558df2c574a583c553b33b6ed1",
+      "reference_destination": "src/sintergpu/references/vkl/depth_pyramid.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "depth_pyramid",
+          "source_line": 35,
+          "disposition": "specialized_variant",
+          "reason": "Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification.",
+          "numerical_contract": "Return native and bounded half/quarter/eighth validity-aware depth levels.",
+          "slang_operations": [
+            "vkl.depth_pyramid.depthPyramidLevel"
+          ]
+        }
+      ],
+      "private_helpers": [
+        "_level"
+      ]
+    },
+    {
+      "module": "direct_pose_depth",
+      "source_path": "src/vkl/kernels/reference/direct_pose_depth.py",
+      "source_sha256": "2bf54837d36684e377b5931546d6135911f6e929c021d3dd585b77884ecfbf24",
+      "reference_destination": "src/sintergpu/references/vkl/direct_pose_depth.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "dso_select_points",
+          "source_line": 289,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Select bounded gradient-supported D6a points as ``[B,P,2]`` xy indices.",
+          "numerical_contract": "Select bounded gradient-supported D6a points as ``[B,P,2]`` xy indices.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "direct_pose_depth_dso",
+          "source_line": 311,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Fixed-pose DSO depth from sparse inverse-depth photometric consistency.",
+          "numerical_contract": "Fixed-pose DSO depth from sparse inverse-depth photometric consistency.\n\nPoses are camera-to-world. ``pixels_valid`` preserves the fixed-capacity\nselector contract. RGB validity masks additionally keep camera-conditioning\nborders out of reference selection and projected neighbour patches.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "direct_pose_depth_tensorized",
+          "source_line": 510,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Tensorized D6 comparison reference with no Python neighbour loop.",
+          "numerical_contract": "Tensorized D6 comparison reference with no Python neighbour loop.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_gray",
+        "_sample",
+        "_rgb_mask",
+        "_neighbor_rgb_mask",
+        "_erode_valid",
+        "_sample_valid",
+        "_masked_stats",
+        "_first_unique",
+        "_select_points",
+        "_external_points",
+        "_validate_d6",
+        "_dense"
+      ]
+    },
+    {
+      "module": "evidence",
+      "source_path": "src/vkl/kernels/reference/evidence.py",
+      "source_sha256": "e45b7c912309878299d7303ac8887b4967565606d9042c3beb11dadaa5afb500",
+      "reference_destination": "src/sintergpu/references/vkl/evidence.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "rgbd_evidence",
+          "source_line": 34,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Reduce RGB-D into validity-aware frame and tile evidence.",
+          "numerical_contract": "Reduce RGB-D into validity-aware frame and tile evidence.\n\n``rgb_valid`` and ``depth_valid`` describe geometric/conditioning domains.\n``depth_measurement_valid`` is separate occupancy/provenance: a pixel can be\ninside the depth conditioning domain while containing no registered sensor\nsample. Missing measurements therefore do not have to be encoded only by a\nsentinel depth value.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_valid_mask",
+        "_domain_reduce"
+      ]
+    },
+    {
+      "module": "geometry",
+      "source_path": "src/vkl/kernels/reference/geometry.py",
+      "source_sha256": "72b9d246b18f078516834b3a8a15f608772e1554ae9c31fd8d3824f1fd85151c",
+      "reference_destination": "src/sintergpu/references/vkl/geometry.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "depth_geometry",
+          "source_line": 7,
+          "disposition": "specialized_variant",
+          "reason": "Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification.",
+          "numerical_contract": "Camera axes are +X right, +Y image-down, +Z forward; normals face camera.\n\nInvalid depth never contributes a 3D coordinate. Normals and\ngeometry_confidence are zero at invalid, discontinuity, and rightmost/bottom\nstencil-boundary pixels.",
+          "slang_operations": [
+            "vkl.geometry.depthGeometry"
+          ]
+        },
+        {
+          "symbol": "world_transform",
+          "source_line": 85,
+          "disposition": "specialized_variant",
+          "reason": "Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification.",
+          "numerical_contract": "Retain the frozen implementation and validation contract.",
+          "slang_operations": [
+            "vkl.geometry.worldTransform"
+          ]
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "keyframe_filter",
+      "source_path": "src/vkl/kernels/reference/keyframe_filter.py",
+      "source_sha256": "3a9c38ce4f2fef65761a4e1ff3bbeae8ed02efd6c6f1bfb17833e67510b6b7b0",
+      "reference_destination": "src/sintergpu/references/vkl/keyframe_filter.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "keyframe_filter",
+          "source_line": 17,
+          "disposition": "reference-only",
+          "reason": "Keyframe/admission policy remains in consumers per approved scope; reusable evidence kernels are tracked separately.",
+          "numerical_contract": "Compose modality evidence into a stateless admission decision.\n\nRGB quality gates RGB/motion-driven admission when RGB is present. Depth or\ngeometric novelty remains independently admissible. High stationary quality\nalone never admits, and ``max_gap`` remains the starvation backstop.\n\n``validate=False`` is the prevalidated hot path: static shape/device/dtype\ncontracts remain enforced, while value-dependent tensor checks are skipped\nso K4 does not introduce GPU-to-CPU synchronization or compile graph breaks.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "keypoint_evidence",
+      "source_path": "src/vkl/kernels/reference/keypoint_evidence.py",
+      "source_sha256": "e47f27082af85a5546d035a3193da22d84a91a0d520f97f825c0226abfe877f7",
+      "reference_destination": "src/sintergpu/references/vkl/keypoint_evidence.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "keypoint_evidence",
+          "source_line": 47,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Reduce keypoint/depth-anchor outputs into point, tile, and frame evidence.",
+          "numerical_contract": "Reduce keypoint/depth-anchor outputs into point, tile, and frame evidence.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_tile_mean",
+        "_frame_mean"
+      ]
+    },
+    {
+      "module": "keypoint_selectors",
+      "source_path": "src/vkl/kernels/reference/keypoint_selectors.py",
+      "source_sha256": "2b4c35909460f31e06f2b01d7c7dccbe272bf84c48a75ea41869b778ec7fed1d",
+      "reference_destination": "src/sintergpu/references/vkl/keypoint_selectors.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "spatial_select_points",
+          "source_line": 80,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Apply a common per-tile quota to an overcomplete selector candidate set.",
+          "numerical_contract": "Apply a common per-tile quota to an overcomplete selector candidate set.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "uniform_select",
+          "source_line": 126,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Deterministic no-saliency control with the common selector contract.",
+          "numerical_contract": "Deterministic no-saliency control with the common selector contract.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "shi_tomasi_select",
+          "source_line": 150,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Shi--Tomasi structure-tensor corners with a bounded common output.",
+          "numerical_contract": "Shi--Tomasi structure-tensor corners with a bounded common output.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "fast_select",
+          "source_line": 173,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Tensorized FAST-9/16 score, followed by the common bounded selection.",
+          "numerical_contract": "Tensorized FAST-9/16 score, followed by the common bounded selection.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "pose_observable_select",
+          "source_line": 201,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Select pixels whose image gradient constrains known-pose depth search.",
+          "numerical_contract": "Select pixels whose image gradient constrains known-pose depth search.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_gray",
+        "_rgb_domain",
+        "_erode",
+        "_points",
+        "_nms"
+      ]
+    },
+    {
+      "module": "landmark_update",
+      "source_path": "src/vkl/kernels/reference/landmark_update.py",
+      "source_sha256": "ffd060bcdd442d6b48bd966da944a44a3900cd2c7c39fbdaed60c66bd12d235e",
+      "reference_destination": "src/sintergpu/references/vkl/landmark_update.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "landmark_update",
+          "source_line": 8,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Fuse matched world observations; lifetime and ID policy stay external.",
+          "numerical_contract": "Fuse matched world observations; lifetime and ID policy stay external.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "landmark_validate",
+      "source_path": "src/vkl/kernels/reference/landmark_validate.py",
+      "source_sha256": "8993fe6ff17b4a4dc1f1631d4db05b061ecde082a71f6a7b902a6aef28b89a5a",
+      "reference_destination": "src/sintergpu/references/vkl/landmark_validate.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "landmark_multiview_validate",
+          "source_line": 12,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Accept landmarks supported by multiple consistent posed RGB-D views.",
+          "numerical_contract": "Accept landmarks supported by multiple consistent posed RGB-D views.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "lk",
+      "source_path": "src/vkl/kernels/reference/lk.py",
+      "source_sha256": "a92ad3d95784ad0a872af049d743a8a2ecc4fb03fafb474236907c3f3031b34e",
+      "reference_destination": "src/sintergpu/references/vkl/lk.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "lk_track",
+          "source_line": 33,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Refine known-pose projected pixels with fixed-iteration translational LK.",
+          "numerical_contract": "Refine known-pose projected pixels with fixed-iteration translational LK.\n\nRGB validity masks carry camera-conditioning support through both patches.\nA track remains valid only while every bilinear sample and target-gradient\nsupport pixel stays inside finite, valid image content.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_gray",
+        "_domain",
+        "_erode"
+      ]
+    },
+    {
+      "module": "local_match",
+      "source_path": "src/vkl/kernels/reference/local_match.py",
+      "source_sha256": "7801ee5e7e6cbe7016b6aec3b66db10f081c6e1432643b144de827b2fa477755",
+      "reference_destination": "src/sintergpu/references/vkl/local_match.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "binary_local_match",
+          "source_line": 10,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Choose descriptor-qualified candidates inside projected pixel gates.",
+          "numerical_contract": "Choose descriptor-qualified candidates inside projected pixel gates.\n\nMatching is mutual by default so one candidate cannot silently own multiple\npersistent landmark tracks. ``max_hamming_distance`` is explicit rather\nthan hidden policy. ``candidate_chunk_size`` is an exact memory-control knob:\nchunking changes only temporary allocation, not matching semantics.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "mesh",
+      "source_path": "src/vkl/kernels/reference/mesh.py",
+      "source_sha256": "89d444a3baf79cf88a804491b13075ecd88b6ac687a7862fd1d16208650f7b98",
+      "reference_destination": "src/sintergpu/references/vkl/mesh.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "voxelize_points",
+          "source_line": 8,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Compact valid [B,N,3] points into world voxels without cross-batch merging.",
+          "numerical_contract": "Compact valid [B,N,3] points into world voxels without cross-batch merging.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "world_voxel_reduce",
+          "source_line": 74,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Compact world voxels and retain only evidence from distinct source IDs.",
+          "numerical_contract": "Compact world voxels and retain only evidence from distinct source IDs.\n\nSource IDs are scoped to each batch item. Repeated pixels from one source\ncontribute to voxel averages but count once toward `source_support_count`.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "fit_local_planes",
+          "source_line": 130,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Fit one least-squares plane per point from explicit fixed-size neighborhoods.",
+          "numerical_contract": "Fit one least-squares plane per point from explicit fixed-size neighborhoods.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "voxel_surface_mesh",
+          "source_line": 183,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Extract exposed faces of occupied voxels as a triangle-mesh candidate.",
+          "numerical_contract": "Extract exposed faces of occupied voxels as a triangle-mesh candidate.\n\nThis is the closed boundary of occupied voxels, not surface completion. Sparse\nor open observation support therefore remains sparse or open at its own scale.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "photometric_isp",
+      "source_path": "src/vkl/kernels/reference/photometric_isp.py",
+      "source_sha256": "1bfb9f6c4536c0382aa913ae17e0d34c01227d13b406e9e4042ad4cf9e225b33",
+      "reference_destination": "src/sintergpu/references/vkl/photometric_isp.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "photometric_isp",
+          "source_line": 8,
+          "disposition": "specialized_variant",
+          "reason": "Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification.",
+          "numerical_contract": "Apply optional exposure, colour, vignetting, and response transforms.\n\n``validate=False`` is the statically-specialized fast path for already\nvalidated tensor pipelines and ``torch.compile``. ``evidence=False`` omits\nimage-wide diagnostics while retaining the ``rgb_observed`` dictionary\ncontract. Public callers keep validation and evidence by default.",
+          "slang_operations": [
+            "vkl.photometric_isp.photometricISP"
+          ]
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "point_render",
+      "source_path": "src/vkl/kernels/reference/point_render.py",
+      "source_sha256": "d89b3c7a2a4376802cc200ab4558c1ff66662426af03302f9c03e6b08a5ce2fe",
+      "reference_destination": "src/sintergpu/references/vkl/point_render.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "point_splat_render",
+          "source_line": 10,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Nearest-depth rasterize colored points into a diagnostic image.",
+          "numerical_contract": "Nearest-depth rasterize colored points into a diagnostic image.\n\nThis is a one-pixel point splat diagnostic, not a mapping renderer: it has\nno interpolation, learned appearance, antialiasing, or differentiable\nvisibility policy.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "project_depth_evidence",
+      "source_path": "src/vkl/kernels/reference/project_depth_evidence.py",
+      "source_sha256": "4632772d858a95bd6305420ccbf38ed1d0313e370e58915f301909d59bd4a60f",
+      "reference_destination": "src/sintergpu/references/vkl/project_depth_evidence.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "project_depth_evidence",
+          "source_line": 12,
+          "disposition": "specialized_variant",
+          "reason": "Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification.",
+          "numerical_contract": "Classify visible world points against one metric sensor-depth frame.\n\nAll point-state mutation and per-view de-duplication remain caller policy.\nInputs are batched ``[B,N]`` / ``[B,N,3]`` tensors; poses are world-to-camera.\nNon-finite point samples are masked from geometric evidence rather than\nbecoming projected border samples.\n\n``validate=False`` skips value-level camera validation for callers that have\nalready validated camera state at a transaction boundary. This keeps the\nhot reference eligible for ``torch.compile(fullgraph=True)`` while the\npublic default remains defensive.",
+          "slang_operations": [
+            "vkl.project_depth_evidence.projectDepthEvidence"
+          ]
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "pyramid",
+      "source_path": "src/vkl/kernels/reference/pyramid.py",
+      "source_sha256": "550861b5609b8e48ff54a3516c9a3a5c9cb39780ecb9ca8ba3eab07ceabd3ab9",
+      "reference_destination": "src/sintergpu/references/vkl/pyramid.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "resolution_pyramid",
+          "source_line": 9,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Build native, half, quarter, and eighth-resolution RGB images.",
+          "numerical_contract": "Build native, half, quarter, and eighth-resolution RGB images.\n\n``rgb`` must be a floating-point ``[B, 3, H, W]`` tensor.  Lower levels\nuse antialiased bilinear interpolation and ``ceil(H / scale)`` /\n``ceil(W / scale)`` dimensions, so every non-empty input dimension stays\nrepresented by at least one output pixel.  The native tensor is returned\nunchanged; every level remains on the same device and has its dtype.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "reproject",
+      "source_path": "src/vkl/kernels/reference/reproject.py",
+      "source_sha256": "9e40eed34717ffb14c81b79df9c7b3000f6c6e3102d4b809c19fabf66e36a94d",
+      "reference_destination": "src/sintergpu/references/vkl/reproject.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "reproject_rgbd",
+          "source_line": 8,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Project source depth into a target camera; visibility is in-bounds and front-facing.",
+          "numerical_contract": "Project source depth into a target camera; visibility is in-bounds and front-facing.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "rasterize_reprojection",
+          "source_line": 63,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Z-buffer source depth/confidence into target pixels using D4 geometry.",
+          "numerical_contract": "Z-buffer source depth/confidence into target pixels using D4 geometry.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "rescale",
+      "source_path": "src/vkl/kernels/reference/rescale.py",
+      "source_sha256": "b1c8c219f2b56f5b3d0de60e65826e85ac17c72010b792c713ecb49874b76192",
+      "reference_destination": "src/sintergpu/references/vkl/rescale.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "canonical_rescale",
+          "source_line": 55,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Rescale RGB-D while keeping conditioning and measurement validity distinct.",
+          "numerical_contract": "Rescale RGB-D while keeping conditioning and measurement validity distinct.\n\n``depth_valid`` is the geometric/conditioning domain. ``depth_measurement_valid``\nmarks locations that actually contain a depth measurement. They are separate\nbecause a registered RGB-grid pixel can be inside the valid camera overlap\nwhile still having no projected depth sample. When no explicit measurement\nmask is supplied, finite positive depth is the portable fallback; zero is the\ncanonical missing-depth sentinel used by the bundled RGB-D loaders.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_canonical_shape",
+        "_mask",
+        "_resize_mask"
+      ]
+    },
+    {
+      "module": "residual",
+      "source_path": "src/vkl/kernels/reference/residual.py",
+      "source_sha256": "cc6e7d67b369204d95b4774dc5f7dda6c902f2b831e67b4a8d07d6cde3e78faa",
+      "reference_destination": "src/sintergpu/references/vkl/residual.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "residual_evidence",
+          "source_line": 9,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Return RGB-D residual maps plus bounded frame and tile aggregates.",
+          "numerical_contract": "Return RGB-D residual maps plus bounded frame and tile aggregates.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "rigid_alignment",
+      "source_path": "src/vkl/kernels/reference/rigid_alignment.py",
+      "source_sha256": "d9c9d1ac115bf8fc6ef7a22f37710d3d1a9a5a4ea4b607da18f04c460c053bed",
+      "reference_destination": "src/sintergpu/references/vkl/rigid_alignment.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "rigid_align_3d",
+          "source_line": 8,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Fit camera-to-world rigid poses from matched 3D points.",
+          "numerical_contract": "Fit camera-to-world rigid poses from matched 3D points.\n\n``source_xyz_camera`` is transformed into ``target_xyz_world``.  Invalid\nor rank-deficient correspondence sets return identity poses and explicit\n``valid=False`` rather than a numerically plausible arbitrary transform.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "sparse_geometry",
+      "source_path": "src/vkl/kernels/reference/sparse_geometry.py",
+      "source_sha256": "c56224f9313c21c0fa4315ae09f14a1e43e61417a3cd4819a5ac096395a56fc9",
+      "reference_destination": "src/sintergpu/references/vkl/sparse_geometry.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "sparse_depth_validate",
+          "source_line": 53,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Validate sensor depth only at supplied pixels using a 3x3 local stencil.",
+          "numerical_contract": "Validate sensor depth only at supplied pixels using a 3x3 local stencil.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "sparse_rgbd_observation",
+          "source_line": 127,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Convert sparse pixel/depth observations into camera and optional world XYZ.",
+          "numerical_contract": "Convert sparse pixel/depth observations into camera and optional world XYZ.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "project_landmarks",
+          "source_line": 169,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Project world landmarks into one camera and report local-search eligibility.",
+          "numerical_contract": "Project world landmarks into one camera and report local-search eligibility.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_points",
+        "_intrinsics",
+        "_pose"
+      ]
+    },
+    {
+      "module": "sparse_pose_reduce",
+      "source_path": "src/vkl/kernels/reference/sparse_pose_reduce.py",
+      "source_sha256": "c9c4e6089f4378337f2b97bfd29bee0f9e45d5434617c5ea75dc15cadb9f2adb",
+      "reference_destination": "src/sintergpu/references/vkl/sparse_pose_reduce.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "sparse_pose_reduce",
+          "source_line": 10,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Reduce matched world-to-camera 3D residuals into fixed SE(3) partials.",
+          "numerical_contract": "Reduce matched world-to-camera 3D residuals into fixed SE(3) partials.\n\n``pose_c2w`` is the candidate camera pose.  Residuals are evaluated in the\ncandidate camera frame as ``R.T @ (xyz_world - t) - observed_xyz_camera``.\nUpdates use camera-local translation then rotation ordering.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "spatial",
+      "source_path": "src/vkl/kernels/reference/spatial.py",
+      "source_sha256": "82e42ec2d3801208559710b5aed14047494de8a5de9dabb40462beef1fcfdc10",
+      "reference_destination": "src/sintergpu/references/vkl/spatial.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "spatial_bin_reduce",
+          "source_line": 8,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Reduce valid ``[B,N,3]`` points into lexicographically ordered voxel cells.",
+          "numerical_contract": "Reduce valid ``[B,N,3]`` points into lexicographically ordered voxel cells.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "temporal",
+      "source_path": "src/vkl/kernels/reference/temporal.py",
+      "source_sha256": "c52644bc813074585e802954fd81ffbfc8dc22a4a836f6a515712ecb9559c029",
+      "reference_destination": "src/sintergpu/references/vkl/temporal.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "temporal_restore_rgb",
+          "source_line": 9,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Restore target detail from already aligned, equivalent RGB observations.",
+          "numerical_contract": "Restore target detail from already aligned, equivalent RGB observations.\n\nOnly the target's low-frequency colour is retained; context contributes a\ngated, confidence-weighted high-frequency residual.  Alignment, validity,\nconsistency, and optional quality evidence are all per-pixel tensors with\nshape ``[B,N,1,H,W]`` (except ``temporal_distance``, which may be ``[B,N]``).",
+          "slang_operations": []
+        },
+        {
+          "symbol": "temporal_restore_rgbd",
+          "source_line": 94,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Confidence-fuse current RGB with caller-aligned temporal context.",
+          "numerical_contract": "Confidence-fuse current RGB with caller-aligned temporal context.\n\n``alignment`` documents whether context was aligned in image space or by\nexternally performed RGB-D+pose reprojection; this kernel performs no warp.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "temporal_best",
+      "source_path": "src/vkl/kernels/reference/temporal_best.py",
+      "source_sha256": "085bdcebefb0c61473319eeac3420581263cf2ed032f544408fc16861312350d",
+      "reference_destination": "src/sintergpu/references/vkl/temporal_best.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "temporal_best_observation",
+          "source_line": 8,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Select the highest-quality equivalent observation, retaining target fallback.",
+          "numerical_contract": "Select the highest-quality equivalent observation, retaining target fallback.\n\nIndex zero denotes the target; neighbor ``i`` is returned as index ``i+1``.\nNo mapping novelty or admission policy is applied here.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "temporal_compare",
+      "source_path": "src/vkl/kernels/reference/temporal_compare.py",
+      "source_sha256": "f1b6160fe4da4882d676dc7a241f3e19956d7d64fccf24b38907f0aa4d395e7c",
+      "reference_destination": "src/sintergpu/references/vkl/temporal_compare.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "temporal_frame_compare",
+          "source_line": 23,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Compare aligned observations and return explicit temporal evidence.",
+          "numerical_contract": "Compare aligned observations and return explicit temporal evidence.\n\n``aligned_rgb`` is already in target image coordinates with shape\n``[B,N,3,H,W]``. All returned pairwise vectors have shape ``[B,N]``;\ndiagnostic maps retain ``[B,N,1,H,W]`` and compact tile evidence is\n``[B,8,Ty,Tx]``.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_gray",
+        "_gradient",
+        "_mean"
+      ]
+    },
+    {
+      "module": "temporal_depth_fuse",
+      "source_path": "src/vkl/kernels/reference/temporal_depth_fuse.py",
+      "source_sha256": "72b316a30402843b8eec506f15d58ab37a25eb5fa516483fda602e3935cf5e6c",
+      "reference_destination": "src/sintergpu/references/vkl/temporal_depth_fuse.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "temporal_depth_fuse",
+          "source_line": 8,
+          "disposition": "specialized_variant",
+          "reason": "Executable float32 forward Slang profile; full Torch/gradient semantics remain retained independently, and promotion requires configuration-specific qualification.",
+          "numerical_contract": "Fuse target and already-reprojected temporal depth observations.",
+          "slang_operations": [
+            "vkl.depth_fusion.temporalDepthFuse"
+          ]
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "temporal_reproject",
+      "source_path": "src/vkl/kernels/reference/temporal_reproject.py",
+      "source_sha256": "19e38b1583f5225aab3ad098239dbedda655a891607d348d3ecbca051cdf8166",
+      "reference_destination": "src/sintergpu/references/vkl/temporal_reproject.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "temporal_reproject_rgb",
+          "source_line": 12,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Sample ``[B,N]`` source RGB frames into target pixels using D4 geometry.",
+          "numerical_contract": "Sample ``[B,N]`` source RGB frames into target pixels using D4 geometry.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "temporal_rgbd_reference",
+          "source_line": 69,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Build a target-camera RGB-D reference from prior RGB-D observations only.",
+          "numerical_contract": "Build a target-camera RGB-D reference from prior RGB-D observations only.\n\nD4 z-buffers every source depth into the target camera, T0 samples source\nRGB through current depth geometry, and D9 fuses projected prior depths.\n``target_depth`` never contributes depth to the returned reference.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "tracking_health",
+      "source_path": "src/vkl/kernels/reference/tracking_health.py",
+      "source_sha256": "0366b93f17de437479153a38ad44eabe8b32064a9abbab64f3665113b1932420",
+      "reference_destination": "src/sintergpu/references/vkl/tracking_health.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "tracking_health",
+          "source_line": 15,
+          "disposition": "reference-only",
+          "reason": "Tracking health/acceptance policy remains in the consumer; underlying residual/reduction primitives are separate candidates.",
+          "numerical_contract": "Classify fixed solve evidence without owning tracking state or hysteresis.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "tracking_prepare",
+      "source_path": "src/vkl/kernels/reference/tracking_prepare.py",
+      "source_sha256": "31628118592ec2e61dd2c6b981fef84643244398563584d7481aad17d2cdb863",
+      "reference_destination": "src/sintergpu/references/vkl/tracking_prepare.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "tracking_prepare",
+          "source_line": 34,
+          "disposition": "reference-only",
+          "reason": "Frame packing, validation and pyramid scheduling remain caller-owned; individual image/depth operations are tracked separately.",
+          "numerical_contract": "Prepare a fixed subset of canonical RGB-D pyramid levels for tracking.\n\nInputs must already share an RGB image grid; camera rectification and depth\nregistration remain preceding conditioning operations. Geometry is emitted\nonly when metric depth and intrinsics are present.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_resize_valid",
+        "_scale_intrinsics"
+      ]
+    },
+    {
+      "module": "tracking_reference",
+      "source_path": "src/vkl/kernels/reference/tracking_reference.py",
+      "source_sha256": "eeb3292f36307cdb6b0093c8527bda1fa1451229c6969d6e84d8df5bd1a47125",
+      "reference_destination": "src/sintergpu/references/vkl/tracking_reference.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "select_tracking_reference",
+          "source_line": 8,
+          "disposition": "reference-only",
+          "reason": "Reference/keyframe ownership and selection remain consumer policy; this is not a new device operation.",
+          "numerical_contract": "Choose fixed F2M evidence when usable, otherwise fixed F2F evidence.",
+          "slang_operations": []
+        },
+        {
+          "symbol": "apply_camera_local_tracking_update",
+          "source_line": 48,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Apply a TR1/TR2 camera-local update to a camera-to-world pose.",
+          "numerical_contract": "Apply a TR1/TR2 camera-local update to a camera-to-world pose.\n\nDense and sparse reducers both emit the camera-to-world local convention:\n``pose_c2w @ exp(delta^)``.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "tracking_solve",
+      "source_path": "src/vkl/kernels/reference/tracking_solve.py",
+      "source_sha256": "ba3299310a59cbae74bfd4470c3a8697b5eb333226766073a72852c1d56934ff",
+      "reference_destination": "src/sintergpu/references/vkl/tracking_solve.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "deterministic_reduce_solve",
+          "source_line": 17,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Reduce fixed partials and solve ``H delta = -b`` with explicit health.",
+          "numerical_contract": "Reduce fixed partials and solve ``H delta = -b`` with explicit health.\n\nThe reduction order never depends on data values. Invalid partials become\nexact zero contributions, and an ill-conditioned system returns a zero\nupdate rather than an untrusted pose increment.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_fixed_tree"
+      ]
+    },
+    {
+      "module": "tracking_transaction",
+      "source_path": "src/vkl/kernels/reference/tracking_transaction.py",
+      "source_sha256": "fd0d521e3f56fb0c59b74d4b5420392fb5973b33adeb8cd1506b4696a6185d7b",
+      "reference_destination": "src/sintergpu/references/vkl/tracking_transaction.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "compose_tracking_solve",
+          "source_line": 10,
+          "disposition": "reference-only",
+          "reason": "Composes kernel scheduling and transaction outputs; acceptance/scheduling remain consumer-owned.",
+          "numerical_contract": "Reduce fixed dense and sparse evidence together through one solve tree.\n\nEach source owns its own partial construction.  This boundary preserves\ntheir evidence provenance while giving the solver one data-independent\nreduction order.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": []
+    },
+    {
+      "module": "triangulate",
+      "source_path": "src/vkl/kernels/reference/triangulate.py",
+      "source_sha256": "991644959b14bc0ecfd5a9f00cc82f89d516fba13fcc55296db10bc696dd8cfb",
+      "reference_destination": "src/sintergpu/references/vkl/triangulate.py",
+      "reference_state": "consolidated-unchanged-executable-AST",
+      "candidates": [
+        {
+          "symbol": "triangulate_depth",
+          "source_line": 80,
+          "disposition": "deferred",
+          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Triangulate compact ``[B,N,2]`` pixel correspondences from c2w poses.",
+          "numerical_contract": "Triangulate compact ``[B,N,2]`` pixel correspondences from c2w poses.",
+          "slang_operations": []
+        }
+      ],
+      "private_helpers": [
+        "_check_camera",
+        "_rays",
+        "_project"
+      ]
+    }
+  ]
+}

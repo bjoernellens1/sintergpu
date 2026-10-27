@@ -4157,6 +4157,76 @@
       "fixture": null
     },
     {
+      "id": "vkl.depth_fusion.fuseDepth",
+      "path": "kernels/vkl/depth_fusion.slang",
+      "entrypoint": "fuseDepth",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/depth_fuse.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-geometry-depth-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
+        "numerical_behavior": "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned"
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.depth_fusion.temporalDepthFuse",
+      "path": "kernels/vkl/depth_fusion.slang",
+      "entrypoint": "temporalDepthFuse",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/temporal_depth_fuse.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-geometry-depth-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
+        "numerical_behavior": "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation"
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
       "id": "vkl.depth_pyramid.depthPyramidLevel",
       "path": "kernels/vkl/depth_pyramid.slang",
       "entrypoint": "depthPyramidLevel",
@@ -4179,6 +4249,76 @@
         "profile": "vkl-forward-partial",
         "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-ports.md",
         "numerical_behavior": "one ceil-half level; no base cleanup or level scheduler; first-minimum confidence ties; masked-INF maximum behavior retained"
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.geometry.depthGeometry",
+      "path": "kernels/vkl/geometry.slang",
+      "entrypoint": "depthGeometry",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/geometry.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-geometry-depth-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
+        "numerical_behavior": "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics"
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.geometry.worldTransform",
+      "path": "kernels/vkl/geometry.slang",
+      "entrypoint": "worldTransform",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/geometry.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-geometry-depth-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
+        "numerical_behavior": "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics"
       },
       "requirements": [
         "Vulkan compute",

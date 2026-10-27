@@ -207,9 +207,17 @@
     "path": "kernels/vkl/depth_convert.slang",
     "sha256": "2ced5aa077ac8484e0bbd2426f468caf69ce707b25f740b206541303fb2a18f5"
   },
+  "vkl.depth_fusion": {
+    "path": "kernels/vkl/depth_fusion.slang",
+    "sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089"
+  },
   "vkl.depth_pyramid": {
     "path": "kernels/vkl/depth_pyramid.slang",
     "sha256": "55fea213f1f1614ed3307a6c7a2a3e62765e20db86fbe7da9790c1379f4d4aa2"
+  },
+  "vkl.geometry": {
+    "path": "kernels/vkl/geometry.slang",
+    "sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2"
   },
   "vkl.photometric_isp": {
     "path": "kernels/vkl/photometric_isp.slang",
