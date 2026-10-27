@@ -1,0 +1,498 @@
+{
+  "tag": "v0.1.2",
+  "results": [
+    {
+      "repository": "bjoernellens1/stereoforge",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/stereoforge/pull/4",
+      "head_sha": "307bd0ab850c442c6dcdc6eb4b7ace52f785a3af",
+      "base_sha": "404b42adb07b837b61acba7046fdf77b13b4df90",
+      "checks_url": "https://github.com/bjoernellens1/stereoforge/pull/4/checks",
+      "consumer_checks": "integrity-passed; existing default CPU workflow fails importing benchmarks (fix present in migration PR3)",
+      "checks": [
+        {
+          "id": 122396802129,
+          "name": "cpu",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/stereoforge/actions/runs/40563017879/job/122396802129",
+          "annotations": [
+            {
+              "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, astral-sh/setup-uv@v6. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
+              "annotation_level": "warning"
+            },
+            {
+              "message": "Process completed with exit code 2.",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122396799586,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "success",
+          "details_url": "https://github.com/bjoernellens1/stereoforge/actions/runs/40563018167/job/122396799586",
+          "annotations": [
+            {
+              "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
+              "annotation_level": "warning"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122396790054,
+          "name": "cpu",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/stereoforge/actions/runs/40563010584/job/122396790054",
+          "annotations": [
+            {
+              "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, astral-sh/setup-uv@v6. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
+              "annotation_level": "warning"
+            },
+            {
+              "message": "Process completed with exit code 2.",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/eligsir-sim",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/eligsir-sim/pull/43",
+      "head_sha": "9b5ab278b2ea15cd7bc5241ba9e7abab6b576043",
+      "base_sha": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+      "checks_url": "https://github.com/bjoernellens1/eligsir-sim/pull/43/checks",
+      "consumer_checks": "not-started: account billing/spending restriction",
+      "checks": [
+        {
+          "id": 122397043837,
+          "name": "test (3.12)",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-sim/actions/runs/40563088833/job/122397043837",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122397043064,
+          "name": "test (3.13)",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-sim/actions/runs/40563088833/job/122397043064",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122397042612,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-sim/actions/runs/40563088829/job/122397042612",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122397012136,
+          "name": "test (3.13)",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-sim/actions/runs/40563080000/job/122397012136",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122397011570,
+          "name": "test (3.12)",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-sim/actions/runs/40563080000/job/122397011570",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/eligsir-native",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/eligsir-native/pull/12",
+      "head_sha": "fd1fefdf8e3c9244f1f24de64bdf4b07fd679e6b",
+      "base_sha": "85e054104262c7775509bb060d710df32195de76",
+      "checks_url": "https://github.com/bjoernellens1/eligsir-native/pull/12/checks",
+      "consumer_checks": "not-started: account billing/spending restriction",
+      "checks": [
+        {
+          "id": 122397293515,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/eligsir-native/actions/runs/40563160830/job/122397293515",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/vkl",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/vkl/pull/132",
+      "head_sha": "e3fb37cad4b407eff90b979bcb00a84d94b9bdd4",
+      "base_sha": "3384023a311651ea4260cf12ddab1567972f89f3",
+      "checks_url": "https://github.com/bjoernellens1/vkl/pull/132/checks",
+      "consumer_checks": "not-started: account billing/spending restriction",
+      "checks": [
+        {
+          "id": 122397510861,
+          "name": "container-test",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/vkl/actions/runs/40563222580/job/122397510861",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122397510421,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/vkl/actions/runs/40563222593/job/122397510421",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122397488408,
+          "name": "container-test",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/vkl/actions/runs/40563216497/job/122397488408",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/slang-rgbd-slam",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/slang-rgbd-slam/pull/3",
+      "head_sha": "78ffda00e53d1b254c7f9b966cbd457196bff738",
+      "base_sha": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+      "checks_url": "https://github.com/bjoernellens1/slang-rgbd-slam/pull/3/checks",
+      "consumer_checks": "not-started: account billing/spending restriction",
+      "checks": [
+        {
+          "id": 122397737685,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/slang-rgbd-slam/actions/runs/40563287093/job/122397737685",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122397737666,
+          "name": "portable",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/slang-rgbd-slam/actions/runs/40563287167/job/122397737666",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122397709481,
+          "name": "portable",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/slang-rgbd-slam/actions/runs/40563278118/job/122397709481",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/caspar-slang",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/caspar-slang/pull/3",
+      "head_sha": "dfbf2a77b7ad29e5b59d3fef77f4328a000bc178",
+      "base_sha": "cab53390aa111cd5526cb30c9aef484e73521186",
+      "checks_url": "https://github.com/bjoernellens1/caspar-slang/pull/3/checks",
+      "consumer_checks": "not-started: account billing/spending restriction",
+      "checks": [
+        {
+          "id": 122397982957,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/caspar-slang/actions/runs/40563356021/job/122397982957",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122397978851,
+          "name": "python",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/caspar-slang/actions/runs/40563356016/job/122397978851",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122397978123,
+          "name": "vulkan-software",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/caspar-slang/actions/runs/40563356016/job/122397978123",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122397954391,
+          "name": "vulkan-software",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/caspar-slang/actions/runs/40563348646/job/122397954391",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        },
+        {
+          "id": 122397954086,
+          "name": "python",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/caspar-slang/actions/runs/40563348646/job/122397954086",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "bjoernellens1/locus",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/locus/pull/14",
+      "head_sha": "b80ccdca1d1ac00a3159d4d14db87a2f093d4e4c",
+      "base_sha": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+      "checks_url": "https://github.com/bjoernellens1/locus/pull/14/checks",
+      "consumer_checks": "not-started: account billing/spending restriction",
+      "checks": [
+        {
+          "id": 122398228613,
+          "name": "ros2",
+          "status": "completed",
+          "conclusion": "skipped",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40563417832/job/122398228613",
+          "annotations": []
+        },
+        {
+          "id": 122398205947,
+          "name": "optional-orbbec",
+          "status": "completed",
+          "conclusion": "skipped",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40563417832/job/122398205947",
+          "annotations": []
+        },
+        {
+          "id": 122398203909,
+          "name": "Android UI and JNI smoke (software GPU)",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40563417832/job/122398203909",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122398203759,
+          "name": "android",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40563417832/job/122398203759",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122398203414,
+          "name": "portable",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40563417832/job/122398203414",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            }
+          ]
+        },
+        {
+          "id": 122398203360,
+          "name": "verify",
+          "status": "completed",
+          "conclusion": "failure",
+          "details_url": "https://github.com/bjoernellens1/locus/actions/runs/40563417874/job/122398203360",
+          "annotations": [
+            {
+              "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+              "annotation_level": "failure"
+            },
+            {
+              "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+              "annotation_level": "notice"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "api_attempts": 77,
+  "recorded_at": "2026-10-27T18:50:10.727222+00:00",
+  "release": {
+    "source_commit": "657a219905c622b7c6aaac20568d7bbe6cb3bec4",
+    "immutable": true,
+    "url": "https://github.com/bjoernellens1/sintergpu/releases/tag/v0.1.2",
+    "verification": "All downloaded payload hashes, GitHub immutable assets and hosted attestations verified by tools/release.py verify",
+    "manifest_sha256": "f9c969e44b5158003599b257b9374ea508af41537def013c23253838c2de9810",
+    "workflow_run": 40562070591,
+    "automatic_publish": "Prepared and attested set retained; publisher App configuration missing. Owner-local recovery published those exact bytes. Automatic downstream App remains unconfigured."
+  },
+  "scope": "Registration/announcement delivery only; no consumer migration, default selection or native qualification is inferred. Downstream retains merge control."
+}

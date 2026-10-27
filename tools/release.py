@@ -26,6 +26,25 @@ def gh(*args):
     return run(['gh', *args], text=True)
 
 
+
+def remote_tag_commit(tag):
+    """Resolve only an exact tag ref, never a branch accepted by /commits/name."""
+    validate_version(tag, tag.removeprefix('v'))
+    ref=json.loads(gh('api', f'repos/{REPO}/git/ref/tags/{tag}'))
+    if ref.get('ref') != 'refs/tags/'+tag:
+        raise ValueError('exact remote tag ref mismatch')
+    obj=ref.get('object', {});seen=set()
+    for _ in range(16):
+        digest=obj.get('sha', '')
+        if not re.fullmatch('[0-9a-f]{40}', digest) or digest in seen:
+            raise ValueError('invalid remote tag object chain')
+        if obj.get('type') == 'commit':return digest
+        if obj.get('type') != 'tag':raise ValueError('remote tag does not resolve to a commit')
+        seen.add(digest)
+        obj=json.loads(gh('api', f'repos/{REPO}/git/tags/{digest}')).get('object', {})
+    raise ValueError('remote tag chain exceeds verification limit')
+
+
 def sha256(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -198,7 +217,7 @@ def verify_download(tag, directory):
     validate_version(tag, manifest['version'])
     if manifest.get('repository') != REPO or manifest.get('workflow') != WORKFLOW or not re.fullmatch('[0-9a-f]{40}', manifest['source_commit']):
         raise ValueError('manifest provenance mismatch')
-    remote = json.loads(gh('api', f'repos/{REPO}/commits/{tag}'))['sha']
+    remote = remote_tag_commit(tag)
     if remote != manifest['source_commit']:
         raise ValueError('remote tag source mismatch')
     expected = {manifest_path.name} | {safe_name(a['name']) for a in manifest['assets']}
@@ -222,7 +241,7 @@ def publish(tag, directory):
     validate_version(tag, manifest['version'])
     if manifest.get('repository') != REPO or manifest.get('workflow') != WORKFLOW:
         raise ValueError('prepared manifest provenance mismatch')
-    remote = json.loads(gh('api', f'repos/{REPO}/commits/{tag}'))['sha']
+    remote = remote_tag_commit(tag)
     if remote != manifest.get('source_commit'):
         raise ValueError('prepared source does not match remote tag')
     settings = json.loads(gh('api', f'repos/{REPO}/immutable-releases'))
@@ -235,9 +254,14 @@ def publish(tag, directory):
         with tempfile.TemporaryDirectory() as temp:
             return verify_download(tag, Path(temp))
     if not match:
-        gh('release', 'create', tag, '-R', REPO, '--draft', '--verify-tag', '--title', tag, '--notes', 'Experimental kernels; see manifest qualification and pending gates.')
-        releases = json.loads(gh('api', '--paginate', '--slurp', f'repos/{REPO}/releases?per_page=100'))
-        match = [r for page in releases for r in page if r['tag_name'] == tag]
+        # Use the mutation response directly: GitHub's release list can lag a
+        # successful draft creation. The exact remote tag was verified above.
+        created = json.loads(gh('api', f'repos/{REPO}/releases', '--method', 'POST',
+                                '-f', 'tag_name='+tag, '-f', 'target_commitish='+remote, '-F', 'draft=true', '-f', 'name='+tag,
+                                '-f', 'body=Experimental kernels; see manifest qualification and pending gates.'))
+        if created.get('tag_name') != tag or not created.get('draft') or not created.get('id'):
+            raise ValueError('draft creation response mismatch; inspect remote state before retrying')
+        match = [created]
     if len(match) != 1:
         raise ValueError('exactly one draft release required')
     endpoint = f'repos/{REPO}/releases/{match[0]["id"]}'
@@ -255,7 +279,7 @@ def publish(tag, directory):
            '--source-ref', 'refs/tags/'+tag, '--source-digest', manifest['source_commit'], '--deny-self-hosted-runners')
     if not (directory/'attestation.jsonl').is_file():
         raise ValueError('attestation bundle required')
-    remote = json.loads(gh('api', f'repos/{REPO}/commits/{tag}'))['sha']
+    remote = remote_tag_commit(tag)
     if remote != manifest['source_commit']:
         raise ValueError('remote tag changed before publication')
     gh('release', 'edit', tag, '-R', REPO, '--draft=false')

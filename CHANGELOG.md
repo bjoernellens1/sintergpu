@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3 — 2026-10-27
+
+- Add the VKL temporal best-observation forward profile, independent NumPy oracle, bounded setup and full-output differential tests.
+- Address freshly created draft releases using their creation response ID, tolerating release-list lag while requiring an exact tag ref and resolved source commit.
+
 ## 0.1.2 — 2026-10-27
 
 - Add VKL depth geometry, rigid transforms, same-grid fusion and complete forward temporal depth fusion.

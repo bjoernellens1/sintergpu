@@ -925,10 +925,12 @@
         {
           "symbol": "temporal_best_observation",
           "source_line": 8,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Select the highest-quality equivalent observation, retaining target fallback.",
+          "disposition": "specialized_variant",
+          "reason": "Float32 forward Slang profile with all four numerical outputs; unchanged Torch autograd/validation remains available. Other device/runtime and full application qualification pending.",
           "numerical_contract": "Select the highest-quality equivalent observation, retaining target fallback.\n\nIndex zero denotes the target; neighbor ``i`` is returned as index ``i+1``.\nNo mapping novelty or admission policy is applied here.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.temporal_best.temporalBest"
+          ]
         }
       ],
       "private_helpers": []

@@ -23,6 +23,9 @@ jobs:
       published: ${{ steps.resolve.outputs.published }}
       prepared_run: ${{ steps.resolve.outputs.prepared_run }}
     steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
       - name: Resolve existing remote tag without moving it
         id: resolve
         env:
@@ -31,13 +34,15 @@ jobs:
           WORKFLOW_SHA: ${{ github.sha }}
         run: |
           python - <<'PY'
-          import json, os, re, subprocess
+          import json, os, re, subprocess, sys
           tag = os.environ['TAG']
           if not re.fullmatch(r'v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)', tag):
               raise SystemExit('strict release SemVer required')
           def api(endpoint):
               return json.loads(subprocess.check_output(['gh','api',endpoint],text=True))
-          source=api('repos/bjoernellens1/sintergpu/commits/'+tag)['sha']
+          sys.path.insert(0, 'tools')
+          from release import remote_tag_commit
+          source=remote_tag_commit(tag)
           pages=json.loads(subprocess.check_output(['gh','api','--paginate','--slurp','repos/bjoernellens1/sintergpu/releases?per_page=100'],text=True))
           matches=[r for page in pages for r in page if r['tag_name']==tag]
           published=bool(matches and not matches[0]['draft'])

@@ -114,7 +114,7 @@ def test_published_retry_only_verifies_no_upload(tmp_path, monkeypatch):
     calls=[]
     def gh(*args):
         calls.append(args)
-        if args[0]=='api' and '/commits/' in args[1]: return '{"sha":"'+'a'*40+'"}'
+        if args[0]=='api' and '/git/ref/tags/' in args[1]: return json.dumps({'ref':'refs/tags/v0.1.0','object':{'type':'commit','sha':'a'*40}})
         if args[0]=='api' and args[1].endswith('immutable-releases'): return '{"enabled":true}'
         if args[0]=='api': return '[[{"tag_name":"v0.1.0","draft":false}]]'
         pytest.fail('published retry attempted mutation')
@@ -165,7 +165,8 @@ def test_sdist_stale_reference_is_rejected(tmp_path):
         r.verify_package_sources(root,sdist,'sdist')
 
 
-def test_draft_is_addressed_by_id_not_published_tag_endpoint(tmp_path,monkeypatch):
+@pytest.mark.parametrize("list_lag", [False, True])
+def test_draft_is_addressed_by_id_not_published_tag_endpoint(tmp_path,monkeypatch,list_lag):
     manifest={'version':'0.1.0','repository':r.REPO,'workflow':r.WORKFLOW,'source_commit':'a'*40}
     name='sintergpu-0.1.0-manifest.json'
     (tmp_path/name).write_text(json.dumps(manifest));(tmp_path/'payload').write_bytes(b'data')
@@ -175,11 +176,16 @@ def test_draft_is_addressed_by_id_not_published_tag_endpoint(tmp_path,monkeypatc
     def gh(*args):
         nonlocal exists,published
         if args[0]=='api':
-            endpoint=args[-1]
+            endpoint=args[-1] if args[1]=='--paginate' else args[1]
             assert '/releases/tags/' not in endpoint,'drafts are not returned by published-tag lookup'
+            if endpoint.endswith('/releases') and '--method' in args:
+                assert args[args.index('--method')+1]=='POST'
+                assert 'tag_name=v0.1.0' in args and 'draft=true' in args and 'target_commitish='+'a'*40 in args
+                exists=True
+                return json.dumps({'id':42,'tag_name':'v0.1.0','draft':True})
             if endpoint.endswith('immutable-releases'):return '{"enabled":true}'
-            if '/commits/' in endpoint:return json.dumps({'sha':'a'*40})
-            if endpoint.endswith('releases?per_page=100'):return json.dumps([[{'id':42,'tag_name':'v0.1.0','draft':True}]] if exists else [[]])
+            if '/git/ref/tags/' in endpoint:return json.dumps({'ref':'refs/tags/v0.1.0','object':{'type':'commit','sha':'a'*40}})
+            if endpoint.endswith('releases?per_page=100'):return json.dumps([[{'id':42,'tag_name':'v0.1.0','draft':True}]] if exists and not list_lag else [[]])
             if endpoint.endswith('/releases/42'):return json.dumps({'assets':assets})
         if args[:2]==('release','create'):exists=True;return ''
         if args[:2]==('release','upload'):
@@ -190,3 +196,47 @@ def test_draft_is_addressed_by_id_not_published_tag_endpoint(tmp_path,monkeypatc
     monkeypatch.setattr(r,'gh',gh)
     r.publish('v0.1.0',tmp_path)
     assert published
+
+
+def test_version_named_branch_cannot_substitute_for_exact_release_tag(tmp_path,monkeypatch):
+    manifest={'version':'0.1.0','repository':r.REPO,'workflow':r.WORKFLOW,'source_commit':'a'*40}
+    (tmp_path/'sintergpu-0.1.0-manifest.json').write_text(json.dumps(manifest));r.write_checksums(tmp_path,['sintergpu-0.1.0-manifest.json'])
+    writes=[]
+    def gh(*args):
+        if args[0]=='api' and '/commits/' in args[1]:return json.dumps({'sha':'a'*40}) # ambiguous branch succeeds
+        if args[0]=='api' and '/git/ref/tags/' in args[1]:raise RuntimeError('404: exact tag missing')
+        if args[0]=='api' and args[1].endswith('immutable-releases'):return '{"enabled":true}'
+        if '--paginate' in args:return '[[]]'
+        if '--method' in args or args[:2]==('release','create'):writes.append(args)
+        raise AssertionError('publication must reject missing exact tag before mutation')
+    monkeypatch.setattr(r,'gh',gh)
+    with pytest.raises(RuntimeError,match='exact tag missing'):r.publish('v0.1.0',tmp_path)
+    assert writes==[]
+
+
+@pytest.mark.parametrize('depth',[0,1,3])
+def test_exact_tag_resolves_direct_and_annotated_commits(monkeypatch,depth):
+    def gh(*args):
+        endpoint=args[1]
+        if '/git/ref/tags/' in endpoint:return json.dumps({'ref':'refs/tags/v0.1.0','object':{'type':'tag' if depth else 'commit','sha':'a'*40}})
+        step=ord(endpoint[-1])-ord('a')
+        return json.dumps({'object':{'type':'tag' if step+1<depth else 'commit','sha':chr(ord('a')+step+1)*40}})
+    monkeypatch.setattr(r,'gh',gh)
+    assert r.remote_tag_commit('v0.1.0')==chr(ord('a')+depth)*40
+
+
+@pytest.mark.parametrize('bad',['wrong-ref','tree','invalid-sha','cycle'])
+def test_exact_tag_rejects_invalid_ref_or_object_chain(monkeypatch,bad):
+    def gh(*args):
+        obj={'type':'tag' if bad=='cycle' else 'tree' if bad=='tree' else 'commit','sha':'not-sha' if bad=='invalid-sha' else 'a'*40}
+        return json.dumps({'ref':'refs/heads/v0.1.0' if bad=='wrong-ref' else 'refs/tags/v0.1.0','object':obj})
+    monkeypatch.setattr(r,'gh',gh)
+    with pytest.raises(ValueError):r.remote_tag_commit('v0.1.0')
+
+
+def test_hosted_resolver_checks_out_exact_tag_helper_before_using_it():
+    workflow=(Path(__file__).resolve().parents[1]/'.github/workflows/release.yml').read_text()
+    resolver=workflow.split('  resolve:\n',1)[1].split('  checks:\n',1)[0]
+    assert 'source=remote_tag_commit(tag)' in resolver
+    assert resolver.index('uses: actions/checkout@')<resolver.index('from release import remote_tag_commit')
+    assert 'persist-credentials: false' in resolver

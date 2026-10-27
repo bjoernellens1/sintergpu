@@ -286,3 +286,11 @@ logical/provenance values and invalid outputs. A borrowed-encoder fusion→geome
 test checks composition. These checks do not qualify cross-vendor behavior,
 gradients, application results or performance, and do not replace the original
 22-group review with a claim of an exhaustive audit.
+
+Temporal best-observation selection is a further related-only temporal task: it
+reduces equivalent observations by quality, with first-NaN/first-maximum semantics
+and target fallback. It does not average depths, determine pairwise depth clusters
+or integrate a TSDF. Keep `vkl.temporal_best.temporalBest` separate from the G19
+fusion family; see [its contract](vkl-temporal-best.md) and
+[hash-bound lineage](../provenance/vkl-temporal-best.json). Shared row-reduction
+helpers would need to preserve these ordering and NaN rules before deduplication.

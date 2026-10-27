@@ -1,0 +1,548 @@
+{
+  "schema_version": 1,
+  "version": "0.1.3",
+  "status": "experimental",
+  "qualifications": [
+    {
+      "operation": "depth.bilateral",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "depth.register",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "depth.resolve",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e5416309a1d2e09a5549e558a74f42baad0af9a96ad4721c46c467f300cf9ea4",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "depth.validity",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "geometry.backproject",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "geometry.coverage_heatmap",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "b23581c8b5348522c3ee7ad05b2f9b97d954e7d9c5070fa80341fe52216d94d8",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "geometry.coverage_points",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "5e8ea4892df9d48caae31b75885f49f6fd63b4170a75c2a411688a052149a30c",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "geometry.transform_points",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "image.crop_normalize",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "image.planar_yuv_to_rgb",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "image.resize_nearest",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "image.undistort",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "perception.cosine_similarity",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "perception.mask_postprocess",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "5de5a3648d315cd126e40e181aa11ec2b3b479583be57f77605def4e5d772688",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "quality.metrics",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "quality.reduce",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "spatial.voxel_insert",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "vkl.geometry.depthGeometry",
+      "variant": "portable-float32-forward",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification",
+      "configuration": {
+        "max_workgroups_x": 4294967295,
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 5e-07
+        },
+        "logical_and_provenance": "exact"
+      },
+      "evidence": "qualification/evidence/vkl-geometry-depth-parity.json"
+    },
+    {
+      "operation": "vkl.geometry.worldTransform",
+      "variant": "portable-float32-forward",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification",
+      "configuration": {
+        "max_workgroups_x": 4294967295,
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 5e-07
+        },
+        "logical_and_provenance": "exact"
+      },
+      "evidence": "qualification/evidence/vkl-geometry-depth-parity.json"
+    },
+    {
+      "operation": "vkl.depth_fusion.fuseDepth",
+      "variant": "portable-float32-forward",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification",
+      "configuration": {
+        "max_workgroups_x": 4294967295,
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 5e-07
+        },
+        "logical_and_provenance": "exact"
+      },
+      "evidence": "qualification/evidence/vkl-geometry-depth-parity.json"
+    },
+    {
+      "operation": "vkl.depth_fusion.temporalDepthFuse",
+      "variant": "portable-float32-forward",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification",
+      "configuration": {
+        "max_workgroups_x": 4294967295,
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 5e-07
+        },
+        "logical_and_provenance": "exact"
+      },
+      "evidence": "qualification/evidence/vkl-geometry-depth-parity.json"
+    },
+    {
+      "operation": "vkl.temporal_best.temporalBest",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "20b0ebc40ee1d96c45bd4ea2a3fb281b46a614d6514571b36f003142d68b65fa",
+      "status": "fixture-parity-passed",
+      "variant": "portable-float32-forward",
+      "scope": "Frozen Torch/NumPy full forward outputs, NaN/infinity/tie/fallback behavior, N1/2/7/33, four independent optional flag combinations, actual oneelement unused buffers, output padding and thread tails; not gradients, application or full extreme-value qualification",
+      "evidence": "qualification/evidence/vkl-temporal-best-parity.json",
+      "configuration": {
+        "max_workgroups_x": 4294967295,
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 5e-07
+        },
+        "indices": "exact-int32 numeric preservation of donor int64"
+      }
+    }
+  ],
+  "evidence_sha256": {
+    "qualification/evidence/color-1080p-exploratory.json": "94b18266afe318b9b87a5f290e3fde8d12a62538ffd09edff2d66c3d51c76a53",
+    "qualification/evidence/color-720p-exploratory.json": "f43b603b744a07819e0c9b538bf5128baaeb81a10e6195d9059d99fb5fa92e0e",
+    "qualification/evidence/locus-amd8060s.json": "1e7e23b78d34242ff07b8aacf8ea7a7bbbffa660741194cb427dace8870c6c3c",
+    "qualification/evidence/vkl-projection-exploratory.json": "51e172ceadf3476597303536ad3a43ca04c8d5e368ecfd47d1ed709518d31bf5",
+    "qualification/evidence/vkl-geometry-depth-2-invalid.json": "bc7c7e86fe2e9d7d0e3eaf484e86334082e9af5f8a2917df09cc0e446132fe08",
+    "qualification/evidence/vkl-geometry-depth-9-conflict.json": "27a65d40843c246f07833466dec788265e38799b3764cd5eb17d184b47b9de90",
+    "qualification/evidence/vkl-geometry-depth-all.json": "4e7418df0f8a8bc213f5d2b908e5fa9e613d70a13711e27dee078825fdb439aa",
+    "qualification/evidence/vkl-geometry-depth-mixed.json": "c33ffa709e9928db6dab936c447de1497ab9bc05c5f236fd8ea946b3824898df",
+    "qualification/evidence/vkl-geometry-depth-none.json": "de7155ea82f32bb187b81e15f4a7cc199b2bb02244db0862e036e4cf38df6207",
+    "qualification/evidence/vkl-geometry-depth-parity.json": "5c013d42bd6859437d2264c43638cfff02eb42c1e7726f617e6d38411b3ce6ca",
+    "qualification/evidence/vkl-temporal-best-65536-2-dense.json": "6339ca5e17e124b675ed483d05bd602ce2f3764013d014b6c3b46b45834b6316",
+    "qualification/evidence/vkl-temporal-best-65536-32-early.json": "01c353c8db38db1302fb7e5276123bc1607eb4f88d9b7e513697541871f4c325",
+    "qualification/evidence/vkl-temporal-best-65536-32-late.json": "c9379a64a0a79e72db3407437f9c08329de7e59502c229960041b6e829446c4e",
+    "qualification/evidence/vkl-temporal-best-65536-32-nan.json": "f704aa3695fca73f64ea176e0c86e01d07cf6f684a907cbdbc9051de2c5d524b",
+    "qualification/evidence/vkl-temporal-best-65536-32-sparse.json": "aa3f63d03474c63107e6dd16bca62ede74e085e833da6f747b571783c63af2e6",
+    "qualification/evidence/vkl-temporal-best-8192-256-dense.json": "465fc8cbc62c9848f7dadbd65e04a6d152dbb484f6ba6060f516fe59ab6bac12",
+    "qualification/evidence/vkl-temporal-best-parity.json": "80d63dca0234e2fc07958cef2e179c34d79e5beab960037396a49e488fc73bd3",
+    "qualification/delivery-0.1.2.json": "4b249ea02fac50cee1bf42c4a2b37f0a4a0be9f728e2f0cdf59b0d400a9815d3"
+  },
+  "pending_gates": [
+    "NVIDIA RTX 3090 execution: selected workstation unreachable",
+    "Full Radeon 8060S operation/variant/adapter qualification beyond retained fixtures",
+    "39 VKL reference modules remain without Slang translation; eight covered modules include partial-forward profiles",
+    "Reviewed consumer migration adoption and configured automatic cross-repository App delivery; seven initial registration PRs delivered",
+    "Three controlled fusion performance runs meeting resident and transfer-inclusive acceptance gates",
+    "Optional vrdx C++ build/runtime and HIP backend runtime qualification",
+    "SLAM pose/trajectory/gradient and full-capacity reconstruction qualification",
+    "Publisher App administrative permission path and downstream App execution; six private consumer CI jobs blocked by account billing/spending restrictions"
+  ]
+}
