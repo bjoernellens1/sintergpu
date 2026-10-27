@@ -236,12 +236,17 @@ def publish(tag, directory):
             return verify_download(tag, Path(temp))
     if not match:
         gh('release', 'create', tag, '-R', REPO, '--draft', '--verify-tag', '--title', tag, '--notes', 'Experimental kernels; see manifest qualification and pending gates.')
-    details = json.loads(gh('api', f'repos/{REPO}/releases/tags/{tag}'))
+        releases = json.loads(gh('api', '--paginate', '--slurp', f'repos/{REPO}/releases?per_page=100'))
+        match = [r for page in releases for r in page if r['tag_name'] == tag]
+    if len(match) != 1:
+        raise ValueError('exactly one draft release required')
+    endpoint = f'repos/{REPO}/releases/{match[0]["id"]}'
+    details = json.loads(gh('api', endpoint))
     existing = check_existing_assets(details['assets'], directory)
     for path in sorted(directory.iterdir()):
         if path.is_file() and path.name not in existing:
             gh('release', 'upload', tag, str(path), '-R', REPO)
-    details = json.loads(gh('api', f'repos/{REPO}/releases/tags/{tag}'))
+    details = json.loads(gh('api', endpoint))
     check_existing_assets(details['assets'], directory)
     if {a['name'] for a in details['assets']} != {p.name for p in directory.iterdir() if p.is_file()}:
         raise ValueError('release upload incomplete')

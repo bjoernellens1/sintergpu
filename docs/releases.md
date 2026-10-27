@@ -83,7 +83,7 @@ EliGSiR-native float-SUM require old/new output, tree and barrier parity.
 ## Recurring delivery
 
 Install a dedicated GitHub App on only the seven registered consumers with
-Contents write and Pull requests write. Configure `SINTERGPU_APP_ID` as an Actions
+Contents write, Pull requests write and Attestations read. Configure `SINTERGPU_APP_ID` as an Actions
 variable and `SINTERGPU_APP_PRIVATE_KEY` as its secret. Normal delivery only
 updates the registered lock, so the App needs no Workflows permission. Each matrix
 job mints a short-lived single-repository token with automatic revocation.
@@ -130,3 +130,22 @@ Operational acceptance still requires an authorized real immutable release,
 seven reviewable registration PRs and a repeat delivery creating zero new PRs or
 commits. Fake-API tests prove local state handling, not GitHub configuration,
 attestation issuance, App installation or downstream/native execution.
+
+## Publisher authorization
+
+The repository immutability setting requires Administration read. The standard
+workflow token cannot grant that permission. Configure a separate GitHub App
+installed only on SinterGPU with Administration read, Contents write and
+Attestations read. Set `SINTERGPU_PUBLISHER_APP_ID` and
+`SINTERGPU_PUBLISHER_APP_PRIVATE_KEY`. The publishing step mints a short-lived
+repository-scoped token; attestation signing continues under the workflow token.
+Without this App, automatic publication fails visibly after retaining the signed
+prepared set. An authorized owner can recover that original artifact locally and
+publish it using the existing authenticated CLI session, without copying secrets
+into Actions or rebuilding its payloads.
+
+The first 0.1.0 run exposed this boundary and the published-tag endpoint's exclusion
+of drafts. Its initial publication used owner-authorized local recovery of the
+original hosted, attested bytes. Draft inspection uses the release ID returned by
+the authenticated release list. Automatic publisher-App and downstream-App
+execution remain pending configuration.

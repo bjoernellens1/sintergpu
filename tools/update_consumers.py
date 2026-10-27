@@ -114,6 +114,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  attestations: read
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -242,6 +243,8 @@ def deliver_one(api, item, lock, register=False, dry_run=False):
         old = commit['sha']
     title = f'Register SinterGPU {tag} release metadata (kernel migration pending)' if item['integration_state'] == 'registered' else f'Update SinterGPU to {tag}'
     body = f'{marker}\n\nPins immutable release source, manifest and artifact hashes.\n\nIntegration state: {item["integration_state"]}. Kernel migration pending: {item["integration_state"] == "registered"}.\nRelease integrity verification is separate from consumer native tests and GPU qualification.\n\nVerification argv: `{json.dumps(item["verification_argv"])}`\nConsumer integration argv: `{json.dumps(item["integration_argv"])}`\nNo automatic merge.\n'
+    prefix = f'https://github.com/{release.REPO}/blob/{tag}/'
+    body += f'\n[Changelog]({prefix}CHANGELOG.md) · [Migration instructions]({prefix}docs/integration.md) · [Correctness/performance scope]({prefix}docs/status.md) · [Qualification metadata](https://github.com/{release.REPO}/releases/download/{tag}/sintergpu-{tag[1:]}-manifest.json).\n'
     if state == 'open':
         if prs[0].get('body') != body or prs[0]['head']['sha'] != old:
             raise ValueError('human-modified PR body or stale head conflict')

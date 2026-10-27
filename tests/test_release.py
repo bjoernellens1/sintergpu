@@ -163,3 +163,30 @@ def test_sdist_stale_reference_is_rejected(tmp_path):
         member.size=3; archive.addfile(member,io.BytesIO(b'old'))
     with pytest.raises(ValueError,match='sdist source'):
         r.verify_package_sources(root,sdist,'sdist')
+
+
+def test_draft_is_addressed_by_id_not_published_tag_endpoint(tmp_path,monkeypatch):
+    manifest={'version':'0.1.0','repository':r.REPO,'workflow':r.WORKFLOW,'source_commit':'a'*40}
+    name='sintergpu-0.1.0-manifest.json'
+    (tmp_path/name).write_text(json.dumps(manifest));(tmp_path/'payload').write_bytes(b'data')
+    (tmp_path/'attestation.jsonl').write_text('signed bundle')
+    r.write_checksums(tmp_path,[name,'payload'])
+    assets=[]; exists=False; published=False
+    def gh(*args):
+        nonlocal exists,published
+        if args[0]=='api':
+            endpoint=args[-1]
+            assert '/releases/tags/' not in endpoint,'drafts are not returned by published-tag lookup'
+            if endpoint.endswith('immutable-releases'):return '{"enabled":true}'
+            if '/commits/' in endpoint:return json.dumps({'sha':'a'*40})
+            if endpoint.endswith('releases?per_page=100'):return json.dumps([[{'id':42,'tag_name':'v0.1.0','draft':True}]] if exists else [[]])
+            if endpoint.endswith('/releases/42'):return json.dumps({'assets':assets})
+        if args[:2]==('release','create'):exists=True;return ''
+        if args[:2]==('release','upload'):
+            p=Path(args[3]);assets.append({'name':p.name,'size':p.stat().st_size,'digest':'sha256:'+r.sha256(p)});return ''
+        if args[:2]==('attestation','verify'):return ''
+        if args[:2]==('release','edit'):published=True;return ''
+        raise AssertionError(args)
+    monkeypatch.setattr(r,'gh',gh)
+    r.publish('v0.1.0',tmp_path)
+    assert published
