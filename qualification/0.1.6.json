@@ -670,6 +670,7 @@
     "paired_cpu_gpu_entries": 17,
     "pending_portable_entries": 113,
     "additional_native_pending": 4,
-    "scope": "28 small frozen Locus fixtures, 5 warmups and 50 raw samples per metric. Shared local machine, not optimized CPU/production-throughput or controlled speedup qualification."
+    "scope": "28 small frozen Locus fixtures, 5 warmups and 50 raw samples per metric. Shared local machine, not optimized CPU/production-throughput or controlled speedup qualification.",
+    "collector_revision": "1890894c70ef87ed7b6c29a4e356c38c5231f20a"
   }
 }

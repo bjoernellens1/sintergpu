@@ -54,3 +54,8 @@ records; raw samples support independent analysis. CPU-only collection does not
 import a GPU runtime. Hardware GPU collection requires explicit opt-in and rejects
 a software Vulkan adapter. Ordinary library recording still borrows the caller's
 device/context and introduces no measurement, allocation or synchronization work.
+
+The initial raw dataset was collected with runner revision
+`1890894c70ef87ed7b6c29a4e356c38c5231f20a`; its recorded runner hash identifies
+that collector. The subsequent optional-driver-diagnostic fallback changes no
+measured region or shader/reference inputs.

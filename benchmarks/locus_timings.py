@@ -60,8 +60,11 @@ def run(*,gpu=False,iterations=50,warmups=5,device_index=0):
             environment.update(gpu=device.info.adapter_name,api=device.info.api_name,vendor_id=adapters[device_index].vendor_id,device_id=adapters[device_index].device_id,compiler_sha256=hashlib.sha256(compilers[0].read_bytes()).hexdigest(),slangpy=importlib.metadata.version('slangpy'),numpy=importlib.metadata.version('numpy'),floating_point_mode='precise',timestamp_frequency=int(device.info.timestamp_frequency))
             # Driver versions are retained as diagnostic data, not executed commands.
             import subprocess
-            diagnostic=subprocess.run(['vulkaninfo','--summary'],capture_output=True,text=True,timeout=30)
-            environment['vulkaninfo_summary']=diagnostic.stdout if diagnostic.returncode==0 else 'unavailable'
+            try:
+                diagnostic=subprocess.run(['vulkaninfo','--summary'],capture_output=True,text=True,timeout=30)
+                environment['vulkaninfo_summary']=diagnostic.stdout if diagnostic.returncode==0 else 'unavailable'
+            except (OSError,subprocess.TimeoutExpired):
+                environment['vulkaninfo_summary']='unavailable: optional driver diagnostic missing or timed out'
         for case in cases():
             op=operations[case['name']]
             params=list(struct.unpack('<32f',struct.pack('<32f',*case['params'])))
@@ -101,7 +104,7 @@ def run(*,gpu=False,iterations=50,warmups=5,device_index=0):
                 row.update(uploaded_bytes_per_iteration=sum(a.nbytes for a in arrays),readback_bytes_per_iteration=arrays[3].nbytes+arrays[4].nbytes,correctness='Frozen scalar reference parity passed for all output/state values')
             for samples in metrics.values():summarize(samples)
             records.append(row)
-        return {'schema_version':1,'measurements':records,'scope':'Paired small correctness-fixture timing; no optimization or full-device qualification'}
+        return {'schema_version':1,'environment':environment,'measurements':records,'scope':'Paired small correctness-fixture timing; no optimization or full-device qualification'}
     finally:
         if device is not None:device.close()
 

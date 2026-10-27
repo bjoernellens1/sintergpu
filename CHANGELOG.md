@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.6 — unreleased
+## 0.1.6 — 2026-10-27
 
 - Add a source-bound CPU/GPU timing registry and generated table covering every catalog entry, with explicit missing/stale baselines.
 - Record paired timings for 28 Locus fixtures across 17 operations, retaining raw samples, hardware/compiler/workload identity and separate kernel/transfer costs.

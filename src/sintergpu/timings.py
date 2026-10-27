@@ -43,7 +43,7 @@ def build_registry(catalog,measurements):
         if type(item['iterations']) is not int or item['iterations']<1 or type(item['warmups']) is not int or item['warmups']<1:raise ValueError('positive iterations and warmups required')
         metrics=item['metrics']
         if not isinstance(metrics,dict) or not metrics or set(metrics)-set(METRICS):raise ValueError('unknown or absent timing metric')
-        if any(k.startswith('gpu_') for k in metrics) and (not env.get('gpu') or not re.fullmatch('[a-f0-9]{64}',env.get('compiler_sha256',''))):raise ValueError('GPU and compiler identity required')
+        if any(k!='cpu_reference_wall_ms' for k in metrics) and (not env.get('gpu') or not isinstance(env.get('compiler_sha256'),str) or not re.fullmatch('[a-f0-9]{64}',env['compiler_sha256'])):raise ValueError('GPU and compiler identity required')
         for samples in metrics.values():
             summarize(samples)
             if len(samples)!=item['iterations']:raise ValueError('raw sample count differs from iterations')

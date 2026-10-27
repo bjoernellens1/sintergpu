@@ -79,3 +79,46 @@ def test_cli_exposes_packaged_timing_reference_without_gpu(capsys):
     selected=json.loads(capsys.readouterr().out)
     assert [o['operation'] for o in selected['operations']]==['depth.bilateral']
     assert all(r['operation']=='depth.bilateral' for r in selected['measurements'])
+
+
+@pytest.mark.parametrize('metric',['gpu_kernel_ms','gpu_pipeline_ms','host_submit_complete_ms','transfer_inclusive_ms'])
+def test_all_gpu_path_metrics_require_gpu_and_compiler_identity(metric):
+    item=measurement();item['metrics']={metric:[1.,2.,3.]};item['environment']={'cpu':'CPU'}
+    with pytest.raises(ValueError,match='GPU'):timing_module().build_registry(catalog(),[item])
+
+
+@pytest.mark.parametrize('compiler',[None,123])
+def test_invalid_compiler_identity_is_a_validation_error(compiler):
+    item=measurement();item['environment']['compiler_sha256']=compiler
+    with pytest.raises(ValueError):timing_module().build_registry(catalog(),[item])
+
+
+def test_cpu_only_samples_do_not_require_a_gpu_runtime_identity():
+    item=measurement();item['metrics']={'cpu_reference_wall_ms':[1.,2.,3.]};item['environment']={'cpu':'CPU'}
+    assert timing_module().build_registry(catalog(),[item])['coverage']['cpu_measured']==1
+
+
+@pytest.mark.parametrize('diagnostic',['missing','timeout'])
+def test_missing_optional_driver_diagnostic_preserves_collection_and_closes_device(tmp_path,monkeypatch,diagnostic):
+    import subprocess,sys,types
+    from benchmarks import locus_timings as module
+    import sintergpu.fixtures.locus.cases as fixtures
+    monkeypatch.setenv('SINTERGPU_GPU_TESTS','1')
+    class Device:
+        closed=False
+        @staticmethod
+        def enumerate_adapters(kind):return [types.SimpleNamespace(vendor_id=0x1002,device_id=0x1586,luid=None)]
+        def __init__(self,**kwargs):self.info=types.SimpleNamespace(adapter_name='Test GPU',api_name='Vulkan',timestamp_frequency=1000)
+        def close(self):Device.closed=True
+    spy=types.ModuleType('slangpy');spy.__file__=str(tmp_path/'__init__.py');spy.Device=Device;spy.DeviceType=types.SimpleNamespace(vulkan='vulkan');spy.SlangFloatingPointMode=types.SimpleNamespace(precise='precise')
+    (tmp_path/'libslang-compiler.so').write_bytes(b'test compiler')
+    monkeypatch.setitem(sys.modules,'slangpy',spy)
+    monkeypatch.setattr(module.importlib.metadata,'version',lambda name:'test-version')
+    monkeypatch.setattr(fixtures,'cases',lambda:[])
+    def fail(*args,**kwargs):
+        if diagnostic=='missing':raise FileNotFoundError('vulkaninfo')
+        raise subprocess.TimeoutExpired(['vulkaninfo'],30)
+    monkeypatch.setattr(subprocess,'run',fail)
+    report=module.run(gpu=True,iterations=1,warmups=1)
+    assert Device.closed and report['measurements']==[]
+    assert 'unavailable' in report['environment']['vulkaninfo_summary']
