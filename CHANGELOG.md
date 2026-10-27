@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.1.7 — unreleased
+## 0.1.7 — 2026-10-27
 
-- Add paired CPU/GPU timing recipes for all six camera color, resize and remap operations, retaining numerical-profile, padding and transfer-cost boundaries.
+- Add paired CPU/GPU timing recipes for all six camera color, resize and remap operations, retaining numerical-profile, padding and transfer-cost boundaries. Record 30 workloads; paired timing coverage is now 23/130 portable entries, with 107 portable and four native variants pending.
 
 ## 0.1.6 — 2026-10-27
 
