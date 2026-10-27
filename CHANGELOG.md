@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.8 — 2026-10-27
+
+- Fix optional native radix CMake installation with caller-local `volk` targets, without requiring callers to export their dependencies.
+- Resolve either installed `volk` target spelling and preserve relocated resource paths on CMake 3.25.
+- Require real native archive, relocated consumer and CPU-only static-link checks under both pinned Slang versions. Native GPU runtime and timing qualification remain pending.
+
 ## 0.1.7 — 2026-10-27
 
 - Add paired CPU/GPU timing recipes for all six camera color, resize and remap operations, retaining numerical-profile, padding and transfer-cost boundaries. Record 30 workloads; paired timing coverage is now 23/130 portable entries, with 107 portable and four native variants pending.

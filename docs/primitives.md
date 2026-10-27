@@ -87,3 +87,5 @@ not a SlangPy sort kernel and not a qualified sort release.
 MIT RuilongLi and AMD notices are retained in `provenance/primitives.json` together
 with frozen reference hashes and the PyTorch ScanUtils helper lineage. No upstream
 CUDA, HIP, CUB or PyTorch dependency source is copied into the portable kernels.
+
+Native CMake archive installation and relocated CPU-only static linking are covered under both pinned Slang versions; see [packaging](packaging.md#optional-native-c-radix-library). These checks initialize no Vulkan device and do not establish sorting correctness, timing or cross-vendor support.

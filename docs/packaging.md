@@ -30,3 +30,43 @@ prefix and consume only its exported config and installed files.
 Primary references: [Python binary extension packaging](https://packaging.python.org/en/latest/guides/packaging-binary-extensions/),
 [scikit-build-core](https://scikit-build-core.readthedocs.io/en/latest/),
 [CMake importing/exporting](https://cmake.org/cmake/help/latest/guide/importing-exporting/index.html).
+
+## Optional native C++ radix library
+
+Build the native implementation from the released source bundle with
+`SINTERGPU_BUILD_RADIX=ON`. Provide either a `volk` or `volk::volk` target in the
+caller superproject, or an installed `volk` CMake package. Vulkan development
+headers and a selected Slang compiler are build dependencies. The caller's
+`volk` target does not need to join SinterGPU's install/export set.
+
+```cmake
+# Source/superproject build, after providing volk:
+set(SINTERGPU_BUILD_RADIX ON CACHE BOOL "" FORCE)
+set(SINTERGPU_SLANGC "/path/to/pinned/slangc" CACHE FILEPATH "")
+add_subdirectory(sintergpu)
+target_link_libraries(my_app PRIVATE sintergpu::radix)
+```
+
+After building/installing the native archive, another C++ project can consume it
+from a relocated installation with no Python or shader compiler at consumer build
+time. It must provide its own compatible `volk` target or package and Vulkan
+development headers:
+
+```cmake
+find_package(sintergpu CONFIG REQUIRED)
+target_link_libraries(my_app PRIVATE sintergpu::radix)
+```
+
+The installed target exposes `vk_radix_sort.h`. The existing `VrdxSorterCreateInfo`
+accepts the caller's physical device/device/pipeline cache; command functions
+record into the caller's command buffer. Consumers retain buffer lifetime,
+submission, synchronization and runtime capability validation. No loader/device
+or GPU work is initialized by CMake discovery or linking. SinterGPU does not
+bundle or install the caller's `volk` dependency.
+
+The CMake 3.25 checks compile the actual native archive and four embedded shaders
+under both pinned Slang versions, remove the original producer paths, relocate
+the install and link/execute CPU-only probes for both `volk` target spellings,
+either already provided or found in a separate dependency prefix. This proves
+installation and static linking, not Vulkan execution, sorting correctness or
+performance. Native GPU qualification and binary-wheel distribution remain pending.
