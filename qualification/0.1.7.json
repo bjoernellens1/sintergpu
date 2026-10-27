@@ -662,7 +662,7 @@
     "Optional vrdx C++ installed-export/runtime and HIP backend runtime qualification",
     "SLAM pose/trajectory/gradient and full-capacity reconstruction qualification",
     "Publisher App administrative permission path and downstream App execution; six private consumer CI jobs blocked by account billing/spending restrictions",
-    "CPU/GPU baseline timing coverage for 113 remaining portable catalog entries and four optional native radix variants"
+    "CPU/GPU baseline timing coverage for 107 remaining portable catalog entries and four optional native radix variants"
   ],
   "timing_reference": {
     "database": "src/sintergpu/data/timings.json",
