@@ -96,3 +96,26 @@ add_executable(rhi_receipt_cpu_probe /absolute/path/to/rhi-allocation-observatio
 target_include_directories(rhi_receipt_cpu_probe PRIVATE "${sdk_root}/rhi-source/src" "${sdk_root}/dependency-source/vulkan-headers/include")
 target_link_libraries(rhi_receipt_cpu_probe PRIVATE slang-rhi)
 ```
+
+## Review-required Vulkan cases
+
+`rhi_allocation_vulkan_cases.py` is an opt-in case function, not a standalone
+runner. It uses a borrowed canonical exclusive lease, compares the same live
+backend's typed instance/physical-device/device creation handles, UUID and raw
+Vulkan driver version, and exercises two ordinary buffers, a shared buffer,
+and SGL-close rejection. Shared-buffer creation failures fail the run. The
+cases do not invoke shared-handle export: an ordinary buffer's memory is not
+exportable, so doing that would violate Vulkan valid usage. Wrapped/imported
+buffers cannot be constructed through this SGL interface and remain pending.
+Real shared-handle export, handle reuse, and GPU-side lifecycle are not tested.
+
+No reviewed runner exists yet. Before calling the cases, a future runner must
+hold the canonical lease before creating the device and until teardown; verify
+exact source and binary closure, loaded `libsgl` and extension mappings, Vulkan
+loader/ICD and driver; reject ambiguity; capture write-once success and failure
+receipts; and prohibit foreign native Vulkan mutation. The case function's
+borrowed lease check does not prove the lock was held at device creation or
+verify any runtime binary, ICD, loader, provider, or source identity. Matching
+live observed memory handles is not physical backing-independence proof.
+`test_rhi_allocation_vulkan_cases.py` uses only CPU fake devices and confirms
+fixture control flow; no GPU or real Vulkan path has been tested.
