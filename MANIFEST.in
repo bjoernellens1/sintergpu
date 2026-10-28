@@ -11,7 +11,7 @@ recursive-include docs *.md *.json
 recursive-include provenance *.md *.json
 recursive-include qualification *.json *.log
 recursive-include tools *.py
-recursive-include tests *.py *.json
+recursive-include tests *.py *.json *.cpp
 recursive-include benchmarks *.py *.md *.json
 recursive-include references *.py *.slang *.json *.md *.toml LICENSE NOTICE *.txt *.cpp *.h *.hpp *.cu *.cuh
 recursive-include src/sintergpu *.slang *.json VERSION

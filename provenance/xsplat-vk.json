@@ -135,6 +135,20 @@
       "source_sha256": "e1bfa585ac8f9c0bd948724cde18bfef4688596c840dc91a8af703ba52f21f71",
       "imported_sha256": "e1bfa585ac8f9c0bd948724cde18bfef4688596c840dc91a8af703ba52f21f71",
       "changes": []
+    },
+    {
+      "source_path": "include/xsplatvk/reference.hpp",
+      "destination": "references/donors/xsplat-vk/include/xsplatvk/reference.hpp",
+      "source_sha256": "83af9c641d65f46159509c0eb3a6af8e142089500eb2c814693d7ebc53b76f13",
+      "imported_sha256": "83af9c641d65f46159509c0eb3a6af8e142089500eb2c814693d7ebc53b76f13",
+      "changes": []
+    },
+    {
+      "source_path": "include/xsplatvk/types.hpp",
+      "destination": "references/donors/xsplat-vk/include/xsplatvk/types.hpp",
+      "source_sha256": "2249adbcdf61c6ba9cf683317a1ddbae74fc2ec3fb77551217c6f34c96072e0a",
+      "imported_sha256": "2249adbcdf61c6ba9cf683317a1ddbae74fc2ec3fb77551217c6f34c96072e0a",
+      "changes": []
     }
   ],
   "qualification": "Imported source and historical evidence; requires new SinterGPU verification."
