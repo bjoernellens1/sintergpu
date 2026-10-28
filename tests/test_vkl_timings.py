@@ -13,8 +13,17 @@ def test_cases_cover_every_existing_nonfeature_vkl_entry_and_full_output_tails()
     from sintergpu.catalog import list_operations
     m=recipe();cases=list(m.cases())
     expected={o['id'] for o in list_operations() if o['id'].startswith('vkl.') and not o['id'].startswith(('vkl.brief.','vkl.binary_match.'))}
-    assert len(expected)==13
-    assert {c['operation'] for c in cases}==expected
+    # The established per-entry CPU recipe retains its 13-operation contract;
+    # new staged reprojection measurements live in their own complete-graph recipe.
+    reprojection=importlib.import_module('benchmarks.vkl_reprojection')
+    graphs=list(reprojection.cases())
+    new_entries={stage['operation'] for case in graphs for stage in case['graph']['stages']
+                 if stage['operation'].startswith('vkl.reprojection.')}
+    established=expected-{op for op in expected if op.startswith('vkl.reprojection.')}
+    assert len(established)==13
+    assert {c['operation'] for c in cases}==established
+    assert {c['operation'] for c in cases}|new_entries==expected
+    assert {case['family'] for case in graphs}=={'projection','raster','temporal','reference'}
     assert len(cases)==38
     for c in cases:
         actual=m.reference_call(c)

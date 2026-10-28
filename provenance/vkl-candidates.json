@@ -759,18 +759,30 @@
         {
           "symbol": "reproject_rgbd",
           "source_line": 8,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Project source depth into a target camera; visibility is in-bounds and front-facing.",
+          "disposition": "specialized_variant",
+          "reason": "Experimental scalar32 float32 forward stage graph with independent NumPy/frozen-donor CPU differential tests and both pinned-compiler compilation/reflection. Complete outputs and caller-owned resources are implemented; GPU parity on both target devices, hardware timing, gradients and application adoption remain pending. See docs/vkl-reprojection.md.",
           "numerical_contract": "Project source depth into a target camera; visibility is in-bounds and front-facing.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.geometry.depthGeometry",
+            "vkl.reprojection.projectPoints",
+            "vkl.reprojection.reduceProjection"
+          ]
         },
         {
           "symbol": "rasterize_reprojection",
           "source_line": 63,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Z-buffer source depth/confidence into target pixels using D4 geometry.",
+          "disposition": "specialized_variant",
+          "reason": "Experimental scalar32 float32 forward stage graph with independent NumPy/frozen-donor CPU differential tests and both pinned-compiler compilation/reflection. Complete outputs and caller-owned resources are implemented; GPU parity on both target devices, hardware timing, gradients and application adoption remain pending. See docs/vkl-reprojection.md.",
           "numerical_contract": "Z-buffer source depth/confidence into target pixels using D4 geometry.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.geometry.depthGeometry",
+            "vkl.reprojection.clearRaster",
+            "vkl.reprojection.finalizeRaster",
+            "vkl.reprojection.projectPoints",
+            "vkl.reprojection.rasterMin",
+            "vkl.reprojection.rasterSupport",
+            "vkl.reprojection.reduceProjection"
+          ]
         }
       ],
       "private_helpers": []
@@ -1005,18 +1017,35 @@
         {
           "symbol": "temporal_reproject_rgb",
           "source_line": 12,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Sample ``[B,N]`` source RGB frames into target pixels using D4 geometry.",
+          "disposition": "specialized_variant",
+          "reason": "Experimental scalar32 float32 forward stage graph with independent NumPy/frozen-donor CPU differential tests and both pinned-compiler compilation/reflection. Complete outputs and caller-owned resources are implemented; GPU parity on both target devices, hardware timing, gradients and application adoption remain pending. See docs/vkl-reprojection.md.",
           "numerical_contract": "Sample ``[B,N]`` source RGB frames into target pixels using D4 geometry.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.geometry.depthGeometry",
+            "vkl.reprojection.projectPoints",
+            "vkl.reprojection.reduceProjection",
+            "vkl.reprojection.sampleTemporal"
+          ]
         },
         {
           "symbol": "temporal_rgbd_reference",
           "source_line": 69,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Build a target-camera RGB-D reference from prior RGB-D observations only.",
+          "disposition": "specialized_variant",
+          "reason": "Experimental scalar32 float32 forward stage graph with independent NumPy/frozen-donor CPU differential tests and both pinned-compiler compilation/reflection. Complete outputs and caller-owned resources are implemented; GPU parity on both target devices, hardware timing, gradients and application adoption remain pending. See docs/vkl-reprojection.md.",
           "numerical_contract": "Build a target-camera RGB-D reference from prior RGB-D observations only.\n\nD4 z-buffers every source depth into the target camera, T0 samples source\nRGB through current depth geometry, and D9 fuses projected prior depths.\n``target_depth`` never contributes depth to the returned reference.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.depth_fusion.temporalDepthFuse",
+            "vkl.geometry.depthGeometry",
+            "vkl.reprojection.clearRaster",
+            "vkl.reprojection.finalizeRaster",
+            "vkl.reprojection.finalizeReference",
+            "vkl.reprojection.packTemporal",
+            "vkl.reprojection.projectPoints",
+            "vkl.reprojection.rasterMin",
+            "vkl.reprojection.rasterSupport",
+            "vkl.reprojection.reduceProjection",
+            "vkl.reprojection.sampleTemporal"
+          ]
         }
       ],
       "private_helpers": []

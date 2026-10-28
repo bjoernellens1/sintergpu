@@ -2988,8 +2988,8 @@
     "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf",
     "qualification/delivery-0.1.5.json": "5b0343aa119753b572aedee0982a5dc7ccd0a804595cb037492ca2b3d85fc9a2",
     "benchmarks/results/locus-cpu-gpu-8060s.json": "36f05cb3ac40bf40f5f1f878884495bcd6c933767d112e58e89a4e3290388ea2",
-    "src/sintergpu/data/timings.json": "1609de33c58980538b193e66704b8de49ea3106687afb62d6d42f114bd9338d0",
-    "docs/kernel-timings.md": "f6342845e67bc1beddbb7f26ba7ed09101046aa5768474d2fde44610fb605bf5",
+    "src/sintergpu/data/timings.json": "0bb2bfd330a23a8b3b39cc63e45ea055366438311d2636f1deb2b1392f54e47f",
+    "docs/kernel-timings.md": "5c3e1f1efae66ddf166267a1f9a05ab907d00b3a7463984a3c0a18c737d8e4bd",
     "qualification/delivery-0.1.6.json": "61fbdbde082cf212b82804e27fd16ee266479c1273b9eb13df9488a98d5921b8",
     "benchmarks/results/color-cpu-gpu-8060s.json": "1d34cd705e7096f28651c04521958027e60c038b65648a83baa8332c863ab864",
     "qualification/delivery-0.1.7.json": "a09a8871e40f76d78b4f42bc3c258e8e609692653c949785937292b1cb4eb57b",
@@ -3078,7 +3078,11 @@
     "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-cmake.log": "c1c11a83fdbe66bec685ef5168af3fa3893bbe8e388aa3b14333b6ac48a9ad49",
     "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-relocated-shader.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "provenance/generated-math.json": "bc3eb65a65b942929f730962ecd5bed0ce557796b0d28a70b2d87f14d45e3c06",
-    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-tests-red.json": "0cbe7f25c5196066d1201acf030e85b6f1a831b0bcf7fc897382b07d40077d4e"
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-tests-red.json": "0cbe7f25c5196066d1201acf030e85b6f1a831b0bcf7fc897382b07d40077d4e",
+    "qualification/evidence/vkl-reprojection-compile-2026.12-0.2.5.json.gz": "aa9cfd5113f66773afeee58beb60d95f512419c4fee7d70b5a3063e2e51ba8cd",
+    "qualification/evidence/vkl-reprojection-compile-2026.19-0.2.5.json.gz": "87dba69cad4856736b1532c92998296f6f68803bdc3ed44e4f5e0527eb3a62d7",
+    "qualification/evidence/vkl-reprojection-reflection-0.2.5.json": "fecf795e97e2d679c893ede42ef13d14a932a8800d4ae4a3e74ab5bee5ac6ae6",
+    "qualification/evidence/vkl-reprojection-task2-cpu-0.2.5.log": "21f2b5c7c1c8eaeb0ddb6740229abc8289f8381f14f345b15cf30e6e9ed9891d"
   },
   "pending_gates": [
     "VKL D4/T0 new GPU implementation, all-output differential verification, layout/reflection/installation and both-vendor fixture qualification remain pending; independent CPU references only are verified so far",
@@ -3090,7 +3094,7 @@
     "Optional vrdx C++ runtime and HIP backend runtime qualification",
     "SLAM pose/trajectory/gradient and full-capacity reconstruction qualification",
     "Publisher App administrative permission path and downstream App execution; six private consumer CI jobs blocked by account billing/spending restrictions",
-    "CPU/GPU baseline timing coverage for 83 remaining portable catalog entries and four optional native radix variants",
+    "Fresh source-current CPU/GPU timing collection for all146 pending catalog entries after source settles;54 prior paired operations remain historical,83 existing plus nine new stage timing targets lack complete prior paired timing; four optional native variants remain pending",
     "Shared point-plane full-domain and performance qualification, and consumer adoption beyond retained fixture evidence"
   ],
   "timing_reference": {
@@ -3124,9 +3128,9 @@
       "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.4.json",
       "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.4.json"
     ],
-    "catalog_entries": 137,
+    "catalog_entries": 146,
     "paired_cpu_gpu_entries": 0,
-    "pending_portable_entries": 137,
+    "pending_portable_entries": 146,
     "additional_native_pending": 4,
     "scope": "Draft0.2.5: new independent references and forthcoming shaders change the conservative source closure. Prior0.2.4 samples remain historical at their recorded identities; fresh timing collection is required after source settles. No new GPU result claimed.",
     "color_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
@@ -3194,6 +3198,30 @@
       "src/sintergpu/references/temporal_reprojection_numeric.py": "1f506285f60120d3dc5597c358b34a6dcae380df7c5c10d990885b85035c9fe6",
       "tests/test_vkl_reprojection_reference.py": "2c0cdc67bec686ec39c60cb48e28e16efad51570016c1506a44a0a4411b6d25a",
       "tests/test_vkl_temporal_reprojection_reference.py": "e0ae6a536b64edd401ed30ad47b7675a5ce6d441a7acd076c982cc17ea894e35"
+    },
+    "compiled_entrypoints": 9,
+    "compile_scope": "Standalone2026.12 and2026.19 SPIR-V/reflection compilation only; GPU execution and optimization/adoption remain pending",
+    "task2_cpu_verification": {
+      "passed": 579,
+      "skipped": 294,
+      "subtests_passed": 151,
+      "scope": "Full CPU suite including extreme sampler fixtures/guards; all GPU tests explicitly disabled",
+      "evidence": "qualification/evidence/vkl-reprojection-task2-cpu-0.2.5.log"
+    },
+    "standalone_compilation": {
+      "entries": 146,
+      "pinned_releases": [
+        "2026.12",
+        "2026.19"
+      ],
+      "reflection": "qualification/evidence/vkl-reprojection-reflection-0.2.5.json",
+      "scope": "Full catalog exact source hashes and reflection ABI; gzip records retain complete compiler output, not GPU execution"
+    },
+    "pre_gpu_review": {
+      "status": "cleared",
+      "scope": "Separate source/recording/performance harness review and CPU mutation guards only; no hardware parity or speedup claim",
+      "focused_tests_passed": 46,
+      "gpu_cases_not_executed": 63
     }
   }
 }

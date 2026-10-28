@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
   "dependencies": {
-    "shader_tree_sha256": "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b",
+    "shader_tree_sha256": "b3083c160571edee98676dfac17a26a6274261259493e67c1266d10f52188485",
     "reference_tree_sha256": "2b20b889db377596217d762e9a056ff952286a85cc2bcdffde8a43c7bd4a7482"
   },
   "units": "milliseconds",
   "quantiles": "Median; p95 uses linear interpolation at (n-1)*0.95. Raw samples retained.",
   "scope": "Explicit workload/configuration timings, not optimization or application qualification. CPU reference implementations are not necessarily optimized CPU alternatives.",
   "coverage": {
-    "catalog_entries": 137,
+    "catalog_entries": 146,
     "cpu_measured": 0,
     "gpu_measured": 0,
     "both_measured": 0,
-    "pending": 137
+    "pending": 146
   },
   "operations": [
     {
@@ -945,6 +945,69 @@
       "source_sha256": "48419b4308fcafc4682a92233bcbf85618d7148f4c09763dff28387a88f8bc27",
       "status": "stale",
       "reason": "Dependency/source changed; rerun this workload."
+    },
+    {
+      "operation": "vkl.reprojection.clearRaster",
+      "variant": "portable-port",
+      "source_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "status": "pending",
+      "reason": "No executable timing recipe recorded yet."
+    },
+    {
+      "operation": "vkl.reprojection.finalizeRaster",
+      "variant": "portable-port",
+      "source_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "status": "pending",
+      "reason": "No executable timing recipe recorded yet."
+    },
+    {
+      "operation": "vkl.reprojection.finalizeReference",
+      "variant": "portable-port",
+      "source_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "status": "pending",
+      "reason": "No executable timing recipe recorded yet."
+    },
+    {
+      "operation": "vkl.reprojection.packTemporal",
+      "variant": "portable-port",
+      "source_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "status": "pending",
+      "reason": "No executable timing recipe recorded yet."
+    },
+    {
+      "operation": "vkl.reprojection.projectPoints",
+      "variant": "portable-port",
+      "source_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "status": "pending",
+      "reason": "No executable timing recipe recorded yet."
+    },
+    {
+      "operation": "vkl.reprojection.rasterMin",
+      "variant": "portable-port",
+      "source_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "status": "pending",
+      "reason": "No executable timing recipe recorded yet."
+    },
+    {
+      "operation": "vkl.reprojection.rasterSupport",
+      "variant": "portable-port",
+      "source_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "status": "pending",
+      "reason": "No executable timing recipe recorded yet."
+    },
+    {
+      "operation": "vkl.reprojection.reduceProjection",
+      "variant": "portable-port",
+      "source_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "status": "pending",
+      "reason": "No executable timing recipe recorded yet."
+    },
+    {
+      "operation": "vkl.reprojection.sampleTemporal",
+      "variant": "portable-port",
+      "source_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "status": "pending",
+      "reason": "No executable timing recipe recorded yet."
     },
     {
       "operation": "vkl.temporal_best.temporalBest",

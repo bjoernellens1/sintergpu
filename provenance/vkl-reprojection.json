@@ -5,15 +5,16 @@
   "license": "Apache-2.0 (original owner authorization 2026-10-27)",
   "author": "Original owner numerical contracts; standalone SinterGPU implementation and independent NumPy oracles",
   "operation_prefix": "vkl",
-  "qualification": "In progress:102 CPU reference tests verified, no new GPU execution or port qualification; shader/stage integration remains pending",
+  "qualification": "Both pinned standalone compilers accept all nine entrypoints; independent CPU references pass102 tests. No new GPU execution yet; separate hot-path review, static guards/benchmark and both-vendor qualification remain pending.",
   "coverage": {
-    "stage": "independent_references_verified",
+    "stage": "gpu_implementation_compiled_qualification_pending",
     "newly_forward_ported_modules": [],
     "planned_modules": [
       "reproject",
       "temporal_reproject"
     ],
-    "planned_entrypoints": 9
+    "planned_entrypoints": 9,
+    "entrypoints": 9
   },
   "files": [
     {
@@ -36,6 +37,47 @@
       "changes": [
         "Independent scalar NumPy numerical reference and compositional oracle; frozen Torch executable code remains unchanged",
         "Explicit float32 normalized-coordinate rounding, full diagnostic outputs and prior-only temporal reference semantics"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/reproject.py",
+      "destination": "src/sintergpu/kernels/vkl/reprojection.slang",
+      "source_sha256": "9e40eed34717ffb14c81b79df9c7b3000f6c6e3102d4b809c19fabf66e36a94d",
+      "imported_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "changes": [
+        "Standalone staged float32 forward port; no changes to frozen donor references",
+        "Reuse released depthGeometry and temporalDepthFuse rather than duplicate their complete algorithms",
+        "Explicit device pair mapping and source-major packing without intermediate host transfers"
+      ],
+      "contract_limits": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified.",
+      "contract_profile": "vkl-reprojection-temporal-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+      "entry_points": [
+        "projectPoints",
+        "reduceProjection",
+        "clearRaster",
+        "rasterMin",
+        "rasterSupport",
+        "finalizeRaster"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal_reproject.py",
+      "destination": "src/sintergpu/kernels/vkl/reprojection.slang",
+      "source_sha256": "19e38b1583f5225aab3ad098239dbedda655a891607d348d3ecbca051cdf8166",
+      "imported_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "changes": [
+        "Standalone staged float32 forward port; no changes to frozen donor references",
+        "Reuse released depthGeometry and temporalDepthFuse rather than duplicate their complete algorithms",
+        "Explicit device pair mapping and source-major packing without intermediate host transfers"
+      ],
+      "contract_limits": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified.",
+      "contract_profile": "vkl-reprojection-temporal-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+      "entry_points": [
+        "sampleTemporal",
+        "packTemporal",
+        "finalizeReference"
       ]
     }
   ]
