@@ -1,0 +1,17 @@
+{
+  "closure": {
+    "src/sintergpu/kernels/generated/primitives.generated.slang": "0cba624d734902ce6a788b5c37b5fe332a4e2d1b81a1fb2d149a1a101edb8f44",
+    "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/tracker.py": "00601a3d4c53c169b4780be2ca848e08474dd6ca523b51fb6e85936f14846ea8",
+    "src/sintergpu/kernels/vkl/depth_pyramid.slang": "55fea213f1f1614ed3307a6c7a2a3e62765e20db86fbe7da9790c1379f4d4aa2",
+    "src/sintergpu/kernels/slang_rgbd_slam/tracker.slang": "d6575a6d6f73df2dbc98e23c3b935ce0eb9e697112c64dd85f096fad649b690a",
+    "references/donors/vkl/src/vkl/kernels/reference/depth_pyramid.py": "a1e7fdd46785607a9b52f98819469e5ebe7192558df2c574a583c553b33b6ed1",
+    "references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/tracker.slang": "d6575a6d6f73df2dbc98e23c3b935ce0eb9e697112c64dd85f096fad649b690a",
+    "src/sintergpu/kernels/common/depth_pyramid_core.slang": "d4fc879ba28812fc2f5c1e9bf2f6f1d9c382c15ec9ac3013ae2d024d77a4745a",
+    "benchmarks/shaders/depth_pyramid_vkl_candidate.slang": "42f6b34a012093c17b953bbcfd5d2eb7104b3bdaa48b1beaf29a54516eb15bb3",
+    "benchmarks/shaders/depth_pyramid_slam_candidate.slang": "ff517b77a9539f917487c9c164604dfa7107bb62565e3fc34d4bcc5f82a695b9"
+  },
+  "composed_sha256": {
+    "vkl": "b402a44ff6d1c4eddb5b8be0c222a161df11ea9e87b359d554cb3bec42ba30b5",
+    "slam": "52ecd94c42a427638b3d5b2601174375315e678536c990dc1647308d10d82234"
+  }
+}
