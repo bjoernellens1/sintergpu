@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0 (original owner authorization 2026-10-27)",
+  "author": "Original owner code; independent experimental SinterGPU port",
+  "operation_prefix": "vkl.sparse_depth_validate",
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/sparse_geometry.py",
+      "source_sha256": "c56224f9313c21c0fa4315ae09f14a1e43e61417a3cd4819a5ac096395a56fc9",
+      "destination": "src/sintergpu/kernels/experimental/sparse_depth_validate.slang",
+      "imported_sha256": "42203ab6dc4ccf4873d4dd31e2c0185d9b3726a1af81dba10979295d947f8470",
+      "changes": [
+        "Independent bounded float32 forward port and checked launch contract; no GPU qualification."
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/sparse_geometry.py",
+      "source_sha256": "c56224f9313c21c0fa4315ae09f14a1e43e61417a3cd4819a5ac096395a56fc9",
+      "destination": "src/sintergpu/sparse_depth_validate_contract.py",
+      "imported_sha256": "cacdc95214f5c610590456a88588ac237786bf62d17d4f9dbe6ef9394c873286",
+      "changes": [
+        "Independent bounded float32 forward port and checked launch contract; no GPU qualification."
+      ]
+    }
+  ]
+}

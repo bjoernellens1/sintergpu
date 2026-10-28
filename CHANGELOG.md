@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.11 — 2026-10-28
+
+- Add experimental VKL sparse depth validation with checked launch geometry, a CPU donor-model comparison and compiler ABI checks. GPU parity, gradients, performance and consumer adoption remain unqualified; existing defaults are unchanged.
+- Add experimental buffer-allocation/device-correlation RHI and SlangPy patches, synthetic CPU probes, a loader-handle/symbol-owner diagnostic using synthetic DSOs, and investigation notes. They do not establish loader, ICD or driver identity, physical backing, GPU execution or performance; the production gate remains closed.
+- The timing registry covers 168 portable entries with no source-current paired measurements. All 2,478 earlier rows remain historical; four native timing targets also remain pending.
+
 ## 0.2.10 — 2026-10-28
 
 - Add experimental VKL dense-depth regularization with checked launch geometry and CPU donor-model and compiler ABI checks. GPU parity, gradients, performance and consumer adoption remain unqualified; existing defaults remain unchanged.

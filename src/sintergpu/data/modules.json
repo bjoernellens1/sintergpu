@@ -67,6 +67,10 @@
     "path": "kernels/experimental/depth_evidence_map.slang",
     "sha256": "15cfc47f426a976a9d06d6b543ce510ab5150c5a032c69421c269ffaa87b7d07"
   },
+  "experimental.sparse_depth_validate": {
+    "path": "kernels/experimental/sparse_depth_validate.slang",
+    "sha256": "42203ab6dc4ccf4873d4dd31e2c0185d9b3726a1af81dba10979295d947f8470"
+  },
   "generated.dense_factors.generated": {
     "path": "kernels/generated/dense_factors.generated.slang",
     "sha256": "2afa8aeab83a06678792ba93a918ac14e41d945336f629ebba41f777e1793f44"
