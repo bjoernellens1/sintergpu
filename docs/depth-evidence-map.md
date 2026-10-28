@@ -29,3 +29,36 @@ import the public module with both pinned Slang compilers. Remaining gates inclu
 GPU differential testing, output layout/dispatch ABI, reduction-order tolerance,
 gradients, performance and integration remain unqualified. No no-regression or
 consumer adoption claim follows from this experiment.
+
+## Experimental dispatch and reduction
+
+`kernels/experimental/depth_evidence.slang` imports the helper and exposes
+`depthEvidenceGlobal` and `depthEvidenceGrid` as separate 64-thread dispatches.
+Each active global invocation loops over one batch; each grid invocation loops
+over one bin. This deliberately simple serial reduction is a correctness
+candidate, not a performance choice. The global output is eight float32 values
+per batch in order: valid fraction, hole fraction, near fraction, far fraction,
+local variance, edge fraction, confidence mean, stable fraction. Grid output is
+`[batch, gridHeight, gridWidth, 8]` row-major with support/area, near, far,
+depth, squared depth, edge, confidence, stable. Inputs are contiguous flattened
+`[batch, 1, height, width]` float32 depth, uint32 validity and float32 confidence.
+Always bind confidence, even if `useConfidence` is zero; then values are ignored.
+Grid dimensions are clamped to the image dimensions, matching the donor.
+
+Call `checked_depth_evidence_launch` in `sintergpu.depth_evidence_contract`
+first, and populate shader parameters from the returned dimensions and canonical
+float32 `near`/`far` values. Dispatch its
+reported groups for each entry and enforce device binding byte-range and
+alignment limits. This checks u32 arithmetic, float count exactness (including
+pairs), dispatch group limits, nonzero dimensions, and finite near/far bounds.
+It does not inspect buffer contents: caller must ensure finite confidence in
+[0,1], finite depths limited to 1e10 absolute, enough correctly sized buffers,
+and no aliasing between outputs or any inputs. Both output buffers need bindings;
+each entry uses only its own output. Caller owns all allocation, barriers,
+submission and synchronization; results may be read only after completion.
+
+CPU tests compare a separate scalar model with the donor, and compiler tests
+reflect the dispatch entry points; neither executes or proves the shader. GPU
+numerical parity, Torch gradients, reduction-order tolerance, performance and
+consumer integration remain pending. CPU summation order is not the Torch or
+GPU reduction order; no exact floating-point equality is promised.

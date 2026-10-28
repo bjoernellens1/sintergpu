@@ -41,6 +41,13 @@ finalization failure, reset failure, reset/reuse, creation failure and
 non-null Vulkan specialization-info rejection. It does not initialize a
 Vulkan loader/device or exercise a real driver, actual specialization/cache
 resolution or GPU execution.
+A third CPU-only probe seeds two distinct specialization keys and concrete
+pipelines into the actual in-memory shader cache, invokes the actual command
+encoder cache lookup and recorder, and checks the resulting pipeline handles,
+shader bytes, dispatch order and group sizes. It does not compile or create
+specializations, exercise cache misses or population, or exercise the separate
+persistent pipeline-binary cache. It does not initialize a Vulkan device or
+execute on a GPU.
 The SlangPy CPU-device smoke confirms the query is unavailable before and after
 close. Local source-application tests skip without the audited source; they do
 not establish CI or build provenance. No GPU execution has been performed.
@@ -63,3 +70,21 @@ Vulkan ICD environment variables pointing to nonexistent files; it exited 0.
 `ldd` showed no linked Vulkan, NVIDIA or AMD library. Its local executable SHA-256
 was `9563e4687c1c83416f24932baf971cb2c09558122d6d4960c2b762533b8789c3`;
 that hash does not authenticate another build.
+
+The seeded-cache probe is `rhi-specialized-cache-mock-cpu-probe.cpp`, SHA-256
+`b51ca8e80a4800a53fa604410d4e58067e0b3034b4b0bc50a45b117e3165a5e5`.
+It was built in the isolated Debug diagnostic lab by adding an executable target
+linked to `slang-rhi`, with the patched RHI source and pinned Vulkan headers
+on its include path, then running:
+
+```sh
+cmake --build /dev/shm/sintergpu-dispatch-observe-lab/build --target rhi_specialized_cache_mock_cpu_probe
+VK_DRIVER_FILES=/nonexistent/sintergpu-no-vulkan-icd.json VK_ICD_FILENAMES=/nonexistent/sintergpu-no-vulkan-icd.json /dev/shm/sintergpu-dispatch-observe-lab/build/rhi_specialized_cache_mock_cpu_probe
+```
+
+The local build and independent no-ICD rerun exited successfully. The local
+executable SHA-256 was
+`23cef06fca22ee701692d0f019a94c41e01b819f501867d56eb9f4236def94aa`;
+this identifies that executable only, not another build or runtime. The seeded
+cache is synthetic and does not establish specialization generation, driver
+behavior, shader execution, or performance qualification.
