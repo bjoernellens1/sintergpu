@@ -1,0 +1,76 @@
+{
+  "tag": "v0.2.6",
+  "results": [
+    {
+      "repository": "bjoernellens1/stereoforge",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/stereoforge/pull/17",
+      "head_sha": "6e2289500bea59bc36a0bbabc170f1f3a684d12b",
+      "base_sha": "552fbe223872a47548b30aab617a6f859b86ac2b",
+      "checks_url": "https://github.com/bjoernellens1/stereoforge/pull/17/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description"
+    },
+    {
+      "repository": "bjoernellens1/eligsir-sim",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/eligsir-sim/pull/56",
+      "head_sha": "aec061ab82cef18b15db5dedf2f94ac34ff0b299",
+      "base_sha": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+      "checks_url": "https://github.com/bjoernellens1/eligsir-sim/pull/56/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description"
+    },
+    {
+      "repository": "bjoernellens1/eligsir-native",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/eligsir-native/pull/25",
+      "head_sha": "4d085ac27b5db53353416aeb1cfeb69fed916460",
+      "base_sha": "85e054104262c7775509bb060d710df32195de76",
+      "checks_url": "https://github.com/bjoernellens1/eligsir-native/pull/25/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description"
+    },
+    {
+      "repository": "bjoernellens1/vkl",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/vkl/pull/145",
+      "head_sha": "5b0e5aa3051d79269b1091b4c775dfb86352679f",
+      "base_sha": "3384023a311651ea4260cf12ddab1567972f89f3",
+      "checks_url": "https://github.com/bjoernellens1/vkl/pull/145/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description"
+    },
+    {
+      "repository": "bjoernellens1/slang-rgbd-slam",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/slang-rgbd-slam/pull/16",
+      "head_sha": "791db076cbae6c03764b7bc363b1b4cc67944032",
+      "base_sha": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+      "checks_url": "https://github.com/bjoernellens1/slang-rgbd-slam/pull/16/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description"
+    },
+    {
+      "repository": "bjoernellens1/caspar-slang",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/caspar-slang/pull/16",
+      "head_sha": "a0588d5b5f6b68cbf3572e6d6fa96674769a22af",
+      "base_sha": "cab53390aa111cd5526cb30c9aef484e73521186",
+      "checks_url": "https://github.com/bjoernellens1/caspar-slang/pull/16/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description"
+    },
+    {
+      "repository": "bjoernellens1/locus",
+      "status": "delivered",
+      "url": "https://github.com/bjoernellens1/locus/pull/27",
+      "head_sha": "80768d2f67686767d9bd119220e2da705310293a",
+      "base_sha": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+      "checks_url": "https://github.com/bjoernellens1/locus/pull/27/checks",
+      "consumer_checks": "pending downstream CI; native qualification not inferred",
+      "release_context": "current description"
+    }
+  ],
+  "api_attempts": 77
+}

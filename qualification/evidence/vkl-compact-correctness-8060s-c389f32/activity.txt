@@ -1,0 +1,3 @@
+UTC 2026-10-28T18:52:48.349315+00:00
+('67833', '1961', '0000:c4:00.0') ChatGPT {'drm-engine-gfx': 88083654, 'drm-engine-compute': 0}
+('47776', '1934', '0000:c4:00.0') Xwayland {'drm-engine-gfx': 27397728, 'drm-engine-compute': 0}

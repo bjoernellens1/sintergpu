@@ -29,7 +29,9 @@ def source_identities():
         'benchmarks/reprojection_support.py', 'benchmarks/vkl_geometry_depth.py',
         'benchmarks/locus_timings.py', 'src/sintergpu/references/reprojection_stage_numeric.py',
         'src/sintergpu/timings.py', 'src/sintergpu/catalog.py',
-        'benchmarks/camera_registration_fixture_archive.py')}
+        'benchmarks/camera_registration_fixture_archive.py',
+        'benchmarks/camera_registration_fixture_history.py',
+        'qualification/evidence/vkl-camera-registration-frozen-version-0.2.6.txt')}
     paths.update((ROOT / 'src/sintergpu/kernels/common').glob('*.slang'))
     return {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}
 

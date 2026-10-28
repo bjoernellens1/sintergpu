@@ -317,3 +317,14 @@ uses finite-positive masking and propagated labels, so it cannot substitute for
 Locus float4 image nearest sampling or bilinear remap. RGB-guided densification
 is a lower-median hole fill, distinct from bilateral filtering, same-grid weighted
 fusion and temporal clustering; its initial direct mask persists across passes.
+
+## VKL bounded compact follow-up
+
+The experimental VKL candidate uses the separately noticed uint segmented scan
+for stable per-batch ranking; it does not replace the public primitive's total
+count contract or SLAM's cell-selection policy. The bounded result reports
+retained counts and zero-fills unused capacity. See [compact integration](vkl-compact-integration.md)
+for the byte ABI and remaining qualification gates. The original-path forward
+candidate at `c389f32` passed six fixture cases on each Radeon 8060S and RTX
+4070 Ti; relocated-source GPU qualification and Radeon backward remain pending.
+This follow-up does not establish performance parity or justify a default switch.

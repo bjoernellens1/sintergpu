@@ -28,3 +28,18 @@ def test_current_qualification_timing_coverage_matches_source_bound_database():
     assert timing['retained_historical_workloads']==sum(not row['current_source'] for row in database['measurements'])
     for name in (timing['database'],timing['table'],*timing['raw_samples']):
         assert qualification['evidence_sha256'][name]==hashlib.sha256((root/name).read_bytes()).hexdigest(),name
+
+
+def test_historical_qualifications_preserve_prior_source_evidence():
+    root = Path(__file__).resolve().parents[1]
+    record = json.loads((root / 'qualification' / (__version__ + '.json')).read_text())
+    historical = record.get('historical_qualifications')
+    if not historical:
+        return
+    prior = json.loads((root / 'qualification' / (historical['source_version'] + '.json')).read_text())
+    assert historical['reason'] and historical['records']
+    for entry in historical['records']:
+        assert entry in prior['qualifications']
+        assert entry not in record['qualifications']
+        evidence = entry['evidence']
+        assert record['evidence_sha256'][evidence] == hashlib.sha256((root / evidence).read_bytes()).hexdigest()

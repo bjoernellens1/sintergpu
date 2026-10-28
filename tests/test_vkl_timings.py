@@ -1,5 +1,7 @@
 """VKL baselines must cover existing entries without inventing pipeline times."""
 import importlib
+import json
+from importlib.resources import files
 import numpy as np
 import pytest
 
@@ -22,11 +24,25 @@ def test_cases_cover_every_existing_nonfeature_vkl_entry_and_full_output_tails()
     camera=importlib.import_module('benchmarks.vkl_camera_registration')
     camera_entries={stage['operation'] for case in camera.cases() for stage in case['graph']['stages']
                     if stage['operation'].startswith('vkl.camera_registration.')}
-    established={op for op in expected if not op.startswith(('vkl.reprojection.', 'vkl.camera_registration.'))}
+    compact={
+        'vkl.compact_batched.compactInit', 'vkl.compact_batched.compactFlags',
+        'vkl.compact_batched.compactScatterMetadata', 'vkl.compact_batched.compactFinalizeCounts',
+        'vkl.compact_batched.compactGatherWords',
+        'vkl.compact_backward_torch_cpu_profile.backwardProfileInit',
+        'vkl.compact_backward_torch_cpu_profile.backwardProfileInverse',
+        'vkl.compact_backward_torch_cpu_profile.backwardProfileGather',
+    }
+    assert compact <= expected
+    established={op for op in expected-compact if not op.startswith(('vkl.reprojection.', 'vkl.camera_registration.'))}
     assert len(established)==13
     assert len(camera_entries)==9
     assert {c['operation'] for c in cases}==established
-    assert {c['operation'] for c in cases}|new_entries|camera_entries==expected
+    assert {c['operation'] for c in cases}|new_entries|camera_entries|compact==expected
+    registry=json.loads(files('sintergpu').joinpath('data/timings.json').read_text())
+    pending={row['operation']:row for row in registry['operations'] if row['operation'] in compact}
+    assert set(pending)==compact
+    assert all(row['status']=='pending' for row in pending.values())
+    assert not any(row['operation'] in compact for row in registry['measurements'])
     assert {case['family'] for case in graphs}=={'projection','raster','temporal','reference'}
     assert len(cases)==38
     for c in cases:

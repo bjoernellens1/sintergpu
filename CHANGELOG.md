@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.7 — 2026-10-28
+
+- Add experimental VKL stable bounded batched compaction and a separate logical backward Torch CPU-observed bit profile, with opt-in caller-owned recording, explicit resource and synchronization contracts, and Python and CMake shader discovery. Existing defaults remain unchanged.
+- Retain RTX 4070 Ti forward and backward CPU-profile candidate probes and a Radeon 8060S forward candidate probe. The Radeon forward probe covers six fixtures, including five frozen Torch donor comparisons and one NumPy-only three-byte-width case. Relocated packaged shaders, Radeon backward execution, performance, framework autograd integration and downstream adoption remain unqualified; no speedup or optimized default is claimed.
+- The timing registry now covers 163 portable entries with no source-current paired measurements. Its conservative whole-tree dependency hashes changed with added shaders and references, making the previous 816 current rows historical (the 72/155 paired coverage applied to v0.2.6 only); all 2,478 samples remain in the registry. Four optional native timing targets also remain pending.
+
 ## 0.2.6 — 2026-10-28
 
 - Add experimental VKL eager float32 camera rectification, reusable grid and ray preparation, and staged depth registration: five public functions use nine dispatches and caller-owned resources. Preserve complete diagnostics, collision and tie semantics, and the explicit little-endian two-word int64 diagnostic ABI. Existing Locus contracts and defaults remain unchanged.

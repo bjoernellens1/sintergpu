@@ -1,0 +1,5 @@
+3.13.12 | packaged by conda-forge | (main, Feb  5 2026, 05:53:46) [GCC 14.3.0]
+/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.cache/vkl-qualification-venv/bin/python
+0.43.1
+/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.cache/vkl-qualification-venv/lib/python3.13/site-packages/slangpy/libslang-compiler.so.0.2026.12
+195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678

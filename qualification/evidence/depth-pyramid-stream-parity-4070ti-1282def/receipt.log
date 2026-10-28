@@ -1,0 +1,71 @@
+LOCK_ACQUIRED PID=273675 COMMIT=1282def55e161d0302ac19d4c34634a5534997fc
+Wed Oct 28 05:39:58 PM UTC 2026
+GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 0 %
+python 3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0] slangpy 0.43.1 torch 2.14.1+cpu
+{'SINTERGPU_GPU_TESTS': '1', 'TMPDIR': '/home/bjoern/.cache/sintergpu-qualification/depth-stream-parity-4070ti-yMc8OJ3g/tmp', 'VK_DRIVER_FILES': '/usr/share/vulkan/icd.d/nvidia_icd.json', 'PYTHONPATH': 'src:.:tests', 'SINTERGPU_DEPTH_PYRAMID_STREAM_GPU': '1'}
+BINARY /usr/bin/python3.12 e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f
+BINARY /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/libslang-compiler.so.0.2026.12 195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678
+STREAM_CLOSURE {'src/sintergpu/kernels/generated/primitives.generated.slang': '0cba624d734902ce6a788b5c37b5fe332a4e2d1b81a1fb2d149a1a101edb8f44', 'references/donors/slang-rgbd-slam/src/slang_rgbd_slam/tracker.py': '00601a3d4c53c169b4780be2ca848e08474dd6ca523b51fb6e85936f14846ea8', 'src/sintergpu/kernels/vkl/depth_pyramid.slang': '55fea213f1f1614ed3307a6c7a2a3e62765e20db86fbe7da9790c1379f4d4aa2', 'src/sintergpu/kernels/slang_rgbd_slam/tracker.slang': 'd6575a6d6f73df2dbc98e23c3b935ce0eb9e697112c64dd85f096fad649b690a', 'references/donors/vkl/src/vkl/kernels/reference/depth_pyramid.py': 'a1e7fdd46785607a9b52f98819469e5ebe7192558df2c574a583c553b33b6ed1', 'references/donors/slang-rgbd-slam/src/slang_rgbd_slam/shaders/tracker.slang': 'd6575a6d6f73df2dbc98e23c3b935ce0eb9e697112c64dd85f096fad649b690a', 'benchmarks/shaders/depth_pyramid_vkl_stream_candidate.slang': '078393352ffb207755da14b4673c6e51d34ed7603ebc95c8598e251ba0e76db4'}
+COMPOSED_SHA256 078393352ffb207755da14b4673c6e51d34ed7603ebc95c8598e251ba0e76db4
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/bjoern/.cache/sintergpu-qualification/depth-stream-parity-4070ti-yMc8OJ3g/source
+configfile: pyproject.toml
+collecting ... collected 50 items
+
+tests/test_depth_pyramid_stream_gpu.py::test_preflight_and_source_identity PASSED [  2%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_loads_distinct_module_with_borrowed_bindings PASSED [  4%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-0] PASSED [  6%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-1] PASSED [  8%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-2] PASSED [ 10%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-3] PASSED [ 12%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-4] PASSED [ 14%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-5] PASSED [ 16%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-6] PASSED [ 18%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-7] PASSED [ 20%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-8] PASSED [ 22%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-9] PASSED [ 24%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-10] PASSED [ 26%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-11] PASSED [ 28%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-12] PASSED [ 30%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-13] PASSED [ 32%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-14] PASSED [ 34%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-mask-15] PASSED [ 36%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-near-zero-np.float32(1e-08)] PASSED [ 38%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-near-zero-np.float32(1e-30)] PASSED [ 40%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-near-zero-np.float32(-0.0)] PASSED [ 42%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-near-zero-np.float32(0.0)] PASSED [ 44%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-shape-(2, 1, 1)] PASSED [ 46%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-shape-(2, 1, 7)] PASSED [ 48%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-shape-(2, 7, 1)] PASSED [ 50%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-shape-(3, 5, 7)] PASSED [ 52%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-shape-(2, 34, 38)] PASSED [ 54%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-threshold-np.float32(1.0000037)] PASSED [ 56%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-threshold-np.float32(1.0000038)] PASSED [ 58%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-threshold-np.float32(1.0000039)] PASSED [ 60%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-confidence-0-distinct-False] PASSED [ 62%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-confidence-0-distinct-True] PASSED [ 64%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-confidence-1-distinct-False] PASSED [ 66%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-confidence-1-distinct-True] PASSED [ 68%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-confidence-2-distinct-False] PASSED [ 70%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-confidence-2-distinct-True] PASSED [ 72%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-confidence-3-distinct-False] PASSED [ 74%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-confidence-3-distinct-True] PASSED [ 76%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-confidence-4-distinct-False] PASSED [ 78%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-confidence-4-distinct-True] PASSED [ 80%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-poison-masked] PASSED [ 82%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-poison-nan-zero-depth] PASSED [ 84%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-poison-oob] PASSED [ 86%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_matches_incumbent_and_reference[vkl-raw-first-min-negative-zero] PASSED [ 88%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_reused_buffers PASSED [ 90%]
+tests/test_depth_pyramid_stream_gpu.py::test_source_integrity_rejects_mutation_and_symlink PASSED [ 92%]
+tests/test_depth_pyramid_stream_gpu.py::test_stream_rejects_non_vkl_before_device_access PASSED [ 94%]
+tests/test_depth_pyramid_stream_gpu.py::test_raw_confidence_cases_are_distinct_from_donor_domain PASSED [ 96%]
+tests/test_depth_pyramid_stream_gpu.py::test_raw_poisoned_lanes_and_first_minimum_signed_zero_coverage PASSED [ 98%]
+tests/test_depth_pyramid_stream_gpu.py::test_oob_confidence_guard_is_poisoned_and_uploaded PASSED [100%]
+
+============================== 50 passed in 3.33s ==============================
+DEVICE_UNCHANGED
+TERMINAL_EXIT=0
+Wed Oct 28 05:40:04 PM UTC 2026

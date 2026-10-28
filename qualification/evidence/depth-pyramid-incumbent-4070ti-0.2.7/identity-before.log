@@ -1,0 +1,8 @@
+python 3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0] /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/bin/python
+slangpy 0.43.1 /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/__init__.py
+torch 2.14.1+cpu /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/torch/__init__.py
+BINARY /usr/bin/python3.12 e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f
+BINARY /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/vulkan-tools-0.2.5/root/usr/bin/vulkaninfo f850851cd176c646851f42287902d5ee737849f275c1a64cb319b4985bdfbb4c
+BINARY /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/libslang-compiler.so.0.2026.12 195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678
+BINARY /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/torch/_C.cpython-312-x86_64-linux-gnu.so b09d26e7781dffdf26001f7f89d85fc1e7866c9d241cde7ecc5277e11950d6e0
+snapshot NVIDIA GeForce RTX 4070 Ti {'name': 'NVIDIA', 'info': '595.99.02', 'version': '595.99.2.0', 'uuid': 'c9bf27cc-ad5e-57db-8930-96d25aad2e91'}

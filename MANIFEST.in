@@ -1,6 +1,7 @@
 include VERSION LICENSE NOTICE CMakeLists.txt
 include consumers.json
 include CHANGELOG.md CONTRIBUTING.md
+include qualification/evidence/vkl-camera-registration-frozen-version-0.2.6.txt
 recursive-include changes *.md
 recursive-include third_party *
 recursive-include LICENSES *
@@ -9,9 +10,9 @@ recursive-include cmake *.cmake *.in
 recursive-include examples *.txt *.cpp *.slang
 recursive-include docs *.md *.json
 recursive-include provenance *.md *.json
-recursive-include qualification *.json *.log *.spv *.spv-asm *.gz *.npz *.py *.sha256
+recursive-include qualification *.json *.log *.spv *.spv-asm *.gz *.npz *.py *.sha256 *.txt *.md exit-status
 recursive-include tools *.py
 recursive-include tests *.py *.json *.cpp
-recursive-include benchmarks *.py *.md *.json
+recursive-include benchmarks *.py *.md *.json *.slang *.c
 recursive-include references *.py *.slang *.json *.md *.toml LICENSE NOTICE *.txt *.cpp *.h *.hpp *.cu *.cuh
 recursive-include src/sintergpu *.slang *.json VERSION

@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from benchmarks.camera_registration_fixture_archive import load_all
+from benchmarks.camera_registration_fixture_history import load_canonical
 from benchmarks.camera_registration_gpu_fixture import fixture_graph, DTYPES
 from sintergpu.references.camera_registration_stage_numeric import run_stage
 
@@ -22,7 +22,7 @@ def _prepared(graph, inputs):
 
 
 def test_frozen_composed_graphs_all_buffers_and_tails():
-    corpus = load_all(ARCHIVE)
+    corpus = load_canonical(ARCHIVE)
     assert len(corpus) == 80
     entries = set()
     for payload, expected in corpus:

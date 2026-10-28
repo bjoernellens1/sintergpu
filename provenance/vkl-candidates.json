@@ -113,10 +113,16 @@
         {
           "symbol": "select_compact",
           "source_line": 8,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Compact ``[B,N,...]`` values in stable order into ``[B,capacity,...]``.",
+          "disposition": "specialized_variant",
+          "reason": "Experimental bounded batched forward stages and separate Torch-CPU-observed logical backward profile; source-relocated GPU, full donor, autograd, performance and consumer qualification remain pending.",
           "numerical_contract": "Compact ``[B,N,...]`` values in stable order into ``[B,capacity,...]``.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.compact_batched.compactInit",
+            "vkl.compact_batched.compactFlags",
+            "vkl.compact_batched.compactScatterMetadata",
+            "vkl.compact_batched.compactFinalizeCounts",
+            "vkl.compact_batched.compactGatherWords"
+          ]
         }
       ],
       "private_helpers": []

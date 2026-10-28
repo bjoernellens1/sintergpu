@@ -1,0 +1,5 @@
+PRIOR_ATTEMPT: staging failed local /tmp EDQUOT before GPU execution; this is distinct attempt2
+Cloning into '/home/bjoern/.cache/sintergpu-qualification/depth-isolated-pilot-4070ti-attempt2-p287p6f2/source'...
+GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 0 %
+RUNNER_START PID=272921 2026-10-28T17:35:29Z
+TERMINAL_EXIT=0 2026-10-28T17:35:41Z
