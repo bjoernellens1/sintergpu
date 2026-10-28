@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: Apache-2.0
+#define main resource_test_main
+#include "test_timing_resources.cpp"
+#undef main
+#include "timing_readback.h"
+#include <vector>
+static std::vector<int> events;static int injected=0;static bool isUpload=false;static int barrierCount=0;
+static VKAPI_ATTR VkResult VKAPI_CALL resetCmd(VkCommandBuffer,VkCommandBufferResetFlags){events.push_back(1);return injected==1?VK_ERROR_DEVICE_LOST:VK_SUCCESS;}
+static VKAPI_ATTR VkResult VKAPI_CALL beginCmd(VkCommandBuffer,const VkCommandBufferBeginInfo*){events.push_back(2);return VK_SUCCESS;}
+static VKAPI_ATTR VkResult VKAPI_CALL endCmd(VkCommandBuffer){events.push_back(5);return VK_SUCCESS;}
+static VKAPI_ATTR VkResult VKAPI_CALL submitCmd(VkQueue,uint32_t,const VkSubmitInfo*,VkFence){events.push_back(6);return injected==2?VK_ERROR_DEVICE_LOST:VK_SUCCESS;}
+static VKAPI_ATTR VkResult VKAPI_CALL waitCmd(VkQueue){events.push_back(7);return injected==3?VK_ERROR_DEVICE_LOST:VK_SUCCESS;}
+static VKAPI_ATTR void VKAPI_CALL copyCmd(VkCommandBuffer,VkBuffer,VkBuffer,uint32_t,const VkBufferCopy*){events.push_back(4);}
+static VKAPI_ATTR void VKAPI_CALL barrierCmd(VkCommandBuffer,VkPipelineStageFlags src,VkPipelineStageFlags dst,VkDependencyFlags,uint32_t count,const VkMemoryBarrier* b,uint32_t,const VkBufferMemoryBarrier*,uint32_t,const VkImageMemoryBarrier*){
+ assert(count==1&&b);if(barrierCount++==0){assert(src==(isUpload?VK_PIPELINE_STAGE_HOST_BIT:VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT|VK_PIPELINE_STAGE_TRANSFER_BIT));assert(dst==VK_PIPELINE_STAGE_TRANSFER_BIT);assert(b->srcAccessMask==(isUpload?VK_ACCESS_HOST_WRITE_BIT:VK_ACCESS_SHADER_WRITE_BIT|VK_ACCESS_TRANSFER_WRITE_BIT));assert(b->dstAccessMask==VK_ACCESS_TRANSFER_READ_BIT);}else{assert(src==VK_PIPELINE_STAGE_TRANSFER_BIT);assert(dst==(isUpload?VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT:VK_PIPELINE_STAGE_HOST_BIT));assert(b->srcAccessMask==VK_ACCESS_TRANSFER_WRITE_BIT);assert(b->dstAccessMask==(isUpload?VK_ACCESS_SHADER_READ_BIT|VK_ACCESS_SHADER_WRITE_BIT|VK_ACCESS_UNIFORM_READ_BIT:VK_ACCESS_HOST_READ_BIT));}events.push_back(3);}
+
+int main(){VkPhysicalDeviceLimits l{};l.maxMemoryAllocationCount=21;l.maxStorageBufferRange=24796;l.maxUniformBufferRange=32;l.maxPerStageDescriptorStorageBuffers=6;l.maxDescriptorSetStorageBuffers=6;l.maxPerStageDescriptorUniformBuffers=1;l.maxDescriptorSetUniformBuffers=1;l.maxPerStageResources=7;l.maxBoundDescriptorSets=1;VkPhysicalDeviceMemoryProperties p{};p.memoryTypeCount=2;p.memoryTypes[0].propertyFlags=VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT|VK_MEMORY_PROPERTY_HOST_COHERENT_BIT;p.memoryTypes[1].propertyFlags=VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT;SinterResourceAPI a{create,destroy,requirements,allocate,freeMemory,bind,map,unmap};SinterTimingResources r((VkDevice)1,p,sinterFixedPointPlaneAllocationPlan(l),a);SinterReadbackAPI api{resetCmd,beginCmd,endCmd,submitCmd,waitCmd,copyCmd,barrierCmd};for(bool upload:{true,false}){events.clear();isUpload=upload;barrierCount=0;sinterFixtureTransfer((VkCommandBuffer)1,(VkQueue)1,r,api,upload);assert(events==std::vector<int>({1,2,3,4,4,4,4,4,4,4,3,5,6,7}));}for(int failure=1;failure<=3;++failure){injected=failure;barrierCount=0;isUpload=true;events.clear();try{sinterFixtureTransfer((VkCommandBuffer)1,(VkQueue)1,r,api,true);assert(false);}catch(const std::runtime_error&){}if(failure==1)assert(events==std::vector<int>({1}));if(failure==2)assert(events.back()==6);if(failure==3)assert(events.back()==7);}return 0;}
