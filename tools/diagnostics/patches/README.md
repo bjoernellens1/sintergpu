@@ -119,3 +119,43 @@ verify any runtime binary, ICD, loader, provider, or source identity. Matching
 live observed memory handles is not physical backing-independence proof.
 `test_rhi_allocation_vulkan_cases.py` uses only CPU fake devices and confirms
 fixture control flow; no GPU or real Vulkan path has been tested.
+
+`rhi_allocation_vulkan_runner.py` is a fail-closed orchestration scaffold. Its
+production preflight always raises before device creation because the existing
+instrumented backend does not expose its actual instance dispatch provider and
+there is no verified immutable runtime/loader/ICD closure. It therefore cannot
+collect Vulkan results yet. CPU mock tests cover lease ordering, case-owned
+teardown, failure receipts, write-once output and final-lease failures. A future
+implementation must replace the preflight with an independently reviewed,
+source-backed provider observation and exact loaded binary/ICD identity checks;
+passing caller-supplied identity strings or inspecting a separately loaded Vulkan
+library is insufficient. The scaffold must remain unqualified until that work
+and real-device review are complete.
+
+## Separate exploratory smoke (review required)
+
+`rhi_allocation_exploratory_smoke.py` is a separate, unqualified scaffold.
+Production execution is unconditionally blocked before runtime import or device
+enumeration pending independent provenance review; only injected CPU mocks can
+exercise the flow. A future reviewed implementation would require `--execute`, an explicit single `VK_DRIVER_FILES` setting, a single
+visible adapter matching the requested vendor/device, the same backend's
+creation receipt matching expected UUID and raw driver version before any
+buffer allocation, and the canonical lock from before runtime import through
+teardown. It hashes requested binary files and checks that the extension,
+`libsgl` and compiler have matching mapped path and inode before and after
+the cases. It records mapping and stat device numbers separately: overlay
+filesystems can report different devices, so their equality is not established. These hashes are caller-supplied comparisons, not trusted
+build provenance. The ICD JSON hash identifies a configuration file only;
+loaded loader, ICD binary, dispatch provider, complete closure and physical
+allocation independence are not established. Only an `exploratory_only` or
+failure receipt can result. No timings or qualification result are produced.
+
+For a future reviewed run, first build and identify the instrumented runtime on
+the target host, restrict that host to one target ICD/adapter, use a fresh output
+path and provide exact binary paths and lowercase SHA-256 values. Set the target
+runtime's `PYTHONPATH` and `LD_LIBRARY_PATH`; provide `--uuid`, `--driver`,
+`--vendor`, `--device`, `--extension`, `--extension-sha`, `--libsgl`,
+`--libsgl-sha`, `--compiler`, `--compiler-sha`, and `--output`, after a future reviewed implementation removes the production block. Expected UUID/driver must
+come from independently collected device evidence. The local build is not a
+build or identity receipt for the 4070 workstation. The CPU fake tests do not
+exercise Vulkan. No GPU execution has been performed for this smoke.
