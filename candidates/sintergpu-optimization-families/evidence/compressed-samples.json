@@ -1,0 +1,101 @@
+{
+  "format": "deterministic gzip of exact original JSON bytes; no samples removed",
+  "files": [
+    {
+      "path": "evidence/iteration1/radeon8060s-run-1.json.gz",
+      "sha256": "e8efd33ed0ba98e464cd16687ca0fc6c0e90db49607e8461b8eb086b9e820868",
+      "original_path": "evidence/iteration1/radeon8060s-run-1.json",
+      "original_sha256": "e81ac3c6d8a7b7bdd7ee046f2035f1ad85282816afe7bf9db84c92ff9e3134af",
+      "original_bytes": 789436,
+      "compressed_bytes": 106984
+    },
+    {
+      "path": "evidence/iteration1/radeon8060s-run-2.json.gz",
+      "sha256": "0b198fcf471da9db5ea0b0c26649f3fb74d3bc94f25c61769360594fff55871e",
+      "original_path": "evidence/iteration1/radeon8060s-run-2.json",
+      "original_sha256": "506635da68bccc61a8290c1aa6a3c52bd6211c03bcb8b94a6d75d01ba89bfffc",
+      "original_bytes": 789240,
+      "compressed_bytes": 108944
+    },
+    {
+      "path": "evidence/iteration1/radeon8060s-run-3.json.gz",
+      "sha256": "5f8e0d5b12b3741abc70f156dfc6f08ded49f17a644cac68c10eabb75acffab8",
+      "original_path": "evidence/iteration1/radeon8060s-run-3.json",
+      "original_sha256": "22c0148d27548ef89646587f4741a228dea770ec3a82c19cc438f198710890d7",
+      "original_bytes": 789232,
+      "compressed_bytes": 111166
+    },
+    {
+      "path": "evidence/iteration2/radeon8060s-run-1.json.gz",
+      "sha256": "57a32b397b43b9b345f66cc16e801c004d80e362a294c78af475b50396858f96",
+      "original_path": "evidence/iteration2/radeon8060s-run-1.json",
+      "original_sha256": "c338ad3441256b9d23247edae11fb02f2074b0c1644848da832760c32359da08",
+      "original_bytes": 1643616,
+      "compressed_bytes": 228949
+    },
+    {
+      "path": "evidence/iteration2/radeon8060s-run-2.json.gz",
+      "sha256": "7f578a33ef42de14f83e5aef838782f254c391293b9f2d9a9de776f3da43ce33",
+      "original_path": "evidence/iteration2/radeon8060s-run-2.json",
+      "original_sha256": "613625d0f68a4ba114b027f1ae4a2bde21aa0a44f1b687f09c346699d21b225a",
+      "original_bytes": 1644752,
+      "compressed_bytes": 230693
+    },
+    {
+      "path": "evidence/iteration2/radeon8060s-run-3.json.gz",
+      "sha256": "43e04f15c30204a097ea8131ce793ab33a441d00be30468fc450b79e2992e538",
+      "original_path": "evidence/iteration2/radeon8060s-run-3.json",
+      "original_sha256": "f23baaf1db207bc0bef7f16b6f890fae843abe14e0e1af87b914ef600c4509b2",
+      "original_bytes": 1644234,
+      "compressed_bytes": 228214
+    },
+    {
+      "path": "evidence/iteration3/radeon8060s-run-1.json.gz",
+      "sha256": "81dce6b9d49c614e7c46ab6ce8218c4f1f983ed0967fb55a2248e0155f65e19d",
+      "original_path": "evidence/iteration3/radeon8060s-run-1.json",
+      "original_sha256": "6f652f0fef77beb5e3c98d364386bb2fd15fe598b5f348443064034c84757559",
+      "original_bytes": 1644461,
+      "compressed_bytes": 226307
+    },
+    {
+      "path": "evidence/iteration3/radeon8060s-run-2.json.gz",
+      "sha256": "dd1fcad39e2c4eb8676bae4062a8f90ac4b101ca64644f9702dce219f2aa1b45",
+      "original_path": "evidence/iteration3/radeon8060s-run-2.json",
+      "original_sha256": "ffec184639184a7415f30207318cfadab613057bff958660a81755c1cd16ca76",
+      "original_bytes": 1644104,
+      "compressed_bytes": 227984
+    },
+    {
+      "path": "evidence/iteration3/radeon8060s-run-3.json.gz",
+      "sha256": "9ff28457ba2483852c77b39864a586c72c1c87a74b63a84963ec04e12af97eb6",
+      "original_path": "evidence/iteration3/radeon8060s-run-3.json",
+      "original_sha256": "cd9ecfa3ca85a9ac1f7d62389a348fab094f965c3cbc27a669dc7122c25e0cd0",
+      "original_bytes": 1645066,
+      "compressed_bytes": 227598
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-run-1.json.gz",
+      "sha256": "cb39be6ced5bc6ee857a6ef8da9b4d89c9b82964d6cd7c9e50d9d19a077c25e2",
+      "original_path": "evidence/iteration3/rtx4070ti-run-1.json",
+      "original_sha256": "ee6a8217aaef4f3cf9c6a6723c7f7a85a631bc279d2cb1044e4e2139338ee29f",
+      "original_bytes": 1622997,
+      "compressed_bytes": 177241
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-run-2.json.gz",
+      "sha256": "3bb1de842f88639753a114d8c8a378db88f684d662de2669d6bc5c27b1817727",
+      "original_path": "evidence/iteration3/rtx4070ti-run-2.json",
+      "original_sha256": "e82acee27060e8524694abc9c447b2b31d1e2c21793200c347c86f910f522c9c",
+      "original_bytes": 1624050,
+      "compressed_bytes": 176958
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-run-3.json.gz",
+      "sha256": "de3a8c40dc6ed397b877acd44e21e1a41810bef2d19c7f48da86bbfa1756c860",
+      "original_path": "evidence/iteration3/rtx4070ti-run-3.json",
+      "original_sha256": "1841ecaaa95d78e9ca28231f89fdfa5596f893395cca27592fdc3e09e8b7186e",
+      "original_bytes": 1623994,
+      "compressed_bytes": 176553
+    }
+  ]
+}

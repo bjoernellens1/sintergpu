@@ -142,3 +142,8 @@ Historical rejected iterations and their recipes are retained. Final per-device,
 per-family gate tables and exact pending/retained decisions are in
 [ACCEPTANCE.md](ACCEPTANCE.md). A failed, noisy, missing or untested configuration
 keeps its incumbent. No positive aggregate cancels an individual regression.
+
+Raw timing JSON is retained as deterministic, lossless `.json.gz` files to keep
+the source diff reviewable. `evidence/compressed-samples.json` records compressed
+and original byte hashes. `gzip -dc file.json.gz` restores the exact original JSON;
+the report script reads either form. No sample or rejected iteration was dropped.

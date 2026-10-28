@@ -146,6 +146,19 @@ void main() {{float x[6];bool valid=sinterSmallCholesky<6>(input,0,{dimension},0
     np.testing.assert_array_equal(actual['status'],1)
 
 
+@pytest.mark.parametrize('dimension',[6,18])
+@pytest.mark.parametrize('kind',['spd','singular','rhs-nonfinite'])
+def test_checked_cholesky_direct_success_and_failure_clear(gpu,dimension,kind):
+    harness=support();case=harness.solve_case(gpu,dimension,kind)
+    # Export the checked helper's x directly: no adapter zeroing can mask a bug.
+    source=case['sources']['candidate'].replace(f'sinterSmallCholeskyCore<{dimension}>(inputTerms',
+        f'sinterSmallCholesky<{dimension}>(inputTerms')
+    source=source.replace('delta[i]=valid?x[i]:0.0;', 'delta[i]=x[i];')
+    case['kernels']['candidate']=harness.compile_kernel(gpu,source)
+    actual=case['read']('candidate')
+    harness.check_solve_oracle(case,actual)
+
+
 @pytest.mark.parametrize('count', [1, 63, 64, 65, 1025, 4099])
 @pytest.mark.parametrize('tree', ['workgroup', 'subgroup'])
 def test_fused_point_plane_preserves_full_gn_outputs(gpu, count, tree):

@@ -93,15 +93,30 @@
       "name": "small_cholesky",
       "candidate": "candidates/sintergpu-optimization-families/kernels/optimization/small_cholesky.slang",
       "profiles": [
-        "caspar6",
-        "slam-schur-runtime6-12-18"
+        "caspar6 prevalidated core",
+        "slam-schur runtime6/12/18 prevalidated core",
+        "checked zero-on-failure convenience wrapper (untimed)"
       ],
       "baseline_decision": "retained until numerical and per-configuration performance acceptance",
       "gradient": "forward solver only; no differentiable solver claim"
+    },
+    {
+      "id": "G18/G11",
+      "name": "point_plane_gn",
+      "candidate": "candidates/sintergpu-optimization-families/kernels/optimization/point_plane_gn.slang",
+      "profiles": [
+        "workgroup-stride-halving64",
+        "subgroup-then-stride-halving64"
+      ],
+      "entry_points": [
+        "pointPlaneGNWorkgroup",
+        "pointPlaneGNSubgroup"
+      ],
+      "baseline_decision": "retain incumbents; resident wins do not qualify full transfer or all supported configurations"
     }
   ],
   "license": "Apache-2.0; existing LICENSE/NOTICE and frozen donor provenance retained",
-  "nvidia_qualification": "Selected canonical RTX4070Ti physical identity verified; candidate execution waits for parent controlled collection terminal.",
+  "nvidia_qualification": "64 candidate numerical tests and three controlled timing processes completed on selected canonical RTX4070Ti; no family-wide promotion gate pass.",
   "candidate_id": "sintergpu-optimization-families",
   "project": "sintergpu",
   "upstream_base_commit": "536fbaaa79f0cd135892a60fc5797f1647d71bef",
@@ -116,5 +131,611 @@
     "device_id": "0x2782",
     "vendor_id": "0x10de"
   },
-  "historical_nvidia": "RTX3090 probe retained as historical only after explicit user target change."
+  "historical_nvidia": "RTX3090 probe retained as historical only after explicit user target change.",
+  "candidate_revision": "bebbbe235836eb944f36861609d4c47ed3995336",
+  "state": "candidate; iteration3 evidence complete; strict gate retained; further iteration active",
+  "operations": [
+    "point-plane residual and rotation-first Jacobian",
+    "small damped lower-triangle Cholesky",
+    "fused prepared-correspondence GN normal equations"
+  ],
+  "overlap_groups": [
+    "G18",
+    "G21",
+    "G11"
+  ],
+  "used_donors": [
+    {
+      "repository": "https://github.com/bjoernellens1/caspar-slang",
+      "commit": "cab53390aa111cd5526cb30c9aef484e73521186",
+      "license_path": "references/donors/caspar-slang/LICENSE",
+      "notice_path": "NOTICE",
+      "attribution": "caspar-slang contributors; existing source/generated notices retained"
+    },
+    {
+      "repository": "https://github.com/bjoernellens1/slang-rgbd-slam",
+      "commit": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+      "license_path": "references/donors/slang-rgbd-slam/LICENSE",
+      "notice_path": "NOTICE",
+      "attribution": "slang-rgbd-slam contributors; existing source/generated notices retained"
+    }
+  ],
+  "changes": "Resource-independent math helpers, one symbolic factory/two adapters, explicit FMA schedules, dimension/storage-specialized Cholesky core and checked wrapper, fused producer preserving output ABI and original reduction/solve. Frozen/canonical code unchanged.",
+  "ownership": {
+    "device": "caller",
+    "buffers": "caller",
+    "scratch": "caller; same 43-term hierarchical partial buffers",
+    "recording_submission_completion": "caller; benchmark explicitly owns its encoder/submit/wait",
+    "transfers": "caller; none hidden in reusable source",
+    "groupshared_bytes": 11008
+  },
+  "requirements": {
+    "python": ">=3.11 for tests/recipes; shader consumers need no Python",
+    "optional_dependencies": [
+      "numpy>=2",
+      "pytest>=8",
+      "slangpy==0.43.1",
+      "symforce for symbolic reference tests"
+    ],
+    "shader": "Slang, SPIR-V1.5, FP32 precise, 64-lane reduction groups; subgroup profile additionally requires subgroup arithmetic",
+    "extra_capabilities": "no Int64 or Float64 introduced"
+  },
+  "contracts": {
+    "point_plane": "FP32 left infinitesimal action; rotation-first cross(p,n),n Jacobian; AoSoA z-x-y versus scalar z-y-x explicit FMA accumulation; no filtering/clamping/weighting; indexed gathers and padded4+2 AoSoA adapters; NaN/Inf/signed-zero/overflow kept",
+    "cholesky": "row-major lower H then b; solve (H+damping I)x=-b; original i/j/k order; capacity6 fixed6 or capacity18 runtime6/12/18; prevalidated core returns validity, adapter emits zero failure; checked wrapper rejects bad dimensions/clears output; observation policy retained outside core",
+    "fused": "all original residual/Jacobian/partials/final terms/delta/status exported; unchanged higher reductions and incumbent solve; exact workgroup and subgroup+workgroup profiles retained",
+    "capacity": "caller validates uint32 index products, dimensions, indices, buffers and dispatch/device limits; tested counts1/63/64/65/1023/1024/1025/4099/65539 across applicable profiles",
+    "gradients": "independent finite-difference symbolic Jacobian plus independent GPU analytic parity; no backward/differentiable-solver claim",
+    "ordering_overflow": "no sorting, append, truncation or new wrapping policy; exact original tree and loop ordering"
+  },
+  "compilers": {
+    "standalone": [
+      "2026.12",
+      "2026.19"
+    ],
+    "flags": [
+      "-target spirv",
+      "-profile spirv_1_5",
+      "-fp-mode precise",
+      "-O3"
+    ],
+    "evidence": "evidence/iteration3/compilers",
+    "reflection": "evidence/iteration3/baseline-candidate-reflection.json",
+    "runtime": "SlangPy0.43.1 bundled compiler, binary SHA in each run"
+  },
+  "independent_references": [
+    "python/point_plane_symbolic.py adapters checked against independent NumPy analytic and central finite differences",
+    "benchmarks/family_support.py point_oracle/solve_oracle/fusion_oracle: independent float64 cross/dot/linalg matrix solve",
+    "frozen packaged generated shaders and unmodified solver/reduction loops for exact differential checks"
+  ],
+  "validation": {
+    "radeon_numerical": "64 passed",
+    "selected_nvidia_numerical": "64 passed",
+    "standalone": "15 profiles per compiler, matching reflection",
+    "library_cpu": "259 passed,290 skipped,142 subtests on recorded upstream base; one existing fixture deprecation warning",
+    "commands": [
+      "SINTERGPU_GPU_TESTS=1 python -m pytest tests -q",
+      "SINTERGPU_GPU_TESTS=1 SINTERGPU_TARGET=rtx4070 python -m pytest tests -q",
+      "python benchmarks/compile_families.py --toolchains ... --output ...",
+      "python benchmarks/report_families.py"
+    ]
+  },
+  "performance": {
+    "recipe": "benchmarks/family_timings.py",
+    "method": "3 fresh processes per target,100 ABBA blocks,10 warmups; paired-block bootstrap10000 resamples, declared median/p95 and credible-slowdown bounds; fusion5percent gate",
+    "raw_samples": "evidence/iteration3/*run-*.json.gz",
+    "hash_index": "evidence/compressed-samples.json",
+    "acceptance": "ACCEPTANCE.md",
+    "machine_table": "evidence/iteration3/acceptance.json",
+    "configurations": 64,
+    "resident_gate_passes": 19,
+    "all_boundary_configuration_passes": 2,
+    "family_wide_gate": "not passed; retain incumbents",
+    "gate_passes_not_promotion": [
+      "selected RTX4070Ti Schur12 seed workload, one system",
+      "selected RTX4070Ti Schur18 seed workload, one system"
+    ],
+    "pending": [
+      "family-wide no-regression at all supported sizes/profiles/boundaries",
+      "checked convenience-helper performance",
+      "application/consumer/trajectory/backward qualification",
+      "maintainer acceptance and separate promotion"
+    ]
+  },
+  "candidate_sources": [
+    {
+      "path": "kernels/optimization/normal_terms.slang",
+      "sha256": "c99ce0eaaf3cb1cc02150e9c88fd56cb3fb95281044a785bf0748b374ea91dcc"
+    },
+    {
+      "path": "kernels/optimization/point_plane.slang",
+      "sha256": "5d08cacbde56387dfd0e91fa96d2b16f54875407a563bafc09d7e576bfd69e41"
+    },
+    {
+      "path": "kernels/optimization/point_plane_gn.slang",
+      "sha256": "311a260347a0efbd4368a612b7407b9ece22356a2f9cdea1b60df19ccebc1ef7"
+    },
+    {
+      "path": "kernels/optimization/small_cholesky.slang",
+      "sha256": "140e1de69a3caa96814064b927596e010e02873ef2ac8a40c381471878b65c6a"
+    },
+    {
+      "path": "python/point_plane_symbolic.py",
+      "sha256": "0f4f5278571fa2fb7d0302f0d23bd382470febdf999a9497ef11d72050e2d54a"
+    },
+    {
+      "path": "benchmarks/compile_families.py",
+      "sha256": "8608401e4c3ce41c7faff0773349296dd917044d312c7a248b946d083b2ce4cb"
+    },
+    {
+      "path": "benchmarks/family_support.py",
+      "sha256": "a060b08d1ded1d8494c2856156396c6e84625697521a917d8f617e99b6be51af"
+    },
+    {
+      "path": "benchmarks/family_timings.py",
+      "sha256": "0e3bbb2620c548548f96853f53115114825041fc460c049eaadbe9f1b246fa6e"
+    },
+    {
+      "path": "benchmarks/report_families.py",
+      "sha256": "c6131531934f711961e3292223de771f755a8ff4e0efe24f7165685d262a00db"
+    },
+    {
+      "path": "tests/test_candidate_families.py",
+      "sha256": "6b51ba5f8a65823f95166069c279998ac94960935b31052a93fcab7f1692916c"
+    },
+    {
+      "path": "examples/import_helpers.slang",
+      "sha256": "fc0657d6ebbb59b768136aef8fa25d6e58ae88abf19be6dd9b29982e914dac31"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "evidence/iteration3/acceptance.json",
+      "sha256": "26bbb6214307733cb60f6296412e6ccf57637068df511ed307f90f2614ece676"
+    },
+    {
+      "path": "evidence/iteration3/baseline-candidate-reflection.json",
+      "sha256": "078c7f1a18bc0c4582f654bdbc38c7d3fd7540ad4a69ba5111ad7f4013c07a0c"
+    },
+    {
+      "path": "evidence/iteration3/compilation.log",
+      "sha256": "2833d2a0837e4936e4c2c1337f42c3c24751429d143408a0fc074fc35c81c820"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/import-helpers.reflection.json",
+      "sha256": "566fe5668a362ba0404187f927cf38ae097cbb8061a5b9cf2c7692a12322db61"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/import-helpers.slang",
+      "sha256": "fc0657d6ebbb59b768136aef8fa25d6e58ae88abf19be6dd9b29982e914dac31"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/import-helpers.spv",
+      "sha256": "3ce9692d9cceb4e0de88d0b5d333cc82157bc9fcc9d5bfad4488e582cfd0f49d"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-aosoa-baseline.reflection.json",
+      "sha256": "dfc24afe7b201c85db3608e43e77489ce2fc706fbe738dc60b4e57aa464974e6"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-aosoa-baseline.slang",
+      "sha256": "1ffe081687d156ef3bee9a272e07b8db87c2ea2f856d82a5b762d60275255502"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-aosoa-baseline.spv",
+      "sha256": "fbe9d8650eb92821a2e6ed7e27fb3fc2fec9f8271ec15a9c1a34a4f9c45f5495"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-aosoa-candidate.reflection.json",
+      "sha256": "a04e9503376b68befc1c32338497e8da04ae6c3679f6005257dab334b6a2d381"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-aosoa-candidate.slang",
+      "sha256": "0d0592ea63f4fc232a40ac1d89f0557d744e483385fcafe65277e9cce1974205"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-aosoa-candidate.spv",
+      "sha256": "cb86c541bdcb59dc9c16eaa01aab2138f432174461fe2e6a7befa25bd8ce9a16"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-scalar-baseline.reflection.json",
+      "sha256": "a04e9503376b68befc1c32338497e8da04ae6c3679f6005257dab334b6a2d381"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-scalar-baseline.slang",
+      "sha256": "8fc8c09c4339891007947e952c72ea36ab7f0ba3159d2f7dca51f5f09853525f"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-scalar-baseline.spv",
+      "sha256": "b157c086007af218bb56cb87bafa7bbea0f4b3c9eb3cb204811e2f3eb2e60a88"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-scalar-candidate.reflection.json",
+      "sha256": "a04e9503376b68befc1c32338497e8da04ae6c3679f6005257dab334b6a2d381"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-scalar-candidate.slang",
+      "sha256": "10b541a3d1ffd31a5f6c4fc15cd8817e13c47c0a16651d3565c2c34caaf3ac1c"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/point-scalar-candidate.spv",
+      "sha256": "fd8b560b648624c300a94238c5d3991af57fb0f59d44ea13a8c69329d80b0ddb"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/pointPlaneGNSubgroup.reflection.json",
+      "sha256": "456d3d4ab99a066117c68130d2bfb22a7b98ca2e174077e97737e4c5ffa0f035"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/pointPlaneGNSubgroup.slang",
+      "sha256": "311a260347a0efbd4368a612b7407b9ece22356a2f9cdea1b60df19ccebc1ef7"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/pointPlaneGNSubgroup.spv",
+      "sha256": "de78886bbfda1c66832aca7758887bb5c657bec62e99babb35546661fbc6753e"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/pointPlaneGNWorkgroup.reflection.json",
+      "sha256": "84db566d8b8a3e91d865c62708a81d52c41db62da3eace75a7dfdc0d1b529158"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/pointPlaneGNWorkgroup.slang",
+      "sha256": "311a260347a0efbd4368a612b7407b9ece22356a2f9cdea1b60df19ccebc1ef7"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/pointPlaneGNWorkgroup.spv",
+      "sha256": "4135160aded5e0f346334f0e901f53f78ba1bf2c5dd047a3746e4ce3572d21e0"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/results.json",
+      "sha256": "2af77217fe4cbbcfb6a470552f2566d520883f6843f80622e4e0dca4e8d5ff0d"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve12-schur-baseline.reflection.json",
+      "sha256": "a80b16d37de0ff3d0b62770872525380787c03c5eb4e1eb0957f173d892d576b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve12-schur-baseline.slang",
+      "sha256": "35763c996f17b51b794118cbae47d8d2357f3415b4a7d9427abed54910730028"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve12-schur-baseline.spv",
+      "sha256": "5c70cecd98f9d7b2db803d5b8e9ad3adab37892e6fd486c7ca6a47261a94a749"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve12-schur-candidate.reflection.json",
+      "sha256": "a80b16d37de0ff3d0b62770872525380787c03c5eb4e1eb0957f173d892d576b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve12-schur-candidate.slang",
+      "sha256": "c3c16f00f1d82d7ea95def7ca4a26ca227e6b07129f9b1d694733cd2c054132a"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve12-schur-candidate.spv",
+      "sha256": "9dd5080a62f28663b00a34d34d16097b3ab0f44df6cf69d121596779ffabd7ef"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve18-schur-baseline.reflection.json",
+      "sha256": "a80b16d37de0ff3d0b62770872525380787c03c5eb4e1eb0957f173d892d576b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve18-schur-baseline.slang",
+      "sha256": "35763c996f17b51b794118cbae47d8d2357f3415b4a7d9427abed54910730028"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve18-schur-baseline.spv",
+      "sha256": "5c70cecd98f9d7b2db803d5b8e9ad3adab37892e6fd486c7ca6a47261a94a749"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve18-schur-candidate.reflection.json",
+      "sha256": "a80b16d37de0ff3d0b62770872525380787c03c5eb4e1eb0957f173d892d576b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve18-schur-candidate.slang",
+      "sha256": "c3c16f00f1d82d7ea95def7ca4a26ca227e6b07129f9b1d694733cd2c054132a"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve18-schur-candidate.spv",
+      "sha256": "9dd5080a62f28663b00a34d34d16097b3ab0f44df6cf69d121596779ffabd7ef"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-caspar-baseline.reflection.json",
+      "sha256": "6e4f8836c60e0f4a70a9ebd5df12dea4b299a279e9ea38895a2c2e00b89645ad"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-caspar-baseline.slang",
+      "sha256": "0ec699896352f4d9cc594cea883ff6f1655eb997e6286d3b9971f14bbe8ceb42"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-caspar-baseline.spv",
+      "sha256": "a043cb423b7e18f6c9b9b69dc29ac9d50e50854e974dea2fc826edf67749e636"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-caspar-candidate.reflection.json",
+      "sha256": "6e4f8836c60e0f4a70a9ebd5df12dea4b299a279e9ea38895a2c2e00b89645ad"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-caspar-candidate.slang",
+      "sha256": "769efe77d55886c08e1ead960809cc4fedcbe872463073ed2902c4af98c97146"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-caspar-candidate.spv",
+      "sha256": "39fc48013a7ff6e93be9a4fefcbf95657120159c36ea35ded7ea8a49be50af94"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-schur-baseline.reflection.json",
+      "sha256": "a80b16d37de0ff3d0b62770872525380787c03c5eb4e1eb0957f173d892d576b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-schur-baseline.slang",
+      "sha256": "35763c996f17b51b794118cbae47d8d2357f3415b4a7d9427abed54910730028"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-schur-baseline.spv",
+      "sha256": "5c70cecd98f9d7b2db803d5b8e9ad3adab37892e6fd486c7ca6a47261a94a749"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-schur-candidate.reflection.json",
+      "sha256": "a80b16d37de0ff3d0b62770872525380787c03c5eb4e1eb0957f173d892d576b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-schur-candidate.slang",
+      "sha256": "c3c16f00f1d82d7ea95def7ca4a26ca227e6b07129f9b1d694733cd2c054132a"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.12/solve6-schur-candidate.spv",
+      "sha256": "9dd5080a62f28663b00a34d34d16097b3ab0f44df6cf69d121596779ffabd7ef"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/import-helpers.reflection.json",
+      "sha256": "edd61bfa12a1337c2f62aff4dfe016db14a53ba7f81a3cd8b4e2bd15cbe2d8e0"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/import-helpers.slang",
+      "sha256": "fc0657d6ebbb59b768136aef8fa25d6e58ae88abf19be6dd9b29982e914dac31"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/import-helpers.spv",
+      "sha256": "416d936e068396bdf8e17f62824c27f4a5e44ca9f35b157536f26f81efd4898a"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-aosoa-baseline.reflection.json",
+      "sha256": "7b5ac2df80b9171435ea37242aeaa6b0c9ce1a60d01eedcf8115d512fe622cb9"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-aosoa-baseline.slang",
+      "sha256": "1ffe081687d156ef3bee9a272e07b8db87c2ea2f856d82a5b762d60275255502"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-aosoa-baseline.spv",
+      "sha256": "a6c21ab0f56b1d06acbf2a38d32d1552338098e6643bfb92be3541825404684a"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-aosoa-candidate.reflection.json",
+      "sha256": "18be4006a9cab9ab0280ae1cd7c68e53508648605e166c13396f4d9640c2d040"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-aosoa-candidate.slang",
+      "sha256": "0d0592ea63f4fc232a40ac1d89f0557d744e483385fcafe65277e9cce1974205"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-aosoa-candidate.spv",
+      "sha256": "2abdc3b89785f512c119a4a195d4a606fd8f332d0f2efb85788191e16bf80876"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-scalar-baseline.reflection.json",
+      "sha256": "18be4006a9cab9ab0280ae1cd7c68e53508648605e166c13396f4d9640c2d040"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-scalar-baseline.slang",
+      "sha256": "8fc8c09c4339891007947e952c72ea36ab7f0ba3159d2f7dca51f5f09853525f"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-scalar-baseline.spv",
+      "sha256": "5cb7d16366c97f340172d21dfc0bd5f505e3107d0d68da28e8433df6bf6da298"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-scalar-candidate.reflection.json",
+      "sha256": "18be4006a9cab9ab0280ae1cd7c68e53508648605e166c13396f4d9640c2d040"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-scalar-candidate.slang",
+      "sha256": "10b541a3d1ffd31a5f6c4fc15cd8817e13c47c0a16651d3565c2c34caaf3ac1c"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/point-scalar-candidate.spv",
+      "sha256": "c67ab80aa021a988c867c427d572ce81234402cfd7f4dfaade58b54faa844ac2"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/pointPlaneGNSubgroup.reflection.json",
+      "sha256": "298f2683a9622a498b407870bb026040590502a541aa87378e6b5061b5c48e09"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/pointPlaneGNSubgroup.slang",
+      "sha256": "311a260347a0efbd4368a612b7407b9ece22356a2f9cdea1b60df19ccebc1ef7"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/pointPlaneGNSubgroup.spv",
+      "sha256": "04cd0df5c6d2af942c97673258352a7dcef93e1b0e6c15fe4f0777541629ff84"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/pointPlaneGNWorkgroup.reflection.json",
+      "sha256": "bc037a085305717ad3c166006a060d7decedbbe81b4e26d31297a212b9a8dc65"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/pointPlaneGNWorkgroup.slang",
+      "sha256": "311a260347a0efbd4368a612b7407b9ece22356a2f9cdea1b60df19ccebc1ef7"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/pointPlaneGNWorkgroup.spv",
+      "sha256": "a225704bc1d2bb7c1f668ed290c20a138955f9cbe35ab1a425b8b3ee781b426b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/results.json",
+      "sha256": "e91f062633e28081252aecc08508bb48ffcb5d7752c438740adfa6c03b7f4964"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve12-schur-baseline.reflection.json",
+      "sha256": "9545df444853c116842064ea4df4734443a548f72d82c4e79add3fe7e81fce5b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve12-schur-baseline.slang",
+      "sha256": "35763c996f17b51b794118cbae47d8d2357f3415b4a7d9427abed54910730028"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve12-schur-baseline.spv",
+      "sha256": "79c661b8172a253b9b67b49427c96ac6c3ef4a619fce8b3de607435e424796fb"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve12-schur-candidate.reflection.json",
+      "sha256": "9545df444853c116842064ea4df4734443a548f72d82c4e79add3fe7e81fce5b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve12-schur-candidate.slang",
+      "sha256": "c3c16f00f1d82d7ea95def7ca4a26ca227e6b07129f9b1d694733cd2c054132a"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve12-schur-candidate.spv",
+      "sha256": "202d3e1629263cf1af09ff9d5c8aef18b5150fc6c5437b8391eec76a7a5399e6"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve18-schur-baseline.reflection.json",
+      "sha256": "9545df444853c116842064ea4df4734443a548f72d82c4e79add3fe7e81fce5b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve18-schur-baseline.slang",
+      "sha256": "35763c996f17b51b794118cbae47d8d2357f3415b4a7d9427abed54910730028"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve18-schur-baseline.spv",
+      "sha256": "79c661b8172a253b9b67b49427c96ac6c3ef4a619fce8b3de607435e424796fb"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve18-schur-candidate.reflection.json",
+      "sha256": "9545df444853c116842064ea4df4734443a548f72d82c4e79add3fe7e81fce5b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve18-schur-candidate.slang",
+      "sha256": "c3c16f00f1d82d7ea95def7ca4a26ca227e6b07129f9b1d694733cd2c054132a"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve18-schur-candidate.spv",
+      "sha256": "202d3e1629263cf1af09ff9d5c8aef18b5150fc6c5437b8391eec76a7a5399e6"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-caspar-baseline.reflection.json",
+      "sha256": "b657f7339ef5dda7e781169345b8026c9f51da2b2e83f07bf8c67aa32830e344"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-caspar-baseline.slang",
+      "sha256": "0ec699896352f4d9cc594cea883ff6f1655eb997e6286d3b9971f14bbe8ceb42"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-caspar-baseline.spv",
+      "sha256": "f01be60aa47de3e8bdb06d71f96015f5de5714431928481983a030a0081e7f09"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-caspar-candidate.reflection.json",
+      "sha256": "b657f7339ef5dda7e781169345b8026c9f51da2b2e83f07bf8c67aa32830e344"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-caspar-candidate.slang",
+      "sha256": "769efe77d55886c08e1ead960809cc4fedcbe872463073ed2902c4af98c97146"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-caspar-candidate.spv",
+      "sha256": "cd471391ff2865f84d2c9f05feb5b79a5627b092fe8b1a3450ef5bc055931f7f"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-schur-baseline.reflection.json",
+      "sha256": "9545df444853c116842064ea4df4734443a548f72d82c4e79add3fe7e81fce5b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-schur-baseline.slang",
+      "sha256": "35763c996f17b51b794118cbae47d8d2357f3415b4a7d9427abed54910730028"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-schur-baseline.spv",
+      "sha256": "79c661b8172a253b9b67b49427c96ac6c3ef4a619fce8b3de607435e424796fb"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-schur-candidate.reflection.json",
+      "sha256": "9545df444853c116842064ea4df4734443a548f72d82c4e79add3fe7e81fce5b"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-schur-candidate.slang",
+      "sha256": "c3c16f00f1d82d7ea95def7ca4a26ca227e6b07129f9b1d694733cd2c054132a"
+    },
+    {
+      "path": "evidence/iteration3/compilers/2026.19/solve6-schur-candidate.spv",
+      "sha256": "202d3e1629263cf1af09ff9d5c8aef18b5150fc6c5437b8391eec76a7a5399e6"
+    },
+    {
+      "path": "evidence/iteration3/compilers/compatibility.json",
+      "sha256": "11d5c8be058e00aa42a3d3b954fe5419677d1450eabce00bc72a45fcb1e2430c"
+    },
+    {
+      "path": "evidence/iteration3/numerical.log",
+      "sha256": "93855b6212c77f5a439dbd09e31cd79462a4c6931d2b4041713b5f8f4e5b4502"
+    },
+    {
+      "path": "evidence/iteration3/radeon8060s-run-1.json.gz",
+      "sha256": "81dce6b9d49c614e7c46ab6ce8218c4f1f983ed0967fb55a2248e0155f65e19d"
+    },
+    {
+      "path": "evidence/iteration3/radeon8060s-run-1.log",
+      "sha256": "b6c2c3bc10a17bf5846d5f979436c2ff13280f86941d37cd1f07989b317e30d2"
+    },
+    {
+      "path": "evidence/iteration3/radeon8060s-run-2.json.gz",
+      "sha256": "dd1fcad39e2c4eb8676bae4062a8f90ac4b101ca64644f9702dce219f2aa1b45"
+    },
+    {
+      "path": "evidence/iteration3/radeon8060s-run-2.log",
+      "sha256": "b6c2c3bc10a17bf5846d5f979436c2ff13280f86941d37cd1f07989b317e30d2"
+    },
+    {
+      "path": "evidence/iteration3/radeon8060s-run-3.json.gz",
+      "sha256": "9ff28457ba2483852c77b39864a586c72c1c87a74b63a84963ec04e12af97eb6"
+    },
+    {
+      "path": "evidence/iteration3/radeon8060s-run-3.log",
+      "sha256": "b6c2c3bc10a17bf5846d5f979436c2ff13280f86941d37cd1f07989b317e30d2"
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-after.txt",
+      "sha256": "dc8de81d74deaa167afc1585c039a1ab7ac304648a8770b55aa9c521f5916c51"
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-before.txt",
+      "sha256": "cf29610d97ac552f9f2d9e44059c55229a3d3d639b8f58707748f6a5306980f5"
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-numerical.log",
+      "sha256": "a4e267d8270c02ff091e277d2942e1cc20669a0d8ea54f37f85ad8eaf653c78d"
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-run-1.json.gz",
+      "sha256": "cb39be6ced5bc6ee857a6ef8da9b4d89c9b82964d6cd7c9e50d9d19a077c25e2"
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-run-1.log",
+      "sha256": "b6c2c3bc10a17bf5846d5f979436c2ff13280f86941d37cd1f07989b317e30d2"
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-run-2.json.gz",
+      "sha256": "3bb1de842f88639753a114d8c8a378db88f684d662de2669d6bc5c27b1817727"
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-run-2.log",
+      "sha256": "b6c2c3bc10a17bf5846d5f979436c2ff13280f86941d37cd1f07989b317e30d2"
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-run-3.json.gz",
+      "sha256": "de3a8c40dc6ed397b877acd44e21e1a41810bef2d19c7f48da86bbfa1756c860"
+    },
+    {
+      "path": "evidence/iteration3/rtx4070ti-run-3.log",
+      "sha256": "b6c2c3bc10a17bf5846d5f979436c2ff13280f86941d37cd1f07989b317e30d2"
+    }
+  ]
 }
