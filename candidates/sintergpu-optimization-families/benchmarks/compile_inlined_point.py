@@ -58,6 +58,8 @@ def main():
                 subprocess.run([*common,'-target','spirv','-o',str(binary),'-reflection-json',str(reflection)],check=True,capture_output=True,text=True)
                 assembly=path.with_suffix('.spvasm')
                 subprocess.run([*common,'-target','spirv-asm','-o',str(assembly)],check=True,capture_output=True,text=True)
+                expected_local_size=1024 if variant=='baseline' else args.candidate_local_size
+                assert re.findall(r'OpExecutionMode\s+%\w+\s+LocalSize\s+(\d+)\s+(\d+)\s+(\d+)',assembly.read_text())==[(str(expected_local_size),'1','1')]
                 normalized[variant]=normalized_instructions(assembly.read_text())
                 normal=path.with_suffix('.normalized.txt');normal.write_text(normalized[variant])
                 resources[variant]=json.loads(reflection.read_text())['parameters']

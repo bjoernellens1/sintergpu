@@ -68,7 +68,12 @@ def report(args):
     for directory in args.inputs:
         plan=json.loads((directory/'suite-plan.json').read_text())
         assert len(plan['results'])==len(plan['profiles'])*len(plan['counts'])*3 and plan['blocks'] in (1000,10000) and plan['runs']==3
-        device=dict(host=plan['hostname'],vendor=plan['vendor'],device=plan['device'],results=[])
+        control_path=directory/'collection-control.json'
+        control=json.loads(control_path.read_text()) if control_path.exists() else {}
+        device=dict(experiment=str(directory),host=plan['hostname'],vendor=plan['vendor'],device=plan['device'],
+            blocks=plan['blocks'],completion_mode=plan.get('completion_mode','wait'),
+            baseline_local_size=1024,candidate_local_size=plan.get('candidate_local_size',1024),
+            source_commit=plan['source_commit'],collection_control=control,results=[])
         for result in plan['results']:
             path=directory/result['output']
             data=path.read_bytes() if path.exists() else gzip.decompress(path.with_suffix('.json.gz').read_bytes())
@@ -78,8 +83,13 @@ def report(args):
             assert raw['hardware']['vendor_id']==int(plan['vendor'],0)
             assert raw['hardware']['device_id']==int(plan['device'],0)
             if 'completion_mode' in plan:assert raw['completion_mode']==plan['completion_mode']
+            if 'candidate_local_size' in plan:
+                assert raw['launch']['baseline_local_size']==[1024,1,1]
+                assert raw['launch']['candidate_local_size']==[plan['candidate_local_size'],1,1]
             assert result['oracle']['independent_float64_oracle'] and result['oracle']['full_byte_differential']
             row={key:result[key] for key in ('profile','count','run')};row['boundaries']={}
+            row['controlled_collection']=bool(control.get('cooperating_collectors_excluded')) and result['output'] not in control.get('ineligible_outputs',{})
+            row['control_note']=control.get('ineligible_outputs',{}).get(result['output'],'')
             for boundary in ('gpu_timestamp','resident_completion','transfer_inclusive'):
                 samples=[s for s in raw['samples'] if s['boundary']==boundary]
                 assert len(samples)==4*plan['blocks']
@@ -96,7 +106,8 @@ def report(args):
                     row['boundaries'][boundary]['thread_cpu_ms']={
                         v:summary([s['thread_cpu_ns']/1e6 for s in samples if s['variant']==v])
                         for v in ('baseline','candidate')}
-            row['all_boundaries_pass']=all(b['decision']!='retain-baseline' for b in row['boundaries'].values())
+            row['statistical_boundaries_pass']=all(b['decision']!='retain-baseline' for b in row['boundaries'].values())
+            row['all_boundaries_pass']=row['controlled_collection'] and row['statistical_boundaries_pass']
             device['results'].append(row)
             print(plan['hostname'],row['profile'],row['count'],row['run'],row['all_boundaries_pass'],flush=True)
         device['all_configurations_pass']=all(r['all_boundaries_pass'] for r in device['results'])
