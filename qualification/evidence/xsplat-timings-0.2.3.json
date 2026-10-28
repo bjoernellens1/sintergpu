@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "status": "paired-math-fixture-parity-passed",
+  "collector_revision": "5d570d00d5ac86d699bbcaaafd06ebaf14bcbb3f",
+  "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+  "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+  "runner_sha256": "6ac0648b1fe25ff1cbfa7e86ca4f17d952b4e4af070843e57596b7367ac4521f",
+  "reference_sha256": "1f4567f3e14fadaeca4d0b610364fc8ece7024299c8d17b49ed700f678addb58",
+  "runner_helper_sha256": "d1d67e8a6e016588f2d3fd5286b6b7ec76cbc4e7b3ef5473ad7644bbce379b0b",
+  "pixel_model_sha256": "086209005e98b6f44feaedfef46f936a07fb5be2432fea01394c928ad87b4282",
+  "program_inspector_sha256": "01ad5e1dbbb705ed4224975dff66848feb39dfe3cf9c3985f71e7a2a8ba59ef1",
+  "workloads_per_device": 17,
+  "operation_count": 3,
+  "devices": {
+    "AMD Radeon 8060S Graphics (RADV STRIX_HALO)": {
+      "environment": {
+        "cpu": "AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S",
+        "logical_cpus": 32,
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "platform": "Linux-7.2.8-200.fc44.x86_64-x86_64-with-glibc2.43",
+        "python": "3.13.12",
+        "numpy": "2.5.4",
+        "library_version": "0.2.3",
+        "collector_revision": "5d570d00d5ac86d699bbcaaafd06ebaf14bcbb3f",
+        "captured_at_utc": "2026-10-28T08:50:01.498685+00:00",
+        "gpu": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+        "compiler_sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678",
+        "scaling_governor": "powersave",
+        "scaling_cur_freq": "4766119",
+        "api": "Vulkan",
+        "vendor_id": 4098,
+        "device_id": 5510,
+        "slangpy": "0.43.1",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "timestamp_frequency": 99809998,
+        "buffer_budget_bytes": 8388608,
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar",
+        "vulkaninfo_summary": "==========\nVULKANINFO\n==========\n\nVulkan Instance Version: 1.4.341\n\n\nInstance Extensions: count = 26\n-------------------------------\nVK_EXT_acquire_drm_display             : extension revision 1\nVK_EXT_acquire_xlib_display            : extension revision 1\nVK_EXT_debug_report                    : extension revision 10\nVK_EXT_debug_utils                     : extension revision 2\nVK_EXT_direct_mode_display             : extension revision 1\nVK_EXT_display_surface_counter         : extension revision 1\nVK_EXT_headless_surface                : extension revision 1\nVK_EXT_layer_settings                  : extension revision 2\nVK_EXT_surface_maintenance1            : extension revision 1\nVK_EXT_swapchain_colorspace            : extension revision 5\nVK_KHR_device_group_creation           : extension revision 1\nVK_KHR_display                         : extension revision 23\nVK_KHR_external_fence_capabilities     : extension revision 1\nVK_KHR_external_memory_capabilities    : extension revision 1\nVK_KHR_external_semaphore_capabilities : extension revision 1\nVK_KHR_get_display_properties2         : extension revision 1\nVK_KHR_get_physical_device_properties2 : extension revision 2\nVK_KHR_get_surface_capabilities2       : extension revision 1\nVK_KHR_portability_enumeration         : extension revision 1\nVK_KHR_surface                         : extension revision 25\nVK_KHR_surface_maintenance1            : extension revision 1\nVK_KHR_surface_protected_capabilities  : extension revision 1\nVK_KHR_wayland_surface                 : extension revision 6\nVK_KHR_xcb_surface                     : extension revision 6\nVK_KHR_xlib_surface                    : extension revision 6\nVK_LUNARG_direct_driver_loading        : extension revision 1\n\nInstance Layers: count = 6\n--------------------------\nVK_LAYER_MESA_anti_lag            Open-source implementation of the VK_AMD_anti_lag extension. 1.4.303  version 1\nVK_LAYER_MESA_device_select       Linux device selection layer                                 1.4.303  version 1\nVK_LAYER_VALVE_steam_fossilize_32 Steam Pipeline Caching Layer                                 1.3.207  version 1\nVK_LAYER_VALVE_steam_fossilize_64 Steam Pipeline Caching Layer                                 1.3.207  version 1\nVK_LAYER_VALVE_steam_overlay_32   Steam Overlay Layer                                          1.3.207  version 1\nVK_LAYER_VALVE_steam_overlay_64   Steam Overlay Layer                                          1.3.207  version 1\n\nDevices:\n========\nGPU0:\n\tapiVersion         = 1.4.354\n\tdriverVersion      = 26.2.3\n\tvendorID           = 0x1002\n\tdeviceID           = 0x1586\n\tdeviceType         = PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU\n\tdeviceName         = AMD Radeon 8060S Graphics (RADV STRIX_HALO)\n\tdriverID           = DRIVER_ID_MESA_RADV\n\tdriverName         = radv\n\tdriverInfo         = Mesa 26.2.3\n\tconformanceVersion = 1.4.5.3\n\tdeviceUUID         = 00000000-c400-0000-0000-000000000000\n\tdriverUUID         = 414d442d-4d45-5341-2d44-525600000000\nGPU1:\n\tapiVersion         = 1.4.354\n\tdriverVersion      = 26.2.3\n\tvendorID           = 0x10005\n\tdeviceID           = 0x0000\n\tdeviceType         = PHYSICAL_DEVICE_TYPE_CPU\n\tdeviceName         = llvmpipe (LLVM 22.1.8, 256 bits)\n\tdriverID           = DRIVER_ID_MESA_LLVMPIPE\n\tdriverName         = llvmpipe\n\tdriverInfo         = Mesa 26.2.3 (LLVM 22.1.8)\n\tconformanceVersion = 1.3.1.1\n\tdeviceUUID         = 6d657361-3236-2e32-2e33-000000000000\n\tdriverUUID         = 6c6c766d-7069-7065-5555-494400000000\n"
+      },
+      "operations": {
+        "xsplat_vk.adam.main": [
+          "xsplat-math/adam/31/step0",
+          "xsplat-math/adam/31/step1",
+          "xsplat-math/adam/31/step37",
+          "xsplat-math/adam/32/step0",
+          "xsplat-math/adam/32/step1",
+          "xsplat-math/adam/32/step37",
+          "xsplat-math/adam/1025/step0",
+          "xsplat-math/adam/1025/step1",
+          "xsplat-math/adam/1025/step37",
+          "xsplat-math/adam/65539/step0",
+          "xsplat-math/adam/65539/step1",
+          "xsplat-math/adam/65539/step37"
+        ],
+        "xsplat_vk.project.projectMain": [
+          "xsplat-math/project/127/rotated-mixed",
+          "xsplat-math/project/128/rotated-mixed",
+          "xsplat-math/project/1025/rotated-mixed",
+          "xsplat-math/project/65539/rotated-mixed"
+        ],
+        "xsplat_vk.backward_probe.backwardProbeMain": [
+          "xsplat-math/backward-probe/fixed-diagnostic"
+        ]
+      },
+      "raw_samples": "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.3.json",
+      "raw_sha256": "f2481f13a3a3d6b085cff0a541a67f517b2c9405398b119cac96b011f6ad806c",
+      "pixel_validation": {
+        "xsplat-math/project/127/rotated-mixed": {
+          "model_sha256": "086209005e98b6f44feaedfef46f936a07fb5be2432fea01394c928ad87b4282",
+          "assumptions": "Input-derived FP32 gamma7 camera-dot enclosure; outward perspective intervals with1ULP add/multiply and2.5ULP division, finite no-overflow inputs; unresolved rejection/viewport masks block qualification",
+          "enclosure_width_px": {
+            "median": 0.0002790255939828512,
+            "maximum": 0.1594672265000554
+          },
+          "observed_deviation_from_float64_oracle_rounded_to_fp32_px": {
+            "maximum": 0.00048828125,
+            "maximum_visible": 3.0517578125e-05
+          },
+          "unresolved_classifications": 0,
+          "visible_accuracy": "Existing2e-6 absolute/relative check also retained for visible pixel coordinates; conic/depth/Adam/probe checks unchanged"
+        },
+        "xsplat-math/project/128/rotated-mixed": {
+          "model_sha256": "086209005e98b6f44feaedfef46f936a07fb5be2432fea01394c928ad87b4282",
+          "assumptions": "Input-derived FP32 gamma7 camera-dot enclosure; outward perspective intervals with1ULP add/multiply and2.5ULP division, finite no-overflow inputs; unresolved rejection/viewport masks block qualification",
+          "enclosure_width_px": {
+            "median": 0.0002665421312713079,
+            "maximum": 0.2562241573959909
+          },
+          "observed_deviation_from_float64_oracle_rounded_to_fp32_px": {
+            "maximum": 0.0009765625,
+            "maximum_visible": 3.0517578125e-05
+          },
+          "unresolved_classifications": 0,
+          "visible_accuracy": "Existing2e-6 absolute/relative check also retained for visible pixel coordinates; conic/depth/Adam/probe checks unchanged"
+        },
+        "xsplat-math/project/1025/rotated-mixed": {
+          "model_sha256": "086209005e98b6f44feaedfef46f936a07fb5be2432fea01394c928ad87b4282",
+          "assumptions": "Input-derived FP32 gamma7 camera-dot enclosure; outward perspective intervals with1ULP add/multiply and2.5ULP division, finite no-overflow inputs; unresolved rejection/viewport masks block qualification",
+          "enclosure_width_px": {
+            "median": 0.00027811640782715585,
+            "maximum": 1426.4787779657636
+          },
+          "observed_deviation_from_float64_oracle_rounded_to_fp32_px": {
+            "maximum": 3.625,
+            "maximum_visible": 6.103515625e-05
+          },
+          "unresolved_classifications": 0,
+          "visible_accuracy": "Existing2e-6 absolute/relative check also retained for visible pixel coordinates; conic/depth/Adam/probe checks unchanged"
+        },
+        "xsplat-math/project/65539/rotated-mixed": {
+          "model_sha256": "086209005e98b6f44feaedfef46f936a07fb5be2432fea01394c928ad87b4282",
+          "assumptions": "Input-derived FP32 gamma7 camera-dot enclosure; outward perspective intervals with1ULP add/multiply and2.5ULP division, finite no-overflow inputs; unresolved rejection/viewport masks block qualification",
+          "enclosure_width_px": {
+            "median": 0.000277325758617053,
+            "maximum": 2808.0639761958737
+          },
+          "observed_deviation_from_float64_oracle_rounded_to_fp32_px": {
+            "maximum": 9.375,
+            "maximum_visible": 6.103515625e-05
+          },
+          "unresolved_classifications": 0,
+          "visible_accuracy": "Existing2e-6 absolute/relative check also retained for visible pixel coordinates; conic/depth/Adam/probe checks unchanged"
+        }
+      }
+    },
+    "NVIDIA GeForce RTX 4070 Ti": {
+      "environment": {
+        "cpu": "Intel(R) Core(TM) i9-10850K CPU @ 3.60GHz",
+        "logical_cpus": 20,
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "numpy": "2.5.4",
+        "library_version": "0.2.3",
+        "collector_revision": "5d570d00d5ac86d699bbcaaafd06ebaf14bcbb3f",
+        "captured_at_utc": "2026-10-28T08:50:02.804382+00:00",
+        "gpu": "NVIDIA GeForce RTX 4070 Ti",
+        "compiler_sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678",
+        "scaling_governor": "powersave",
+        "scaling_cur_freq": "4800000",
+        "api": "Vulkan",
+        "vendor_id": 4318,
+        "device_id": 10114,
+        "slangpy": "0.43.1",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "timestamp_frequency": 1000000000,
+        "buffer_budget_bytes": 8388608,
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar",
+        "vulkaninfo_summary": "unavailable: optional driver diagnostic missing or timed out"
+      },
+      "operations": {
+        "xsplat_vk.adam.main": [
+          "xsplat-math/adam/31/step0",
+          "xsplat-math/adam/31/step1",
+          "xsplat-math/adam/31/step37",
+          "xsplat-math/adam/32/step0",
+          "xsplat-math/adam/32/step1",
+          "xsplat-math/adam/32/step37",
+          "xsplat-math/adam/1025/step0",
+          "xsplat-math/adam/1025/step1",
+          "xsplat-math/adam/1025/step37",
+          "xsplat-math/adam/65539/step0",
+          "xsplat-math/adam/65539/step1",
+          "xsplat-math/adam/65539/step37"
+        ],
+        "xsplat_vk.project.projectMain": [
+          "xsplat-math/project/127/rotated-mixed",
+          "xsplat-math/project/128/rotated-mixed",
+          "xsplat-math/project/1025/rotated-mixed",
+          "xsplat-math/project/65539/rotated-mixed"
+        ],
+        "xsplat_vk.backward_probe.backwardProbeMain": [
+          "xsplat-math/backward-probe/fixed-diagnostic"
+        ]
+      },
+      "raw_samples": "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.3.json",
+      "raw_sha256": "ad77e13282d9a8a7228784a92de174c8ea34b4a6cd337b63740191d1db7850d7",
+      "pixel_validation": {
+        "xsplat-math/project/127/rotated-mixed": {
+          "model_sha256": "086209005e98b6f44feaedfef46f936a07fb5be2432fea01394c928ad87b4282",
+          "assumptions": "Input-derived FP32 gamma7 camera-dot enclosure; outward perspective intervals with1ULP add/multiply and2.5ULP division, finite no-overflow inputs; unresolved rejection/viewport masks block qualification",
+          "enclosure_width_px": {
+            "median": 0.0002790255939828512,
+            "maximum": 0.1594672265000554
+          },
+          "observed_deviation_from_float64_oracle_rounded_to_fp32_px": {
+            "maximum": 0.0009765625,
+            "maximum_visible": 3.0517578125e-05
+          },
+          "unresolved_classifications": 0,
+          "visible_accuracy": "Existing2e-6 absolute/relative check also retained for visible pixel coordinates; conic/depth/Adam/probe checks unchanged"
+        },
+        "xsplat-math/project/128/rotated-mixed": {
+          "model_sha256": "086209005e98b6f44feaedfef46f936a07fb5be2432fea01394c928ad87b4282",
+          "assumptions": "Input-derived FP32 gamma7 camera-dot enclosure; outward perspective intervals with1ULP add/multiply and2.5ULP division, finite no-overflow inputs; unresolved rejection/viewport masks block qualification",
+          "enclosure_width_px": {
+            "median": 0.0002665421312713079,
+            "maximum": 0.2562241573959909
+          },
+          "observed_deviation_from_float64_oracle_rounded_to_fp32_px": {
+            "maximum": 0.00390625,
+            "maximum_visible": 3.0517578125e-05
+          },
+          "unresolved_classifications": 0,
+          "visible_accuracy": "Existing2e-6 absolute/relative check also retained for visible pixel coordinates; conic/depth/Adam/probe checks unchanged"
+        },
+        "xsplat-math/project/1025/rotated-mixed": {
+          "model_sha256": "086209005e98b6f44feaedfef46f936a07fb5be2432fea01394c928ad87b4282",
+          "assumptions": "Input-derived FP32 gamma7 camera-dot enclosure; outward perspective intervals with1ULP add/multiply and2.5ULP division, finite no-overflow inputs; unresolved rejection/viewport masks block qualification",
+          "enclosure_width_px": {
+            "median": 0.00027811640782715585,
+            "maximum": 1426.4787779657636
+          },
+          "observed_deviation_from_float64_oracle_rounded_to_fp32_px": {
+            "maximum": 12.125,
+            "maximum_visible": 6.103515625e-05
+          },
+          "unresolved_classifications": 0,
+          "visible_accuracy": "Existing2e-6 absolute/relative check also retained for visible pixel coordinates; conic/depth/Adam/probe checks unchanged"
+        },
+        "xsplat-math/project/65539/rotated-mixed": {
+          "model_sha256": "086209005e98b6f44feaedfef46f936a07fb5be2432fea01394c928ad87b4282",
+          "assumptions": "Input-derived FP32 gamma7 camera-dot enclosure; outward perspective intervals with1ULP add/multiply and2.5ULP division, finite no-overflow inputs; unresolved rejection/viewport masks block qualification",
+          "enclosure_width_px": {
+            "median": 0.000277325758617053,
+            "maximum": 2808.0639761958737
+          },
+          "observed_deviation_from_float64_oracle_rounded_to_fp32_px": {
+            "maximum": 23.625,
+            "maximum_visible": 6.103515625e-05
+          },
+          "unresolved_classifications": 0,
+          "visible_accuracy": "Existing2e-6 absolute/relative check also retained for visible pixel coordinates; conic/depth/Adam/probe checks unchanged"
+        }
+      }
+    }
+  },
+  "nvidia_runtime_identity": {
+    "before": "name, uuid, driver_version\nNVIDIA GeForce RTX 4070 Ti, GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02\n",
+    "after": "name, uuid, driver_version\nNVIDIA GeForce RTX 4070 Ti, GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02\n"
+  },
+  "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification."
+}

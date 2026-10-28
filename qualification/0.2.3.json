@@ -2759,6 +2759,196 @@
         "floating_point_mode": "precise"
       },
       "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "xsplat_vk.adam.main",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4126871d8bd132c9741bb1f2dadc9e305ed7d54e7db3c7e6bb10b0cd119549c1",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "xsplat-math/adam/31/step0",
+          "xsplat-math/adam/31/step1",
+          "xsplat-math/adam/31/step37",
+          "xsplat-math/adam/32/step0",
+          "xsplat-math/adam/32/step1",
+          "xsplat-math/adam/32/step37",
+          "xsplat-math/adam/1025/step0",
+          "xsplat-math/adam/1025/step1",
+          "xsplat-math/adam/1025/step37",
+          "xsplat-math/adam/65539/step0",
+          "xsplat-math/adam/65539/step1",
+          "xsplat-math/adam/65539/step37"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "xsplat_vk.project.projectMain",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "xsplat-math/project/127/rotated-mixed",
+          "xsplat-math/project/128/rotated-mixed",
+          "xsplat-math/project/1025/rotated-mixed",
+          "xsplat-math/project/65539/rotated-mixed"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "xsplat_vk.backward_probe.backwardProbeMain",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "640781cf476034479008631ce8ba704283499edd2f6c6f75837dbe53868bb5f6",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "xsplat-math/backward-probe/fixed-diagnostic"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "xsplat_vk.adam.main",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4126871d8bd132c9741bb1f2dadc9e305ed7d54e7db3c7e6bb10b0cd119549c1",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "xsplat-math/adam/31/step0",
+          "xsplat-math/adam/31/step1",
+          "xsplat-math/adam/31/step37",
+          "xsplat-math/adam/32/step0",
+          "xsplat-math/adam/32/step1",
+          "xsplat-math/adam/32/step37",
+          "xsplat-math/adam/1025/step0",
+          "xsplat-math/adam/1025/step1",
+          "xsplat-math/adam/1025/step37",
+          "xsplat-math/adam/65539/step0",
+          "xsplat-math/adam/65539/step1",
+          "xsplat-math/adam/65539/step37"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "xsplat_vk.project.projectMain",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "xsplat-math/project/127/rotated-mixed",
+          "xsplat-math/project/128/rotated-mixed",
+          "xsplat-math/project/1025/rotated-mixed",
+          "xsplat-math/project/65539/rotated-mixed"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "xsplat_vk.backward_probe.backwardProbeMain",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "640781cf476034479008631ce8ba704283499edd2f6c6f75837dbe53868bb5f6",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "xsplat-math/backward-probe/fixed-diagnostic"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
     }
   ],
   "evidence_sha256": {
@@ -2798,8 +2988,8 @@
     "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf",
     "qualification/delivery-0.1.5.json": "5b0343aa119753b572aedee0982a5dc7ccd0a804595cb037492ca2b3d85fc9a2",
     "benchmarks/results/locus-cpu-gpu-8060s.json": "36f05cb3ac40bf40f5f1f878884495bcd6c933767d112e58e89a4e3290388ea2",
-    "src/sintergpu/data/timings.json": "b6c6c038afb66ac6c6a8cb6d80d3f8974c72470c2216e54af8a1a5b548bb3d90",
-    "docs/kernel-timings.md": "7f1a67d67bbb8ad76672a0d4bc0f9e63dd8d90589b180c4154b1c73fa346c0b9",
+    "src/sintergpu/data/timings.json": "588aaf613652b444171dae57c7673fcbd22db6e167f20991e7baf1c88781eba0",
+    "docs/kernel-timings.md": "7d65ac215458f697c65a8d10b7d1814e06d0bd59db3fe35b00d0b3c140aa395e",
     "qualification/delivery-0.1.6.json": "61fbdbde082cf212b82804e27fd16ee266479c1273b9eb13df9488a98d5921b8",
     "benchmarks/results/color-cpu-gpu-8060s.json": "1d34cd705e7096f28651c04521958027e60c038b65648a83baa8332c863ab864",
     "qualification/delivery-0.1.7.json": "a09a8871e40f76d78b4f42bc3c258e8e609692653c949785937292b1cb4eb57b",
@@ -2846,7 +3036,10 @@
     "qualification/evidence/xsplat-projection-error-model-0.2.3.json": "09ad32a2d9b42a5c0ec2408e1b9b541ad5becaa96b92b7d533159e3fab26639c",
     "qualification/evidence/xsplat-project-program-0.2.3.json": "747b1dab764519bdf44b75b74dc302db6a6100716657ad9bdd216b9ff8353a2b",
     "qualification/evidence/xsplat-project-program-0.2.3.spv": "72bfb16dde37bc645a795f5629d362f5d3c1d146527ca08c193926f05e6ad8dd",
-    "qualification/evidence/xsplat-project-program-0.2.3.spv-asm": "e4ec269196c39b7e91d10ce87d75ef955a8409963bc92a8d668c4dc84d0c8bb4"
+    "qualification/evidence/xsplat-project-program-0.2.3.spv-asm": "e4ec269196c39b7e91d10ce87d75ef955a8409963bc92a8d668c4dc84d0c8bb4",
+    "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.3.json": "f2481f13a3a3d6b085cff0a541a67f517b2c9405398b119cac96b011f6ad806c",
+    "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.3.json": "ad77e13282d9a8a7228784a92de174c8ea34b4a6cd337b63740191d1db7850d7",
+    "qualification/evidence/xsplat-timings-0.2.3.json": "ed6e1eb70de7daeed6ffbaf1000d5e0209790d0ff5c3697a3ebe773e6c6802a7"
   },
   "pending_gates": [
     "Full NVIDIA RTX 4070 Ti operation/variant/adapter qualification beyond retained regression and retained stage timing fixtures",
@@ -2857,7 +3050,7 @@
     "Optional vrdx C++ runtime and HIP backend runtime qualification",
     "SLAM pose/trajectory/gradient and full-capacity reconstruction qualification",
     "Publisher App administrative permission path and downstream App execution; six private consumer CI jobs blocked by account billing/spending restrictions",
-    "CPU/GPU baseline timing coverage for 86 remaining portable catalog entries and four optional native radix variants"
+    "CPU/GPU baseline timing coverage for 83 remaining portable catalog entries and four optional native radix variants"
   ],
   "timing_reference": {
     "database": "src/sintergpu/data/timings.json",
@@ -2874,16 +3067,18 @@
       "benchmarks/results/primitives-cpu-gpu-8060s-0.2.2.json",
       "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.2.json",
       "benchmarks/results/primitives-irregular-cpu-gpu-8060s-0.2.2.json",
-      "benchmarks/results/primitives-irregular-cpu-gpu-4070ti-0.2.2.json"
+      "benchmarks/results/primitives-irregular-cpu-gpu-4070ti-0.2.2.json",
+      "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.3.json",
+      "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.3.json"
     ],
     "catalog_entries": 137,
-    "paired_cpu_gpu_entries": 51,
-    "pending_portable_entries": 86,
+    "paired_cpu_gpu_entries": 54,
+    "pending_portable_entries": 83,
     "additional_native_pending": 4,
-    "scope": "358current-source synthetic stage workload records:179perdevice(106prior+61originalprimitive+12irregular)onRadeon8060SandRTX4070Ti,50samples5warmups. Retain126historical rows. Independent CPUreference/GPUtimestamp/hostcompletion/full-bound-buffer-transfer costs separate. NooptimizedCPU, completeproductionpipeline, exclusiveperformance, optimizedselection, trajectory/full-domainqualification.",
+    "scope": "392current-source synthetic stage/mathworkloadrecords:196perdevice(179prior+17xsplat)onRadeon8060SandRTX4070Ti,50samples5warmups. Retain126historical rows. IndependentCPUreference/GPUtimestamp/hostcompletion/storage-transferpluslogicaluniformcostsseparate. NooptimizedCPU,completeproductionpipeline,exclusiveperformance,optimizedselection,trajectory/full-domainqualification.",
     "color_collector_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3",
     "color_workloads": 60,
-    "workloads": 358,
+    "workloads": 392,
     "locus_collector_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3",
     "retained_historical_workloads": 126,
     "feature_collector_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3",
@@ -2893,12 +3088,14 @@
     "locus_workloads": 56,
     "nvidia_collector_revision": "32bec9b5c527ce412a8c8801b25cd999a80ae602",
     "workloads_by_device": {
-      "AMD Radeon8060S": 179,
-      "NVIDIA GeForce RTX4070Ti": 179
+      "AMD Radeon8060S": 196,
+      "NVIDIA GeForce RTX4070Ti": 196
     },
     "primitive_workloads": 146,
     "primitive_collector_revision": "9759cb4b2e0e201aae04d37d79dbfb0d49a44b43",
-    "primitive_additional_collector_revision": "c875c0d964d2959e5848f268c4c19d5f9863af5a"
+    "primitive_additional_collector_revision": "c875c0d964d2959e5848f268c4c19d5f9863af5a",
+    "xsplat_workloads": 34,
+    "xsplat_collector_revision": "5d570d00d5ac86d699bbcaaafd06ebaf14bcbb3f"
   },
   "native_packaging": {
     "status": "installed-native-static-link-passed",
