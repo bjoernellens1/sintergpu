@@ -100,9 +100,44 @@ these profiles do not establish Rust/Daxa/native adapter qualification.
 The independent references and frozen differential tests are
 `tests/test_vkl_reprojection_reference.py` and
 `tests/test_vkl_temporal_reprojection_reference.py`. Setup contracts, opt-in full
-GPU outputs/padding/scratch reuse and hot-path guards are separate tests. GPU
-execution is held until the independent hot-path pass, guarded benchmark recipe
-and both pinned compiler/reflection evidence are ready.
+GPU outputs/padding/scratch reuse and hot-path guards are separate tests. Both
+pinned compilers pass all146 catalog entries and matching reflection layouts.
+Initial GPU attempts exposed canceled normalization rounding on both devices and
+suppressed nonfinite diagnostic products on Radeon. The source corrections now
+have actual/mutated compiler-emission guards; fixed-source GPU verification is
+still pending. Original failure logs and partial-buffer diagnostics are retained.
+
+The donor reference runtime is part of the numerical identity. The two hosts'
+Torch2.14.1 CPU builds produced slightly different projections for identical
+inputs; bilinear sampling amplified those differences beyond the unchanged RGB
+comparison threshold. CPU-only probes reproduce this without GPU execution.
+The differing live CPU-wheel behavior remains failed interoperability evidence;
+it is not reported as a Slang or adapter qualification.
+
+For reproducible differential qualification, all63 cases and113 invocation states
+use one portable frozen-donor archive exported by
+`tools/export_reprojection_fixtures.py` in the pinned Torch2.14.1+rocm7.2 CPU
+environment with one intraop/interop thread. Export calls unchanged frozen donor
+functions and checks every output against the independent NumPy oracle. The
+manifest binds exact typed input/argument/graph bytes, complete outputs, donor
+and generator source closure, actual installed Python/Torch binaries and
+distribution records, build configuration and CPU ISA. This identifies installed
+artifacts; it does not invent an upstream wheel checksum.
+
+GPU tests validate all archive entries before creating a device, then compare
+every output against both independent NumPy and the identical canonical donor
+outputs on each vendor. Float thresholds remain rtol8e-6/atol8e-7 with equal NaN
+locations; logical/count comparisons remain exact. Missing, stale or corrupt
+fixtures fail closed; GPU qualification never regenerates them or skips a missing
+Torch installation. Qualification against this canonical profile does not imply
+compatibility with every live Torch build or application trajectory.
+
+`references/reprojection_stage_numeric.py` supplies separate CPU computations for
+the nine new dispatch boundaries. Each consumes prepared inputs and mutates only
+caller-preallocated written/inout arrays. Projection starts from camera XYZ;
+sampling starts from projected maps; reductions start from partials. CPU prefix
+evaluation and state resets belong outside each stage clock. Complete public
+function CPU timings remain a separate scope.
 
 New source changes the conservative global timing identity. Earlier samples are
 retained at their original source/compiler/device context and are historical until

@@ -2988,7 +2988,7 @@
     "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf",
     "qualification/delivery-0.1.5.json": "5b0343aa119753b572aedee0982a5dc7ccd0a804595cb037492ca2b3d85fc9a2",
     "benchmarks/results/locus-cpu-gpu-8060s.json": "36f05cb3ac40bf40f5f1f878884495bcd6c933767d112e58e89a4e3290388ea2",
-    "src/sintergpu/data/timings.json": "a031df03e53955804ef0834985c34d72253512df5a6eef68667fc0c43a8d51fa",
+    "src/sintergpu/data/timings.json": "f776270f72ff0cda1028b68d8ab7b666d013093cc5de48c16e46a581a97da7c8",
     "docs/kernel-timings.md": "5c3e1f1efae66ddf166267a1f9a05ab907d00b3a7463984a3c0a18c737d8e4bd",
     "qualification/delivery-0.1.6.json": "61fbdbde082cf212b82804e27fd16ee266479c1273b9eb13df9488a98d5921b8",
     "benchmarks/results/color-cpu-gpu-8060s.json": "1d34cd705e7096f28651c04521958027e60c038b65648a83baa8332c863ab864",
@@ -3208,7 +3208,9 @@
       "src/sintergpu/references/reprojection_numeric.py": "df56256f46d64803e35d9b5b043fcaade9f1b01d8da9b59a9ef7d98ab15da27b",
       "src/sintergpu/references/temporal_reprojection_numeric.py": "1f506285f60120d3dc5597c358b34a6dcae380df7c5c10d990885b85035c9fe6",
       "tests/test_vkl_reprojection_reference.py": "2c0cdc67bec686ec39c60cb48e28e16efad51570016c1506a44a0a4411b6d25a",
-      "tests/test_vkl_temporal_reprojection_reference.py": "e0ae6a536b64edd401ed30ad47b7675a5ce6d441a7acd076c982cc17ea894e35"
+      "tests/test_vkl_temporal_reprojection_reference.py": "e0ae6a536b64edd401ed30ad47b7675a5ce6d441a7acd076c982cc17ea894e35",
+      "src/sintergpu/references/reprojection_stage_numeric.py": "de9258cc853e184e443876940674b47f5d8b1ba84bfd4ba5eac41c0fbaa7bf52",
+      "tests/test_vkl_reprojection_stage_reference.py": "8b7d62e90158221a325c6916b9285a88a7cfc6b99a5b870a99fbdef44386fee1"
     },
     "compiled_entrypoints": 9,
     "compile_scope": "Standalone2026.12 and2026.19 SPIR-V/reflection compilation only; GPU execution and optimization/adoption remain pending",
@@ -3259,6 +3261,14 @@
       "scope": "Preserve emitted normalized subtract/add rounding and masked nonfinite diagnostics via explicit scalar operations. GPU rerun pending; original strict comparisons unchanged.",
       "focused_cpu_passed": 150,
       "separate_source_review": "cleared for GPU rerun; not hardware qualification"
+    },
+    "independent_stage_reference_tests": 53,
+    "canonical_reference_profile": {
+      "status": "source_review_and_cpu_guards_passed_export_pending",
+      "name": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+      "case_count": 63,
+      "invocation_states": 113,
+      "scope": "One pinned frozen-donor CPU runtime for identical portable expected outputs on both GPU targets. Original strict NumPy and donor comparisons retained; differing live Torch CPU wheel remains failed interoperability evidence. Source closure includes owned validators/planners and NumPy version; actual immutable export and fixed-source GPU verification pending."
     }
   }
 }

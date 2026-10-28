@@ -2,7 +2,7 @@
   "schema_version": 1,
   "dependencies": {
     "shader_tree_sha256": "3b4503b907218230ee9c48de5026f3f2e25c3f3c0f55a2e3849d802971e4388a",
-    "reference_tree_sha256": "2b20b889db377596217d762e9a056ff952286a85cc2bcdffde8a43c7bd4a7482"
+    "reference_tree_sha256": "ce7e925dfe2fe3a0a25c194cbd87c5a4bfd3f6161fb70c4c241bce649779f2a1"
   },
   "units": "milliseconds",
   "quantiles": "Median; p95 uses linear interpolation at (n-1)*0.95. Raw samples retained.",

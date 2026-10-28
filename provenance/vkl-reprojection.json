@@ -5,9 +5,9 @@
   "license": "Apache-2.0 (original owner authorization 2026-10-27)",
   "author": "Original owner numerical contracts; standalone SinterGPU implementation and independent NumPy oracles",
   "operation_prefix": "vkl",
-  "qualification": "Both pinned standalone compilers accept all nine entrypoints; independent CPU references pass102 tests. No new GPU execution yet; separate hot-path review, static guards/benchmark and both-vendor qualification remain pending.",
+  "qualification": "Both pinned compilers accept all146 catalog entries with matching reflection; independent public and per-dispatch CPU references are tested. Initial both-vendor GPU attempts have retained strict parity failures; two confirmed source corrections await fresh GPU verification. Canonical frozen-donor runtime fixtures and actual per-stage CPU/GPU timings are in preparation; no optimized selection or adoption claim.",
   "coverage": {
-    "stage": "gpu_implementation_compiled_qualification_pending",
+    "stage": "implemented_cpu_stage_oracles_gpu_parity_investigation",
     "newly_forward_ported_modules": [],
     "planned_modules": [
       "reproject",
@@ -78,6 +78,20 @@
         "sampleTemporal",
         "packTemporal",
         "finalizeReference"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/reproject.py",
+      "source_sha256": "9e40eed34717ffb14c81b79df9c7b3000f6c6e3102d4b809c19fabf66e36a94d",
+      "additional_source_paths": [
+        "src/vkl/kernels/reference/temporal_reproject.py"
+      ],
+      "destination": "src/sintergpu/references/reprojection_stage_numeric.py",
+      "imported_sha256": "de9258cc853e184e443876940674b47f5d8b1ba84bfd4ba5eac41c0fbaa7bf52",
+      "dispatchable": false,
+      "changes": [
+        "Independent NumPy computations for the nine new GPU dispatch boundaries, consuming prepared inputs and caller-preallocated output/inout arrays",
+        "Frozen donor implementations remain unchanged; CPU prefix construction and persistent state resets occur outside per-stage timing"
       ]
     }
   ]
