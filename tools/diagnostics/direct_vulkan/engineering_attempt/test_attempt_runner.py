@@ -201,3 +201,16 @@ def test_journal_refuses_reuse_and_symlink(tmp_path):
         with pytest.raises(OSError):j.readback('donor.bin','donor')
         with pytest.raises(FileExistsError):r.ArtifactJournal(receipt)
     finally:j.close()
+
+def test_journal_syncs_directory_on_event_creation(tmp_path,monkeypatch):
+    synced=[];real_fsync=os.fsync
+    def tracking(fd):
+        st=os.fstat(fd)
+        if __import__('stat').S_ISDIR(st.st_mode):synced.append((st.st_dev,st.st_ino))
+        return real_fsync(fd)
+    monkeypatch.setattr(r.os,'fsync',tracking)
+    journal=r.ArtifactJournal(tmp_path/'receipt')
+    try:
+        for path in (tmp_path,journal.root):
+            st=path.stat();assert (st.st_dev,st.st_ino) in synced
+    finally:journal.close()
