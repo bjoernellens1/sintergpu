@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "pre_gpu_experimental",
+  "canonical_manifest": "qualification/evidence/vkl-camera-registration-frozen-0.2.6-closure-v2/manifest.json",
+  "canonical_manifest_sha256": "00dde261bee03952bdc134b10f85c309f02869f00810ad967b8fd3ad4d862c54",
+  "canonical_states": 80,
+  "canonical_output_arrays": 347,
+  "canonical_scope": "Pinned actual Torch CPU donor profile; all states independently checked and reloaded. Full-domain, GPU and application qualification pending.",
+  "historical_manifest": "qualification/evidence/vkl-camera-registration-frozen-0.2.6/manifest.json",
+  "historical_manifest_sha256": "295d781121264cb78f73268d3253fbbdefa640567037faadfc54951148dde747",
+  "historical_states": 72,
+  "historical_scope": "Initial preserved export omitted executed package initializer and data/VERSION from source closure; no observed numerical output corruption. Not used for GPU qualification.",
+  "recording_benchmark": "qualification/evidence/vkl-camera-recording-fake-0.2.6.json",
+  "recording_scope": "CPU fake-encoder recording only; no GPU speedup or no-regression claim.",
+  "gpu_debug_scope": "Debug and reuse cases blocked pending authoritative logical-device shaderInt64 enablement evidence."
+}
