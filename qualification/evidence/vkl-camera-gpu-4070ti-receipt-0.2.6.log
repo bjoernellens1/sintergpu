@@ -1,0 +1,99 @@
+LOCK_ACQUIRED pid=252676 commit=cb404183fe38a291d6c5c34087650a615df27348
+Wed Oct 28 04:35:06 PM UTC 2026
+GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 0 %
+Wed Oct 28 17:35:06 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.99.02              Driver Version: 595.99.02      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 4070 Ti     Off |   00000000:01:00.0 Off |                  N/A |
+|  0%   42C    P8             14W /  285W |      94MiB /  12282MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            3329      G   /usr/lib/xorg/Xorg                       57MiB |
+|    0   N/A  N/A            3579      G   /usr/bin/gnome-shell                      7MiB |
++-----------------------------------------------------------------------------------------+
+PYTHONPATH=src:. TMPDIR=/home/bjoern/.cache/sintergpu-qualification/camera-4070ti-initial-ogORYoFw/tmp SINTERGPU_GPU_TESTS=1 VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia_icd.json PYTHON=/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/bin/python
+8bf904abc1c5d6428a1f27cc5d4a3c9783d15231f17ce1ef8d25e9cab1f60d1c  /usr/share/vulkan/icd.d/nvidia_icd.json
+slangpy 0.43.1 /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/__init__.py
+/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/libslang-compiler.so.0.2026.12 195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678
+SELECTED 59
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/bjoern/.cache/sintergpu-qualification/camera-4070ti-initial-ogORYoFw/source
+configfile: pyproject.toml
+collecting ... collected 59 items
+
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b1-1x1-c1-brown0] PASSED [  1%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b1-1x1-c1-brown0] PASSED [  3%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b1-1x1-c1-brown0] PASSED [  5%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b1-1x1-c1-brown0] PASSED [  6%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b1-1x1-c1-brown1] PASSED [  8%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b1-1x1-c1-brown1] PASSED [ 10%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b1-1x1-c1-brown1] PASSED [ 11%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b1-1x1-c1-brown1] PASSED [ 13%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b1-3x4-c3-brown0] PASSED [ 15%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b1-3x4-c3-brown0] PASSED [ 16%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b1-3x4-c3-brown0] PASSED [ 18%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b1-3x4-c3-brown0] PASSED [ 20%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b1-3x4-c3-brown1] PASSED [ 22%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b1-3x4-c3-brown1] PASSED [ 23%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b1-3x4-c3-brown1] PASSED [ 25%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b1-3x4-c3-brown1] PASSED [ 27%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b1-4x7-c4-brown0] PASSED [ 28%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b1-4x7-c4-brown0] PASSED [ 30%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b1-4x7-c4-brown0] PASSED [ 32%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b1-4x7-c4-brown0] PASSED [ 33%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b1-4x7-c4-brown1] PASSED [ 35%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b1-4x7-c4-brown1] PASSED [ 37%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b1-4x7-c4-brown1] PASSED [ 38%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b1-4x7-c4-brown1] PASSED [ 40%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b8-1x1-c1-brown0] PASSED [ 42%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b8-1x1-c1-brown0] PASSED [ 44%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b8-1x1-c1-brown0] PASSED [ 45%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b8-1x1-c1-brown0] PASSED [ 47%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b8-1x1-c1-brown1] PASSED [ 49%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b8-1x1-c1-brown1] PASSED [ 50%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b8-1x1-c1-brown1] PASSED [ 52%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b8-1x1-c1-brown1] PASSED [ 54%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b8-3x4-c3-brown0] PASSED [ 55%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b8-3x4-c3-brown0] PASSED [ 57%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b8-3x4-c3-brown0] PASSED [ 59%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b8-3x4-c3-brown0] PASSED [ 61%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b8-3x4-c3-brown1] PASSED [ 62%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b8-3x4-c3-brown1] PASSED [ 64%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b8-3x4-c3-brown1] PASSED [ 66%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b8-3x4-c3-brown1] PASSED [ 67%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b8-4x7-c4-brown0] PASSED [ 69%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b8-4x7-c4-brown0] PASSED [ 71%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b8-4x7-c4-brown0] PASSED [ 72%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b8-4x7-c4-brown0] PASSED [ 74%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-b8-4x7-c4-brown1] PASSED [ 76%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-b8-4x7-c4-brown1] PASSED [ 77%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nearest-b8-4x7-c4-brown1] PASSED [ 79%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-bilinear-b8-4x7-c4-brown1] PASSED [ 81%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[cached-nonfinite-nearest] PASSED [ 83%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[cached-nonfinite-bilinear] PASSED [ 84%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[cached-cancellation] PASSED [ 86%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-radial] PASSED [ 88%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-radial] PASSED [ 89%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[grid-tangential] PASSED [ 91%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rays-tangential] PASSED [ 93%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[rectify-nodebug] PASSED [ 94%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[register-nodebug] PASSED [ 96%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[nonfinite-image-nearest] PASSED [ 98%]
+tests/test_vkl_camera_registration_gpu.py::test_canonical_outputs_and_poison_tails[nonfinite-image-bilinear] PASSED [100%]
+
+============================== 59 passed in 4.68s ==============================
+QUALIFICATION_TERMINAL_SUCCESS
+Wed Oct 28 04:35:12 PM UTC 2026
