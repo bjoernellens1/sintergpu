@@ -1,0 +1,45 @@
+diff --git a/src/slangpy_ext/device/resource.cpp b/src/slangpy_ext/device/resource.cpp
+--- a/src/slangpy_ext/device/resource.cpp
++++ b/src/slangpy_ext/device/resource.cpp
+@@ -1,10 +1,11 @@
++// Modified by SinterGPU: experimental allocation observation.
+ // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ 
+ #include "nanobind.h"
+ 
+ #include "sgl/device/resource.h"
++#include "sgl/device/device.h"
+ #include "sgl/device/sampler.h"
+-#include "sgl/device/device.h"
+ #include "sgl/device/formats.h"
+ #include "sgl/device/command.h"
+ 
+@@ -409,6 +410,28 @@
+     nb::implicitly_convertible<nb::dict, BufferDesc>();
+ 
+     nb::class_<Buffer, Resource>(m, "Buffer", D(Buffer))
++        .def_prop_ro("vulkan_allocation_observation_v1", [](const Buffer& buffer) -> nb::object {
++            // Caller must serialize against device close and resource release.
++            if (!buffer.device() || buffer.device()->is_closed() || !buffer.rhi_buffer())
++                return nb::none();
++            rhi::IVulkanBufferAllocationObservationV1* query = nullptr;
++            auto result = buffer.rhi_buffer()->queryInterface(
++                rhi::IVulkanBufferAllocationObservationV1::getTypeGuid(), reinterpret_cast<void**>(&query));
++            if (SLANG_FAILED(result) || !query) return nb::none();
++            rhi::VulkanBufferAllocationObservationV1 observation{};
++            result = query->getObservation(&observation);
++            query->release();
++            if (SLANG_FAILED(result)) return nb::none();
++            nb::dict value;
++            value["schema_version"] = observation.schemaVersion;
++            value["owner_generation"] = observation.ownerGeneration;
++            value["buffer"] = observation.buffer;
++            value["memory"] = observation.memory;
++            value["binding_offset"] = observation.bindingOffset;
++            value["buffer_size"] = observation.bufferSize;
++            value["allocation_size"] = observation.allocationSize;
++            return value;
++        }, "Backend-observed value copy; serialize with close/release; controlled process only.")
+         .def_prop_ro("desc", &Buffer::desc, D(Buffer, desc))
+         .def_prop_ro("size", &Buffer::size, D(Buffer, size))
+         .def_prop_ro("struct_size", &Buffer::struct_size, D(Buffer, struct_size))
