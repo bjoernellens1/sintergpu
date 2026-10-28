@@ -1,0 +1,3199 @@
+{
+  "schema_version": 1,
+  "version": "0.2.5",
+  "status": "experimental",
+  "qualifications": [
+    {
+      "operation": "depth.bilateral",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "depth.register",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "depth.resolve",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e5416309a1d2e09a5549e558a74f42baad0af9a96ad4721c46c467f300cf9ea4",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "depth.validity",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "geometry.backproject",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "geometry.coverage_heatmap",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "b23581c8b5348522c3ee7ad05b2f9b97d954e7d9c5070fa80341fe52216d94d8",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "geometry.coverage_points",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "5e8ea4892df9d48caae31b75885f49f6fd63b4170a75c2a411688a052149a30c",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "geometry.transform_points",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "image.crop_normalize",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "image.planar_yuv_to_rgb",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "image.resize_nearest",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "image.undistort",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "perception.cosine_similarity",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "perception.mask_postprocess",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "5de5a3648d315cd126e40e181aa11ec2b3b479583be57f77605def4e5d772688",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "quality.metrics",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "quality.reduce",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "spatial.voxel_insert",
+      "variant": "portable-imported",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen scalar fixtures only; not full operation, performance or application qualification",
+      "configuration": {
+        "device_id": "0x1586",
+        "vendor_id": "0x1002",
+        "tolerance": {
+          "absolute": 0.0002,
+          "relative": 0.0002
+        }
+      },
+      "evidence": "qualification/evidence/locus-amd8060s.json"
+    },
+    {
+      "operation": "vkl.temporal_best.temporalBest",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "20b0ebc40ee1d96c45bd4ea2a3fb281b46a614d6514571b36f003142d68b65fa",
+      "status": "fixture-parity-passed",
+      "variant": "portable-float32-forward",
+      "scope": "Frozen Torch/NumPy full forward outputs, NaN/infinity/tie/fallback behavior, N1/2/7/33, four independent optional flag combinations, actual oneelement unused buffers, output padding and thread tails; not gradients, application or full extreme-value qualification",
+      "evidence": "qualification/evidence/vkl-temporal-best-parity.json",
+      "configuration": {
+        "max_workgroups_x": 4294967295,
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 5e-07
+        },
+        "indices": "exact-int32 numeric preservation of donor int64"
+      }
+    },
+    {
+      "operation": "vkl.depth_resampling.densifyDepth",
+      "variant": "portable-float32-forward",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen Torch and independent NumPy forward outputs; nearest float32 mapping, 1/3-channel RGB, 1/2/4 passes and retained initial direct masks, NaN/Inf inputs and thresholds, exact inclusive threshold boundaries, optional direct/confidence dummies, all pyramid levels and no-copy downsample labels, flat power-of-two depths, thread tails and poisoned output padding. Not gradients, general extreme values, other devices or full application qualification. Three explicit division-decision counterexamples and four 4096-batch rounded-threshold differential sets preserve frozen-Torch masks.",
+      "configuration": {
+        "max_workgroups_x": 4294967295,
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 5e-07
+        },
+        "logical_provenance_support": "exact"
+      },
+      "evidence": "qualification/evidence/vkl-depth-resampling-parity.json"
+    },
+    {
+      "operation": "vkl.depth_resampling.depthUpsample",
+      "variant": "portable-float32-forward",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen Torch and independent NumPy forward outputs; nearest float32 mapping, 1/3-channel RGB, 1/2/4 passes and retained initial direct masks, NaN/Inf inputs and thresholds, exact inclusive threshold boundaries, optional direct/confidence dummies, all pyramid levels and no-copy downsample labels, flat power-of-two depths, thread tails and poisoned output padding. Not gradients, general extreme values, other devices or full application qualification. Three explicit division-decision counterexamples and four 4096-batch rounded-threshold differential sets preserve frozen-Torch masks.",
+      "configuration": {
+        "max_workgroups_x": 4294967295,
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 5e-07
+        },
+        "logical_provenance_support": "exact"
+      },
+      "evidence": "qualification/evidence/vkl-depth-resampling-parity.json"
+    },
+    {
+      "operation": "vkl.depth_resampling.initializeDepth",
+      "variant": "portable-float32-forward",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen Torch and independent NumPy forward outputs; nearest float32 mapping, 1/3-channel RGB, 1/2/4 passes and retained initial direct masks, NaN/Inf inputs and thresholds, exact inclusive threshold boundaries, optional direct/confidence dummies, all pyramid levels and no-copy downsample labels, flat power-of-two depths, thread tails and poisoned output padding. Not gradients, general extreme values, other devices or full application qualification. Three explicit division-decision counterexamples and four 4096-batch rounded-threshold differential sets preserve frozen-Torch masks.",
+      "configuration": {
+        "max_workgroups_x": 4294967295,
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 5e-07
+        },
+        "logical_provenance_support": "exact"
+      },
+      "evidence": "qualification/evidence/vkl-depth-resampling-parity.json"
+    },
+    {
+      "operation": "vkl.depth_resampling.labelDirectDepth",
+      "variant": "portable-float32-forward",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "fixture-parity-passed",
+      "scope": "Frozen Torch and independent NumPy forward outputs; nearest float32 mapping, 1/3-channel RGB, 1/2/4 passes and retained initial direct masks, NaN/Inf inputs and thresholds, exact inclusive threshold boundaries, optional direct/confidence dummies, all pyramid levels and no-copy downsample labels, flat power-of-two depths, thread tails and poisoned output padding. Not gradients, general extreme values, other devices or full application qualification. Three explicit division-decision counterexamples and four 4096-batch rounded-threshold differential sets preserve frozen-Torch masks.",
+      "configuration": {
+        "max_workgroups_x": 4294967295,
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 5e-07
+        },
+        "logical_provenance_support": "exact"
+      },
+      "evidence": "qualification/evidence/vkl-depth-resampling-parity.json"
+    },
+    {
+      "operation": "vkl.binary_match.finalizeMatch",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact independent/frozen donor forward parity for float32/int64 binary features; no optimized-variant selection, whole-pipeline/trajectory accuracy, gradients, float64 or NVIDIA claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "shader_int64": true,
+        "numerical_profile": "vkl-binary-features-forward-f32-i64"
+      },
+      "evidence": "qualification/evidence/vkl-binary-features-0.1.9.json"
+    },
+    {
+      "operation": "vkl.binary_match.initializeMatch",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact independent/frozen donor forward parity for float32/int64 binary features; no optimized-variant selection, whole-pipeline/trajectory accuracy, gradients, float64 or NVIDIA claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "shader_int64": true,
+        "numerical_profile": "vkl-binary-features-forward-f32-i64"
+      },
+      "evidence": "qualification/evidence/vkl-binary-features-0.1.9.json"
+    },
+    {
+      "operation": "vkl.binary_match.matchPairs",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact independent/frozen donor forward parity for float32/int64 binary features; no optimized-variant selection, whole-pipeline/trajectory accuracy, gradients, float64 or NVIDIA claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "shader_int64": true,
+        "numerical_profile": "vkl-binary-features-forward-f32-i64"
+      },
+      "evidence": "qualification/evidence/vkl-binary-features-0.1.9.json"
+    },
+    {
+      "operation": "vkl.binary_match.packBinary",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact independent/frozen donor forward parity for float32/int64 binary features; no optimized-variant selection, whole-pipeline/trajectory accuracy, gradients, float64 or NVIDIA claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "shader_int64": true,
+        "numerical_profile": "vkl-binary-features-forward-f32-i64"
+      },
+      "evidence": "qualification/evidence/vkl-binary-features-0.1.9.json"
+    },
+    {
+      "operation": "vkl.binary_match.reverseMinimum",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact independent/frozen donor forward parity for float32/int64 binary features; no optimized-variant selection, whole-pipeline/trajectory accuracy, gradients, float64 or NVIDIA claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "shader_int64": true,
+        "numerical_profile": "vkl-binary-features-forward-f32-i64"
+      },
+      "evidence": "qualification/evidence/vkl-binary-features-0.1.9.json"
+    },
+    {
+      "operation": "vkl.binary_match.rowMinimum",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact independent/frozen donor forward parity for float32/int64 binary features; no optimized-variant selection, whole-pipeline/trajectory accuracy, gradients, float64 or NVIDIA claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "shader_int64": true,
+        "numerical_profile": "vkl-binary-features-forward-f32-i64"
+      },
+      "evidence": "qualification/evidence/vkl-binary-features-0.1.9.json"
+    },
+    {
+      "operation": "vkl.brief.briefDescribe",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "60e627e96653eef9e02645fea25a6f83c63bbd371c2c71a1fa5a47befab356d2",
+      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact independent/frozen donor forward parity for float32/int64 binary features; no optimized-variant selection, whole-pipeline/trajectory accuracy, gradients, float64 or NVIDIA claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "shader_int64": true,
+        "numerical_profile": "vkl-binary-features-forward-f32-i64"
+      },
+      "evidence": "qualification/evidence/vkl-binary-features-0.1.9.json"
+    },
+    {
+      "operation": "vkl.depth_fusion.fuseDepth",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
+      "source_dependencies_sha256": {
+        "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+        "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
+      },
+      "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact randomized/edge binary32 divider probe, contraction-cancellation probe, controlled3/4source frozen-depth parity, seeded rays/normal existing tolerances, broad existing geometry/fusion and borrowed-encoder composition tests. No arbitrary-source-count exact reduction, full-domain geometry, native denormal/subnormal guarantees outside divider, trajectory, performance selection or cross-vendor qualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "extra_int64_or_float64_capability": false,
+        "numerical_change": "rounded camera/fused ratios and staged native product boundaries"
+      },
+      "evidence": "qualification/evidence/rounded-vkl-0.2.0.json"
+    },
+    {
+      "operation": "vkl.depth_fusion.temporalDepthFuse",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
+      "source_dependencies_sha256": {
+        "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+        "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
+      },
+      "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact randomized/edge binary32 divider probe, contraction-cancellation probe, controlled3/4source frozen-depth parity, seeded rays/normal existing tolerances, broad existing geometry/fusion and borrowed-encoder composition tests. No arbitrary-source-count exact reduction, full-domain geometry, native denormal/subnormal guarantees outside divider, trajectory, performance selection or cross-vendor qualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "extra_int64_or_float64_capability": false,
+        "numerical_change": "rounded camera/fused ratios and staged native product boundaries"
+      },
+      "evidence": "qualification/evidence/rounded-vkl-0.2.0.json"
+    },
+    {
+      "operation": "vkl.geometry.depthGeometry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
+      "source_dependencies_sha256": {
+        "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+        "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
+      },
+      "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact randomized/edge binary32 divider probe, contraction-cancellation probe, controlled3/4source frozen-depth parity, seeded rays/normal existing tolerances, broad existing geometry/fusion and borrowed-encoder composition tests. No arbitrary-source-count exact reduction, full-domain geometry, native denormal/subnormal guarantees outside divider, trajectory, performance selection or cross-vendor qualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "extra_int64_or_float64_capability": false,
+        "numerical_change": "rounded camera/fused ratios and staged native product boundaries"
+      },
+      "evidence": "qualification/evidence/rounded-vkl-0.2.0.json"
+    },
+    {
+      "operation": "vkl.geometry.worldTransform",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
+      "source_dependencies_sha256": {
+        "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+        "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
+      },
+      "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact randomized/edge binary32 divider probe, contraction-cancellation probe, controlled3/4source frozen-depth parity, seeded rays/normal existing tolerances, broad existing geometry/fusion and borrowed-encoder composition tests. No arbitrary-source-count exact reduction, full-domain geometry, native denormal/subnormal guarantees outside divider, trajectory, performance selection or cross-vendor qualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "extra_int64_or_float64_capability": false,
+        "numerical_change": "rounded camera/fused ratios and staged native product boundaries"
+      },
+      "evidence": "qualification/evidence/rounded-vkl-0.2.0.json"
+    },
+    {
+      "operation": "depth.bilateral",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/bilateral-invalid"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "depth.register",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/identity-registration",
+          "locus-fixture/nearest-depth-collision"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "depth.resolve",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e5416309a1d2e09a5549e558a74f42baad0af9a96ad4721c46c467f300cf9ea4",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/resolve-invalid"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "depth.validity",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/invalid-depth-nan"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "geometry.backproject",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/optical-backproject"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "geometry.coverage_heatmap",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "b23581c8b5348522c3ee7ad05b2f9b97d954e7d9c5070fa80341fe52216d94d8",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/coverage-pitched"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "geometry.coverage_points",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "5e8ea4892df9d48caae31b75885f49f6fd63b4170a75c2a411688a052149a30c",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/coverage-point-preview"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "geometry.transform_points",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/transform-validity"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "image.crop_normalize",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/crop-normalize"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "image.nv12_to_rgb",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "color-pitched/nv12_decode/6x4-to-6x4/bt601-limited",
+          "color-pitched/nv12_decode/6x4-to-6x4/bt601-full",
+          "color-pitched/nv12_decode/6x4-to-6x4/bt709-limited",
+          "color-pitched/nv12_decode/6x4-to-6x4/bt709-full",
+          "color-pitched/nv12_decode/640x480-to-640x480/bt709-limited"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "image.planar_yuv_to_rgb",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/yuv-matrix0-range0",
+          "locus-fixture/yuv-matrix0-range1",
+          "locus-fixture/yuv-matrix1-range0",
+          "locus-fixture/yuv-matrix1-range1"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "image.remap_bilinear",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "color-pitched/remap/6x4-to-7x5/bt601-limited",
+          "color-pitched/remap/6x4-to-7x5/bt601-full",
+          "color-pitched/remap/6x4-to-7x5/bt709-limited",
+          "color-pitched/remap/6x4-to-7x5/bt709-full",
+          "color-pitched/remap/640x480-to-64x48/bt709-limited"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "image.resize_bilinear",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "color-pitched/resize/6x4-to-7x5/bt601-limited",
+          "color-pitched/resize/6x4-to-7x5/bt601-full",
+          "color-pitched/resize/6x4-to-7x5/bt709-limited",
+          "color-pitched/resize/6x4-to-7x5/bt709-full",
+          "color-pitched/resize/640x480-to-64x48/bt709-limited"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "image.resize_nearest",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/resize-odd-pitched"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "image.rgb_to_nv12",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "color-pitched/nv12_encode/6x4-to-6x4/bt601-limited",
+          "color-pitched/nv12_encode/6x4-to-6x4/bt601-full",
+          "color-pitched/nv12_encode/6x4-to-6x4/bt709-limited",
+          "color-pitched/nv12_encode/6x4-to-6x4/bt709-full",
+          "color-pitched/nv12_encode/640x480-to-640x480/bt709-limited"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "image.undistort",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/identity-undistort",
+          "locus-fixture/distortion-outside"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "image.yuyv_remap_fused",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "color-pitched/fused_remap/6x4-to-7x5/bt601-limited",
+          "color-pitched/fused_remap/6x4-to-7x5/bt601-full",
+          "color-pitched/fused_remap/6x4-to-7x5/bt709-limited",
+          "color-pitched/fused_remap/6x4-to-7x5/bt709-full",
+          "color-pitched/fused_remap/640x480-to-64x48/bt709-limited"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "image.yuyv_to_rgb",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "color-pitched/yuyv_decode/6x4-to-6x4/bt601-limited",
+          "color-pitched/yuyv_decode/6x4-to-6x4/bt601-full",
+          "color-pitched/yuyv_decode/6x4-to-6x4/bt709-limited",
+          "color-pitched/yuyv_decode/6x4-to-6x4/bt709-full",
+          "color-pitched/yuyv_decode/640x480-to-640x480/bt709-limited"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "perception.cosine_similarity",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/similarity-count0",
+          "locus-fixture/similarity-count3",
+          "locus-fixture/similarity-nan-zero"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "perception.mask_postprocess",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "5de5a3648d315cd126e40e181aa11ec2b3b479583be57f77605def4e5d772688",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/mask-mode0",
+          "locus-fixture/mask-mode1",
+          "locus-fixture/mask-mode2"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "quality.metrics",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/quality-metrics",
+          "locus-fixture/quality-nan"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "quality.reduce",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/quality-reduction"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "spatial.voxel_insert",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "locus-fixture/voxel-contention",
+          "locus-fixture/voxel-capacity-overflow"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.binary_match.finalizeMatch",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-features/finalizeMatch/chunk-0-129"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.binary_match.initializeMatch",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-features/initializeMatch/chunk-0-129"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.binary_match.matchPairs",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-features/matchPairs/chunk-0-129",
+          "vkl-features/matchPairs/chunk-258-1"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.binary_match.packBinary",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-features/packBinary/chunk-0-129"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.binary_match.reverseMinimum",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-features/reverseMinimum/chunk-0-129",
+          "vkl-features/reverseMinimum/chunk-258-1"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.binary_match.rowMinimum",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-features/rowMinimum/chunk-0-129",
+          "vkl-features/rowMinimum/chunk-258-1"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.brief.briefDescribe",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "60e627e96653eef9e02645fea25a6f83c63bbd371c2c71a1fa5a47befab356d2",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-features/briefDescribe/chunk-0-0"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.depth_convert.depthConvert",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "2ced5aa077ac8484e0bbd2426f468caf69ce707b25f740b206541303fb2a18f5",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/convert/2x31x35/representation-0",
+          "vkl-synthetic/convert/2x31x35/representation-1",
+          "vkl-synthetic/convert/2x31x35/representation-2",
+          "vkl-synthetic/convert/1x47x61/representation-0",
+          "vkl-synthetic/convert/1x47x61/representation-1",
+          "vkl-synthetic/convert/1x47x61/representation-2"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.depth_fusion.fuseDepth",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/fusion/2x31x35/relative-0",
+          "vkl-synthetic/fusion/2x31x35/relative-1",
+          "vkl-synthetic/fusion/1x47x61/relative-0",
+          "vkl-synthetic/fusion/1x47x61/relative-1"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.depth_fusion.temporalDepthFuse",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/temporal_fusion/2x31x35",
+          "vkl-synthetic/temporal_fusion/1x47x61"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.depth_pyramid.depthPyramidLevel",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "55fea213f1f1614ed3307a6c7a2a3e62765e20db86fbe7da9790c1379f4d4aa2",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/pyramid/2x31x35",
+          "vkl-synthetic/pyramid/1x47x61"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.depth_resampling.densifyDepth",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/densify/2x31x35/channels-1",
+          "vkl-synthetic/densify/1x47x61/channels-3"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.depth_resampling.depthUpsample",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/lift/2x31x35",
+          "vkl-synthetic/lift/1x47x61"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.depth_resampling.initializeDepth",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/initialize/2x31x35/confidence-0",
+          "vkl-synthetic/initialize/1x47x61/confidence-1"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.depth_resampling.labelDirectDepth",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/labels/2x31x35",
+          "vkl-synthetic/labels/1x47x61"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.geometry.depthGeometry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/geometry/2x31x35/options-0",
+          "vkl-synthetic/geometry/2x31x35/options-1",
+          "vkl-synthetic/geometry/1x47x61/options-0",
+          "vkl-synthetic/geometry/1x47x61/options-1"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.geometry.worldTransform",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/world/2x31x35",
+          "vkl-synthetic/world/1x47x61"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.photometric_isp.photometricISP",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "2cda8c2b898d3dea595b547d5de4fcd83acf4799711a826bdc6c9b2a6328474e",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/photometric/2x31x35/options-0",
+          "vkl-synthetic/photometric/2x31x35/options-1",
+          "vkl-synthetic/photometric/1x47x61/options-0",
+          "vkl-synthetic/photometric/1x47x61/options-1"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.project_depth_evidence.projectDepthEvidence",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "48419b4308fcafc4682a92233bcbf85618d7148f4c09763dff28387a88f8bc27",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/projection/2x31x35",
+          "vkl-synthetic/projection/1x47x61"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "vkl.temporal_best.temporalBest",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "20b0ebc40ee1d96c45bd4ea2a3fb281b46a614d6514571b36f003142d68b65fa",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "gpu_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "workloads": [
+          "vkl-synthetic/best/2x31x35/options-0",
+          "vkl-synthetic/best/2x31x35/options-1",
+          "vkl-synthetic/best/1x47x61/options-0",
+          "vkl-synthetic/best/1x47x61/options-1"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/nvidia4070ti-0.2.0.json"
+    },
+    {
+      "operation": "primitives.scan.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan/scanBlocks/255/sum",
+          "primitive-stage/scan/scanBlocks/255/product",
+          "primitive-stage/scan/scanBlocks/256/sum",
+          "primitive-stage/scan/scanBlocks/256/product",
+          "primitive-stage/scan/scanBlocks/257/sum",
+          "primitive-stage/scan/scanBlocks/257/product",
+          "primitive-stage/scan/scanBlocks/70001/sum",
+          "primitive-stage/scan/scanBlocks/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan/scanCarry/255/sum",
+          "primitive-stage/scan/scanCarry/255/product",
+          "primitive-stage/scan/scanCarry/256/sum",
+          "primitive-stage/scan/scanCarry/256/product",
+          "primitive-stage/scan/scanCarry/257/sum",
+          "primitive-stage/scan/scanCarry/257/product",
+          "primitive-stage/scan/scanCarry/70001/sum",
+          "primitive-stage/scan/scanCarry/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan/scanExclusive/255/sum",
+          "primitive-stage/scan/scanExclusive/255/product",
+          "primitive-stage/scan/scanExclusive/256/sum",
+          "primitive-stage/scan/scanExclusive/256/product",
+          "primitive-stage/scan/scanExclusive/257/sum",
+          "primitive-stage/scan/scanExclusive/257/product",
+          "primitive-stage/scan/scanExclusive/70001/sum",
+          "primitive-stage/scan/scanExclusive/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan_uint/scanBlocks/255/sum",
+          "primitive-stage/scan_uint/scanBlocks/255/product",
+          "primitive-stage/scan_uint/scanBlocks/256/sum",
+          "primitive-stage/scan_uint/scanBlocks/256/product",
+          "primitive-stage/scan_uint/scanBlocks/257/sum",
+          "primitive-stage/scan_uint/scanBlocks/257/product",
+          "primitive-stage/scan_uint/scanBlocks/70001/sum",
+          "primitive-stage/scan_uint/scanBlocks/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan_uint/scanCarry/255/sum",
+          "primitive-stage/scan_uint/scanCarry/255/product",
+          "primitive-stage/scan_uint/scanCarry/256/sum",
+          "primitive-stage/scan_uint/scanCarry/256/product",
+          "primitive-stage/scan_uint/scanCarry/257/sum",
+          "primitive-stage/scan_uint/scanCarry/257/product",
+          "primitive-stage/scan_uint/scanCarry/70001/sum",
+          "primitive-stage/scan_uint/scanCarry/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan_uint/scanExclusive/255/sum",
+          "primitive-stage/scan_uint/scanExclusive/255/product",
+          "primitive-stage/scan_uint/scanExclusive/256/sum",
+          "primitive-stage/scan_uint/scanExclusive/256/product",
+          "primitive-stage/scan_uint/scanExclusive/257/sum",
+          "primitive-stage/scan_uint/scanExclusive/257/product",
+          "primitive-stage/scan_uint/scanExclusive/70001/sum",
+          "primitive-stage/scan_uint/scanExclusive/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.compact.compactPrepare",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/compact/compactPrepare/257/none",
+          "primitive-stage/compact/compactPrepare/257/all",
+          "primitive-stage/compact/compactPrepare/257/sparse",
+          "primitive-stage/compact/compactPrepare/70001/none",
+          "primitive-stage/compact/compactPrepare/70001/all",
+          "primitive-stage/compact/compactPrepare/70001/sparse",
+          "primitive-stage/compact/compactPrepare/0/none"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.compact.compactScatter",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/compact/compactScatter/257/none",
+          "primitive-stage/compact/compactScatter/257/all",
+          "primitive-stage/compact/compactScatter/257/sparse",
+          "primitive-stage/compact/compactScatter/70001/none",
+          "primitive-stage/compact/compactScatter/70001/all",
+          "primitive-stage/compact/compactScatter/70001/sparse"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan/scanBlocks/255/sum",
+          "primitive-stage/scan/scanBlocks/255/product",
+          "primitive-stage/scan/scanBlocks/256/sum",
+          "primitive-stage/scan/scanBlocks/256/product",
+          "primitive-stage/scan/scanBlocks/257/sum",
+          "primitive-stage/scan/scanBlocks/257/product",
+          "primitive-stage/scan/scanBlocks/70001/sum",
+          "primitive-stage/scan/scanBlocks/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan/scanCarry/255/sum",
+          "primitive-stage/scan/scanCarry/255/product",
+          "primitive-stage/scan/scanCarry/256/sum",
+          "primitive-stage/scan/scanCarry/256/product",
+          "primitive-stage/scan/scanCarry/257/sum",
+          "primitive-stage/scan/scanCarry/257/product",
+          "primitive-stage/scan/scanCarry/70001/sum",
+          "primitive-stage/scan/scanCarry/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan/scanExclusive/255/sum",
+          "primitive-stage/scan/scanExclusive/255/product",
+          "primitive-stage/scan/scanExclusive/256/sum",
+          "primitive-stage/scan/scanExclusive/256/product",
+          "primitive-stage/scan/scanExclusive/257/sum",
+          "primitive-stage/scan/scanExclusive/257/product",
+          "primitive-stage/scan/scanExclusive/70001/sum",
+          "primitive-stage/scan/scanExclusive/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan_uint/scanBlocks/255/sum",
+          "primitive-stage/scan_uint/scanBlocks/255/product",
+          "primitive-stage/scan_uint/scanBlocks/256/sum",
+          "primitive-stage/scan_uint/scanBlocks/256/product",
+          "primitive-stage/scan_uint/scanBlocks/257/sum",
+          "primitive-stage/scan_uint/scanBlocks/257/product",
+          "primitive-stage/scan_uint/scanBlocks/70001/sum",
+          "primitive-stage/scan_uint/scanBlocks/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan_uint/scanCarry/255/sum",
+          "primitive-stage/scan_uint/scanCarry/255/product",
+          "primitive-stage/scan_uint/scanCarry/256/sum",
+          "primitive-stage/scan_uint/scanCarry/256/product",
+          "primitive-stage/scan_uint/scanCarry/257/sum",
+          "primitive-stage/scan_uint/scanCarry/257/product",
+          "primitive-stage/scan_uint/scanCarry/70001/sum",
+          "primitive-stage/scan_uint/scanCarry/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan_uint/scanExclusive/255/sum",
+          "primitive-stage/scan_uint/scanExclusive/255/product",
+          "primitive-stage/scan_uint/scanExclusive/256/sum",
+          "primitive-stage/scan_uint/scanExclusive/256/product",
+          "primitive-stage/scan_uint/scanExclusive/257/sum",
+          "primitive-stage/scan_uint/scanExclusive/257/product",
+          "primitive-stage/scan_uint/scanExclusive/70001/sum",
+          "primitive-stage/scan_uint/scanExclusive/70001/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.compact.compactPrepare",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/compact/compactPrepare/257/none",
+          "primitive-stage/compact/compactPrepare/257/all",
+          "primitive-stage/compact/compactPrepare/257/sparse",
+          "primitive-stage/compact/compactPrepare/70001/none",
+          "primitive-stage/compact/compactPrepare/70001/all",
+          "primitive-stage/compact/compactPrepare/70001/sparse",
+          "primitive-stage/compact/compactPrepare/0/none"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.compact.compactScatter",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked61prepared-stagefixtures oneachdevice. Uint/count/blockID/tails/undefinedcompactioncapacity/untouchedcarry exact; existingfloat2e-4. Includesno-writecarrydispatches255/256andemptycompactPrepare(countreset). No completehierarchytimings, optimizedCPU, exclusive-device/performanceadoption, newnumericalsemantics, gradients or full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/compact/compactScatter/257/none",
+          "primitive-stage/compact/compactScatter/257/all",
+          "primitive-stage/compact/compactScatter/257/sparse",
+          "primitive-stage/compact/compactScatter/70001/none",
+          "primitive-stage/compact/compactScatter/70001/all",
+          "primitive-stage/compact/compactScatter/70001/sparse"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan/scanBlocks/1025/sum",
+          "primitive-stage/scan/scanBlocks/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan/scanCarry/1025/sum",
+          "primitive-stage/scan/scanCarry/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan/scanExclusive/1025/sum",
+          "primitive-stage/scan/scanExclusive/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan_uint/scanBlocks/1025/sum",
+          "primitive-stage/scan_uint/scanBlocks/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan_uint/scanCarry/1025/sum",
+          "primitive-stage/scan_uint/scanCarry/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan_uint/scanExclusive/1025/sum",
+          "primitive-stage/scan_uint/scanExclusive/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan/scanBlocks/1025/sum",
+          "primitive-stage/scan/scanBlocks/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan/scanCarry/1025/sum",
+          "primitive-stage/scan/scanCarry/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan/scanExclusive/1025/sum",
+          "primitive-stage/scan/scanExclusive/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan_uint/scanBlocks/1025/sum",
+          "primitive-stage/scan_uint/scanBlocks/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan_uint/scanCarry/1025/sum",
+          "primitive-stage/scan_uint/scanCarry/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan_uint/scanExclusive/1025/sum",
+          "primitive-stage/scan_uint/scanExclusive/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "xsplat_vk.adam.main",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4126871d8bd132c9741bb1f2dadc9e305ed7d54e7db3c7e6bb10b0cd119549c1",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "xsplat-math/adam/31/step0",
+          "xsplat-math/adam/31/step1",
+          "xsplat-math/adam/31/step37",
+          "xsplat-math/adam/32/step0",
+          "xsplat-math/adam/32/step1",
+          "xsplat-math/adam/32/step37",
+          "xsplat-math/adam/1025/step0",
+          "xsplat-math/adam/1025/step1",
+          "xsplat-math/adam/1025/step37",
+          "xsplat-math/adam/65539/step0",
+          "xsplat-math/adam/65539/step1",
+          "xsplat-math/adam/65539/step37"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "xsplat_vk.project.projectMain",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "xsplat-math/project/127/rotated-mixed",
+          "xsplat-math/project/128/rotated-mixed",
+          "xsplat-math/project/1025/rotated-mixed",
+          "xsplat-math/project/65539/rotated-mixed"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "xsplat_vk.backward_probe.backwardProbeMain",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "640781cf476034479008631ce8ba704283499edd2f6c6f75837dbe53868bb5f6",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "xsplat-math/backward-probe/fixed-diagnostic"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "xsplat_vk.adam.main",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4126871d8bd132c9741bb1f2dadc9e305ed7d54e7db3c7e6bb10b0cd119549c1",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "xsplat-math/adam/31/step0",
+          "xsplat-math/adam/31/step1",
+          "xsplat-math/adam/31/step37",
+          "xsplat-math/adam/32/step0",
+          "xsplat-math/adam/32/step1",
+          "xsplat-math/adam/32/step37",
+          "xsplat-math/adam/1025/step0",
+          "xsplat-math/adam/1025/step1",
+          "xsplat-math/adam/1025/step37",
+          "xsplat-math/adam/65539/step0",
+          "xsplat-math/adam/65539/step1",
+          "xsplat-math/adam/65539/step37"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "xsplat_vk.project.projectMain",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "xsplat-math/project/127/rotated-mixed",
+          "xsplat-math/project/128/rotated-mixed",
+          "xsplat-math/project/1025/rotated-mixed",
+          "xsplat-math/project/65539/rotated-mixed"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "xsplat_vk.backward_probe.backwardProbeMain",
+      "variant": "portable-imported",
+      "adapter": "SlangPy0.43.1 / Vulkan scalar layout",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "640781cf476034479008631ce8ba704283499edd2f6c6f75837dbe53868bb5f6",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Parity-checked17prepared-mathfixtures perdevice:12Adam4projection1fixedgradientdiagnostic,50samples5warmups. Alloriginalfixtureinputsretained. Strictvisiblepixel/conic/depth/Adam/probe2e-6;exactflags/tails;allpixelcoordinatesinput-derivedFP32enclosureunderreviewedactualbinary,0unresolvedclassifications. Wideoffscreenintervalsareweakaccuracy evidence,notmetricgroundtruth. Allinoutstatereset. Logicaluniformpayloadbytesseparatefromexplicitstorageuploads. NooptimizedCPU/fullrenderer/training/controlledperformance/defaultselection/full-domainqualification.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "xsplat-math/backward-probe/fixed-diagnostic"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise",
+        "matrix_layout": "row-major",
+        "abi_profile": "slangpy-0.43.1-vulkan-scalar"
+      },
+      "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    }
+  ],
+  "evidence_sha256": {
+    "qualification/evidence/color-1080p-exploratory.json": "94b18266afe318b9b87a5f290e3fde8d12a62538ffd09edff2d66c3d51c76a53",
+    "qualification/evidence/color-720p-exploratory.json": "f43b603b744a07819e0c9b538bf5128baaeb81a10e6195d9059d99fb5fa92e0e",
+    "qualification/evidence/locus-amd8060s.json": "1e7e23b78d34242ff07b8aacf8ea7a7bbbffa660741194cb427dace8870c6c3c",
+    "qualification/evidence/vkl-projection-exploratory.json": "51e172ceadf3476597303536ad3a43ca04c8d5e368ecfd47d1ed709518d31bf5",
+    "qualification/evidence/vkl-geometry-depth-2-invalid.json": "bc7c7e86fe2e9d7d0e3eaf484e86334082e9af5f8a2917df09cc0e446132fe08",
+    "qualification/evidence/vkl-geometry-depth-9-conflict.json": "27a65d40843c246f07833466dec788265e38799b3764cd5eb17d184b47b9de90",
+    "qualification/evidence/vkl-geometry-depth-all.json": "4e7418df0f8a8bc213f5d2b908e5fa9e613d70a13711e27dee078825fdb439aa",
+    "qualification/evidence/vkl-geometry-depth-mixed.json": "c33ffa709e9928db6dab936c447de1497ab9bc05c5f236fd8ea946b3824898df",
+    "qualification/evidence/vkl-geometry-depth-none.json": "de7155ea82f32bb187b81e15f4a7cc199b2bb02244db0862e036e4cf38df6207",
+    "qualification/evidence/vkl-geometry-depth-parity.json": "5c013d42bd6859437d2264c43638cfff02eb42c1e7726f617e6d38411b3ce6ca",
+    "qualification/evidence/vkl-temporal-best-65536-2-dense.json": "6339ca5e17e124b675ed483d05bd602ce2f3764013d014b6c3b46b45834b6316",
+    "qualification/evidence/vkl-temporal-best-65536-32-early.json": "01c353c8db38db1302fb7e5276123bc1607eb4f88d9b7e513697541871f4c325",
+    "qualification/evidence/vkl-temporal-best-65536-32-late.json": "c9379a64a0a79e72db3407437f9c08329de7e59502c229960041b6e829446c4e",
+    "qualification/evidence/vkl-temporal-best-65536-32-nan.json": "f704aa3695fca73f64ea176e0c86e01d07cf6f684a907cbdbc9051de2c5d524b",
+    "qualification/evidence/vkl-temporal-best-65536-32-sparse.json": "aa3f63d03474c63107e6dd16bca62ede74e085e833da6f747b571783c63af2e6",
+    "qualification/evidence/vkl-temporal-best-8192-256-dense.json": "465fc8cbc62c9848f7dadbd65e04a6d152dbb484f6ba6060f516fe59ab6bac12",
+    "qualification/evidence/vkl-temporal-best-parity.json": "80d63dca0234e2fc07958cef2e179c34d79e5beab960037396a49e488fc73bd3",
+    "qualification/delivery-0.1.2.json": "4b249ea02fac50cee1bf42c4a2b37f0a4a0be9f728e2f0cdf59b0d400a9815d3",
+    "qualification/evidence/vkl-resampling-densify-240-320-2-dense.json": "0a96c2a7fb146f4be23131f6ae82ee511207f1a117a4aa28db53396c35990bc6",
+    "qualification/evidence/vkl-resampling-densify-240-320-2-edges.json": "cf7978fc5cdb99ef998744178d8833a0764f0981391334eecc04e2df28f45cfc",
+    "qualification/evidence/vkl-resampling-densify-240-320-2-invalid.json": "bca9743b6354d7e169de6c8c34232267ce74f40a71d99303c81917916c887fec",
+    "qualification/evidence/vkl-resampling-densify-240-320-2-sparse.json": "992f3350068daf4f2c073bd8dc42149dbe7b75763287e16531719449ff146712",
+    "qualification/evidence/vkl-resampling-densify-480-640-1-holes.json": "b5c2979d6359388ecb32d424c661935de99ee78a57cfc58cae73c8ca4ff677df",
+    "qualification/evidence/vkl-resampling-densify-480-640-2-holes.json": "646f7f36315f741c63a6c07b3b0de8c40fc46ba2a62d7d3f22ea3b26c3c7c2d9",
+    "qualification/evidence/vkl-resampling-densify-480-640-4-holes.json": "a34fece8b4c562fdee00d351e1e67af051c54865a91b4e45ebcfcba8a61b74e7",
+    "qualification/evidence/vkl-resampling-downsample-481-639-1-holes.json": "9c3ebff8583958eab7df87d945d3cc4c079bbb80db0a32713cb21703d95dfff4",
+    "qualification/evidence/vkl-resampling-lift-240-320-1-holes.json": "e6d0a99d3f89a18e94e05bea0a93450eb4e6d539a5a21638481d274c1c3cb3a4",
+    "qualification/evidence/vkl-resampling-pyramid-481-639-1-holes.json": "e4c16b162c659703b698c2372eb5562d30bbe8783b1ac0ca47f2fe4fc9160813",
+    "qualification/evidence/vkl-depth-resampling-parity.json": "7f3029f26311c9bf30ad8f41559188d8e7e4c45c64eafdc4cb03972a6197d7cf",
+    "qualification/delivery-0.1.3.json": "1a6c5c54a67cf97e9cd09e8e54144e60c7da189077e9a0baef4a464d7e8ccc88",
+    "qualification/evidence/vrdx-native-build.json": "c94bce7f1468470e97b1051e9034a9ccdca5b2918a103f28898e10b18ef2415c",
+    "qualification/evidence/reflection-compatibility-0.1.4.json": "5981d085e63ae42a50d02aeec52733db84a7ff7d4142e8c27a5c31ebf32dc0e9",
+    "qualification/delivery-0.1.4.json": "1ebf9ba2f835ca21325a07f122b9f163ed362239f5dca3967680383d10da78b7",
+    "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf",
+    "qualification/delivery-0.1.5.json": "5b0343aa119753b572aedee0982a5dc7ccd0a804595cb037492ca2b3d85fc9a2",
+    "benchmarks/results/locus-cpu-gpu-8060s.json": "36f05cb3ac40bf40f5f1f878884495bcd6c933767d112e58e89a4e3290388ea2",
+    "src/sintergpu/data/timings.json": "1609de33c58980538b193e66704b8de49ea3106687afb62d6d42f114bd9338d0",
+    "docs/kernel-timings.md": "f6342845e67bc1beddbb7f26ba7ed09101046aa5768474d2fde44610fb605bf5",
+    "qualification/delivery-0.1.6.json": "61fbdbde082cf212b82804e27fd16ee266479c1273b9eb13df9488a98d5921b8",
+    "benchmarks/results/color-cpu-gpu-8060s.json": "1d34cd705e7096f28651c04521958027e60c038b65648a83baa8332c863ab864",
+    "qualification/delivery-0.1.7.json": "a09a8871e40f76d78b4f42bc3c258e8e609692653c949785937292b1cb4eb57b",
+    "qualification/evidence/native-install-0.1.8.json": "9a3280422b5f44af15ed7c29a6be9ce4c259534f0ac17d9230794b873b8005a3",
+    "benchmarks/results/locus-cpu-gpu-8060s-0.1.9.json": "3e3163dd584500ce3ebf6e2ff661c8189ae16b437d12a3020defb5e2b9214401",
+    "benchmarks/results/color-cpu-gpu-8060s-0.1.9.json": "31e12388cb70964bd770f1a0e329e065ee830b4fe69078c5b97654c0f8509405",
+    "benchmarks/results/vkl-features-cpu-gpu-8060s-0.1.9.json": "862f58167c6111a580af14bb8375320d79406b2bbbd507fa083610cb220688d0",
+    "qualification/evidence/reflection-compatibility-0.1.9.json": "338f76333846a03792b9b8fc6f0a0a3e457b2334fd96c0e812c564c9e082d864",
+    "qualification/evidence/vkl-binary-features-0.1.9.json": "5ddebbc5eec6ed50fa781fc608ab8a4bcd3596d12b9fe091906b96fb45298bf1",
+    "qualification/delivery-0.1.8.json": "66f11498d08c44e9b6635aca08de564354b90535d568bdad35c7436f1fa3afa1",
+    "qualification/evidence/native-install-release-ci-0.1.8.json": "130bf14c12c030722d2e5d7d5d727826d117a68ffd9c34a55331aed9162eef6d",
+    "qualification/delivery-0.1.9.json": "f6a9ee077a6237d6aba5ebe63b2e62776f772c8353f2c7d6f5033623e2b3213f",
+    "qualification/evidence/native-install-release-ci-0.1.9.json": "87b77333ebcd01e86288a5fc4caf534072045eb97b304df0ba80ac7124e426d7",
+    "qualification/evidence/rounded-vkl-0.2.0.json": "bfc69199dcea33904d516d4e1ee7055f745167b3f09113eca52ddcbc2a3157a7",
+    "qualification/evidence/reflection-compatibility-0.2.0.json": "3d1ea5bf4050320e4fc66678b7830b26704047de7d08fe22c586f097a419c7a9",
+    "benchmarks/results/locus-cpu-gpu-8060s-0.2.0.json": "b23b73580c289d8bc2d3b5dcad5029cd8d7d42204de78e941323be6669d7d669",
+    "benchmarks/results/color-cpu-gpu-8060s-0.2.0.json": "8073286234435fc5f6ec550ccada4bbc350bcfaf4c3e8404370ecd55bc06ba3a",
+    "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.0.json": "68e491e4b33c234df454642115a98e9bde46946f26128c4f9b07b6182055cd5a",
+    "benchmarks/results/vkl-cpu-gpu-8060s-0.2.0.json": "a71ed9992853c386fbecd6f80e83cd4d83cf4fbc70dab0afd584f15e6e4e4763",
+    "benchmarks/results/locus-cpu-gpu-4070ti-0.2.0.json": "36a26373e6edeac42cd72045b3f3f81f9f2cb81c205a362f1412653975a56a36",
+    "benchmarks/results/color-cpu-gpu-4070ti-0.2.0.json": "f343842cf126a3354a0b8783663360cefce07b0b31746e8fd893907be032cd09",
+    "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.0.json": "98a92c46c01f98ce70f9e2c54878591ac7b58d62648bec4a9c1eb731b12a18de",
+    "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.0.json": "47fb456092525c10a951e80fe9a9714ccd1168abda3241a3607d44a262a900c7",
+    "qualification/evidence/nvidia4070ti-0.2.0-gpu.log": "4299aa4f6d7164d03b12f9871152c8bdbc89130b0b82ea941802591d385201e4",
+    "qualification/evidence/nvidia4070ti-0.2.0.json": "11566dfe84cd6f94f320d43855d901a0d075e23e5e4a775fbfef22ce0ffc7d05",
+    "qualification/delivery-0.2.1.json": "7f13fc5c9453f4353a40c4fe49591c6184e58dbd16042693fd27096d1aa52b68",
+    "qualification/evidence/native-install-release-ci-0.2.1.json": "ef779b442be8086865731482d0a590eda5264e9125f72468bd0475d0c009ffe5",
+    "benchmarks/results/primitives-cpu-gpu-8060s-0.2.2.json": "dac26bf8416c916acd059ccbb68581b4fe59bb963db01553c017adf0e134d200",
+    "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.2.json": "4bc046c45633b750d100312c644cd1c0f2fa7e1112337429308d7b9770c56f0b",
+    "qualification/evidence/primitive-timings-0.2.2.json": "9d7b5dabe07048fe3472b2eed51de832efded78c1ca51279538717b5eca1071d",
+    "benchmarks/results/primitives-irregular-cpu-gpu-8060s-0.2.2.json": "b04ca4874c77c4dc527928ffdbebcda0701d26a3c8c873744e4f880ddcb35d85",
+    "benchmarks/results/primitives-irregular-cpu-gpu-4070ti-0.2.2.json": "53d65ade9e6179290f18fc637c54fd408bfe891e719aef42395965a85816bf15",
+    "qualification/evidence/primitive-irregular-timings-0.2.2.json": "d42dc863c080020d0476fa26564b9e8b4d7eef42c42bbd0ca79f0fa7e0fdf18d",
+    "qualification/delivery-0.2.2.json": "287f804ef20ea51d7f5a396a7d4dffb2308475943f904666afa465fcfd92c334",
+    "qualification/evidence/xsplat-binding-failure-8060s-0.2.3.log": "e06cdae22d7067469222993a9b059a061069e9cec3f6016998b0630381bec111",
+    "qualification/evidence/xsplat-binding-failure-4070ti-0.2.3.log": "0cb1d82d2b7e025415f18d6d1cf70155d26c6740438399b89ee5c4fe7cb20164",
+    "qualification/evidence/xsplat-binding-fix-0.2.3.json": "e1232c95ef626ebbe04db076ccecf77375f49bc79c809c5afedd064930e8bd29",
+    "qualification/evidence/xsplat-layout-failure-8060s-0.2.3.log": "326c207499d9f60f25b43b38d82e40bb16ef6e1cc4100a44348dd4462f78d604",
+    "qualification/evidence/xsplat-layout-failure-4070ti-0.2.3.log": "87c6c668e10372f91348cb2c3971dc7923ddaa6ef9847d03abf22d9430bbd54c",
+    "qualification/evidence/xsplat-runtime-regressions-8060s-0.2.3.log": "a21a7a7da12d0347457dccda6ace63f205288132f744d208494611f0a8138765",
+    "qualification/evidence/xsplat-layout-fix-0.2.3.json": "32f06e595e12476ec7d947d4b138f452a6c91ef3b11fc888ab5074c632f1bff6",
+    "qualification/evidence/xsplat-conditioning-failure-8060s-0.2.3.log": "21af9275e791d9ccc5e62293da454952355f34a53c9b4cb9a754b085f10ed34e",
+    "qualification/evidence/xsplat-conditioning-failure-4070ti-0.2.3.log": "b027c8567a3c46333cc395115585eefa52c847ea5f58ef5beeaa25ddbbb8e3ab",
+    "qualification/evidence/xsplat-projection-error-model-0.2.3.json": "09ad32a2d9b42a5c0ec2408e1b9b541ad5becaa96b92b7d533159e3fab26639c",
+    "qualification/evidence/xsplat-project-program-0.2.3.json": "747b1dab764519bdf44b75b74dc302db6a6100716657ad9bdd216b9ff8353a2b",
+    "qualification/evidence/xsplat-project-program-0.2.3.spv": "72bfb16dde37bc645a795f5629d362f5d3c1d146527ca08c193926f05e6ad8dd",
+    "qualification/evidence/xsplat-project-program-0.2.3.spv-asm": "e4ec269196c39b7e91d10ce87d75ef955a8409963bc92a8d668c4dc84d0c8bb4",
+    "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.3.json": "f2481f13a3a3d6b085cff0a541a67f517b2c9405398b119cac96b011f6ad806c",
+    "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.3.json": "ad77e13282d9a8a7228784a92de174c8ea34b4a6cd337b63740191d1db7850d7",
+    "qualification/evidence/xsplat-timings-0.2.3.json": "ed6e1eb70de7daeed6ffbaf1000d5e0209790d0ff5c3697a3ebe773e6c6802a7",
+    "benchmarks/results/locus-cpu-gpu-8060s-0.2.4.json": "0eb9bfdf3a1508225d5a2f710fdf028d94e989090199ff2f72e004a58278bedd",
+    "benchmarks/results/color-cpu-gpu-8060s-0.2.4.json": "485ae72ffb6c491b917a833dbe8179cd21b103934ad239df2932e349ab786d01",
+    "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.4.json": "63c1a807798049fa066e56f4c46b616ac2bbb9465cfcc480b0d7674f2f182c43",
+    "benchmarks/results/vkl-cpu-gpu-8060s-0.2.4.json": "5fb3b1c3830daa524c498092f33e39dbb4e4a9ccd7df439c15d2cd4739bd1aa4",
+    "benchmarks/results/primitives-cpu-gpu-8060s-0.2.4.json": "e40508fe6eed8711c94e50c90749710f7dc97ebacd18e8092a88f312377c6bb5",
+    "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.4.json": "842ff0a1ca3f6c578cdb7664bdf5c738e79a6caaaf5b4254e2da5efcd2b4998c",
+    "benchmarks/results/locus-cpu-gpu-4070ti-0.2.4.json": "38f28396ebfa681df092aaded370a39c570bae3f0d1f379d07049e6a290c7f1f",
+    "benchmarks/results/color-cpu-gpu-4070ti-0.2.4.json": "080b277229f3f36c777e0f9300112cd6d74461d48ead43bd83c5735acecee629",
+    "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.4.json": "2847c5fb6f5e4bc9ace80472e7665a51cf67059afb8dfac89353b4df0e9ed8b2",
+    "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.4.json": "ba1b25ebcb600bfd95aab6b499ec09bfb7ad1247274a891d0259ece17f06ab8e",
+    "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.4.json": "e063a24e7f6636c1a3c9178c00316e02c2c8477860ec729083f508e87cd3d1de",
+    "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.4.json": "ade2fd8c91947f2d6f3c3762fb2e00590ec63cfb164b4533e5ada82014767c53",
+    "qualification/evidence/point-plane-sharing-0.2.4.json": "61120c3afe5242070c439483b1fc0408466094566ac97abfa1c69f1ce4ba38cf",
+    "provenance/point-plane-sharing.json": "82fb95ee0d0fffcb5fab39a5542446fe3d1951024c20e8258f70286c4bd54e65",
+    "qualification/evidence/point-plane-sharing-0.2.4-refresh-8060s.log": "bfad4bab00da302ab019eec6e6a4da7987450af85325e9ba118ebb08fcd7524e",
+    "qualification/evidence/point-plane-sharing-0.2.4-refresh-8060s.json": "1d2ec4dfbeb56dcf30f3098fe2541332ac8c79dedc8066969e80ba72fb170903",
+    "qualification/evidence/point-plane-sharing-0.2.4-refresh-8060s.py.log": "e317b77005a318e1aaa9d2838792a6e9c94c430e6bb76f1a0f3fb36ddf5ba2d1",
+    "qualification/evidence/point-plane-sharing-0.2.4-refresh-4070ti.log": "9d201ba5be42768dfb616251527f67abb5b89f55e196ec3d0ee0ba52adb1e297",
+    "qualification/evidence/point-plane-sharing-0.2.4-refresh-4070ti.json": "b58b4446db727249103d7293b9cf9da87cf2c143725281780f01360f7f018238",
+    "qualification/evidence/point-plane-sharing-0.2.4-refresh-4070ti.py.log": "5a4358f72405826b242fad9a5eb26b0ee1fde87cf828642285c5160eb9951add",
+    "qualification/evidence/point-plane-sharing-0.2.4-module-scope-8060s.log": "2a01f1e332a478f439c98372a3e17c8473c8fe638bf9018362cab3bad131a4f2",
+    "qualification/evidence/point-plane-sharing-0.2.4-module-scope-4070ti.log": "08021855c34bb4b553f232a0ef5cf979fd60c865a26c4f6efbd54d3d9e7172aa",
+    "qualification/evidence/point-plane-sharing-0.2.4-module-scope-4070ti.json": "fa752e813761aff28d80668a682b3766504a65af850e45559df305b4c4dd5616",
+    "qualification/evidence/point-plane-sharing-0.2.4-task2-cpu.log": "c495674a1ce57378eab32b4cf0222bb962a38d59fd821c264d67cba17cb3eae1",
+    "qualification/evidence/point-plane-sharing-0.2.4-task2-generation.log": "4580299f5432aa432fd457887fb84a3ab7528c7f58aff456ccadea106d94562f",
+    "qualification/evidence/point-plane-sharing-0.2.4-lifecycle-A.log": "e9a6dcc52b1ba73248a5da4fb3d2fdc719b6a9ddfbfae4884e56e1d7f5c7d4cb",
+    "qualification/evidence/point-plane-sharing-0.2.4-lifecycle-B.log": "e76da348aa0b2cb50aeacb5823846748fbf74479f04cb1fc7f5c33426947af8c",
+    "qualification/evidence/point-plane-sharing-0.2.4-lifecycle-C.log": "82ae5287044aea73ef15ada163557ae5c43e3cd39d6d3c354c317e1e2159660e",
+    "qualification/evidence/point-plane-sharing-0.2.4-lifecycle.py.log": "35868aa6168bcdc8abcfb333498c625f6e7b0af6a61bd158b60ea91737fab21d",
+    "qualification/evidence/point-plane-vulkan-instance-failure-4070ti-0.2.4.log": "c8ea6e2e79f55a7b92f79441df84cb50e76f111e230274c48f96eac7c068ea5c",
+    "qualification/evidence/point-plane-sharing-0.2.4-module-scope-4070ti-diff.json": "65e03ca684322b6eccfebe959df5b9032e05fc521d3e190fab7035a4f10599c7",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4.json": "1472322f6226baa1956cc4e22dd04a26b2cb56fc572de759b75631b28494ba30",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-green.log": "fa4834b895db2f942487d88d6b293c1d9918d250399b777408b5a600170d4a9e",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-owner-repro-red.log": "eb78ffe7a2d3e4cf865dbb22c2240f564110d5220fd362ac9f516564c7da9213",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-wheel.log": "00dd5278dccac0a9788d2ed50ca2b89d94f078225587241d778ef746d39a6b6a",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-cmake.log": "c1c11a83fdbe66bec685ef5168af3fa3893bbe8e388aa3b14333b6ac48a9ad49",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-relocated-shader.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "provenance/generated-math.json": "bc3eb65a65b942929f730962ecd5bed0ce557796b0d28a70b2d87f14d45e3c06",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-tests-red.json": "0cbe7f25c5196066d1201acf030e85b6f1a831b0bcf7fc897382b07d40077d4e"
+  },
+  "pending_gates": [
+    "VKL D4/T0 new GPU implementation, all-output differential verification, layout/reflection/installation and both-vendor fixture qualification remain pending; independent CPU references only are verified so far",
+    "Full NVIDIA RTX 4070 Ti operation/variant/adapter qualification beyond retained regression and retained stage timing fixtures",
+    "Full Radeon 8060S operation/variant/adapter qualification beyond retained fixtures",
+    "36 VKL reference modules remain without Slang translation; eleven covered modules include partial-forward profiles",
+    "Reviewed consumer migration adoption and configured automatic cross-repository App delivery; seven initial registration PRs delivered",
+    "Three controlled fusion performance runs meeting resident and transfer-inclusive acceptance gates",
+    "Optional vrdx C++ runtime and HIP backend runtime qualification",
+    "SLAM pose/trajectory/gradient and full-capacity reconstruction qualification",
+    "Publisher App administrative permission path and downstream App execution; six private consumer CI jobs blocked by account billing/spending restrictions",
+    "CPU/GPU baseline timing coverage for 83 remaining portable catalog entries and four optional native radix variants",
+    "Shared point-plane full-domain and performance qualification, and consumer adoption beyond retained fixture evidence"
+  ],
+  "timing_reference": {
+    "database": "src/sintergpu/data/timings.json",
+    "table": "docs/kernel-timings.md",
+    "raw_samples": [
+      "benchmarks/results/locus-cpu-gpu-8060s-0.2.0.json",
+      "benchmarks/results/color-cpu-gpu-8060s-0.2.0.json",
+      "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.0.json",
+      "benchmarks/results/vkl-cpu-gpu-8060s-0.2.0.json",
+      "benchmarks/results/locus-cpu-gpu-4070ti-0.2.0.json",
+      "benchmarks/results/color-cpu-gpu-4070ti-0.2.0.json",
+      "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.0.json",
+      "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.0.json",
+      "benchmarks/results/primitives-cpu-gpu-8060s-0.2.2.json",
+      "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.2.json",
+      "benchmarks/results/primitives-irregular-cpu-gpu-8060s-0.2.2.json",
+      "benchmarks/results/primitives-irregular-cpu-gpu-4070ti-0.2.2.json",
+      "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.3.json",
+      "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.3.json",
+      "benchmarks/results/locus-cpu-gpu-8060s-0.2.4.json",
+      "benchmarks/results/color-cpu-gpu-8060s-0.2.4.json",
+      "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.4.json",
+      "benchmarks/results/vkl-cpu-gpu-8060s-0.2.4.json",
+      "benchmarks/results/primitives-cpu-gpu-8060s-0.2.4.json",
+      "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.4.json",
+      "benchmarks/results/locus-cpu-gpu-4070ti-0.2.4.json",
+      "benchmarks/results/color-cpu-gpu-4070ti-0.2.4.json",
+      "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.4.json",
+      "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.4.json",
+      "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.4.json",
+      "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.4.json"
+    ],
+    "catalog_entries": 137,
+    "paired_cpu_gpu_entries": 0,
+    "pending_portable_entries": 137,
+    "additional_native_pending": 4,
+    "scope": "Draft0.2.5: new independent references and forthcoming shaders change the conservative source closure. Prior0.2.4 samples remain historical at their recorded identities; fresh timing collection is required after source settles. No new GPU result claimed.",
+    "color_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
+    "color_workloads": 0,
+    "workloads": 0,
+    "locus_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
+    "retained_historical_workloads": 910,
+    "feature_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
+    "feature_workloads": 0,
+    "vkl_workloads": 0,
+    "vkl_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
+    "locus_workloads": 0,
+    "nvidia_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
+    "workloads_by_device": {},
+    "primitive_workloads": 0,
+    "primitive_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
+    "primitive_additional_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
+    "xsplat_workloads": 0,
+    "xsplat_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b"
+  },
+  "native_packaging": {
+    "status": "installed-native-static-link-passed",
+    "evidence": "qualification/evidence/native-install-0.1.8.json",
+    "scope": "CMake archive/relocation/static-link CPU probes only; no Vulkan initialization or GPU runtime qualification"
+  },
+  "shared_point_plane": {
+    "status": "experimental",
+    "module": "optimization.point_plane",
+    "contract": "docs/point-plane.md",
+    "source_sha256": "9763495aa01821c4a9fa52db689310cf787cee01b63b8b50bf0daaae43131bcc",
+    "generation": "Current closed-form optional factory:6 symbolic tests passed including3 caller-xi collision cases; all5 existing shader outputs reproduced byte-exactly by owned adapters.",
+    "gpu_parity": "32 imported-module cases/device,64 total; AMD36 passed, NVIDIA35 passed and1 standalone-compiler skip",
+    "performance": "No optimized selection; original candidate scope retained, imported-program performance pending",
+    "evidence": "qualification/evidence/point-plane-sharing-0.2.4.json",
+    "compiler_equivalence": "Four comparisons per Slang2026.12/2026.19 lane:1024 exact executable/resource layout;256 differs only in actual LocalSize",
+    "timing_scope": "392 source-current parity-checked fixture baseline records across54 existing catalog entries (196/device);518 historical records retained. Imported module:32 GPU cases/device,64 total. No imported-module timing, optimized performance, adoption, full-domain, tracking or trajectory qualification.",
+    "generation_current_source_sha256": {
+      "src/sintergpu/codegen/point_plane.py": "5df8c47282e67e7d0f1598e4c82c0c784fa8d8b5ba479ec774e52d13f347c902",
+      "tests/test_point_plane_codegen.py": "84e1f0f07b610b045165b4ef82415d5a7e21206fdf241e06fc936d1ed93ef340",
+      "tools/codegen/caspar_point_plane.py": "4c73ea6cccc1f91f9acf065656c063861c9bcc585f60832f309f95145533dc54",
+      "tools/regenerate_math.py": "7c8be65f1e8ada6df20f0c807f5547f2312f64e05667c14cfb79776f54bae578"
+    },
+    "generation_evidence": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4.json",
+    "historical_generation_scope": "point-plane-sharing-0.2.4.json generation/source identities are pre-fix historical observations; its unchanged Slang/runtime GPU and baseline evidence remains applicable. Current generation source is bound separately.",
+    "installation": {
+      "status": "fresh-wheel-cmake-installed-source-checks-passed",
+      "evidence": {
+        "wheel": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-wheel.log",
+        "cmake": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-cmake.log",
+        "relocated-shader": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-relocated-shader.log"
+      },
+      "scope": "Fresh no-extras wheel, relocated CMake consumer and installed-source compilation passed in the prior final-check window. These logs predate the optional factory fix; they are not relabeled as a newly built corrected-factory wheel. Runtime Slang bytes remain identical."
+    }
+  },
+  "historical_qualification_scope": "Existing operation qualification records retain original source/compiler/evidence identities; fresh baselines bind through timing_reference, and do not relabel historical operation fixtures as new GPU qualification.",
+  "vkl_reprojection": {
+    "status": "in_progress",
+    "frozen_revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+    "independent_reference_tests": 102,
+    "full_cpu_tests": 533,
+    "scope": "Independent numeric float32 references only; no new GPU execution or optimized/runtime/application claim. Existing per-operation hardware evidence is retained at its original exact source/compiler/device context.",
+    "reference_execution_window": "Working-tree reference additions at base3f88024, before GPU implementation; full CPU533 test run preceded version0.2.5 integration. Counts are scoped observations, not whole-batch qualification.",
+    "reference_source_sha256": {
+      "src/sintergpu/references/reprojection_numeric.py": "df56256f46d64803e35d9b5b043fcaade9f1b01d8da9b59a9ef7d98ab15da27b",
+      "src/sintergpu/references/temporal_reprojection_numeric.py": "1f506285f60120d3dc5597c358b34a6dcae380df7c5c10d990885b85035c9fe6",
+      "tests/test_vkl_reprojection_reference.py": "2c0cdc67bec686ec39c60cb48e28e16efad51570016c1506a44a0a4411b6d25a",
+      "tests/test_vkl_temporal_reprojection_reference.py": "e0ae6a536b64edd401ed30ad47b7675a5ce6d441a7acd076c982cc17ea894e35"
+    }
+  }
+}

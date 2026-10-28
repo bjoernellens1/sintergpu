@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.5 — 2026-10-28
+
+- Add experimental VKL reprojection and prior-only temporal RGB-D reference profiles, preserving collision support, diagnostic projections, normalized-coordinate sampling and every numerical output. Reuse released geometry and depth fusion with explicit caller-owned resources, independent references and source-bound validation. Existing dispatch contracts and defaults remain unchanged.
+
 ## 0.2.4 — 2026-10-28
 
 - Consolidate point-plane symbolic algebra behind shared vector/scalar generation adapters while retaining all five generated math modules byte-for-byte. Install reusable Slang residual/Jacobian functions with explicit preserved FMA schedules, actual import/instruction/layout checks, optional generation inputs and integration examples. Existing dispatches and defaults remain unchanged; qualification is configuration-specific.

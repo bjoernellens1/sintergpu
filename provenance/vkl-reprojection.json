@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0 (original owner authorization 2026-10-27)",
+  "author": "Original owner numerical contracts; standalone SinterGPU implementation and independent NumPy oracles",
+  "operation_prefix": "vkl",
+  "qualification": "In progress:102 CPU reference tests verified, no new GPU execution or port qualification; shader/stage integration remains pending",
+  "coverage": {
+    "stage": "independent_references_verified",
+    "newly_forward_ported_modules": [],
+    "planned_modules": [
+      "reproject",
+      "temporal_reproject"
+    ],
+    "planned_entrypoints": 9
+  },
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/reproject.py",
+      "destination": "src/sintergpu/references/reprojection_numeric.py",
+      "source_sha256": "9e40eed34717ffb14c81b79df9c7b3000f6c6e3102d4b809c19fabf66e36a94d",
+      "imported_sha256": "df56256f46d64803e35d9b5b043fcaade9f1b01d8da9b59a9ef7d98ab15da27b",
+      "dispatchable": false,
+      "changes": [
+        "Independent scalar NumPy numerical reference and compositional oracle; frozen Torch executable code remains unchanged",
+        "Explicit float32 normalized-coordinate rounding, full diagnostic outputs and prior-only temporal reference semantics"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal_reproject.py",
+      "destination": "src/sintergpu/references/temporal_reprojection_numeric.py",
+      "source_sha256": "19e38b1583f5225aab3ad098239dbedda655a891607d348d3ecbca051cdf8166",
+      "imported_sha256": "1f506285f60120d3dc5597c358b34a6dcae380df7c5c10d990885b85035c9fe6",
+      "dispatchable": false,
+      "changes": [
+        "Independent scalar NumPy numerical reference and compositional oracle; frozen Torch executable code remains unchanged",
+        "Explicit float32 normalized-coordinate rounding, full diagnostic outputs and prior-only temporal reference semantics"
+      ]
+    }
+  ]
+}
