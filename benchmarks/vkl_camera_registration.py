@@ -84,6 +84,58 @@ def run(*, archive, manifest_sha256, case_ids=None, iterations=50, warmups=5):
         device.close()
 
 
+def checked_preflight(*, archive, manifest_sha256, case_ids=None):
+    """Validate all donor states, CPU oracles and bounded graph plans before device creation."""
+    donor = canonical_records(archive, manifest_sha256)
+    preflight = list(cases(case_ids=case_ids))
+    if not preflight or len(preflight) > 80: raise ValueError('camera case count exceeds bound')
+    for case in preflight:
+        _compare_reference(case['reference'](), donor[case['name']])
+        resources = case['graph']['resources']
+        total = 0
+        for spec in resources.values():
+            size = (spec['elements'] + 13) * spec['element_size']
+            if size <= 0 or size > 64 * 1024 * 1024: raise ValueError('camera resource exceeds bound')
+            total += size
+        if total > 256 * 1024 * 1024: raise ValueError('camera graph exceeds bound')
+    return donor
+
+
+def run_checked(*, device, snapshot, archive, manifest_sha256, case_ids=None, iterations=50, warmups=5):
+    """Borrow a device verified from its actual selected UUID; never create or close it."""
+    from benchmarks.camera_checked_collection import verify_selected_device
+    from benchmarks.camera_registration_timing_support import measure_checked_pipeline
+    identity = verify_selected_device(device, snapshot)
+    donor = checked_preflight(archive=archive, manifest_sha256=manifest_sha256, case_ids=case_ids)
+    limit = int(device.info.limits.max_compute_dispatch_thread_groups[0])
+    if limit <= 0: raise ValueError('invalid device dispatch limit')
+    records = {}; rows = []
+    for case in cases(case_ids=case_ids, max_workgroups_x=limit):
+        if case['graph']['features']: raise RuntimeError('unverified logical-device features')
+        for spec in case['graph']['resources'].values():
+            if (spec['elements'] + 13) * spec['element_size'] > 64 * 1024 * 1024:
+                raise ValueError('camera resource exceeds bound')
+        fixture = FixtureResources(device, case['graph'], case['inputs'], enabled_features=())
+        expected = case['reference']()
+        complete = measure_checked_pipeline(fixture, expected, donor[case['name']], iterations=iterations, warmups=warmups)
+        from benchmarks.camera_registration_timing_support import stage_cases, time_cpu_stage, measure_stage, stage_timing_row
+        from benchmarks.reprojection_support import runtime_environment
+        environment = runtime_environment(device)
+        for stage in stage_cases(case):
+            cpu = time_cpu_stage(stage, iterations=iterations, warmups=warmups)
+            gpu, hashes, ticks = measure_stage(fixture, stage, iterations=iterations, warmups=warmups, retain_ticks=True)
+            row = stage_timing_row(stage, cpu, gpu, environment, warmups)
+            row['gpu_readonly_initial_sha256_per_sample'] = hashes
+            row['gpu_timestamp_tick_pairs'] = ticks
+            row['qualification'] = 'diagnostic_only'
+            rows.append(row)
+        records[case['name']] = {'complete': complete, 'workload_identity': case['workload_identity']}
+    return dict(schema_version=1, status='diagnostic_only', adoption='unqualified', identity=identity,
+                canonical_manifest_sha256=manifest_sha256, iterations=iterations, warmups=warmups,
+                measurements=rows, pipeline_measurements=records,
+                limitation='Physical backing allocation disjointness is not independently verified; timings are diagnostic only.')
+
+
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)

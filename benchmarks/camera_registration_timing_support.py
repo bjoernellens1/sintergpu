@@ -143,9 +143,24 @@ def _atomic_min_expected(case, initial):
     return run_stage(case['entrypoint'], case['params'], bindings)['minDepthBits']
 
 
+def reset_writable(fixture):
+    """Poison non-input resources outside the measurement interval."""
+    for name, spec in fixture.graph['resources'].items():
+        if name not in fixture.initial:
+            dtype = DTYPES[spec['dtype']]
+            size = fixture.buffers[name].size // dtype.itemsize
+            fixture.buffers[name].copy_from_numpy(np.full(size, 73, dtype=dtype))
+
+
+def check_writable_prefix(case, before):
+    for name in case['written']:
+        _compare(name, before[name], case['initial'][name], case['live_counts'][name])
+
+
 def validate_measured_sample(fixture, case, before, actual):
     """Validate this sample before any subsequent prefix/reset or dispatch."""
     check_prefix(case, before)
+    check_writable_prefix(case, before)
     if case['entrypoint'] == 'registrationMin':
         # The GPU's float prefix is independently compared to the CPU prefix
         # above; atomics then operate on exact captured GPU bits, not a tolerance.
@@ -159,14 +174,17 @@ def validate_measured_sample(fixture, case, before, actual):
     states = fixture.read()
     for name, spec in fixture.graph['resources'].items():
         np.testing.assert_array_equal(states[name][spec['elements']:], 73, err_msg=name + ' tail')
+        if name in fixture.initial:
+            np.testing.assert_array_equal(states[name].view(np.uint8), fixture.initial[name].view(np.uint8), err_msg=name + ' input changed')
 
 
-def measure_stage(fixture, case, *, iterations, warmups):
+def measure_stage(fixture, case, *, iterations, warmups, retain_ticks=False):
     """Validate every isolated GPU sample before resetting its prefix."""
     import slangpy as spy
     prepared = fixture.prepared; device = prepared.device; index = case['index']
-    samples = []; hashes = []
+    samples = []; hashes = []; raw_ticks = []
     for sample in range(warmups + iterations):
+        reset_writable(fixture)
         encoder = device.create_command_encoder(); _replay(prepared, encoder, index)
         device.submit_command_buffer(encoder.finish()); device.wait_for_idle()
         before = _read_bindings(fixture, case, case['bindings'])
@@ -184,10 +202,11 @@ def measure_stage(fixture, case, *, iterations, warmups):
         value = (int(ticks[1])-int(ticks[0])) * 1000 / int(device.info.timestamp_frequency)
         if sample >= warmups:
             samples.append(value)
+            raw_ticks.append([int(ticks[0]), int(ticks[1])])
             hashes.append(array_state_identity({name: before[name] for name in case['readonly']}))
     from sintergpu.timings import summarize
     summarize(samples)
-    return samples, hashes
+    return (samples, hashes, raw_ticks) if retain_ticks else (samples, hashes)
 
 
 def validate_outputs(fixture, expected):
@@ -250,3 +269,61 @@ def measure_graph(fixture, graphcase, *, iterations=50, warmups=5, reference_ite
                 complete=complete, cpu_reference_samples_ms=cpu_complete, paired_measurements=rows,
                 source_sha256=source_identities(), iterations=iterations, warmups=warmups,
                 scope='Per-stage paired independent CPU/GPU timings; complete CPU oracle, resident graph and transfer-inclusive timings are separate. Shared host; no performance selection claim.')
+
+
+def measure_checked_pipeline(fixture, expected, donor, *, iterations=50, warmups=5,
+                             clock_ns=None, timestamp_type=None):
+    """Measure one graph per submission and validate it before the next sample.
+
+    This qualification helper explicitly submits, waits and reads back outside
+    the resident interval. The caller owns the device and must hold its lease.
+    Transfer wall time includes input uploads and output readback; subsequent
+    full guards and donor comparisons are outside that clock.
+    """
+    from benchmarks.vkl_camera_registration import _compare_reference
+    if any(type(n) is not int or n < 1 for n in (iterations, warmups)):
+        raise ValueError('positive integer iteration/warmup counts required')
+    if timestamp_type is None:
+        import slangpy as spy
+        timestamp_type = spy.QueryType.timestamp
+    clock = time.perf_counter_ns if clock_ns is None else clock_ns
+    device = fixture.prepared.device
+    frequency = int(device.info.timestamp_frequency)
+    if frequency <= 0: raise ValueError('invalid GPU timestamp frequency')
+    resident, transfer, tick_pairs = [], [], []
+    for phase in ('resident', 'transfer'):
+        for sample in range(warmups + iterations):
+            # Reset writable storage before either measured interval.
+            reset_writable(fixture)
+            if phase == 'transfer':
+                start = clock()
+                for name, data in fixture.initial.items():
+                    fixture.buffers[name].copy_from_numpy(data)
+            pool = device.create_query_pool(timestamp_type, 2) if phase == 'resident' else None
+            encoder = device.create_command_encoder()
+            if pool is not None: encoder.write_timestamp(pool, 0)
+            fixture.prepared.record(encoder)
+            if pool is not None: encoder.write_timestamp(pool, 1)
+            device.submit_command_buffer(encoder.finish())
+            device.wait_for_idle()
+            if phase == 'transfer':
+                for name in dict.fromkeys(fixture.graph['outputs'].values()):
+                    fixture.buffers[name].to_numpy()
+                elapsed = (clock() - start) / 1e6
+            else:
+                ticks = pool.get_results(0, 2)
+                delta = int(ticks[1]) - int(ticks[0])
+                if delta <= 0:
+                    raise RuntimeError('non-increasing GPU timestamps; quantization prevents this measurement')
+                elapsed = delta * 1000 / frequency
+            # This is deliberately before the next upload, reset or dispatch.
+            actual = fixture.outputs_and_guards(expected)
+            _compare_reference(actual, expected)
+            _compare_reference(actual, donor)
+            if sample >= warmups:
+                (resident if phase == 'resident' else transfer).append(elapsed)
+                if phase == 'resident': tick_pairs.append([int(ticks[0]), int(ticks[1])])
+    return {'resident_samples_ms': resident, 'resident_tick_pairs': tick_pairs, 'transfer_inclusive_samples_ms': transfer,
+            'timestamp_frequency_hz': frequency, 'timestamp_tick_ms': 1000 / frequency,
+            'timestamp_scope': 'Diagnostic-only quantized GPU timestamps; zero or reversed intervals fail closed; no performance qualification',
+            'scope': 'Resident timestamps cover GPU graph execution between recorded timestamps, excluding host recording and validation. Transfer wall time covers input upload, command recording, submit/wait and output readback; writable reset, validation, CPU reference and guard readbacks are excluded. Full outputs, read-only inputs and poison tails checked before next replay.'}
