@@ -32,7 +32,7 @@ def _regular(root,name):
 
 
 def run(scenario='ok'):
-    if scenario not in ('ok','preimport','shadow','late','unexpected','pyc','numpy_source_tamper','numpy_native_tamper','source_drift','source_side_effect'): raise ValueError('unknown scenario')
+    if scenario not in ('ok','preimport','shadow','late','unexpected','pyc','numpy_source_tamper','numpy_native_tamper','source_drift','source_side_effect','mutate_nonfirst'): raise ValueError('unknown scenario')
     spec=importlib.util.find_spec('numpy')
     if spec is None or not spec.origin: raise SmokeError('preflight','numpy_unavailable')
     numpy_root=Path(spec.origin).resolve().parent; site=numpy_root.parent

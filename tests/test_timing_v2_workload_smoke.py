@@ -11,7 +11,7 @@ def test_real_depth_convert_recipe_in_snapshot():
     assert result['numpy_before']==result['numpy_after']
     assert child['recipe']=='vkl.depth_convert.depthConvert' and child['case_count']>=1
     assert {'depthOut','inverseOut','validOut','confidenceOut'}<=set(child['outputs'])
-    assert child['scope'].startswith('One scalar')
+    assert child['scope'].startswith('Independent scalar')
     assert child['write_blocked'] and child['remount_blocked'] and child['torch_loaded'] is False
     assert child['loaded']['benchmarks.vkl_timings']['path']=='benchmarks/vkl_timings.py'
     assert child['loaded']['sintergpu.references.vkl.numpy']['path']=='src/sintergpu/references/vkl/numpy.py'
@@ -19,7 +19,7 @@ def test_real_depth_convert_recipe_in_snapshot():
     assert len(result['runtime_executable_unverified']['sha256'])==64
     assert result['bootstrap_unverified']['sha256_observed']==result['source_before']['tests/timing_v2_workload_namespace.py']
 
-@pytest.mark.parametrize('scenario,reason',[('preimport','preimport_or_shadow'),('shadow','preimport_or_shadow'),('pyc','bytecode'),('late','late_import'),('unexpected','unexpected_import'),('numpy_source_tamper','numpy_identity'),('numpy_native_tamper','numpy_identity'),('source_drift','module_source_preload'),('source_side_effect','module_source_preload')])
+@pytest.mark.parametrize('scenario,reason',[('preimport','preimport_or_shadow'),('shadow','preimport_or_shadow'),('pyc','bytecode'),('late','late_import'),('unexpected','unexpected_import'),('numpy_source_tamper','numpy_identity'),('numpy_native_tamper','numpy_identity'),('source_drift','module_source_preload'),('source_side_effect','module_source_preload'),('mutate_nonfirst','oracle_mismatch')])
 def test_failures_are_specific_after_positive_preflight(scenario,reason):
     assert run()['child']['recipe']=='vkl.depth_convert.depthConvert'
     with pytest.raises(SmokeError) as exc: run(scenario)

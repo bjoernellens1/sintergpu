@@ -4,6 +4,8 @@ import hashlib
 import importlib.abc
 import importlib.machinery
 import json
+import math
+import struct
 from pathlib import Path
 import subprocess
 import sys
@@ -11,6 +13,48 @@ import sys
 class Rejected(Exception):
     def __init__(self,reason): self.reason=reason
 
+
+
+def _f32(value):
+    """Round once to IEEE binary32 using Python struct, without NumPy."""
+    try: return struct.unpack('<f',struct.pack('<f',value))[0]
+    except OverflowError: return math.copysign(math.inf,value)
+
+
+def _same_float_bits(a,b):
+    return struct.pack('<f',float(a))==struct.pack('<f',float(b))
+
+
+def check_depth_convert_scalar(case,actual):
+    """Independent scalar oracle for all outputs and their untouched tails."""
+    params=case['params']; count=params['count']; rep=params['representation']
+    if rep not in (0,1,2): raise Rejected('oracle_representation')
+    arrays=case['arrays']; outputs=('depthOut','inverseOut','validOut','confidenceOut')
+    if set(actual)!=set(outputs) or set(case['outputs'])!=set(outputs): raise Rejected('oracle_output_set')
+    scale=_f32(params['scale']); focal=_f32(params['focalBaseline'])
+    for name in outputs:
+        got=actual[name]; seed=arrays[name]
+        if got.dtype!=seed.dtype or got.shape!=seed.shape or case['live_counts'][name]!=count: raise Rejected('oracle_output_layout')
+        if got[count:].tobytes()!=seed[count:].tobytes(): raise Rejected('workload_guard')
+    for i in range(count):
+        value=float(arrays['values'][i]); valid=bool(arrays['valid'][i]); confidence=float(arrays['confidence'][i])
+        usable=valid and math.isfinite(value) and value>0
+        depth=0.0
+        if usable:
+            if rep==0: depth=_f32(value*scale)
+            elif rep==1:
+                product=_f32(value*scale)
+                depth=_f32(1.0/product) if product!=0 else math.inf
+            else: depth=_f32(_f32(1.0/value)*focal)
+            usable=math.isfinite(depth) and depth>0
+        expected_depth=depth if usable else 0.0
+        expected_inverse=_f32(1.0/depth) if usable else 0.0
+        expected_confidence=confidence if usable else 0.0
+        if (int(actual['validOut'][i])!=int(usable) or
+            not _same_float_bits(actual['depthOut'][i],expected_depth) or
+            not _same_float_bits(actual['inverseOut'][i],expected_inverse) or
+            not _same_float_bits(actual['confidenceOut'][i],expected_confidence)):
+            raise Rejected('oracle_mismatch')
 
 def main(root,scenario):
     if not sys.flags.isolated or not sys.flags.no_site or not sys.dont_write_bytecode or 'site' in sys.modules: raise Rejected('python_isolation')
@@ -54,16 +98,14 @@ def main(root,scenario):
     import benchmarks.vkl_timings as recipe
     cases=[case for case in recipe.cases() if case['operation']=='vkl.depth_convert.depthConvert']
     if not cases: raise Rejected('workload_missing')
-    actual=recipe.reference_call(cases[0])
-    if not actual or set(actual)!=set(cases[0]['outputs']): raise Rejected('workload_output')
-    import numpy as np
-    sample=cases[0]; count=sample['params']['count']; values=sample['arrays']['values']; valid=sample['arrays']['valid']
-    live=np.flatnonzero((valid[:count]!=0)&np.isfinite(values[:count])&(values[:count]>0))
-    if not len(live): raise Rejected('workload_no_valid_values')
-    index=int(live[0]); expected=np.float32(values[index]*np.float32(sample['params']['scale']))
-    if actual['depthOut'][index]!=expected or actual['validOut'][index]!=1: raise Rejected('workload_known_value')
-    for name,array in actual.items():
-        if not np.array_equal(array[sample['live_counts'][name]:],sample['arrays'][name][sample['live_counts'][name]:]): raise Rejected('workload_guard')
+    expected_representations={0,1,2}
+    if len(cases)!=6 or {case['params']['representation'] for case in cases}!=expected_representations: raise Rejected('workload_case_set')
+    actual=None
+    for case_index,case in enumerate(cases):
+        actual=recipe.reference_call(case)
+        if scenario=='mutate_nonfirst' and case_index==1:
+            actual['confidenceOut'][min(5,case['params']['count']-1)]=123456.0
+        check_depth_convert_scalar(case,actual)
     loaded={};native=[]
     for name,module in tuple(sys.modules.items()):
         filename=getattr(module,'__file__',None)
@@ -110,7 +152,7 @@ def main(root,scenario):
                 for block in iter(lambda:f.read(1<<20),b''): hasher.update(block)
             digest=hasher.hexdigest()
         native_receipts.append({'path':name,'sha256_observed_unverified':digest})
-    return {'scope':'One scalar depth conversion check and output guard checks; not complete numerical parity.',
+    return {'scope':'Independent scalar float32 oracle checks every live output and tail in six CPU cases; no GPU or Torch donor parity.',
             'native_mappings_unverified':native_receipts,'python_version_unverified':sys.version,'recipe':'vkl.depth_convert.depthConvert','case_count':len(cases),'outputs':sorted(actual),'loaded':loaded,
             'numpy_native_modules_unverified':sorted(native),'torch_loaded':'torch' in sys.modules,'write_blocked':True,'remount_blocked':True}
 
