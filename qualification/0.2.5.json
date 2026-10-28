@@ -2988,7 +2988,7 @@
     "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf",
     "qualification/delivery-0.1.5.json": "5b0343aa119753b572aedee0982a5dc7ccd0a804595cb037492ca2b3d85fc9a2",
     "benchmarks/results/locus-cpu-gpu-8060s.json": "36f05cb3ac40bf40f5f1f878884495bcd6c933767d112e58e89a4e3290388ea2",
-    "src/sintergpu/data/timings.json": "0bb2bfd330a23a8b3b39cc63e45ea055366438311d2636f1deb2b1392f54e47f",
+    "src/sintergpu/data/timings.json": "a031df03e53955804ef0834985c34d72253512df5a6eef68667fc0c43a8d51fa",
     "docs/kernel-timings.md": "5c3e1f1efae66ddf166267a1f9a05ab907d00b3a7463984a3c0a18c737d8e4bd",
     "qualification/delivery-0.1.6.json": "61fbdbde082cf212b82804e27fd16ee266479c1273b9eb13df9488a98d5921b8",
     "benchmarks/results/color-cpu-gpu-8060s.json": "1d34cd705e7096f28651c04521958027e60c038b65648a83baa8332c863ab864",
@@ -3082,7 +3082,18 @@
     "qualification/evidence/vkl-reprojection-compile-2026.12-0.2.5.json.gz": "aa9cfd5113f66773afeee58beb60d95f512419c4fee7d70b5a3063e2e51ba8cd",
     "qualification/evidence/vkl-reprojection-compile-2026.19-0.2.5.json.gz": "87dba69cad4856736b1532c92998296f6f68803bdc3ed44e4f5e0527eb3a62d7",
     "qualification/evidence/vkl-reprojection-reflection-0.2.5.json": "fecf795e97e2d679c893ede42ef13d14a932a8800d4ae4a3e74ab5bee5ac6ae6",
-    "qualification/evidence/vkl-reprojection-task2-cpu-0.2.5.log": "21f2b5c7c1c8eaeb0ddb6740229abc8289f8381f14f345b15cf30e6e9ed9891d"
+    "qualification/evidence/vkl-reprojection-task2-cpu-0.2.5.log": "21f2b5c7c1c8eaeb0ddb6740229abc8289f8381f14f345b15cf30e6e9ed9891d",
+    "qualification/evidence/vkl-reprojection-gpu-8060s-initial-0.2.5.log": "28b22eea9bfd43928d0848be5ea17a22abcfebdbc1cad69b5aa9e04349b88e8d",
+    "qualification/evidence/vkl-reprojection-gpu-4070ti-initial-0.2.5.log": "8c3cee07221d68cb0608c31426e614a8b8fd8985e157b6a52ff6f821c3f41b96",
+    "qualification/evidence/vkl-reprojection-fixed-compile-2026.12-0.2.5.json.gz": "d60c30fef846dc69679b0e81a4c08b51c2f526991b76091b3eb8af847f24acf5",
+    "qualification/evidence/vkl-reprojection-fixed-compile-2026.19-0.2.5.json.gz": "aa424a548cb94e28e89c69df34d93499c5e661ef198fe344c5c54e962089e2c6",
+    "qualification/evidence/vkl-reprojection-fixed-reflection-0.2.5.json": "36a974db9c20951124466d0b5fd8401d0cd72e9d142bca32a96318b9bcc5fa22",
+    "qualification/evidence/vkl-reprojection-initial-parallax-probe-0.2.5.json": "b3bb1bc12cc5ef61e6df55a64b72c3c23c51d52382b4a655e53fa6228c7d347b",
+    "qualification/evidence/vkl-reprojection-numerical-fix-cpu-0.2.5.log": "51e81dc5c4c0da9c744fb98b9c7b3c785f75375c1282307218f62968b5bf4c3a",
+    "qualification/evidence/vkl-reprojection-torch-cpu-8060s-0.2.5.json": "d69460ad5adbeac91d7652cea215052aa8caab20a88e3254c63868161d8e47f8",
+    "qualification/evidence/vkl-reprojection-torch-cpu-4070ti-0.2.5.json": "eaee169461c44b98fc3e8b10d98787266c629ef16151678e47da4a34442f40e6",
+    "qualification/evidence/vkl-reprojection-torch-cpu-layers-4070ti-0.2.5.log": "5b898baa35fbf41454e8c4729056e348d0449dac340798901dbd93c1b35be8f0",
+    "qualification/evidence/vkl-reprojection-torch-cpu-probe-0.2.5.py": "7a7dd246121394d3556358c0dd930d8827fe7f4bf9977f8da6a651259d8a25d2"
   },
   "pending_gates": [
     "VKL D4/T0 new GPU implementation, all-output differential verification, layout/reflection/installation and both-vendor fixture qualification remain pending; independent CPU references only are verified so far",
@@ -3187,11 +3198,11 @@
   },
   "historical_qualification_scope": "Existing operation qualification records retain original source/compiler/evidence identities; fresh baselines bind through timing_reference, and do not relabel historical operation fixtures as new GPU qualification.",
   "vkl_reprojection": {
-    "status": "in_progress",
+    "status": "parity_failures_under_investigation",
     "frozen_revision": "3384023a311651ea4260cf12ddab1567972f89f3",
     "independent_reference_tests": 102,
     "full_cpu_tests": 533,
-    "scope": "Independent numeric float32 references only; no new GPU execution or optimized/runtime/application claim. Existing per-operation hardware evidence is retained at its original exact source/compiler/device context.",
+    "scope": "Complete numeric forward implementation and initial both-vendor GPU attempts; strict parity failures remain blocking. No new hardware qualification, performance or adoption claim.",
     "reference_execution_window": "Working-tree reference additions at base3f88024, before GPU implementation; full CPU533 test run preceded version0.2.5 integration. Counts are scoped observations, not whole-batch qualification.",
     "reference_source_sha256": {
       "src/sintergpu/references/reprojection_numeric.py": "df56256f46d64803e35d9b5b043fcaade9f1b01d8da9b59a9ef7d98ab15da27b",
@@ -3214,7 +3225,7 @@
         "2026.12",
         "2026.19"
       ],
-      "reflection": "qualification/evidence/vkl-reprojection-reflection-0.2.5.json",
+      "reflection": "qualification/evidence/vkl-reprojection-fixed-reflection-0.2.5.json",
       "scope": "Full catalog exact source hashes and reflection ABI; gzip records retain complete compiler output, not GPU execution"
     },
     "pre_gpu_review": {
@@ -3222,6 +3233,32 @@
       "scope": "Separate source/recording/performance harness review and CPU mutation guards only; no hardware parity or speedup claim",
       "focused_tests_passed": 46,
       "gpu_cases_not_executed": 63
+    },
+    "hardware_attempts": [
+      {
+        "device": "8060s",
+        "source_commit": "e7239970018b28c774aafe18a4aac5db9259b71c",
+        "status": "failed",
+        "passed": 59,
+        "failed": 4,
+        "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-initial-0.2.5.log",
+        "scope": "Initial strict full-output differential fixture attempt; failures remain blocking, no timing or optimized selection"
+      },
+      {
+        "device": "4070ti",
+        "source_commit": "e7239970018b28c774aafe18a4aac5db9259b71c",
+        "status": "failed",
+        "passed": 58,
+        "failed": 5,
+        "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-initial-0.2.5.log",
+        "scope": "Initial strict full-output differential fixture attempt; failures remain blocking, no timing or optimized selection"
+      }
+    ],
+    "numerical_fixes": {
+      "shader_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "scope": "Preserve emitted normalized subtract/add rounding and masked nonfinite diagnostics via explicit scalar operations. GPU rerun pending; original strict comparisons unchanged.",
+      "focused_cpu_passed": 150,
+      "separate_source_review": "cleared for GPU rerun; not hardware qualification"
     }
   }
 }

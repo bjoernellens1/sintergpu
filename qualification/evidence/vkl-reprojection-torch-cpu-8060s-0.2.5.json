@@ -1,0 +1,26 @@
+{
+  "python": "3.13.12",
+  "torch": "2.14.1+rocm7.2",
+  "numpy": "2.5.4",
+  "cpu": "",
+  "results": {
+    "aligned_rgb": {
+      "mismatches": 0,
+      "max_abs": 1.7881393432617188e-07,
+      "first_indices": [],
+      "values": []
+    },
+    "aligned_valid": {
+      "mismatches": 0,
+      "max_abs": 0.0,
+      "first_indices": [],
+      "values": []
+    },
+    "alignment_confidence": {
+      "mismatches": 0,
+      "max_abs": 0.0,
+      "first_indices": [],
+      "values": []
+    }
+  }
+}

@@ -61,10 +61,38 @@ float dotCamera(float a,float b,float c,float3 p)
 {
     return (mul(a,p.x)+mul(b,p.y))+mul(c,p.z);
 }
+// Keep BOTH normalized-grid addition rounding boundaries. The ordinary source
+// expression (value-1)+1 was canceled by Slang before SPIR-V emission, changing
+// width4 pixel .5 from .50000006 back to .5 and its nearest-even sample index.
+float roundedAdd(float a,float b)
+{
+    __target_switch
+    {
+    case spirv:
+        return spirv_asm
+        {
+            %rounded:$$float = OpFAdd $a $b;
+            OpDecorate %rounded NoContraction;
+            result:$$float = OpCopyObject %rounded;
+        };
+    default:
+        precise float rounded=a+b;
+        return rounded;
+    }
+}
 float normalizedRoundtrip(float pixel,uint size)
 {
-    float normalized=ratio(mul(2.0,pixel),float(max(size-1,1u)))-1.0;
-    return mul(ratio(normalized+1.0,2.0),float(size-1));
+    float normalized=roundedAdd(ratio(mul(2.0,pixel),float(max(size-1,1u))),-1.0);
+    return mul(ratio(roundedAdd(normalized,1.0),2.0),float(size-1));
+}
+// Exact multiplication by a logical 0/1 without native FP algebraic folding.
+// The Radeon backend suppresses NaN/Inf*0 even with NoContraction on OpFMul;
+// classification by integer bits preserves the donor raw-diagnostic semantics.
+float diagnosticContribution(float value,uint visible)
+{
+    uint bits=asuint(value),magnitude=bits&0x7fffffffu;
+    if(visible!=0)return value;
+    return asfloat(magnitude>=0x7f800000u?0x7fc00000u:(bits&0x80000000u));
 }
 int nearestEven(float value)
 {
@@ -139,7 +167,7 @@ void projectPoints(uint3 group : SV_GroupID,uint3 local : SV_GroupThreadID)
         projected_xyOut[(pair*2)*plane+q]=xy.x;projected_xyOut[(pair*2+1)*plane+q]=xy.y;
         projected_depthOut[i]=rel.z;visibleOut[i]=visible;displacementOut[i]=displacement;
         // Donor multiplication preserves 0*Inf/NaN in aggregate diagnostics.
-        displacementContribution=mul(displacement,float(visible));
+        displacementContribution=diagnosticContribution(displacement,visible);
         if(params.useTargetDepth!=0)
         {
             float sample=nearestDepth(pair,xy);

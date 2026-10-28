@@ -43,7 +43,7 @@
       "source_path": "src/vkl/kernels/reference/reproject.py",
       "destination": "src/sintergpu/kernels/vkl/reprojection.slang",
       "source_sha256": "9e40eed34717ffb14c81b79df9c7b3000f6c6e3102d4b809c19fabf66e36a94d",
-      "imported_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "imported_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
       "changes": [
         "Standalone staged float32 forward port; no changes to frozen donor references",
         "Reuse released depthGeometry and temporalDepthFuse rather than duplicate their complete algorithms",
@@ -65,7 +65,7 @@
       "source_path": "src/vkl/kernels/reference/temporal_reproject.py",
       "destination": "src/sintergpu/kernels/vkl/reprojection.slang",
       "source_sha256": "19e38b1583f5225aab3ad098239dbedda655a891607d348d3ecbca051cdf8166",
-      "imported_sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512",
+      "imported_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
       "changes": [
         "Standalone staged float32 forward port; no changes to frozen donor references",
         "Reuse released depthGeometry and temporalDepthFuse rather than duplicate their complete algorithms",

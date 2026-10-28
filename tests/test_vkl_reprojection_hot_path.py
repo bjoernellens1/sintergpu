@@ -237,3 +237,59 @@ def test_sampler_cast_guards_reject_deleted_or_moved_finite_and_range_checks():
         moved = text.replace(line + '\n', '', 1).replace(cast, cast + '\n' + line, 1)
         with pytest.raises(AssertionError, match='guard missing or after integer conversion'):
             _assert_sampler_cast_guards(moved)
+
+
+def _assert_roundtrip_emission(assembly):
+    """Both coordinate axes must retain separately rounded -1 and +1 steps."""
+    import re
+    float_types = set(re.findall(r'(%\w+)\s*=\s*OpTypeFloat 32', assembly))
+    constants = {}
+    for result, dtype, value in re.findall(r'(%\w+)\s*=\s*OpConstant (%\w+) (-?[\d.]+)(?:\s|$)', assembly):
+        if dtype in float_types:
+            constants[result] = float(value)
+    decorated = set(re.findall(r'OpDecorate (%\w+) NoContraction', assembly))
+    operations = re.findall(r'(%\w+)\s*=\s*OpFAdd (%\w+) (%\w+) (%\w+)', assembly)
+    minus = {result for result, dtype, left, right in operations
+             if dtype in float_types and constants.get(right) == -1 and result in decorated}
+    pairs = {result for result, dtype, left, right in operations
+             if dtype in float_types and left in minus and constants.get(right) == 1 and result in decorated}
+    assert len(pairs) >= 2, 'normalized-grid float32 subtract/add steps were canceled or lost NoContraction'
+
+
+def test_compiled_roundtrip_rounding_boundaries_and_cancellation_mutation(tmp_path):
+    from pathlib import Path
+    import subprocess
+    import pytest
+    root = Path(__file__).resolve().parents[1]
+    compilers = [root / '.tools/slang-2026.12/bin/slangc', Path('/home/bjoern/.local/opt/slang-2026.19/bin/slangc')]
+    compilers = [compiler for compiler in compilers if compiler.is_file()]
+    if not compilers:
+        pytest.skip('pinned standalone Slang compilers are not installed')
+    source = root / 'src/sintergpu/kernels/vkl/reprojection.slang'
+    text = source.read_text()
+    mutated = text.replace('roundedAdd(ratio(mul(2.0,pixel),float(max(size-1,1u))),-1.0)',
+                           '(ratio(mul(2.0,pixel),float(max(size-1,1u)))-1.0)')
+    mutated = mutated.replace('roundedAdd(normalized,1.0)', '(normalized+1.0)')
+    assert mutated != text
+    mutant = tmp_path / 'unprotected-roundtrip.slang'; mutant.write_text(mutated)
+    for index, compiler in enumerate(compilers):
+        for label, path in [('actual', source), ('canceled', mutant)]:
+            output = tmp_path / f'{index}-{label}.spvasm'
+            subprocess.run([str(compiler), str(path), '-I', str(source.parent), '-entry', 'projectPoints',
+                            '-target', 'spirv-asm', '-profile', 'sm_6_6', '-fp-mode', 'precise', '-o', str(output)],
+                           check=True, capture_output=True, text=True)
+            if label == 'actual':
+                _assert_roundtrip_emission(output.read_text())
+            else:
+                with pytest.raises(AssertionError, match='steps were canceled'):
+                    _assert_roundtrip_emission(output.read_text())
+
+
+def test_masked_diagnostic_uses_bits_to_preserve_nonfinite_zero_products():
+    from pathlib import Path
+    text = (Path(__file__).resolve().parents[1] / 'src/sintergpu/kernels/vkl/reprojection.slang').read_text()
+    assert 'displacementContribution=diagnosticContribution(displacement,visible)' in text
+    start = text.index('float diagnosticContribution('); end = text.index('\n}', start)
+    helper = text[start:end]
+    assert 'asuint(value)' in helper and 'magnitude>=0x7f800000u?0x7fc00000u' in helper
+    assert 'if(visible!=0)return value' in helper

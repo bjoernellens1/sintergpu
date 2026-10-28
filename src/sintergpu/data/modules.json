@@ -261,7 +261,7 @@
   },
   "vkl.reprojection": {
     "path": "kernels/vkl/reprojection.slang",
-    "sha256": "a5e9885f1c264250cfc54257eb12c89f446217a42143e85312743b16a1328512"
+    "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278"
   },
   "vkl.temporal_best": {
     "path": "kernels/vkl/temporal_best.slang",

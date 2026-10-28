@@ -1,0 +1,526 @@
+.....................F....F....F....F.............F............          [100%]
+=================================== FAILURES ===================================
+__ test_t0_full_outputs_and_source_major_packing[False-False-False-8-3-17-19] __
+
+device = Device(
+  type = vulkan,
+  adapter_name = "NVIDIA GeForce RTX 4070 Ti",
+  adapter_luid = 96d2dba095fd5c00e8492e0610f24...le_compilation_reports = false,
+  supported_shader_model = sm_6_6,
+  module_cache_path = "",
+  shader_cache_path = ""
+)
+b = 8, n = 3, h = 17, w = 19, depth_option = False, confidence_option = False
+reference = False
+
+    @pytest.mark.parametrize('b,n,h,w', [(1, 1, 3, 5), (8, 3, 17, 19), (1, 2, 1, 1), (1, 2, 1, 7), (1, 2, 7, 1)])
+    @pytest.mark.parametrize('depth_option,confidence_option,reference', [(False, False, False), (True, False, False), (False, True, False), (True, True, False), (True, True, True), (False, False, True)])
+    def test_t0_full_outputs_and_source_major_packing(device, b, n, h, w, depth_option, confidence_option, reference):
+        from benchmarks.reprojection_support import PreparedGraph
+        from sintergpu.reprojection import temporal_reprojection_plan
+        from sintergpu.references.temporal_reprojection_numeric import temporal_reproject_rgb, temporal_rgbd_reference
+        rng = np.random.default_rng(8)
+        k, p = cameras(b)
+        sk = np.repeat(k[:, None], n, axis=1)
+        sp = np.repeat(p[:, None], n, axis=1)
+        sp[..., :3, 3] = [.012, -.007, .021]
+        angle = np.float32(.017)
+        sp[..., :3, :3] = [[np.cos(angle), 0, np.sin(angle)], [0, 1, 0], [-np.sin(angle), 0, np.cos(angle)]]
+        k[:, 0, 0] = 4.3; k[:, 1, 1] = 3.7
+        k[:, 0, 2] = .31; k[:, 1, 2] = .17
+        sk[..., 0, 0] = 4.1; sk[..., 1, 1] = 3.9
+        sk[..., 0, 2] = .27; sk[..., 1, 2] = .21
+        td = rng.uniform(.9, 1.1, (b, 1, h, w)).astype(np.float32)
+        sd = rng.uniform(.9, 1.1, (b, n, 1, h, w)).astype(np.float32)
+        rgb = rng.random((b, n, 3, h, w), dtype=np.float32)
+        conf = rng.random(sd.shape, dtype=np.float32)
+        td.reshape(-1)[0] = 0
+        inputs = dict(target_depth=td, source_rgb=rgb, target_intrinsics=k, target_pose_c2w=p, source_intrinsics=sk, source_pose_c2w=sp)
+        if depth_option or reference: inputs['source_depth'] = sd
+        if confidence_option: inputs['source_confidence'] = conf
+        graph = temporal_reprojection_plan(b, n, h, w, max_workgroups_x=int(device.info.limits.max_compute_dispatch_thread_groups[0]), source_depth=depth_option, source_confidence=confidence_option, reference=reference)
+        prepared = PreparedGraph(device, graph, inputs)
+        for iteration in range(2):
+            if iteration:
+                td.fill(0); prepared.upload('target_depth', td)
+                if depth_option or reference:
+                    sd.fill(0); sd.reshape(-1)[-1] = 1; prepared.upload('source_depth', sd)
+            if reference:
+                expected = temporal_rgbd_reference(**inputs)
+            else:
+                expected = temporal_reproject_rgb(target_rgb=np.zeros((b, 3, h, w), np.float32), **inputs)
+            encoder = device.create_command_encoder(); prepared.record(encoder)
+            device.submit_command_buffer(encoder.finish()); device.wait_for_idle()
+            actual = prepared.outputs(expected)
+            compare(actual, expected)
+            torch = pytest.importorskip('torch')
+            donor_inputs = {key: torch.from_numpy(value) for key, value in inputs.items()}
+            if reference:
+                donor = frozen_module('temporal_reproject').temporal_rgbd_reference(**donor_inputs)
+            else:
+                donor = frozen_module('temporal_reproject').temporal_reproject_rgb(target_rgb=torch.zeros((b, 3, h, w)), **donor_inputs)
+>           compare(actual, {key: value.numpy() for key, value in donor.items()})
+
+tests/test_vkl_reprojection_gpu.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = {'aligned_rgb': array([[[[[0.        , 0.867546  , 0.62689424, ..., 0.41974258,
+           0.5680649 , 0.85563624],
+  ..., 0., 0., ..., 1., 1., 1.],
+          [0., 0., 0., ..., 0., 0., 0.]]]]],
+      shape=(8, 3, 1, 17, 19), dtype=float32)}
+expected = {'aligned_rgb': array([[[[[0.        , 0.867546  , 0.6268943 , ..., 0.41974258,
+           0.5680649 , 0.8556362 ],
+  ..., 0., 0., ..., 1., 1., 1.],
+          [0., 0., 0., ..., 0., 0., 0.]]]]],
+      shape=(8, 3, 1, 17, 19), dtype=float32)}
+
+    def compare(actual, expected):
+        assert actual.keys() == expected.keys()
+        for key, array in expected.items():
+            assert actual[key].shape == array.shape
+            if array.dtype.kind in 'biu':
+                np.testing.assert_array_equal(actual[key], array, err_msg=key)
+            else:
+                # Same staged float32 math; native GPU sqrt/exp and bounded tree
+                # reductions can differ by a few ULPs from CPU scalar/reduction math.
+>               np.testing.assert_allclose(actual[key], array, rtol=8e-6, atol=8e-7, equal_nan=True, err_msg=key)
+E               AssertionError: 
+E               Not equal to tolerance rtol=8e-06, atol=8e-07
+E               aligned_rgb
+E               Mismatched elements: 9 / 23256 (0.0387%)
+E               First 5 mismatches are at indices:
+E                [3, 0, 0, 16, 5]: 0.04192005842924118 (ACTUAL), 0.041918814182281494 (DESIRED)
+E                [3, 1, 0, 16, 5]: 0.04687841981649399 (ACTUAL), 0.04687702655792236 (DESIRED)
+E                [3, 1, 1, 16, 5]: 0.04607624560594559 (ACTUAL), 0.04607487469911575 (DESIRED)
+E                [3, 2, 1, 16, 5]: 0.04071423038840294 (ACTUAL), 0.04071301966905594 (DESIRED)
+E                [4, 0, 1, 16, 5]: 0.03630087897181511 (ACTUAL), 0.03630199655890465 (DESIRED)
+E               Max absolute difference among violations: 1.3932586e-06
+E               Max relative difference among violations: 4.6644047e-05
+E                ACTUAL: array([[[[[0.      , 0.867546, 0.626894, ..., 0.419743, 0.568065,
+E                          0.855636],
+E                         [0.599536, 0.314069, 0.524674, ..., 0.876976, 0.723886,...
+E                DESIRED: array([[[[[0.      , 0.867546, 0.626894, ..., 0.419743, 0.568065,
+E                          0.855636],
+E                         [0.599535, 0.314069, 0.524674, ..., 0.876976, 0.723886,...
+
+tests/test_vkl_reprojection_gpu.py:42: AssertionError
+__ test_t0_full_outputs_and_source_major_packing[True-False-False-8-3-17-19] ___
+
+device = Device(
+  type = vulkan,
+  adapter_name = "NVIDIA GeForce RTX 4070 Ti",
+  adapter_luid = 96d2dba095fd5c00e8492e0610f24...le_compilation_reports = false,
+  supported_shader_model = sm_6_6,
+  module_cache_path = "",
+  shader_cache_path = ""
+)
+b = 8, n = 3, h = 17, w = 19, depth_option = True, confidence_option = False
+reference = False
+
+    @pytest.mark.parametrize('b,n,h,w', [(1, 1, 3, 5), (8, 3, 17, 19), (1, 2, 1, 1), (1, 2, 1, 7), (1, 2, 7, 1)])
+    @pytest.mark.parametrize('depth_option,confidence_option,reference', [(False, False, False), (True, False, False), (False, True, False), (True, True, False), (True, True, True), (False, False, True)])
+    def test_t0_full_outputs_and_source_major_packing(device, b, n, h, w, depth_option, confidence_option, reference):
+        from benchmarks.reprojection_support import PreparedGraph
+        from sintergpu.reprojection import temporal_reprojection_plan
+        from sintergpu.references.temporal_reprojection_numeric import temporal_reproject_rgb, temporal_rgbd_reference
+        rng = np.random.default_rng(8)
+        k, p = cameras(b)
+        sk = np.repeat(k[:, None], n, axis=1)
+        sp = np.repeat(p[:, None], n, axis=1)
+        sp[..., :3, 3] = [.012, -.007, .021]
+        angle = np.float32(.017)
+        sp[..., :3, :3] = [[np.cos(angle), 0, np.sin(angle)], [0, 1, 0], [-np.sin(angle), 0, np.cos(angle)]]
+        k[:, 0, 0] = 4.3; k[:, 1, 1] = 3.7
+        k[:, 0, 2] = .31; k[:, 1, 2] = .17
+        sk[..., 0, 0] = 4.1; sk[..., 1, 1] = 3.9
+        sk[..., 0, 2] = .27; sk[..., 1, 2] = .21
+        td = rng.uniform(.9, 1.1, (b, 1, h, w)).astype(np.float32)
+        sd = rng.uniform(.9, 1.1, (b, n, 1, h, w)).astype(np.float32)
+        rgb = rng.random((b, n, 3, h, w), dtype=np.float32)
+        conf = rng.random(sd.shape, dtype=np.float32)
+        td.reshape(-1)[0] = 0
+        inputs = dict(target_depth=td, source_rgb=rgb, target_intrinsics=k, target_pose_c2w=p, source_intrinsics=sk, source_pose_c2w=sp)
+        if depth_option or reference: inputs['source_depth'] = sd
+        if confidence_option: inputs['source_confidence'] = conf
+        graph = temporal_reprojection_plan(b, n, h, w, max_workgroups_x=int(device.info.limits.max_compute_dispatch_thread_groups[0]), source_depth=depth_option, source_confidence=confidence_option, reference=reference)
+        prepared = PreparedGraph(device, graph, inputs)
+        for iteration in range(2):
+            if iteration:
+                td.fill(0); prepared.upload('target_depth', td)
+                if depth_option or reference:
+                    sd.fill(0); sd.reshape(-1)[-1] = 1; prepared.upload('source_depth', sd)
+            if reference:
+                expected = temporal_rgbd_reference(**inputs)
+            else:
+                expected = temporal_reproject_rgb(target_rgb=np.zeros((b, 3, h, w), np.float32), **inputs)
+            encoder = device.create_command_encoder(); prepared.record(encoder)
+            device.submit_command_buffer(encoder.finish()); device.wait_for_idle()
+            actual = prepared.outputs(expected)
+            compare(actual, expected)
+            torch = pytest.importorskip('torch')
+            donor_inputs = {key: torch.from_numpy(value) for key, value in inputs.items()}
+            if reference:
+                donor = frozen_module('temporal_reproject').temporal_rgbd_reference(**donor_inputs)
+            else:
+                donor = frozen_module('temporal_reproject').temporal_reproject_rgb(target_rgb=torch.zeros((b, 3, h, w)), **donor_inputs)
+>           compare(actual, {key: value.numpy() for key, value in donor.items()})
+
+tests/test_vkl_reprojection_gpu.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = {'aligned_rgb': array([[[[[0.        , 0.867546  , 0.62689424, ..., 0.41974258,
+           0.5680649 , 0.85563624],
+  ...  , 0.        , ..., 0.        ,
+           0.        , 0.        ]]]]],
+      shape=(8, 3, 1, 17, 19), dtype=float32)}
+expected = {'aligned_rgb': array([[[[[0.        , 0.867546  , 0.6268943 , ..., 0.41974258,
+           0.5680649 , 0.8556362 ],
+  ...  , 0.        , ..., 0.        ,
+           0.        , 0.        ]]]]],
+      shape=(8, 3, 1, 17, 19), dtype=float32)}
+
+    def compare(actual, expected):
+        assert actual.keys() == expected.keys()
+        for key, array in expected.items():
+            assert actual[key].shape == array.shape
+            if array.dtype.kind in 'biu':
+                np.testing.assert_array_equal(actual[key], array, err_msg=key)
+            else:
+                # Same staged float32 math; native GPU sqrt/exp and bounded tree
+                # reductions can differ by a few ULPs from CPU scalar/reduction math.
+>               np.testing.assert_allclose(actual[key], array, rtol=8e-6, atol=8e-7, equal_nan=True, err_msg=key)
+E               AssertionError: 
+E               Not equal to tolerance rtol=8e-06, atol=8e-07
+E               aligned_rgb
+E               Mismatched elements: 9 / 23256 (0.0387%)
+E               First 5 mismatches are at indices:
+E                [3, 0, 0, 16, 5]: 0.04192005842924118 (ACTUAL), 0.041918814182281494 (DESIRED)
+E                [3, 1, 0, 16, 5]: 0.04687841981649399 (ACTUAL), 0.04687702655792236 (DESIRED)
+E                [3, 1, 1, 16, 5]: 0.04607624560594559 (ACTUAL), 0.04607487469911575 (DESIRED)
+E                [3, 2, 1, 16, 5]: 0.04071423038840294 (ACTUAL), 0.04071301966905594 (DESIRED)
+E                [4, 0, 1, 16, 5]: 0.03630087897181511 (ACTUAL), 0.03630199655890465 (DESIRED)
+E               Max absolute difference among violations: 1.3932586e-06
+E               Max relative difference among violations: 4.6644047e-05
+E                ACTUAL: array([[[[[0.      , 0.867546, 0.626894, ..., 0.419743, 0.568065,
+E                          0.855636],
+E                         [0.599536, 0.314069, 0.524674, ..., 0.876976, 0.723886,...
+E                DESIRED: array([[[[[0.      , 0.867546, 0.626894, ..., 0.419743, 0.568065,
+E                          0.855636],
+E                         [0.599535, 0.314069, 0.524674, ..., 0.876976, 0.723886,...
+
+tests/test_vkl_reprojection_gpu.py:42: AssertionError
+__ test_t0_full_outputs_and_source_major_packing[False-True-False-8-3-17-19] ___
+
+device = Device(
+  type = vulkan,
+  adapter_name = "NVIDIA GeForce RTX 4070 Ti",
+  adapter_luid = 96d2dba095fd5c00e8492e0610f24...le_compilation_reports = false,
+  supported_shader_model = sm_6_6,
+  module_cache_path = "",
+  shader_cache_path = ""
+)
+b = 8, n = 3, h = 17, w = 19, depth_option = False, confidence_option = True
+reference = False
+
+    @pytest.mark.parametrize('b,n,h,w', [(1, 1, 3, 5), (8, 3, 17, 19), (1, 2, 1, 1), (1, 2, 1, 7), (1, 2, 7, 1)])
+    @pytest.mark.parametrize('depth_option,confidence_option,reference', [(False, False, False), (True, False, False), (False, True, False), (True, True, False), (True, True, True), (False, False, True)])
+    def test_t0_full_outputs_and_source_major_packing(device, b, n, h, w, depth_option, confidence_option, reference):
+        from benchmarks.reprojection_support import PreparedGraph
+        from sintergpu.reprojection import temporal_reprojection_plan
+        from sintergpu.references.temporal_reprojection_numeric import temporal_reproject_rgb, temporal_rgbd_reference
+        rng = np.random.default_rng(8)
+        k, p = cameras(b)
+        sk = np.repeat(k[:, None], n, axis=1)
+        sp = np.repeat(p[:, None], n, axis=1)
+        sp[..., :3, 3] = [.012, -.007, .021]
+        angle = np.float32(.017)
+        sp[..., :3, :3] = [[np.cos(angle), 0, np.sin(angle)], [0, 1, 0], [-np.sin(angle), 0, np.cos(angle)]]
+        k[:, 0, 0] = 4.3; k[:, 1, 1] = 3.7
+        k[:, 0, 2] = .31; k[:, 1, 2] = .17
+        sk[..., 0, 0] = 4.1; sk[..., 1, 1] = 3.9
+        sk[..., 0, 2] = .27; sk[..., 1, 2] = .21
+        td = rng.uniform(.9, 1.1, (b, 1, h, w)).astype(np.float32)
+        sd = rng.uniform(.9, 1.1, (b, n, 1, h, w)).astype(np.float32)
+        rgb = rng.random((b, n, 3, h, w), dtype=np.float32)
+        conf = rng.random(sd.shape, dtype=np.float32)
+        td.reshape(-1)[0] = 0
+        inputs = dict(target_depth=td, source_rgb=rgb, target_intrinsics=k, target_pose_c2w=p, source_intrinsics=sk, source_pose_c2w=sp)
+        if depth_option or reference: inputs['source_depth'] = sd
+        if confidence_option: inputs['source_confidence'] = conf
+        graph = temporal_reprojection_plan(b, n, h, w, max_workgroups_x=int(device.info.limits.max_compute_dispatch_thread_groups[0]), source_depth=depth_option, source_confidence=confidence_option, reference=reference)
+        prepared = PreparedGraph(device, graph, inputs)
+        for iteration in range(2):
+            if iteration:
+                td.fill(0); prepared.upload('target_depth', td)
+                if depth_option or reference:
+                    sd.fill(0); sd.reshape(-1)[-1] = 1; prepared.upload('source_depth', sd)
+            if reference:
+                expected = temporal_rgbd_reference(**inputs)
+            else:
+                expected = temporal_reproject_rgb(target_rgb=np.zeros((b, 3, h, w), np.float32), **inputs)
+            encoder = device.create_command_encoder(); prepared.record(encoder)
+            device.submit_command_buffer(encoder.finish()); device.wait_for_idle()
+            actual = prepared.outputs(expected)
+            compare(actual, expected)
+            torch = pytest.importorskip('torch')
+            donor_inputs = {key: torch.from_numpy(value) for key, value in inputs.items()}
+            if reference:
+                donor = frozen_module('temporal_reproject').temporal_rgbd_reference(**donor_inputs)
+            else:
+                donor = frozen_module('temporal_reproject').temporal_reproject_rgb(target_rgb=torch.zeros((b, 3, h, w)), **donor_inputs)
+>           compare(actual, {key: value.numpy() for key, value in donor.items()})
+
+tests/test_vkl_reprojection_gpu.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = {'aligned_rgb': array([[[[[0.        , 0.867546  , 0.62689424, ..., 0.41974258,
+           0.5680649 , 0.85563624],
+  ...  , 0.        , ..., 0.        ,
+           0.        , 0.        ]]]]],
+      shape=(8, 3, 1, 17, 19), dtype=float32)}
+expected = {'aligned_rgb': array([[[[[0.        , 0.867546  , 0.6268943 , ..., 0.41974258,
+           0.5680649 , 0.8556362 ],
+  ...  , 0.        , ..., 0.        ,
+           0.        , 0.        ]]]]],
+      shape=(8, 3, 1, 17, 19), dtype=float32)}
+
+    def compare(actual, expected):
+        assert actual.keys() == expected.keys()
+        for key, array in expected.items():
+            assert actual[key].shape == array.shape
+            if array.dtype.kind in 'biu':
+                np.testing.assert_array_equal(actual[key], array, err_msg=key)
+            else:
+                # Same staged float32 math; native GPU sqrt/exp and bounded tree
+                # reductions can differ by a few ULPs from CPU scalar/reduction math.
+>               np.testing.assert_allclose(actual[key], array, rtol=8e-6, atol=8e-7, equal_nan=True, err_msg=key)
+E               AssertionError: 
+E               Not equal to tolerance rtol=8e-06, atol=8e-07
+E               aligned_rgb
+E               Mismatched elements: 9 / 23256 (0.0387%)
+E               First 5 mismatches are at indices:
+E                [3, 0, 0, 16, 5]: 0.04192005842924118 (ACTUAL), 0.041918814182281494 (DESIRED)
+E                [3, 1, 0, 16, 5]: 0.04687841981649399 (ACTUAL), 0.04687702655792236 (DESIRED)
+E                [3, 1, 1, 16, 5]: 0.04607624560594559 (ACTUAL), 0.04607487469911575 (DESIRED)
+E                [3, 2, 1, 16, 5]: 0.04071423038840294 (ACTUAL), 0.04071301966905594 (DESIRED)
+E                [4, 0, 1, 16, 5]: 0.03630087897181511 (ACTUAL), 0.03630199655890465 (DESIRED)
+E               Max absolute difference among violations: 1.3932586e-06
+E               Max relative difference among violations: 4.6644047e-05
+E                ACTUAL: array([[[[[0.      , 0.867546, 0.626894, ..., 0.419743, 0.568065,
+E                          0.855636],
+E                         [0.599536, 0.314069, 0.524674, ..., 0.876976, 0.723886,...
+E                DESIRED: array([[[[[0.      , 0.867546, 0.626894, ..., 0.419743, 0.568065,
+E                          0.855636],
+E                         [0.599535, 0.314069, 0.524674, ..., 0.876976, 0.723886,...
+
+tests/test_vkl_reprojection_gpu.py:42: AssertionError
+___ test_t0_full_outputs_and_source_major_packing[True-True-False-8-3-17-19] ___
+
+device = Device(
+  type = vulkan,
+  adapter_name = "NVIDIA GeForce RTX 4070 Ti",
+  adapter_luid = 96d2dba095fd5c00e8492e0610f24...le_compilation_reports = false,
+  supported_shader_model = sm_6_6,
+  module_cache_path = "",
+  shader_cache_path = ""
+)
+b = 8, n = 3, h = 17, w = 19, depth_option = True, confidence_option = True
+reference = False
+
+    @pytest.mark.parametrize('b,n,h,w', [(1, 1, 3, 5), (8, 3, 17, 19), (1, 2, 1, 1), (1, 2, 1, 7), (1, 2, 7, 1)])
+    @pytest.mark.parametrize('depth_option,confidence_option,reference', [(False, False, False), (True, False, False), (False, True, False), (True, True, False), (True, True, True), (False, False, True)])
+    def test_t0_full_outputs_and_source_major_packing(device, b, n, h, w, depth_option, confidence_option, reference):
+        from benchmarks.reprojection_support import PreparedGraph
+        from sintergpu.reprojection import temporal_reprojection_plan
+        from sintergpu.references.temporal_reprojection_numeric import temporal_reproject_rgb, temporal_rgbd_reference
+        rng = np.random.default_rng(8)
+        k, p = cameras(b)
+        sk = np.repeat(k[:, None], n, axis=1)
+        sp = np.repeat(p[:, None], n, axis=1)
+        sp[..., :3, 3] = [.012, -.007, .021]
+        angle = np.float32(.017)
+        sp[..., :3, :3] = [[np.cos(angle), 0, np.sin(angle)], [0, 1, 0], [-np.sin(angle), 0, np.cos(angle)]]
+        k[:, 0, 0] = 4.3; k[:, 1, 1] = 3.7
+        k[:, 0, 2] = .31; k[:, 1, 2] = .17
+        sk[..., 0, 0] = 4.1; sk[..., 1, 1] = 3.9
+        sk[..., 0, 2] = .27; sk[..., 1, 2] = .21
+        td = rng.uniform(.9, 1.1, (b, 1, h, w)).astype(np.float32)
+        sd = rng.uniform(.9, 1.1, (b, n, 1, h, w)).astype(np.float32)
+        rgb = rng.random((b, n, 3, h, w), dtype=np.float32)
+        conf = rng.random(sd.shape, dtype=np.float32)
+        td.reshape(-1)[0] = 0
+        inputs = dict(target_depth=td, source_rgb=rgb, target_intrinsics=k, target_pose_c2w=p, source_intrinsics=sk, source_pose_c2w=sp)
+        if depth_option or reference: inputs['source_depth'] = sd
+        if confidence_option: inputs['source_confidence'] = conf
+        graph = temporal_reprojection_plan(b, n, h, w, max_workgroups_x=int(device.info.limits.max_compute_dispatch_thread_groups[0]), source_depth=depth_option, source_confidence=confidence_option, reference=reference)
+        prepared = PreparedGraph(device, graph, inputs)
+        for iteration in range(2):
+            if iteration:
+                td.fill(0); prepared.upload('target_depth', td)
+                if depth_option or reference:
+                    sd.fill(0); sd.reshape(-1)[-1] = 1; prepared.upload('source_depth', sd)
+            if reference:
+                expected = temporal_rgbd_reference(**inputs)
+            else:
+                expected = temporal_reproject_rgb(target_rgb=np.zeros((b, 3, h, w), np.float32), **inputs)
+            encoder = device.create_command_encoder(); prepared.record(encoder)
+            device.submit_command_buffer(encoder.finish()); device.wait_for_idle()
+            actual = prepared.outputs(expected)
+            compare(actual, expected)
+            torch = pytest.importorskip('torch')
+            donor_inputs = {key: torch.from_numpy(value) for key, value in inputs.items()}
+            if reference:
+                donor = frozen_module('temporal_reproject').temporal_rgbd_reference(**donor_inputs)
+            else:
+                donor = frozen_module('temporal_reproject').temporal_reproject_rgb(target_rgb=torch.zeros((b, 3, h, w)), **donor_inputs)
+>           compare(actual, {key: value.numpy() for key, value in donor.items()})
+
+tests/test_vkl_reprojection_gpu.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = {'aligned_rgb': array([[[[[0.        , 0.867546  , 0.62689424, ..., 0.41974258,
+           0.5680649 , 0.85563624],
+  ...  , 0.        , ..., 0.        ,
+           0.        , 0.        ]]]]],
+      shape=(8, 3, 1, 17, 19), dtype=float32)}
+expected = {'aligned_rgb': array([[[[[0.        , 0.867546  , 0.6268943 , ..., 0.41974258,
+           0.5680649 , 0.8556362 ],
+  ...  , 0.        , ..., 0.        ,
+           0.        , 0.        ]]]]],
+      shape=(8, 3, 1, 17, 19), dtype=float32)}
+
+    def compare(actual, expected):
+        assert actual.keys() == expected.keys()
+        for key, array in expected.items():
+            assert actual[key].shape == array.shape
+            if array.dtype.kind in 'biu':
+                np.testing.assert_array_equal(actual[key], array, err_msg=key)
+            else:
+                # Same staged float32 math; native GPU sqrt/exp and bounded tree
+                # reductions can differ by a few ULPs from CPU scalar/reduction math.
+>               np.testing.assert_allclose(actual[key], array, rtol=8e-6, atol=8e-7, equal_nan=True, err_msg=key)
+E               AssertionError: 
+E               Not equal to tolerance rtol=8e-06, atol=8e-07
+E               aligned_rgb
+E               Mismatched elements: 9 / 23256 (0.0387%)
+E               First 5 mismatches are at indices:
+E                [3, 0, 0, 16, 5]: 0.04192005842924118 (ACTUAL), 0.041918814182281494 (DESIRED)
+E                [3, 1, 0, 16, 5]: 0.04687841981649399 (ACTUAL), 0.04687702655792236 (DESIRED)
+E                [3, 1, 1, 16, 5]: 0.04607624560594559 (ACTUAL), 0.04607487469911575 (DESIRED)
+E                [3, 2, 1, 16, 5]: 0.04071423038840294 (ACTUAL), 0.04071301966905594 (DESIRED)
+E                [4, 0, 1, 16, 5]: 0.03630087897181511 (ACTUAL), 0.03630199655890465 (DESIRED)
+E               Max absolute difference among violations: 1.3932586e-06
+E               Max relative difference among violations: 4.6644047e-05
+E                ACTUAL: array([[[[[0.      , 0.867546, 0.626894, ..., 0.419743, 0.568065,
+E                          0.855636],
+E                         [0.599536, 0.314069, 0.524674, ..., 0.876976, 0.723886,...
+E                DESIRED: array([[[[[0.      , 0.867546, 0.626894, ..., 0.419743, 0.568065,
+E                          0.855636],
+E                         [0.599535, 0.314069, 0.524674, ..., 0.876976, 0.723886,...
+
+tests/test_vkl_reprojection_gpu.py:42: AssertionError
+_____ test_literal_sampler_raster_and_raw_diagnostics[normalized_half_tie] _____
+
+device = Device(
+  type = vulkan,
+  adapter_name = "NVIDIA GeForce RTX 4070 Ti",
+  adapter_luid = 96d2dba095fd5c00e8492e0610f24...le_compilation_reports = false,
+  supported_shader_model = sm_6_6,
+  module_cache_path = "",
+  shader_cache_path = ""
+)
+case = 'normalized_half_tie'
+
+    @pytest.mark.parametrize('case', ['normalized_half_tie', 'epsilon_support', 'epsilon_projection', 'invalid_translated', 'huge_finite_grid', 'huge_grid', 'nan_grid'])
+    def test_literal_sampler_raster_and_raw_diagnostics(device, case):
+        from benchmarks.reprojection_support import PreparedGraph
+        from sintergpu.reprojection import reprojection_plan
+        from sintergpu.references.reprojection_numeric import reproject_rgbd, rasterize_reprojection
+        k, p = cameras(1); sk = k.copy(); sp = p.copy(); tk = k.copy()
+        eps = np.finfo(np.float32).eps
+        depth = np.ones((1, 1, 1, 1), np.float32)
+        th, tw, raster, target = 1, 4, False, None
+        if case == 'normalized_half_tie':
+            sp[:, 0, 3] = .5
+            target = np.array([[[[11, 22, 33, 44]]]], np.float32)
+        elif case == 'epsilon_support':
+            depth = np.array([[[[1, 1 + eps, 1 + 2 * eps]]]], np.float32)
+            tk[:, 0, 0] = .01
+            raster = True
+        elif case == 'epsilon_projection':
+            sp[:, 0, 3] = eps
+            sp[:, 2, 3] = np.float32(eps / 2) - np.float32(1)
+        elif case == 'huge_finite_grid':
+            sp[:, 0, 3] = 1e30
+        elif case == 'huge_grid':
+            sp[:, 0, 3] = 1e38; sp[:, 2, 3] = -1
+        elif case == 'nan_grid':
+            depth = np.full((1, 1, 1, 3), 3e38, np.float32)
+            sk[:, 0, 0] = .1
+        else:
+            depth = np.array([[[[0, np.nan, np.inf, -1]]]], np.float32)
+            sp[:, :3, 3] = [2, 3, 4]
+        if case in ('huge_finite_grid', 'huge_grid', 'nan_grid'):
+            target = np.ones((1, 1, th, tw), np.float32)  # Execute nearestDepth guards too.
+        h, w = depth.shape[-2:]
+        inputs = dict(source_depth=depth, source_intrinsics=sk, source_pose_c2w=sp, target_intrinsics=tk, target_pose_c2w=p)
+        if target is not None:
+            inputs['target_depth'] = target
+        if raster:
+            confidence = np.array([[[[-0.0, .8, 1]]]], np.float32)
+            inputs['source_confidence'] = confidence
+            expected = rasterize_reprojection(depth, confidence, sk, sp, tk, p, target_hw=(th, tw))
+        else:
+            expected = reproject_rgbd(depth, sk, sp, tk, p, target, target_hw=(th, tw))
+        graph = reprojection_plan(1, h, w, th, tw, max_workgroups_x=int(device.info.limits.max_compute_dispatch_thread_groups[0]), raster=raster, target_depth=target is not None)
+        prepared = PreparedGraph(device, graph, inputs)
+        encoder = device.create_command_encoder(); prepared.record(encoder)
+        device.submit_command_buffer(encoder.finish()); device.wait_for_idle()
+>       compare(prepared.outputs(expected), expected)
+
+tests/test_vkl_reprojection_gpu.py:182: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+actual = {'projected_xy': array([[[[0.5]],
+
+        [[0. ]]]], dtype=float32), 'projected_depth': array([[[[1.]]]], dtype=float32), 'visible': array([[[[1]]]], dtype=uint32), 'displacement': array([[[[0.5]]]], dtype=float32), ...}
+expected = {'projected_xy': array([[[[0.5]],
+
+        [[0. ]]]], dtype=float32), 'projected_depth': array([[[[1.]]]], dtype=float32), 'visible': array([[[[ True]]]]), 'displacement': array([[[[0.5]]]], dtype=float32), ...}
+
+    def compare(actual, expected):
+        assert actual.keys() == expected.keys()
+        for key, array in expected.items():
+            assert actual[key].shape == array.shape
+            if array.dtype.kind in 'biu':
+                np.testing.assert_array_equal(actual[key], array, err_msg=key)
+            else:
+                # Same staged float32 math; native GPU sqrt/exp and bounded tree
+                # reductions can differ by a few ULPs from CPU scalar/reduction math.
+>               np.testing.assert_allclose(actual[key], array, rtol=8e-6, atol=8e-7, equal_nan=True, err_msg=key)
+E               AssertionError: 
+E               Not equal to tolerance rtol=8e-06, atol=8e-07
+E               depth_consistency
+E               Mismatched elements: 1 / 1 (100%)
+E               Mismatch at index:
+E                [0, 0, 0, 0]: 10.0 (ACTUAL), 21.0 (DESIRED)
+E               Max absolute difference among violations: 11.
+E               Max relative difference among violations: 0.52380955
+E                ACTUAL: array([[[[10.]]]], dtype=float32)
+E                DESIRED: array([[[[21.]]]], dtype=float32)
+
+tests/test_vkl_reprojection_gpu.py:42: AssertionError
+=============================== warnings summary ===============================
+tests/test_vkl_reprojection_gpu.py::test_temporal_extreme_grid_reaches_bilinear_and_nearest_samplers[nan_grid]
+  /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.5-e723997/src/sintergpu/references/temporal_reprojection_numeric.py:58: RuntimeWarning: overflow encountered in divide
+    confidence *= np.exp(-projected['depth_consistency'] / _F(consistency_threshold))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_vkl_reprojection_gpu.py::test_t0_full_outputs_and_source_major_packing[False-False-False-8-3-17-19]
+FAILED tests/test_vkl_reprojection_gpu.py::test_t0_full_outputs_and_source_major_packing[True-False-False-8-3-17-19]
+FAILED tests/test_vkl_reprojection_gpu.py::test_t0_full_outputs_and_source_major_packing[False-True-False-8-3-17-19]
+FAILED tests/test_vkl_reprojection_gpu.py::test_t0_full_outputs_and_source_major_packing[True-True-False-8-3-17-19]
+FAILED tests/test_vkl_reprojection_gpu.py::test_literal_sampler_raster_and_raw_diagnostics[normalized_half_tie]
+5 failed, 58 passed, 1 warning in 19.54s
