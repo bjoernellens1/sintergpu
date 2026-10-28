@@ -1,0 +1,36 @@
+diff --git a/src/slangpy_ext/device/shader.cpp b/src/slangpy_ext/device/shader.cpp
+--- a/src/slangpy_ext/device/shader.cpp
++++ b/src/slangpy_ext/device/shader.cpp
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: experimental shader-byte observation.
+ // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ 
+ #include "nanobind.h"
+@@ -268,6 +269,27 @@
+         .def("specialize", &SlangEntryPoint::specialize, "specialization_args"_a);
+ 
+     nb::class_<ShaderProgram, DeviceChild>(m, "ShaderProgram", D(ShaderProgram))
++        .def_prop_ro("vulkan_shader_bytes_observation_v1", [](const ShaderProgram& program) -> nb::object {
++            // Caller serializes this entire query with close and hot reload.
++            if (!program.device() || program.device()->is_closed() || !program.rhi_shader_program()) return nb::none();
++            Slang::ComPtr<rhi::IVulkanShaderBytesObservationV1> query;
++            auto result = program.rhi_shader_program()->queryInterface(
++                rhi::IVulkanShaderBytesObservationV1::getTypeGuid(), reinterpret_cast<void**>(query.writeRef()));
++            if (SLANG_FAILED(result) || !query) return nb::none();
++            uint32_t count = 0;
++            result = query->getModuleCount(&count);
++            if (SLANG_FAILED(result)) return nb::none();
++            nb::list items;
++            for (uint32_t i=0; i<count; ++i) {
++                const void* bytes = nullptr; size_t size = 0; const char* name = nullptr; uint64_t handle = 0;
++                result = query->getModule(i, &bytes, &size, &name, &handle);
++                if (SLANG_FAILED(result) || !bytes || !size || !name || !handle) return nb::none();
++                nb::dict item; item["source_entry"] = name; item["vulkan_entry"] = "main"; item["shader_module"] = handle;
++                item["bytes"] = nb::bytes(reinterpret_cast<const char*>(bytes), size);
++                items.append(item);
++            }
++            return items;
++        }, "Successful Vulkan module byte copies; not a dispatch or specialization identity proof.")
+         .def_prop_ro("layout", &ShaderProgram::layout, D(ShaderProgram, layout))
+         .def_prop_ro("reflection", &ShaderProgram::reflection, D(ShaderProgram, reflection))
+         .def(

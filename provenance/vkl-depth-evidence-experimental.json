@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0 (original owner authorization 2026-10-27)",
+  "author": "Original owner code; independent experimental SinterGPU port",
+  "operation_prefix": "vkl.depth_evidence",
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/depth_evidence.py",
+      "source_sha256": "5976e426e33d1e1430cc5c233bd351fe7e226f2289c1cd43966a34392957fe18",
+      "destination": "src/sintergpu/kernels/experimental/depth_evidence_map.slang",
+      "imported_sha256": "15cfc47f426a976a9d06d6b543ce510ab5150c5a032c69421c269ffaa87b7d07",
+      "changes": [
+        "Independent experimental float32 mapping and serial reduction with checked launch; no GPU qualification."
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_evidence.py",
+      "source_sha256": "5976e426e33d1e1430cc5c233bd351fe7e226f2289c1cd43966a34392957fe18",
+      "destination": "src/sintergpu/kernels/experimental/depth_evidence.slang",
+      "imported_sha256": "31731e403102ed4869144003fa47c5aab7dc1a3bce1680fd921e7819636349fe",
+      "changes": [
+        "Independent experimental float32 mapping and serial reduction with checked launch; no GPU qualification."
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/depth_evidence.py",
+      "source_sha256": "5976e426e33d1e1430cc5c233bd351fe7e226f2289c1cd43966a34392957fe18",
+      "destination": "src/sintergpu/depth_evidence_contract.py",
+      "imported_sha256": "d5a3599e4ed620253a4abe5b04e9a9cc094338d342cc92e5373fd26722209fc1",
+      "changes": [
+        "Independent experimental float32 mapping and serial reduction with checked launch; no GPU qualification."
+      ]
+    }
+  ]
+}

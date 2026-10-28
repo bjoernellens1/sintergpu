@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.9 — 2026-10-28
+
+- Add experimental VKL depth-evidence map, serial global/grid reduction dispatches and checked launch geometry. CPU model comparisons and compiler checks do not establish shader GPU parity, gradients or performance; existing defaults remain unchanged.
+- Add experimental RHI and SlangPy shader-byte and recorded-dispatch observation patches and CPU-only mock probes, including synthetic cache-hit rejection. Provider and loaded-runtime identity, GPU execution, physical backing and performance remain unqualified; the production gate remains blocked.
+- The timing registry covers 166 portable entries with zero source-current paired measurements. All 2,478 earlier rows remain historical; four native timing targets also remain pending.
+
 ## 0.2.8 — 2026-10-28
 
 - Add an experimental, fixture-bound 256-thread point-plane AoSoA dispatch, checked caller-owned plan and packaged historical fixture. It requires fresh GPU parity and performance qualification for its imported compilation; existing defaults remain unchanged.

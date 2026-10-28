@@ -5041,6 +5041,76 @@
       "fixture": null
     },
     {
+      "id": "vkl.depth_evidence.depthEvidenceGlobal",
+      "path": "kernels/experimental/depth_evidence.slang",
+      "entrypoint": "depthEvidenceGlobal",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "experimental-serial",
+      "sha256": "31731e403102ed4869144003fa47c5aab7dc1a3bce1680fd921e7819636349fe",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/depth_evidence.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-depth-evidence-float32-serial",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/depth-evidence-map.md",
+        "numerical_behavior": "Experimental forward reduction stage; checked host launch and caller-validated data, bindings and synchronization required. CPU model and compiler checks only; GPU parity and performance pending."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "caller-owned validated resources and synchronization",
+        "experimental.depth_evidence_map module"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.depth_evidence.depthEvidenceGrid",
+      "path": "kernels/experimental/depth_evidence.slang",
+      "entrypoint": "depthEvidenceGrid",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "experimental-serial",
+      "sha256": "31731e403102ed4869144003fa47c5aab7dc1a3bce1680fd921e7819636349fe",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/depth_evidence.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-depth-evidence-float32-serial",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/depth-evidence-map.md",
+        "numerical_behavior": "Experimental forward reduction stage; checked host launch and caller-validated data, bindings and synchronization required. CPU model and compiler checks only; GPU parity and performance pending."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "caller-owned validated resources and synchronization",
+        "experimental.depth_evidence_map module"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
       "id": "vkl.depth_fusion.fuseDepth",
       "path": "kernels/vkl/depth_fusion.slang",
       "entrypoint": "fuseDepth",

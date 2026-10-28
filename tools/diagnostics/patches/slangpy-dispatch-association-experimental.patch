@@ -1,0 +1,45 @@
+diff --git a/src/slangpy_ext/device/command.cpp b/src/slangpy_ext/device/command.cpp
+--- a/src/slangpy_ext/device/command.cpp
++++ b/src/slangpy_ext/device/command.cpp
+@@ -1,8 +1,10 @@
++// Modified by SinterGPU: experimental recorded-dispatch observation.
+ // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ 
+ #include "nanobind.h"
+ 
+ #include "sgl/device/command.h"
++#include "sgl/device/device.h"
+ #include "sgl/device/query.h"
+ #include "sgl/device/pipeline.h"
+ #include "sgl/device/shader_object.h"
+@@ -742,6 +744,30 @@
+         );
+ 
+     nb::class_<CommandBuffer, DeviceChild>(m, "CommandBuffer", D(CommandBuffer))
++        .def_prop_ro("vulkan_recorded_dispatches_v1", [](const CommandBuffer& command) -> nb::object {
++            // Caller must serialize with submit, reset, reuse, reload and close.
++            if (!command.device() || command.device()->is_closed() || !command.rhi_command_buffer()) return nb::none();
++            Slang::ComPtr<rhi::IVulkanRecordedDispatchObservationV1> query;
++            auto result = command.rhi_command_buffer()->queryInterface(
++                rhi::IVulkanRecordedDispatchObservationV1::getTypeGuid(), reinterpret_cast<void**>(query.writeRef()));
++            if (SLANG_FAILED(result) || !query) return nb::none();
++            uint32_t count = 0;
++            result = query->getDispatchCount(&count);
++            if (SLANG_FAILED(result)) return nb::none();
++            nb::list items;
++            for (uint32_t i=0; i<count; ++i) {
++                rhi::VulkanRecordedDispatchV1 observation{};
++                result = query->getDispatch(i, &observation);
++                if (SLANG_FAILED(result) || !observation.code || !observation.codeSize) return nb::none();
++                nb::dict item; item["recording_generation"] = observation.recordingGeneration;
++                item["command_buffer"] = observation.commandBuffer; item["pipeline"] = observation.pipeline;
++                item["shader_module"] = observation.shaderModule;
++                item["groups"] = nb::make_tuple(observation.groups[0], observation.groups[1], observation.groups[2]);
++                item["bytes"] = nb::bytes(reinterpret_cast<const char*>(observation.code), observation.codeSize);
++                items.append(item);
++            }
++            return items;
++        }, "Recorded direct dispatch association; not submission or GPU execution evidence.")
+         .def_prop_ro("queue", &CommandBuffer::queue, D(CommandBuffer, queue))
+         .def_prop_ro("recording_id", &CommandBuffer::recording_id, D(CommandBuffer, recording_id));
+ }
