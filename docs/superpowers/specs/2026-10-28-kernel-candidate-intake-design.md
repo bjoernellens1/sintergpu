@@ -71,7 +71,7 @@ Use this PR-body checklist, with exact evidence links and commits:
 - [ ] Both pinned standalone compiler lanes (Slang 2026.12 and 2026.19): compilation
       and reflection/layout parity. Record SlangPy's actual compiler separately.
 - [ ] Device parity: each proposed operation/variant/adapter/configuration on
-      Radeon 8060S and the selected RTX 3090 workstation. Missing execution is pending.
+      Radeon 8060S and the selected RTX 4070 workstation. Missing execution is pending.
 - [ ] Performance: the matching controlled baseline/candidate comparison below.
 - [ ] Maintainer review: scope and evidence accepted for a separate promotion PR.
 

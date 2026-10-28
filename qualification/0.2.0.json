@@ -822,7 +822,7 @@
     "benchmarks/results/vkl-cpu-gpu-8060s-0.2.0.json": "a71ed9992853c386fbecd6f80e83cd4d83cf4fbc70dab0afd584f15e6e4e4763"
   },
   "pending_gates": [
-    "NVIDIA RTX 3090 execution: selected workstation unreachable",
+    "NVIDIA RTX 4070 execution: newly selected workstation address/runtime qualification pending; supersedes unreachable RTX 3090 target",
     "Full Radeon 8060S operation/variant/adapter qualification beyond retained fixtures",
     "36 VKL reference modules remain without Slang translation; eleven covered modules include partial-forward profiles",
     "Reviewed consumer migration adoption and configured automatic cross-repository App delivery; seven initial registration PRs delivered",
