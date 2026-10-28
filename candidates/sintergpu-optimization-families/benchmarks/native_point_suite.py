@@ -27,7 +27,8 @@ def run(args):
         runs=3, profiles=['aosoa', 'scalar'], counts=list(COUNTS), method=METHOD,
         compiler_lane='2026.19', hostname=platform.node(), vendor=args.vendor,
         device=args.device, affinity_cpu=args.cpu,
-        source_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+        source_commit=args.source_commit or subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+        source_commit_origin='explicit archive identity' if args.source_commit else 'local git HEAD',
         native_binary_sha256=sha(args.binary), native_build_flags='-std=c++17 -O2 -Wall -Wextra -Werror -Wno-missing-field-initializers -lvulkan',
         sources={str(p.relative_to(Path(__file__).resolve().parents[1])):sha(p)
                  for p in [Path(__file__).resolve(), Path(__file__).with_name('native_fixture.py'),
@@ -103,6 +104,7 @@ def main():
     p=sub.add_parser('run');p.add_argument('--binary',type=Path,required=True);p.add_argument('--compiled',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--vendor',required=True);p.add_argument('--device',required=True)
     p.add_argument('--cpu',type=int,required=True);p.add_argument('--blocks',type=int,default=1000)
+    p.add_argument('--source-commit',help='Full source commit for an exported archive without .git; source hashes remain mandatory')
     p=sub.add_parser('report');p.add_argument('--inputs',type=Path,nargs='+',required=True);p.add_argument('--output',type=Path,required=True)
     args=parser.parse_args();globals()[args.action](args)
 
