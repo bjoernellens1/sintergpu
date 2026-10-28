@@ -27,7 +27,36 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y libvulkan-dev
       - run: python -m pip install '.[test]' build 'setuptools>=77' wheel
-      - run: python -m pytest tests -q
+      - name: Run CPU suite with verified user and mount namespaces
+        run: |
+          # Ubuntu's AppArmor policy can deny unprivileged user namespaces. The
+          # snapshot tests require a real private mount namespace and fail closed.
+          # Adjust only this disposable GitHub-hosted VM, then restore its policy.
+          changed=0
+          restore_policy() {
+            if [ "$changed" = 1 ]; then sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=1; fi
+          }
+          trap restore_policy EXIT
+          if ! /usr/bin/unshare -Urnm /bin/true; then
+            test "${RUNNER_ENVIRONMENT:-}" = github-hosted
+            test "$(sysctl -n kernel.apparmor_restrict_unprivileged_userns)" = 1
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+            changed=1
+            /usr/bin/unshare -Urnm /bin/true
+          fi
+          python -m pytest tests -q
+      - name: Verify allocation diagnostic CPU guards
+        env:
+          PYTHONPATH: src:.
+          VK_DRIVER_FILES: /nonexistent/sintergpu-no-vulkan-icd.json
+          VK_ICD_FILENAMES: /nonexistent/sintergpu-no-vulkan-icd.json
+        run: python -m pytest tools/diagnostics/patches/test_rhi_allocation_vulkan_cases.py tools/diagnostics/patches/test_rhi_allocation_vulkan_runner.py tools/diagnostics/patches/test_rhi_allocation_exploratory_smoke.py -q
+      - name: Verify device-limit diagnostic CPU guards
+        env:
+          PYTHONPATH: src:.
+          VK_DRIVER_FILES: /nonexistent/sintergpu-no-vulkan-icd.json
+          VK_ICD_FILENAMES: /nonexistent/sintergpu-no-vulkan-icd.json
+        run: python -m pytest tools/diagnostics/patches/test_rhi_device_limits_observation.py -q
       - name: Verify compact SlangPy adapter with fake devices
         env:
           PYTHONPATH: src:.
@@ -224,6 +253,22 @@ jobs:
           tests = sum(int(s.get('tests', 0)) for s in suites)
           skipped = sum(int(s.get('skipped', 0)) for s in suites)
           assert tests == 19 and skipped == 0, f'compact ABI gate: {tests} tests, {skipped} skipped'
+          PYCHECK
+      - name: Verify experimental point-plane fixture reflection (Slang ${{ matrix.version }})
+        env:
+          SLANG_VERSION: ${{ matrix.version }}
+        run: |
+          test -x /tmp/slang/bin/slangc
+          test "$(/tmp/slang/bin/slangc -version 2>&1)" = "$SLANG_VERSION"
+          export "SINTERGPU_SLANGC_${SLANG_VERSION//./_}=/tmp/slang/bin/slangc"
+          PYTHONPATH=src:. python -m pytest tests/test_point_plane_aosoa_256.py -q -k "$SLANG_VERSION" --junitxml=build/point-plane-fixture.xml
+          python - <<'PYCHECK'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('build/point-plane-fixture.xml').getroot()
+          suites = [root] if root.tag == 'testsuite' else root.findall('testsuite')
+          tests = sum(int(s.get('tests', 0)) for s in suites)
+          skipped = sum(int(s.get('skipped', 0)) for s in suites)
+          assert tests == 1 and skipped == 0, f'point-plane reflection gate: {tests} tests, {skipped} skipped'
           PYCHECK
       - name: Verify point-plane module imports, instructions and ABI
         env:

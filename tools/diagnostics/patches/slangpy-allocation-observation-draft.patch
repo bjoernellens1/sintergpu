@@ -1,0 +1,17 @@
+diff --git a/src/slangpy_ext/device/resource.cpp b/src/slangpy_ext/device/resource.cpp
+--- a/src/slangpy_ext/device/resource.cpp
++++ b/src/slangpy_ext/device/resource.cpp
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: unavailable diagnostic binding draft.
+ // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ 
+ #include "nanobind.h"
+@@ -409,6 +410,8 @@
+     nb::implicitly_convertible<nb::dict, BufferDesc>();
+ 
+     nb::class_<Buffer, Resource>(m, "Buffer", D(Buffer))
++        .def_prop_ro("vulkan_allocation_observation_v1", [](const Buffer&) { return nb::none(); },
++                     "Unavailable draft; no allocation evidence is produced.")
+         .def_prop_ro("desc", &Buffer::desc, D(Buffer, desc))
+         .def_prop_ro("size", &Buffer::size, D(Buffer, size))
+         .def_prop_ro("struct_size", &Buffer::struct_size, D(Buffer, struct_size))

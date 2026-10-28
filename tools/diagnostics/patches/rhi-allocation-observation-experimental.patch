@@ -1,0 +1,167 @@
+diff --git a/include/slang-rhi.h b/include/slang-rhi.h
+--- a/include/slang-rhi.h
++++ b/include/slang-rhi.h
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: draft diagnostic query interface.
+ // Modified by EliGSiR on 2026-10-09: optional Vulkan creator receipt.
+ #pragma once
+ 
+@@ -775,6 +776,35 @@
+     ) = 0;
+ };
+ 
++// SinterGPU experimental controlled-process diagnostic interface.
++// Query through IBuffer::queryInterface; never cast to backend-private objects.
++// A successful query retains its buffer owner until release. Callers serialize
++// queries against device close and resource release. Observations cover only
++// backend calls in a controlled process; foreign native operations are outside
++// the contract. A snapshot is historical after the interface is released.
++struct VulkanBufferAllocationObservationV1
++{
++    uint32_t structSize = sizeof(VulkanBufferAllocationObservationV1);
++    uint32_t schemaVersion = 1;
++    uint64_t ownerGeneration = 0;
++    uint64_t buffer = 0;
++    uint64_t memory = 0;
++    uint64_t bindingOffset = 0;
++    uint64_t bufferSize = 0;
++    uint64_t allocationSize = 0;
++};
++
++class IVulkanBufferAllocationObservationV1 : public ISlangUnknown
++{
++    SLANG_COM_INTERFACE(0x528c5036, 0x73c5, 0x4de9, {0x91, 0x2c, 0xcd, 0x71, 0x35, 0x44, 0x49, 0x0f});
++public:
++    // Must fail for shared, external, sparse, imported, wrapped, rebound,
++    // untracked or released objects; no allocation or GPU operations. An RHI
++    // query can outlive SGL logical close; it does not represent SGL liveness.
++    virtual SLANG_NO_THROW Result SLANG_MCALL getObservation(
++        VulkanBufferAllocationObservationV1* outObservation) = 0;
++};
++
+ struct DepthStencilClearValue
+ {
+     float depth = 1.0f;
+diff --git a/src/vulkan/vk-buffer.h b/src/vulkan/vk-buffer.h
+--- a/src/vulkan/vk-buffer.h
++++ b/src/vulkan/vk-buffer.h
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: experimental allocation observation.
+ #pragma once
+ 
+ #include "vk-base.h"
+@@ -34,18 +35,26 @@
+         }
+     }
+ 
++    uint64_t m_allocationSize = 0;
++    bool m_observable = false;
+     VkBuffer m_buffer;
+     VkDeviceMemory m_memory;
+     const VulkanApi* m_api;
+ };
+ 
+-class BufferImpl : public Buffer
++class BufferImpl : public Buffer, public IVulkanBufferAllocationObservationV1
+ {
+ public:
+     BufferImpl(Device* device, const BufferDesc& desc);
+     ~BufferImpl();
+ 
+     virtual void deleteThis() override;
++    SLANG_NO_THROW Result SLANG_MCALL queryInterface(const SlangUUID& uuid, void** outObject) override;
++    SLANG_NO_THROW uint32_t SLANG_MCALL addRef() override { return Buffer::addRef(); }
++    SLANG_NO_THROW uint32_t SLANG_MCALL release() override { return Buffer::release(); }
++    SLANG_NO_THROW Result SLANG_MCALL getObservation(VulkanBufferAllocationObservationV1* out) override;
++    uint64_t m_observationGeneration = 0;
++    bool m_observationTainted = false;
+ 
+     // IResource implementation
+     virtual SLANG_NO_THROW Result SLANG_MCALL getNativeHandle(NativeHandle* outHandle) override;
+diff --git a/src/vulkan/vk-buffer.cpp b/src/vulkan/vk-buffer.cpp
+--- a/src/vulkan/vk-buffer.cpp
++++ b/src/vulkan/vk-buffer.cpp
+@@ -1,3 +1,5 @@
++// Modified by SinterGPU: experimental allocation observation.
++#include <atomic>
+ #include "vk-buffer.h"
+ #include "vk-device.h"
+ #include "vk-utils.h"
+@@ -101,12 +103,13 @@
+     VkBufferUsageFlags bufferUsage,
+     VkMemoryPropertyFlags reqMemoryProperties,
+     VkExternalMemoryHandleTypeFlagsKHR externalMemoryHandleTypeFlags,
+-    VkDeviceMemory* outMemory
++    VkDeviceMemory* outMemory, uint64_t* allocationSize
+ )
+ {
+     VkMemoryRequirements memoryReqs = {};
+     api.vkGetBufferMemoryRequirements(api.m_device, buffer, &memoryReqs);
+ 
++    *allocationSize = memoryReqs.size;
+     bool needsDeviceAddress = (bufferUsage & VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT) != 0;
+ 
+     return allocateVkMemory(
+@@ -138,18 +141,52 @@
+ 
+     // Allocate memory
+     SLANG_RETURN_ON_FAIL(
+-        allocateVkMemoryForBuffer(api, m_buffer, usage, reqMemoryProperties, externalMemoryHandleTypeFlags, &m_memory)
++        allocateVkMemoryForBuffer(api, m_buffer, usage, reqMemoryProperties, externalMemoryHandleTypeFlags, &m_memory, &m_allocationSize)
+     );
+ 
+     // Bind buffer to memory
+     SLANG_VK_RETURN_ON_FAIL(api.vkBindBufferMemory(api.m_device, m_buffer, m_memory, 0));
+-
++    m_observable = externalMemoryHandleTypeFlags == 0 && m_allocationSize >= bufferSize;
++
++    return SLANG_OK;
++}
++
++static std::atomic<uint64_t> s_bufferObservationGeneration{0};
++
++Result BufferImpl::queryInterface(const SlangUUID& uuid, void** outObject)
++{
++    if (!outObject) return SLANG_FAIL;
++    *outObject = nullptr;
++    if (uuid == IVulkanBufferAllocationObservationV1::getTypeGuid())
++    {
++        *outObject = static_cast<IVulkanBufferAllocationObservationV1*>(this);
++        Buffer::addRef();
++        return SLANG_OK;
++    }
++    return Buffer::queryInterface(uuid, outObject);
++}
++
++Result BufferImpl::getObservation(VulkanBufferAllocationObservationV1* out)
++{
++    if (!out || out->structSize != sizeof(*out) || out->schemaVersion != 1 ||
++        !m_buffer.m_observable || m_observationTainted || !m_observationGeneration ||
++        !m_buffer.m_buffer || !m_buffer.m_memory || !m_desc.size ||
++        m_buffer.m_allocationSize < m_desc.size)
++        return SLANG_E_NOT_AVAILABLE;
++    VulkanBufferAllocationObservationV1 value{};
++    value.ownerGeneration = m_observationGeneration;
++    value.buffer = uint64_t(m_buffer.m_buffer);
++    value.memory = uint64_t(m_buffer.m_memory);
++    value.bufferSize = m_desc.size;
++    value.allocationSize = m_buffer.m_allocationSize;
++    *out = value;
+     return SLANG_OK;
+ }
+ 
+ BufferImpl::BufferImpl(Device* device, const BufferDesc& desc)
+     : Buffer(device, desc)
+ {
++    m_observationGeneration = ++s_bufferObservationGeneration;
+ }
+ 
+ BufferImpl::~BufferImpl()
+@@ -193,6 +230,7 @@
+ 
+ Result BufferImpl::getSharedHandle(NativeHandle* outHandle)
+ {
++    m_observationTainted = true;
+     if (m_sharedHandle)
+     {
+         *outHandle = m_sharedHandle;

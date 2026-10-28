@@ -4,7 +4,7 @@ Explicit workload/configuration timings, not optimization or application qualifi
 
 Median; p95 uses linear interpolation at (n-1)*0.95. Raw samples retained.
 
-Coverage: 0 / 163 operations have a source-matched paired CPU/GPU baseline. Pending entries remain part of the required measurement work.
+Coverage: 0 / 164 operations have a source-matched paired CPU/GPU baseline. Pending entries remain part of the required measurement work.
 
 Times are median / p95 **milliseconds**. Each row is one workload and environment; pipeline costs are never copied onto individual kernels. Small correctness fixtures are not production-throughput benchmarks. Historical sources are explicitly stale. Raw samples and full identities are in [the timing registry](../src/sintergpu/data/timings.json).
 
@@ -502,6 +502,7 @@ Times are median / p95 **milliseconds**. Each row is one workload and environmen
 | image.yuyv_to_rgb / portable-port | color-pitched/yuyv_decode/6x4-to-6x4/bt709-limited | stale | stale | pending | stale | Intel(R) Core(TM) i9-10850K CPU @ 3.60GHz; NVIDIA GeForce RTX 4070 Ti; 2026-10-28T16:55:17.568511+00:00 | stale source |
 | image.yuyv_to_rgb / portable-port | color-pitched/yuyv_decode/6x4-to-6x4/bt709-full | stale | stale | pending | stale | Intel(R) Core(TM) i9-10850K CPU @ 3.60GHz; NVIDIA GeForce RTX 4070 Ti; 2026-10-28T16:55:17.568511+00:00 | stale source |
 | image.yuyv_to_rgb / portable-port | color-pitched/yuyv_decode/640x480-to-640x480/bt709-limited | stale | stale | pending | stale | Intel(R) Core(TM) i9-10850K CPU @ 3.60GHz; NVIDIA GeForce RTX 4070 Ti; 2026-10-28T16:55:17.568511+00:00 | stale source |
+| optimization.point_plane_aosoa_256.main / experimental-fixture-only | pending | pending | pending | pending | pending | pending | pending |
 | perception.cosine_similarity / portable-imported | locus-fixture/similarity-count0 | stale | stale | pending | stale | AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S; AMD Radeon 8060S Graphics (RADV STRIX_HALO); 2026-10-27T20:20:04.561625+00:00 | stale source |
 | perception.cosine_similarity / portable-imported | locus-fixture/similarity-count3 | stale | stale | pending | stale | AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S; AMD Radeon 8060S Graphics (RADV STRIX_HALO); 2026-10-27T20:20:04.561625+00:00 | stale source |
 | perception.cosine_similarity / portable-imported | locus-fixture/similarity-nan-zero | stale | stale | pending | stale | AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S; AMD Radeon 8060S Graphics (RADV STRIX_HALO); 2026-10-27T20:20:04.561625+00:00 | stale source |

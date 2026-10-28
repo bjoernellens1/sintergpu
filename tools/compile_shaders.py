@@ -11,7 +11,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from sintergpu import __version__, kernel_path
-from sintergpu.catalog import list_operations, validate_catalog
+from sintergpu.catalog import list_operations, resource_path, validate_catalog
 
 
 def main():
@@ -36,7 +36,7 @@ def main():
             continue
         spv = args.output / (op['id']+'.spv')
         reflection = spv.with_suffix('.reflection.json')
-        cmd = [compiler, str(kernel_path(op['id'])), '-target', 'spirv', '-profile', 'spirv_1_5', '-entry', op['entrypoint'], '-o', str(spv), '-reflection-json', str(reflection)]
+        cmd = [compiler, str(kernel_path(op['id'])), '-I', str(resource_path('kernels')), '-target', 'spirv', '-profile', 'spirv_1_5', '-entry', op['entrypoint'], '-o', str(spv), '-reflection-json', str(reflection)]
         result = subprocess.run(cmd, capture_output=True, text=True)
         item = {'operation': op['id'], 'source_sha256': op['sha256'], 'returncode': result.returncode,
                 'diagnostics': result.stdout+result.stderr}

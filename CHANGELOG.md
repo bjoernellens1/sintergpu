@@ -1,10 +1,18 @@
 # Changelog
 
+## 0.2.8 — 2026-10-28
+
+- Add an experimental, fixture-bound 256-thread point-plane AoSoA dispatch, checked caller-owned plan and packaged historical fixture. It requires fresh GPU parity and performance qualification for its imported compilation; existing defaults remain unchanged.
+- Add experimental Caspar layout-conversion plans, references and shaders, plus provisional source-closure and timing diagnostics. These do not qualify a GPU path, performance or a new timing freshness policy.
+- Add allocation-observation diagnostic patches and CPU-only orchestration checks. Production execution remains blocked pending source-backed provider, loader and ICD identity; no GPU qualification or physical allocation attestation is claimed.
+- Add experimental same-backend Vulkan device-limit and dispatch-address observation patches with CPU-only checks. The diagnostic receipt schema changes and requires a paired runtime rebuild; provider identity, physical backing and GPU qualification remain unverified.
+- The conservative timing registry covers 164 portable entries with zero source-current paired measurements. It retains 2,478 historical measurement rows and their samples; four native timing targets also remain pending.
+
 ## 0.2.7 — 2026-10-28
 
 - Add experimental VKL stable bounded batched compaction and a separate logical backward Torch CPU-observed bit profile, with opt-in caller-owned recording, explicit resource and synchronization contracts, and Python and CMake shader discovery. Existing defaults remain unchanged.
 - Retain RTX 4070 Ti forward and backward CPU-profile candidate probes and a Radeon 8060S forward candidate probe. The Radeon forward probe covers six fixtures, including five frozen Torch donor comparisons and one NumPy-only three-byte-width case. Relocated packaged shaders, Radeon backward execution, performance, framework autograd integration and downstream adoption remain unqualified; no speedup or optimized default is claimed.
-- The timing registry now covers 163 portable entries with no source-current paired measurements. Its conservative whole-tree dependency hashes changed with added shaders and references, making the previous 816 current rows historical (the 72/155 paired coverage applied to v0.2.6 only); all 2,478 samples remain in the registry. Four optional native timing targets also remain pending.
+- The timing registry now covers 163 portable entries with no source-current paired measurements. Its conservative whole-tree dependency hashes changed with added shaders and references, making the previous 816 current rows historical (the 72/155 paired coverage applied to v0.2.6 only); all 2,478 measurement rows and their raw samples remain in the registry. Four optional native timing targets also remain pending.
 
 ## 0.2.6 — 2026-10-28
 

@@ -73,6 +73,8 @@ def test_gpu_timestamps_and_early_corruption_rejected_before_next_prefix(monkeyp
     import sys
     from types import SimpleNamespace
     from benchmarks.camera_registration_timing_support import measure_stage
+    import benchmarks.camera_registration_timing_support as timing_support
+    monkeypatch.setattr(timing_support, 'reset_writable', lambda fixture: None)
     events = []
     case = next(c for c in stage_cases(next(cases(case_ids=['collisions-tie'])))
                 if c['entrypoint'] == 'registrationWinnerCount')
@@ -110,7 +112,7 @@ def test_gpu_timestamps_and_early_corruption_rejected_before_next_prefix(monkeyp
         (Kernel('prefix'), [1,1,1], {}, True),
         (Kernel('selected'), [1,1,1], {}, True)])
     case = dict(case, index=2)
-    fixture = SimpleNamespace(prepared=prepared, graph=graph,
+    fixture = SimpleNamespace(prepared=prepared, graph=graph, initial={},
         buffers={name: Buffer(array) for name, array in resources.items()},
         read=lambda: {name: array.copy() for name, array in resources.items()})
     with pytest.raises(AssertionError): measure_stage(fixture, case, iterations=2, warmups=1)
@@ -130,7 +132,7 @@ def test_atomic_min_rejects_close_but_wrong_bits():
     actual = {name: value.copy() for name, value in case['bindings'].items()}
     states = {resource: actual[name] for name, resource in case['role'].items()}
     graph = {'resources': {resource: {'elements': case['live_counts'][name]} for name, resource in case['role'].items()}}
-    fixture = SimpleNamespace(graph=graph, read=lambda: states)
+    fixture = SimpleNamespace(graph=graph, initial={}, read=lambda: states)
     validate_measured_sample(fixture, case, before, actual)
     actual['minDepthBits'][0] = np.float32(1.000001).view(np.uint32)
     with pytest.raises(AssertionError, match='atomic minimum bits'):

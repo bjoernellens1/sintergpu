@@ -31,7 +31,7 @@ version = {file = "VERSION"}
 where = ["src"]
 
 [tool.setuptools.package-data]
-sintergpu = ["data/*.json", "data/VERSION", "kernels/**/*.slang", "fixtures/locus/*.py"]
+sintergpu = ["data/*.json", "data/VERSION", "kernels/**/*.slang", "fixtures/locus/*.py", "fixtures/point_plane_aosoa/*.npz", "fixtures/point_plane_aosoa/*.slang"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

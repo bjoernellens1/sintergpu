@@ -1,0 +1,47 @@
+diff --git a/src/sgl/device/device.cpp b/src/sgl/device/device.cpp
+--- a/src/sgl/device/device.cpp
++++ b/src/sgl/device/device.cpp
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: same-backend limit and dispatch diagnostics.
+ // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ // Modified by EliGSiR on 2026-10-09: checked Vulkan receipt diagnostic binding.
+ 
+@@ -1206,7 +1207,7 @@
+     if (m_closed || m_desc.type != DeviceType::vulkan || !m_rhi_device || !m_vulkan_creation_receipt)
+         return std::nullopt;
+     const auto& receipt = *m_vulkan_creation_receipt;
+-    if (receipt.schemaVersion != 1 || receipt.structSize != sizeof(rhi::VulkanDeviceCreationReceipt)
++    if (receipt.schemaVersion != 2 || receipt.structSize != sizeof(rhi::VulkanDeviceCreationReceipt)
+         || !receipt.finalized)
+         return std::nullopt;
+     rhi::DeviceNativeHandles handles{};
+diff --git a/src/slangpy_ext/device/device.cpp b/src/slangpy_ext/device/device.cpp
+--- a/src/slangpy_ext/device/device.cpp
++++ b/src/slangpy_ext/device/device.cpp
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: same-backend limit and dispatch diagnostics.
+ // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ // Modified by EliGSiR on 2026-10-09: checked Vulkan receipt diagnostic binding.
+ 
+@@ -304,6 +305,21 @@
+         .def_ro("vendor_id", &rhi::VulkanDeviceCreationReceipt::vendorID)
+         .def_ro("device_id", &rhi::VulkanDeviceCreationReceipt::deviceID)
+         .def_ro("driver_version", &rhi::VulkanDeviceCreationReceipt::driverVersion)
++        .def_ro("device_limits_known", &rhi::VulkanDeviceCreationReceipt::deviceLimitsKnown)
++        .def_ro("max_storage_buffer_range", &rhi::VulkanDeviceCreationReceipt::maxStorageBufferRange)
++        .def_ro("max_uniform_buffer_range", &rhi::VulkanDeviceCreationReceipt::maxUniformBufferRange)
++        .def_ro("min_storage_buffer_offset_alignment", &rhi::VulkanDeviceCreationReceipt::minStorageBufferOffsetAlignment)
++        .def_ro("min_uniform_buffer_offset_alignment", &rhi::VulkanDeviceCreationReceipt::minUniformBufferOffsetAlignment)
++        .def_ro("max_compute_work_group_invocations", &rhi::VulkanDeviceCreationReceipt::maxComputeWorkGroupInvocations)
++        .def_ro("dispatch_addresses_known", &rhi::VulkanDeviceCreationReceipt::dispatchAddressesKnown)
++        .def_ro("get_instance_proc_addr_address", &rhi::VulkanDeviceCreationReceipt::getInstanceProcAddrAddress)
++        .def_ro("get_physical_device_properties_address", &rhi::VulkanDeviceCreationReceipt::getPhysicalDevicePropertiesAddress)
++        .def_prop_ro("max_compute_work_group_count", [](const rhi::VulkanDeviceCreationReceipt& value) {
++            return std::array<uint32_t, 3>{value.maxComputeWorkGroupCount[0], value.maxComputeWorkGroupCount[1], value.maxComputeWorkGroupCount[2]};
++        })
++        .def_prop_ro("max_compute_work_group_size", [](const rhi::VulkanDeviceCreationReceipt& value) {
++            return std::array<uint32_t, 3>{value.maxComputeWorkGroupSize[0], value.maxComputeWorkGroupSize[1], value.maxComputeWorkGroupSize[2]};
++        })
+         .def_prop_ro("instance", [](const rhi::VulkanDeviceCreationReceipt& value) { return NativeHandle(value.instance); })
+         .def_prop_ro("physical_device", [](const rhi::VulkanDeviceCreationReceipt& value) { return NativeHandle(value.physicalDevice); })
+         .def_prop_ro("device", [](const rhi::VulkanDeviceCreationReceipt& value) { return NativeHandle(value.device); })
