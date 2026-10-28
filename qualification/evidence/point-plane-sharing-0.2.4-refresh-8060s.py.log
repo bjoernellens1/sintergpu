@@ -1,0 +1,34 @@
+import os,sys,json,time,datetime,subprocess,fcntl,pathlib
+root=pathlib.Path.cwd(); base=root/'build/point-plane-refresh-8060s'; log=open(str(base)+'.log','w',buffering=1)
+state={'status':'initializing','root':str(root),'commands':[],'snapshots':{}}
+def now(): return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def save(): pathlib.Path(str(base)+'.json').write_text(json.dumps(state,indent=2)+'\n')
+def capture(cmd):
+ try:
+  p=subprocess.run(cmd,shell=True,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=20)
+  return {'command':cmd,'exit':p.returncode,'output':p.stdout}
+ except Exception as e:return {'command':cmd,'error':str(e)}
+def snapshot():
+ return {'time':now(),'device':capture('lspci -nn | grep -Ei "VGA|Display|3D"'),'activity':capture('if command -v rocm-smi >/dev/null 2>&1; then rocm-smi --showproductname --showuse; elif command -v amd-smi >/dev/null 2>&1; then amd-smi metric; else echo "No AMD SMI tool available"; fi'),'processes':capture("ps -eo pid,ppid,etimes,args | grep -E 'benchmarks[.]|[c]ollector|[r]ender.*bench|[n]ative.*bench'")}
+lock=open('/tmp/sintergpu-gpu.lock','a+')
+try:
+ fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+except BlockingIOError:
+ state['status']='lock_unavailable'; save(); sys.exit(73)
+try:
+ state['snapshots']['before']=snapshot();state['status']='running';save()
+ env=os.environ.copy();env.update(PYTHONPATH='src:.',TMPDIR=str(root/'build/xsplat-tmp'),SINTERGPU_GPU_TESTS='1')
+ for module,prefix,expected in [('locus_timings','locus',28),('color_timings','color',30),('vkl_features','vkl-features',10),('vkl_timings','vkl',38),('primitive_timings','primitives',73),('xsplat_timings','xsplat',17)]:
+  output=f'benchmarks/results/{prefix}-cpu-gpu-8060s-0.2.4.json'
+  cmd=['.cache/vkl-qualification-venv/bin/python','-m','benchmarks.'+module,'--gpu','--iterations','50','--warmups','5','--output',output]
+  rec={'command':cmd,'start':now(),'output':output,'expected_rows':expected};state['commands'].append(rec);save()
+  log.write('\nSTART '+rec['start']+' '+ ' '.join(cmd)+'\n')
+  p=subprocess.Popen(cmd,env=env,stdout=log,stderr=subprocess.STDOUT);rec['pid']=p.pid;save();rec['exit']=p.wait();rec['end']=now()
+  log.write('END '+rec['end']+' exit='+str(rec['exit'])+'\n');save()
+  if rec['exit']!=0:state['status']='failed';break
+ else:state['status']='completed'
+except BaseException as e:
+ state['status']='error';state['error']=repr(e);raise
+finally:
+ state['snapshots']['after']=snapshot();state['end']=now();save();fcntl.flock(lock,fcntl.LOCK_UN);lock.close();log.close()
+sys.exit(0 if state['status']=='completed' else 1)

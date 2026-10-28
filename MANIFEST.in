@@ -6,7 +6,7 @@ recursive-include third_party *
 recursive-include LICENSES *
 recursive-include include *.hpp
 recursive-include cmake *.cmake *.in
-recursive-include examples *.txt *.cpp
+recursive-include examples *.txt *.cpp *.slang
 recursive-include docs *.md *.json
 recursive-include provenance *.md *.json
 recursive-include qualification *.json *.log *.spv *.spv-asm

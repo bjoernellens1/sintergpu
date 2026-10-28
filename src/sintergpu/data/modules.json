@@ -143,6 +143,10 @@
     "path": "kernels/locus/semantics/similarity.slang",
     "sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975"
   },
+  "optimization.point_plane": {
+    "path": "kernels/optimization/point_plane.slang",
+    "sha256": "9763495aa01821c4a9fa52db689310cf787cee01b63b8b50bf0daaae43131bcc"
+  },
   "primitives.compact": {
     "path": "kernels/primitives/compact.slang",
     "sha256": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb"

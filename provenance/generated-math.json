@@ -8,7 +8,7 @@
     "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
     "symforce": "0.12.0",
     "slangpy": "0.43.1",
-    "command": "Regenerate with retained caspar_slang definitions and SymForce0.12.0; see tools/regenerate_math.py",
+    "command": "python tools/regenerate_math.py --check; owned point-plane vector/scalar adapters share sintergpu.codegen.point_plane, with optional pinned SymForce0.12.0 and retained Caspar support",
     "outputs": [
       {
         "path": "src/sintergpu/kernels/generated/point_plane_residual.generated.slang",
@@ -30,7 +30,14 @@
         "path": "src/sintergpu/kernels/generated/primitives.generated.slang",
         "sha256": "0cba624d734902ce6a788b5c37b5fe332a4e2d1b81a1fb2d149a1a101edb8f44"
       }
-    ]
+    ],
+    "point_plane_owner": "src/sintergpu/codegen/point_plane.py",
+    "point_plane_adapters": "tools/codegen/caspar_point_plane.py"
   },
-  "files": []
+  "files": [],
+  "audit_inputs_sha256": {
+    "src/sintergpu/codegen/point_plane.py": "5df8c47282e67e7d0f1598e4c82c0c784fa8d8b5ba479ec774e52d13f347c902",
+    "tools/codegen/caspar_point_plane.py": "4c73ea6cccc1f91f9acf065656c063861c9bcc585f60832f309f95145533dc54",
+    "tools/regenerate_math.py": "7c8be65f1e8ada6df20f0c807f5547f2312f64e05667c14cfb79776f54bae578"
+  }
 }

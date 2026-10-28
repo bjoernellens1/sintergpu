@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.4 — 2026-10-28
+
+- Consolidate point-plane symbolic algebra behind shared vector/scalar generation adapters while retaining all five generated math modules byte-for-byte. Install reusable Slang residual/Jacobian functions with explicit preserved FMA schedules, actual import/instruction/layout checks, optional generation inputs and integration examples. Existing dispatches and defaults remain unchanged; qualification is configuration-specific.
+- Generate GitHub release notes automatically from the exact version changelog and compatibility fragments, with explicit breaking changes, migration instructions and qualification limits. Bind the notes to the checksummed release artifacts and reject missing or invalid notes before publication.
+
 ## 0.2.3 — 2026-10-28
 
 - Add independent timing recipes for the three existing xsplat math entries, with complete Adam inout resets, reflected projection storage layouts, explicit matrix layout and fixed-probe scope. Retain donor headers and compare projection against the unmodified C++ reference on their shared valid domain. Record17 workloads per Radeon8060S/RTX4070Ti, reaching54/137 paired entries and392 current records;83portable+4native targets remain pending. Retain original stress inputs, failed setup/numerical-assumption evidence, runtime ABI checks and actual-program precision guards. Document input-derived pixel error bounds while preserving strict visible/conic/depth/Adam/probe and exact flag/tail checks. Numerical shader sources are unchanged.

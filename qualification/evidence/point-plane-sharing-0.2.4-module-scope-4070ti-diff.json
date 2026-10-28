@@ -1,0 +1,3 @@
+{
+  "git_diff": "diff --git a/tests/test_point_plane_module.py b/tests/test_point_plane_module.py\nindex b21013f..7d95429 100644\n--- a/tests/test_point_plane_module.py\n+++ b/tests/test_point_plane_module.py\n@@ -33,7 +33,7 @@ def test_real_import_matches_baseline_executable_and_resource_layout(tmp_path):\n     assert result['example_compiled']\n \n \n-@pytest.fixture\n+@pytest.fixture(scope='module')\n def gpu():\n     if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')\n     import slangpy as spy\n"
+}

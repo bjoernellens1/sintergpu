@@ -1,0 +1,5 @@
+Processing ./dist/sintergpu-0.2.4-py3-none-any.whl
+Installing collected packages: sintergpu
+Successfully installed sintergpu-0.2.4
+version 0.2.4 module /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/wheel-0.2.4-venv/lib/python3.13/site-packages/sintergpu/kernels/optimization/point_plane.slang sha256 9763495aa01821c4a9fa52db689310cf787cee01b63b8b50bf0daaae43131bcc
+catalog valid; shared factory import valid; no optional runtime imports; coverage 54/current 392/historical 518

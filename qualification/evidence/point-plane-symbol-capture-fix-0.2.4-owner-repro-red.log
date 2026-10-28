@@ -1,0 +1,4 @@
+actual residual -627 actual Jacobian [17, 19, 23, 17, 19, 23]
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+AssertionError: Caller xi symbols were captured; expected literal -421

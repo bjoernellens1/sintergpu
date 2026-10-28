@@ -1,0 +1,32 @@
+
+START 2026-10-28T09:46:01.881777+00:00 .cache/vkl-qualification-venv/bin/python -m benchmarks.locus_timings --gpu --iterations 50 --warmups 5 --output benchmarks/results/locus-cpu-gpu-8060s-0.2.4.json
+{"cases": 28, "output": "benchmarks/results/locus-cpu-gpu-8060s-0.2.4.json"}
+END 2026-10-28T09:46:04.370924+00:00 exit=0
+
+START 2026-10-28T09:46:04.371373+00:00 .cache/vkl-qualification-venv/bin/python -m benchmarks.color_timings --gpu --iterations 50 --warmups 5 --output benchmarks/results/color-cpu-gpu-8060s-0.2.4.json
+{"cases": 30, "output": "benchmarks/results/color-cpu-gpu-8060s-0.2.4.json"}
+END 2026-10-28T09:46:16.341853+00:00 exit=0
+
+START 2026-10-28T09:46:16.342203+00:00 .cache/vkl-qualification-venv/bin/python -m benchmarks.vkl_features --gpu --iterations 50 --warmups 5 --output benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.4.json
+{"cases": 10, "output": "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.4.json"}
+END 2026-10-28T09:46:19.032027+00:00 exit=0
+
+START 2026-10-28T09:46:19.032388+00:00 .cache/vkl-qualification-venv/bin/python -m benchmarks.vkl_timings --gpu --iterations 50 --warmups 5 --output benchmarks/results/vkl-cpu-gpu-8060s-0.2.4.json
+{"cases": 38, "output": "benchmarks/results/vkl-cpu-gpu-8060s-0.2.4.json"}
+END 2026-10-28T09:46:44.752010+00:00 exit=0
+
+START 2026-10-28T09:46:44.752447+00:00 .cache/vkl-qualification-venv/bin/python -m benchmarks.primitive_timings --gpu --iterations 50 --warmups 5 --output benchmarks/results/primitives-cpu-gpu-8060s-0.2.4.json
+[WARN] Slang compiler warnings:
+warning[E15205]: undefined identifier in preprocessor
+ --> /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/src/sintergpu/kernels/primitives/scan.slang:6:5
+  |
+6 | #if SINTERGPU_SCAN_UINT
+  |     ^^^^^^^^^^^^^^^^^^^ undefined identifier 'SINTERGPU_SCAN_UINT' in preprocessor expression will evaluate to zero
+--'
+
+{"cases": 73, "output": "benchmarks/results/primitives-cpu-gpu-8060s-0.2.4.json"}
+END 2026-10-28T09:46:52.486029+00:00 exit=0
+
+START 2026-10-28T09:46:52.486460+00:00 .cache/vkl-qualification-venv/bin/python -m benchmarks.xsplat_timings --gpu --iterations 50 --warmups 5 --output benchmarks/results/xsplat-cpu-gpu-8060s-0.2.4.json
+{"cases": 17, "output": "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.4.json"}
+END 2026-10-28T09:46:57.565441+00:00 exit=0

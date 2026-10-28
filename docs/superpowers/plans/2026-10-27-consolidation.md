@@ -4,6 +4,10 @@ Approved by the user on 2026-10-27. Public destination: bjoernellens1/sintergpu.
 License: Apache-2.0 with retained upstream notices. User authorizes publishing
 their original code under Apache-2.0; that does not relicense third-party code.
 
+NVIDIA target amended by the user on 2026-10-28: use the4070PC. The canonical
+host `cps-wkstn-nvidia4070.local` reports an RTX4070Ti; qualification uses that
+physical device alongside Radeon8060S. The earlier unreachable3090 is replaced.
+
 ## Global constraints
 
 - Keep kernels independent of applications. Caller owns device, allocation,
@@ -15,7 +19,7 @@ their original code under Apache-2.0; that does not relicense third-party code.
 - Strict SemVer from0.1.0; before1.0 incompatible changes increment minor;
   compatible additions/fixes increment patch. Unified source/package version.
 - Immutable releases, checksums, attestations, changelog and downstream update PRs.
-- Both8060S and RTX3090 qualification required. Currently3090 unreachable.
+- Both8060S and the user-selected canonical RTX4070Ti qualification required.
 - Fusion gate:3 controlled runs, >=5%median improvement, positive confidence bound,
   <=5%p95 regression. Report kernel/pipeline/transfer-inclusive separately.
 
@@ -57,7 +61,7 @@ relevant changes/evidence, consumer tests, visible failures, no auto-merge.
 ## Task6: Verification and publication
 
 Separate performance review with hot-path guards and microbenchmarks before GPU
-validation. Measure local8060S, retry selected3090without assuming access.
+validation. Measure local8060S and canonical4070Ti, recording physical identity.
 Release only accurately labeled evidence; complete expanded program only when
 all port batches, real migrations, both-vendor qualification and lifecycle pass.
 Independent final review required. Record unfinished gates explicitly.

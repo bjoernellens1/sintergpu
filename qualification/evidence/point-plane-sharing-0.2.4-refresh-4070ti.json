@@ -1,0 +1,237 @@
+{
+  "status": "completed",
+  "root": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.4",
+  "commands": [
+    {
+      "command": [
+        "../venv/bin/python",
+        "-m",
+        "benchmarks.locus_timings",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/locus-cpu-gpu-4070ti-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:49:54.046962+00:00",
+      "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/locus-cpu-gpu-4070ti-0.2.4.json",
+      "expected_rows": 28,
+      "pid": 195607,
+      "exit": 0,
+      "end": "2026-10-28T09:49:57.598611+00:00"
+    },
+    {
+      "command": [
+        "../venv/bin/python",
+        "-m",
+        "benchmarks.color_timings",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/color-cpu-gpu-4070ti-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:49:57.599625+00:00",
+      "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/color-cpu-gpu-4070ti-0.2.4.json",
+      "expected_rows": 30,
+      "pid": 195640,
+      "exit": 0,
+      "end": "2026-10-28T09:50:18.582374+00:00"
+    },
+    {
+      "command": [
+        "../venv/bin/python",
+        "-m",
+        "benchmarks.vkl_features",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/vkl-features-cpu-gpu-4070ti-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:50:18.583432+00:00",
+      "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/vkl-features-cpu-gpu-4070ti-0.2.4.json",
+      "expected_rows": 10,
+      "pid": 195789,
+      "exit": 0,
+      "end": "2026-10-28T09:50:21.929421+00:00"
+    },
+    {
+      "command": [
+        "../venv/bin/python",
+        "-m",
+        "benchmarks.vkl_timings",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/vkl-cpu-gpu-4070ti-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:50:21.930515+00:00",
+      "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/vkl-cpu-gpu-4070ti-0.2.4.json",
+      "expected_rows": 38,
+      "pid": 195822,
+      "exit": 0,
+      "end": "2026-10-28T09:51:09.530702+00:00"
+    },
+    {
+      "command": [
+        "../venv/bin/python",
+        "-m",
+        "benchmarks.primitive_timings",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/primitives-cpu-gpu-4070ti-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:51:09.531874+00:00",
+      "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/primitives-cpu-gpu-4070ti-0.2.4.json",
+      "expected_rows": 73,
+      "pid": 195912,
+      "exit": 0,
+      "end": "2026-10-28T09:51:23.376638+00:00"
+    },
+    {
+      "command": [
+        "../venv/bin/python",
+        "-m",
+        "benchmarks.xsplat_timings",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/xsplat-cpu-gpu-4070ti-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:51:23.377899+00:00",
+      "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/xsplat-cpu-gpu-4070ti-0.2.4.json",
+      "expected_rows": 17,
+      "pid": 196226,
+      "exit": 0,
+      "end": "2026-10-28T09:51:31.293088+00:00"
+    }
+  ],
+  "snapshots": {
+    "before": {
+      "time": "2026-10-28T09:49:53.928334+00:00",
+      "device": {
+        "command": "nvidia-smi --query-gpu=name,uuid,driver_version,pci.bus_id --format=csv",
+        "exit": 0,
+        "output": "name, uuid, driver_version, pci.bus_id\nNVIDIA GeForce RTX 4070 Ti, GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 00000000:01:00.0\n"
+      },
+      "activity": {
+        "command": "nvidia-smi --query-gpu=uuid,utilization.gpu,utilization.memory,memory.used,power.draw --format=csv",
+        "exit": 0,
+        "output": "uuid, utilization.gpu [%], utilization.memory [%], memory.used [MiB], power.draw [W]\nGPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 0 %, 0 %, 94 MiB, 14.16 W\n"
+      },
+      "gpu_processes": {
+        "command": "nvidia-smi --query-compute-apps=pid,process_name,gpu_uuid,used_memory --format=csv",
+        "exit": 0,
+        "output": "pid, process_name, gpu_uuid, used_gpu_memory [MiB]\n"
+      },
+      "processes": {
+        "command": "ps -eo pid,ppid,etimes,args | grep -E 'benchmarks[.]|[c]ollector|[r]ender.*bench|[n]ative.*bench'",
+        "exit": 1,
+        "output": ""
+      }
+    },
+    "after": {
+      "time": "2026-10-28T09:51:31.294230+00:00",
+      "device": {
+        "command": "nvidia-smi --query-gpu=name,uuid,driver_version,pci.bus_id --format=csv",
+        "exit": 0,
+        "output": "name, uuid, driver_version, pci.bus_id\nNVIDIA GeForce RTX 4070 Ti, GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 00000000:01:00.0\n"
+      },
+      "activity": {
+        "command": "nvidia-smi --query-gpu=uuid,utilization.gpu,utilization.memory,memory.used,power.draw --format=csv",
+        "exit": 0,
+        "output": "uuid, utilization.gpu [%], utilization.memory [%], memory.used [MiB], power.draw [W]\nGPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 53 %, 5 %, 94 MiB, 14.70 W\n"
+      },
+      "gpu_processes": {
+        "command": "nvidia-smi --query-compute-apps=pid,process_name,gpu_uuid,used_memory --format=csv",
+        "exit": 0,
+        "output": "pid, process_name, gpu_uuid, used_gpu_memory [MiB]\n"
+      },
+      "processes": {
+        "command": "ps -eo pid,ppid,etimes,args | grep -E 'benchmarks[.]|[c]ollector|[r]ender.*bench|[n]ative.*bench'",
+        "exit": 1,
+        "output": ""
+      }
+    }
+  },
+  "git": {
+    "command": "git rev-parse HEAD && git status --short && git diff",
+    "exit": 0,
+    "output": "6ac032bf5d076b29ad044e9de4ac31938d33c75b\n M tests/test_point_plane_module.py\ndiff --git a/tests/test_point_plane_module.py b/tests/test_point_plane_module.py\nindex b21013f..7d95429 100644\n--- a/tests/test_point_plane_module.py\n+++ b/tests/test_point_plane_module.py\n@@ -33,7 +33,7 @@ def test_real_import_matches_baseline_executable_and_resource_layout(tmp_path):\n     assert result['example_compiled']\n \n \n-@pytest.fixture\n+@pytest.fixture(scope='module')\n def gpu():\n     if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')\n     import slangpy as spy\n"
+  },
+  "end": "2026-10-28T09:51:31.426136+00:00",
+  "verified_results": [
+    {
+      "path": "benchmarks/results/locus-cpu-gpu-4070ti-0.2.4.json",
+      "sha256": "38f28396ebfa681df092aaded370a39c570bae3f0d1f379d07049e6a290c7f1f",
+      "remote_bytes_identical": true,
+      "rows": 28,
+      "iterations": 50,
+      "warmups": 5,
+      "shader_tree_sha256": "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+    },
+    {
+      "path": "benchmarks/results/color-cpu-gpu-4070ti-0.2.4.json",
+      "sha256": "080b277229f3f36c777e0f9300112cd6d74461d48ead43bd83c5735acecee629",
+      "remote_bytes_identical": true,
+      "rows": 30,
+      "iterations": 50,
+      "warmups": 5,
+      "shader_tree_sha256": "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+    },
+    {
+      "path": "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.4.json",
+      "sha256": "2847c5fb6f5e4bc9ace80472e7665a51cf67059afb8dfac89353b4df0e9ed8b2",
+      "remote_bytes_identical": true,
+      "rows": 10,
+      "iterations": 50,
+      "warmups": 5,
+      "shader_tree_sha256": "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+    },
+    {
+      "path": "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.4.json",
+      "sha256": "ba1b25ebcb600bfd95aab6b499ec09bfb7ad1247274a891d0259ece17f06ab8e",
+      "remote_bytes_identical": true,
+      "rows": 38,
+      "iterations": 50,
+      "warmups": 5,
+      "shader_tree_sha256": "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+    },
+    {
+      "path": "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.4.json",
+      "sha256": "e063a24e7f6636c1a3c9178c00316e02c2c8477860ec729083f508e87cd3d1de",
+      "remote_bytes_identical": true,
+      "rows": 73,
+      "iterations": 50,
+      "warmups": 5,
+      "shader_tree_sha256": "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+    },
+    {
+      "path": "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.4.json",
+      "sha256": "ade2fd8c91947f2d6f3c3762fb2e00590ec63cfb164b4533e5ada82014767c53",
+      "remote_bytes_identical": true,
+      "rows": 17,
+      "iterations": 50,
+      "warmups": 5,
+      "shader_tree_sha256": "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+    }
+  ],
+  "verified_total_rows": 196
+}

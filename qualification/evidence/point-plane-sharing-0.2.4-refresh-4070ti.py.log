@@ -1,0 +1,34 @@
+import os,sys,json,time,datetime,subprocess,fcntl,pathlib
+root=pathlib.Path.cwd(); base=root/'build/point-plane-refresh-4070ti'; log=open(str(base)+'.log','w',buffering=1)
+state={'status':'initializing','root':str(root),'commands':[],'snapshots':{}}
+def now(): return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def save(): pathlib.Path(str(base)+'.json').write_text(json.dumps(state,indent=2)+'\n')
+def capture(cmd):
+ try:
+  p=subprocess.run(cmd,shell=True,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=20)
+  return {'command':cmd,'exit':p.returncode,'output':p.stdout}
+ except Exception as e:return {'command':cmd,'error':str(e)}
+def snapshot():
+ return {'time':now(),'device':capture('nvidia-smi --query-gpu=name,uuid,driver_version,pci.bus_id --format=csv'),'activity':capture('nvidia-smi --query-gpu=uuid,utilization.gpu,utilization.memory,memory.used,power.draw --format=csv'),'gpu_processes':capture('nvidia-smi --query-compute-apps=pid,process_name,gpu_uuid,used_memory --format=csv'),'processes':capture("ps -eo pid,ppid,etimes,args | grep -E 'benchmarks[.]|[c]ollector|[r]ender.*bench|[n]ative.*bench'")}
+lock=open('/tmp/sintergpu-gpu.lock','a+')
+try:
+ fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+except BlockingIOError:
+ state['status']='lock_unavailable'; save(); sys.exit(73)
+try:
+ state['git']=capture('git rev-parse HEAD && git status --short && git diff');state['snapshots']['before']=snapshot();state['status']='running';save()
+ env=os.environ.copy();env.update(PYTHONPATH='src:.',TMPDIR=str(root.parent/'tmp-0.2.4'),SINTERGPU_GPU_TESTS='1',VK_DRIVER_FILES='/usr/share/vulkan/icd.d/nvidia_icd.json')
+ for module,prefix,expected in [('locus_timings','locus',28),('color_timings','color',30),('vkl_features','vkl-features',10),('vkl_timings','vkl',38),('primitive_timings','primitives',73),('xsplat_timings','xsplat',17)]:
+  output=str(root.parent/f'evidence-0.2.4/{prefix}-cpu-gpu-4070ti-0.2.4.json')
+  cmd=['../venv/bin/python','-m','benchmarks.'+module,'--gpu','--iterations','50','--warmups','5','--output',output]
+  rec={'command':cmd,'start':now(),'output':output,'expected_rows':expected};state['commands'].append(rec);save()
+  log.write('\nSTART '+rec['start']+' '+ ' '.join(cmd)+'\n')
+  p=subprocess.Popen(cmd,env=env,stdout=log,stderr=subprocess.STDOUT);rec['pid']=p.pid;save();rec['exit']=p.wait();rec['end']=now()
+  log.write('END '+rec['end']+' exit='+str(rec['exit'])+'\n');save()
+  if rec['exit']!=0:state['status']='failed';break
+ else:state['status']='completed'
+except BaseException as e:
+ state['status']='error';state['error']=repr(e);raise
+finally:
+ state['snapshots']['after']=snapshot();state['end']=now();save();fcntl.flock(lock,fcntl.LOCK_UN);lock.close();log.close()
+sys.exit(0 if state['status']=='completed' else 1)

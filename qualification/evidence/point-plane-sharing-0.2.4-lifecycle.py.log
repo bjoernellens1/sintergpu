@@ -1,0 +1,29 @@
+import gc, os, sys, traceback
+from pathlib import Path
+import slangpy as spy
+from benchmarks.point_plane_support import point_case
+mode=sys.argv[1]
+def status(i, phase):
+    threads=next(x.strip() for x in Path('/proc/self/status').read_text().splitlines() if x.startswith('Threads:'))
+    print(f'{mode} iteration={i} phase={phase} {threads} fds={len(os.listdir("/proc/self/fd"))}',flush=True)
+adapter=next(a for a in spy.Device.enumerate_adapters(spy.DeviceType.vulkan) if a.vendor_id==0x10de and a.device_id==0x2782)
+print(f'mode={mode} vendor={adapter.vendor_id:#x} device={adapter.device_id:#x} name={adapter.name}',flush=True)
+for i in range(1,41):
+    try:
+        status(i,'before')
+        device=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,'include_paths':[str(Path.cwd()/'src/sintergpu/kernels')]})
+        if mode!='A':
+            case=point_case(device,65,'aosoa')
+            actual={v:case['read'](v) for v in ('baseline','candidate')}
+            del actual
+        device.close()
+        if mode!='A': del case
+        del device
+        if mode=='C': print(f'gc_collected={gc.collect()}',flush=True)
+        status(i,'after')
+    except BaseException:
+        status(i,'error')
+        traceback.print_exc()
+        print(f'RESULT mode={mode} completed={i-1} failed_iteration={i}',flush=True)
+        sys.exit(1)
+print(f'RESULT mode={mode} completed=40',flush=True)
