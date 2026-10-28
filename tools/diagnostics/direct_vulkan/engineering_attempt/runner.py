@@ -150,8 +150,12 @@ class ArtifactJournal:
         try: os.fsync(parent)
         finally: os.close(parent)
         self.directory=os.open(self.root,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
-        try: self.events=os.open('events.jsonl',os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_APPEND|os.O_NOFOLLOW,0o600,dir_fd=self.directory)
+        self.events=None
+        try:
+            self.events=os.open('events.jsonl',os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_APPEND|os.O_NOFOLLOW,0o600,dir_fd=self.directory)
+            os.fsync(self.directory)
         except Exception:
+            if self.events is not None: os.close(self.events)
             os.close(self.directory)
             raise
     def put(self,name,data):
