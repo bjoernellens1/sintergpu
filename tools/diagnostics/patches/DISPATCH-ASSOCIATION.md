@@ -46,8 +46,12 @@ pipelines into the actual in-memory shader cache, invokes the actual command
 encoder cache lookup and recorder, and checks the resulting pipeline handles,
 shader bytes, dispatch order and group sizes. It does not compile or create
 specializations, exercise cache misses or population, or exercise the separate
-persistent pipeline-binary cache. It does not initialize a Vulkan device or
-execute on a GPU.
+persistent pipeline-binary cache itself. It does not initialize a Vulkan device
+or execute on a GPU. A fourth probe exercises a synthetic persistent binary
+cache hit through the actual backend parsing and pipeline creation path and
+verifies that the dispatch-observation helper rejects the resulting pipeline.
+It does not record an actual direct command, exercise malformed cache data, a
+cache miss or fallback, or use a real Vulkan driver.
 The SlangPy CPU-device smoke confirms the query is unavailable before and after
 close. Local source-application tests skip without the audited source; they do
 not establish CI or build provenance. No GPU execution has been performed.
@@ -88,3 +92,20 @@ executable SHA-256 was
 this identifies that executable only, not another build or runtime. The seeded
 cache is synthetic and does not establish specialization generation, driver
 behavior, shader execution, or performance qualification.
+
+The persistent-cache probe is `rhi-persistent-cache-mock-cpu-probe.cpp`,
+SHA-256 `3c6bfc0aadd9c90bf144aa5dc27cda807de5c501b6750f9d9586df1b2f3caf95`.
+Its isolated CMake target links the patched diagnostic `slang-rhi` and includes
+the patched RHI source and pinned Vulkan headers. The local configuration was
+Debug (`-g`); the probe compilation command did not define `NDEBUG`, so its
+assertions were enabled. Build and run commands:
+
+```sh
+cmake --build /dev/shm/sintergpu-dispatch-observe-lab/build --target rhi_persistent_cache_mock_cpu_probe
+VK_DRIVER_FILES=/nonexistent/sintergpu-no-vulkan-icd.json VK_ICD_FILENAMES=/nonexistent/sintergpu-no-vulkan-icd.json /dev/shm/sintergpu-dispatch-observe-lab/build/rhi_persistent_cache_mock_cpu_probe
+```
+
+The independent no-ICD rerun exited 0. The local executable SHA-256 was
+`c564696c5375235ea5d9e4734273b1fe6aeb1c3480cb88d87a320f98a65d80d2`;
+it identifies this build only. Synthetic cache contents and callbacks do not
+establish driver behavior, GPU execution, or performance qualification.
