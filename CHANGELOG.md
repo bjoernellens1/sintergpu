@@ -5,6 +5,7 @@
 - Add an experimental, fixture-bound 256-thread point-plane AoSoA dispatch, checked caller-owned plan and packaged historical fixture. It requires fresh GPU parity and performance qualification for its imported compilation; existing defaults remain unchanged.
 - Add experimental Caspar layout-conversion plans, references and shaders, plus provisional source-closure and timing diagnostics. These do not qualify a GPU path, performance or a new timing freshness policy.
 - Add allocation-observation diagnostic patches and CPU-only orchestration checks. Production execution remains blocked pending source-backed provider, loader and ICD identity; no GPU qualification or physical allocation attestation is claimed.
+- Add experimental same-backend Vulkan device-limit and dispatch-address observation patches with CPU-only checks. The diagnostic receipt schema changes and requires a paired runtime rebuild; provider identity, physical backing and GPU qualification remain unverified.
 - The conservative timing registry covers 164 portable entries with zero source-current paired measurements. It retains 2,478 historical measurement rows and their samples; four native timing targets also remain pending.
 
 ## 0.2.7 — 2026-10-28
