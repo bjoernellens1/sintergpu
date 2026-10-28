@@ -154,6 +154,6 @@ Run three controlled trials and compare valid baselines before performance adopt
 
 [Full pyramid/depth resampling](vkl-depth-resampling.md) now composes the released level source with native initialization and direct labels.
 
-[Binary feature ports](vkl-binary-features.md) add BRIEF and radius-gated Hamming matching with exact integer output semantics and native int64 coordinates. Eleven of the 47 frozen modules have earlier forward Slang coverage. Two additional modules now have experimental [reprojection/temporal profiles](vkl-reprojection.md), with GPU execution still pending at this checkpoint.
+[Binary feature ports](vkl-binary-features.md) add BRIEF and radius-gated Hamming matching with exact integer output semantics and native int64 coordinates. Eleven of the 47 frozen modules have earlier forward Slang coverage. Two additional modules now have experimental [reprojection/temporal profiles](vkl-reprojection.md), with63-case/113-state fixture parity on both target vendors; wider qualification remains pending.
 
 The remaining 34 retained reference modules have no Slang translation here, including alignment, compaction, voxel/mesh and pose reductions. Consumer tracking/keyframe/transaction policy remains reference-only by design; it is not all shader backlog. The retained Triton argmin has no new Slang port here. Photometric reductions/backward remain pending. The canonical NVIDIA qualification target is the user-selected RTX4070Ti; earlier results retain their original device/source scope.

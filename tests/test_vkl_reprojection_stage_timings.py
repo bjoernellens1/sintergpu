@@ -1,5 +1,39 @@
 """CPU-only proof of per-entry timing scope, prefix state and parity gates."""
 import numpy as np
+
+
+def test_runtime_rows_bind_actual_driver_snapshot_and_require_matching_host(tmp_path, monkeypatch):
+    import hashlib
+    import importlib.metadata
+    import json
+    import platform
+    import sys
+    from types import SimpleNamespace
+    import pytest
+    from benchmarks.device_snapshot import parse_snapshot
+    from benchmarks.reprojection_support import runtime_environment
+    package = tmp_path / 'spy'; package.mkdir()
+    (package / 'libslang-compiler.so').write_bytes(b'fixture compiler identity')
+    monkeypatch.setitem(sys.modules, 'slangpy', SimpleNamespace(__file__=str(package / '__init__.py')))
+    monkeypatch.setattr(importlib.metadata, 'version', lambda name: 'fixture-version')
+    raw = 'GPU0:\n' + '\n'.join(name + ' = ' + value for name, value in {
+        'apiVersion': '1.4.354', 'driverVersion': '26.2.3', 'vendorID': '0x1002',
+        'deviceID': '0x1586', 'deviceName': 'fixture GPU', 'driverName': 'radv',
+        'driverInfo': 'Mesa 26.2.3', 'deviceUUID': '00000000-c400-0000-0000-000000000000',
+        'driverUUID': '414d442d-4d45-5341-2d44-525600000000'}.items())
+    snapshot = parse_snapshot(raw, hostname=platform.node(), captured_at_utc='2026-10-28T00:00:00+00:00')
+    path = tmp_path / 'device.json'; path.write_text(json.dumps(snapshot))
+    device = SimpleNamespace(info=SimpleNamespace(adapter_name='fixture GPU', api_name='Vulkan', timestamp_frequency=1000))
+    monkeypatch.setenv('SINTERGPU_DEVICE_SNAPSHOT', str(path))
+    environment = runtime_environment(device)
+    assert environment['driver'] == {'name': 'radv', 'info': 'Mesa 26.2.3', 'version': '26.2.3',
+                                     'uuid': '414d442d-4d45-5341-2d44-525600000000'}
+    assert environment['physical_device_uuid'] == snapshot['physical_device_uuid']
+    assert environment['device_snapshot']['snapshot_file_sha256'] == hashlib.sha256(path.read_bytes()).hexdigest()
+    snapshot['hostname'] = 'different-host'; path.write_text(json.dumps(snapshot))
+    with pytest.raises(ValueError, match='hostname'): runtime_environment(device)
+    monkeypatch.delenv('SINTERGPU_DEVICE_SNAPSHOT')
+    with pytest.raises(RuntimeError, match='SINTERGPU_DEVICE_SNAPSHOT'): runtime_environment(device)
 import pytest
 
 from benchmarks.vkl_reprojection import cases, stage_cases

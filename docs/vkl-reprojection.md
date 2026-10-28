@@ -104,8 +104,9 @@ GPU outputs/padding/scratch reuse and hot-path guards are separate tests. Both
 pinned compilers pass all146 catalog entries and matching reflection layouts.
 Initial GPU attempts exposed canceled normalization rounding on both devices and
 suppressed nonfinite diagnostic products on Radeon. The source corrections now
-have actual/mutated compiler-emission guards; fixed-source GPU verification is
-still pending. Original failure logs and partial-buffer diagnostics are retained.
+have actual/mutated compiler-emission guards; fixed-source reruns now pass all63 cases/113 invocation states on each Radeon8060S
+and RTX4070Ti against identical canonical fixtures. Original failure logs and
+partial-buffer diagnostics are retained.
 
 The donor reference runtime is part of the numerical identity. The two hosts'
 Torch2.14.1 CPU builds produced slightly different projections for identical
@@ -132,7 +133,7 @@ fixtures fail closed; GPU qualification never regenerates them or skips a missin
 Torch installation. Qualification against this canonical profile does not imply
 compatibility with every live Torch build or application trajectory.
 
-`references/reprojection_stage_numeric.py` supplies separate CPU computations for
+`src/sintergpu/references/reprojection_stage_numeric.py` supplies separate CPU computations for
 the nine new dispatch boundaries. Each consumes prepared inputs and mutates only
 caller-preallocated written/inout arrays. Projection starts from camera XYZ;
 sampling starts from projected maps; reductions start from partials. CPU prefix
@@ -146,3 +147,8 @@ resident complete pipelines and transfer-inclusive wall time are separate costs.
 Stateful per-stage timing must replay/reset prerequisites outside each measured
 GPU interval. CPU whole-operation time is never copied onto a stage. There is no
 optimized default selection, speedup, full-domain, tracking or trajectory claim.
+
+Timing collection requires `SINTERGPU_DEVICE_SNAPSHOT` naming an owner-collected
+Vulkan summary snapshot. The recipe checks its raw evidence, checksum, current
+host/API/adapter, physical UUID and driver identity before timing, then embeds
+that evidence in each paired row. ICD filenames alone do not identify drivers.

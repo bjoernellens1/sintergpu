@@ -152,14 +152,22 @@ def runtime_environment(device):
     import platform
     import slangpy as spy
     from benchmarks.locus_timings import cpu_identity
+    from benchmarks.device_snapshot import load_snapshot
     from sintergpu import __version__
+    snapshot_path = os.getenv('SINTERGPU_DEVICE_SNAPSHOT')
+    if not snapshot_path:
+        raise RuntimeError('SINTERGPU_DEVICE_SNAPSHOT must bind actual Vulkan driver/device evidence')
+    snapshot = load_snapshot(snapshot_path, hostname=platform.node(), api=device.info.api_name,
+                             adapter_name=device.info.adapter_name)
     compilers = sorted(Path(spy.__file__).parent.glob('libslang-compiler*'))
     if len(compilers) != 1:
         raise RuntimeError('identify exactly one actual bundled Slang compiler')
     return dict(cpu=cpu_identity(), platform=platform.platform(), python=platform.python_version(), numpy=np.__version__,
                 hostname=platform.node(), logical_cpus=os.cpu_count(), affinity=sorted(os.sched_getaffinity(0)) if hasattr(os, 'sched_getaffinity') else None,
                 captured_at_utc=datetime.now(timezone.utc).isoformat(), library_version=__version__,
-                gpu=device.info.adapter_name, adapter_luid=str(getattr(device.info, 'adapter_luid', 'unavailable')), api=device.info.api_name, timestamp_frequency=int(device.info.timestamp_frequency),
+                gpu=device.info.adapter_name, physical_device_uuid=snapshot['physical_device_uuid'],
+                driver=snapshot['driver'], device_snapshot=snapshot,
+                api=device.info.api_name, timestamp_frequency=int(device.info.timestamp_frequency),
                 slangpy=importlib.metadata.version('slangpy'), compiler_library=compilers[0].name,
                 compiler_sha256=hashlib.sha256(compilers[0].read_bytes()).hexdigest(),
                 floating_point_mode='precise (configured by recipe owner)', vulkan_icd_filenames=os.getenv('VK_ICD_FILENAMES'),
@@ -256,7 +264,7 @@ def source_identities(shader_paths):
         'src/sintergpu/references/geometry_depth_numeric.py',
         'src/sintergpu/references/reprojection_stage_numeric.py',
         'src/sintergpu/reprojection.py', 'src/sintergpu/vkl.py',
-        'benchmarks/reprojection_support.py', 'benchmarks/vkl_reprojection.py')}
+        'benchmarks/reprojection_support.py', 'benchmarks/vkl_reprojection.py', 'benchmarks/device_snapshot.py')}
     return {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(paths)}
 
 

@@ -2949,6 +2949,654 @@
         "abi_profile": "slangpy-0.43.1-vulkan-scalar"
       },
       "evidence": "qualification/evidence/xsplat-timings-0.2.3.json"
+    },
+    {
+      "operation": "vkl.reprojection.clearRaster",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "radv Mesa 26.2.3 / 26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.finalizeRaster",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "radv Mesa 26.2.3 / 26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.finalizeReference",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "radv Mesa 26.2.3 / 26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.packTemporal",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "radv Mesa 26.2.3 / 26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.projectPoints",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "radv Mesa 26.2.3 / 26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.rasterMin",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "radv Mesa 26.2.3 / 26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.rasterSupport",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "radv Mesa 26.2.3 / 26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.reduceProjection",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "radv Mesa 26.2.3 / 26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.sampleTemporal",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "radv Mesa 26.2.3 / 26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.clearRaster",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "NVIDIA 595.99.02 / 595.99.2.0",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.finalizeRaster",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "NVIDIA 595.99.02 / 595.99.2.0",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.finalizeReference",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "NVIDIA 595.99.02 / 595.99.2.0",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.packTemporal",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "NVIDIA 595.99.02 / 595.99.2.0",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.projectPoints",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "NVIDIA 595.99.02 / 595.99.2.0",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.rasterMin",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "NVIDIA 595.99.02 / 595.99.2.0",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.rasterSupport",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "NVIDIA 595.99.02 / 595.99.2.0",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.reduceProjection",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "NVIDIA 595.99.02 / 595.99.2.0",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+    },
+    {
+      "operation": "vkl.reprojection.sampleTemporal",
+      "variant": "portable-port",
+      "adapter": "SlangPy 0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "driver": "NVIDIA 595.99.02 / 595.99.2.0",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "compositional-fixture-parity-passed",
+      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "configuration": {
+        "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "canonical_reference_profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "floating_point_mode": "precise",
+        "float_tolerance": {
+          "relative": 8e-06,
+          "absolute": 8e-07
+        },
+        "logical_and_count_comparison": "exact",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        },
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
+      },
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
     }
   ],
   "evidence_sha256": {
@@ -3212,13 +3860,18 @@
     "qualification/evidence/vkl-reprojection-frozen-export-0.2.5.log": "a99b333c7fbb9a162fd7729cd3db2961703c730618b08bab166c6f06c57e0510",
     "qualification/evidence/vkl-reprojection-full-cpu-0.2.5.log": "33389e041126aae85c7c15ec17391efbc8796cc17413ab01958ad2ad626a2b8a",
     "qualification/evidence/vkl-reprojection-stage-timings-cpu-0.2.5.log": "db63817b4ed2f0ecf3fd8f05f961a6b77770a21acefe6e2ef75cd07fd1243e12",
-    "qualification/evidence/vkl-reprojection-live-torch-cpu-references-4070ti-0.2.5.log": "e9037628928cc7d90d8373d6a09f846da0d02e5e6a27deda89fdac55058e5d96"
+    "qualification/evidence/vkl-reprojection-live-torch-cpu-references-4070ti-0.2.5.log": "e9037628928cc7d90d8373d6a09f846da0d02e5e6a27deda89fdac55058e5d96",
+    "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log": "87e065a55021b5c8180f316d82217daecda271d5b9d2f3c835dd7955810b53a1",
+    "qualification/evidence/vkl-reprojection-device-8060s-0.2.5.json": "2b82f1240478f96f55be10fd1e2aa2cccb64cdf3dbd52b41de045d945eae9a3b",
+    "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log": "4fb21ee9872e1413cd0d05a5c5489eea77ae33f7f616578907e8966b72154ca6",
+    "qualification/evidence/vkl-reprojection-device-4070ti-0.2.5.json": "25d2c1407a8d9b8672fcda80b5d0d3ad5169114a3bcb8705b8f86a93d83671f8",
+    "qualification/evidence/vkl-reprojection-driver-full-cpu-0.2.5.log": "3835dc85f8f36ad1ed170b0c20bb72247ce8e223d9483eea1b9863edfaec5d30"
   },
   "pending_gates": [
-    "VKL D4/T0 new GPU implementation, all-output differential verification, layout/reflection/installation and both-vendor fixture qualification remain pending; independent CPU references only are verified so far",
+    "VKL D4/T0 full-domain/gradient and downstream application qualification beyond63cases/113states on both target devices; isolated-stage timing collection and fresh packaging/installation verification remain pending",
     "Full NVIDIA RTX 4070 Ti operation/variant/adapter qualification beyond retained regression and retained stage timing fixtures",
     "Full Radeon 8060S operation/variant/adapter qualification beyond retained fixtures",
-    "36 VKL reference modules remain without Slang translation; eleven covered modules include partial-forward profiles",
+    "34 VKL reference modules remain without Slang translation; thirteen covered modules include experimental partial-forward profiles, and consumer policy remains reference-only by design",
     "Reviewed consumer migration adoption and configured automatic cross-repository App delivery; seven initial registration PRs delivered",
     "Three controlled fusion performance runs meeting resident and transfer-inclusive acceptance gates",
     "Optional vrdx C++ runtime and HIP backend runtime qualification",
@@ -3262,7 +3915,7 @@
     "paired_cpu_gpu_entries": 0,
     "pending_portable_entries": 146,
     "additional_native_pending": 4,
-    "scope": "Draft0.2.5: new independent references and forthcoming shaders change the conservative source closure. Prior0.2.4 samples remain historical at their recorded identities; fresh timing collection is required after source settles. No new GPU result claimed.",
+    "scope": "Draft0.2.5: all prior samples retained historical under their original source closure. Both-vendor D4/T0 compositional fixture parity passed; fresh genuine per-stage and existing baseline timing collection pending. No optimized selection or speedup claim.",
     "color_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
     "color_workloads": 0,
     "workloads": 0,
@@ -3317,11 +3970,11 @@
   },
   "historical_qualification_scope": "Existing operation qualification records retain original source/compiler/evidence identities; fresh baselines bind through timing_reference, and do not relabel historical operation fixtures as new GPU qualification.",
   "vkl_reprojection": {
-    "status": "parity_failures_under_investigation",
+    "status": "both_vendor_compositional_fixture_parity_passed",
     "frozen_revision": "3384023a311651ea4260cf12ddab1567972f89f3",
     "independent_reference_tests": 102,
     "full_cpu_tests": 533,
-    "scope": "Complete numeric forward implementation and initial both-vendor GPU attempts; strict parity failures remain blocking. No new hardware qualification, performance or adoption claim.",
+    "scope": "Nine new dispatches compose four complete float32 numerical operations; both target vendors pass all63cases/113states against the same strict NumPy and canonical frozen-donor profiles. Per-stage timing collection/full-domain/gradients/adoption remain pending.",
     "reference_execution_window": "Working-tree reference additions at base3f88024, before GPU implementation; full CPU533 test run preceded version0.2.5 integration. Counts are scoped observations, not whole-batch qualification.",
     "reference_source_sha256": {
       "src/sintergpu/references/reprojection_numeric.py": "df56256f46d64803e35d9b5b043fcaade9f1b01d8da9b59a9ef7d98ab15da27b",
@@ -3332,7 +3985,7 @@
       "tests/test_vkl_reprojection_stage_reference.py": "8b7d62e90158221a325c6916b9285a88a7cfc6b99a5b870a99fbdef44386fee1"
     },
     "compiled_entrypoints": 9,
-    "compile_scope": "Standalone2026.12 and2026.19 SPIR-V/reflection compilation only; GPU execution and optimization/adoption remain pending",
+    "compile_scope": "Standalone2026.12/2026.19 full-catalog SPIR-V/reflection compatibility; actual bundled2026.12 compiler identity is separately bound to both-vendor compositional fixture results. Optimized selection/adoption remain pending.",
     "task2_cpu_verification": {
       "passed": 579,
       "skipped": 294,
@@ -3377,7 +4030,7 @@
     ],
     "numerical_fixes": {
       "shader_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
-      "scope": "Preserve emitted normalized subtract/add rounding and masked nonfinite diagnostics via explicit scalar operations. GPU rerun pending; original strict comparisons unchanged.",
+      "scope": "Preserved emitted normalized subtract/add rounding and masked nonfinite diagnostics; fixed-source strict compositional reruns now63passed on each target vendor. Original comparison thresholds and frozen donors unchanged.",
       "focused_cpu_passed": 150,
       "separate_source_review": "cleared for GPU rerun; not hardware qualification"
     },
@@ -3387,21 +4040,64 @@
       "name": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
       "case_count": 63,
       "invocation_states": 113,
-      "scope": "Actual CPU-only unchanged frozen-donor calls in one pinned build, checked against independent NumPy and reloaded with source/input/output/runtime guards; both-vendor fixed-source GPU reruns remain pending. Differing live Torch CPU wheel remains failed interoperability evidence.",
+      "scope": "Actual CPU-only frozen export checked against NumPy; both vendors passed every complete output against the exact same canonical archive. Differing live Torch CPU wheel remains failed interoperability evidence.",
       "manifest": "qualification/evidence/vkl-reprojection-frozen-0.2.5/manifest.json",
       "manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
       "source_checkpoint": "e4aab5a65ab4b89bbd230beaf3e4d04c91c9651d"
     },
     "full_cpu_verification": {
-      "passed": 681,
+      "passed": 738,
       "skipped": 294,
       "subtests_passed": 151,
-      "scope": "Complete CPU suite after canonical fixture source/preflight and paired stage harness; one expected extreme-input overflow warning. All GPU tests disabled; fixed-source hardware validation pending.",
-      "evidence": "qualification/evidence/vkl-reprojection-full-cpu-0.2.5.log"
+      "scope": "Full CPU suite with canonical fixtures and driver snapshot guards; one expected extreme-input overflow warning; no GPU execution in this CPU run.",
+      "evidence": "qualification/evidence/vkl-reprojection-driver-full-cpu-0.2.5.log"
     },
     "pre_gpu_stage_review": {
       "status": "cleared",
       "scope": "Separate CPU-stage/timing/recording review; 77 independently run focused tests. Prefixes and resets outside both clocks, all isolated writes/readonly/tails checked before replay, both stage metrics in one source/workload-bound row. No hardware or speedup claim."
+    },
+    "hardware_results": [
+      {
+        "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+        "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+        "status": "compositional-fixture-parity-passed",
+        "cases": 63,
+        "invocation_states": 113,
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log",
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9",
+        "scope": "Exact fixed shader and graph from1100590; Radeon execution additionally includes an unused driver-metadata helper hook. Every public output checked against independent NumPy and canonical frozen donor; no timing/adoption/gradient/trajectory claim.",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        }
+      },
+      {
+        "device": "NVIDIA GeForce RTX 4070 Ti",
+        "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "status": "compositional-fixture-parity-passed",
+        "cases": 63,
+        "invocation_states": 113,
+        "canonical_manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+        "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log",
+        "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9",
+        "scope": "Exact fixed shader and graph from1100590; Radeon execution additionally includes an unused driver-metadata helper hook. Every public output checked against independent NumPy and canonical frozen donor; no timing/adoption/gradient/trajectory claim.",
+        "prepared_graph_class_sha256": "76f2da41e372089069f3c4318294e1a4eda9952430c22a7d6315779c6da0b1fc",
+        "source_dependency_sha256": {
+          "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+          "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+          "src/sintergpu/reprojection.py": "9cded6edf6545a6b1aafce518e70fae134a6d7ec2af9540480ce356ee75a67fc",
+          "src/sintergpu/vkl.py": "ccee7fc1863d9eb0db5c78d1854e14c05b2a80df89d216d60d6c98ad51a8671f"
+        }
+      }
+    ],
+    "driver_metadata_review": {
+      "status": "cleared",
+      "independent_tests": 81,
+      "scope": "Actual Vulkan driver/device snapshots validated against raw evidence and current host/API/adapter, bound by raw/file SHA in each timing row, loaded outside clocks. Hardware measurements remain pending."
     }
   }
 }

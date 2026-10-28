@@ -53,7 +53,7 @@ Checked implementation items describe source, CPU tests and compiler evidence on
 - [x] Reuse temporalDepthFuse unchanged. Final RGB uses all donor weights independent of winning cluster; zero final RGB/depth/conf when invalid; retain unmasked support counts and disagreement. Every frozen output has a resource mapping.
 - [x] Write opt-in Vulkan tests using one module-scoped Device and one borrowed encoder per pipeline, with complete-output independent-reference/frozen-donor comparisons, poison tails and changed-input scratch reuse. This checks test implementation only; the 63 new GPU cases remain unexecuted.
 - [x] Compile all 146 registered entries under pinned Slang2026.12 and Slang2026.19 and compare reflection across both versions. Owner-verified artifacts: build/reprojection-all-2026.12.log, build/reprojection-all-2026.19.log and build/reprojection-all-reflection.json.
-- [ ] Execute the opt-in Vulkan tests on the required target devices; verify numerical parity, all output tails and repeated scratch without stale state. GPU execution and qualification remain pending.
+- [x] Execute the opt-in Vulkan tests on the required target devices; verify numerical parity, all output tails and repeated scratch without stale state. GPU execution and qualification remain pending.
 
 ## Task3: Integration, hot-path review, qualification and release
 
