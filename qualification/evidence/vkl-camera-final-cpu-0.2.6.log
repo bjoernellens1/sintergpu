@@ -1,0 +1,25 @@
+s...............................s............................ [  4%]
+........................................................................ [ 10%]
+................s.s.sss.......ss..sssss..ssssssssssssssssssssssssss [ 16%]
+sssssss................sss.............................................. [ 21%]
+...................s.................................................... [ 27%]
+....ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 33%]
+sssssssssssss....ss..................................................... [ 39%]
+...................................................................sssss [ 44%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 50%]
+sssssssssssssssssssss........................sssssssssssssssssssss...... [ 56%]
+........................sssssssssssssssssssssssssss..................... [ 62%]
+............sssssssssssssss............................................. [ 67%]
+.....................................................sssssssssssssssssss [ 73%]
+ssssssssssssssssssssssssssssssssssssssssssss............................ [ 79%]
+........................................................................ [ 85%]
+........................................................................ [ 90%]
+.......ssssssssssssssss................................................. [ 96%]
+......................................sss.                               [100%]
+=============================== warnings summary ===============================
+tests/test_vkl_reprojection_fixture_export.py::test_complete_synthetic_cpu_archive_round_trip
+  /home/bjoern/.codex/worktrees/camera-registration/sintergpu/src/sintergpu/references/temporal_reprojection_numeric.py:58: RuntimeWarning: overflow encountered in divide
+    confidence *= np.exp(-projected['depth_consistency'] / _F(consistency_threshold))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+873 passed, 377 skipped, 1 warning, 160 subtests passed in 42.02s

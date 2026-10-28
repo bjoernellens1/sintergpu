@@ -1,0 +1,46 @@
+s...............................s............................ [  4%]
+........................................................................ [ 10%]
+................s.s.sss.......ss..sssss..ssssssssssssssssssssssssss [ 16%]
+sssssss................sss.............................................. [ 21%]
+...................s.................................................... [ 27%]
+...sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 33%]
+ssssssssssss....ss...................................................... [ 39%]
+..........................................................ssssssssssssss [ 45%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 50%]
+ssssssssssss........................sssssssssssssssssssss............... [ 56%]
+...............sssssssssssssssssssssssssss.............................. [ 62%]
+...sssssssssssssss...................................................... [ 68%]
+............................................ssssssssssssssssssssssssssss [ 74%]
+sssssssssssssssssssssssssssssssssss..................................... [ 79%]
+........................................................................ [ 85%]
+......................................................................ss [ 91%]
+ssssssssssssss.......................................................... [ 97%]
+...F.........................sss.                                        [100%]
+=================================== FAILURES ===================================
+__ test_cases_cover_every_existing_nonfeature_vkl_entry_and_full_output_tails __
+
+    def test_cases_cover_every_existing_nonfeature_vkl_entry_and_full_output_tails():
+        from sintergpu.catalog import list_operations
+        m=recipe();cases=list(m.cases())
+        expected={o['id'] for o in list_operations() if o['id'].startswith('vkl.') and not o['id'].startswith(('vkl.brief.','vkl.binary_match.'))}
+        # The established per-entry CPU recipe retains its 13-operation contract;
+        # new staged reprojection measurements live in their own complete-graph recipe.
+        reprojection=importlib.import_module('benchmarks.vkl_reprojection')
+        graphs=list(reprojection.cases())
+        new_entries={stage['operation'] for case in graphs for stage in case['graph']['stages']
+                     if stage['operation'].startswith('vkl.reprojection.')}
+        established=expected-{op for op in expected if op.startswith('vkl.reprojection.')}
+>       assert len(established)==13
+E       AssertionError: assert 22 == 13
+E        +  where 22 = len({'vkl.camera_registration.clearRegistration', 'vkl.camera_registration.depthCameraRays', 'vkl.camera_registration.fina...alizeRegistrationDebug', 'vkl.camera_registration.projectRegistration', 'vkl.camera_registration.rectifyFromGrid', ...})
+
+tests/test_vkl_timings.py:23: AssertionError
+=============================== warnings summary ===============================
+tests/test_vkl_reprojection_fixture_export.py::test_complete_synthetic_cpu_archive_round_trip
+  /home/bjoern/.codex/worktrees/camera-registration/sintergpu/src/sintergpu/references/temporal_reprojection_numeric.py:58: RuntimeWarning: overflow encountered in divide
+    confidence *= np.exp(-projected['depth_consistency'] / _F(consistency_threshold))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_vkl_timings.py::test_cases_cover_every_existing_nonfeature_vkl_entry_and_full_output_tails
+1 failed, 863 passed, 377 skipped, 1 warning, 160 subtests passed in 36.88s

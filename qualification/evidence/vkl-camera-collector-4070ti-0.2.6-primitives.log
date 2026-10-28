@@ -1,0 +1,9 @@
+[[33mWARN[0m] Slang compiler warnings:
+warning[E15205]: undefined identifier in preprocessor
+ --> /home/bjoern/.cache/sintergpu-qualification/camera-timing-smoke-4070ti-FETQUNeU/source/src/sintergpu/kernels/primitives/scan.slang:6:5
+  |
+6 | #if SINTERGPU_SCAN_UINT
+  |     ^^^^^^^^^^^^^^^^^^^ undefined identifier 'SINTERGPU_SCAN_UINT' in preprocessor expression will evaluate to zero
+--'
+
+{"cases": 73, "output": "/home/bjoern/.cache/sintergpu-qualification/camera-collect-4070ti-IPsNyToK/primitives-cpu-gpu-4070ti-0.2.6.json"}

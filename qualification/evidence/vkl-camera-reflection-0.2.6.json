@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "entries": 155,
+  "scope": "All 2026.12 reflection fields match 2026.19 exactly, including types, bindings, offsets, sizes, strides, ordering and workgroups. New-only metadata is retained in compiler records but has no cross-version counterpart.",
+  "known_schema_additions": {
+    "sizes": 9681,
+    "scope": 155,
+    "version": 155,
+    "globalScope": 155
+  },
+  "compiler_sha256": {
+    "2026.12": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+    "2026.19": "19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145"
+  },
+  "inputs_sha256": {
+    "build/camera-full-compile-2026.12/results.json": "94b54e064d2b29503fbf9bf453c4eef2684591e8980a87290a0ed5db836dbfe2",
+    "build/camera-full-compile-2026.19/results.json": "df4a9b46bc897317233dbea7c12073024c09e5c67382fe2664f29592bf2e29ae"
+  }
+}

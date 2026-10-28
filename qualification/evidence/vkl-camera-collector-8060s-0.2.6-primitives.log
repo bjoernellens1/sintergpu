@@ -1,0 +1,9 @@
+[WARN] Slang compiler warnings:
+warning[E15205]: undefined identifier in preprocessor
+ --> /home/bjoern/.codex/worktrees/camera-registration/sintergpu/src/sintergpu/kernels/primitives/scan.slang:6:5
+  |
+6 | #if SINTERGPU_SCAN_UINT
+  |     ^^^^^^^^^^^^^^^^^^^ undefined identifier 'SINTERGPU_SCAN_UINT' in preprocessor expression will evaluate to zero
+--'
+
+{"cases": 73, "output": "benchmarks/results/primitives-cpu-gpu-8060s-0.2.6.json"}

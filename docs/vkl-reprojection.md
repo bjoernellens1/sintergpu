@@ -154,3 +154,12 @@ Timing collection requires `SINTERGPU_DEVICE_SNAPSHOT` naming an owner-collected
 Vulkan summary snapshot. The recipe checks its raw evidence, checksum, current
 host/API/adapter, physical UUID and driver identity before timing, then embeds
 that evidence in each paired row. ICD filenames alone do not identify drivers.
+
+The `0.2.5` canonical fixture source closure omitted the executed package
+initializer (`src/sintergpu/__init__.py`) and its `data/VERSION` read. At that
+release, those inputs supplied package version metadata and defined unused path
+helpers; they did not contribute to the numerical outputs. The omission limits
+the completeness of the recorded execution provenance, but is not evidence of
+incorrect archived numerical results. The immutable `0.2.5` artifact remains
+unchanged; later fixture exporters must bind all executed first-party modules and
+read inputs.

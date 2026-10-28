@@ -1,0 +1,45 @@
+LOCK_ACQUIRED PID=259309 OUT=/home/bjoern/.cache/sintergpu-qualification/camera-collect-4070ti-IPsNyToK COMMIT=6aa0f7cc2bfd07a61cd4d0a8b8540ef59b12bbe6
+Wed Oct 28 04:53:48 PM UTC 2026
+GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 0 %
+PATH=/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/vulkan-tools-0.2.5/root/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+PYTHONPATH=src:.
+TMPDIR=/home/bjoern/.cache/sintergpu-qualification/camera-collect-4070ti-IPsNyToK/tmp
+VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia_icd.json
+EXACT_COMMIT_FILES 1173
+CURRENT_SNAPSHOT_MATCH NVIDIA GeForce RTX 4070 Ti {'name': 'NVIDIA', 'info': '595.99.02', 'version': '595.99.2.0', 'uuid': 'c9bf27cc-ad5e-57db-8930-96d25aad2e91'}
+slangpy 0.43.1
+COMPILER /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/libslang-compiler.so.0.2026.12 195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678
+START camera 2026-10-28T16:53:50Z
+{"status": "measurement_only", "paired_stage_rows": 32, "pipelines": ["rectify-bilinear-b1-3x4-c3-brown1", "register-b1-3x4-c3-brown1", "rectify-nearest-b8-4x7-c4-brown0", "register-b8-4x7-c4-brown1", "register-nodebug", "rotated-depth1-rgb1", "collisions-tie"]}
+DONE camera 2026-10-28T16:54:17Z
+START vkl-reprojection 2026-10-28T16:54:17Z
+{"status": "measurement_only", "adoption": "unqualified", "paired_stage_rows": 180, "pipelines": ["projection/ordinary/b1-n1-3x5-to3x5", "projection/collision/b1-n1-3x5-to3x5", "projection/sparse/b1-n1-3x5-to3x5", "projection/all_invalid/b1-n1-3x5-to3x5", "projection/odd_tail/b1-n1-17x19-to17x19", "raster/ordinary/b1-n1-3x5-to3x5", "raster/collision/b1-n1-3x5-to3x5", "raster/sparse/b1-n1-3x5-to3x5", "raster/all_invalid/b1-n1-3x5-to3x5", "raster/odd_tail/b1-n1-17x19-to17x19", "temporal/ordinary/b1-n1-3x5-to3x5", "temporal/ordinary/b1-n3-3x5-to3x5", "temporal/collision/b1-n1-3x5-to3x5", "temporal/collision/b1-n3-3x5-to3x5", "temporal/sparse/b1-n1-3x5-to3x5", "temporal/sparse/b1-n3-3x5-to3x5", "temporal/all_invalid/b1-n1-3x5-to3x5", "temporal/all_invalid/b1-n3-3x5-to3x5", "temporal/odd_tail/b1-n1-17x19-to17x19", "temporal/odd_tail/b1-n3-17x19-to17x19", "reference/ordinary/b1-n1-3x5-to3x5", "reference/ordinary/b1-n3-3x5-to3x5", "reference/collision/b1-n1-3x5-to3x5", "reference/collision/b1-n3-3x5-to3x5", "reference/sparse/b1-n1-3x5-to3x5", "reference/sparse/b1-n3-3x5-to3x5", "reference/all_invalid/b1-n1-3x5-to3x5", "reference/all_invalid/b1-n3-3x5-to3x5", "reference/odd_tail/b1-n1-17x19-to17x19", "reference/odd_tail/b1-n3-17x19-to17x19"]}
+DONE vkl-reprojection 2026-10-28T16:55:13Z
+START locus 2026-10-28T16:55:13Z
+{"cases": 28, "output": "/home/bjoern/.cache/sintergpu-qualification/camera-collect-4070ti-IPsNyToK/locus-cpu-gpu-4070ti-0.2.6.json"}
+DONE locus 2026-10-28T16:55:17Z
+START color 2026-10-28T16:55:17Z
+{"cases": 30, "output": "/home/bjoern/.cache/sintergpu-qualification/camera-collect-4070ti-IPsNyToK/color-cpu-gpu-4070ti-0.2.6.json"}
+DONE color 2026-10-28T16:55:39Z
+START vkl-features 2026-10-28T16:55:39Z
+{"cases": 10, "output": "/home/bjoern/.cache/sintergpu-qualification/camera-collect-4070ti-IPsNyToK/vkl-features-cpu-gpu-4070ti-0.2.6.json"}
+DONE vkl-features 2026-10-28T16:55:43Z
+START vkl 2026-10-28T16:55:43Z
+{"cases": 38, "output": "/home/bjoern/.cache/sintergpu-qualification/camera-collect-4070ti-IPsNyToK/vkl-cpu-gpu-4070ti-0.2.6.json"}
+DONE vkl 2026-10-28T16:56:32Z
+START primitives 2026-10-28T16:56:32Z
+[[33mWARN[0m] Slang compiler warnings:
+warning[E15205]: undefined identifier in preprocessor
+ --> /home/bjoern/.cache/sintergpu-qualification/camera-timing-smoke-4070ti-FETQUNeU/source/src/sintergpu/kernels/primitives/scan.slang:6:5
+  |
+6 | #if SINTERGPU_SCAN_UINT
+  |     ^^^^^^^^^^^^^^^^^^^ undefined identifier 'SINTERGPU_SCAN_UINT' in preprocessor expression will evaluate to zero
+--'
+
+{"cases": 73, "output": "/home/bjoern/.cache/sintergpu-qualification/camera-collect-4070ti-IPsNyToK/primitives-cpu-gpu-4070ti-0.2.6.json"}
+DONE primitives 2026-10-28T16:56:46Z
+START xsplat 2026-10-28T16:56:46Z
+{"cases": 17, "output": "/home/bjoern/.cache/sintergpu-qualification/camera-collect-4070ti-IPsNyToK/xsplat-cpu-gpu-4070ti-0.2.6.json"}
+DONE xsplat 2026-10-28T16:56:54Z
+BATCH_SUCCESS
+Wed Oct 28 04:56:54 PM UTC 2026

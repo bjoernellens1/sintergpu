@@ -35,6 +35,10 @@
     "path": "kernels/common/brief_pattern.slang",
     "sha256": "3275ffd0c3d0e643fba26d8b68f6e70b38fc82a3da8ca2d39d2c9eeb86e8f770"
   },
+  "common.brown_conrady": {
+    "path": "kernels/common/brown_conrady.slang",
+    "sha256": "216ae78b2280317c4840ed8acde4bc8916ae072c332a08ff41e4308a7247d4c4"
+  },
   "common.float32_bits": {
     "path": "kernels/common/float32_bits.slang",
     "sha256": "d82c66e6543b3fe890a7c02f4680918038e336269fd0f939798c192f1c5c2729"
@@ -230,6 +234,10 @@
   "vkl.brief": {
     "path": "kernels/vkl/brief.slang",
     "sha256": "60e627e96653eef9e02645fea25a6f83c63bbd371c2c71a1fa5a47befab356d2"
+  },
+  "vkl.camera_registration": {
+    "path": "kernels/vkl/camera_registration.slang",
+    "sha256": "b8a7700b209db2d8774aee28d3666b1b0c2f4165bfdee7585da474db219cd07a"
   },
   "vkl.depth_convert": {
     "path": "kernels/vkl/depth_convert.slang",

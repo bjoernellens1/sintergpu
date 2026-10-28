@@ -1,0 +1,9 @@
+camera: 32 paired rows PASS
+vkl-reprojection: 180 paired rows PASS
+locus: 28 paired rows PASS
+color: 30 paired rows PASS
+vkl-features: 10 paired rows PASS
+vkl: 38 paired rows PASS
+primitives: 73 paired rows PASS
+xsplat: 17 paired rows PASS
+408 paired rows; all metrics50 finite positive; pipeline oracle3; no skips; source unchanged; PID259309/session4784 exit0
