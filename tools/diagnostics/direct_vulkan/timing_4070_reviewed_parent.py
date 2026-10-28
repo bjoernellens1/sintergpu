@@ -134,19 +134,34 @@ def receipt_once(path,payload):
     finally:os.close(directory)
 
 
+def require_capacity(path):
+    st=os.statvfs(Path(path).parent);available=st.f_bavail*st.f_frsize
+    # 66.9 MB retained raw data, plus journals, executable and diagnostics.
+    if available<128*1024*1024:raise OSError('insufficient artifact filesystem capacity')
+    return available
+
+
 def run(args):
     if NATIVE_SHA is None: raise RuntimeError('reviewed native build pin unavailable')
     if not args.execute: raise ValueError('explicit execute required')
     if Path(args.output).exists() or Path(args.output).is_symlink(): raise FileExistsError(args.output)
+    journal=None
     try:
         sources=committed_sources(args.commit)
         helper=load_checked(sources['engineering_attempt/runner.py'],'sinter_timing_helper',ROOT/BASE/'engineering_attempt/runner.py')
         report=load_checked(sources['timing_report.py'],'sinter_timing_report',ROOT/BASE/'timing_report.py')
         spirv=load_checked(sources['engineering_attempt/spirv_contract.py'],'sinter_timing_spirv',ROOT/BASE/'engineering_attempt/spirv_contract.py')
+        available=require_capacity(args.output)
         journal=helper['ArtifactJournal'](args.output)
+        journal.event('filesystem_capacity',available_bytes=available,required_bytes=128*1024*1024)
     except Exception as early_error:
+        errors=[early_error]
+        if journal is not None:
+            try:journal.close()
+            except Exception as close_error:errors.append(close_error)
         try:receipt_once(args.output,{'status':'failed','stage':'source_or_journal_setup','error_type':type(early_error).__name__,'error':str(early_error)})
-        except Exception as receipt_error:raise ExceptionGroup('setup and failure receipt',[early_error,receipt_error])
+        except Exception as receipt_error:errors.append(receipt_error)
+        if len(errors)>1:raise ExceptionGroup('setup, journal close or failure receipt',errors)
         raise
     lock_fd=None;error=None;payload=None
     try:
