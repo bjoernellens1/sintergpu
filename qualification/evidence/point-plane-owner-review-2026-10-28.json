@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-28T09:24:41.344194+00:00",
+  "candidate": {
+    "repository": "bjoernellens1/sintergpu",
+    "pull_request": 14,
+    "commit": "2def63bb85adfcb0cb5b1b8d0910bed31dda0539"
+  },
+  "library_base_commit": "cc5ff416f0245806ed7ddba0dbb06b94942225b1",
+  "scope": "Independent owner replay of retained CPU-side evidence; no GPU dispatch, runtime promotion, integration or full-family performance qualification.",
+  "archive_audit": {
+    "completed_processes": 198,
+    "checks": [
+      "source revision and SHA256",
+      "compiled shader and runtime identities",
+      "fixture and output bytes",
+      "independent float64 oracle",
+      "full-byte baseline/candidate parity",
+      "distinct process identity per three-run profile"
+    ]
+  },
+  "candidate_cpu_tests": {
+    "passed": 2,
+    "skipped_gpu_optin": 94,
+    "scope": "Does not claim 73 CLI checks or fresh GPU correctness."
+  },
+  "acceptance_recomputation": {
+    "boundaries": [
+      {
+        "iteration": "iteration7",
+        "device": "native-radeon",
+        "run": 1,
+        "boundary": "gpu_timestamp",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.0008415990486145019,
+            "p95_ms": 0.0009217513389587403,
+            "min_ms": 0.0008015229034423828,
+            "max_ms": 0.0018034265327453614
+          },
+          "candidate": {
+            "median_ms": 0.0007213706130981446,
+            "p95_ms": 0.0007614467582702637,
+            "min_ms": 0.0006812944679260254,
+            "max_ms": 0.0016831980972290038
+          },
+          "median_ratio": 0.8571428571428572,
+          "p95_ratio": 0.8260869565217391,
+          "median_ratio_upper95": 0.8571428571428572,
+          "p95_ratio_upper95": 0.8260869565217391,
+          "median_ratio_lower95": 0.8571428571428572,
+          "p95_ratio_lower95": 0.8260869565217391,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration7",
+        "device": "native-radeon",
+        "run": 1,
+        "boundary": "resident_completion",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.016741,
+            "p95_ms": 0.01920605,
+            "min_ms": 0.015028,
+            "max_ms": 1.431585
+          },
+          "candidate": {
+            "median_ms": 0.016632,
+            "p95_ms": 0.019136,
+            "min_ms": 0.014958,
+            "max_ms": 0.928248
+          },
+          "median_ratio": 0.993489038886566,
+          "p95_ratio": 0.9963527117757166,
+          "median_ratio_upper95": 0.9945613196270618,
+          "p95_ratio_upper95": 1.0094370673318462,
+          "median_ratio_lower95": 0.9928405226418471,
+          "p95_ratio_lower95": 0.98532386622586,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration7",
+        "device": "native-radeon",
+        "run": 1,
+        "boundary": "transfer_inclusive",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.03151,
+            "p95_ms": 0.035547,
+            "min_ms": 0.023414,
+            "max_ms": 0.323449
+          },
+          "candidate": {
+            "median_ms": 0.031519,
+            "p95_ms": 0.035448999999999974,
+            "min_ms": 0.023704,
+            "max_ms": 0.187633
+          },
+          "median_ratio": 1.0002856236115518,
+          "p95_ratio": 0.9972430866177165,
+          "median_ratio_upper95": 1.000349106604462,
+          "p95_ratio_upper95": 1.0341468092784798,
+          "median_ratio_lower95": 1.0,
+          "p95_ratio_lower95": 0.9626861383272531,
+          "decision": "on-par"
+        }
+      },
+      {
+        "iteration": "iteration7",
+        "device": "native-radeon",
+        "run": 2,
+        "boundary": "gpu_timestamp",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.0008415990486145019,
+            "p95_ms": 0.0008816751937866211,
+            "min_ms": 0.0007614467582702637,
+            "max_ms": 0.0017633503875732423
+          },
+          "candidate": {
+            "median_ms": 0.0007213706130981446,
+            "p95_ms": 0.0007614467582702637,
+            "min_ms": 0.0006812944679260254,
+            "max_ms": 0.0016431219520568847
+          },
+          "median_ratio": 0.8571428571428572,
+          "p95_ratio": 0.8636363636363636,
+          "median_ratio_upper95": 0.8571428571428572,
+          "p95_ratio_upper95": 0.8636363636363636,
+          "median_ratio_lower95": 0.8571428571428572,
+          "p95_ratio_lower95": 0.8636363636363636,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration7",
+        "device": "native-radeon",
+        "run": 2,
+        "boundary": "resident_completion",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.016141,
+            "p95_ms": 0.01827544999999999,
+            "min_ms": 0.013726,
+            "max_ms": 1.740237
+          },
+          "candidate": {
+            "median_ms": 0.01603,
+            "p95_ms": 0.018364,
+            "min_ms": 0.013175,
+            "max_ms": 1.776945
+          },
+          "median_ratio": 0.9931231026578279,
+          "p95_ratio": 1.0048452979270008,
+          "median_ratio_upper95": 0.9931846344485749,
+          "p95_ratio_upper95": 1.0142939834048394,
+          "median_ratio_lower95": 0.9925035623567313,
+          "p95_ratio_lower95": 0.9962148959763689,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration7",
+        "device": "native-radeon",
+        "run": 2,
+        "boundary": "transfer_inclusive",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.031469,
+            "p95_ms": 0.038282,
+            "min_ms": 0.023244,
+            "max_ms": 2.919978
+          },
+          "candidate": {
+            "median_ms": 0.031469,
+            "p95_ms": 0.038522,
+            "min_ms": 0.024997,
+            "max_ms": 1.188248
+          },
+          "median_ratio": 1.0,
+          "p95_ratio": 1.0062692649286873,
+          "median_ratio_upper95": 1.0002860775588047,
+          "p95_ratio_upper95": 1.0400014044296653,
+          "median_ratio_lower95": 0.9996823279011403,
+          "p95_ratio_lower95": 0.9788669736476808,
+          "decision": "on-par"
+        }
+      },
+      {
+        "iteration": "iteration7",
+        "device": "native-radeon",
+        "run": 3,
+        "boundary": "gpu_timestamp",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.0008415990486145019,
+            "p95_ms": 0.0008816751937866211,
+            "min_ms": 0.0007614467582702637,
+            "max_ms": 0.0017633503875732423
+          },
+          "candidate": {
+            "median_ms": 0.0007213706130981446,
+            "p95_ms": 0.0007614467582702637,
+            "min_ms": 0.0006812944679260254,
+            "max_ms": 0.0016831980972290038
+          },
+          "median_ratio": 0.8571428571428572,
+          "p95_ratio": 0.8636363636363636,
+          "median_ratio_upper95": 0.8571428571428572,
+          "p95_ratio_upper95": 0.8636363636363636,
+          "median_ratio_lower95": 0.8571428571428572,
+          "p95_ratio_lower95": 0.8636363636363636,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration7",
+        "device": "native-radeon",
+        "run": 3,
+        "boundary": "resident_completion",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.0161205,
+            "p95_ms": 0.01837544999999999,
+            "min_ms": 0.014226,
+            "max_ms": 0.277954
+          },
+          "candidate": {
+            "median_ms": 0.016001,
+            "p95_ms": 0.01801444999999999,
+            "min_ms": 0.014728,
+            "max_ms": 0.444868
+          },
+          "median_ratio": 0.9925870785645607,
+          "p95_ratio": 0.9803542226176774,
+          "median_ratio_upper95": 0.9931761786600497,
+          "p95_ratio_upper95": 0.9878810379493146,
+          "median_ratio_lower95": 0.9920024798512092,
+          "p95_ratio_lower95": 0.9724007561436673,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration7",
+        "device": "native-radeon",
+        "run": 3,
+        "boundary": "transfer_inclusive",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.031709,
+            "p95_ms": 0.034866,
+            "min_ms": 0.024717,
+            "max_ms": 0.270319
+          },
+          "candidate": {
+            "median_ms": 0.031669,
+            "p95_ms": 0.03473505,
+            "min_ms": 0.024055,
+            "max_ms": 0.924841
+          },
+          "median_ratio": 0.9987385284934877,
+          "p95_ratio": 0.9962441920495613,
+          "median_ratio_upper95": 0.9990536277602523,
+          "p95_ratio_upper95": 1.0086900503904337,
+          "median_ratio_lower95": 0.9984232103437402,
+          "p95_ratio_lower95": 0.9855793121403147,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration6",
+        "device": "native-rtx4070",
+        "run": 1,
+        "boundary": "gpu_timestamp",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.007392,
+            "p95_ms": 0.008832,
+            "min_ms": 0.00608,
+            "max_ms": 0.02096
+          },
+          "candidate": {
+            "median_ms": 0.004672,
+            "p95_ms": 0.005472,
+            "min_ms": 0.003904,
+            "max_ms": 0.0192
+          },
+          "median_ratio": 0.6320346320346321,
+          "p95_ratio": 0.6195652173913044,
+          "median_ratio_upper95": 0.6320346320346321,
+          "p95_ratio_upper95": 0.6231884057971016,
+          "median_ratio_lower95": 0.6277056277056277,
+          "p95_ratio_lower95": 0.6195652173913044,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration6",
+        "device": "native-rtx4070",
+        "run": 1,
+        "boundary": "resident_completion",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.016681,
+            "p95_ms": 0.017886,
+            "min_ms": 0.015796,
+            "max_ms": 0.037535
+          },
+          "candidate": {
+            "median_ms": 0.01423,
+            "p95_ms": 0.01506605,
+            "min_ms": 0.013754,
+            "max_ms": 1.194892
+          },
+          "median_ratio": 0.853066362927882,
+          "p95_ratio": 0.8423375824667337,
+          "median_ratio_upper95": 0.853399688212016,
+          "p95_ratio_upper95": 0.8446086054768873,
+          "median_ratio_lower95": 0.8526820497452803,
+          "p95_ratio_lower95": 0.8404403112075971,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration6",
+        "device": "native-rtx4070",
+        "run": 1,
+        "boundary": "transfer_inclusive",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.039353,
+            "p95_ms": 0.041185099999999995,
+            "min_ms": 0.037052,
+            "max_ms": 0.251916
+          },
+          "candidate": {
+            "median_ms": 0.036366,
+            "p95_ms": 0.03865709999999999,
+            "min_ms": 0.03463,
+            "max_ms": 1.196005
+          },
+          "median_ratio": 0.9240972733971998,
+          "p95_ratio": 0.9386185780779942,
+          "median_ratio_upper95": 0.9243163566127884,
+          "p95_ratio_upper95": 0.9452684457634953,
+          "median_ratio_lower95": 0.9238997797696291,
+          "p95_ratio_lower95": 0.9312333950666335,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration6",
+        "device": "native-rtx4070",
+        "run": 2,
+        "boundary": "gpu_timestamp",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.007392,
+            "p95_ms": 0.008704,
+            "min_ms": 0.006112,
+            "max_ms": 0.02048
+          },
+          "candidate": {
+            "median_ms": 0.004576,
+            "p95_ms": 0.005312,
+            "min_ms": 0.003776,
+            "max_ms": 0.01776
+          },
+          "median_ratio": 0.6190476190476191,
+          "p95_ratio": 0.6102941176470588,
+          "median_ratio_upper95": 0.6217391304347826,
+          "p95_ratio_upper95": 0.6102941176470588,
+          "median_ratio_lower95": 0.6147186147186148,
+          "p95_ratio_lower95": 0.6102941176470588,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration6",
+        "device": "native-rtx4070",
+        "run": 2,
+        "boundary": "resident_completion",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.0167205,
+            "p95_ms": 0.01773,
+            "min_ms": 0.015781,
+            "max_ms": 0.045709
+          },
+          "candidate": {
+            "median_ms": 0.014218,
+            "p95_ms": 0.014949,
+            "min_ms": 0.01366,
+            "max_ms": 1.190012
+          },
+          "median_ratio": 0.8503334230435693,
+          "p95_ratio": 0.8431472081218275,
+          "median_ratio_upper95": 0.850741804259392,
+          "p95_ratio_upper95": 0.8451653739657529,
+          "median_ratio_lower95": 0.849874446968791,
+          "p95_ratio_lower95": 0.8413995154656599,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration6",
+        "device": "native-rtx4070",
+        "run": 2,
+        "boundary": "transfer_inclusive",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.039308,
+            "p95_ms": 0.0414364,
+            "min_ms": 0.036914,
+            "max_ms": 0.078563
+          },
+          "candidate": {
+            "median_ms": 0.036304,
+            "p95_ms": 0.0383482,
+            "min_ms": 0.034501,
+            "max_ms": 1.192113
+          },
+          "median_ratio": 0.9235778976289813,
+          "p95_ratio": 0.9254713247289823,
+          "median_ratio_upper95": 0.9238069793773773,
+          "p95_ratio_upper95": 0.9315051450289171,
+          "median_ratio_lower95": 0.9233292179055016,
+          "p95_ratio_lower95": 0.9201747185006214,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration6",
+        "device": "native-rtx4070",
+        "run": 3,
+        "boundary": "gpu_timestamp",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.007488,
+            "p95_ms": 0.008608,
+            "min_ms": 0.00608,
+            "max_ms": 0.022944
+          },
+          "candidate": {
+            "median_ms": 0.004608,
+            "p95_ms": 0.005248,
+            "min_ms": 0.003776,
+            "max_ms": 0.017472
+          },
+          "median_ratio": 0.6153846153846154,
+          "p95_ratio": 0.6096654275092938,
+          "median_ratio_upper95": 0.6153846153846154,
+          "p95_ratio_upper95": 0.6119402985074627,
+          "median_ratio_lower95": 0.6111111111111112,
+          "p95_ratio_lower95": 0.6059479553903346,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration6",
+        "device": "native-rtx4070",
+        "run": 3,
+        "boundary": "resident_completion",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.016709500000000002,
+            "p95_ms": 0.017800049999999998,
+            "min_ms": 0.015893,
+            "max_ms": 0.037984
+          },
+          "candidate": {
+            "median_ms": 0.014197,
+            "p95_ms": 0.014989,
+            "min_ms": 0.013744,
+            "max_ms": 1.288665
+          },
+          "median_ratio": 0.8496364343636852,
+          "p95_ratio": 0.8420762863025667,
+          "median_ratio_upper95": 0.8499431376069911,
+          "p95_ratio_upper95": 0.843877131091085,
+          "median_ratio_lower95": 0.8493536030644003,
+          "p95_ratio_lower95": 0.8404045315953381,
+          "decision": "faster"
+        }
+      },
+      {
+        "iteration": "iteration6",
+        "device": "native-rtx4070",
+        "run": 3,
+        "boundary": "transfer_inclusive",
+        "acceptance": {
+          "baseline": {
+            "median_ms": 0.039511,
+            "p95_ms": 0.041150149999999996,
+            "min_ms": 0.037117,
+            "max_ms": 0.291612
+          },
+          "candidate": {
+            "median_ms": 0.036531,
+            "p95_ms": 0.038316050000000004,
+            "min_ms": 0.034722,
+            "max_ms": 1.220969
+          },
+          "median_ratio": 0.9245779656298246,
+          "p95_ratio": 0.9311278330698675,
+          "median_ratio_upper95": 0.9247652077057438,
+          "p95_ratio_upper95": 0.9343828938664468,
+          "median_ratio_lower95": 0.9243927125506074,
+          "p95_ratio_lower95": 0.9279449536300954,
+          "decision": "faster"
+        }
+      }
+    ],
+    "reproducer_sha256": "da20d8aa56f131c639a3f442684cf88213193a141f2e1782b40d388cb122ef60",
+    "reproducer_source": "from pathlib import Path\nimport sys,json,gzip,hashlib\nroot=Path('/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families')\nsys.path.insert(0,str(root/'benchmarks'))\nfrom family_timings import compare\nout=[]\nfor iteration,device in [('iteration7','native-radeon'),('iteration6','native-rtx4070')]:\n directory=root/'evidence'/iteration/device\n plan=json.loads((directory/'suite-plan.json').read_text())\n report=json.loads((directory.with_name(device+'-report.json')).read_text())['devices'][0]\n control=json.loads((directory/'collection-control.json').read_text())\n assert control['cooperating_collectors_excluded']\n for result in plan['results']:\n  if (result['profile'],result['count'])!=('aosoa',1025):continue\n  assert result['output'] not in control.get('ineligible_outputs',{})\n  path=directory/result['output']\n  data=path.read_bytes() if path.exists() else gzip.decompress(path.with_suffix('.json.gz').read_bytes())\n  assert hashlib.sha256(data).hexdigest()==result['sha256']\n  raw=json.loads(data)\n  expected=next(r for r in report['results'] if (r['profile'],r['count'],r['run'])==('aosoa',1025,result['run']))\n  assert expected['all_boundaries_pass']\n  for boundary in ('gpu_timestamp','resident_completion','transfer_inclusive'):\n   samples=[s for s in raw['samples'] if s['boundary']==boundary]\n   assert len(samples)==40000\n   key='gpu_ns' if boundary=='gpu_timestamp' else 'wall_ns'\n   blocks=[[s[key]/1e6 for s in samples[i:i+4]] for i in range(0,len(samples),4)]\n   actual=compare(blocks)\n   assert actual['decision']!='retain-baseline'\n   assert all(actual[k]==v for k,v in expected['boundaries'][boundary].items() if k!='thread_cpu_ms'),(iteration,result['run'],boundary)\n   out.append(dict(iteration=iteration,device=device,run=result['run'],boundary=boundary,acceptance=actual))\n   print(iteration,device,result['run'],boundary,'exact report recomputation PASS',flush=True)\nassert len(out)==18\nPath('/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/candidate-native-owner-statistics.json').write_text(json.dumps(out,indent=2)+'\\n')\n",
+    "scope": "Exact reproduction using reviewed candidate family_timings.compare on each retained10000-block raw record. This independently reruns computation, not an independent statistical methodology."
+  },
+  "qualified_profile": {
+    "operation": "indexed point-plane residual and rotation-first Jacobian",
+    "layout": "padded AoSoA",
+    "count": 1025,
+    "workload": "Exact retained seeded fixtures only; no input/size-range extrapolation",
+    "compiler": "Slang2026.19",
+    "adapter": "native Vulkan, cached staging, retained resources, matched polling completion",
+    "baseline_threads": 1024,
+    "candidate_threads": 256,
+    "devices": [
+      "Radeon8060S",
+      "canonical RTX4070Ti"
+    ],
+    "runs_per_device": 3
+  },
+  "disposition": {
+    "point_plane": "Evidence supports separate experimental promotion review for exact profile; library/default integration remains pending.",
+    "small_cholesky": "Retain incumbent; family-wide cross-vendor performance gate incomplete.",
+    "fused_gn": "Retain incumbent; complete-transfer gate incomplete.",
+    "generator_consolidation": "Shared symbolic factory must feed both owned exports before marking G18 consolidated; keep frozen reference generators unchanged."
+  },
+  "evidence": [
+    {
+      "path": "qualification/evidence/point-plane-owner-review-2026-10-28-archive-audit.log",
+      "sha256": "88176d878c88c1454c40aa5fe1770aeef266d388599cd56937971096ee536ca0"
+    },
+    {
+      "path": "qualification/evidence/point-plane-owner-review-2026-10-28-candidate-cpu.log",
+      "sha256": "49c3ba7d34dd0c848f1ecce0663e56b650610de17e5330329426e1b820bfe499"
+    },
+    {
+      "path": "qualification/evidence/point-plane-owner-review-2026-10-28-statistics.log",
+      "sha256": "9cb4666624e76d1378f709f4e42c461669e7e0ebcac370ab89a6d87f6095c885"
+    }
+  ]
+}

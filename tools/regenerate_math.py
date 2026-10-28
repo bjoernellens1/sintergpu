@@ -9,6 +9,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'references/donors/caspar-slang/src'))
+sys.path.insert(0,str(ROOT/'src'))
 
 
 def main():
@@ -18,9 +19,9 @@ def main():
     if importlib.metadata.version('symforce')!='0.12.0':
         parser.error('regeneration requires pinned SymForce0.12.0; not required to use released shaders')
     from caspar_slang.emitter import emit_slang
-    from caspar_slang.gn import residual_kernel
+    from codegen.caspar_point_plane import residual_kernel,dense_factor_source
     from caspar_slang.primitives import primitives_source
-    from caspar_slang.reprojection import reproject_source,dense_factor_source
+    from caspar_slang.reprojection import reproject_source
     from caspar_slang.pose_graph import pose_graph_source
     outputs={'point_plane_residual':emit_slang(residual_kernel()),
              'primitives':primitives_source(),'reprojection_factors':reproject_source(),
