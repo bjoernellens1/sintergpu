@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/sintergpu",
+  "revision": "2def63bb85adfcb0cb5b1b8d0910bed31dda0539",
+  "license": "Apache-2.0",
+  "authorship": "Bjoern Ellensohn; derived from owner-original Caspar-Slang Apache-2.0 exports",
+  "upstream": {
+    "repository": "bjoernellens1/caspar-slang",
+    "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+    "source_paths": [
+      "src/caspar_slang/gn.py:33-61",
+      "src/caspar_slang/reprojection.py:74-200"
+    ],
+    "license_notice": "LICENSES/caspar-slang-LICENSE"
+  },
+  "files": [
+    {
+      "source_path": "candidates/sintergpu-optimization-families/kernels/optimization/point_plane_inlined.slang",
+      "source_sha256": "9763495aa01821c4a9fa52db689310cf787cee01b63b8b50bf0daaae43131bcc",
+      "destination": "src/sintergpu/kernels/optimization/point_plane.slang",
+      "imported_sha256": "9763495aa01821c4a9fa52db689310cf787cee01b63b8b50bf0daaae43131bcc",
+      "adaptation": "Exact reviewed candidate bytes; importable module/factory added without replacing an incumbent"
+    },
+    {
+      "source_path": "candidates/sintergpu-optimization-families/python/point_plane_symbolic.py",
+      "source_sha256": "0f4f5278571fa2fb7d0302f0d23bd382470febdf999a9497ef11d72050e2d54a",
+      "destination": "src/sintergpu/codegen/point_plane.py",
+      "imported_sha256": "0f4f5278571fa2fb7d0302f0d23bd382470febdf999a9497ef11d72050e2d54a",
+      "adaptation": "Exact reviewed candidate bytes; importable module/factory added without replacing an incumbent"
+    }
+  ],
+  "owned_generation_adapter": {
+    "path": "tools/codegen/caspar_point_plane.py",
+    "purpose": "Ported vector/scalar adapters share one factory; remaining dense/photometric expressions and metadata unchanged",
+    "output_contract": "All5 generated modules byte-identical; frozen references retained"
+  },
+  "contract": "docs/point-plane.md",
+  "qualification": "Both standalone compiler import/executable/layout checks passed; physical imported-module parity pending. Candidate performance scope remains exact native seededAoSoA1025 only."
+}

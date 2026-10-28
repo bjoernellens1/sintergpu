@@ -104,6 +104,17 @@ jobs:
         run: |
           python tools/compile_shaders.py --slangc /tmp/slang/bin/slangc --output "build/compile-${SLANG_VERSION}"
           python -c 'import json,os,pathlib; p=pathlib.Path("build/compile-"+os.environ["SLANG_VERSION"]+"/results.json"); r=json.loads(p.read_text()); r["pinned_release"]=os.environ["SLANG_VERSION"]; p.write_text(json.dumps(r,indent=2)+"\n")'
+      - name: Verify point-plane module imports, instructions and ABI
+        env:
+          SLANG_VERSION: ${{ matrix.version }}
+        run: |
+          python -m pip install 'numpy>=2'
+          python tools/check_point_plane_module.py --slangc /tmp/slang/bin/slangc --output "build/point-plane-${SLANG_VERSION}"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: point-plane-${{ matrix.version }}
+          path: build/point-plane-${{ matrix.version }}/results.json
       - name: Build and consume relocated optional native package
         env:
           SINTERGPU_NATIVE_PACKAGE_TESTS: '1'
