@@ -1,0 +1,362 @@
+; SPIR-V
+; Version: 1.4
+; Generator: Khronos Slang Compiler; 0
+; Bound: 501
+; Schema: 0
+OpCapability Shader
+OpExtension "SPV_KHR_storage_buffer_storage_class"
+%184 = OpExtInstImport "GLSL.std.450"
+OpMemoryModel Logical GLSL450
+OpEntryPoint GLCompute %projectMain "main" %camera %gaussians %projected %gl_GlobalInvocationID
+OpExecutionMode %projectMain LocalSize 128 1 1
+
+; Debug Information
+OpSource Slang 1
+OpName %CameraData_natural "CameraData_natural"     ; id %31
+OpMemberName %CameraData_natural 0 "worldToCamera"
+OpMemberName %CameraData_natural 1 "focal"
+OpMemberName %CameraData_natural 2 "principal"
+OpMemberName %CameraData_natural 3 "imageSize"
+OpMemberName %CameraData_natural 4 "gaussianCount"
+OpName %camera "camera"                             ; id %35
+OpName %GaussianData_natural "GaussianData_natural"     ; id %47
+OpMemberName %GaussianData_natural 0 "mean"
+OpMemberName %GaussianData_natural 1 "logScale"
+OpMemberName %GaussianData_natural 2 "rotation"
+OpMemberName %GaussianData_natural 3 "opacityLogit"
+OpMemberName %GaussianData_natural 4 "sh0"
+OpName %StructuredBuffer "StructuredBuffer"         ; id %50
+OpMemberName %StructuredBuffer 0 "__member0"
+OpName %gaussians "gaussians"                       ; id %53
+OpName %ProjectedGaussian_natural "ProjectedGaussian_natural"   ; id %105
+OpMemberName %ProjectedGaussian_natural 0 "meanPx"
+OpMemberName %ProjectedGaussian_natural 1 "conic"
+OpMemberName %ProjectedGaussian_natural 2 "depth"
+OpMemberName %ProjectedGaussian_natural 3 "visible"
+OpName %RWStructuredBuffer "RWStructuredBuffer"     ; id %108
+OpMemberName %RWStructuredBuffer 0 "__member0"
+OpName %projected "projected"                       ; id %111
+OpName %invZ "invZ"                                 ; id %129
+OpName %projectMain "projectMain"                   ; id %2
+
+; Annotations
+OpDecorate %gl_GlobalInvocationID BuiltIn GlobalInvocationId
+OpDecorate %CameraData_natural Block
+OpMemberDecorate %CameraData_natural 0 Offset 0
+OpMemberDecorate %CameraData_natural 0 ColMajor
+OpMemberDecorate %CameraData_natural 0 MatrixStride 16
+OpMemberDecorate %CameraData_natural 1 Offset 64
+OpMemberDecorate %CameraData_natural 2 Offset 72
+OpMemberDecorate %CameraData_natural 3 Offset 80
+OpMemberDecorate %CameraData_natural 4 Offset 88
+OpDecorate %camera Binding 2
+OpDecorate %camera DescriptorSet 0
+OpMemberDecorate %GaussianData_natural 0 Offset 0
+OpMemberDecorate %GaussianData_natural 1 Offset 12
+OpMemberDecorate %GaussianData_natural 2 Offset 24
+OpMemberDecorate %GaussianData_natural 3 Offset 40
+OpMemberDecorate %GaussianData_natural 4 Offset 44
+OpDecorate %_ptr_StorageBuffer_GaussianData_natural ArrayStride 56
+OpDecorate %_runtimearr_GaussianData_natural ArrayStride 56
+OpDecorate %StructuredBuffer Block
+OpMemberDecorate %StructuredBuffer 0 Offset 0
+OpDecorate %gaussians Binding 0
+OpDecorate %gaussians DescriptorSet 0
+OpDecorate %gaussians NonWritable
+OpMemberDecorate %ProjectedGaussian_natural 0 Offset 0
+OpMemberDecorate %ProjectedGaussian_natural 1 Offset 8
+OpMemberDecorate %ProjectedGaussian_natural 2 Offset 20
+OpMemberDecorate %ProjectedGaussian_natural 3 Offset 24
+OpDecorate %_ptr_StorageBuffer_ProjectedGaussian_natural ArrayStride 28
+OpDecorate %_runtimearr_ProjectedGaussian_natural ArrayStride 28
+OpDecorate %RWStructuredBuffer Block
+OpMemberDecorate %RWStructuredBuffer 0 Offset 0
+OpDecorate %projected Binding 1
+OpDecorate %projected DescriptorSet 0
+OpDecorate %_ptr_StorageBuffer_v2float ArrayStride 8
+OpDecorate %_ptr_StorageBuffer_v3float ArrayStride 12
+OpDecorate %_ptr_StorageBuffer_float ArrayStride 4
+OpDecorate %_ptr_StorageBuffer_uint ArrayStride 4
+
+; Types, variables and constants
+%void = OpTypeVoid
+%3 = OpTypeFunction %void
+%float = OpTypeFloat 32
+%v3float = OpTypeVector %float 3
+%v4float = OpTypeVector %float 4
+%v2float = OpTypeVector %float 2
+%uint = OpTypeInt 32 0
+%bool = OpTypeBool
+%_ptr_Function_bool = OpTypePointer Function %bool
+%v3uint = OpTypeVector %uint 3
+%_ptr_Input_v3uint = OpTypePointer Input %v3uint
+%mat4v4float = OpTypeMatrix %v4float 4
+%v2uint = OpTypeVector %uint 2
+%CameraData_natural = OpTypeStruct %mat4v4float %v2float %v2float %v2uint %uint     ; Block
+%_ptr_Uniform_CameraData_natural = OpTypePointer Uniform %CameraData_natural
+%int = OpTypeInt 32 1
+%int_4 = OpConstant %int 4
+%_ptr_Uniform_uint = OpTypePointer Uniform %uint
+%int_0 = OpConstant %int 0
+%GaussianData_natural = OpTypeStruct %v3float %v3float %v4float %float %v3float
+%_ptr_StorageBuffer_GaussianData_natural = OpTypePointer StorageBuffer %GaussianData_natural    ; ArrayStride 56
+%_runtimearr_GaussianData_natural = OpTypeRuntimeArray %GaussianData_natural                    ; ArrayStride 56
+%StructuredBuffer = OpTypeStruct %_runtimearr_GaussianData_natural                              ; Block
+%_ptr_StorageBuffer_StructuredBuffer = OpTypePointer StorageBuffer %StructuredBuffer
+%_ptr_Uniform_mat4v4float = OpTypePointer Uniform %mat4v4float
+%_ptr_Function_v3float = OpTypePointer Function %v3float
+%float_1 = OpConstant %float 1
+%_ptr_Function_v2float = OpTypePointer Function %v2float
+%int_1 = OpConstant %int 1
+%int_2 = OpConstant %int 2
+%_ptr_Function_float = OpTypePointer Function %float
+%int_3 = OpConstant %int 3
+%_ptr_Function_uint = OpTypePointer Function %uint
+%float_0 = OpConstant %float 0
+%91 = OpConstantComposite %v2float %float_0 %float_0
+%93 = OpConstantComposite %v3float %float_0 %float_0 %float_0
+%uint_0 = OpConstant %uint 0
+%float_9_99999975en05 = OpConstant %float 9.99999975e-05
+%ProjectedGaussian_natural = OpTypeStruct %v2float %v3float %float %uint
+%_ptr_StorageBuffer_ProjectedGaussian_natural = OpTypePointer StorageBuffer %ProjectedGaussian_natural  ; ArrayStride 28
+%_runtimearr_ProjectedGaussian_natural = OpTypeRuntimeArray %ProjectedGaussian_natural                  ; ArrayStride 28
+%RWStructuredBuffer = OpTypeStruct %_runtimearr_ProjectedGaussian_natural                               ; Block
+%_ptr_StorageBuffer_RWStructuredBuffer = OpTypePointer StorageBuffer %RWStructuredBuffer
+%_ptr_StorageBuffer_v2float = OpTypePointer StorageBuffer %v2float  ; ArrayStride 8
+%_ptr_StorageBuffer_v3float = OpTypePointer StorageBuffer %v3float  ; ArrayStride 12
+%_ptr_StorageBuffer_float = OpTypePointer StorageBuffer %float      ; ArrayStride 4
+%_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint        ; ArrayStride 4
+%_ptr_Uniform_v2float = OpTypePointer Uniform %v2float
+%v2bool = OpTypeVector %bool 2
+%_ptr_Uniform_v2uint = OpTypePointer Uniform %v2uint
+%false = OpConstantFalse %bool
+%uint_1 = OpConstant %uint 1
+%mat3v3float = OpTypeMatrix %v3float 3
+%_ptr_Function_v4float = OpTypePointer Function %v4float
+%float_2 = OpConstant %float 2
+%float_9_99999996en13 = OpConstant %float 9.99999996e-13
+%float_0_300000012 = OpConstant %float 0.300000012
+%gl_GlobalInvocationID = OpVariable %_ptr_Input_v3uint Input    ; BuiltIn GlobalInvocationId
+%camera = OpVariable %_ptr_Uniform_CameraData_natural Uniform   ; Binding 2, DescriptorSet 0
+%gaussians = OpVariable %_ptr_StorageBuffer_StructuredBuffer StorageBuffer  ; Binding 0, DescriptorSet 0, NonWritable
+%projected = OpVariable %_ptr_StorageBuffer_RWStructuredBuffer StorageBuffer    ; Binding 1, DescriptorSet 0
+%uint_2 = OpConstant %uint 2
+%_ptr_StorageBuffer_v4float = OpTypePointer StorageBuffer %v4float
+
+; Function projectMain
+%projectMain = OpFunction %void None %3
+%4 = OpLabel
+%474 = OpVariable %_ptr_Function_uint Function
+%473 = OpVariable %_ptr_Function_float Function
+%472 = OpVariable %_ptr_Function_v3float Function
+%471 = OpVariable %_ptr_Function_v2float Function
+%465 = OpVariable %_ptr_Function_v4float Function
+%464 = OpVariable %_ptr_Function_v3float Function
+%18 = OpVariable %_ptr_Function_bool Function
+OpSelectionMerge %325 None
+OpSwitch %uint_0 %326
+%326 = OpLabel
+%27 = OpLoad %v3uint %gl_GlobalInvocationID
+%30 = OpCompositeExtract %uint %27 0
+%39 = OpAccessChain %_ptr_Uniform_uint %camera %int_4
+%40 = OpLoad %uint %39
+%41 = OpUGreaterThanEqual %bool %30 %40
+OpSelectionMerge %20 None
+OpBranchConditional %41 %19 %20
+%19 = OpLabel
+OpBranch %325
+%20 = OpLabel
+%44 = OpLoad %v3uint %gl_GlobalInvocationID
+%45 = OpCompositeExtract %uint %44 0
+%49 = OpAccessChain %_ptr_StorageBuffer_GaussianData_natural %gaussians %int_0 %45
+%493 = OpAccessChain %_ptr_StorageBuffer_v3float %49 %uint_0
+%494 = OpLoad %v3float %493
+%495 = OpAccessChain %_ptr_StorageBuffer_v3float %49 %uint_1
+%496 = OpLoad %v3float %495
+%499 = OpAccessChain %_ptr_StorageBuffer_v4float %49 %uint_2
+%500 = OpLoad %v4float %499
+OpStore %464 %496
+OpStore %465 %500
+%58 = OpAccessChain %_ptr_Uniform_mat4v4float %camera %int_0
+%59 = OpLoad %mat4v4float %58
+%63 = OpCompositeConstruct %v4float %494 %float_1
+%65 = OpVectorTimesMatrix %v4float %63 %59
+OpStore %471 %91
+OpStore %472 %93
+OpStore %474 %uint_0
+%97 = OpCompositeExtract %float %65 2
+OpStore %473 %97
+%99 = OpFOrdLessThanEqual %bool %97 %float_9_99999975en05
+OpSelectionMerge %22 None
+OpBranchConditional %99 %21 %22
+%21 = OpLabel
+%102 = OpLoad %v3uint %gl_GlobalInvocationID
+%103 = OpCompositeExtract %uint %102 0
+%482 = OpLoad %uint %474
+%481 = OpLoad %float %473
+%480 = OpLoad %v3float %472
+%479 = OpLoad %v2float %471
+%107 = OpAccessChain %_ptr_StorageBuffer_ProjectedGaussian_natural %projected %int_0 %103
+%114 = OpAccessChain %_ptr_StorageBuffer_v2float %107 %int_0
+OpStore %114 %479
+%118 = OpAccessChain %_ptr_StorageBuffer_v3float %107 %int_1
+OpStore %118 %480
+%122 = OpAccessChain %_ptr_StorageBuffer_float %107 %int_2
+OpStore %122 %481
+%126 = OpAccessChain %_ptr_StorageBuffer_uint %107 %int_3
+OpStore %126 %482
+OpBranch %325
+%22 = OpLabel
+%invZ = OpFDiv %float %float_1 %97
+%132 = OpAccessChain %_ptr_Uniform_v2float %camera %int_1
+%133 = OpLoad %v2float %132
+%134 = OpVectorShuffle %v2float %65 %65 0 1
+%135 = OpFMul %v2float %133 %134
+%136 = OpVectorTimesScalar %v2float %135 %invZ
+%137 = OpAccessChain %_ptr_Uniform_v2float %camera %int_2
+%138 = OpLoad %v2float %137
+%139 = OpFAdd %v2float %136 %138
+OpStore %471 %139
+%144 = OpFOrdGreaterThanEqual %v2bool %139 %91
+%145 = OpAll %bool %144
+OpSelectionMerge %25 None
+OpBranchConditional %145 %23 %24
+%23 = OpLabel
+%147 = OpLoad %v2float %471
+%149 = OpAccessChain %_ptr_Uniform_v2uint %camera %int_3
+%150 = OpLoad %v2uint %149
+%151 = OpConvertUToF %v2float %150
+%152 = OpFOrdLessThan %v2bool %147 %151
+%153 = OpAll %bool %152
+OpStore %18 %153
+OpBranch %25
+%24 = OpLabel
+OpStore %18 %false
+OpBranch %25
+%25 = OpLabel
+%159 = OpLoad %bool %18
+%160 = OpSelect %uint %159 %uint_1 %uint_0
+OpStore %474 %160
+%163 = OpLoad %mat4v4float %58
+%164 = OpCompositeExtract %v4float %163 0
+%165 = OpVectorShuffle %v3float %164 %164 0 1 2
+%166 = OpCompositeExtract %v4float %163 1
+%167 = OpVectorShuffle %v3float %166 %166 0 1 2
+%168 = OpCompositeExtract %v4float %163 2
+%169 = OpVectorShuffle %v3float %168 %168 0 1 2
+%171 = OpCompositeConstruct %mat3v3float %165 %167 %169
+%173 = OpLoad %v3float %464
+%176 = OpLoad %v4float %465
+%340 = OpExtInst %v3float %184 Exp %173
+%341 = OpCompositeExtract %float %340 0
+%342 = OpCompositeExtract %float %340 1
+%343 = OpCompositeExtract %float %340 2
+%344 = OpCompositeConstruct %v3float %341 %float_0 %float_0
+%345 = OpCompositeConstruct %v3float %float_0 %342 %float_0
+%346 = OpCompositeConstruct %v3float %float_0 %float_0 %343
+%347 = OpCompositeConstruct %mat3v3float %344 %345 %346
+%354 = OpExtInst %v4float %184 Normalize %176
+%355 = OpCompositeExtract %float %354 0
+%356 = OpCompositeExtract %float %354 1
+%357 = OpCompositeExtract %float %354 2
+%358 = OpCompositeExtract %float %354 3
+%359 = OpFMul %float %356 %356
+%360 = OpFMul %float %357 %357
+%361 = OpFAdd %float %359 %360
+%362 = OpFMul %float %float_2 %361
+%363 = OpFSub %float %float_1 %362
+%364 = OpFMul %float %355 %356
+%365 = OpFMul %float %357 %358
+%366 = OpFSub %float %364 %365
+%367 = OpFMul %float %float_2 %366
+%368 = OpFMul %float %355 %357
+%369 = OpFMul %float %356 %358
+%370 = OpFAdd %float %368 %369
+%371 = OpFMul %float %float_2 %370
+%372 = OpFAdd %float %364 %365
+%373 = OpFMul %float %float_2 %372
+%374 = OpFMul %float %355 %355
+%375 = OpFAdd %float %374 %360
+%376 = OpFMul %float %float_2 %375
+%377 = OpFSub %float %float_1 %376
+%378 = OpFMul %float %356 %357
+%379 = OpFMul %float %355 %358
+%380 = OpFSub %float %378 %379
+%381 = OpFMul %float %float_2 %380
+%382 = OpFSub %float %368 %369
+%383 = OpFMul %float %float_2 %382
+%384 = OpFAdd %float %378 %379
+%385 = OpFMul %float %float_2 %384
+%386 = OpFAdd %float %374 %359
+%387 = OpFMul %float %float_2 %386
+%388 = OpFSub %float %float_1 %387
+%389 = OpCompositeConstruct %v3float %363 %367 %371
+%390 = OpCompositeConstruct %v3float %373 %377 %381
+%391 = OpCompositeConstruct %v3float %383 %385 %388
+%392 = OpCompositeConstruct %mat3v3float %389 %390 %391
+%349 = OpMatrixTimesMatrix %mat3v3float %347 %392
+%350 = OpTranspose %mat3v3float %349
+%351 = OpMatrixTimesMatrix %mat3v3float %350 %349
+%243 = OpLoad %v2float %132
+%395 = OpCompositeExtract %float %65 2
+%396 = OpFDiv %float %float_1 %395
+%492 = OpFMul %float %395 %395
+%397 = OpFDiv %float %float_1 %492
+%398 = OpCompositeExtract %float %243 0
+%399 = OpFMul %float %398 %396
+%400 = OpFNegate %float %398
+%401 = OpCompositeExtract %float %65 0
+%402 = OpFMul %float %400 %401
+%403 = OpFMul %float %402 %397
+%404 = OpCompositeExtract %float %243 1
+%405 = OpFMul %float %404 %396
+%406 = OpFNegate %float %404
+%407 = OpCompositeExtract %float %65 1
+%408 = OpFMul %float %406 %407
+%409 = OpFMul %float %408 %397
+%410 = OpCompositeConstruct %v3float %399 %float_0 %403
+%411 = OpCompositeConstruct %v3float %float_0 %405 %409
+%413 = OpCompositeConstruct %mat3v3float %410 %411 %93
+%414 = OpMatrixTimesMatrix %mat3v3float %171 %413
+%415 = OpMatrixTimesMatrix %mat3v3float %351 %414
+%416 = OpTranspose %mat3v3float %414
+%417 = OpMatrixTimesMatrix %mat3v3float %416 %415
+%418 = OpCompositeExtract %v3float %417 0
+%419 = OpCompositeExtract %float %418 0
+%420 = OpCompositeExtract %float %418 1
+%421 = OpCompositeExtract %v3float %417 1
+%422 = OpCompositeExtract %float %421 1
+%423 = OpCompositeConstruct %v3float %419 %420 %422
+%426 = OpCompositeExtract %float %423 0
+%427 = OpFAdd %float %426 %float_0_300000012
+%428 = OpCompositeExtract %float %423 1
+%429 = OpCompositeExtract %float %423 2
+%430 = OpFAdd %float %429 %float_0_300000012
+%431 = OpFMul %float %427 %430
+%432 = OpFMul %float %428 %428
+%433 = OpFSub %float %431 %432
+%434 = OpExtInst %float %184 FMax %433 %float_9_99999996en13
+%435 = OpFDiv %float %float_1 %434
+%436 = OpFMul %float %430 %435
+%437 = OpFNegate %float %428
+%438 = OpFMul %float %437 %435
+%439 = OpFMul %float %427 %435
+%440 = OpCompositeConstruct %v3float %436 %438 %439
+OpStore %472 %440
+%308 = OpLoad %v3uint %gl_GlobalInvocationID
+%309 = OpCompositeExtract %uint %308 0
+%486 = OpLoad %float %473
+%484 = OpLoad %v2float %471
+%311 = OpAccessChain %_ptr_StorageBuffer_ProjectedGaussian_natural %projected %int_0 %309
+%313 = OpAccessChain %_ptr_StorageBuffer_v2float %311 %int_0
+OpStore %313 %484
+%316 = OpAccessChain %_ptr_StorageBuffer_v3float %311 %int_1
+OpStore %316 %440
+%319 = OpAccessChain %_ptr_StorageBuffer_float %311 %int_2
+OpStore %319 %486
+%322 = OpAccessChain %_ptr_StorageBuffer_uint %311 %int_3
+OpStore %322 %160
+OpBranch %325
+%325 = OpLabel
+OpReturn
+OpFunctionEnd

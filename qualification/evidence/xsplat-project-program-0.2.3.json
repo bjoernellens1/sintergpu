@@ -1,0 +1,33 @@
+{
+  "binary_sha256": "72bfb16dde37bc645a795f5629d362f5d3c1d146527ca08c193926f05e6ad8dd",
+  "assembly_sha256": "e4ec269196c39b7e91d10ce87d75ef955a8409963bc92a8d668c4dc84d0c8bb4",
+  "spirv_version": "0x10400",
+  "float_widths": [
+    32
+  ],
+  "operations": {
+    "OpVectorTimesMatrix": 1,
+    "OpFDiv": 4,
+    "OpFMul": 31,
+    "OpVectorTimesScalar": 1,
+    "OpFAdd": 9
+  },
+  "relaxed_precision": false,
+  "schema_version": 1,
+  "scope": "Actual SlangPy0.43.1 Vulkan projection pipeline compiler dump; no shader dispatch. Reviewed FP32 camera/perspective chain only; covariance accuracy not certified.",
+  "slangpy": "0.43.1",
+  "compiler_sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678",
+  "matrix_layout": "row-major",
+  "floating_point_mode": "precise",
+  "abi_profile": "slangpy-0.43.1-vulkan-scalar",
+  "camera_chain": [
+    "OpVectorTimesMatrix FP32 homogeneous camera dot",
+    "OpFDiv FP32 1/z",
+    "OpFMul FP32 focal*center.xy",
+    "OpVectorTimesScalar FP32 times reciprocal",
+    "OpFAdd FP32 principal"
+  ],
+  "shader_sha256": "9c09a3e42221c91b843f6693bb7900e0763f0c3a2facb458b9b1f4cbf75d0410",
+  "binary_path": "qualification/evidence/xsplat-project-program-0.2.3.spv",
+  "assembly_path": "qualification/evidence/xsplat-project-program-0.2.3.spv-asm"
+}

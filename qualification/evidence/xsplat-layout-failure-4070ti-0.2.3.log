@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.3/benchmarks/xsplat_timings.py", line 174, in <module>
+    args=vars(parser.parse_args());output=args.pop('output');report=run(**args)
+                                                                    ^^^^^^^^^^^
+  File "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.3/benchmarks/xsplat_timings.py", line 141, in run
+    kernel=adapter.kernel(op['id']);row['reflected_abi']=validate_layout(kernel,case)
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.3/benchmarks/xsplat_timings.py", line 96, in validate_layout
+    if fields!=expected or int(t.stride)!=dtype.itemsize:raise RuntimeError(f'unsupported runtime ABI for {name}: {fields}, stride{t.stride}')
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: unsupported runtime ABI for GaussianData: {'mean': 0, 'logScale': 12, 'rotation': 24, 'opacityLogit': 40, 'sh0': 44}, stride56

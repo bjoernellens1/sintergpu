@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3 — 2026-10-28
+
+- Add independent timing recipes for the three existing xsplat math entries, with complete Adam inout resets, reflected projection storage layouts, explicit matrix layout and fixed-probe scope. Retain donor headers and compare projection against the unmodified C++ reference on their shared valid domain. Record17 workloads per Radeon8060S/RTX4070Ti, reaching54/137 paired entries and392 current records;83portable+4native targets remain pending. Retain original stress inputs, failed setup/numerical-assumption evidence, runtime ABI checks and actual-program precision guards. Document input-derived pixel error bounds while preserving strict visible/conic/depth/Adam/probe and exact flag/tail checks. Numerical shader sources are unchanged.
+
 ## 0.2.2 — 2026-10-28
 
 - Add per-entry CPU/GPU timing recipes for all eight existing segmented scan and stable compaction entries, with independent stage oracles, source-bound raw samples and explicit initialization/tail checks. Record 73 workloads on each Radeon 8060S/RTX 4070 Ti: paired coverage is 51/137 entries with 358 current records; 86 portable and four native timing targets remain pending. Kernel sources and numerical contracts are unchanged.

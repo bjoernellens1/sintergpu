@@ -19,19 +19,21 @@ cross-vendor qualification remain incomplete. Evidence below was obtained on
 | Fusion adoption | Separate/fused outputs match; exploratory shared-device runs do not meet the controlled three-run transfer-inclusive acceptance gate. Separate pass stays the default |
 | Compiler matrix | All 137 entries compile and reflect under pinned Slang 2026.12 and 2026.19; shared reflected ABI fields match and are required by CI; SlangPy's bundled compiler identity is recorded separately |
 | Packaging | Universal Python wheel installs and validates outside checkout without GPU dependencies; CMake source/header install available; optional native runtime packages remain separate |
-| Timing reference | All 137 catalog entries listed; paired CPU-reference/GPU fixture timings for 51 operations (358 current workload records (179 per device on Radeon 8060S and RTX 4070 Ti), 50 samples; 126 historical rows retained), 86 portable entries and four optional native variants remain pending. Raw JSON, generated table, installed CLI/CMake data; no optimization or production-throughput claim |
+| Timing reference | All 137 catalog entries listed; paired CPU-reference/GPU fixture timings for 54 operations (392 current workload records (196 per device on Radeon 8060S and RTX 4070 Ti), 50 samples; 126 historical rows retained), 83 portable entries and four optional native variants remain pending. Raw JSON, generated table, installed CLI/CMake data; no optimization or production-throughput claim |
 | Candidate intake | [Dedicated candidate branches and draft PRs](superpowers/specs/2026-10-28-kernel-candidate-intake-design.md), validation evidence and separate reviewed promotion. Rewrites must outperform or stay on par; no automated candidate qualification service is deployed |
 | Overlap audit | 22 semantic groups reviewed; one exact algebra duplicate, 14 same-operation/different-contract groups, 5 shared helpers and 2 related-only groups. Not an exhaustive audit of all 249 accessible repositories |
-| NVIDIA | User-selected canonical `rtx4070` host reports RTX 4070 Ti (driver 595.99.02). Retained GPU regression: 563 passed, two skipped, three existing strict expected failures; 179 parity-checked timing fixtures across 51 operations. Full-domain/runtime/application and controlled-performance qualification remain pending |
-| Release lifecycle | [0.2.1 is published and immutable](https://github.com/bjoernellens1/sintergpu/releases/tag/v0.2.1); hosted attestations and released checksums verified. Seven registration PRs delivered per release; a real 0.1.0 retry reused all seven PR URLs and commit hashes. The 0.2.1 delivery, verified changelog excerpts and fresh check annotations are retained in qualification/delivery-0.2.1.json. StereoForge integrity checks passed; its default CPU workflow still has a benchmark import-path failure addressed in the opt-in migration PR; six private consumers' hosted checks were blocked before starting by account billing/spending restrictions. Automatic publisher-App and downstream-App execution require dedicated configuration and remain unverified |
+| NVIDIA | User-selected canonical `rtx4070` host reports RTX 4070 Ti (driver 595.99.02). Retained GPU regression: 563 passed, two skipped, three existing strict expected failures; 196 parity-checked timing fixtures across 54 operations. Full-domain/runtime/application and controlled-performance qualification remain pending |
+| Release lifecycle | [0.2.2 is published and immutable](https://github.com/bjoernellens1/sintergpu/releases/tag/v0.2.2); hosted attestations and released checksums verified. Seven registration PRs delivered per release; a real 0.1.0 retry reused all seven PR URLs and commit hashes. The retained 0.2.2 delivery and check annotations are in qualification/delivery-0.2.2.json. StereoForge integrity checks passed; its default CPU workflow still has a benchmark import-path failure addressed in the opt-in migration PR; six private consumers' hosted checks were blocked before starting by account billing/spending restrictions. Automatic publisher-App and downstream-App execution require dedicated configuration and remain unverified |
 
 The merged [0.2.0 batch](https://github.com/bjoernellens1/sintergpu/pull/12)
 corrects geometry/fusion float32 rounding and records a43-operation timing baseline.
-The pending0.2.2 batch adds eight primitive entries and irregular carry fixtures,
-bringing the table above to51 operations and358 current records.
-Its publication stopped at source-package integrity because the NVIDIA regression
-log was omitted. Version 0.2.1 includes the log, preserves the 0.2.0 tag and adds
-that integrity check to PR CI; numerical kernel sources are unchanged.
+Its publication stopped because a retained regression log was omitted from source
+packages. Published0.2.1 includes the log and requires package-byte checks in PR CI.
+Published0.2.2 adds eight primitive entries and irregular carry fixtures, reaching
+51 paired operations and358 current records. The pending0.2.3 batch adds the three
+xsplat math entries, reaching the54/392 counts above without shader changes.
+See [xsplat contracts](xsplat-contracts.md) for adapter layouts and the explicit
+input-derived pixel error envelope; wide off-screen bounds are weak accuracy evidence.
 
 Do not infer full application, physical camera, tracking accuracy or cross-vendor
 qualification from a kernel fixture, CPU test, compiler pass or historical result.

@@ -4850,7 +4850,7 @@
       },
       "contract": {
         "profile": "xsplat-vk-source-compatible",
-        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/xsplat-vk/docs/VALIDATION.md",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/xsplat-contracts.md",
         "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
       },
       "requirements": [
@@ -4885,7 +4885,7 @@
       },
       "contract": {
         "profile": "xsplat-vk-source-compatible",
-        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/xsplat-vk/docs/VALIDATION.md",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/xsplat-contracts.md",
         "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
       },
       "requirements": [
@@ -4920,7 +4920,7 @@
       },
       "contract": {
         "profile": "xsplat-vk-source-compatible",
-        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/xsplat-vk/docs/VALIDATION.md",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/xsplat-contracts.md",
         "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
       },
       "requirements": [

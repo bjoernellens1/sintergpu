@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "input-derived-pixel-validation-model",
+  "failed_collector_revision": "7be375db806a20affe3fbcf87b5796d6f183875d",
+  "cause": "New blanket2e-6 pixel tolerance is incompatible with ordinary FP32 camera cancellation near plane: frozen C++ itself differs from float64 by15.5px at the unchanged1025-element point664. Does not alone establish GPU correctness. No failed run report accepted.",
+  "original_fixture_count": 17,
+  "original_fixture_bytes_preserved": true,
+  "prepared_inputs_sha256": "2be403392b3a7ca650b05bca97f67693febf6e3a80f38e27b9df9aa926eea49f",
+  "model_sha256": "086209005e98b6f44feaedfef46f936a07fb5be2432fea01394c928ad87b4282",
+  "documentation": "docs/xsplat-projection-error-model.md",
+  "program_precision_proof": "qualification/evidence/xsplat-project-program-0.2.3.json",
+  "validation": "Input-only gamma7 camera dot plus outward interval perspective; per-op budgets derived from Vulkan, not fitted to observed GPU errors. All pixels enclosed; visible pixel/conic/depth/Adam/probe2e-6 unchanged; ambiguous depth/viewport flags fail. No shader or previously published numerical contract changed.",
+  "cpu_evidence": "60digit Decimal;24FP32cameraadditionorders and2perspectiveforms atall4extents;frozenC++all4extents;out-of-enclosure and ambiguous-mask negative tests. Original127blanket2e-6check andoriginalfrozenCPPtests retained.",
+  "scope": "Finite FP32 non-relaxed/no-overflow fixture assumption only; not conic enclosure, renderer/camera accuracy, full-domain or performance qualification",
+  "evidence_sha256": {
+    "qualification/evidence/xsplat-conditioning-failure-8060s-0.2.3.log": "21af9275e791d9ccc5e62293da454952355f34a53c9b4cb9a754b085f10ed34e",
+    "qualification/evidence/xsplat-conditioning-failure-4070ti-0.2.3.log": "b027c8567a3c46333cc395115585eefa52c847ea5f58ef5beeaa25ddbbb8e3ab"
+  }
+}
