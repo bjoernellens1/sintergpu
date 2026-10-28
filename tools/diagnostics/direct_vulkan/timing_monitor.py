@@ -34,20 +34,23 @@ def make_nvidia_collector(binary,expected_sha,*,timeout=2):
 
 class SampledMonitor:
     """Explicit thread; start/stop outside measured region and serialize one owner."""
-    def __init__(self,collector,*,interval_s=.25,max_gap_s=1.,shutdown_timeout_s=7.):
+    def __init__(self,collector,*,interval_s=.25,max_gap_s=1.,shutdown_timeout_s=7.,sample_hook=None):
         if not callable(collector) or not math.isfinite(interval_s) or not math.isfinite(max_gap_s) or not math.isfinite(shutdown_timeout_s) or shutdown_timeout_s<=0 or interval_s<=0 or max_gap_s<interval_s:raise ValueError('monitor configuration')
-        self.collector=collector;self.interval_s=interval_s;self.max_gap_s=max_gap_s;self.shutdown_timeout_s=shutdown_timeout_s
-        self._stop=threading.Event();self._ready=threading.Event();self._thread=None;self.samples=[];self.error=None
+        self.collector=collector;self.interval_s=interval_s;self.max_gap_s=max_gap_s;self.shutdown_timeout_s=shutdown_timeout_s;self.sample_hook=sample_hook
+        self._stop=threading.Event();self._ready=threading.Event();self.failed=threading.Event();self._thread=None;self.samples=[];self.error=None
     def _loop(self):
         try:
             stopping=False
             while True:
                 start=time.monotonic_ns();data=self.collector();end=time.monotonic_ns()
                 if not isinstance(data,dict) or set(data)!={'gpu_query','compute_query','full_snapshot'} or any(not isinstance(v,str) for v in data.values()):raise ValueError('telemetry sample')
-                self.samples.append({'start_ns':start,'end_ns':end,**data});self._ready.set()
+                sample={'start_ns':start,'end_ns':end,**data};self.samples.append(sample)
+                if end-start>self.max_gap_s*1e9 or (len(self.samples)>1 and start-self.samples[-2]['start_ns']>self.max_gap_s*1e9):raise ValueError('monitor gap')
+                if self.sample_hook:self.sample_hook(sample)
+                self._ready.set()
                 if stopping:break
                 stopping=self._stop.wait(self.interval_s)
-        except Exception as exc:self.error=exc;self._ready.set()
+        except Exception as exc:self.error=exc;self.failed.set();self._ready.set()
     def start(self):
         if self._thread is not None:raise RuntimeError('monitor already started')
         self._thread=threading.Thread(target=self._loop,name='sinter-nvidia-telemetry',daemon=True);self._thread.start()
@@ -76,12 +79,7 @@ def evaluate_sampled_controls(receipt,policy):
     Xorg/graphics attribution or activity between snapshots.
     """
     import csv
-    required={'driver','min_sm_mhz','max_sm_mhz','min_memory_mhz','max_temperature_c','max_power_w','allowed_compute_pids'}
-    if set(policy)!=required or not isinstance(policy['driver'],str) or not policy['driver'] or not isinstance(policy['allowed_compute_pids'],(set,frozenset)):
-        raise ValueError('explicit control policy required')
-    for name in required-{'driver','allowed_compute_pids'}:
-        if type(policy[name]) not in (int,float) or not math.isfinite(policy[name]) or policy[name]<0:raise ValueError('invalid policy bound')
-    if policy['min_sm_mhz']>policy['max_sm_mhz'] or any(type(pid)!=int or pid<=0 for pid in policy['allowed_compute_pids']):raise ValueError('invalid control policy')
+    validate_policy(policy)
     samples=receipt.get('samples')
     if not isinstance(samples,list) or len(samples)<2:raise ValueError('missing telemetry samples')
     start=receipt.get('work_start_ns');end=receipt.get('work_end_ns');gap=receipt.get('max_gap_ns')
@@ -90,22 +88,43 @@ def evaluate_sampled_controls(receipt,policy):
     for i,sample in enumerate(samples):
         a=sample.get('start_ns');b=sample.get('end_ns')
         if type(a)!=int or type(b)!=int or a>b or b-a>gap or (i and (a<=samples[i-1]['start_ns'] or a-samples[i-1]['start_ns']>gap)):raise ValueError('telemetry coverage gap')
-    for sample in samples:
-        rows=list(csv.reader(sample['gpu_query'].splitlines(),skipinitialspace=True));selected=[r for r in rows if r and r[0].strip()==GPU]
-        if len(selected)!=1 or len(selected[0])!=9:raise ValueError('GPU telemetry shape')
-        row=selected[0]
-        if row[2].strip()!=policy['driver']:raise ValueError('driver mismatch')
-        try:sm,mem,temp,power,util,memory_util=(float(v.strip()) for v in row[3:])
-        except ValueError as exc:raise ValueError('non-numeric telemetry') from exc
-        if any(not math.isfinite(x) or x<0 for x in (sm,mem,temp,power,util,memory_util)) or util>100 or memory_util>100:raise ValueError('invalid telemetry')
-        if not policy['min_sm_mhz']<=sm<=policy['max_sm_mhz'] or mem<policy['min_memory_mhz'] or temp>policy['max_temperature_c'] or power>policy['max_power_w']:raise ValueError('sampled environment outside policy')
-        for row in csv.reader(sample['compute_query'].splitlines(),skipinitialspace=True):
-            if not row:continue
-            if len(row)!=3:raise ValueError('compute telemetry shape')
-            if row[0].strip()==GPU:
-                try:pid=int(row[1].strip())
-                except ValueError as exc:raise ValueError('compute pid') from exc
-                if pid not in policy['allowed_compute_pids']:raise ValueError('unexpected sampled compute peer')
-        if not sample['full_snapshot'].strip():raise ValueError('missing full snapshot')
+    for sample in samples:check_sample(sample,policy)
     return {'result':'sampled_controls_within_policy','sample_count':len(samples),
             'scope':'UNQUALIFIED caller-supplied telemetry and policy; unreported peers and between-snapshot events remain unknown'}
+
+
+def check_sample(sample,policy):
+    """Fail on a reported control violation; caller must prevalidate policy."""
+    import csv
+    rows=list(csv.reader(sample['gpu_query'].splitlines(),skipinitialspace=True));selected=[r for r in rows if r and r[0].strip()==GPU]
+    if len(selected)!=1 or len(selected[0])!=9:raise ValueError('GPU telemetry shape')
+    row=selected[0]
+    if row[2].strip()!=policy['driver']:raise ValueError('driver mismatch')
+    try:sm,mem,temp,power,util,memory_util=(float(v.strip()) for v in row[3:])
+    except ValueError as exc:raise ValueError('non-numeric telemetry') from exc
+    if any(not math.isfinite(x) or x<0 for x in (sm,mem,temp,power,util,memory_util)) or util>100 or memory_util>100:raise ValueError('invalid telemetry')
+    if not policy['min_sm_mhz']<=sm<=policy['max_sm_mhz'] or mem<policy['min_memory_mhz'] or temp>policy['max_temperature_c'] or power>policy['max_power_w']:raise ValueError('sampled environment outside policy')
+    for row in csv.reader(sample['compute_query'].splitlines(),skipinitialspace=True):
+        if not row:continue
+        if len(row)!=3:raise ValueError('compute telemetry shape')
+        if row[0].strip()==GPU:
+            try:pid=int(row[1].strip())
+            except ValueError as exc:raise ValueError('compute pid') from exc
+            if pid not in policy['allowed_compute_pids']:raise ValueError('unexpected sampled compute peer')
+    if not sample['full_snapshot'].strip():raise ValueError('missing full snapshot')
+
+
+
+def validate_policy(policy):
+    required={'driver','min_sm_mhz','max_sm_mhz','min_memory_mhz','max_temperature_c','max_power_w','allowed_compute_pids'}
+    if set(policy)!=required or not isinstance(policy['driver'],str) or not policy['driver'] or not isinstance(policy['allowed_compute_pids'],(set,frozenset)):
+        raise ValueError('explicit control policy required')
+    for name in required-{'driver','allowed_compute_pids'}:
+        if type(policy[name]) not in (int,float) or not math.isfinite(policy[name]) or policy[name]<0:raise ValueError('invalid policy bound')
+    if policy['min_sm_mhz']>policy['max_sm_mhz'] or any(type(pid)!=int or pid<=0 for pid in policy['allowed_compute_pids']):raise ValueError('invalid control policy')
+
+
+def make_policy_monitor(collector,policy,**options):
+    validate_policy(policy)
+    frozen=dict(policy);frozen['allowed_compute_pids']=frozenset(policy['allowed_compute_pids'])
+    return SampledMonitor(collector,sample_hook=lambda sample:check_sample(sample,frozen),**options)

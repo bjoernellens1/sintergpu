@@ -62,3 +62,13 @@ def test_policy_rejects_coverage_gap():
     receipt={'samples':[sample,{**sample,'start_ns':20,'end_ns':21}],'work_start_ns':1,'work_end_ns':20,'max_gap_ns':5}
     policy={'driver':'595.99.02','min_sm_mhz':0,'max_sm_mhz':3000,'min_memory_mhz':0,'max_temperature_c':80,'max_power_w':300,'allowed_compute_pids':set()}
     with pytest.raises(ValueError,match='coverage gap'):evaluate_sampled_controls(receipt,policy)
+
+def test_policy_hook_detects_reported_peer_during_run():
+    from timing_monitor import make_policy_monitor
+    row=f'{GPU}, RTX, 595.99.02, 2000, 10000, 50, 100, 10, 5';calls=[]
+    def collect():
+        calls.append(1);return {'gpu_query':row,'compute_query':f'{GPU}, 77, 10' if len(calls)>1 else '', 'full_snapshot':'graphics'}
+    policy={'driver':'595.99.02','min_sm_mhz':0,'max_sm_mhz':3000,'min_memory_mhz':0,'max_temperature_c':80,'max_power_w':300,'allowed_compute_pids':set()}
+    m=make_policy_monitor(collect,policy,interval_s=.001,max_gap_s=.2);m.start()
+    assert m.failed.wait(.5) and 'unexpected sampled compute peer' in str(m.error) and len(m.samples)>=2
+    with pytest.raises(RuntimeError,match='monitor failed'):m.stop(m.samples[0]['end_ns'],time.monotonic_ns())

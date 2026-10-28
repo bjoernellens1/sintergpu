@@ -4,7 +4,7 @@
 Three separate process runs, exactly 50 validated ABA triples per run. GPU time
 uses stage timestamps, not a dispatch-exclusive clock. Bootstrap uses fixed length-five circular blocks to retain short-range serial
 dependence; longer dependence and stationarity remain unverified. Monitor,
-source, device, lock and environmental receipts are verified elsewhere.
+source, device, lock and environmental receipts must be verified separately.
 """
 import math
 import random

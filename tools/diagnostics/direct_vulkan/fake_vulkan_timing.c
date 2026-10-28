@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <signal.h>
 void sintergpu_test_only_fake_vulkan_marker(void) {}
 static void event(const char *name) {const char *path=getenv("SINTERGPU_FAKE_EVENTS");if(path){FILE *f=fopen(path,"a");if(f){fprintf(f,"%s\n",name);fclose(f);}}}
 VKAPI_ATTR VkResult VKAPI_CALL vkCreateInstance(const VkInstanceCreateInfo* i,const VkAllocationCallbacks* a,VkInstance* out) {(void)i;(void)a;event("create_instance");*out=(VkInstance)0x101;return VK_SUCCESS;}
@@ -57,7 +58,7 @@ VKAPI_ATTR void VKAPI_CALL vkCmdBindDescriptorSets(VkCommandBuffer c,VkPipelineB
 VKAPI_ATTR void VKAPI_CALL vkCmdDispatch(VkCommandBuffer c,uint32_t x,uint32_t y,uint32_t z) {(void)c;if(y!=1||z!=1||!((currentPipeline==(VkPipeline)0x204&&x==2)||(currentPipeline==(VkPipeline)0x205&&x==5)))abort();const char* path=getenv("SINTERGPU_FAKE_EXPECTED_OUTPUT");if(!path)abort();FILE* f=fopen(path,"rb");if(!f)abort();if(fseek(f,8192+16512+16512,SEEK_SET))abort();if(fread(bound[3]->memory,1,bound[3]->size,f)!=bound[3]->size)abort();if(fread(bound[4]->memory,1,bound[4]->size,f)!=bound[4]->size)abort();fclose(f);event("dispatch_fake_cpu_oracle_copy");}
 VKAPI_ATTR VkResult VKAPI_CALL vkQueueSubmit(VkQueue q,uint32_t n,const VkSubmitInfo* i,VkFence f) {(void)q;(void)n;(void)i;(void)f;event("queue_submit");return getenv("SINTERGPU_FAKE_FAIL_SUBMIT") ? VK_ERROR_DEVICE_LOST : VK_SUCCESS;}
 static int wait_count;
-VKAPI_ATTR VkResult VKAPI_CALL vkQueueWaitIdle(VkQueue q) {(void)q;event("queue_wait");++wait_count;const char* f=getenv("SINTERGPU_FAKE_FAIL_WAIT");return f && wait_count==atoi(f) ? VK_ERROR_DEVICE_LOST : VK_SUCCESS;}
+VKAPI_ATTR VkResult VKAPI_CALL vkQueueWaitIdle(VkQueue q) {(void)q;event("queue_wait");++wait_count;const char* interrupt=getenv("SINTERGPU_FAKE_INTERRUPT_WAIT");if(interrupt && wait_count==atoi(interrupt))raise(SIGUSR1);const char* f=getenv("SINTERGPU_FAKE_FAIL_WAIT");return f && wait_count==atoi(f) ? VK_ERROR_DEVICE_LOST : VK_SUCCESS;}
 VKAPI_ATTR VkResult VKAPI_CALL vkDeviceWaitIdle(VkDevice d) {(void)d;event("device_wait");return getenv("SINTERGPU_FAKE_FAIL_TEARDOWN") ? VK_ERROR_DEVICE_LOST : VK_SUCCESS;}
 VKAPI_ATTR void VKAPI_CALL vkDestroyDevice(VkDevice d,const VkAllocationCallbacks* a) {(void)d;(void)a;event("destroy_device");}
 

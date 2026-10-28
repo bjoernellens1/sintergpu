@@ -1,0 +1,22 @@
+# Point-plane monitoring and analysis draft
+
+These CPU-tested components are not integrated into the GPU timing runner and cannot establish qualification. They must be independently reviewed and their exact committed source and fixed control policy preregistered before any new measurement. They cannot retrospectively preregister or qualify the existing `6dde8dc` diagnostic.
+
+`timing_monitor.py` records raw `nvidia-smi` GPU telemetry, compute-process queries and full graphics snapshots. It brackets a caller-supplied time window with bounded sample start gaps and durations, and can check an explicit driver, clock, temperature, power and sampled compute-PID policy. Polling is discontinuous: it can miss short-lived work and may omit Vulkan or graphics peers from the compute query. It does not authenticate the provider, PID ownership, monitor runtime, full snapshot parsing, caller-supplied policy or receipts. The separate experimental supervisor can request a cooperative child stop on an observed control violation, but is not integrated into the GPU runner; polling itself can perturb timings. A startup timeout attempts bounded thread shutdown; a surviving thread is an explicit error requiring the caller to stop/quarantine the attempt.
+
+`timing_preregistered_analysis.py` computes descriptive flags on three separate 50-triple runs: nearest-rank p95 against both old controls (at most 5% higher), old-control median drift at most 5%, and a one-sided fixed-seed circular paired block bootstrap with block length five and Bonferroni family alpha 0.025 across three metrics and three runs. The resident-pipeline fusion flag additionally requires a strictly negative upper bootstrap bound and candidate median at least 5% below the median of paired old controls. The bootstrap addresses a chosen short-range dependence model; longer dependence, stationarity, run independence and statistical coverage remain unverified. The p95 rule is a point-estimate threshold, not a confidence bound. GPU compute-stage timestamps are not proven dispatch-exclusive.
+
+Neither passing a sampled telemetry policy nor these descriptive flags authorizes adoption. Before a no-regression decision, an independent review must bind the future source/build, device, complete output/oracle, lease and policy evidence; establish credible process/peer observation across the full window and an appropriate abort mechanism; control or record clocks, temperature, power, graphics and host activity; characterize timestamp resolution and polling/fsync perturbation; and review the statistical assumptions and independent-run protocol. No existing hardware qualification or release gate is changed.
+
+CPU-only checks, with no GPU execution:
+
+```sh
+mkdir -p /dev/shm/sinter-timing-tests
+TMPDIR=/dev/shm/sinter-timing-tests python3 -m pytest -q tools/diagnostics/direct_vulkan/test_timing_monitor.py tools/diagnostics/direct_vulkan/test_timing_preregistered_analysis.py
+```
+
+`timing_trial_manifest.py` writes a canonical, fsynced and exclusively created preregistration describing the intended identities, control policy and analysis constants. It records caller-supplied claims rather than authenticating them; a future runner must verify the exact committed source closure, binary and policy before and after the trial.
+
+`timing_cooperative.cpp`, `timing_handshake.py` and `timing_supervisor.py` are a CPU-tested draft of interruption handling. The child signals ready after installing its SIGUSR1 handler and claims cleanup only after device close. The supervisor does not signal before readiness, uses no SIGKILL, and invokes a mandatory quarantine callback on abnormal or unconfirmed completion. The existing GPU parent **cannot use this yet**: its unconditional lock close does not meet the requirement to retain the lease through quarantine and independent quiescence verification. The callback and child cleanup message are not proof of Vulkan/device quiescence. Race-safe attribution of the timing child and unknown graphics/Vulkan peers, a lease-owning quarantine mechanism, target build identity and independent review remain open. No monitored GPU trial has been run.
+
+Additional CPU-only checks: `TMPDIR=/dev/shm/sinter-timing-tests python3 -m pytest -q tools/diagnostics/direct_vulkan/test_timing_handshake.py tools/diagnostics/direct_vulkan/test_timing_supervisor.py tools/diagnostics/direct_vulkan/test_timing_trial_manifest.py tools/diagnostics/direct_vulkan/test_timing_executable_fake.py`.
