@@ -4,7 +4,7 @@ Explicit workload/configuration timings, not optimization or application qualifi
 
 Median; p95 uses linear interpolation at (n-1)*0.95. Raw samples retained.
 
-Coverage: 0 / 166 operations have a source-matched paired CPU/GPU baseline. Pending entries remain part of the required measurement work.
+Coverage: 0 / 167 operations have a source-matched paired CPU/GPU baseline. Pending entries remain part of the required measurement work.
 
 Times are median / p95 **milliseconds**. Each row is one workload and environment; pipeline costs are never copied onto individual kernels. Small correctness fixtures are not production-throughput benchmarks. Historical sources are explicitly stale. Raw samples and full identities are in [the timing registry](../src/sintergpu/data/timings.json).
 
@@ -1420,6 +1420,7 @@ Times are median / p95 **milliseconds**. Each row is one workload and environmen
 | vkl.compact_batched.compactGatherWords / portable-port | pending | pending | pending | pending | pending | pending | pending |
 | vkl.compact_batched.compactInit / portable-port | pending | pending | pending | pending | pending | pending | pending |
 | vkl.compact_batched.compactScatterMetadata / portable-port | pending | pending | pending | pending | pending | pending | pending |
+| vkl.dense_depth_regularize.regularizeDenseDepth / experimental-float32 | pending | pending | pending | pending | pending | pending | pending |
 | vkl.depth_convert.depthConvert / portable-port | vkl-synthetic/convert/2x31x35/representation-0 | stale | stale | pending | stale | AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S; AMD Radeon 8060S Graphics (RADV STRIX_HALO); 2026-10-28T06:06:25.320982+00:00 | stale source |
 | vkl.depth_convert.depthConvert / portable-port | vkl-synthetic/convert/2x31x35/representation-1 | stale | stale | pending | stale | AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S; AMD Radeon 8060S Graphics (RADV STRIX_HALO); 2026-10-28T06:06:25.320982+00:00 | stale source |
 | vkl.depth_convert.depthConvert / portable-port | vkl-synthetic/convert/2x31x35/representation-2 | stale | stale | pending | stale | AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S; AMD Radeon 8060S Graphics (RADV STRIX_HALO); 2026-10-28T06:06:25.320982+00:00 | stale source |

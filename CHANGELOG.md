@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.10 — 2026-10-28
+
+- Add experimental VKL dense-depth regularization with checked launch geometry and CPU donor-model and compiler ABI checks. GPU parity, gradients, performance and consumer adoption remain unqualified; existing defaults remain unchanged.
+- Add experimental compiler-backed CPU specialization-cache and command-recorder probes with investigation notes. Real Slang compilation and fake Vulkan callbacks exercise bounded cache misses and hits, recorded specialized pipeline identities, shader bytes and failure invalidation. GPU execution, provider identity and performance remain unqualified; the production gate remains closed.
+- The timing registry covers 167 portable entries with no source-current paired measurements. All 2,478 earlier rows remain historical; four native timing targets also remain pending.
+
 ## 0.2.9 — 2026-10-28
 
 - Add experimental VKL depth-evidence map, serial global/grid reduction dispatches and checked launch geometry. CPU model comparisons and compiler checks do not establish shader GPU parity, gradients or performance; existing defaults remain unchanged.

@@ -109,3 +109,29 @@ The independent no-ICD rerun exited 0. The local executable SHA-256 was
 `c564696c5375235ea5d9e4734273b1fe6aeb1c3480cb88d87a320f98a65d80d2`;
 it identifies this build only. Synthetic cache contents and callbacks do not
 establish driver behavior, GPU execution, or performance qualification.
+
+The compiler-backed specialization probe is
+`rhi-specialization-miss-compiler-cpu-probe.cpp`, source SHA-256
+`0d5cfd32084ba080e8a5135fd2a52bb9ece0520404040d480720133188bcd019`.
+With real Slang compilation and fake Vulkan callbacks, it exercises two
+specialization-cache misses for distinct generic types and a repeated cache hit.
+It checks that the concrete pipelines have different compiled SPIR-V, and that
+each observed shader byte sequence matches the bytes passed to the fake
+`vkCreateShaderModule`. The probe does not exercise failure paths, command
+recording, a real Vulkan driver or GPU execution.
+
+Its isolated Debug executable links patched diagnostic `slang-rhi` and the local
+Slang compiler, and uses the patched RHI and pinned Vulkan headers. The source
+rejects compilation with `NDEBUG`. The local executable SHA-256 is
+`2644088dc28446bf5ee99a82589ab0c3184271c18f8693d6178950af0159de3f`;
+this identifies that build only. Build and run:
+
+```sh
+cmake --build /dev/shm/sintergpu-dispatch-observe-lab/build --target rhi_specialization_miss_compiler_cpu_probe
+VK_DRIVER_FILES=/nonexistent/sintergpu-no-vulkan-icd.json VK_ICD_FILENAMES=/nonexistent/sintergpu-no-vulkan-icd.json /dev/shm/sintergpu-dispatch-observe-lab/build/rhi_specialization_miss_compiler_cpu_probe
+```
+
+The local no-ICD run exited 0, and the probe received independent review.
+The linked compiler file hash and source inspection are documented in
+`SPECIALIZATION-MISS-INVESTIGATION.md`; they do not prove the loaded compiler's
+complete runtime closure. This CPU test is not GPU or performance qualification.
