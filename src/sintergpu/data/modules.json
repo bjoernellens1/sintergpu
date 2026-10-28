@@ -55,6 +55,10 @@
     "path": "kernels/common/float32_multiply.slang",
     "sha256": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
   },
+  "experimental.dense_depth_regularize": {
+    "path": "kernels/experimental/dense_depth_regularize.slang",
+    "sha256": "09de7dc9b91361b3647cb149c57fcc6e58ea2fb8f9ecdc65cb05339a98a3a37d"
+  },
   "experimental.depth_evidence": {
     "path": "kernels/experimental/depth_evidence.slang",
     "sha256": "31731e403102ed4869144003fa47c5aab7dc1a3bce1680fd921e7819636349fe"

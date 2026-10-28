@@ -5006,6 +5006,40 @@
       "fixture": null
     },
     {
+      "id": "vkl.dense_depth_regularize.regularizeDenseDepth",
+      "path": "kernels/experimental/dense_depth_regularize.slang",
+      "entrypoint": "regularizeDenseDepth",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "experimental-float32",
+      "sha256": "09de7dc9b91361b3647cb149c57fcc6e58ea2fb8f9ecdc65cb05339a98a3a37d",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/dense_depth_regularize.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-dense-depth-regularize-float32",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/dense-depth-regularize-experimental.md",
+        "numerical_behavior": "Experimental forward 3x3 color-gated lower median; caller checks launch, inputs, nonaliasing and synchronization; support output uint32. CPU model and compiler checks only, GPU parity and performance pending."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "caller-owned validated resources and synchronization"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
       "id": "vkl.depth_convert.depthConvert",
       "path": "kernels/vkl/depth_convert.slang",
       "entrypoint": "depthConvert",

@@ -5,7 +5,7 @@ forward dispatch derived from VKL `src/vkl/kernels/reference/dense_depth_regular
 at commit `3384023a311651ea4260cf12ddab1567972f89f3`, original owner code under
 Apache-2.0. The frozen reference lives under `references/donors/vkl/`; its
 SHA-256 is `586e2b2e8dfd2a0991f836fb640a7c976fefca14c39dcb6abbf64d44f52d3351`.
-This is an unqualified experiment; it is not catalogued or selected as a default.
+This is an unqualified experiment, catalogued as `vkl.dense_depth_regularize.regularizeDenseDepth`; it is not selected as a default.
 
 Depth, uint32 validity and confidence use contiguous `[B,1,H,W]` layout; RGB
 uses contiguous planar `[B,C,H,W]` with C=1 or 3. Outputs `depthOut`, `validOut`,

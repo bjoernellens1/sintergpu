@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0 (original owner authorization 2026-10-27)",
+  "author": "Original owner code; independent experimental SinterGPU port",
+  "operation_prefix": "vkl.dense_depth_regularize",
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/dense_depth_regularize.py",
+      "source_sha256": "586e2b2e8dfd2a0991f836fb640a7c976fefca14c39dcb6abbf64d44f52d3351",
+      "destination": "src/sintergpu/kernels/experimental/dense_depth_regularize.slang",
+      "imported_sha256": "09de7dc9b91361b3647cb149c57fcc6e58ea2fb8f9ecdc65cb05339a98a3a37d",
+      "changes": [
+        "Independent float32 forward port and checked launch contract; no GPU qualification."
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/dense_depth_regularize.py",
+      "source_sha256": "586e2b2e8dfd2a0991f836fb640a7c976fefca14c39dcb6abbf64d44f52d3351",
+      "destination": "src/sintergpu/dense_depth_regularize_contract.py",
+      "imported_sha256": "d95380355f5072fc6454710058778df03703ec0ad1bbfb6b57a2946bfc75d6c5",
+      "changes": [
+        "Independent float32 forward port and checked launch contract; no GPU qualification."
+      ]
+    }
+  ]
+}

@@ -45,4 +45,28 @@ proof of the dynamically loaded library or of the compiler's transitive native
 dependencies. Before a future run, bind and verify the complete test, patched
 RHI, headers, shader inputs, binary, loaded compiler and runtime closure; capture
 actual mappings. The later compiler-backed CPU fixture does not establish that
-complete closure and does not exercise error paths or GPU execution.
+complete closure or GPU execution. The later recorder fixture covers null and
+missing specialization arguments and failed command-buffer finalization; other
+error paths remain untested.
+
+The independently reviewed compiler-backed recorder probe is
+`rhi-specialization-record-compiler-cpu-probe.cpp`, source SHA-256
+`6cc20982dba0371dd12374697029d4fc19bf2df7fe22577ffd8175c839b90fff`.
+It uses real Slang specialization and fake Vulkan to create two concrete
+pipelines, resolves their virtual commands from the actual cache, and records
+two ordered dispatch associations. It checks pipeline and module handles,
+group sizes and all module bytes against the fake module-creation inputs. Null
+specialization and a deliberately malformed missing component list fail before
+module creation; failed `vkEndCommandBuffer` leaves observations unavailable.
+It does not validate loaded-library identity, actual bindings, driver behavior
+or GPU execution. The isolated Debug executable requires assertions enabled.
+The local binary SHA-256 was
+`aae697c8effd319ad020c443efef93f49df16a6b7ec8af180047a1bafd167a2f`.
+
+```sh
+cmake --build /dev/shm/sintergpu-dispatch-observe-lab/build --target rhi_specialization_record_compiler_cpu_probe
+VK_DRIVER_FILES=/nonexistent/sintergpu-no-vulkan-icd.json VK_ICD_FILENAMES=/nonexistent/sintergpu-no-vulkan-icd.json /dev/shm/sintergpu-dispatch-observe-lab/build/rhi_specialization_record_compiler_cpu_probe
+```
+
+The independent no-ICD rerun exited 0. These local hashes do not authenticate
+another build or its runtime closure.

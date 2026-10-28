@@ -123,3 +123,13 @@ def test_donor_and_model_single_pixel_and_nonfinite_luminance():
             np.testing.assert_allclose(model[name],ref[name].numpy()[:,0],atol=2e-7,rtol=2e-6)
         assert model['support'].item()==expected_support
         assert model['valid'].item()==bool(expected_support)
+
+
+def test_reference_cli_stays_pending(capsys):
+    from sintergpu.cli import main
+    operation='vkl.dense_depth_regularize.regularizeDenseDepth'
+    assert main(['test',operation,'--backend','reference'])==2
+    result=json.loads(capsys.readouterr().out)
+    assert result['status']=='pending'
+    assert result['unavailable_operations']==[operation]
+    assert result['cases']==[]
