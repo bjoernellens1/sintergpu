@@ -3053,7 +3053,7 @@
     "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.4.json": "e063a24e7f6636c1a3c9178c00316e02c2c8477860ec729083f508e87cd3d1de",
     "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.4.json": "ade2fd8c91947f2d6f3c3762fb2e00590ec63cfb164b4533e5ada82014767c53",
     "qualification/evidence/point-plane-sharing-0.2.4.json": "61120c3afe5242070c439483b1fc0408466094566ac97abfa1c69f1ce4ba38cf",
-    "provenance/point-plane-sharing.json": "031d032b60725e5dd784b6c0ef653c7a127558a956fbe4749b6aeec69ad3d3c1",
+    "provenance/point-plane-sharing.json": "82fb95ee0d0fffcb5fab39a5542446fe3d1951024c20e8258f70286c4bd54e65",
     "qualification/evidence/point-plane-sharing-0.2.4-refresh-8060s.log": "bfad4bab00da302ab019eec6e6a4da7987450af85325e9ba118ebb08fcd7524e",
     "qualification/evidence/point-plane-sharing-0.2.4-refresh-8060s.json": "1d2ec4dfbeb56dcf30f3098fe2541332ac8c79dedc8066969e80ba72fb170903",
     "qualification/evidence/point-plane-sharing-0.2.4-refresh-8060s.py.log": "e317b77005a318e1aaa9d2838792a6e9c94c430e6bb76f1a0f3fb36ddf5ba2d1",
@@ -3070,7 +3070,15 @@
     "qualification/evidence/point-plane-sharing-0.2.4-lifecycle-C.log": "82ae5287044aea73ef15ada163557ae5c43e3cd39d6d3c354c317e1e2159660e",
     "qualification/evidence/point-plane-sharing-0.2.4-lifecycle.py.log": "35868aa6168bcdc8abcfb333498c625f6e7b0af6a61bd158b60ea91737fab21d",
     "qualification/evidence/point-plane-vulkan-instance-failure-4070ti-0.2.4.log": "c8ea6e2e79f55a7b92f79441df84cb50e76f111e230274c48f96eac7c068ea5c",
-    "qualification/evidence/point-plane-sharing-0.2.4-module-scope-4070ti-diff.json": "65e03ca684322b6eccfebe959df5b9032e05fc521d3e190fab7035a4f10599c7"
+    "qualification/evidence/point-plane-sharing-0.2.4-module-scope-4070ti-diff.json": "65e03ca684322b6eccfebe959df5b9032e05fc521d3e190fab7035a4f10599c7",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4.json": "1472322f6226baa1956cc4e22dd04a26b2cb56fc572de759b75631b28494ba30",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-green.log": "fa4834b895db2f942487d88d6b293c1d9918d250399b777408b5a600170d4a9e",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-owner-repro-red.log": "eb78ffe7a2d3e4cf865dbb22c2240f564110d5220fd362ac9f516564c7da9213",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-wheel.log": "00dd5278dccac0a9788d2ed50ca2b89d94f078225587241d778ef746d39a6b6a",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-cmake.log": "c1c11a83fdbe66bec685ef5168af3fa3893bbe8e388aa3b14333b6ac48a9ad49",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-relocated-shader.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "provenance/generated-math.json": "bc3eb65a65b942929f730962ecd5bed0ce557796b0d28a70b2d87f14d45e3c06",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-tests-red.json": "0cbe7f25c5196066d1201acf030e85b6f1a831b0bcf7fc897382b07d40077d4e"
   },
   "pending_gates": [
     "Full NVIDIA RTX 4070 Ti operation/variant/adapter qualification beyond retained regression and retained stage timing fixtures",
@@ -3082,7 +3090,7 @@
     "SLAM pose/trajectory/gradient and full-capacity reconstruction qualification",
     "Publisher App administrative permission path and downstream App execution; six private consumer CI jobs blocked by account billing/spending restrictions",
     "CPU/GPU baseline timing coverage for 83 remaining portable catalog entries and four optional native radix variants",
-    "Shared point-plane full-domain/performance/consumer acceptance, installation and final review"
+    "Shared point-plane full-domain and performance qualification, and consumer adoption beyond retained fixture evidence"
   ],
   "timing_reference": {
     "database": "src/sintergpu/data/timings.json",
@@ -3151,12 +3159,29 @@
     "module": "optimization.point_plane",
     "contract": "docs/point-plane.md",
     "source_sha256": "9763495aa01821c4a9fa52db689310cf787cee01b63b8b50bf0daaae43131bcc",
-    "generation": "All5 existing math outputs reproduced byte-exactly by owned adapters",
+    "generation": "Current closed-form optional factory:6 symbolic tests passed including3 caller-xi collision cases; all5 existing shader outputs reproduced byte-exactly by owned adapters.",
     "gpu_parity": "32 imported-module cases/device,64 total; AMD36 passed, NVIDIA35 passed and1 standalone-compiler skip",
     "performance": "No optimized selection; original candidate scope retained, imported-program performance pending",
     "evidence": "qualification/evidence/point-plane-sharing-0.2.4.json",
     "compiler_equivalence": "Four comparisons per Slang2026.12/2026.19 lane:1024 exact executable/resource layout;256 differs only in actual LocalSize",
-    "timing_scope": "392 source-current parity-checked fixture baseline records across54 existing catalog entries (196/device);518 historical records retained. Imported module:32 GPU cases/device,64 total. No imported-module timing, optimized performance, adoption, full-domain, tracking or trajectory qualification."
+    "timing_scope": "392 source-current parity-checked fixture baseline records across54 existing catalog entries (196/device);518 historical records retained. Imported module:32 GPU cases/device,64 total. No imported-module timing, optimized performance, adoption, full-domain, tracking or trajectory qualification.",
+    "generation_current_source_sha256": {
+      "src/sintergpu/codegen/point_plane.py": "5df8c47282e67e7d0f1598e4c82c0c784fa8d8b5ba479ec774e52d13f347c902",
+      "tests/test_point_plane_codegen.py": "84e1f0f07b610b045165b4ef82415d5a7e21206fdf241e06fc936d1ed93ef340",
+      "tools/codegen/caspar_point_plane.py": "4c73ea6cccc1f91f9acf065656c063861c9bcc585f60832f309f95145533dc54",
+      "tools/regenerate_math.py": "7c8be65f1e8ada6df20f0c807f5547f2312f64e05667c14cfb79776f54bae578"
+    },
+    "generation_evidence": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4.json",
+    "historical_generation_scope": "point-plane-sharing-0.2.4.json generation/source identities are pre-fix historical observations; its unchanged Slang/runtime GPU and baseline evidence remains applicable. Current generation source is bound separately.",
+    "installation": {
+      "status": "fresh-wheel-cmake-installed-source-checks-passed",
+      "evidence": {
+        "wheel": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-wheel.log",
+        "cmake": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-cmake.log",
+        "relocated-shader": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-relocated-shader.log"
+      },
+      "scope": "Fresh no-extras wheel, relocated CMake consumer and installed-source compilation passed in the prior final-check window. These logs predate the optional factory fix; they are not relabeled as a newly built corrected-factory wheel. Runtime Slang bytes remain identical."
+    }
   },
   "historical_qualification_scope": "Existing operation qualification records retain original source/compiler/evidence identities; fresh baselines bind through timing_reference, and do not relabel historical operation fixtures as new GPU qualification."
 }

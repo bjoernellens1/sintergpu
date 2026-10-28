@@ -25,8 +25,8 @@
       "source_path": "candidates/sintergpu-optimization-families/python/point_plane_symbolic.py",
       "source_sha256": "0f4f5278571fa2fb7d0302f0d23bd382470febdf999a9497ef11d72050e2d54a",
       "destination": "src/sintergpu/codegen/point_plane.py",
-      "imported_sha256": "0f4f5278571fa2fb7d0302f0d23bd382470febdf999a9497ef11d72050e2d54a",
-      "adaptation": "Exact reviewed candidate bytes; importable module/factory added without replacing an incumbent"
+      "imported_sha256": "5df8c47282e67e7d0f1598e4c82c0c784fa8d8b5ba479ec774e52d13f347c902",
+      "adaptation": "Reviewed candidate-derived optional symbolic factory corrected to direct closed-form residual n dot(p-q) and rotation-first Jacobian (p cross n,n). Creates no auxiliary symbols, preserving caller-owned xi symbols. Original candidate source hash retained; all five emitted shaders remain byte-identical."
     }
   ],
   "owned_generation_adapter": {
@@ -35,6 +35,7 @@
     "output_contract": "All5 generated modules byte-identical; frozen references retained"
   },
   "contract": "docs/point-plane.md",
-  "qualification": "Both standalone compiler lanes passed4 actual-import executable/layout comparisons each (1024 exact;256 actual LocalSize difference only). Physical imported-module differential parity passed32 GPU cases per device,64 total. Current six-family baselines refresh392 fixture records across54 existing entries, not imported-module performance. Candidate performance remains exact native seededAoSoA1025/Slang2026.19/polling256 only; full-domain, consumer acceptance, installation and final review remain separate.",
-  "evidence": "qualification/evidence/point-plane-sharing-0.2.4.json"
+  "qualification": "Both standalone compiler lanes passed4 actual-import executable/layout comparisons each (1024 exact;256 actual LocalSize difference only). Physical imported-module differential parity passed32 GPU cases per device,64 total. Current six-family baselines refresh392 fixture records across54 existing entries, not imported-module performance. Candidate performance remains exact native seededAoSoA1025/Slang2026.19/polling256 only; full-domain and consumer acceptance remain unqualified beyond this experimental release. Fresh no-extras wheel, relocated CMake consumer and installed-shader compiler checks passed; final review fix checks, exact-head CI and publication remain pending. Earlier generation evidence is historical pre-fix; current closed-form factory evidence is recorded separately.",
+  "evidence": "qualification/evidence/point-plane-sharing-0.2.4.json",
+  "generation_evidence": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4.json"
 }

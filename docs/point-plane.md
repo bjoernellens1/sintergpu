@@ -60,8 +60,14 @@ the test harness and does not establish a driver fix.
 `sintergpu.codegen.point_plane` is an optional symbolic factory. Importing it
 requires no NumPy, Torch, SlangPy or SymForce runtime. Callers pass their own
 `sf` symbolic module to `point_plane_expression(sf,p,q,n)` or its nine-scalar
-adapter `point_plane_scalars`. Both evaluate an infinitesimal left rigid action
-at zero twist and return the rotation-first derivative.
+adapter `point_plane_scalars`. Both return the closed-form residual `n·(p-q)` and rotation-first left-action
+Jacobian `(p×n,n)`. The factory creates no auxiliary symbols, so caller-owned
+symbols named `xi` remain intact. This optional generation fix reproduces all
+five existing shader outputs byte-for-byte;
+[separate fix evidence](../qualification/evidence/point-plane-symbol-capture-fix-0.2.4.json)
+binds the current factory. The earlier GPU proof retains its historical
+pre-fix factory identity; its unchanged Slang/runtime and baseline evidence
+remains applicable.
 
 `tools/codegen/caspar_point_plane.py` owns the vector and scalar Caspar generation
 adapters; both consume this factory. Remaining dense/photometric expressions

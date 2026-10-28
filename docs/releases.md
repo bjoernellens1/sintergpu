@@ -177,3 +177,43 @@ global-scope and entrypoint-scope metadata are retained in the compiler records;
 these new-only fields have no 2026.12 counterpart and are explicitly outside the
 cross-version comparison. This gate establishes reflected ABI agreement, not
 runtime parity, gradient accuracy or a merged compiler version.
+
+## Automatic GitHub release notes
+
+`prepare` generates `sintergpu-<version>-release-notes.md` from the single exact
+released `CHANGELOG.md` section and every matching `changes/<version>-*.md`
+fragment, sorted by filename. It includes compatibility classifications, explicit
+Breaking changes and Migration instructions sections, and the qualification
+status and pending gates. Compatible releases explicitly say `None.` for breaking
+changes and `None required.` when no migration instructions apply.
+
+Every matching fragment must contain exactly one line of the form
+`Compatibility: compatible`, `Compatibility: breaking`, or (only for 0.1.0)
+`Compatibility: initial`. Breaking fragments must also include exactly one
+nonempty single-line `Migration: <instructions>` field; `None` and `N/A` are not
+migration instructions. For example:
+
+```markdown
+Compatibility: breaking
+Migration: Replace old_api(...) with new_api(...) before upgrading.
+
+Remove the old_api entry point.
+```
+
+Missing fragments, missing or ambiguous classifications, empty descriptions and
+breaking changes without migration instructions block preparation. The local
+CPU test suite validates the current release's notes. To inspect notes without
+creating tags or accessing GitHub, run:
+
+```sh
+python tools/release.py notes --tag v$(cat VERSION)
+```
+
+The prepared Markdown is a manifest asset covered by `SHA256SUMS` and the existing
+asset attestation flow. `publish` validates its manifest/checksum binding before
+any draft body mutation, creates new drafts with those exact notes, and replaces
+an existing draft's body with the same verified text on retry. It then applies the
+existing upload, attestation and exact-tag checks before publication. No generic
+release body is substituted. Verification of older immutable releases without a
+prepared notes asset remains supported; this change does not edit published
+releases.

@@ -27,6 +27,13 @@ def gh(*args):
 
 
 
+def gh_json(endpoint, method, payload):
+    """Send multiline release text through structured JSON, preserving newlines."""
+    with tempfile.NamedTemporaryFile(mode='w+', suffix='.json', encoding='utf-8') as body:
+        json.dump(payload, body); body.flush()
+        return gh('api', endpoint, '--method', method, '--input', body.name)
+
+
 def remote_tag_commit(tag):
     """Resolve only an exact tag ref, never a branch accepted by /commits/name."""
     validate_version(tag, tag.removeprefix('v'))
@@ -132,6 +139,69 @@ def released_changelog_section(text, version):
     return sections[0][2].strip()
 
 
+
+def release_notes(root, version, qualification):
+    """Render the released changelog and explicitly classified version fragments."""
+    changelog = released_changelog_section((root/'CHANGELOG.md').read_text(), version)
+    fragments = sorted((root/'changes').glob(version+'-*.md'))
+    if not fragments:
+        raise ValueError('release requires version-matching classified fragments')
+    classifications, breaking, migrations = [], [], []
+    for path in fragments:
+        text = path.read_text()
+        fields = [line for line in text.splitlines() if line.startswith('Compatibility:')]
+        if len(fields) != 1 or not re.fullmatch(r'Compatibility: (initial|compatible|breaking)', fields[0]):
+            raise ValueError(path.name+': missing, malformed or ambiguous Compatibility classification')
+        kind = fields[0].partition(': ')[2]
+        if kind == 'initial' and version != '0.1.0':
+            raise ValueError(path.name+': initial classification only applies to 0.1.0')
+        classifications.append('- '+path.name+': '+kind)
+        migration = [line for line in text.splitlines() if line.startswith('Migration:')]
+        if len(migration) > 1 or (migration and not re.fullmatch(r'Migration: \S.*', migration[0])):
+            raise ValueError(path.name+': malformed or ambiguous Migration field')
+        body = '\n'.join(line for line in text.splitlines() if not line.startswith(('Compatibility:', 'Migration:'))).strip()
+        if not body:
+            raise ValueError(path.name+': empty change description')
+        if kind == 'breaking':
+            if not migration or migration[0].partition(': ')[2].strip().lower() in ('none', 'none.', 'n/a'):
+                raise ValueError(path.name+': breaking fragment requires nonempty Migration instructions')
+            breaking.append('- '+path.name+': '+body)
+        if migration:
+            migrations.append('- '+path.name+': '+migration[0].partition(': ')[2].strip())
+    validate_qualification(qualification)
+    gates = qualification['pending_gates']
+    return ('# SinterGPU '+version+'\n\n## Changelog\n\n'+changelog+
+            '\n\n## Compatibility\n\n'+'\n'.join(classifications)+
+            '\n\n## Breaking changes\n\n'+('\n'.join(breaking) if breaking else 'None.')+
+            '\n\n## Migration instructions\n\n'+('\n'.join(migrations) if migrations else 'None required.')+
+            '\n\n## Qualification status\n\n'+qualification['status']+
+            '. Evidence is limited to the configurations and scopes in the release manifest; it does not imply full-domain or consumer acceptance.'+
+            '\n\n### Pending gates\n\n'+('\n'.join('- '+gate for gate in gates) if gates else 'None.')+'\n')
+
+
+def verified_release_notes(tag, directory, manifest, names):
+    """Require prepared notes bound by both manifest and checksum asset identities."""
+    name = f'sintergpu-{tag[1:]}-release-notes.md'
+    if manifest.get('release_notes') != name or name not in names:
+        raise ValueError('prepared release notes missing from checksums or manifest')
+    assets = [a for a in manifest.get('assets', []) if a.get('name') == name]
+    path = directory/name
+    if len(assets) != 1 or not path.is_file() or assets[0].get('size') != path.stat().st_size or assets[0].get('sha256') != sha256(path):
+        raise ValueError('release notes manifest binding mismatch')
+    expected = {f'sintergpu-{tag[1:]}-manifest.json'} | {safe_name(a['name']) for a in manifest['assets']}
+    if names != expected or len(manifest['assets']) != len(expected)-1:
+        raise ValueError('release notes manifest/checksum asset set mismatch')
+    for asset in manifest['assets']:
+        item = directory/asset['name']
+        if sha256(item) != asset['sha256'] or item.stat().st_size != asset['size']:
+            raise ValueError('release notes manifest asset mismatch')
+    notes = path.read_text()
+    headings = ('## Changelog', '## Compatibility', '## Breaking changes', '## Migration instructions', '## Qualification status', '### Pending gates')
+    if not notes.startswith('# SinterGPU '+tag[1:]+'\n') or any(notes.splitlines().count(h) != 1 for h in headings):
+        raise ValueError('prepared release notes are malformed')
+    return notes
+
+
 def prepare(tag, output, qualification, compilers, root=ROOT):
     version = validate_version(tag, (root/'VERSION').read_text().strip())
     if (root/'src/sintergpu/data/VERSION').read_text().strip() != version:
@@ -144,6 +214,13 @@ def prepare(tag, output, qualification, compilers, root=ROOT):
     # Never package a checkout whose source differs from the tagged commit.
     if run(['git', 'status', '--porcelain', '--untracked-files=no'], cwd=root, text=True).strip():
         raise ValueError('tracked checkout must be clean')
+    tracked = set(run(['git', 'ls-files', '-z'], cwd=root).decode().split('\0'))
+    note_inputs = [root/'CHANGELOG.md', *sorted((root/'changes').glob(version+'-*.md'))]
+    if any(path.is_symlink() for path in note_inputs):
+        raise ValueError('release note inputs must be normal tracked text files, not symlinks')
+    if any(path.relative_to(root).as_posix() not in tracked for path in note_inputs):
+        raise ValueError('release note inputs must be tracked at the clean tagged commit')
+    notes = release_notes(root, version, qualification)
     validate_qualification(qualification)
     if len(compilers) != 2 or {c.get('pinned_release') for c in compilers} != {'2026.12', '2026.19'}:
         raise ValueError('both pinned compiler records required')
@@ -191,10 +268,12 @@ def prepare(tag, output, qualification, compilers, root=ROOT):
         verify_package_sources(root, sdist, 'sdist')
     if not package_versions or not sdists:
         raise ValueError('wheel and sdist packages required')
+    notes_name = f'sintergpu-{version}-release-notes.md'
+    (output/notes_name).write_text(notes)
     assets = [{'name': p.name, 'size': p.stat().st_size, 'sha256': sha256(p)} for p in sorted(output.iterdir()) if p.is_file() and p.name != 'SHA256SUMS' and not p.name.endswith('-manifest.json')]
     manifest = {'schema_version': 1, 'repository': REPO, 'version': version, 'tag': tag, 'source_commit': source,
                 'workflow': WORKFLOW, 'run_url': os.environ.get('GITHUB_SERVER_URL', 'https://github.com')+'/'+REPO+'/actions/runs/'+os.environ.get('GITHUB_RUN_ID', 'local'),
-                'shader_tree_sha256': shader_digest(root), 'assets': assets, 'package_versions': package_versions, 'compilers': compilers, **qualification}
+                'shader_tree_sha256': shader_digest(root), 'assets': assets, 'package_versions': package_versions, 'compilers': compilers, **qualification, 'release_notes': notes_name}
     name = f'sintergpu-{version}-manifest.json'
     (output/name).write_text(json.dumps(manifest, indent=2, sort_keys=True)+'\n')
     write_checksums(output, [a['name'] for a in assets]+[name])
@@ -234,6 +313,9 @@ def verify_download(tag, directory):
         path = directory/asset['name']
         if sha256(path) != asset['sha256'] or path.stat().st_size != asset['size']:
             raise ValueError('manifest asset mismatch')
+    # Older immutable releases predate prepared notes; retain their verification path.
+    if 'release_notes' in manifest:
+        verified_release_notes(tag, directory, manifest, names)
     gh('release', 'verify', tag, '-R', REPO)
     for name in sorted(names | {'SHA256SUMS'}):
         gh('release', 'verify-asset', tag, str(directory/name), '-R', REPO)
@@ -243,7 +325,7 @@ def verify_download(tag, directory):
 
 
 def publish(tag, directory):
-    verify_checksums(directory)
+    names = verify_checksums(directory)
     manifest = json.loads((directory/f'sintergpu-{tag[1:]}-manifest.json').read_text())
     validate_version(tag, manifest['version'])
     if manifest.get('repository') != REPO or manifest.get('workflow') != WORKFLOW:
@@ -260,18 +342,22 @@ def publish(tag, directory):
     if match and not match[0]['draft']:
         with tempfile.TemporaryDirectory() as temp:
             return verify_download(tag, Path(temp))
+    notes = verified_release_notes(tag, directory, manifest, names)
+    created_new = not match
     if not match:
         # Use the mutation response directly: GitHub's release list can lag a
         # successful draft creation. The exact remote tag was verified above.
-        created = json.loads(gh('api', f'repos/{REPO}/releases', '--method', 'POST',
-                                '-f', 'tag_name='+tag, '-f', 'target_commitish='+remote, '-F', 'draft=true', '-f', 'name='+tag,
-                                '-f', 'body=Experimental kernels; see manifest qualification and pending gates.'))
+        created = json.loads(gh_json(f'repos/{REPO}/releases', 'POST',
+                                    {'tag_name': tag, 'target_commitish': remote, 'draft': True, 'name': tag, 'body': notes}))
         if created.get('tag_name') != tag or not created.get('draft') or not created.get('id'):
             raise ValueError('draft creation response mismatch; inspect remote state before retrying')
         match = [created]
     if len(match) != 1:
         raise ValueError('exactly one draft release required')
     endpoint = f'repos/{REPO}/releases/{match[0]["id"]}'
+    # Always repair a resumed draft's body from the verified prepared artifact.
+    if not created_new:
+        gh_json(endpoint, 'PATCH', {'body': notes})
     details = json.loads(gh('api', endpoint))
     existing = check_existing_assets(details['assets'], directory)
     for path in sorted(directory.iterdir()):
@@ -289,19 +375,23 @@ def publish(tag, directory):
     remote = remote_tag_commit(tag)
     if remote != manifest['source_commit']:
         raise ValueError('remote tag changed before publication')
-    gh('release', 'edit', tag, '-R', REPO, '--draft=false')
+    verified_release_notes(tag, directory, manifest, verify_checksums(directory))
+    gh('release', 'edit', tag, '-R', REPO, '--notes-file', str(directory/manifest['release_notes']), '--draft=false')
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['prepare', 'publish', 'verify'])
+    parser.add_argument('command', choices=['prepare', 'publish', 'verify', 'notes'])
     parser.add_argument('--tag', required=True)
     parser.add_argument('--output', type=Path, default=Path('dist'))
     parser.add_argument('--qualification', type=Path)
     parser.add_argument('--compiler', type=Path, action='append', default=[])
     args = parser.parse_args()
     validate_version(args.tag, args.tag[1:])
-    if args.command == 'prepare':
+    if args.command == 'notes':
+        qualification = args.qualification or ROOT/'qualification'/f'{args.tag[1:]}.json'
+        print(release_notes(ROOT, args.tag[1:], json.loads(qualification.read_text())), end='')
+    elif args.command == 'prepare':
         if not args.qualification:
             parser.error('--qualification required')
         prepare(args.tag, args.output, json.loads(args.qualification.read_text()), [json.loads(p.read_text()) for p in args.compiler])

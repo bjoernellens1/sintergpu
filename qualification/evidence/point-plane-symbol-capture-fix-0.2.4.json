@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "status": "experimental",
+  "working_tree_base_revision": "3f97731cded68e3f3e26564691522896ce21557b",
+  "change": "Optional symbolic generation factory uses direct closed-form residual n dot(p-q) and left-action rotation-first Jacobian (p cross n,n), without creating/substituting internal xi symbols. This preserves caller-owned symbols in point, target and normal.",
+  "source_sha256": {
+    "src/sintergpu/codegen/point_plane.py": "5df8c47282e67e7d0f1598e4c82c0c784fa8d8b5ba479ec774e52d13f347c902",
+    "tests/test_point_plane_codegen.py": "84e1f0f07b610b045165b4ef82415d5a7e21206fdf241e06fc936d1ed93ef340",
+    "tools/codegen/caspar_point_plane.py": "4c73ea6cccc1f91f9acf065656c063861c9bcc585f60832f309f95145533dc54",
+    "tools/regenerate_math.py": "7c8be65f1e8ada6df20f0c807f5547f2312f64e05667c14cfb79776f54bae578"
+  },
+  "candidate_revision": "2def63bb85adfcb0cb5b1b8d0910bed31dda0539",
+  "original_candidate_factory_sha256": "0f4f5278571fa2fb7d0302f0d23bd382470febdf999a9497ef11d72050e2d54a",
+  "historical_pre_fix_factory_sha256": "0f4f5278571fa2fb7d0302f0d23bd382470febdf999a9497ef11d72050e2d54a",
+  "historical_proof": {
+    "path": "qualification/evidence/point-plane-sharing-0.2.4.json",
+    "sha256": "61120c3afe5242070c439483b1fc0408466094566ac97abfa1c69f1ce4ba38cf",
+    "scope": "Its factory/generation source map records the pre-fix observation and is historical for generation only. Slang/core, GPU tests and baseline source closure are unchanged; the32 GPU cases/device and54 existing-entry baseline coverage remain applicable. No old runtime/source context or raw report was rekeyed."
+  },
+  "tests": {
+    "red_failed": 3,
+    "red_passed": 3,
+    "green_passed": 6,
+    "collision_cases": [
+      "point",
+      "target",
+      "normal"
+    ]
+  },
+  "generation": {
+    "byte_exact_outputs": [
+      {
+        "path": "src/sintergpu/kernels/generated/point_plane_residual.generated.slang",
+        "sha256": "0da870c2a40263cdb18950157730387fad9d751c177d4b7d509733bc6114fef6"
+      },
+      {
+        "path": "src/sintergpu/kernels/generated/pose_graph_factors.generated.slang",
+        "sha256": "a9e3e4cbd66c30b0d1225c612bd571f7ef02ae194a1380199979d9de938b3e52"
+      },
+      {
+        "path": "src/sintergpu/kernels/generated/reprojection_factors.generated.slang",
+        "sha256": "113fadec9040b57b6d91a1ce07b3585cf9dd6f4a74918c30930dabec92f7ccee"
+      },
+      {
+        "path": "src/sintergpu/kernels/generated/dense_factors.generated.slang",
+        "sha256": "2afa8aeab83a06678792ba93a918ac14e41d945336f629ebba41f777e1793f44"
+      },
+      {
+        "path": "src/sintergpu/kernels/generated/primitives.generated.slang",
+        "sha256": "0cba624d734902ce6a788b5c37b5fe332a4e2d1b81a1fb2d149a1a101edb8f44"
+      }
+    ],
+    "generated_outputs_unchanged": true,
+    "reasoning": "For a left rigid action at zero twist, n dot(omega cross p + translation) yields derivative (p cross n,n). Direct construction needs no auxiliary symbol namespace and cannot capture caller xi symbols."
+  },
+  "unchanged_runtime_dependencies": {
+    "shader_tree_sha256": "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b",
+    "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29"
+  },
+  "installation": {
+    "evidence": {
+      "wheel": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-wheel.log",
+      "cmake": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-cmake.log",
+      "relocated-shader": "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-relocated-shader.log"
+    },
+    "scope": "Fresh no-extras wheel, relocated CMake consumer and installed-source compilation passed in the prior final-check window. These logs predate the optional factory fix; they are not relabeled as a newly built corrected-factory wheel. Runtime Slang bytes remain identical."
+  },
+  "limits": "No GPU rerun required for this optional codegen-only correction: all5 generated shader bytes, Slang source tree, references and collectors remain unchanged. Imported-module performance, full-domain qualification and consumer adoption remain unqualified beyond experimental release. Final review fix checks, exact-head CI and publication remain owner gates.",
+  "evidence_sha256": {
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-tests-red.json": "0cbe7f25c5196066d1201acf030e85b6f1a831b0bcf7fc897382b07d40077d4e",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-green.log": "fa4834b895db2f942487d88d6b293c1d9918d250399b777408b5a600170d4a9e",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-owner-repro-red.log": "eb78ffe7a2d3e4cf865dbb22c2240f564110d5220fd362ac9f516564c7da9213",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-wheel.log": "00dd5278dccac0a9788d2ed50ca2b89d94f078225587241d778ef746d39a6b6a",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-cmake.log": "c1c11a83fdbe66bec685ef5168af3fa3893bbe8e388aa3b14333b6ac48a9ad49",
+    "qualification/evidence/point-plane-symbol-capture-fix-0.2.4-installation-relocated-shader.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

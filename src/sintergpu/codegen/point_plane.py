@@ -8,12 +8,8 @@ Based on Caspar's Apache-2.0 point_plane definitions; see the family manifest.
 
 
 def point_plane_expression(sf, point, target, normal):
-    """Return residual and rotation-first left-action Jacobian at zero twist."""
-    xi = sf.V6.symbolic('xi')
-    moved = point + sf.V3(xi[:3]).cross(point) + sf.V3(xi[3:])
-    expression = normal.dot(moved - target)
-    zero = dict.fromkeys(xi, 0)
-    return expression.subs(zero), sf.V6([expression.diff(v).subs(zero) for v in xi])
+    """Return residual and closed-form left-action rotation-first Jacobian."""
+    return normal.dot(point - target), sf.V6([*point.cross(normal), *normal])
 
 
 def point_plane_scalars(sf, px, py, pz, qx, qy, qz, nx, ny, nz):

@@ -1,0 +1,141 @@
+cmake version 3.25.2
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/cmake-0.2.4
+-- Install configuration: ""
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/include
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/include/sintergpu
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/include/sintergpu/vulkan.hpp
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/include/sintergpu/daxa.hpp
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/common
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/common/abi.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/geometry
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/geometry/backproject.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/geometry/transform_points.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/geometry/voxel_insert.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/guidance
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/guidance/coverage_heatmap.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/guidance/coverage_render.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/preprocess
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/preprocess/bilateral.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/preprocess/depth_register.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/preprocess/depth_resolve.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/preprocess/invalid_depth.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/preprocess/resize.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/preprocess/undistort.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/preprocess/yuv_to_rgb.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/quality
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/quality/metrics.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/quality/reduce.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/semantics
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/semantics/mask_postprocess.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/semantics/normalize.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/locus/semantics/similarity.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/caspar_slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/caspar_slang/gn.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/caspar_slang/pose_graph.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/caspar_slang/reprojection.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/caspar_slang/composed
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/caspar_slang/composed/gn.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/caspar_slang/composed/point_plane_residual.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/caspar_slang/composed/reprojection.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/caspar_slang/composed/pose_graph.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/dense_tracker.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/features.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/gpu_pipeline.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/keyframes.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/loop_pipeline.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/loop_verification.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/tracker.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/tsdf.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/composed
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/composed/tracker.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/composed/features.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/composed/tsdf.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/composed/loop_verification.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/composed/dense_ba.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/composed/dense_tracker_workgroup.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/slang_rgbd_slam/composed/dense_tracker_subgroup.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/xsplat_vk
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/xsplat_vk/adam.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/xsplat_vk/backward_probe.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/xsplat_vk/common.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/xsplat_vk/composite.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/xsplat_vk/gaussian_math.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/xsplat_vk/project.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/generated
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/generated/point_plane_residual.generated.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/generated/pose_graph_factors.generated.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/generated/reprojection_factors.generated.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/generated/dense_factors.generated.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/generated/primitives.generated.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/common
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/common/block_reduce.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/common/brief_pattern.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/common/float32_bits.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/common/float32_divide.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/common/float32_multiply.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl/project_depth_evidence.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl/photometric_isp.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl/depth_convert.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl/depth_pyramid.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl/geometry.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl/depth_fusion.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl/temporal_best.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl/depth_resampling.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl/brief.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/vkl/binary_match.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/primitives
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/primitives/scan.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/primitives/compact.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/primitives/scan_uint.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/image
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/image/camera_color.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/optimization
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/kernels/optimization/point_plane.slang
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/locus-LICENSE
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/locus-THIRD_PARTY.md
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/caspar-slang-LICENSE
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/slang-rgbd-slam-LICENSE
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/eligsir-sim-LICENSE
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/eligsir-sim-NOTICE
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/xsplat-vk-LICENSE
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/xsplat-vk-NOTICE
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/xsplat-vk-THIRD_PARTY.md
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/nerfacc-MIT.txt
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/nerfacc-AMD.txt
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/licenses/vrdx-MIT.txt
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/data/catalog.json
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/data/timings.json
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/LICENSE
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/NOTICE
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/share/sintergpu/VERSION
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/lib64/cmake/sintergpu/sintergpuTargets.cmake
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/lib64/cmake/sintergpu/sintergpuConfig.cmake
+-- Installing: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/install-0.2.4/lib64/cmake/sintergpu/sintergpuConfigVersion.cmake
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Vulkan: /lib64/libvulkan.so (found version "1.4.341") found components: glslangValidator missing components: glslc
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/consumer-0.2.4
+[100%] Building CXX object CMakeFiles/consumer.dir/main.cpp.o
+[100%] Built target consumer

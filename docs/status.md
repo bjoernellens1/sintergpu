@@ -35,8 +35,12 @@ shares G18 symbolic ownership and adds the importable point-plane module; 32 GPU
 cases per device passed. All six existing baseline recipes were refreshed,
 reaching 54/137 paired entries and 392 current records, with 518 historical rows
 retained and 83 portable entries plus four native variants pending. Fresh Python
-and relocated CMake/source installation checks pass; final review and publication
-remain pending. Imported-module
+and relocated CMake/source installation checks pass, including a freshly built
+wheel with the corrected symbolic factory. The final reviews found caller-symbol
+capture and untracked release-note inputs; both are fixed with regressions.
+Release notes now include changelog, compatibility, breaking changes, migrations
+and qualification limits automatically; publication remains pending. Six symbolic
+tests pass and all five generated outputs reproduce byte-for-byte. Imported-module
 performance, full-domain qualification and consumer acceptance remain unqualified
 beyond this experimental release; the original consolidation requirements remain
 incomplete.

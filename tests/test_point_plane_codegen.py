@@ -37,3 +37,21 @@ def test_owned_vector_and_dense_exports_match_frozen_donor_bytes():
     from tools.codegen.caspar_point_plane import residual_kernel,dense_factor_source
     assert emit_slang(residual_kernel())==emit_slang(frozen_residual())
     assert dense_factor_source()==frozen_dense()
+
+
+@pytest.mark.parametrize('symbolic_vector', ['point', 'target', 'normal'])
+def test_factory_preserves_caller_xi_symbols(symbolic_vector):
+    sf=pytest.importorskip('symforce.symbolic')
+    shared=importlib.import_module('sintergpu.codegen.point_plane')
+    values={'point':(2,3,5),'target':(7,11,13),'normal':(17,19,23)}
+    vectors={name:sf.V3(*value) for name,value in values.items()}
+    caller_symbols=sf.V6.symbolic('xi')[:3]
+    vectors[symbolic_vector]=sf.V3(caller_symbols)
+    r,j=shared.point_plane_expression(sf,vectors['point'],vectors['target'],vectors['normal'])
+    assert set(caller_symbols)<=r.free_symbols
+    substitutions=dict(zip(caller_symbols,values[symbolic_vector]))
+    # Independently derived: n.(p-q)=-421; p cross n=(-26,39,-13).
+    expected=(-421,-26,39,-13,17,19,23)
+    assert tuple(float(v.subs(substitutions)) for v in (r,*j))==expected
+    scalar=shared.point_plane_scalars(sf,*vectors['point'],*vectors['target'],*vectors['normal'])
+    assert tuple(float(v.subs(substitutions)) for v in scalar)==expected
