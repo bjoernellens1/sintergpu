@@ -18,10 +18,13 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action',choices=('archive','restore','verify'))
     parser.add_argument('--root',type=Path,required=True)
+    parser.add_argument('--iterations',nargs='+',choices=['iteration4','iteration5','iteration6','iteration7'],
+        default=['iteration4','iteration5','iteration6','iteration7'])
     args=parser.parse_args();root=args.root.resolve();evidence=root/'evidence'
     manifest=evidence/'native-archive.json';records=json.loads(manifest.read_text()) if manifest.exists() else {}
     if args.action=='archive':
-        for iteration in ('iteration4','iteration5','iteration6','iteration7'):
+        pending_removals=[]
+        for iteration in args.iterations:
             directory=evidence/iteration
             for path in sorted(directory.rglob('*')):
                 if not path.is_file():continue
@@ -36,9 +39,12 @@ def main():
                 else:target.write_bytes(compressed)
                 records[str(path.relative_to(root))]=dict(bytes=len(data),sha256=digest,
                     archive=str(target.relative_to(root)),archive_sha256=sha(target.read_bytes()))
-                # Persist recovery metadata before removing the original.
-                manifest.write_text(json.dumps(records,indent=2,sort_keys=True)+'\n')
-                path.unlink()
+                pending_removals.append(path)
+        # Persist all recovery metadata atomically before removing any original.
+        temporary=manifest.with_suffix('.json.tmp')
+        temporary.write_text(json.dumps(records,indent=2,sort_keys=True)+'\n')
+        temporary.replace(manifest)
+        for path in pending_removals:path.unlink()
     for logical,entry in records.items():
         archive=root/entry['archive'];compressed=archive.read_bytes()
         assert sha(compressed)==entry['archive_sha256']

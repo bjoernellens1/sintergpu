@@ -1,0 +1,12 @@
+Wrote "evidence/iteration7/native-radeon/aosoa-1025-run1.json" with 120000 individual ABBA invocations
+aosoa 1025 1 byte-exact and independent oracle passed
+Wrote "evidence/iteration7/native-radeon/aosoa-1025-run2.json" with 120000 individual ABBA invocations
+aosoa 1025 2 byte-exact and independent oracle passed
+Wrote "evidence/iteration7/native-radeon/aosoa-1025-run3.json" with 120000 individual ABBA invocations
+aosoa 1025 3 byte-exact and independent oracle passed
+Wrote "evidence/iteration7/native-radeon/scalar-1025-run1.json" with 120000 individual ABBA invocations
+scalar 1025 1 byte-exact and independent oracle passed
+Wrote "evidence/iteration7/native-radeon/scalar-1025-run2.json" with 120000 individual ABBA invocations
+scalar 1025 2 byte-exact and independent oracle passed
+Wrote "evidence/iteration7/native-radeon/scalar-1025-run3.json" with 120000 individual ABBA invocations
+scalar 1025 3 byte-exact and independent oracle passed

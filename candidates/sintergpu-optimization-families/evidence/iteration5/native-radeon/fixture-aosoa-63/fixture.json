@@ -1,0 +1,77 @@
+{
+  "schema": "sintergpu.native.point_plane.fixture.v1",
+  "count": 63,
+  "allocation": 70,
+  "profile": "aosoa",
+  "params": {
+    "problem_size": 63,
+    "points_num_alloc": 31,
+    "targets_num_alloc": 70,
+    "normals_num_alloc": 70,
+    "out_0_num_alloc": 70,
+    "out_1_num_alloc": 70
+  },
+  "candidate_local_size": 256,
+  "files": {
+    "points.bin": {
+      "bytes": 496,
+      "sha256": "e78276337e0e24069726a06fd9f19869dbd2b94eabcfbc15341aae850c7ee4fc",
+      "dtype": "<f4",
+      "shape": [
+        31,
+        4
+      ]
+    },
+    "targets.bin": {
+      "bytes": 1120,
+      "sha256": "39d74dfe6091a850777e050dc0a900175c8f3199b069706b538e2c462cc1a919",
+      "dtype": "<f4",
+      "shape": [
+        70,
+        4
+      ]
+    },
+    "normals.bin": {
+      "bytes": 1120,
+      "sha256": "f6f77424fcc3c3f73c3bb3c8b7e11458c0dfd9273498a7a71daa87db7f7f58a2",
+      "dtype": "<f4",
+      "shape": [
+        70,
+        4
+      ]
+    },
+    "out_0.bin": {
+      "bytes": 308,
+      "sha256": "f41eb2c46ce566cb19dc312b0b25d0657ab60eee0f8ce709d5aba479002f51b1",
+      "dtype": "<f4",
+      "shape": [
+        77
+      ]
+    },
+    "out_1.bin": {
+      "bytes": 1708,
+      "sha256": "8006764bcf1b5c5f50d85c5448c4c64587bb87778f5b442258b5c980c0cc7d15",
+      "dtype": "<f4",
+      "shape": [
+        427
+      ]
+    },
+    "points_indices.bin": {
+      "bytes": 252,
+      "sha256": "080f7e76fd899a55995e44359f3b72e4679ddafc57c49ab5f88be94e07f0fc96",
+      "dtype": "<u4",
+      "shape": [
+        63
+      ]
+    },
+    "params.bin": {
+      "bytes": 32,
+      "sha256": "5ad61b16a73a7286fdb07e7758d311d3bf9274932686ccf86c07e792d0755e3c"
+    }
+  },
+  "source_sha256": {
+    "baseline": "1ffe081687d156ef3bee9a272e07b8db87c2ea2f856d82a5b762d60275255502",
+    "candidate": "349f631d9d523409a5f8859de3e0480913b4a23ff7455306174c165db9391b4e"
+  },
+  "source_compilation": "external; attach pinned compiler identity, flags, and SPIR-V SHA256"
+}

@@ -1,5 +1,36 @@
 # Kernel family candidate ledger
 
+## Current candidate checkpoint: native point-plane profile
+
+The later iteration record is [NATIVE_ACCEPTANCE.md](NATIVE_ACCEPTANCE.md).
+AoSoA point-plane at exactly 1,025 correspondences has three controlled passing
+processes at GPU, resident completion and complete transfer boundaries on each
+GPU, using Slang 2026.19, a 256-thread elementwise candidate launch, retained
+caller-owned resources and matched polling completion. Thread CPU cost is
+reported. This bounded result does not qualify Python or all supported sizes.
+
+Iteration4 preserved the original 1024-thread adapter's load/store phases behind
+shared residual, rotation and scalar functions. Its normalized instructions and
+resource layout match the incumbent under both pins. Native iteration4 and5
+retain every earlier failure. Iteration5 changed only the elementwise launch size
+and added explicit matched wait/spin caller profiles. Both pins differ only in
+the declared LocalSize; all arithmetic/order/decorations remain compared.
+
+The longer precision experiments were declared before collection at 1,025 and
+65,539 elements with 10,000 ABBA blocks and the unchanged gates. An initial local
+AoSoA/1025 set overlapped report computation and is explicitly ineligible.
+Iteration7 collected a fresh three-process set with analysis paused. A later
+NVIDIA lock failure happened before GPU work; its log and completed runs remain,
+and only the two missing processes were resumed with identical binary/artifacts.
+
+Native reports require collection-control metadata and validate actual launch,
+mode, count, affinity and groups against the declared plan. Source hashes match
+each recorded Git revision. Final numerical tests pass 96 on each GPU. The fresh
+review found no remaining Important defect within these source/reporting checks.
+No family-wide/default/catalog/installed API/consumer/release change follows.
+
+All history below retains its original decisions and source identities.
+
 Owner: candidate implementation chat; managed worktree `kernel-families-candidates`.
 Initial inspection base: `fe273e6946419c018c3a2dcdb20bb9c518c751e3` (parent timing branch).
 Candidate rebased onto upstream main `536fbaa` per the new intake protocol. The

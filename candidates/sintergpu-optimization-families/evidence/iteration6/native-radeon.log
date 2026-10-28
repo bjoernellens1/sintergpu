@@ -1,0 +1,24 @@
+Wrote "evidence/iteration6/native-radeon/aosoa-1025-run1.json" with 120000 individual ABBA invocations
+aosoa 1025 1 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/aosoa-1025-run2.json" with 120000 individual ABBA invocations
+aosoa 1025 2 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/aosoa-1025-run3.json" with 120000 individual ABBA invocations
+aosoa 1025 3 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/aosoa-65539-run1.json" with 120000 individual ABBA invocations
+aosoa 65539 1 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/aosoa-65539-run2.json" with 120000 individual ABBA invocations
+aosoa 65539 2 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/aosoa-65539-run3.json" with 120000 individual ABBA invocations
+aosoa 65539 3 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/scalar-1025-run1.json" with 120000 individual ABBA invocations
+scalar 1025 1 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/scalar-1025-run2.json" with 120000 individual ABBA invocations
+scalar 1025 2 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/scalar-1025-run3.json" with 120000 individual ABBA invocations
+scalar 1025 3 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/scalar-65539-run1.json" with 120000 individual ABBA invocations
+scalar 65539 1 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/scalar-65539-run2.json" with 120000 individual ABBA invocations
+scalar 65539 2 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-radeon/scalar-65539-run3.json" with 120000 individual ABBA invocations
+scalar 65539 3 byte-exact and independent oracle passed

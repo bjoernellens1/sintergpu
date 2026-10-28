@@ -1,0 +1,12 @@
+cps-wkstn-nvidia4070 aosoa 1025 1 True
+cps-wkstn-nvidia4070 aosoa 1025 2 True
+cps-wkstn-nvidia4070 aosoa 1025 3 True
+cps-wkstn-nvidia4070 aosoa 65539 1 True
+cps-wkstn-nvidia4070 aosoa 65539 2 True
+cps-wkstn-nvidia4070 aosoa 65539 3 True
+cps-wkstn-nvidia4070 scalar 1025 1 True
+cps-wkstn-nvidia4070 scalar 1025 2 True
+cps-wkstn-nvidia4070 scalar 1025 3 True
+cps-wkstn-nvidia4070 scalar 65539 1 True
+cps-wkstn-nvidia4070 scalar 65539 2 True
+cps-wkstn-nvidia4070 scalar 65539 3 True

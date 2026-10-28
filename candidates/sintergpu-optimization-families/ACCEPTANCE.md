@@ -1,5 +1,10 @@
 # Candidate acceptance: retained incumbents
 
+Later point-plane native evidence is in [NATIVE_ACCEPTANCE.md](NATIVE_ACCEPTANCE.md).
+It records a bounded passing configuration on both devices and every earlier
+native failure. The iteration3 Python results below retain their original scope
+and decisions; they are not replaced by the separate native adapter.
+
 Source revision: `bebbbe235836eb944f36861609d4c47ed3995336`. These results
 cover the exact seeded workloads and configurations below. They do not qualify
 a range of sizes, production tracking, gradients beyond the stated Jacobian,

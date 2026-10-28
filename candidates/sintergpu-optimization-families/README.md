@@ -36,6 +36,13 @@ activity or an agent ignoring it. Coordinate other measurements explicitly;
 record foreign GPU users and retain noisy/failing outcomes. The parent released
 both controlled-collection slots before candidate measurements on those devices.
 
+The scheduling-preserving point core and native caller profile are documented in
+[NATIVE_ACCEPTANCE.md](NATIVE_ACCEPTANCE.md). They add a separately compiled
+Slang2026.19 Vulkan configuration with a 256-thread elementwise launch, matched
+polling completion and explicit thread CPU cost. Original Python and blocking
+native results retain their failed/noisy decisions. This profile does not qualify
+the Python path, every size, or an installed/default route.
+
 The pinned archives are the existing repository CI pins: Slang 2026.12 archive
 SHA256 `2409ecc7b6710783e05fd59792558c275c637e3e3c37fb5054fcfc858e570d82` and
 2026.19 `bd6cfc47b7353b2cffa36a866b1584749f76f4b2dbebf6dda26bc3fb40dc3c0e`.
@@ -74,6 +81,7 @@ the harness records into one explicit encoder and submits/waits outside shaders.
 | --- | --- |
 | Point-plane `sinterPointPlane<true>` | FP32 AoSoA generated FMA schedule: initial z product, x then y accumulation; indexed points, sequential targets/normals in the adapter |
 | Point-plane `sinterPointPlane<false>` | Same symbolic residual and Jacobian; scalar generated FMA schedule: initial z product, y then x accumulation |
+| Inlined residual/rotation/scalar exports | Same two FMA schedules; separate functions let adapters preserve generated load/store/arithmetic phases; no resources or launch policy in the core |
 | Cholesky core, capacity6 | Caspar lower-triangle row-major H then b; fixed dimension6; rotation-first pose convention belongs to caller |
 | Cholesky core, capacity18 | SLAM runtime dimension6/12/18, local L stride18; same matrix/b layout and original observation-count guard in adapter |
 | Checked Cholesky helper | Dimension guard and zero output on failure; convenience profile is correctness-tested, not performance-qualified |
@@ -138,6 +146,12 @@ allocation and compilation are outside timing and unchanged between variants.
 Full correctness is checked before and after all measured boundaries. No pose
 tracking, trajectory, application throughput or consumer adoption follows.
 
+That paragraph describes iteration3's Python profile. Native iterations4/5 use
+1,000 ABBA blocks; separately declared precision experiments6/7 use10,000 at two
+specific counts. Their plans retain the actual block count, launch sizes,
+completion mode, CPU affinity and exact compiled artifacts. Collection-control
+metadata excludes an initial contaminated local run set from qualification.
+
 Historical rejected iterations and their recipes are retained. Final per-device,
 per-family gate tables and exact pending/retained decisions are in
 [ACCEPTANCE.md](ACCEPTANCE.md). A failed, noisy, missing or untested configuration
@@ -147,3 +161,18 @@ Raw timing JSON is retained as deterministic, lossless `.json.gz` files to keep
 the source diff reviewable. `evidence/compressed-samples.json` records compressed
 and original byte hashes. `gzip -dc file.json.gz` restores the exact original JSON;
 the report script reads either form. No sample or rejected iteration was dropped.
+
+Native fixture/output bytes are deduplicated losslessly in `evidence/native-blobs`.
+`evidence/native-archive.json` retains every original logical path, byte count and
+SHA256. Restore the exact files before replaying external output checks:
+
+```sh
+python benchmarks/archive_native_evidence.py restore --root .
+python benchmarks/archive_native_evidence.py verify --root .
+python benchmarks/verify_native_evidence.py
+```
+
+See [native/README.md](native/README.md) for building the C++ adapter. Compile the
+pure functions through a real module import with
+`examples/inlined_point_import.slang`; that example has its own illustrative ABI
+and is not the measured generated adapter.

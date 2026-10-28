@@ -1,0 +1,8 @@
+evidence/iteration4/native-radeon/suite-plan.json source/artifacts/fixtures/outputs/oracles/independent processes PASS
+evidence/iteration4/native-rtx4070/suite-plan.json source/artifacts/fixtures/outputs/oracles/independent processes PASS
+evidence/iteration5/native-radeon/suite-plan.json source/artifacts/fixtures/outputs/oracles/independent processes PASS
+evidence/iteration5/native-rtx4070/suite-plan.json source/artifacts/fixtures/outputs/oracles/independent processes PASS
+evidence/iteration6/native-radeon/suite-plan.json source/artifacts/fixtures/outputs/oracles/independent processes PASS
+evidence/iteration6/native-rtx4070/suite-plan.json source/artifacts/fixtures/outputs/oracles/independent processes PASS
+evidence/iteration7/native-radeon/suite-plan.json source/artifacts/fixtures/outputs/oracles/independent processes PASS
+198 completed native processes independently audited; bootstrap decisions remain separate

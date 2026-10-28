@@ -80,12 +80,15 @@ def report(args):
             assert hashlib.sha256(data).hexdigest()==result['sha256']
             raw=json.loads(data)
             assert raw['status']=='passed' and raw['blocks']==plan['blocks'] and raw['warmups_per_boundary_per_variant']==10
+            assert raw['count']==result['count'] and raw['host']['cpu_affinity']==[plan['affinity_cpu']]
             assert raw['hardware']['vendor_id']==int(plan['vendor'],0)
             assert raw['hardware']['device_id']==int(plan['device'],0)
             if 'completion_mode' in plan:assert raw['completion_mode']==plan['completion_mode']
             if 'candidate_local_size' in plan:
                 assert raw['launch']['baseline_local_size']==[1024,1,1]
                 assert raw['launch']['candidate_local_size']==[plan['candidate_local_size'],1,1]
+                assert raw['launch']['baseline_groups_x']==(raw['count']+1023)//1024
+                assert raw['launch']['candidate_groups_x']==(raw['count']+plan['candidate_local_size']-1)//plan['candidate_local_size']
             assert result['oracle']['independent_float64_oracle'] and result['oracle']['full_byte_differential']
             row={key:result[key] for key in ('profile','count','run')};row['boundaries']={}
             row['controlled_collection']=bool(control.get('cooperating_collectors_excluded')) and result['output'] not in control.get('ineligible_outputs',{})

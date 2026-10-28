@@ -1,0 +1,77 @@
+{
+  "schema": "sintergpu.native.point_plane.fixture.v1",
+  "count": 65539,
+  "allocation": 65546,
+  "profile": "aosoa",
+  "params": {
+    "problem_size": 65539,
+    "points_num_alloc": 32769,
+    "targets_num_alloc": 65546,
+    "normals_num_alloc": 65546,
+    "out_0_num_alloc": 65546,
+    "out_1_num_alloc": 65546
+  },
+  "candidate_local_size": 256,
+  "files": {
+    "points.bin": {
+      "bytes": 524304,
+      "sha256": "8318e5901d187c35f3a71a4b79e5027dbbf721dd00238d89541293c8182c2e95",
+      "dtype": "<f4",
+      "shape": [
+        32769,
+        4
+      ]
+    },
+    "targets.bin": {
+      "bytes": 1048736,
+      "sha256": "669929fe7a4dcdd576b51210ba970af8fff8e03a9a58eee3ab2ec93eccad0b18",
+      "dtype": "<f4",
+      "shape": [
+        65546,
+        4
+      ]
+    },
+    "normals.bin": {
+      "bytes": 1048736,
+      "sha256": "a8a260e4ed8d8bfc429d765f6a44325e2f5987fa11492ca041d39f08a12b84aa",
+      "dtype": "<f4",
+      "shape": [
+        65546,
+        4
+      ]
+    },
+    "out_0.bin": {
+      "bytes": 262212,
+      "sha256": "f325465d02bafcab8773141d344b2b2b557342a0475a891878b897d56eec7b18",
+      "dtype": "<f4",
+      "shape": [
+        65553
+      ]
+    },
+    "out_1.bin": {
+      "bytes": 1573132,
+      "sha256": "dc01961defe44a1b50585acee5212e5b5a6cb76305dcf32832aa5b803f5ef365",
+      "dtype": "<f4",
+      "shape": [
+        393283
+      ]
+    },
+    "points_indices.bin": {
+      "bytes": 262156,
+      "sha256": "013839970d96e6655535620753003d2370f9d72fe16e9d2c1314f78bf90741bd",
+      "dtype": "<u4",
+      "shape": [
+        65539
+      ]
+    },
+    "params.bin": {
+      "bytes": 32,
+      "sha256": "a63b362bbf03a511afb0114ecce1f8c18c86884dfa4a507f35952205547637c9"
+    }
+  },
+  "source_sha256": {
+    "baseline": "1ffe081687d156ef3bee9a272e07b8db87c2ea2f856d82a5b762d60275255502",
+    "candidate": "349f631d9d523409a5f8859de3e0480913b4a23ff7455306174c165db9391b4e"
+  },
+  "source_compilation": "external; attach pinned compiler identity, flags, and SPIR-V SHA256"
+}

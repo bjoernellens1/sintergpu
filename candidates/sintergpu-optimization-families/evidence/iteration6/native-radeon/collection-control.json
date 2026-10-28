@@ -1,0 +1,10 @@
+{
+  "cooperating_collectors_excluded": true,
+  "scope": "Advisory GPU lock and coordinated exclusion of parent measurement/compiler jobs; ordinary desktop activity remains possible and raw jitter is retained.",
+  "parent_release": "Explicit terminal release before this experiment",
+  "ineligible_outputs": {
+    "aosoa-1025-run1.json": "Initial local report computation overlapped collection startup; retained as uncontrolled/pending. Fresh iteration7 is separately declared.",
+    "aosoa-1025-run2.json": "Initial local report computation overlapped collection startup; retained as uncontrolled/pending. Fresh iteration7 is separately declared.",
+    "aosoa-1025-run3.json": "Initial local report computation overlapped collection startup; retained as uncontrolled/pending. Fresh iteration7 is separately declared."
+  }
+}

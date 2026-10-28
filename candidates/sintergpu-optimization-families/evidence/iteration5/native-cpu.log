@@ -1,0 +1,2 @@
+CPU fixture and oracle checks passed for both profiles and all seven representative counts
+73 native CPU-only CLI/fixture/SPIR-V checks passed; no GPU work performed
