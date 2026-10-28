@@ -2,7 +2,7 @@
 
 This is an experimental implementation in progress. Full consolidation and
 cross-vendor qualification remain incomplete. Evidence below was obtained on
-2026-10-27 and does not transfer automatically to changed sources or compilers.
+2026-10-27–28 and does not transfer automatically to changed sources or compilers.
 
 | Area | Verified scope / remaining gate |
 | --- | --- |
@@ -19,10 +19,15 @@ cross-vendor qualification remain incomplete. Evidence below was obtained on
 | Fusion adoption | Separate/fused outputs match; exploratory shared-device runs do not meet the controlled three-run transfer-inclusive acceptance gate. Separate pass stays the default |
 | Compiler matrix | All 137 entries compile and reflect under pinned Slang 2026.12 and 2026.19; shared reflected ABI fields match and are required by CI; SlangPy's bundled compiler identity is recorded separately |
 | Packaging | Universal Python wheel installs and validates outside checkout without GPU dependencies; CMake source/header install available; optional native runtime packages remain separate |
-| Timing reference | All 137 catalog entries listed; paired CPU-reference/GPU fixture timings for 30 operations (68 current workloads, 50 samples; 58 historical rows retained), 107 portable entries and four optional native variants remain pending. Raw JSON, generated table, installed CLI/CMake data; no optimization or production-throughput claim |
+| Timing reference | All 137 catalog entries listed; paired CPU-reference/GPU fixture timings for 43 operations (106 current workloads, 50 samples; 126 historical rows retained), 94 portable entries and four optional native variants remain pending. Raw JSON, generated table, installed CLI/CMake data; no optimization or production-throughput claim |
+| Candidate intake | [Dedicated candidate branches and draft PRs](superpowers/specs/2026-10-28-kernel-candidate-intake-design.md), validation evidence and separate reviewed promotion. Rewrites must outperform or stay on par; no automated candidate qualification service is deployed |
 | Overlap audit | 22 semantic groups reviewed; one exact algebra duplicate, 14 same-operation/different-contract groups, 5 shared helpers and 2 related-only groups. Not an exhaustive audit of all 249 accessible repositories |
 | NVIDIA | Selected RTX 3090 workstation unreachable; execution pending |
-| Release lifecycle | [0.1.8 is published and immutable](https://github.com/bjoernellens1/sintergpu/releases/tag/v0.1.8); hosted attestations and released checksums verified. Seven registration PRs delivered per release; a real 0.1.0 retry reused all seven PR URLs and commit hashes. The 0.1.8 delivery, verified changelog excerpts and fresh check annotations are retained in qualification/delivery-0.1.8.json. StereoForge integrity checks passed; its default CPU workflow still has a benchmark import-path failure addressed in the opt-in migration PR; six private consumers' hosted checks were blocked before starting by account billing/spending restrictions. Automatic publisher-App and downstream-App execution require dedicated configuration and remain unverified |
+| Release lifecycle | [0.1.9 is published and immutable](https://github.com/bjoernellens1/sintergpu/releases/tag/v0.1.9); hosted attestations and released checksums verified. Seven registration PRs delivered per release; a real 0.1.0 retry reused all seven PR URLs and commit hashes. The 0.1.9 delivery, verified changelog excerpts and fresh check annotations are retained in qualification/delivery-0.1.9.json. StereoForge integrity checks passed; its default CPU workflow still has a benchmark import-path failure addressed in the opt-in migration PR; six private consumers' hosted checks were blocked before starting by account billing/spending restrictions. Automatic publisher-App and downstream-App execution require dedicated configuration and remain unverified |
+
+The upcoming [0.2.0 batch](https://github.com/bjoernellens1/sintergpu/pull/12)
+corrects geometry/fusion float32 rounding and records the timing coverage above.
+Those changes remain under review until that PR is merged and released.
 
 Do not infer full application, physical camera, tracking accuracy or cross-vendor
 qualification from a kernel fixture, CPU test, compiler pass or historical result.
