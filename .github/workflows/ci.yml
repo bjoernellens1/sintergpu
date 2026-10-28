@@ -104,6 +104,28 @@ jobs:
         run: |
           python tools/compile_shaders.py --slangc /tmp/slang/bin/slangc --output "build/compile-${SLANG_VERSION}"
           python -c 'import json,os,pathlib; p=pathlib.Path("build/compile-"+os.environ["SLANG_VERSION"]+"/results.json"); r=json.loads(p.read_text()); r["pinned_release"]=os.environ["SLANG_VERSION"]; p.write_text(json.dumps(r,indent=2)+"\n")'
+      - name: Verify camera registration ABI and capabilities (Slang ${{ matrix.version }})
+        env:
+          SLANG_VERSION: ${{ matrix.version }}
+          SINTERGPU_CAMERA_COMPILER_VERSION: ${{ matrix.version }}
+          SINTERGPU_SPIRV_DIS: /usr/bin/spirv-dis
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y spirv-tools
+          python -m pip install pytest 'numpy>=2'
+          test -x /tmp/slang/bin/slangc
+          test -x "$SINTERGPU_SPIRV_DIS"
+          test "$(/tmp/slang/bin/slangc -version 2>&1)" = "$SLANG_VERSION"
+          export "SINTERGPU_SLANGC_${SLANG_VERSION//./_}=/tmp/slang/bin/slangc"
+          PYTHONPATH=src:. python -m pytest tests/test_vkl_camera_registration_hot_path.py -v --junitxml=build/camera-abi.xml
+          python - <<'PYCHECK'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('build/camera-abi.xml').getroot()
+          suites = [root] if root.tag == 'testsuite' else root.findall('testsuite')
+          tests = sum(int(s.get('tests', 0)) for s in suites)
+          skipped = sum(int(s.get('skipped', 0)) for s in suites)
+          assert tests >= 19 and skipped == 0, f'camera ABI gate: {tests} tests, {skipped} skipped'
+          PYCHECK
       - name: Verify point-plane module imports, instructions and ABI
         env:
           SLANG_VERSION: ${{ matrix.version }}

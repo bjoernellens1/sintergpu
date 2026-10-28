@@ -4284,7 +4284,7 @@
     "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf",
     "qualification/delivery-0.1.5.json": "5b0343aa119753b572aedee0982a5dc7ccd0a804595cb037492ca2b3d85fc9a2",
     "benchmarks/results/locus-cpu-gpu-8060s.json": "36f05cb3ac40bf40f5f1f878884495bcd6c933767d112e58e89a4e3290388ea2",
-    "src/sintergpu/data/timings.json": "42d4f4a88de9eae062b8401e092eac747924ad8687cf8dee082e606485f861b1",
+    "src/sintergpu/data/timings.json": "aac018b6b54e97e4e0ead17e971177cf8cc190f5598dc6ab9dff7972bfd2399c",
     "docs/kernel-timings.md": "638381264305a6258b2991b1a2fd412a18b69f3c1a29fc32631f3d677970d455",
     "qualification/delivery-0.1.6.json": "61fbdbde082cf212b82804e27fd16ee266479c1273b9eb13df9488a98d5921b8",
     "benchmarks/results/color-cpu-gpu-8060s.json": "1d34cd705e7096f28651c04521958027e60c038b65648a83baa8332c863ab864",
@@ -4618,7 +4618,8 @@
     "benchmarks/results/locus-cpu-gpu-4070ti-0.2.6.json": "47ef33ad63798215b2d221c00a508ccffbe3113ba85d2c7da0c7d7ca077b44e4",
     "qualification/evidence/vkl-camera-collector-4070ti-0.2.6-locus.log": "2b328440a3e4a71e6d754a393772422f9da40ead597a8446215383d973881e0e",
     "qualification/evidence/vkl-camera-collector-4070ti-0.2.6-source-after.sha256": "6a640c60da85bddeec8e72fb6d9e3ce3bc377c9a7acf08eb4a14a2f1f4da101c",
-    "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.6.json": "2627a6b62f457910fbc1deaadb2e7351212077d79124be9eaa86d0bdd175696d"
+    "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.6.json": "2627a6b62f457910fbc1deaadb2e7351212077d79124be9eaa86d0bdd175696d",
+    "qualification/evidence/vkl-camera-final-cpu-0.2.6.log": "ba8cf71931193ca8abc30ff28349b200f1fb9ba9948458d8e5697bf63e166d1c"
   },
   "pending_gates": [
     "Camera full-domain, gradient and downstream application qualification beyond retained80 canonical states on both devices; performance no-regression and adoption remain pending",
@@ -4916,13 +4917,13 @@
     "timing_scope": "32 source-current fixture stage rows per device across 7 pipelines; complete pipeline and transfer costs separate; no controlled no-regression comparison.",
     "limitations": "The initial72-state archive is retained historical because initializer/VERSION were omitted from execution closure; corrected80-state closure binds both. Historical0.2.5 reprojection archive has the same provenance limitation, without demonstrated numerical impact.",
     "full_cpu_verification": {
-      "passed": 864,
+      "passed": 873,
       "skipped": 377,
       "subtests_passed": 160,
       "warning": "Expected extreme-input NumPy overflow warning in fixture exporter test.",
-      "evidence": "qualification/evidence/vkl-camera-full-cpu-fixed-0.2.6.log",
+      "evidence": "qualification/evidence/vkl-camera-final-cpu-0.2.6.log",
       "prior_failed_attempt": "qualification/evidence/vkl-camera-full-cpu-initial-0.2.6.log",
-      "scope": "Full CPU suite after fixing established timing coverage assertion to include the separate nine camera dispatches; GPU tests explicitly skipped."
+      "scope": "Full CPU suite after timing-registry compaction and compiler test portability repair; both pinned camera compiler lanes explicitly enabled, GPU tests skipped."
     }
   }
 }

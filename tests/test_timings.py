@@ -138,3 +138,13 @@ def test_current_release_qualification_counts_agree_with_timing_database():
     for gate in qualification['pending_gates']:
         count=re.search(r'CPU/GPU baseline timing coverage for (\d+) remaining portable',gate)
         if count:assert int(count[1])==db['coverage']['pending']
+
+
+def test_timing_registry_serialization_is_compact_and_semantics_preserving():
+    import json
+    from tools.update_timings import serialize_registry
+    registry = {'measurements': [{'metrics': {'cpu_reference_wall_ms': {'samples': [1.0, 2.0, 3.0]}}, 'environment': {'gpu': 'example'}}]}
+    encoded = serialize_registry(registry)
+    assert json.loads(encoded) == registry
+    assert len(encoded) < len(json.dumps(registry, indent=2))
+    assert encoded == serialize_registry(registry)
