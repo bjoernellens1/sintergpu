@@ -1,0 +1,4335 @@
+{
+  "version": "unpromoted-candidate",
+  "pinned_release": "2026.12",
+  "compiler_version": "2026.12",
+  "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+  "target": "spirv_1_5",
+  "entries": [
+    {
+      "operation": "solve6-caspar-baseline",
+      "source_sha256": "0ec699896352f4d9cc594cea883ff6f1655eb997e6286d3b9971f14bbe8ceb42",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/solve6-caspar-baseline.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/solve6-caspar-baseline.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/solve6-caspar-baseline.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "a043cb423b7e18f6c9b9b69dc29ac9d50e50854e974dea2fc826edf67749e636",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "inputTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "delta",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "solveParams",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "SolveParams",
+                "fields": [
+                  {
+                    "name": "damping",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "float32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "SolveParams",
+                  "fields": [
+                    {
+                      "name": "damping",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "float32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 16,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "threadGroupSize": [
+              1,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "inputTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "delta",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "status",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "solveParams",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "solve6-caspar-candidate",
+      "source_sha256": "769efe77d55886c08e1ead960809cc4fedcbe872463073ed2902c4af98c97146",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/solve6-caspar-candidate.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/solve6-caspar-candidate.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/solve6-caspar-candidate.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "39fc48013a7ff6e93be9a4fefcbf95657120159c36ea35ded7ea8a49be50af94",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "inputTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "delta",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "solveParams",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "SolveParams",
+                "fields": [
+                  {
+                    "name": "damping",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "float32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "SolveParams",
+                  "fields": [
+                    {
+                      "name": "damping",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "float32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 16,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "threadGroupSize": [
+              1,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "inputTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "delta",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "status",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "solveParams",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "solve6-schur-baseline",
+      "source_sha256": "35763c996f17b51b794118cbae47d8d2357f3415b4a7d9427abed54910730028",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/solve6-schur-baseline.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/solve6-schur-baseline.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/solve6-schur-baseline.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "5c70cecd98f9d7b2db803d5b8e9ad3adab37892e6fd486c7ca6a47261a94a749",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "inputTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "delta",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "cfg",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "Config",
+                "fields": [
+                  {
+                    "name": "terms",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "activeFrames",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 4,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "dofs",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 8,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "damping",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "float32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 12,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "Config",
+                  "fields": [
+                    {
+                      "name": "terms",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "activeFrames",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 4,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "dofs",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 8,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "damping",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "float32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 12,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 16,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "threadGroupSize": [
+              1,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "inputTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "delta",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "status",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "cfg",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "solve6-schur-candidate",
+      "source_sha256": "c3c16f00f1d82d7ea95def7ca4a26ca227e6b07129f9b1d694733cd2c054132a",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/solve6-schur-candidate.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/solve6-schur-candidate.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/solve6-schur-candidate.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "9dd5080a62f28663b00a34d34d16097b3ab0f44df6cf69d121596779ffabd7ef",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "inputTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "delta",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "cfg",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "Config",
+                "fields": [
+                  {
+                    "name": "terms",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "activeFrames",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 4,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "dofs",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 8,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "damping",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "float32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 12,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "Config",
+                  "fields": [
+                    {
+                      "name": "terms",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "activeFrames",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 4,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "dofs",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 8,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "damping",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "float32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 12,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 16,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "threadGroupSize": [
+              1,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "inputTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "delta",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "status",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "cfg",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "solve12-schur-baseline",
+      "source_sha256": "35763c996f17b51b794118cbae47d8d2357f3415b4a7d9427abed54910730028",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/solve12-schur-baseline.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/solve12-schur-baseline.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/solve12-schur-baseline.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "5c70cecd98f9d7b2db803d5b8e9ad3adab37892e6fd486c7ca6a47261a94a749",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "inputTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "delta",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "cfg",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "Config",
+                "fields": [
+                  {
+                    "name": "terms",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "activeFrames",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 4,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "dofs",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 8,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "damping",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "float32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 12,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "Config",
+                  "fields": [
+                    {
+                      "name": "terms",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "activeFrames",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 4,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "dofs",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 8,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "damping",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "float32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 12,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 16,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "threadGroupSize": [
+              1,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "inputTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "delta",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "status",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "cfg",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "solve12-schur-candidate",
+      "source_sha256": "c3c16f00f1d82d7ea95def7ca4a26ca227e6b07129f9b1d694733cd2c054132a",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/solve12-schur-candidate.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/solve12-schur-candidate.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/solve12-schur-candidate.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "9dd5080a62f28663b00a34d34d16097b3ab0f44df6cf69d121596779ffabd7ef",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "inputTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "delta",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "cfg",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "Config",
+                "fields": [
+                  {
+                    "name": "terms",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "activeFrames",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 4,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "dofs",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 8,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "damping",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "float32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 12,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "Config",
+                  "fields": [
+                    {
+                      "name": "terms",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "activeFrames",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 4,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "dofs",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 8,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "damping",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "float32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 12,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 16,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "threadGroupSize": [
+              1,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "inputTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "delta",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "status",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "cfg",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "solve18-schur-baseline",
+      "source_sha256": "35763c996f17b51b794118cbae47d8d2357f3415b4a7d9427abed54910730028",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/solve18-schur-baseline.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/solve18-schur-baseline.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/solve18-schur-baseline.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "5c70cecd98f9d7b2db803d5b8e9ad3adab37892e6fd486c7ca6a47261a94a749",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "inputTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "delta",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "cfg",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "Config",
+                "fields": [
+                  {
+                    "name": "terms",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "activeFrames",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 4,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "dofs",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 8,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "damping",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "float32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 12,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "Config",
+                  "fields": [
+                    {
+                      "name": "terms",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "activeFrames",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 4,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "dofs",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 8,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "damping",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "float32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 12,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 16,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "threadGroupSize": [
+              1,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "inputTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "delta",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "status",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "cfg",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "solve18-schur-candidate",
+      "source_sha256": "c3c16f00f1d82d7ea95def7ca4a26ca227e6b07129f9b1d694733cd2c054132a",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/solve18-schur-candidate.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/solve18-schur-candidate.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/solve18-schur-candidate.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "9dd5080a62f28663b00a34d34d16097b3ab0f44df6cf69d121596779ffabd7ef",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "inputTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "delta",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "cfg",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "Config",
+                "fields": [
+                  {
+                    "name": "terms",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "activeFrames",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 4,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "dofs",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 8,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "damping",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "float32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 12,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "Config",
+                  "fields": [
+                    {
+                      "name": "terms",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "activeFrames",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 4,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "dofs",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 8,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "damping",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "float32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 12,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 16,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "threadGroupSize": [
+              1,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "inputTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "delta",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "status",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "cfg",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "point-aosoa-baseline",
+      "source_sha256": "1ffe081687d156ef3bee9a272e07b8db87c2ea2f856d82a5b762d60275255502",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/point-aosoa-baseline.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/point-aosoa-baseline.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/point-aosoa-baseline.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "fbe9d8650eb92821a2e6ed7e27fb3fc2fec9f8271ec15a9c1a34a4f9c45f5495",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "points",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "targets",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "normals",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "out_0",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "out_1",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 4
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "points_indices",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 5
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "params",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 6
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "CasparParams",
+                "fields": [
+                  {
+                    "name": "problem_size",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "points_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 4,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "targets_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 8,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "normals_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 12,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "out_0_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 16,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "out_1_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 20,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "CasparParams",
+                  "fields": [
+                    {
+                      "name": "problem_size",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "points_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 4,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "targets_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 8,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "normals_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 12,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "out_0_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 16,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "out_1_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 20,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 32,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "parameters": [
+              {
+                "name": "dispatchThreadID",
+                "semanticName": "SV_DISPATCHTHREADID",
+                "type": {
+                  "kind": "vector",
+                  "elementCount": 3,
+                  "elementType": {
+                    "kind": "scalar",
+                    "scalarType": "uint32"
+                  }
+                }
+              }
+            ],
+            "threadGroupSize": [
+              1024,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "points",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "targets",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "normals",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_0",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_1",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 4,
+                  "used": 1
+                }
+              },
+              {
+                "name": "points_indices",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 5,
+                  "used": 1
+                }
+              },
+              {
+                "name": "params",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 6,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "point-aosoa-candidate",
+      "source_sha256": "0d0592ea63f4fc232a40ac1d89f0557d744e483385fcafe65277e9cce1974205",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/point-aosoa-candidate.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/point-aosoa-candidate.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/point-aosoa-candidate.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "cb86c541bdcb59dc9c16eaa01aab2138f432174461fe2e6a7befa25bd8ce9a16",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "points",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "targets",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "normals",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "out_0",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "out_1",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 4
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "points_indices",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 5
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "params",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 6
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "CasparParams",
+                "fields": [
+                  {
+                    "name": "problem_size",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "points_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 4,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "targets_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 8,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "normals_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 12,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "out_0_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 16,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "out_1_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 20,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "CasparParams",
+                  "fields": [
+                    {
+                      "name": "problem_size",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "points_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 4,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "targets_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 8,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "normals_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 12,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "out_0_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 16,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "out_1_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 20,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 32,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "parameters": [
+              {
+                "name": "tid",
+                "semanticName": "SV_DISPATCHTHREADID",
+                "type": {
+                  "kind": "vector",
+                  "elementCount": 3,
+                  "elementType": {
+                    "kind": "scalar",
+                    "scalarType": "uint32"
+                  }
+                }
+              }
+            ],
+            "threadGroupSize": [
+              1024,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "points",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "targets",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "normals",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_0",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_1",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 4,
+                  "used": 1
+                }
+              },
+              {
+                "name": "points_indices",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 5,
+                  "used": 1
+                }
+              },
+              {
+                "name": "params",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 6,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "point-scalar-baseline",
+      "source_sha256": "8fc8c09c4339891007947e952c72ea36ab7f0ba3159d2f7dca51f5f09853525f",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/point-scalar-baseline.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/point-scalar-baseline.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/point-scalar-baseline.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "b157c086007af218bb56cb87bafa7bbea0f4b3c9eb3cb204811e2f3eb2e60a88",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "points",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "targets",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "normals",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "out_0",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "out_1",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 4
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "points_indices",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 5
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "params",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 6
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "CasparParams",
+                "fields": [
+                  {
+                    "name": "problem_size",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "points_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 4,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "targets_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 8,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "normals_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 12,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "out_0_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 16,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "out_1_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 20,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "CasparParams",
+                  "fields": [
+                    {
+                      "name": "problem_size",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "points_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 4,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "targets_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 8,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "normals_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 12,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "out_0_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 16,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "out_1_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 20,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 32,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "parameters": [
+              {
+                "name": "tid",
+                "semanticName": "SV_DISPATCHTHREADID",
+                "type": {
+                  "kind": "vector",
+                  "elementCount": 3,
+                  "elementType": {
+                    "kind": "scalar",
+                    "scalarType": "uint32"
+                  }
+                }
+              }
+            ],
+            "threadGroupSize": [
+              1024,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "points",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "targets",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "normals",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_0",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_1",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 4,
+                  "used": 1
+                }
+              },
+              {
+                "name": "points_indices",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 5,
+                  "used": 1
+                }
+              },
+              {
+                "name": "params",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 6,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "point-scalar-candidate",
+      "source_sha256": "10b541a3d1ffd31a5f6c4fc15cd8817e13c47c0a16651d3565c2c34caaf3ac1c",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/point-scalar-candidate.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/point-scalar-candidate.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/point-scalar-candidate.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "fd8b560b648624c300a94238c5d3991af57fb0f59d44ea13a8c69329d80b0ddb",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "points",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "targets",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "normals",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "out_0",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "out_1",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 4
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "points_indices",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 5
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "params",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 6
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "CasparParams",
+                "fields": [
+                  {
+                    "name": "problem_size",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "points_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 4,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "targets_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 8,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "normals_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 12,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "out_0_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 16,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  },
+                  {
+                    "name": "out_1_num_alloc",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 20,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "CasparParams",
+                  "fields": [
+                    {
+                      "name": "problem_size",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "points_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 4,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "targets_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 8,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "normals_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 12,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "out_0_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 16,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    },
+                    {
+                      "name": "out_1_num_alloc",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 20,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 32,
+                  "elementStride": 0
+                }
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "parameters": [
+              {
+                "name": "tid",
+                "semanticName": "SV_DISPATCHTHREADID",
+                "type": {
+                  "kind": "vector",
+                  "elementCount": 3,
+                  "elementType": {
+                    "kind": "scalar",
+                    "scalarType": "uint32"
+                  }
+                }
+              }
+            ],
+            "threadGroupSize": [
+              1024,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "points",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "targets",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "normals",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_0",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_1",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 4,
+                  "used": 1
+                }
+              },
+              {
+                "name": "points_indices",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 5,
+                  "used": 1
+                }
+              },
+              {
+                "name": "params",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 6,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "pointPlaneGNWorkgroup",
+      "source_sha256": "311a260347a0efbd4368a612b7407b9ece22356a2f9cdea1b60df19ccebc1ef7",
+      "entry": "pointPlaneGNWorkgroup",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/pointPlaneGNWorkgroup.slang",
+        "-entry",
+        "pointPlaneGNWorkgroup",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/pointPlaneGNWorkgroup.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/pointPlaneGNWorkgroup.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "warning[E41012]: profile implicitly upgraded\n  --> evidence/iteration3/compilers/2026.12/pointPlaneGNWorkgroup.slang:40:6\n   |\n40 | void pointPlaneGNWorkgroup(uint3 tid:SV_DispatchThreadID,uint3 gid:SV_GroupID,uint lane:SV_GroupIndex) {\n   |      ^^^^^^^^^^^^^^^^^^^^^ entry point 'pointPlaneGNWorkgroup' uses additional capabilities that are not part of the specified profile 'spirv_1_5'. The profile setting is automatically updated to include these capabilities: 'spvGroupNonUniform + spvGroupNonUniformArithmetic'\n---'\n",
+      "spirv_sha256": "4135160aded5e0f346334f0e901f53f78ba1bf2c5dd047a3746e4ce3572d21e0",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "cfg",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "PointPlaneGNParams",
+                "fields": [
+                  {
+                    "name": "count",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "PointPlaneGNParams",
+                  "fields": [
+                    {
+                      "name": "count",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 16,
+                  "elementStride": 0
+                }
+              }
+            }
+          },
+          {
+            "name": "points",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "targets",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "normals",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "points_indices",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 4
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "out_0",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 5
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "out_1",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 6
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "outputTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 7
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "pointPlaneGNWorkgroup",
+            "stage": "compute",
+            "parameters": [
+              {
+                "name": "tid",
+                "semanticName": "SV_DISPATCHTHREADID",
+                "type": {
+                  "kind": "vector",
+                  "elementCount": 3,
+                  "elementType": {
+                    "kind": "scalar",
+                    "scalarType": "uint32"
+                  }
+                }
+              },
+              {
+                "name": "gid",
+                "semanticName": "SV_GROUPID",
+                "type": {
+                  "kind": "vector",
+                  "elementCount": 3,
+                  "elementType": {
+                    "kind": "scalar",
+                    "scalarType": "uint32"
+                  }
+                }
+              },
+              {
+                "name": "lane",
+                "semanticName": "SV_GROUPINDEX",
+                "type": {
+                  "kind": "scalar",
+                  "scalarType": "uint32"
+                }
+              }
+            ],
+            "threadGroupSize": [
+              64,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "cfg",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "points",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "targets",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "normals",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              },
+              {
+                "name": "points_indices",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 4,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_0",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 5,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_1",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 6,
+                  "used": 1
+                }
+              },
+              {
+                "name": "outputTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 7,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "pointPlaneGNSubgroup",
+      "source_sha256": "311a260347a0efbd4368a612b7407b9ece22356a2f9cdea1b60df19ccebc1ef7",
+      "entry": "pointPlaneGNSubgroup",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/pointPlaneGNSubgroup.slang",
+        "-entry",
+        "pointPlaneGNSubgroup",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/pointPlaneGNSubgroup.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/pointPlaneGNSubgroup.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "warning[E41012]: profile implicitly upgraded\n  --> evidence/iteration3/compilers/2026.12/pointPlaneGNSubgroup.slang:44:6\n   |\n44 | void pointPlaneGNSubgroup(uint3 tid:SV_DispatchThreadID,uint3 gid:SV_GroupID,uint lane:SV_GroupIndex) {\n   |      ^^^^^^^^^^^^^^^^^^^^ entry point 'pointPlaneGNSubgroup' uses additional capabilities that are not part of the specified profile 'spirv_1_5'. The profile setting is automatically updated to include these capabilities: 'spvGroupNonUniform + spvGroupNonUniformArithmetic'\n---'\n",
+      "spirv_sha256": "de78886bbfda1c66832aca7758887bb5c657bec62e99babb35546661fbc6753e",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "cfg",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "constantBuffer",
+              "elementType": {
+                "kind": "struct",
+                "name": "PointPlaneGNParams",
+                "fields": [
+                  {
+                    "name": "count",
+                    "type": {
+                      "kind": "scalar",
+                      "scalarType": "uint32"
+                    },
+                    "binding": {
+                      "kind": "uniform",
+                      "offset": 0,
+                      "size": 4,
+                      "elementStride": 0
+                    }
+                  }
+                ]
+              },
+              "containerVarLayout": {
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0
+                }
+              },
+              "elementVarLayout": {
+                "type": {
+                  "kind": "struct",
+                  "name": "PointPlaneGNParams",
+                  "fields": [
+                    {
+                      "name": "count",
+                      "type": {
+                        "kind": "scalar",
+                        "scalarType": "uint32"
+                      },
+                      "binding": {
+                        "kind": "uniform",
+                        "offset": 0,
+                        "size": 4,
+                        "elementStride": 0
+                      }
+                    }
+                  ]
+                },
+                "binding": {
+                  "kind": "uniform",
+                  "offset": 0,
+                  "size": 16,
+                  "elementStride": 0
+                }
+              }
+            }
+          },
+          {
+            "name": "points",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "targets",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "normals",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 3
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "points_indices",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 4
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          },
+          {
+            "name": "out_0",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 5
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "out_1",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 6
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "outputTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 7
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "pointPlaneGNSubgroup",
+            "stage": "compute",
+            "parameters": [
+              {
+                "name": "tid",
+                "semanticName": "SV_DISPATCHTHREADID",
+                "type": {
+                  "kind": "vector",
+                  "elementCount": 3,
+                  "elementType": {
+                    "kind": "scalar",
+                    "scalarType": "uint32"
+                  }
+                }
+              },
+              {
+                "name": "gid",
+                "semanticName": "SV_GROUPID",
+                "type": {
+                  "kind": "vector",
+                  "elementCount": 3,
+                  "elementType": {
+                    "kind": "scalar",
+                    "scalarType": "uint32"
+                  }
+                }
+              },
+              {
+                "name": "lane",
+                "semanticName": "SV_GROUPINDEX",
+                "type": {
+                  "kind": "scalar",
+                  "scalarType": "uint32"
+                }
+              }
+            ],
+            "threadGroupSize": [
+              64,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "cfg",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "points",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "targets",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              },
+              {
+                "name": "normals",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 3,
+                  "used": 1
+                }
+              },
+              {
+                "name": "points_indices",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 4,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_0",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 5,
+                  "used": 1
+                }
+              },
+              {
+                "name": "out_1",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 6,
+                  "used": 1
+                }
+              },
+              {
+                "name": "outputTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 7,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    },
+    {
+      "operation": "import-helpers",
+      "source_sha256": "fc0657d6ebbb59b768136aef8fa25d6e58ae88abf19be6dd9b29982e914dac31",
+      "entry": "main",
+      "command": [
+        "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+        "evidence/iteration3/compilers/2026.12/import-helpers.slang",
+        "-entry",
+        "main",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-fp-mode",
+        "precise",
+        "-O3",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels",
+        "-I",
+        "/home/bjoern/.codex/worktrees/kernel-families-candidates/sintergpu/candidates/sintergpu-optimization-families/kernels/optimization",
+        "-o",
+        "evidence/iteration3/compilers/2026.12/import-helpers.spv",
+        "-reflection-json",
+        "evidence/iteration3/compilers/2026.12/import-helpers.reflection.json"
+      ],
+      "returncode": 0,
+      "diagnostics": "",
+      "spirv_sha256": "3ce9692d9cceb4e0de88d0b5d333cc82157bc9fcc9d5bfad4488e582cfd0f49d",
+      "reflection": {
+        "parameters": [
+          {
+            "name": "reducedTerms",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 0
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "solution",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 1
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "float32"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "binding": {
+              "kind": "descriptorTableSlot",
+              "index": 2
+            },
+            "type": {
+              "kind": "resource",
+              "baseShape": "structuredBuffer",
+              "access": "readWrite",
+              "resultType": {
+                "kind": "scalar",
+                "scalarType": "uint32"
+              }
+            }
+          }
+        ],
+        "entryPoints": [
+          {
+            "name": "main",
+            "stage": "compute",
+            "threadGroupSize": [
+              1,
+              1,
+              1
+            ],
+            "bindings": [
+              {
+                "name": "reducedTerms",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 0,
+                  "used": 1
+                }
+              },
+              {
+                "name": "solution",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 1,
+                  "used": 1
+                }
+              },
+              {
+                "name": "status",
+                "binding": {
+                  "kind": "descriptorTableSlot",
+                  "index": 2,
+                  "used": 1
+                }
+              }
+            ]
+          }
+        ],
+        "bindlessSpaceIndex": 1
+      }
+    }
+  ],
+  "gpu_execution": "not performed by this standalone compiler lane",
+  "status": "passed"
+}

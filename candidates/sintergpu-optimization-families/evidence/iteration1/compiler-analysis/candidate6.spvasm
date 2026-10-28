@@ -1,0 +1,440 @@
+; SPIR-V
+; Version: 1.5
+; Generator: Khronos Slang Compiler; 0
+; Bound: 263
+; Schema: 0
+OpCapability Shader
+OpExtension "SPV_KHR_storage_buffer_storage_class"
+%1 = OpExtInstImport "GLSL.std.450"
+OpMemoryModel Logical GLSL450
+OpEntryPoint GLCompute %main "main" %solveParams %inputTerms %status %delta
+OpExecutionMode %main LocalSize 1 1 1
+
+; Debug Information
+OpSource Slang 1
+OpName %x "x"                                       ; id %7
+OpName %x "x"                                       ; id %7
+OpName %SolveParams_std140 "SolveParams_std140"     ; id %8
+OpMemberName %SolveParams_std140 0 "damping"
+OpName %solveParams "solveParams"                   ; id %3
+OpName %StructuredBuffer "StructuredBuffer"         ; id %9
+OpMemberName %StructuredBuffer 0 "__member0"
+OpName %inputTerms "inputTerms"                     ; id %4
+OpName %RWStructuredBuffer "RWStructuredBuffer"     ; id %10
+OpMemberName %RWStructuredBuffer 0 "__member0"
+OpName %status "status"                             ; id %5
+OpName %RWStructuredBuffer_0 "RWStructuredBuffer"   ; id %11
+OpMemberName %RWStructuredBuffer_0 0 "__member0"
+OpName %delta "delta"                               ; id %6
+OpName %i "i"                                       ; id %12
+OpName %main "main"                                 ; id %2
+
+; Annotations
+OpDecorate %SolveParams_std140 Block
+OpMemberDecorate %SolveParams_std140 0 Offset 0
+OpDecorate %solveParams Binding 3
+OpDecorate %solveParams DescriptorSet 0
+OpDecorate %_ptr_StorageBuffer_float ArrayStride 4
+OpDecorate %_runtimearr_float ArrayStride 4
+OpDecorate %StructuredBuffer Block
+OpMemberDecorate %StructuredBuffer 0 Offset 0
+OpDecorate %inputTerms Binding 0
+OpDecorate %inputTerms DescriptorSet 0
+OpDecorate %inputTerms NonWritable
+OpDecorate %_ptr_StorageBuffer_uint ArrayStride 4
+OpDecorate %_runtimearr_uint ArrayStride 4
+OpDecorate %RWStructuredBuffer Block
+OpMemberDecorate %RWStructuredBuffer 0 Offset 0
+OpDecorate %status Binding 2
+OpDecorate %status DescriptorSet 0
+OpDecorate %RWStructuredBuffer_0 Block
+OpMemberDecorate %RWStructuredBuffer_0 0 Offset 0
+OpDecorate %delta Binding 1
+OpDecorate %delta DescriptorSet 0
+
+; Types, variables and constants
+%void = OpTypeVoid
+%18 = OpTypeFunction %void
+%float = OpTypeFloat 32
+%int = OpTypeInt 32 1
+%int_6 = OpConstant %int 6
+%_arr_float_int_6 = OpTypeArray %float %int_6
+%_ptr_Function__arr_float_int_6 = OpTypePointer Function %_arr_float_int_6
+%uint = OpTypeInt 32 0
+%SolveParams_std140 = OpTypeStruct %float           ; Block
+%_ptr_Uniform_SolveParams_std140 = OpTypePointer Uniform %SolveParams_std140
+%int_0 = OpConstant %int 0
+%_ptr_Uniform_float = OpTypePointer Uniform %float
+%bool = OpTypeBool
+%int_36 = OpConstant %int 36
+%_arr_float_int_36 = OpTypeArray %float %int_36
+%_ptr_Function__arr_float_int_36 = OpTypePointer Function %_arr_float_int_36
+%_ptr_Function_float = OpTypePointer Function %float
+%uint_0 = OpConstant %uint 0
+%uint_6 = OpConstant %uint 6
+%float_0 = OpConstant %float 0
+%uint_1 = OpConstant %uint 1
+%true = OpConstantTrue %bool
+%false = OpConstantFalse %bool
+%uint_36 = OpConstant %uint 36
+%_ptr_StorageBuffer_float = OpTypePointer StorageBuffer %float  ; ArrayStride 4
+%_runtimearr_float = OpTypeRuntimeArray %float                  ; ArrayStride 4
+%StructuredBuffer = OpTypeStruct %_runtimearr_float             ; Block
+%_ptr_StorageBuffer_StructuredBuffer = OpTypePointer StorageBuffer %StructuredBuffer
+%float_1 = OpConstant %float 1
+%int_1 = OpConstant %int 1
+%_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint    ; ArrayStride 4
+%_runtimearr_uint = OpTypeRuntimeArray %uint                    ; ArrayStride 4
+%RWStructuredBuffer = OpTypeStruct %_runtimearr_uint            ; Block
+%_ptr_StorageBuffer_RWStructuredBuffer = OpTypePointer StorageBuffer %RWStructuredBuffer
+%RWStructuredBuffer_0 = OpTypeStruct %_runtimearr_float     ; Block
+%_ptr_StorageBuffer_RWStructuredBuffer_0 = OpTypePointer StorageBuffer %RWStructuredBuffer_0
+%solveParams = OpVariable %_ptr_Uniform_SolveParams_std140 Uniform  ; Binding 3, DescriptorSet 0
+%inputTerms = OpVariable %_ptr_StorageBuffer_StructuredBuffer StorageBuffer     ; Binding 0, DescriptorSet 0, NonWritable
+%status = OpVariable %_ptr_StorageBuffer_RWStructuredBuffer StorageBuffer       ; Binding 2, DescriptorSet 0
+%delta = OpVariable %_ptr_StorageBuffer_RWStructuredBuffer_0 StorageBuffer      ; Binding 1, DescriptorSet 0
+%int_5 = OpConstant %int 5
+
+; Function main
+%main = OpFunction %void None %18
+%46 = OpLabel
+%47 = OpVariable %_ptr_Function__arr_float_int_36 Function
+%48 = OpVariable %_ptr_Function__arr_float_int_6 Function
+%49 = OpVariable %_ptr_Function__arr_float_int_6 Function
+%x = OpVariable %_ptr_Function__arr_float_int_6 Function
+%50 = OpAccessChain %_ptr_Uniform_float %solveParams %int_0
+%51 = OpLoad %float %50
+OpBranch %52
+%52 = OpLabel
+%53 = OpPhi %uint %uint_0 %46 %54 %55
+OpLoopMerge %56 %55 None
+OpBranch %57
+%57 = OpLabel
+%58 = OpULessThan %bool %53 %uint_6
+OpSelectionMerge %59 None
+OpBranchConditional %58 %59 %56
+%56 = OpLabel
+OpBranch %60
+%59 = OpLabel
+%61 = OpAccessChain %_ptr_Function_float %48 %53
+OpStore %61 %float_0
+%62 = OpAccessChain %_ptr_Function_float %49 %53
+OpStore %62 %float_0
+%63 = OpAccessChain %_ptr_Function_float %x %53
+OpStore %63 %float_0
+%54 = OpIAdd %uint %53 %uint_1
+OpBranch %55
+%55 = OpLabel
+OpBranch %52
+%60 = OpLabel
+%64 = OpPhi %uint %uint_0 %56 %65 %66
+OpLoopMerge %67 %66 None
+OpBranch %68
+%68 = OpLabel
+%69 = OpULessThan %bool %64 %uint_36
+OpSelectionMerge %70 None
+OpBranchConditional %69 %70 %67
+%67 = OpLabel
+OpBranch %71
+%70 = OpLabel
+%72 = OpAccessChain %_ptr_Function_float %47 %64
+OpStore %72 %float_0
+%65 = OpIAdd %uint %64 %uint_1
+OpBranch %66
+%66 = OpLabel
+OpBranch %60
+%71 = OpLabel
+%73 = OpPhi %bool %true %67 %74 %75
+%76 = OpPhi %uint %uint_0 %67 %77 %75
+OpLoopMerge %78 %75 None
+OpBranch %79
+%79 = OpLabel
+%80 = OpULessThan %bool %76 %uint_6
+OpSelectionMerge %81 None
+OpBranchConditional %80 %81 %78
+%78 = OpLabel
+OpBranch %82
+%81 = OpLabel
+OpBranch %83
+%83 = OpLabel
+%74 = OpPhi %bool %73 %81 %84 %85
+%86 = OpPhi %uint %uint_0 %81 %87 %85
+OpLoopMerge %88 %85 None
+OpBranch %89
+%89 = OpLabel
+%90 = OpULessThanEqual %bool %86 %76
+OpSelectionMerge %91 None
+OpBranchConditional %90 %91 %88
+%88 = OpLabel
+%77 = OpIAdd %uint %76 %uint_1
+OpBranch %75
+%91 = OpLabel
+%92 = OpIMul %uint %76 %uint_6
+%93 = OpIAdd %uint %92 %86
+%94 = OpAccessChain %_ptr_StorageBuffer_float %inputTerms %int_0 %93
+%95 = OpLoad %float %94
+%96 = OpIEqual %bool %76 %86
+%97 = OpSelect %float %96 %51 %float_0
+%98 = OpFAdd %float %95 %97
+OpBranch %99
+%99 = OpLabel
+%100 = OpPhi %float %98 %91 %101 %102
+%103 = OpPhi %uint %uint_0 %91 %104 %102
+OpLoopMerge %105 %102 None
+OpBranch %106
+%106 = OpLabel
+%107 = OpULessThan %bool %103 %86
+OpSelectionMerge %108 None
+OpBranchConditional %107 %108 %105
+%105 = OpLabel
+OpSelectionMerge %109 None
+OpBranchConditional %96 %110 %111
+%108 = OpLabel
+%112 = OpIAdd %uint %92 %103
+%113 = OpAccessChain %_ptr_Function_float %47 %112
+%114 = OpLoad %float %113
+%115 = OpIMul %uint %86 %uint_6
+%116 = OpIAdd %uint %115 %103
+%117 = OpAccessChain %_ptr_Function_float %47 %116
+%118 = OpLoad %float %117
+%119 = OpFMul %float %114 %118
+%101 = OpFSub %float %100 %119
+%104 = OpIAdd %uint %103 %uint_1
+OpBranch %102
+%102 = OpLabel
+OpBranch %99
+%111 = OpLabel
+%120 = OpAccessChain %_ptr_Function_float %47 %93
+%121 = OpIMul %uint %86 %uint_6
+%122 = OpIAdd %uint %121 %86
+%123 = OpAccessChain %_ptr_Function_float %47 %122
+%124 = OpLoad %float %123
+%125 = OpFDiv %float %100 %124
+OpStore %120 %125
+%126 = OpIsInf %bool %125
+OpSelectionMerge %127 None
+OpBranchConditional %126 %128 %129
+%129 = OpLabel
+%130 = OpIsNan %bool %125
+OpBranch %127
+%128 = OpLabel
+OpBranch %127
+%127 = OpLabel
+%131 = OpPhi %bool %130 %129 %true %128
+%132 = OpSelect %bool %131 %false %74
+OpBranch %109
+%110 = OpLabel
+%133 = OpFUnordLessThanEqual %bool %100 %float_0
+OpSelectionMerge %134 None
+OpBranchConditional %133 %135 %136
+%136 = OpLabel
+%137 = OpIsInf %bool %100
+OpSelectionMerge %138 None
+OpBranchConditional %137 %139 %140
+%140 = OpLabel
+%141 = OpIsNan %bool %100
+OpBranch %138
+%139 = OpLabel
+OpBranch %138
+%138 = OpLabel
+%142 = OpPhi %bool %141 %140 %true %139
+OpBranch %134
+%135 = OpLabel
+OpBranch %134
+%134 = OpLabel
+%143 = OpPhi %bool %142 %138 %true %135
+%144 = OpSelect %bool %143 %false %74
+%145 = OpAccessChain %_ptr_Function_float %47 %93
+OpSelectionMerge %146 None
+OpBranchConditional %144 %147 %148
+%148 = OpLabel
+OpBranch %146
+%147 = OpLabel
+%149 = OpExtInst %float %1 Sqrt %100
+OpBranch %146
+%146 = OpLabel
+%150 = OpPhi %float %float_1 %148 %149 %147
+OpStore %145 %150
+OpBranch %109
+%109 = OpLabel
+%84 = OpPhi %bool %132 %127 %144 %146
+%87 = OpIAdd %uint %86 %uint_1
+OpBranch %85
+%85 = OpLabel
+OpBranch %83
+%75 = OpLabel
+OpBranch %71
+%82 = OpLabel
+%151 = OpPhi %bool %73 %78 %152 %153
+%154 = OpPhi %uint %uint_0 %78 %155 %153
+OpLoopMerge %156 %153 None
+OpBranch %157
+%157 = OpLabel
+%158 = OpULessThan %bool %154 %uint_6
+OpSelectionMerge %159 None
+OpBranchConditional %158 %159 %156
+%156 = OpLabel
+OpBranch %160
+%159 = OpLabel
+%161 = OpIAdd %uint %uint_36 %154
+%162 = OpAccessChain %_ptr_StorageBuffer_float %inputTerms %int_0 %161
+%163 = OpLoad %float %162
+%164 = OpFNegate %float %163
+OpBranch %165
+%165 = OpLabel
+%166 = OpPhi %float %164 %159 %167 %168
+%169 = OpPhi %uint %uint_0 %159 %170 %168
+OpLoopMerge %171 %168 None
+OpBranch %172
+%172 = OpLabel
+%173 = OpULessThan %bool %169 %154
+OpSelectionMerge %174 None
+OpBranchConditional %173 %174 %171
+%171 = OpLabel
+%175 = OpAccessChain %_ptr_Function_float %48 %154
+%176 = OpIMul %uint %154 %uint_6
+%177 = OpIAdd %uint %176 %154
+%178 = OpAccessChain %_ptr_Function_float %47 %177
+%179 = OpLoad %float %178
+%180 = OpFDiv %float %166 %179
+OpStore %175 %180
+%181 = OpIsInf %bool %180
+OpSelectionMerge %182 None
+OpBranchConditional %181 %183 %184
+%174 = OpLabel
+%185 = OpIMul %uint %154 %uint_6
+%186 = OpIAdd %uint %185 %169
+%187 = OpAccessChain %_ptr_Function_float %47 %186
+%188 = OpLoad %float %187
+%189 = OpAccessChain %_ptr_Function_float %48 %169
+%190 = OpLoad %float %189
+%191 = OpFMul %float %188 %190
+%167 = OpFSub %float %166 %191
+%170 = OpIAdd %uint %169 %uint_1
+OpBranch %168
+%168 = OpLabel
+OpBranch %165
+%184 = OpLabel
+%192 = OpIsNan %bool %180
+OpBranch %182
+%183 = OpLabel
+OpBranch %182
+%182 = OpLabel
+%193 = OpPhi %bool %192 %184 %true %183
+%152 = OpSelect %bool %193 %false %151
+%155 = OpIAdd %uint %154 %uint_1
+OpBranch %153
+%153 = OpLabel
+OpBranch %82
+%160 = OpLabel
+%194 = OpPhi %bool %151 %156 %195 %196
+%197 = OpPhi %int %int_5 %156 %198 %196
+OpLoopMerge %199 %196 None
+OpBranch %200
+%200 = OpLabel
+%201 = OpSGreaterThanEqual %bool %197 %int_0
+OpSelectionMerge %202 None
+OpBranchConditional %201 %202 %199
+%199 = OpLabel
+OpBranch %203
+%202 = OpLabel
+%204 = OpAccessChain %_ptr_Function_float %48 %197
+%205 = OpLoad %float %204
+%206 = OpBitcast %uint %197
+%207 = OpIAdd %uint %206 %uint_1
+OpBranch %208
+%208 = OpLabel
+%209 = OpPhi %float %205 %202 %210 %211
+%212 = OpPhi %uint %207 %202 %213 %211
+OpLoopMerge %214 %211 None
+OpBranch %215
+%215 = OpLabel
+%216 = OpULessThan %bool %212 %uint_6
+OpSelectionMerge %217 None
+OpBranchConditional %216 %217 %214
+%214 = OpLabel
+%218 = OpAccessChain %_ptr_Function_float %49 %197
+%219 = OpIMul %uint %206 %uint_6
+%220 = OpIAdd %uint %219 %206
+%221 = OpAccessChain %_ptr_Function_float %47 %220
+%222 = OpLoad %float %221
+%223 = OpFDiv %float %209 %222
+OpStore %218 %223
+%224 = OpIsInf %bool %223
+OpSelectionMerge %225 None
+OpBranchConditional %224 %226 %227
+%217 = OpLabel
+%228 = OpIMul %uint %212 %uint_6
+%229 = OpIAdd %uint %228 %206
+%230 = OpAccessChain %_ptr_Function_float %47 %229
+%231 = OpLoad %float %230
+%232 = OpAccessChain %_ptr_Function_float %49 %212
+%233 = OpLoad %float %232
+%234 = OpFMul %float %231 %233
+%210 = OpFSub %float %209 %234
+%213 = OpIAdd %uint %212 %uint_1
+OpBranch %211
+%211 = OpLabel
+OpBranch %208
+%227 = OpLabel
+%235 = OpIsNan %bool %223
+OpBranch %225
+%226 = OpLabel
+OpBranch %225
+%225 = OpLabel
+%236 = OpPhi %bool %235 %227 %true %226
+%195 = OpSelect %bool %236 %false %194
+%198 = OpISub %int %197 %int_1
+OpBranch %196
+%196 = OpLabel
+OpBranch %160
+%203 = OpLabel
+%237 = OpPhi %uint %uint_0 %199 %238 %239
+OpLoopMerge %240 %239 None
+OpBranch %241
+%241 = OpLabel
+%242 = OpULessThan %bool %237 %uint_6
+OpSelectionMerge %243 None
+OpBranchConditional %242 %243 %240
+%240 = OpLabel
+%244 = OpAccessChain %_ptr_StorageBuffer_uint %status %int_0 %int_0
+%245 = OpSelect %uint %194 %uint_0 %uint_1
+OpStore %244 %245
+OpBranch %246
+%243 = OpLabel
+%247 = OpAccessChain %_ptr_Function_float %x %237
+OpSelectionMerge %248 None
+OpBranchConditional %194 %249 %250
+%250 = OpLabel
+OpBranch %248
+%249 = OpLabel
+%251 = OpAccessChain %_ptr_Function_float %49 %237
+%252 = OpLoad %float %251
+OpBranch %248
+%248 = OpLabel
+%253 = OpPhi %float %float_0 %250 %252 %249
+OpStore %247 %253
+%238 = OpIAdd %uint %237 %uint_1
+OpBranch %239
+%239 = OpLabel
+OpBranch %203
+%246 = OpLabel
+%254 = OpPhi %uint %uint_0 %240 %i %255
+OpLoopMerge %256 %255 None
+OpBranch %257
+%257 = OpLabel
+%258 = OpULessThan %bool %254 %uint_6
+OpSelectionMerge %259 None
+OpBranchConditional %258 %259 %256
+%256 = OpLabel
+OpReturn
+%259 = OpLabel
+%260 = OpAccessChain %_ptr_StorageBuffer_float %delta %int_0 %254
+%261 = OpAccessChain %_ptr_Function_float %x %254
+%262 = OpLoad %float %261
+OpStore %260 %262
+%i = OpIAdd %uint %254 %uint_1
+OpBranch %255
+%255 = OpLabel
+OpBranch %246
+OpFunctionEnd
