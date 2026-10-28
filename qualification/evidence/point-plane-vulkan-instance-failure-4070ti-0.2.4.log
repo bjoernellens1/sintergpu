@@ -1,0 +1,211 @@
+..s.......................EEEEEEEEE.                                     [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_imported_core_exact_frozen_outputs_and_oracle[1024-1025-scalar] _
+
+    @pytest.fixture
+    def gpu():
+        if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')
+        import slangpy as spy
+        from sintergpu import module_path
+        target=os.getenv('SINTERGPU_TARGET','radeon8060s')
+        assert target in ('radeon8060s','rtx4070')
+        vendor,device=(0x1002,0x1586) if target=='radeon8060s' else (0x10de,0x2782)
+        adapters=spy.Device.enumerate_adapters(spy.DeviceType.vulkan)
+        adapter=next(a for a in adapters if a.vendor_id==vendor and a.device_id==device)
+>       instance=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,
+            compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,
+                'include_paths':[str(module_path('optimization.point_plane').parent.parent)]})
+E       RuntimeError: Failed to create device!
+E       /project/src/sgl/device/device.cpp:280 in function Device
+
+tests/test_point_plane_module.py:46: RuntimeError
+---------------------------- Captured stderr setup -----------------------------
+[[31mERROR[0m] ([90mrhi[0m) layer: Failed to create Vulkan instance.
+
+_ ERROR at setup of test_imported_core_exact_frozen_outputs_and_oracle[1024-4099-aosoa] _
+
+    @pytest.fixture
+    def gpu():
+        if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')
+        import slangpy as spy
+        from sintergpu import module_path
+        target=os.getenv('SINTERGPU_TARGET','radeon8060s')
+        assert target in ('radeon8060s','rtx4070')
+        vendor,device=(0x1002,0x1586) if target=='radeon8060s' else (0x10de,0x2782)
+        adapters=spy.Device.enumerate_adapters(spy.DeviceType.vulkan)
+        adapter=next(a for a in adapters if a.vendor_id==vendor and a.device_id==device)
+>       instance=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,
+            compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,
+                'include_paths':[str(module_path('optimization.point_plane').parent.parent)]})
+E       RuntimeError: Failed to create device!
+E       /project/src/sgl/device/device.cpp:280 in function Device
+
+tests/test_point_plane_module.py:46: RuntimeError
+---------------------------- Captured stderr setup -----------------------------
+[[31mERROR[0m] ([90mrhi[0m) layer: Failed to create Vulkan instance.
+
+_ ERROR at setup of test_imported_core_exact_frozen_outputs_and_oracle[1024-4099-scalar] _
+
+    @pytest.fixture
+    def gpu():
+        if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')
+        import slangpy as spy
+        from sintergpu import module_path
+        target=os.getenv('SINTERGPU_TARGET','radeon8060s')
+        assert target in ('radeon8060s','rtx4070')
+        vendor,device=(0x1002,0x1586) if target=='radeon8060s' else (0x10de,0x2782)
+        adapters=spy.Device.enumerate_adapters(spy.DeviceType.vulkan)
+        adapter=next(a for a in adapters if a.vendor_id==vendor and a.device_id==device)
+>       instance=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,
+            compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,
+                'include_paths':[str(module_path('optimization.point_plane').parent.parent)]})
+E       RuntimeError: Failed to create device!
+E       /project/src/sgl/device/device.cpp:280 in function Device
+
+tests/test_point_plane_module.py:46: RuntimeError
+---------------------------- Captured stderr setup -----------------------------
+[[31mERROR[0m] ([90mrhi[0m) layer: Failed to create Vulkan instance.
+
+_ ERROR at setup of test_imported_core_exact_frozen_outputs_and_oracle[1024-65539-aosoa] _
+
+    @pytest.fixture
+    def gpu():
+        if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')
+        import slangpy as spy
+        from sintergpu import module_path
+        target=os.getenv('SINTERGPU_TARGET','radeon8060s')
+        assert target in ('radeon8060s','rtx4070')
+        vendor,device=(0x1002,0x1586) if target=='radeon8060s' else (0x10de,0x2782)
+        adapters=spy.Device.enumerate_adapters(spy.DeviceType.vulkan)
+        adapter=next(a for a in adapters if a.vendor_id==vendor and a.device_id==device)
+>       instance=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,
+            compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,
+                'include_paths':[str(module_path('optimization.point_plane').parent.parent)]})
+E       RuntimeError: Failed to create device!
+E       /project/src/sgl/device/device.cpp:280 in function Device
+
+tests/test_point_plane_module.py:46: RuntimeError
+---------------------------- Captured stderr setup -----------------------------
+[[31mERROR[0m] ([90mrhi[0m) layer: Failed to create Vulkan instance.
+
+_ ERROR at setup of test_imported_core_exact_frozen_outputs_and_oracle[1024-65539-scalar] _
+
+    @pytest.fixture
+    def gpu():
+        if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')
+        import slangpy as spy
+        from sintergpu import module_path
+        target=os.getenv('SINTERGPU_TARGET','radeon8060s')
+        assert target in ('radeon8060s','rtx4070')
+        vendor,device=(0x1002,0x1586) if target=='radeon8060s' else (0x10de,0x2782)
+        adapters=spy.Device.enumerate_adapters(spy.DeviceType.vulkan)
+        adapter=next(a for a in adapters if a.vendor_id==vendor and a.device_id==device)
+>       instance=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,
+            compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,
+                'include_paths':[str(module_path('optimization.point_plane').parent.parent)]})
+E       RuntimeError: Failed to create device!
+E       /project/src/sgl/device/device.cpp:280 in function Device
+
+tests/test_point_plane_module.py:46: RuntimeError
+---------------------------- Captured stderr setup -----------------------------
+[[31mERROR[0m] ([90mrhi[0m) layer: Failed to create Vulkan instance.
+
+_ ERROR at setup of test_imported_core_preserves_exceptional_values[256-aosoa] _
+
+    @pytest.fixture
+    def gpu():
+        if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')
+        import slangpy as spy
+        from sintergpu import module_path
+        target=os.getenv('SINTERGPU_TARGET','radeon8060s')
+        assert target in ('radeon8060s','rtx4070')
+        vendor,device=(0x1002,0x1586) if target=='radeon8060s' else (0x10de,0x2782)
+        adapters=spy.Device.enumerate_adapters(spy.DeviceType.vulkan)
+        adapter=next(a for a in adapters if a.vendor_id==vendor and a.device_id==device)
+>       instance=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,
+            compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,
+                'include_paths':[str(module_path('optimization.point_plane').parent.parent)]})
+E       RuntimeError: Failed to create device!
+E       /project/src/sgl/device/device.cpp:280 in function Device
+
+tests/test_point_plane_module.py:46: RuntimeError
+---------------------------- Captured stderr setup -----------------------------
+[[31mERROR[0m] ([90mrhi[0m) layer: Failed to create Vulkan instance.
+
+_ ERROR at setup of test_imported_core_preserves_exceptional_values[256-scalar] _
+
+    @pytest.fixture
+    def gpu():
+        if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')
+        import slangpy as spy
+        from sintergpu import module_path
+        target=os.getenv('SINTERGPU_TARGET','radeon8060s')
+        assert target in ('radeon8060s','rtx4070')
+        vendor,device=(0x1002,0x1586) if target=='radeon8060s' else (0x10de,0x2782)
+        adapters=spy.Device.enumerate_adapters(spy.DeviceType.vulkan)
+        adapter=next(a for a in adapters if a.vendor_id==vendor and a.device_id==device)
+>       instance=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,
+            compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,
+                'include_paths':[str(module_path('optimization.point_plane').parent.parent)]})
+E       RuntimeError: Failed to create device!
+E       /project/src/sgl/device/device.cpp:280 in function Device
+
+tests/test_point_plane_module.py:46: RuntimeError
+---------------------------- Captured stderr setup -----------------------------
+[[31mERROR[0m] ([90mrhi[0m) layer: Failed to create Vulkan instance.
+
+_ ERROR at setup of test_imported_core_preserves_exceptional_values[1024-aosoa] _
+
+    @pytest.fixture
+    def gpu():
+        if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')
+        import slangpy as spy
+        from sintergpu import module_path
+        target=os.getenv('SINTERGPU_TARGET','radeon8060s')
+        assert target in ('radeon8060s','rtx4070')
+        vendor,device=(0x1002,0x1586) if target=='radeon8060s' else (0x10de,0x2782)
+        adapters=spy.Device.enumerate_adapters(spy.DeviceType.vulkan)
+        adapter=next(a for a in adapters if a.vendor_id==vendor and a.device_id==device)
+>       instance=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,
+            compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,
+                'include_paths':[str(module_path('optimization.point_plane').parent.parent)]})
+E       RuntimeError: Failed to create device!
+E       /project/src/sgl/device/device.cpp:280 in function Device
+
+tests/test_point_plane_module.py:46: RuntimeError
+---------------------------- Captured stderr setup -----------------------------
+[[31mERROR[0m] ([90mrhi[0m) layer: Failed to create Vulkan instance.
+
+_ ERROR at setup of test_imported_core_preserves_exceptional_values[1024-scalar] _
+
+    @pytest.fixture
+    def gpu():
+        if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')
+        import slangpy as spy
+        from sintergpu import module_path
+        target=os.getenv('SINTERGPU_TARGET','radeon8060s')
+        assert target in ('radeon8060s','rtx4070')
+        vendor,device=(0x1002,0x1586) if target=='radeon8060s' else (0x10de,0x2782)
+        adapters=spy.Device.enumerate_adapters(spy.DeviceType.vulkan)
+        adapter=next(a for a in adapters if a.vendor_id==vendor and a.device_id==device)
+>       instance=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,
+            compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,
+                'include_paths':[str(module_path('optimization.point_plane').parent.parent)]})
+E       RuntimeError: Failed to create device!
+E       /project/src/sgl/device/device.cpp:280 in function Device
+
+tests/test_point_plane_module.py:46: RuntimeError
+---------------------------- Captured stderr setup -----------------------------
+[[31mERROR[0m] ([90mrhi[0m) layer: Failed to create Vulkan instance.
+
+=========================== short test summary info ============================
+ERROR tests/test_point_plane_module.py::test_imported_core_exact_frozen_outputs_and_oracle[1024-1025-scalar]
+ERROR tests/test_point_plane_module.py::test_imported_core_exact_frozen_outputs_and_oracle[1024-4099-aosoa]
+ERROR tests/test_point_plane_module.py::test_imported_core_exact_frozen_outputs_and_oracle[1024-4099-scalar]
+ERROR tests/test_point_plane_module.py::test_imported_core_exact_frozen_outputs_and_oracle[1024-65539-aosoa]
+ERROR tests/test_point_plane_module.py::test_imported_core_exact_frozen_outputs_and_oracle[1024-65539-scalar]
+ERROR tests/test_point_plane_module.py::test_imported_core_preserves_exceptional_values[256-aosoa]
+ERROR tests/test_point_plane_module.py::test_imported_core_preserves_exceptional_values[256-scalar]
+ERROR tests/test_point_plane_module.py::test_imported_core_preserves_exceptional_values[1024-aosoa]
+ERROR tests/test_point_plane_module.py::test_imported_core_preserves_exceptional_values[1024-scalar]
+26 passed, 1 skipped, 9 errors in 10.92s

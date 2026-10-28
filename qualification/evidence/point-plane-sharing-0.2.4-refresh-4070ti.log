@@ -1,0 +1,32 @@
+
+START 2026-10-28T09:49:54.046962+00:00 ../venv/bin/python -m benchmarks.locus_timings --gpu --iterations 50 --warmups 5 --output /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/locus-cpu-gpu-4070ti-0.2.4.json
+{"cases": 28, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/locus-cpu-gpu-4070ti-0.2.4.json"}
+END 2026-10-28T09:49:57.598611+00:00 exit=0
+
+START 2026-10-28T09:49:57.599625+00:00 ../venv/bin/python -m benchmarks.color_timings --gpu --iterations 50 --warmups 5 --output /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/color-cpu-gpu-4070ti-0.2.4.json
+{"cases": 30, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/color-cpu-gpu-4070ti-0.2.4.json"}
+END 2026-10-28T09:50:18.582374+00:00 exit=0
+
+START 2026-10-28T09:50:18.583432+00:00 ../venv/bin/python -m benchmarks.vkl_features --gpu --iterations 50 --warmups 5 --output /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/vkl-features-cpu-gpu-4070ti-0.2.4.json
+{"cases": 10, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/vkl-features-cpu-gpu-4070ti-0.2.4.json"}
+END 2026-10-28T09:50:21.929421+00:00 exit=0
+
+START 2026-10-28T09:50:21.930515+00:00 ../venv/bin/python -m benchmarks.vkl_timings --gpu --iterations 50 --warmups 5 --output /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/vkl-cpu-gpu-4070ti-0.2.4.json
+{"cases": 38, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/vkl-cpu-gpu-4070ti-0.2.4.json"}
+END 2026-10-28T09:51:09.530702+00:00 exit=0
+
+START 2026-10-28T09:51:09.531874+00:00 ../venv/bin/python -m benchmarks.primitive_timings --gpu --iterations 50 --warmups 5 --output /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/primitives-cpu-gpu-4070ti-0.2.4.json
+[[33mWARN[0m] Slang compiler warnings:
+warning[E15205]: undefined identifier in preprocessor
+ --> /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.4/src/sintergpu/kernels/primitives/scan.slang:6:5
+  |
+6 | #if SINTERGPU_SCAN_UINT
+  |     ^^^^^^^^^^^^^^^^^^^ undefined identifier 'SINTERGPU_SCAN_UINT' in preprocessor expression will evaluate to zero
+--'
+
+{"cases": 73, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/primitives-cpu-gpu-4070ti-0.2.4.json"}
+END 2026-10-28T09:51:23.376638+00:00 exit=0
+
+START 2026-10-28T09:51:23.377899+00:00 ../venv/bin/python -m benchmarks.xsplat_timings --gpu --iterations 50 --warmups 5 --output /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/xsplat-cpu-gpu-4070ti-0.2.4.json
+{"cases": 17, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.4/xsplat-cpu-gpu-4070ti-0.2.4.json"}
+END 2026-10-28T09:51:31.293088+00:00 exit=0

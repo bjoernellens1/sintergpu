@@ -1,0 +1,264 @@
+{
+  "status": "completed",
+  "root": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+  "commands": [
+    {
+      "command": [
+        ".cache/vkl-qualification-venv/bin/python",
+        "-m",
+        "benchmarks.locus_timings",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "benchmarks/results/locus-cpu-gpu-8060s-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:46:01.881777+00:00",
+      "output": "benchmarks/results/locus-cpu-gpu-8060s-0.2.4.json",
+      "expected_rows": 28,
+      "pid": 3510012,
+      "exit": 0,
+      "end": "2026-10-28T09:46:04.370924+00:00"
+    },
+    {
+      "command": [
+        ".cache/vkl-qualification-venv/bin/python",
+        "-m",
+        "benchmarks.color_timings",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "benchmarks/results/color-cpu-gpu-8060s-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:46:04.371373+00:00",
+      "output": "benchmarks/results/color-cpu-gpu-8060s-0.2.4.json",
+      "expected_rows": 30,
+      "pid": 3510142,
+      "exit": 0,
+      "end": "2026-10-28T09:46:16.341853+00:00"
+    },
+    {
+      "command": [
+        ".cache/vkl-qualification-venv/bin/python",
+        "-m",
+        "benchmarks.vkl_features",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:46:16.342203+00:00",
+      "output": "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.4.json",
+      "expected_rows": 10,
+      "pid": 3510516,
+      "exit": 0,
+      "end": "2026-10-28T09:46:19.032027+00:00"
+    },
+    {
+      "command": [
+        ".cache/vkl-qualification-venv/bin/python",
+        "-m",
+        "benchmarks.vkl_timings",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "benchmarks/results/vkl-cpu-gpu-8060s-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:46:19.032388+00:00",
+      "output": "benchmarks/results/vkl-cpu-gpu-8060s-0.2.4.json",
+      "expected_rows": 38,
+      "pid": 3510692,
+      "exit": 0,
+      "end": "2026-10-28T09:46:44.752010+00:00"
+    },
+    {
+      "command": [
+        ".cache/vkl-qualification-venv/bin/python",
+        "-m",
+        "benchmarks.primitive_timings",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "benchmarks/results/primitives-cpu-gpu-8060s-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:46:44.752447+00:00",
+      "output": "benchmarks/results/primitives-cpu-gpu-8060s-0.2.4.json",
+      "expected_rows": 73,
+      "pid": 3511456,
+      "exit": 0,
+      "end": "2026-10-28T09:46:52.486029+00:00"
+    },
+    {
+      "command": [
+        ".cache/vkl-qualification-venv/bin/python",
+        "-m",
+        "benchmarks.xsplat_timings",
+        "--gpu",
+        "--iterations",
+        "50",
+        "--warmups",
+        "5",
+        "--output",
+        "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.4.json"
+      ],
+      "start": "2026-10-28T09:46:52.486460+00:00",
+      "output": "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.4.json",
+      "expected_rows": 17,
+      "pid": 3511822,
+      "exit": 0,
+      "end": "2026-10-28T09:46:57.565441+00:00"
+    }
+  ],
+  "snapshots": {
+    "before": {
+      "time": "2026-10-28T09:46:01.321171+00:00",
+      "device": {
+        "command": "lspci -nn | grep -Ei \"VGA|Display|3D\"",
+        "exit": 0,
+        "output": "c4:00.0 Display controller [0380]: Advanced Micro Devices, Inc. [AMD/ATI] Strix Halo [Radeon Graphics / Radeon 8050S Graphics / Radeon 8060S Graphics] [1002:1586] (rev d1)\n"
+      },
+      "activity": {
+        "command": "if command -v rocm-smi >/dev/null 2>&1; then rocm-smi --showproductname --showuse; elif command -v amd-smi >/dev/null 2>&1; then amd-smi metric; else echo \"No AMD SMI tool available\"; fi",
+        "exit": 0,
+        "output": "WARNING: AMD GPU device(s) is/are in a low-power state. Check power control/runtime_status\n\n\n\n============================ ROCm System Management Interface ============================\n=================================== % time GPU is busy ===================================\nGPU[0]\t\t: GPU use (%): 4\nFail to open libdrm_amdgpu.so: libdrm_amdgpu.so: cannot open shared object file: No such file or directory\n==========================================================================================\n====================================== Product Info ======================================\nGPU[0]\t\t: get_name, Failed to load a library\nGPU[0]\t\t: Card Series: \t\tN/A\nGPU[0]\t\t: Card Model: \t\t0x1586\nGPU[0]\t\t: Card Vendor: \t\tAdvanced Micro Devices, Inc. [AMD/ATI]\nGPU[0]\t\t: Card SKU: \t\tSTRXLGEN\nGPU[0]\t\t: Subsystem ID: \t-0x72e3\nGPU[0]\t\t: Device Rev: \t\t0xd1\nGPU[0]\t\t: Node ID: \t\t1\nGPU[0]\t\t: GUID: \t\t27480\nGPU[0]\t\t: GFX Version: \t\tgfx1151\n==========================================================================================\n================================== End of ROCm SMI Log ===================================\n"
+      },
+      "processes": {
+        "command": "ps -eo pid,ppid,etimes,args | grep -E 'benchmarks[.]|[c]ollector|[r]ender.*bench|[n]ative.*bench'",
+        "exit": 1,
+        "output": ""
+      }
+    },
+    "after": {
+      "time": "2026-10-28T09:46:57.565877+00:00",
+      "device": {
+        "command": "lspci -nn | grep -Ei \"VGA|Display|3D\"",
+        "exit": 0,
+        "output": "c4:00.0 Display controller [0380]: Advanced Micro Devices, Inc. [AMD/ATI] Strix Halo [Radeon Graphics / Radeon 8050S Graphics / Radeon 8060S Graphics] [1002:1586] (rev d1)\n"
+      },
+      "activity": {
+        "command": "if command -v rocm-smi >/dev/null 2>&1; then rocm-smi --showproductname --showuse; elif command -v amd-smi >/dev/null 2>&1; then amd-smi metric; else echo \"No AMD SMI tool available\"; fi",
+        "exit": 0,
+        "output": "WARNING: AMD GPU device(s) is/are in a low-power state. Check power control/runtime_status\n\n\n\n============================ ROCm System Management Interface ============================\n=================================== % time GPU is busy ===================================\nGPU[0]\t\t: GPU use (%): 6\nFail to open libdrm_amdgpu.so: libdrm_amdgpu.so: cannot open shared object file: No such file or directory\n==========================================================================================\n====================================== Product Info ======================================\nGPU[0]\t\t: get_name, Failed to load a library\nGPU[0]\t\t: Card Series: \t\tN/A\nGPU[0]\t\t: Card Model: \t\t0x1586\nGPU[0]\t\t: Card Vendor: \t\tAdvanced Micro Devices, Inc. [AMD/ATI]\nGPU[0]\t\t: Card SKU: \t\tSTRXLGEN\nGPU[0]\t\t: Subsystem ID: \t-0x72e3\nGPU[0]\t\t: Device Rev: \t\t0xd1\nGPU[0]\t\t: Node ID: \t\t1\nGPU[0]\t\t: GUID: \t\t27480\nGPU[0]\t\t: GFX Version: \t\tgfx1151\n==========================================================================================\n================================== End of ROCm SMI Log ===================================\n"
+      },
+      "processes": {
+        "command": "ps -eo pid,ppid,etimes,args | grep -E 'benchmarks[.]|[c]ollector|[r]ender.*bench|[n]ative.*bench'",
+        "exit": 1,
+        "output": ""
+      }
+    }
+  },
+  "end": "2026-10-28T09:46:57.984808+00:00",
+  "verified_results": [
+    {
+      "path": "benchmarks/results/locus-cpu-gpu-8060s-0.2.4.json",
+      "rows": 28,
+      "iterations": [
+        50
+      ],
+      "warmups": [
+        5
+      ],
+      "shader_tree_sha256": [
+        "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+      ],
+      "correctness": [
+        "Frozen scalar reference parity passed for all output/state values"
+      ]
+    },
+    {
+      "path": "benchmarks/results/color-cpu-gpu-8060s-0.2.4.json",
+      "rows": 30,
+      "iterations": [
+        50
+      ],
+      "warmups": [
+        5
+      ],
+      "shader_tree_sha256": [
+        "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+      ],
+      "correctness": [
+        "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples"
+      ]
+    },
+    {
+      "path": "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.4.json",
+      "rows": 10,
+      "iterations": [
+        50
+      ],
+      "warmups": [
+        5
+      ],
+      "shader_tree_sha256": [
+        "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+      ],
+      "correctness": [
+        "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples"
+      ]
+    },
+    {
+      "path": "benchmarks/results/vkl-cpu-gpu-8060s-0.2.4.json",
+      "rows": 38,
+      "iterations": [
+        50
+      ],
+      "warmups": [
+        5
+      ],
+      "shader_tree_sha256": [
+        "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+      ],
+      "correctness": [
+        "Full output live values match independent reference under existing operation tolerances; integer/mask outputs and all output tails exact before/after isolated and transfer regions"
+      ]
+    },
+    {
+      "path": "benchmarks/results/primitives-cpu-gpu-8060s-0.2.4.json",
+      "rows": 73,
+      "iterations": [
+        50
+      ],
+      "warmups": [
+        5
+      ],
+      "shader_tree_sha256": [
+        "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+      ],
+      "correctness": [
+        "Per-stage independent oracle parity before/after isolated and transfer samples. Uint/modulo results, undefined-capacity seeds, block IDs, output tails and untouched carry regions exact; float values retain existing2e-4 tolerances."
+      ]
+    },
+    {
+      "path": "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.4.json",
+      "rows": 17,
+      "iterations": [
+        50
+      ],
+      "warmups": [
+        5
+      ],
+      "shader_tree_sha256": [
+        "fa5120ada0dbbad8ea414c4c1053027d5cf9fdfa82f57da6cf2e89c198e9049b"
+      ],
+      "correctness": [
+        "Independent math parity before/after isolated and transfer samples. Conic/depth/Adam/probe and visible pixels2e-6absolute/relative; all pixels also input-derived FP32 enclosure; ambiguous classifications fail. Visible flags and complete tail structs exact; within-live-struct padding is unspecified. All Adam inout state reset between samples."
+      ]
+    }
+  ],
+  "verified_total_rows": 196
+}

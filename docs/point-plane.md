@@ -41,9 +41,19 @@ capacity guards and untouched tails. Existing dispatch shaders/default selection
 remain unchanged. Standalone Slang2026.12 and2026.19 import checks compare the
 complete normalized executable stream and reflected resources:1024-thread
 profiles match;256-thread profiles permit only the actual LocalSize difference.
-This is compiler evidence, not a fresh timing or full-domain device claim.
-Physical GPU parity and source-current baseline recollection remain pending in
-this working batch until their retained evidence is recorded.
+Imported-module differential tests passed 32 GPU cases per device (64 total) on
+Radeon8060S and RTX4070Ti, including both schedules, irregular extents, duplicate
+gathers, padding/tails and exceptional values. The retained
+[proof](../qualification/evidence/point-plane-sharing-0.2.4.json) also records
+392 fresh baseline records across 54 existing catalog entries (196 per device),
+with 518 historical rows retained. These existing-fixture baselines do not time
+or qualify the imported shared module for performance or full-domain use.
+
+The initial NVIDIA run had 26 passes and 9 device-setup errors. Minimal
+SlangPy0.43.1/NVIDIA595.99.02 probes reproduce instance creation failure on
+iteration 24 even without point kernels and after explicit garbage collection.
+Reusing one module-scoped test device passes all 32 GPU cases; this corrects
+the test harness and does not establish a driver fix.
 
 ## One generation owner
 

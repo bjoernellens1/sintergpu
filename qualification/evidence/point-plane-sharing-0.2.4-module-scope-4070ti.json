@@ -1,0 +1,20 @@
+{
+  "local_root": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+  "local_branch": "impl/point-plane-consolidation",
+  "remote_head": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
+  "test_sha256_local": "0eb66a1474f8d1f90c0f65cabdddb7eaaf0359d484db18fa4042d09c25bc794f",
+  "test_sha256_remote": "0eb66a1474f8d1f90c0f65cabdddb7eaaf0359d484db18fa4042d09c25bc794f",
+  "exit_code": 0,
+  "passed": 35,
+  "skipped": 1,
+  "gpu_cases_executed": 32,
+  "skip_reason": "standalone compiler unavailable",
+  "remote_git_diff": "diff --git a/tests/test_point_plane_module.py b/tests/test_point_plane_module.py\nindex b21013f..7d95429 100644\n--- a/tests/test_point_plane_module.py\n+++ b/tests/test_point_plane_module.py\n@@ -33,7 +33,7 @@ def test_real_import_matches_baseline_executable_and_resource_layout(tmp_path):\n     assert result['example_compiled']\n \n \n-@pytest.fixture\n+@pytest.fixture(scope='module')\n def gpu():\n     if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')\n     import slangpy as spy\n",
+  "log": "build/point-plane-module-scope-4070ti.log",
+  "prior_failure_log": "qualification/evidence/point-plane-vulkan-instance-failure-4070ti-0.2.4.log",
+  "prior_result": {
+    "passed": 26,
+    "skipped": 1,
+    "errors": 9
+  }
+}

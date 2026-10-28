@@ -1,0 +1,58 @@
+mode=A vendor=0x10de device=0x2782 name=NVIDIA GeForce RTX 4070 Ti
+A iteration=1 phase=before Threads:	20 fds=5
+A iteration=1 phase=after Threads:	21 fds=14
+A iteration=2 phase=before Threads:	21 fds=14
+A iteration=2 phase=after Threads:	21 fds=14
+A iteration=3 phase=before Threads:	21 fds=14
+A iteration=3 phase=after Threads:	21 fds=14
+A iteration=4 phase=before Threads:	21 fds=14
+A iteration=4 phase=after Threads:	21 fds=14
+A iteration=5 phase=before Threads:	21 fds=14
+A iteration=5 phase=after Threads:	21 fds=14
+A iteration=6 phase=before Threads:	21 fds=14
+A iteration=6 phase=after Threads:	21 fds=14
+A iteration=7 phase=before Threads:	21 fds=14
+A iteration=7 phase=after Threads:	21 fds=14
+A iteration=8 phase=before Threads:	21 fds=14
+A iteration=8 phase=after Threads:	21 fds=14
+A iteration=9 phase=before Threads:	21 fds=14
+A iteration=9 phase=after Threads:	21 fds=14
+A iteration=10 phase=before Threads:	21 fds=14
+A iteration=10 phase=after Threads:	21 fds=14
+A iteration=11 phase=before Threads:	21 fds=14
+A iteration=11 phase=after Threads:	21 fds=14
+A iteration=12 phase=before Threads:	21 fds=14
+A iteration=12 phase=after Threads:	21 fds=14
+A iteration=13 phase=before Threads:	21 fds=14
+A iteration=13 phase=after Threads:	21 fds=14
+A iteration=14 phase=before Threads:	21 fds=14
+A iteration=14 phase=after Threads:	21 fds=14
+A iteration=15 phase=before Threads:	21 fds=14
+A iteration=15 phase=after Threads:	21 fds=14
+A iteration=16 phase=before Threads:	21 fds=14
+A iteration=16 phase=after Threads:	21 fds=14
+A iteration=17 phase=before Threads:	21 fds=14
+A iteration=17 phase=after Threads:	21 fds=14
+A iteration=18 phase=before Threads:	21 fds=14
+A iteration=18 phase=after Threads:	21 fds=14
+A iteration=19 phase=before Threads:	21 fds=14
+A iteration=19 phase=after Threads:	21 fds=14
+A iteration=20 phase=before Threads:	21 fds=14
+A iteration=20 phase=after Threads:	21 fds=14
+A iteration=21 phase=before Threads:	21 fds=14
+A iteration=21 phase=after Threads:	21 fds=14
+A iteration=22 phase=before Threads:	21 fds=14
+A iteration=22 phase=after Threads:	21 fds=14
+A iteration=23 phase=before Threads:	21 fds=14
+A iteration=23 phase=after Threads:	21 fds=14
+A iteration=24 phase=before Threads:	21 fds=14
+[[31mERROR[0m] ([90mrhi[0m) layer: Failed to create Vulkan instance.
+
+A iteration=24 phase=error Threads:	21 fds=14
+Traceback (most recent call last):
+  File "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.4/build/point-plane-lifecycle.py", line 14, in <module>
+    device=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=adapter.luid,compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,'include_paths':[str(Path.cwd()/'src/sintergpu/kernels')]})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Failed to create device!
+/project/src/sgl/device/device.cpp:280 in function Device
+RESULT mode=A completed=23 failed_iteration=24

@@ -1,8 +1,8 @@
 # Duplicate and overlapping GPU kernels
 
-Consolidate operation ownership and shared algebra with explicitly named numerical/layout/capability profiles. First unify the duplicate Caspar point-plane symbolic expression behind two export adapters. Preserve frozen references and alternate contracts; route consumers through qualified profiles only after differential and performance gates.
+Consolidate operation ownership and shared algebra with explicitly named numerical/layout/capability profiles. G18 now uses one maintained symbolic factory behind two owned export adapters. Preserve frozen references and alternate contracts; route consumers through qualified profiles only after differential and performance gates.
 
-This is a read-only targeted review, not a deduplication change or GPU qualification. It audits **22 semantic groups**: **14 same operation different contract**, **5 shared algorithm device helper**, **1 exact duplicate**, **2 related only**. The unit is an audited group, not a kernel/file count. No claim is made that all inventory entries were audited.
+The original targeted audit was read-only and did not qualify GPU execution. Its historical classifications of **22 semantic groups** are retained below; this document now also records the follow-up G18 consolidation. That follow-up does not establish whole-family consolidation or exhaustive coverage. The original classifications are: **14 same operation different contract**, **5 shared algorithm device helper**, **1 exact duplicate**, **2 related only**. The unit is an audited group, not a kernel/file count. No claim is made that all inventory entries were audited.
 
 ## Evidence baseline
 
@@ -25,7 +25,7 @@ The structural comparison checked **36 source/frozen shader pairs**, of which **
 
 Generated math and composed standalone shader outputs are derivative build/release artifacts. They must be regenerated from one owner input and hash checked, never independently edited. Repeated generated prefixes across composed modules are not counted as separate maintained implementations.
 
-The one directly actionable exact algebra duplicate is G18. “Same operation, different contract” groups call for named profiles and reusable helpers, not forced numerical equivalence.
+The historical exact algebra duplicate G18 is now consolidated through one maintained symbolic factory and two owned export adapters; frozen donor reference copies are intentional. “Same operation, different contract” groups call for named profiles and reusable helpers, not forced numerical equivalence.
 
 ## Audited semantic groups
 
@@ -205,11 +205,11 @@ The VKL port retains radius gating, first-index ties, optional mutual ownership 
 
 ### G18: Duplicate point-to-plane symbolic definitions
 
-**Classification: exact duplicate.** Caspar gn.residual_kernel and reprojection.factor_kernels.point_plane independently define the same r=n dot(p+omega cross p+translation-q), differentiated at zero, with rotation-first6-vector. One returns a residual+V6 for AoSoA dispatch, the other seven scalars for inline fusion. This is exact duplicated symbolic algebra, not identical dispatch ABI. Both are maintained definitions in the donor generation source; generated emitted/composed copies are a separate provenance concern.
+**Classification: exact duplicate.** Caspar gn.residual_kernel and reprojection.factor_kernels.point_plane independently define the same r=n dot(p+omega cross p+translation-q), differentiated at zero, with rotation-first6-vector. One returns a residual+V6 for AoSoA dispatch, the other seven scalars for inline fusion. This is exact duplicated symbolic algebra, not identical dispatch ABI. Those donor definitions remain frozen independent references. The maintained vector/AoSoA and scalar adapters in `tools/codegen/caspar_point_plane.py` now consume one `sintergpu.codegen.point_plane` factory. All five existing generated modules remain byte-identical; generated emitted/composed copies are a separate provenance concern.
 
 **Source evidence:** `references/donors/caspar-slang/src/caspar_slang/gn.py:43-59`; `references/donors/caspar-slang/src/caspar_slang/reprojection.py:85-94`; `references/donors/caspar-slang/src/caspar_slang/caspar_adapter.py:22-34`.
 
-**Owner and retained variants:** One symbolic residual/Jacobian expression factory in the Caspar generator; preserve AoSoA and scalar export adapters. Preserve both ABI exports and independent NumPy analytic/finite-difference oracle; deleting that oracle would weaken validation.
+**Owner and retained variants:** `sintergpu.codegen.point_plane` owns the symbolic residual/Jacobian expression; the two owned Caspar export adapters preserve AoSoA and scalar schedules. Preserve both ABI exports and independent NumPy analytic/finite-difference oracle; deleting that oracle would weaken validation.
 
 **Required before deduplication:** Compare emitted residual and all6 Jacobian components for randomized/tail/indexed/duplicate-gather cases, exact convention, generated source/compiler drift and existing downstream fused/unfused tolerances.
 
@@ -255,7 +255,7 @@ The VKL port retains radius gating, first-index ties, optional mutual ownership 
 
 ## Recommended order and rejected alternatives
 
-1. Centralize the duplicated Caspar point-to-plane symbolic expression; retain both scalar and AoSoA exports and independent CPU oracle.
+1. G18 is centralized through one maintained point-plane symbolic factory; both scalar and AoSoA exports and the independent CPU oracle remain. The other historical audit groups retain their stated qualification gates.
 2. Establish shared camera/geometry helpers and named profiles for matrix/range, pixel coordinates, invalid data, normal orientation and tangent conventions.
 3. Parameterize reduction/Cholesky helpers only where exact tree/loop order, layout, status and device assumptions survive. Keep VRDX as a pinned vendor unit.
 4. Preserve fused variants and all independent references; compare transfer-inclusive and resident performance before switching downstream defaults. Announce profile/compatibility changes through versioned release notes.

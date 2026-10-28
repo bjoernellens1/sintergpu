@@ -35,5 +35,6 @@
     "output_contract": "All5 generated modules byte-identical; frozen references retained"
   },
   "contract": "docs/point-plane.md",
-  "qualification": "Both standalone compiler import/executable/layout checks passed; physical imported-module parity pending. Candidate performance scope remains exact native seededAoSoA1025 only."
+  "qualification": "Both standalone compiler lanes passed4 actual-import executable/layout comparisons each (1024 exact;256 actual LocalSize difference only). Physical imported-module differential parity passed32 GPU cases per device,64 total. Current six-family baselines refresh392 fixture records across54 existing entries, not imported-module performance. Candidate performance remains exact native seededAoSoA1025/Slang2026.19/polling256 only; full-domain, consumer acceptance, installation and final review remain separate.",
+  "evidence": "qualification/evidence/point-plane-sharing-0.2.4.json"
 }
