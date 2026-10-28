@@ -25,8 +25,9 @@ def test_fake_end_to_end(tmp_path):
         args=[str(binary),UUID,'2497233024',str(shader),str(shader),str(ARTIFACTS/'input.bin'),str(out),str(lease.fileno()),'50']
         p=subprocess.run(args,env=env,pass_fds=(lease.fileno(),),capture_output=True,text=True)
         assert p.returncode==0,p.stderr
-        lines=out.read_text().splitlines();assert len(lines)==2+3*50*3
-        assert sum('dispatch_fake_cpu_oracle_copy' in line for line in events.read_text().splitlines())==3*55*3*2
+        lines=out.read_text().splitlines();assert len(lines)==2+50*3
+        assert (tmp_path/'samples.raw').stat().st_size==50*3*2*(74268+32)
+        assert sum('dispatch_fake_cpu_oracle_copy' in line for line in events.read_text().splitlines())==55*3*2
         failout=tmp_path/'failure';args[6]=str(failout)
         env['SINTERGPU_FAKE_FAIL_WAIT']='2'
         before=len(events.read_text().splitlines())
