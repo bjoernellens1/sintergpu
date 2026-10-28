@@ -19,6 +19,7 @@
 #include <fcntl.h>
 #include <sched.h>
 #include <sys/file.h>
+#include <time.h>
 #include <unistd.h>
 
 namespace fs = std::filesystem;
@@ -52,6 +53,11 @@ static std::string quote(const std::string& s) {
 static uint64_t fnv1a(const Bytes& bytes) {
     uint64_t h=14695981039346656037ull; for(auto b:bytes) { h^=b; h*=1099511628211ull; } return h;
 }
+static uint64_t thread_cpu_ns() {
+    timespec time{};
+    require(clock_gettime(CLOCK_THREAD_CPUTIME_ID,&time)==0,"cannot read thread CPU clock");
+    return uint64_t(time.tv_sec)*1000000000ull+uint64_t(time.tv_nsec);
+}
 static std::string identity(const Bytes& bytes) { std::ostringstream out; out<<std::hex<<fnv1a(bytes); return out.str(); }
 static uint32_t number(const std::string& s) {
     require(!s.empty() && s[0]!='-', "invalid unsigned integer: "+s);
@@ -62,6 +68,7 @@ struct Options {
     fs::path baseline,candidate,fixture,output;
     uint32_t count=0,blocks=1000,warmups=10,vendor=0,device=0;
     bool validate_only=false;
+    std::string completion_mode="wait";
 };
 static Options options(int argc,char** argv) {
     Options o;
@@ -70,7 +77,8 @@ static Options options(int argc,char** argv) {
         if(k=="--help") {
             std::cout<<"point_plane_ab --baseline FILE --candidate FILE --fixture-dir DIR --count N\n"
                 " --vendor 0x1002 --device 0x1586 --output FILE [--blocks 1000] [--warmups 10]\n"
-                " [--validate-only] (CPU fixture/SPIR-V validation; no Vulkan instance or GPU lock)\n"
+                " [--completion-mode wait|spin] [--validate-only]\n"
+                " (validate-only: CPU fixture/SPIR-V validation; no Vulkan instance or GPU lock)\n"
                 "Allowed devices: AMD 1002:1586 or NVIDIA 10de:2782. Takes exclusive nonblocking\n"
                 "flock /tmp/sintergpu-gpu.lock for all Vulkan work. No shader compilation in timed paths.\n";
             std::exit(0);
@@ -81,22 +89,23 @@ static Options options(int argc,char** argv) {
         else if(k=="--fixture-dir") o.fixture=v; else if(k=="--output") o.output=v;
         else if(k=="--count") o.count=number(v); else if(k=="--blocks") o.blocks=number(v);
         else if(k=="--warmups") o.warmups=number(v); else if(k=="--vendor") o.vendor=number(v);
-        else if(k=="--device") o.device=number(v); else throw std::runtime_error("unknown option "+k);
+        else if(k=="--device") o.device=number(v); else if(k=="--completion-mode") o.completion_mode=v; else throw std::runtime_error("unknown option "+k);
     }
     require(!o.baseline.empty()&&!o.candidate.empty()&&!o.fixture.empty()&&!o.output.empty()&&o.count&&o.blocks,
         "baseline, candidate, fixture-dir, output, positive count and blocks required");
     require((o.vendor==0x1002 && o.device==0x1586)||(o.vendor==0x10de && o.device==0x2782),
         "explicit allowed vendor/device required: 1002:1586 or 10de:2782");
+    require(o.completion_mode=="wait"||o.completion_mode=="spin","completion-mode must be wait or spin");
     require(o.count<=UINT32_MAX/24-14,"count too large"); return o;
 }
 static const std::array<const char*,7> names={"points","targets","normals","out_0","out_1","points_indices","params"};
 // CPU contract guard, not a general SPIR-V validator. Full semantic validation is
 // still the compiler/driver's job; reject a different entry/workgroup/binding ABI.
-static void validate_spirv(const Bytes& bytes) {
+static uint32_t validate_spirv(const Bytes& bytes) {
     require(bytes.size()>=20&&bytes.size()%4==0,"invalid SPIR-V byte count");
     std::vector<uint32_t> w(bytes.size()/4);std::memcpy(w.data(),bytes.data(),bytes.size());
     require(w[0]==0x07230203&&w[1]>=0x10000&&w[1]<=0x10500,"expected little-endian SPIR-V <=1.5");
-    std::map<uint32_t,uint32_t> bindings,sets;uint32_t entry=0;bool local=false;
+    std::map<uint32_t,uint32_t> bindings,sets;uint32_t entry=0,local_x=0;
     for(size_t i=5;i<w.size();) {
         uint32_t length=w[i]>>16,opcode=w[i]&65535;
         require(length&&length<=w.size()-i,"malformed SPIR-V instruction length");
@@ -122,14 +131,17 @@ static void validate_spirv(const Bytes& bytes) {
     for(size_t i=5;i<w.size();) {
         uint32_t length=w[i]>>16,opcode=w[i]&65535;
         if(opcode==16&&length>=3&&w[i+1]==entry&&w[i+2]==17) {
-            require(length==6&&w[i+3]==1024&&w[i+4]==1&&w[i+5]==1,"expected numthreads(1024,1,1)");local=true;
+            require(length==6&&(w[i+3]==256||w[i+3]==1024)&&w[i+4]==1&&w[i+5]==1,"expected numthreads(256 or 1024,1,1)");
+            require(!local_x,"duplicate literal LocalSize execution mode");local_x=w[i+3];
         }i+=length;
     }
-    require(local,"expected literal LocalSize(1024,1,1)");
+    require(local_x,"expected literal LocalSize(256 or 1024,1,1)");
+    return local_x;
 }
 struct Fixture {
     std::array<Bytes,7> arrays;
     std::array<Bytes,2> spirv;
+    std::array<uint32_t,2> local_x{};
     explicit Fixture(const Options& o) {
         uint64_t alloc=uint64_t(o.count)+7, points=std::max(1u,o.count/2);
         std::array<uint64_t,6> sizes={points*16,alloc*16,alloc*16,(alloc+7)*4,(6*alloc+7)*4,uint64_t(o.count)*4};
@@ -147,7 +159,8 @@ struct Fixture {
             require(index<points,"fixture point index out of bounds");
         }
         spirv[0]=read_bytes(o.baseline); spirv[1]=read_bytes(o.candidate);
-        for(const auto& s:spirv)validate_spirv(s);
+        for(size_t i=0;i<spirv.size();++i)local_x[i]=validate_spirv(spirv[i]);
+        require(local_x[0]==1024,"baseline must retain numthreads(1024,1,1)");
     }
 };
 struct RunLock {
@@ -168,7 +181,7 @@ struct RunLock {
     ~RunLock() {if(fd>=0) {try {record("released");} catch(...) {} flock(fd,LOCK_UN);close(fd);}}
 };
 struct Buffer {VkBuffer handle=VK_NULL_HANDLE;VkDeviceMemory memory=VK_NULL_HANDLE;VkDeviceSize size=0,allocated=0;uint32_t type=0;VkMemoryPropertyFlags flags=0;void* mapped=nullptr;};
-struct Sample {const char* boundary;uint32_t block,position,variant;double wall_ns=0,gpu_ns=0;};
+struct Sample {const char* boundary;uint32_t block,position,variant;double wall_ns=0,gpu_ns=0,thread_cpu_ns=0;};
 struct Harness {
     const Options& o; const Fixture& fixture;
     VkInstance instance=VK_NULL_HANDLE;VkPhysicalDevice physical=VK_NULL_HANDLE;VkDevice device=VK_NULL_HANDLE;
@@ -211,8 +224,10 @@ struct Harness {
             }
         }
         require(physical,"requested physical GPU not found");
-        require(props.limits.maxComputeWorkGroupInvocations>=1024&&props.limits.maxComputeWorkGroupSize[0]>=1024,"1024-thread group unsupported");
-        require((uint64_t(o.count)+1023)/1024<=props.limits.maxComputeWorkGroupCount[0],"dispatch count exceeds device limits");
+        for(auto local_x:fixture.local_x) {
+            require(props.limits.maxComputeWorkGroupInvocations>=local_x&&props.limits.maxComputeWorkGroupSize[0]>=local_x,"shader local size unsupported");
+            require((uint64_t(o.count)+local_x-1)/local_x<=props.limits.maxComputeWorkGroupCount[0],"dispatch count exceeds device limits");
+        }
         require(props.limits.timestampPeriod>0,"invalid timestamp period");
         uint32_t qn=0;vkGetPhysicalDeviceQueueFamilyProperties(physical,&qn,nullptr);
         std::vector<VkQueueFamilyProperties> q(qn);vkGetPhysicalDeviceQueueFamilyProperties(physical,&qn,q.data());
@@ -290,6 +305,7 @@ struct Harness {
     }
     Sample invoke(uint32_t variant,const char* boundary,uint32_t block=0,uint32_t position=0) {
         bool transfer=std::strcmp(boundary,"transfer_inclusive")==0,timestamp=std::strcmp(boundary,"gpu_timestamp")==0;
+        auto cpu_start=thread_cpu_ns();
         auto start=Clock::now();
         if(transfer)for(size_t i=0;i<7;++i) {std::memcpy(upload[i].mapped,fixture.arrays[i].data(),fixture.arrays[i].size());sync_host(upload[i],true);}
         check(vkResetFences(device,1,&fence),"reset fence");check(vkResetCommandBuffer(cmd,0),"reset command buffer");
@@ -305,7 +321,8 @@ struct Harness {
         vkCmdBindPipeline(cmd,VK_PIPELINE_BIND_POINT_COMPUTE,pipelines[variant]);
         vkCmdBindDescriptorSets(cmd,VK_PIPELINE_BIND_POINT_COMPUTE,layout,0,1,&set,0,nullptr);
         if(timestamp)vkCmdWriteTimestamp(cmd,VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT,queries,0);
-        vkCmdDispatch(cmd,(o.count+1023)/1024,1,1);
+        uint32_t local_x=fixture.local_x[variant];
+        vkCmdDispatch(cmd,(o.count+local_x-1)/local_x,1,1);
         if(timestamp)vkCmdWriteTimestamp(cmd,VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT,queries,1);
         if(transfer) {
             barrier(VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT,VK_PIPELINE_STAGE_TRANSFER_BIT,VK_ACCESS_SHADER_WRITE_BIT,VK_ACCESS_TRANSFER_READ_BIT);
@@ -314,9 +331,17 @@ struct Harness {
         }
         check(vkEndCommandBuffer(cmd),"end command buffer");
         VkSubmitInfo submit{VK_STRUCTURE_TYPE_SUBMIT_INFO};submit.commandBufferCount=1;submit.pCommandBuffers=&cmd;
-        check(vkQueueSubmit(queue,1,&submit,fence),"queue submit");check(vkWaitForFences(device,1,&fence,VK_TRUE,UINT64_MAX),"fence completion");
+        check(vkQueueSubmit(queue,1,&submit,fence),"queue submit");
+        if(o.completion_mode=="wait")check(vkWaitForFences(device,1,&fence,VK_TRUE,UINT64_MAX),"fence completion");
+        else {
+            VkResult status;
+            do {status=vkGetFenceStatus(device,fence);} while(status==VK_NOT_READY);
+            check(status,"spin fence completion");
+        }
         if(transfer)for(size_t i=0;i<2;++i) {sync_host(readback[i],false);std::memcpy(host_outputs[i].data(),readback[i].mapped,host_outputs[i].size());}
-        auto stop=Clock::now();Sample s{boundary,block,position,variant,std::chrono::duration<double,std::nano>(stop-start).count(),0};
+        auto stop=Clock::now();
+        auto cpu_stop=thread_cpu_ns();
+        Sample s{boundary,block,position,variant,std::chrono::duration<double,std::nano>(stop-start).count(),0,double(cpu_stop-cpu_start)};
         if(timestamp) {
             std::array<uint64_t,2> ticks{};check(vkGetQueryPoolResults(device,queries,0,2,sizeof(ticks),ticks.data(),sizeof(uint64_t),VK_QUERY_RESULT_64_BIT|VK_QUERY_RESULT_WAIT_BIT),"timestamp results");
             uint64_t mask=timestamp_bits==64?UINT64_MAX:((uint64_t(1)<<timestamp_bits)-1);
@@ -338,6 +363,8 @@ struct Harness {
     void report(const std::vector<Sample>& samples) const {
         std::ofstream out(o.output);require(bool(out),"cannot write report");out<<std::setprecision(17);
         out<<"{\"status\":\"passed\",\"schema\":\"sintergpu.native.point_plane.ab.v1\",\"profile\":\"native_caller_owned_vulkan\",\"count\":"<<o.count
+           <<",\"completion_mode\":"<<quote(o.completion_mode)
+           <<",\"launch\":{\"baseline_local_size\":["<<fixture.local_x[0]<<",1,1],\"candidate_local_size\":["<<fixture.local_x[1]<<",1,1],\"baseline_groups_x\":"<<(o.count+fixture.local_x[0]-1)/fixture.local_x[0]<<",\"candidate_groups_x\":"<<(o.count+fixture.local_x[1]-1)/fixture.local_x[1]<<"}"
            <<",\"blocks\":"<<o.blocks<<",\"warmups_per_boundary_per_variant\":"<<o.warmups
            <<",\"correctness\":{\"full_byte_differential_before_after\":true,\"padding_before_after\":true,\"independent_oracle\":\"required externally\"}"
            <<",\"hardware\":{\"name\":"<<quote(props.deviceName)<<",\"vendor_id\":"<<props.vendorID<<",\"device_id\":"<<props.deviceID
@@ -362,15 +389,15 @@ struct Harness {
             if(i==3||i==4){auto& b=readback[i-3];readback_bytes+=b.size;out<<",\"readback_memory_type\":"<<b.type<<",\"readback_memory_flags\":"<<b.flags<<",\"readback_allocation_bytes\":"<<b.allocated;}out<<'}';
         }
         out<<"],\"upload_bytes_including_32byte_params\":"<<upload_bytes<<",\"readback_bytes\":"<<readback_bytes
-           <<",\"semantics\":{\"gpu_timestamp\":\"timestamps at COMPUTE_SHADER immediately surrounding one dispatch; result fetch after wall timer\",\"resident_completion\":\"one record+submit+fence completion; shared retained buffers and descriptors; no uploads/readback/query commands\",\"transfer_inclusive\":\"CPU memcpy all 7 initial buffers to retained HOST_CACHED staging + flush + record/copies/barriers/dispatch/full 2-output copies + submit/fence + invalidate + CPU memcpy full outputs\",\"order\":\"ABBA independently for each boundary; baseline,candidate,candidate,baseline; every invocation retained; no mean batching\",\"allocations\":\"all Vulkan and host output/sample allocation outside timing\"},\"samples\":[";
-        for(size_t i=0;i<samples.size();++i){const auto& s=samples[i];if(i)out<<',';out<<"{\"boundary\":"<<quote(s.boundary)<<",\"block\":"<<s.block<<",\"position\":"<<s.position<<",\"variant\":"<<quote(s.variant?"candidate":"baseline")<<",\"wall_ns\":"<<s.wall_ns<<",\"gpu_ns\":";if(std::strcmp(s.boundary,"gpu_timestamp")==0)out<<s.gpu_ns;else out<<"null";out<<'}';}
+           <<",\"semantics\":{\"gpu_timestamp\":\"timestamps at COMPUTE_SHADER immediately surrounding one dispatch; result fetch after wall timer\",\"resident_completion\":\"one record+submit+fence completion; shared retained buffers and descriptors; no uploads/readback/query commands\",\"transfer_inclusive\":\"CPU memcpy all 7 initial buffers to retained HOST_CACHED staging + flush + record/copies/barriers/dispatch/full 2-output copies + submit/fence + invalidate + CPU memcpy full outputs\",\"order\":\"ABBA independently for each boundary; baseline,candidate,candidate,baseline; every invocation retained; no mean batching\",\"allocations\":\"all Vulkan and host output/sample allocation outside timing\",\"thread_cpu_ns\":\"CLOCK_THREAD_CPUTIME_ID enclosing wall interval; includes thread CPU clock and wall clock overhead, excludes timestamp result fetch; same completion policy for both variants\"},\"samples\":[";
+        for(size_t i=0;i<samples.size();++i){const auto& s=samples[i];if(i)out<<',';out<<"{\"boundary\":"<<quote(s.boundary)<<",\"block\":"<<s.block<<",\"position\":"<<s.position<<",\"variant\":"<<quote(s.variant?"candidate":"baseline")<<",\"wall_ns\":"<<s.wall_ns<<",\"thread_cpu_ns\":"<<s.thread_cpu_ns<<",\"gpu_ns\":";if(std::strcmp(s.boundary,"gpu_timestamp")==0)out<<s.gpu_ns;else out<<"null";out<<'}';}
         out<<"]}\n";require(bool(out),"report write failed");
     }
 };
 int main(int argc,char** argv) {
     try {
         auto o=options(argc,argv);Fixture fixture(o);
-        if(o.validate_only){std::cout<<"CPU fixture/SPIR-V header validation passed; no Vulkan calls made\n";return 0;}
+        if(o.validate_only){std::cout<<"CPU fixture/SPIR-V ABI validation passed; baseline local size "<<fixture.local_x[0]<<", candidate local size "<<fixture.local_x[1]<<", completion mode "<<o.completion_mode<<"; no Vulkan calls made\n";return 0;}
         if(!o.output.parent_path().empty())fs::create_directories(o.output.parent_path());
         RunLock lock(o);Harness h(o,fixture);h.init();h.correctness("before");
         std::vector<Sample> samples;samples.reserve(size_t(o.blocks)*12);

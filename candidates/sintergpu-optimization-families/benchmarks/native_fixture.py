@@ -23,10 +23,10 @@ PARAM_NAMES = ('problem_size', 'points_num_alloc', 'targets_num_alloc',
 COUNTS = (1, 63, 1023, 1024, 1025, 4099, 65539)
 
 
-def export_fixture(directory: Path, count: int, profile: str):
+def export_fixture(directory: Path, count: int, profile: str, candidate_local_size=1024):
     if count <= 0:
         raise ValueError('count must be positive')
-    case = point_case(None, count, profile)
+    case = point_case(None, count, profile,candidate_local_size=candidate_local_size)
     directory.mkdir(parents=True, exist_ok=True)
     files = {}
     for name in NAMES:
@@ -42,6 +42,7 @@ def export_fixture(directory: Path, count: int, profile: str):
     files['params.bin'] = dict(bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
     metadata = dict(schema='sintergpu.native.point_plane.fixture.v1', count=count,
                     allocation=case['allocation'], profile=profile, params=params,
+                    candidate_local_size=candidate_local_size,
                     files=files,
                     source_sha256={name: hashlib.sha256(source.encode()).hexdigest()
                                    for name, source in case['sources'].items()},

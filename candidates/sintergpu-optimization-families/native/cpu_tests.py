@@ -68,18 +68,42 @@ def main():
         altered = directory / 'invalid.spv'
         altered.write_bytes(b'bad')
         assert 'SPIR-V byte count' in run(63, baseline, altered, expected=1).stderr
-        words = list(struct.unpack(f'<{baseline.stat().st_size//4}I', baseline.read_bytes()))
-        offset = 5
-        while offset < len(words):
-            length, opcode = words[offset] >> 16, words[offset] & 65535
-            if opcode == 16 and words[offset+2] == 17:
-                words[offset+3] = 64
-                break
-            offset += length
-        else:
-            raise AssertionError('test SPIR-V lacks LocalSize')
-        altered.write_bytes(struct.pack(f'<{len(words)}I', *words))
-        assert 'numthreads' in run(63, baseline, altered, expected=1).stderr
+        def with_local_size(source, local):
+            words = list(struct.unpack(f'<{source.stat().st_size//4}I', source.read_bytes()))
+            offset = 5
+            while offset < len(words):
+                length, opcode = words[offset] >> 16, words[offset] & 65535
+                if opcode == 16 and words[offset+2] == 17:
+                    words[offset+3:offset+6] = local
+                    break
+                offset += length
+            else:
+                raise AssertionError('test SPIR-V lacks LocalSize')
+            altered.write_bytes(struct.pack(f'<{len(words)}I', *words))
+            return altered
+
+        for mode in ('wait', 'spin'):
+            result = run(63, baseline, candidate, extra=('--completion-mode', mode))
+            assert f'completion mode {mode}' in result.stdout
+        assert 'completion-mode must be wait or spin' in run(
+            63, baseline, candidate, expected=1, extra=('--completion-mode', 'invalid')).stderr
+        # Candidate launch configuration may be256, while baseline remains1024.
+        candidate256 = with_local_size(candidate, (256, 1, 1))
+        result = run(63, baseline, candidate256)
+        assert 'baseline local size 1024, candidate local size 256' in result.stdout
+        assert 'baseline must retain' in run(63, candidate256, candidate, expected=1).stderr
+        for invalid_local in ((64, 1, 1), (512, 1, 1), (256, 2, 1), (1024, 1, 2)):
+            invalid = with_local_size(candidate, invalid_local)
+            assert 'numthreads' in run(63, baseline, invalid, expected=1).stderr
+        # Validate both pinned lanes and all count/tail fixtures under the256 configuration.
+        for profile in ('aosoa', 'scalar'):
+            for count in COUNTS:
+                export_fixture(directory, count, profile)
+                for compiler in ('2026.12', '2026.19'):
+                    baseline = args.spirv_root / compiler / f'point-{profile}-baseline.spv'
+                    candidate = args.spirv_root / compiler / f'point-{profile}-candidate.spv'
+                    result = run(count, baseline, with_local_size(candidate, (256, 1, 1)))
+                    assert 'baseline local size 1024, candidate local size 256' in result.stdout
     print(f'{passed} native CPU-only CLI/fixture/SPIR-V checks passed; no GPU work performed')
 
 

@@ -25,6 +25,7 @@ def run(args):
     args.output.mkdir(parents=True, exist_ok=True)
     identity = dict(schema='sintergpu.native.suite.v1', blocks=args.blocks, warmups=10,
         runs=3, profiles=['aosoa', 'scalar'], counts=list(COUNTS), method=METHOD,
+        candidate_local_size=args.candidate_local_size,completion_mode=args.completion_mode,
         compiler_lane='2026.19', hostname=platform.node(), vendor=args.vendor,
         device=args.device, affinity_cpu=args.cpu,
         source_commit=args.source_commit or subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
@@ -40,7 +41,7 @@ def run(args):
     for profile in identity['profiles']:
         for count in COUNTS:
             fixture=args.output/f'fixture-{profile}-{count}'
-            export_fixture(fixture, count, profile)
+            export_fixture(fixture, count, profile,args.candidate_local_size)
             for run_id in range(1,4):
                 output=args.output/f'{profile}-{count}-run{run_id}.json'
                 if output.exists() or output.with_suffix('.json.gz').exists():
@@ -50,7 +51,7 @@ def run(args):
                     '--candidate',str(args.compiled/f'{profile}-candidate.spv'),
                     '--fixture-dir',str(fixture),'--count',str(count),
                     '--vendor',args.vendor,'--device',args.device,'--output',str(output),
-                    '--blocks',str(args.blocks),'--warmups','10']
+                    '--blocks',str(args.blocks),'--warmups','10','--completion-mode',args.completion_mode]
                 subprocess.run(command, check=True)
                 oracle=check_native_outputs(output, count, profile)
                 result=dict(profile=profile,count=count,run=run_id,command=command,
@@ -105,6 +106,8 @@ def main():
     p.add_argument('--output',type=Path,required=True);p.add_argument('--vendor',required=True);p.add_argument('--device',required=True)
     p.add_argument('--cpu',type=int,required=True);p.add_argument('--blocks',type=int,default=1000)
     p.add_argument('--source-commit',help='Full source commit for an exported archive without .git; source hashes remain mandatory')
+    p.add_argument('--candidate-local-size',type=int,choices=(256,1024),default=1024)
+    p.add_argument('--completion-mode',choices=('wait','spin'),default='wait')
     p=sub.add_parser('report');p.add_argument('--inputs',type=Path,nargs='+',required=True);p.add_argument('--output',type=Path,required=True)
     args=parser.parse_args();globals()[args.action](args)
 

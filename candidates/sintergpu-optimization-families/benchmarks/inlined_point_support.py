@@ -11,7 +11,8 @@ check_point_oracle=base.check_point_oracle
 point_oracle=base.point_oracle
 
 
-def point_case(device,count,profile,*,shared_resources=True):
+def point_case(device,count,profile,*,shared_resources=True,candidate_local_size=1024):
+    if candidate_local_size not in (256,1024):raise ValueError('unsupported point-map launch size')
     original=base.point_case(None,count,profile)
     helper=(CANDIDATE/'kernels/optimization/point_plane_inlined.slang').read_text()
     if profile=='aosoa':
@@ -40,6 +41,8 @@ void main(uint3 dispatchThreadID:SV_DispatchThreadID) {
         adapter=frozen[frozen.index('[[vk::binding'):]
         candidate=helper+adapter.replace('caspar_point_plane(', 'sinterPointPlaneScalars<false>(')
     else:raise ValueError('unknown profile')
+    candidate=candidate.replace('numthreads(1024,1,1)',f'numthreads({candidate_local_size},1,1)')
+    candidate=candidate.replace('numthreads(1024, 1, 1)',f'numthreads({candidate_local_size}, 1, 1)')
     if device is None:
         original['sources']['candidate']=candidate
         return original

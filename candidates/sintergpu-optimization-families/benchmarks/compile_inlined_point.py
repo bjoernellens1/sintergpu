@@ -42,6 +42,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--toolchains',type=Path,required=True)
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--candidate-local-size',type=int,choices=(256,1024),default=1024)
     args=parser.parse_args();record=dict(status='passed',comparisons=[])
     for version in ('2026.12','2026.19'):
         compiler=args.toolchains/version/'bin/slangc'
@@ -49,7 +50,7 @@ def main():
         assert (actual.stdout+actual.stderr).strip()==version
         directory=args.output/version;directory.mkdir(parents=True,exist_ok=True)
         for profile in ('aosoa','scalar'):
-            case=point_case(None,1025,profile);normalized={};resources={};artifacts={}
+            case=point_case(None,1025,profile,candidate_local_size=args.candidate_local_size);normalized={};resources={};artifacts={}
             for variant,source in case['sources'].items():
                 path=directory/(profile+'-'+variant+'.slang');path.write_text(source)
                 common=[str(compiler),str(path),'-entry','main','-profile','spirv_1_5','-fp-mode','precise','-O3']
@@ -63,11 +64,14 @@ def main():
                 artifacts[variant]=dict(source_sha256=digest(path),spirv_sha256=digest(binary),
                     reflection_sha256=digest(reflection),normalized_sha256=digest(normal),command=common)
             equal=normalized['baseline']==normalized['candidate']
+            launch_only_equal=normalized['baseline']==normalized['candidate'].replace(' LocalSize 256 1 1',' LocalSize 1024 1 1')
             same_layout=resources['baseline']==resources['candidate']
             record['comparisons'].append(dict(compiler=version,compiler_sha256=digest(compiler),profile=profile,
-                instruction_stream_equal=equal,resource_layout_equal=same_layout,artifacts=artifacts))
+                instruction_stream_equal=equal,equal_except_declared_local_size=launch_only_equal,
+                baseline_local_size=1024,candidate_local_size=args.candidate_local_size,
+                resource_layout_equal=same_layout,artifacts=artifacts))
             print(version,profile,'instructions',equal,'layout',same_layout,flush=True)
-            if not equal or not same_layout:record['status']='failed'
+            if not launch_only_equal or not same_layout:record['status']='failed'
     (args.output/'instruction-equivalence.json').write_text(json.dumps(record,indent=2)+'\n')
     if record['status']!='passed':raise SystemExit(1)
 

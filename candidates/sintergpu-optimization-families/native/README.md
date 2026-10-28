@@ -34,9 +34,14 @@ warmups per variant per boundary. The order is independently baseline,candidate,
 for each block of each boundary. Each individual invocation is retained; no batching averages.
 
 The SPIR-V must come from the separately recorded pinned Slang compiler lane, with entry
-`main`, literal1024×1×1 local size, six storage buffers at set0 bindings0..5, and one
+`main`, baseline literal1024×1×1 local size, candidate literal256×1×1 or1024×1×1 local
+size, six storage buffers at set0 bindings0..5, and one
 uniform Params at binding6. CPU validation checks SPIR-V framing, Shader-only capability,
-entry, workgroup size, and binding decoration contract. It is deliberately not a complete
+entry, each variant's workgroup size, and binding decoration contract. Baseline launch
+size remains1024. Candidate launch256 is a separate configuration that preserves
+per-element arithmetic; the runtime records each variant's actual local size and dispatches
+ceil(count/local_size_x) workgroups. The JSON `launch` object records both local sizes
+and dispatch counts, so this configuration cannot be mistaken for the earlier1024/1024 profile. It is deliberately not a complete
 SPIR-V validator or reflection/type checker. The pinned shader reflection/compilation evidence
 must establish descriptor types and numerical source identity. Compile artifacts, compiler
 SHA256/version/flags, and profile must accompany native evidence. The runtime does not compile
@@ -72,7 +77,18 @@ python candidates/sintergpu-optimization-families/benchmarks/native_fixture.py \
   --count 1025 --profile aosoa --check-native-output /tmp/point-1025-native.json
 ```
 
-Raw JSON records include boundary/block/position/variant, `wall_ns`, and `gpu_ns` (null
+`--completion-mode wait|spin` selects a caller configuration applied identically to
+both variants in all boundaries. Default `wait` preserves the original fence-wait policy.
+`spin` repeatedly calls `vkGetFenceStatus` until success, rejecting errors; it is an
+explicit low-latency caller configuration whose CPU cost must be assessed separately.
+It does not yield, sleep, batch work, delete boundaries, or alter numerical checks.
+The JSON records `completion_mode`; compare candidate and incumbent under the same mode.
+Every invocation records `thread_cpu_ns` from CLOCK_THREAD_CPUTIME_ID around the wall
+interval, including the CPU/wall clock read overhead and excluding timestamp result
+retrieval. CPU time is a separate resource cost, especially for polling completion.
+
+Raw JSON records include boundary/block/position/variant, `wall_ns`, `thread_cpu_ns`,
+and `gpu_ns` (null
 outside the GPU boundary). Hardware/queue/driver/API, timestamp period, affinity, fixture
 and SPIR-V FNV1a64 identities, current executable identity, and runtime source identity are
 included. FNV1a is explicitly noncryptographic; retain external SHA256 artifact manifests.

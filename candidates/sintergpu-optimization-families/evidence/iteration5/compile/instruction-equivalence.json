@@ -1,0 +1,189 @@
+{
+  "status": "passed",
+  "comparisons": [
+    {
+      "compiler": "2026.12",
+      "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "profile": "aosoa",
+      "instruction_stream_equal": false,
+      "equal_except_declared_local_size": true,
+      "baseline_local_size": 1024,
+      "candidate_local_size": 256,
+      "resource_layout_equal": true,
+      "artifacts": {
+        "baseline": {
+          "source_sha256": "1ffe081687d156ef3bee9a272e07b8db87c2ea2f856d82a5b762d60275255502",
+          "spirv_sha256": "fbe9d8650eb92821a2e6ed7e27fb3fc2fec9f8271ec15a9c1a34a4f9c45f5495",
+          "reflection_sha256": "dfc24afe7b201c85db3608e43e77489ce2fc706fbe738dc60b4e57aa464974e6",
+          "normalized_sha256": "d5c61cdc9883824f39240b5ada43f7c1e4ab26ab1d1de6c4dd218aaa5f2060cf",
+          "command": [
+            "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+            "evidence/iteration5/compile/2026.12/aosoa-baseline.slang",
+            "-entry",
+            "main",
+            "-profile",
+            "spirv_1_5",
+            "-fp-mode",
+            "precise",
+            "-O3"
+          ]
+        },
+        "candidate": {
+          "source_sha256": "349f631d9d523409a5f8859de3e0480913b4a23ff7455306174c165db9391b4e",
+          "spirv_sha256": "16bbd667edc3f84e52ce5dfcc76648daf4d0a6f2e222aac633435a96f40ea74f",
+          "reflection_sha256": "bb53fb6db8fa49a7a27ecdba8fd00330a2f4658a97cddd6f8cd748b1c883f9ba",
+          "normalized_sha256": "84013c4bd0b705f6b09ffa4ae30b7ef1bf11c38436e81601ebb6dac9733ae108",
+          "command": [
+            "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+            "evidence/iteration5/compile/2026.12/aosoa-candidate.slang",
+            "-entry",
+            "main",
+            "-profile",
+            "spirv_1_5",
+            "-fp-mode",
+            "precise",
+            "-O3"
+          ]
+        }
+      }
+    },
+    {
+      "compiler": "2026.12",
+      "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "profile": "scalar",
+      "instruction_stream_equal": false,
+      "equal_except_declared_local_size": true,
+      "baseline_local_size": 1024,
+      "candidate_local_size": 256,
+      "resource_layout_equal": true,
+      "artifacts": {
+        "baseline": {
+          "source_sha256": "8fc8c09c4339891007947e952c72ea36ab7f0ba3159d2f7dca51f5f09853525f",
+          "spirv_sha256": "b157c086007af218bb56cb87bafa7bbea0f4b3c9eb3cb204811e2f3eb2e60a88",
+          "reflection_sha256": "a04e9503376b68befc1c32338497e8da04ae6c3679f6005257dab334b6a2d381",
+          "normalized_sha256": "7770639ca803a9dd04edec2a42c561d7c7ab3baf31ef3e7821fbcf0d9b86e3d7",
+          "command": [
+            "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+            "evidence/iteration5/compile/2026.12/scalar-baseline.slang",
+            "-entry",
+            "main",
+            "-profile",
+            "spirv_1_5",
+            "-fp-mode",
+            "precise",
+            "-O3"
+          ]
+        },
+        "candidate": {
+          "source_sha256": "9a91c0588e93b637e4c484d4f077b10de6133f2824dbed57c3b540066a5cca41",
+          "spirv_sha256": "f6d1de8b2d6277a4da10efd1703ead3292b675adb9a3237967f43e08a6ae6cbc",
+          "reflection_sha256": "a0581d2a64dce32eafab4d860c6a71182568991c7d76d24e1c00bf7b3fa9056b",
+          "normalized_sha256": "9397ec84a77ab89dcb5cb034d8b6549da56dc3ed675b07c3756b43edb42b3e6f",
+          "command": [
+            "/tmp/sintergpu-family-toolchains/2026.12/bin/slangc",
+            "evidence/iteration5/compile/2026.12/scalar-candidate.slang",
+            "-entry",
+            "main",
+            "-profile",
+            "spirv_1_5",
+            "-fp-mode",
+            "precise",
+            "-O3"
+          ]
+        }
+      }
+    },
+    {
+      "compiler": "2026.19",
+      "compiler_sha256": "b13606619c8959bbd490cb87e6e549e366a22a13c6cbd46cce3f798264778b60",
+      "profile": "aosoa",
+      "instruction_stream_equal": false,
+      "equal_except_declared_local_size": true,
+      "baseline_local_size": 1024,
+      "candidate_local_size": 256,
+      "resource_layout_equal": true,
+      "artifacts": {
+        "baseline": {
+          "source_sha256": "1ffe081687d156ef3bee9a272e07b8db87c2ea2f856d82a5b762d60275255502",
+          "spirv_sha256": "a6c21ab0f56b1d06acbf2a38d32d1552338098e6643bfb92be3541825404684a",
+          "reflection_sha256": "7b5ac2df80b9171435ea37242aeaa6b0c9ce1a60d01eedcf8115d512fe622cb9",
+          "normalized_sha256": "631a3a226e683c05d82bc29ad5b163cf9b9cd96884ad539e2a4cf1cd94d8c20a",
+          "command": [
+            "/tmp/sintergpu-family-toolchains/2026.19/bin/slangc",
+            "evidence/iteration5/compile/2026.19/aosoa-baseline.slang",
+            "-entry",
+            "main",
+            "-profile",
+            "spirv_1_5",
+            "-fp-mode",
+            "precise",
+            "-O3"
+          ]
+        },
+        "candidate": {
+          "source_sha256": "349f631d9d523409a5f8859de3e0480913b4a23ff7455306174c165db9391b4e",
+          "spirv_sha256": "233051228d1ed80d8320304680597f3ea6ff20412e0bd66e1839830f5e8fe3ca",
+          "reflection_sha256": "bf7d18699ed3cac1bc58322aac744d042691dc5b2f6b7939efc4b79d38a50d70",
+          "normalized_sha256": "6170bd82d6d5d207b5153954ca3172c8d9f39d6d922845a972fd2066569f6392",
+          "command": [
+            "/tmp/sintergpu-family-toolchains/2026.19/bin/slangc",
+            "evidence/iteration5/compile/2026.19/aosoa-candidate.slang",
+            "-entry",
+            "main",
+            "-profile",
+            "spirv_1_5",
+            "-fp-mode",
+            "precise",
+            "-O3"
+          ]
+        }
+      }
+    },
+    {
+      "compiler": "2026.19",
+      "compiler_sha256": "b13606619c8959bbd490cb87e6e549e366a22a13c6cbd46cce3f798264778b60",
+      "profile": "scalar",
+      "instruction_stream_equal": false,
+      "equal_except_declared_local_size": true,
+      "baseline_local_size": 1024,
+      "candidate_local_size": 256,
+      "resource_layout_equal": true,
+      "artifacts": {
+        "baseline": {
+          "source_sha256": "8fc8c09c4339891007947e952c72ea36ab7f0ba3159d2f7dca51f5f09853525f",
+          "spirv_sha256": "5cb7d16366c97f340172d21dfc0bd5f505e3107d0d68da28e8433df6bf6da298",
+          "reflection_sha256": "18be4006a9cab9ab0280ae1cd7c68e53508648605e166c13396f4d9640c2d040",
+          "normalized_sha256": "4e5cc063e94ba6e3dad05883f7807acf495f5acb6587396727cf3b55894e914c",
+          "command": [
+            "/tmp/sintergpu-family-toolchains/2026.19/bin/slangc",
+            "evidence/iteration5/compile/2026.19/scalar-baseline.slang",
+            "-entry",
+            "main",
+            "-profile",
+            "spirv_1_5",
+            "-fp-mode",
+            "precise",
+            "-O3"
+          ]
+        },
+        "candidate": {
+          "source_sha256": "9a91c0588e93b637e4c484d4f077b10de6133f2824dbed57c3b540066a5cca41",
+          "spirv_sha256": "bf35f0102e48d48c46f7504b812819a95ce5ad1330765718c68926bf9d6fb59a",
+          "reflection_sha256": "0de3a6d731085ad099bbdb0f8496849e18002b97d2973ff73e3430582b1843d1",
+          "normalized_sha256": "ca9c54f4fec89018485b207dd85793ad18b4ab64597cda064702b7135a677509",
+          "command": [
+            "/tmp/sintergpu-family-toolchains/2026.19/bin/slangc",
+            "evidence/iteration5/compile/2026.19/scalar-candidate.slang",
+            "-entry",
+            "main",
+            "-profile",
+            "spirv_1_5",
+            "-fp-mode",
+            "precise",
+            "-O3"
+          ]
+        }
+      }
+    }
+  ]
+}
