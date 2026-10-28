@@ -30,10 +30,11 @@ The standalone workgroup is128 threads. Opacity and SH fields remain in the dono
 input layout even though this entry does not use them.
 
 Visibility requires camera-space depth greater than float32(1e-4), and both pixel
-coordinates within `[0,imageSize)`. Rejected points have zero pixel/conic fields
+coordinates within `[0,imageSize)`. Depth-rejected points have zero pixel/conic fields
 and visibility, while depth retains the transformed camera-space value. The
-frozen donor C++ reference returns all-zero records for rejected points; callers
-must preserve that distinction. Nonzero finite quaternions and finite,
+frozen donor C++ reference returns all-zero records for depth-rejected points; callers
+must preserve that distinction. Off-screen points with accepted depth retain
+computed pixel/conic fields and have `visible=0`. Nonzero finite quaternions and finite,
 well-defined covariance arithmetic are the exercised domain. Zero quaternions,
 nonfinite/extreme inputs and complete renderer/camera accuracy remain unqualified.
 
