@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2 — 2026-10-28
+
+- Add per-entry CPU/GPU timing recipes for all eight existing segmented scan and stable compaction entries, with independent stage oracles, source-bound raw samples and explicit initialization/tail checks. Record 73 workloads on each Radeon 8060S/RTX 4070 Ti: paired coverage is 51/137 entries with 358 current records; 86 portable and four native timing targets remain pending. Kernel sources and numerical contracts are unchanged.
+
 ## 0.2.1 — 2026-10-28
 
 - Include retained qualification logs in source packages and verify complete package source bytes in PR CI. The 0.2.0 publication stopped before attestation/upload because the new NVIDIA log was omitted; its tag is preserved. This patch publishes the 0.2.0 numerical and timing batch with unchanged kernel sources.
