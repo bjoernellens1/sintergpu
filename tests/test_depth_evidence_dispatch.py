@@ -114,3 +114,14 @@ def test_checked_launch_limits_and_clamped_grid():
         launch(1,1,1,1,1,0,1e100,1024)
     with pytest.raises(ValueError,match='positive integers'):
         launch(True,1,1,1,1,.1,8,1024)
+
+
+@pytest.mark.parametrize('entry', ['depthEvidenceGlobal', 'depthEvidenceGrid'])
+def test_reference_cli_stays_pending_for_unqualified_stages(entry, capsys):
+    from sintergpu.cli import main
+    operation = 'vkl.depth_evidence.' + entry
+    assert main(['test', operation, '--backend', 'reference']) == 2
+    result = json.loads(capsys.readouterr().out)
+    assert result['status'] == 'pending'
+    assert result['unavailable_operations'] == [operation]
+    assert result['cases'] == []

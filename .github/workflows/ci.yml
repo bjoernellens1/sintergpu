@@ -89,6 +89,19 @@ jobs:
           skipped = sum(int(s.get('skipped', 0)) for s in suites)
           assert tests >= 65 and skipped == 0, f'compact Torch gate: {tests} tests, {skipped} skipped'
           PYCHECK
+      - name: Verify depth evidence CPU models against frozen donor
+        env:
+          PYTHONPATH: src:.
+        run: |
+          python -m pytest tests/test_depth_evidence_map_experimental.py tests/test_depth_evidence_dispatch.py -q -k 'not 2026.12 and not 2026.19' --junitxml=build/depth-evidence-cpu.xml
+          python - <<'PYCHECK'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('build/depth-evidence-cpu.xml').getroot()
+          suites = [root] if root.tag == 'testsuite' else root.findall('testsuite')
+          tests = sum(int(s.get('tests', 0)) for s in suites)
+          skipped = sum(int(s.get('skipped', 0)) for s in suites)
+          assert tests == 16 and skipped == 0, f'depth evidence CPU gate: {tests} tests, {skipped} skipped'
+          PYCHECK
       - name: Verify compact backward profile fake-device fixtures
         env:
           PYTHONPATH: src:.
@@ -144,6 +157,13 @@ jobs:
               message(FATAL_ERROR "Installed compact shader differs: ${shader}")
             endif()
           endforeach()
+          foreach(shader depth_evidence depth_evidence_map)
+            file(SHA256 "${SINTERGPU_KERNEL_DIR}/experimental/${shader}.slang" installed_hash)
+            file(SHA256 "${SOURCE_ROOT}/src/sintergpu/kernels/experimental/${shader}.slang" source_hash)
+            if(NOT installed_hash STREQUAL source_hash)
+              message(FATAL_ERROR "Installed depth evidence shader differs: ${shader}")
+            endif()
+          endforeach()
           CMAKE
           cmake -S build/compact-discovery -B build/compact-discovery-build -DCMAKE_PREFIX_PATH=/tmp/sintergpu-relocated -DSOURCE_ROOT="$GITHUB_WORKSPACE"
       - name: Verify source and wheel installs without GPU extras
@@ -162,6 +182,15 @@ jobs:
           assert not validate_catalog()
           source = Path(os.environ['GITHUB_WORKSPACE']).resolve()
           assert not Path(sintergpu.__file__).resolve().is_relative_to(source)
+          from sintergpu.depth_evidence_contract import checked_depth_evidence_launch
+          assert checked_depth_evidence_launch(1, 2, 2, 1, 1, .1, 8, 64).grid_elements == 8
+          for module in ('depth_evidence', 'depth_evidence_map'):
+              path = module_path('experimental.' + module).resolve()
+              assert not path.is_relative_to(source)
+              expected = Path(os.environ['GITHUB_WORKSPACE']) / 'src/sintergpu/kernels/experimental' / (module + '.slang')
+              assert hashlib.sha256(path.read_bytes()).digest() == hashlib.sha256(expected.read_bytes()).digest()
+          for entry in ('depthEvidenceGlobal', 'depthEvidenceGrid'):
+              assert kernel_path('vkl.depth_evidence.' + entry).resolve() == module_path('experimental.depth_evidence').resolve()
           for module, entries in {
               'compact_batched': ('compactInit', 'compactFlags', 'compactScatterMetadata', 'compactFinalizeCounts', 'compactGatherWords'),
               'compact_backward_torch_cpu_profile': ('backwardProfileInit', 'backwardProfileInverse', 'backwardProfileGather'),
@@ -269,6 +298,22 @@ jobs:
           tests = sum(int(s.get('tests', 0)) for s in suites)
           skipped = sum(int(s.get('skipped', 0)) for s in suites)
           assert tests == 1 and skipped == 0, f'point-plane reflection gate: {tests} tests, {skipped} skipped'
+          PYCHECK
+      - name: Verify depth evidence imports and ABI (Slang ${{ matrix.version }})
+        env:
+          SLANG_VERSION: ${{ matrix.version }}
+        run: |
+          test -x /tmp/slang/bin/slangc
+          test "$(/tmp/slang/bin/slangc -version 2>&1)" = "$SLANG_VERSION"
+          export "SINTERGPU_SLANGC_${SLANG_VERSION//./_}=/tmp/slang/bin/slangc"
+          PYTHONPATH=src:. python -m pytest tests/test_depth_evidence_map_experimental.py tests/test_depth_evidence_dispatch.py -q -k "$SLANG_VERSION" --junitxml=build/depth-evidence-abi.xml
+          python - <<'PYCHECK'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('build/depth-evidence-abi.xml').getroot()
+          suites = [root] if root.tag == 'testsuite' else root.findall('testsuite')
+          tests = sum(int(s.get('tests', 0)) for s in suites)
+          skipped = sum(int(s.get('skipped', 0)) for s in suites)
+          assert tests == 3 and skipped == 0, f'depth evidence ABI gate: {tests} tests, {skipped} skipped'
           PYCHECK
       - name: Verify point-plane module imports, instructions and ABI
         env:

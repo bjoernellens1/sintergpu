@@ -55,6 +55,14 @@
     "path": "kernels/common/float32_multiply.slang",
     "sha256": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
   },
+  "experimental.depth_evidence": {
+    "path": "kernels/experimental/depth_evidence.slang",
+    "sha256": "31731e403102ed4869144003fa47c5aab7dc1a3bce1680fd921e7819636349fe"
+  },
+  "experimental.depth_evidence_map": {
+    "path": "kernels/experimental/depth_evidence_map.slang",
+    "sha256": "15cfc47f426a976a9d06d6b543ce510ab5150c5a032c69421c269ffaa87b7d07"
+  },
   "generated.dense_factors.generated": {
     "path": "kernels/generated/dense_factors.generated.slang",
     "sha256": "2afa8aeab83a06678792ba93a918ac14e41d945336f629ebba41f777e1793f44"
