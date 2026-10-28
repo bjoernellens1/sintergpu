@@ -2840,7 +2840,13 @@
     "qualification/evidence/xsplat-layout-failure-8060s-0.2.3.log": "326c207499d9f60f25b43b38d82e40bb16ef6e1cc4100a44348dd4462f78d604",
     "qualification/evidence/xsplat-layout-failure-4070ti-0.2.3.log": "87c6c668e10372f91348cb2c3971dc7923ddaa6ef9847d03abf22d9430bbd54c",
     "qualification/evidence/xsplat-runtime-regressions-8060s-0.2.3.log": "a21a7a7da12d0347457dccda6ace63f205288132f744d208494611f0a8138765",
-    "qualification/evidence/xsplat-layout-fix-0.2.3.json": "32f06e595e12476ec7d947d4b138f452a6c91ef3b11fc888ab5074c632f1bff6"
+    "qualification/evidence/xsplat-layout-fix-0.2.3.json": "32f06e595e12476ec7d947d4b138f452a6c91ef3b11fc888ab5074c632f1bff6",
+    "qualification/evidence/xsplat-conditioning-failure-8060s-0.2.3.log": "21af9275e791d9ccc5e62293da454952355f34a53c9b4cb9a754b085f10ed34e",
+    "qualification/evidence/xsplat-conditioning-failure-4070ti-0.2.3.log": "b027c8567a3c46333cc395115585eefa52c847ea5f58ef5beeaa25ddbbb8e3ab",
+    "qualification/evidence/xsplat-projection-error-model-0.2.3.json": "09ad32a2d9b42a5c0ec2408e1b9b541ad5becaa96b92b7d533159e3fab26639c",
+    "qualification/evidence/xsplat-project-program-0.2.3.json": "747b1dab764519bdf44b75b74dc302db6a6100716657ad9bdd216b9ff8353a2b",
+    "qualification/evidence/xsplat-project-program-0.2.3.spv": "72bfb16dde37bc645a795f5629d362f5d3c1d146527ca08c193926f05e6ad8dd",
+    "qualification/evidence/xsplat-project-program-0.2.3.spv-asm": "e4ec269196c39b7e91d10ce87d75ef955a8409963bc92a8d668c4dc84d0c8bb4"
   },
   "pending_gates": [
     "Full NVIDIA RTX 4070 Ti operation/variant/adapter qualification beyond retained regression and retained stage timing fixtures",

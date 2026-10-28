@@ -9,7 +9,7 @@ recursive-include cmake *.cmake *.in
 recursive-include examples *.txt *.cpp
 recursive-include docs *.md *.json
 recursive-include provenance *.md *.json
-recursive-include qualification *.json *.log
+recursive-include qualification *.json *.log *.spv *.spv-asm
 recursive-include tools *.py
 recursive-include tests *.py *.json *.cpp
 recursive-include benchmarks *.py *.md *.json

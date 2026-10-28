@@ -79,7 +79,8 @@ def test_cpu_collection_records_real_samples_and_scoped_reference_identity(monke
         with pytest.raises(ValueError):m.run(**kwargs)
 
 
-def test_projection_oracle_matches_frozen_cpp_on_their_shared_valid_domain(tmp_path):
+@pytest.mark.parametrize("count",(127,128,1025,65539))
+def test_projection_oracle_matches_frozen_cpp_on_their_shared_valid_domain(tmp_path,count):
     import shutil,subprocess
     from pathlib import Path
     compiler=shutil.which('g++')
@@ -87,7 +88,7 @@ def test_projection_oracle_matches_frozen_cpp_on_their_shared_valid_domain(tmp_p
     m=recipe();root=Path(__file__).resolve().parents[1];donor=root/'references/donors/xsplat-vk'
     binary=tmp_path/'reference'
     subprocess.run([compiler,'-std=c++17','-O2','-I'+str(donor/'include'),str(root/'tests/native/xsplat_reference_probe.cpp'),str(donor/'src/reference.cpp'),'-o',str(binary)],check=True,capture_output=True,text=True)
-    c=next(c for c in m.cases() if c['kind']=='project');n=c['count']
+    c=next(c for c in m.cases() if c['kind']=='project' and c['count']==count);n=c['count']
     g=c['arrays']['gaussians'].view(m.GAUSSIAN_DTYPE)[:n];cam=c['arrays']['camera'].view(m.CAMERA_DTYPE)[0]
     text=' '.join(map(str,cam['worldToCamera'].reshape(-1)))+'\n'+' '.join(map(str,[*cam['focal'],*cam['principal'],*cam['imageSize'],n]))+'\n'
     text+='\n'.join(' '.join(map(str,[*v['mean'],*v['logScale'],*v['rotation']])) for v in g)
@@ -95,7 +96,12 @@ def test_projection_oracle_matches_frozen_cpp_on_their_shared_valid_domain(tmp_p
     actual=np.loadtxt(result.stdout.splitlines());expected=m.reference_call(c)['projected'].view(m.PROJECTED_DTYPE)[:n]
     valid=expected['depth']>1e-4
     np.testing.assert_array_equal(actual[valid,6],expected['visible'][valid])
-    for field,columns in [('meanPx',slice(0,2)),('conic',slice(2,5)),('depth',5)]:
+    from benchmarks import xsplat_projection_bounds as bounds_model
+    bounds_model.validate_pixels(actual[:,:2],actual[:,6],m.projection_enclosure(c))
+    visible=expected['visible']!=0
+    np.testing.assert_allclose(actual[visible,:2],expected['meanPx'][visible],rtol=2e-6,atol=2e-6)
+    if count==127:np.testing.assert_allclose(actual[valid,:2],expected['meanPx'][valid],rtol=2e-6,atol=2e-6)
+    for field,columns in [('conic',slice(2,5)),('depth',5)]:
         np.testing.assert_allclose(actual[valid,columns],expected[field][valid],rtol=2e-6,atol=2e-6)
     # Keep the incompatible rejected-depth behavior explicit, not silently unified.
     assert np.any(~valid)
@@ -120,3 +126,13 @@ def test_gpu_uses_actual_bound_resource_layout_and_preserves_tails(monkeypatch,k
     monkeypatch.setattr(m,'cases',lambda:iter([case]))
     report=m.run(gpu=True,iterations=2,warmups=2)
     row,=report['measurements'];assert row['reflected_abi']['structs']
+
+
+def test_original_frozen_cpp_reference_tests_remain_green(tmp_path):
+    import shutil,subprocess
+    from pathlib import Path
+    compiler=shutil.which('g++')
+    if compiler is None:pytest.skip('C++ compiler unavailable')
+    root=Path(__file__).resolve().parents[1]/'references/donors/xsplat-vk';binary=tmp_path/'original-reference-tests'
+    subprocess.run([compiler,'-std=c++17','-O2','-I'+str(root/'include'),str(root/'tests/reference_test.cpp'),str(root/'src/reference.cpp'),'-o',str(binary)],check=True,capture_output=True,text=True)
+    subprocess.run([str(binary)],check=True,capture_output=True,text=True)

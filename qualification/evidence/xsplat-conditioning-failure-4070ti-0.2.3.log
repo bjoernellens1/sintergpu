@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.3/benchmarks/xsplat_timings.py", line 184, in <module>
+    args=vars(parser.parse_args());output=args.pop('output');report=run(**args)
+                                                                    ^^^^^^^^^^^
+  File "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.3/benchmarks/xsplat_timings.py", line 158, in run
+    check_parity(case,read(),expected);kernel_ms=[];host_ms=[];transfer_ms=[]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.3/benchmarks/xsplat_timings.py", line 80, in check_parity
+    for field in ('meanPx','conic','depth'):np.testing.assert_allclose(av[field],ev[field],rtol=2e-6,atol=2e-6)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 1780, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 988, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=2e-06, atol=2e-06
+
+Mismatched elements: 4 / 2050 (0.195%)
+Mismatch at indices:
+ [456, 1]: 16.80352210998535 (ACTUAL), 16.803560256958008 (DESIRED)
+ [534, 1]: -22.183128356933594 (ACTUAL), -22.182886123657227 (DESIRED)
+ [664, 0]: 1175015.625 (ACTUAL), 1175003.5 (DESIRED)
+ [664, 1]: -49064.04296875 (ACTUAL), -49063.53125 (DESIRED)
+Max absolute difference among violations: 12.125
+Max relative difference among violations: 1.0919827e-05
+ ACTUAL: array([[   0.     ,    0.     ],
+       [3206.8418 ,  302.86423],
+       [ 460.7306 ,  104.64827],...
+ DESIRED: array([[   0.     ,    0.     ],
+       [3206.8418 ,  302.86423],
+       [ 460.7306 ,  104.64827],...

@@ -43,8 +43,12 @@ source provenance and license. The shader retains camera-space depth for rejecte
 points, whereas the C++ reference returns an all-zero result; separate hand-derived
 tests preserve this distinction. No zero quaternion, nonfinite input, covariance
 singularity, huge step, optimizer training convergence or renderer qualification
-is claimed. The portable fixtures initially require2e-6 relative/absolute error
-for defined floats, without changing any existing kernel tolerance. The existing
+is claimed. Conic/depth/Adam/probe and visible pixel coordinates retain2e-6 relative/absolute
+checks. All pixel coordinates also use an [input-derived FP32 arithmetic
+enclosure](xsplat-projection-error-model.md), including the unchanged near-plane
+stress inputs. Ambiguous rejection/viewport classifications block qualification.
+This replaces the unreleased blanket pixel assumption that failed for both the
+frozen C++ path and GPU; no shader or existing kernel test is changed. The existing
 fixed gradient test retains its original2e-6 bounds. Projection's exact centered
 CPU example is retained by independent analytical tests.
 

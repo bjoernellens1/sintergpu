@@ -10,8 +10,11 @@ from pathlib import Path
 import platform
 import subprocess
 import time
+import tempfile
 import numpy as np
 from benchmarks import xsplat_reference as reference
+from benchmarks import xsplat_projection_bounds as pixel_bounds
+from benchmarks import xsplat_spirv as program_precision
 from benchmarks.locus_timings import sample_cpu,cpu_identity
 
 ABI_PROFILE="slangpy-0.43.1-vulkan-scalar"
@@ -61,7 +64,7 @@ def reference_call(c):
 
 
 def workload_identity(c):
-    layout=dict(operation=c['operation'],params=c['params'],count=c['count'],thread_count=c['thread_count'],strides=c['strides'],bindings=tuple(c['arrays']),outputs=c['outputs'],matrix_layout='row-major',abi_profile=ABI_PROFILE,uniform_binding='entry-keywords-and-global-constant-buffer-fields')
+    layout=dict(operation=c['operation'],params=c['params'],count=c['count'],thread_count=c['thread_count'],strides=c['strides'],bindings=tuple(c['arrays']),outputs=c['outputs'],matrix_layout='row-major',abi_profile=ABI_PROFILE,uniform_binding='entry-keywords-and-global-constant-buffer-fields',pixel_validation_profile='fp32-input-enclosure-and-strict-visible' if c['kind']=='project' else None)
     h=hashlib.sha256(json.dumps(layout,sort_keys=True).encode())
     for name,a in sorted(c['arrays'].items()):h.update(name.encode()+a.dtype.str.encode()+str(a.shape).encode()+b'\0'+a.tobytes()+b'\0')
     return dict(id='xsplat-math/'+c['label'],sha256=h.hexdigest(),description='Seeded finite mathematical fixtures; not a complete renderer, optimizer training loop or optimized CPU comparison',**layout)
@@ -77,11 +80,27 @@ def check_parity(c,actual,expected):
         if c['kind']=='project':
             av=a.view(PROJECTED_DTYPE)[:c['count']];ev=e.view(PROJECTED_DTYPE)[:c['count']]
             np.testing.assert_array_equal(av['visible'],ev['visible'])
-            for field in ('meanPx','conic','depth'):np.testing.assert_allclose(av[field],ev[field],rtol=2e-6,atol=2e-6)
+            bounds=projection_enclosure(c)
+            pixel_bounds.validate_pixels(av['meanPx'],av['visible'],bounds)
+            visible=ev['visible']!=0
+            np.testing.assert_allclose(av['meanPx'][visible],ev['meanPx'][visible],rtol=2e-6,atol=2e-6)
+            for field in ('conic','depth'):np.testing.assert_allclose(av[field],ev[field],rtol=2e-6,atol=2e-6)
         else:
             n=5 if c['kind']=='probe' else c['count']
             np.testing.assert_allclose(a.view(np.float32)[:n],e.view(np.float32)[:n],rtol=2e-6,atol=2e-6)
 
+
+
+def projection_enclosure(c):
+    a=c['arrays'];g=a['gaussians'].view(GAUSSIAN_DTYPE)[:c['count']];cam=a['camera'].view(CAMERA_DTYPE)[0]
+    return pixel_bounds.projected_pixel_bounds(g['mean'],*(cam[k] for k in ('worldToCamera','focal','principal','imageSize')))
+
+
+def pixel_validation_summary(c,actual,expected):
+    bounds=projection_enclosure(c);widths=bounds['upper']-bounds['lower']
+    a=actual['projected'].view(PROJECTED_DTYPE)[:c['count']];e=expected['projected'].view(PROJECTED_DTYPE)[:c['count']]
+    error=np.abs(a['meanPx'].astype(np.float64)-e['meanPx'].astype(np.float64));visible=e['visible']!=0
+    return dict(model_sha256=hashlib.sha256(Path(pixel_bounds.__file__).read_bytes()).hexdigest(),assumptions='Input-derived FP32 gamma7 camera-dot enclosure; outward perspective intervals with1ULP add/multiply and2.5ULP division, finite no-overflow inputs; unresolved rejection/viewport masks block qualification',enclosure_width_px=dict(median=float(np.median(widths)),maximum=float(np.max(widths))),observed_deviation_from_float64_oracle_rounded_to_fp32_px=dict(maximum=float(np.max(error)),maximum_visible=float(np.max(error[visible])) if np.any(visible) else None),unresolved_classifications=int(np.count_nonzero(bounds['classification']<0)),visible_accuracy='Existing2e-6 absolute/relative check also retained for visible pixel coordinates; conic/depth/Adam/probe checks unchanged')
 
 def validate_layout(kernel,c):
     """Fail closed on actual runtime reflected storage ABI before any dispatch."""
@@ -113,7 +132,7 @@ def run(*,gpu=False,iterations=50,warmups=5,device_index=0):
     env=dict(cpu=cpu_identity(),logical_cpus=os.cpu_count(),affinity=sorted(os.sched_getaffinity(0)) if hasattr(os,'sched_getaffinity') else None,platform=platform.platform(),python=platform.python_version(),numpy=importlib.metadata.version('numpy'),library_version=__version__,collector_revision=revision.stdout.strip() if revision.returncode==0 else None,captured_at_utc=datetime.now(timezone.utc).isoformat(),gpu=None,compiler_sha256=None)
     for name in ('scaling_governor','scaling_cur_freq'):
         path=Path('/sys/devices/system/cpu/cpu0/cpufreq')/name;env[name]=path.read_text().strip() if path.is_file() else None
-    dependencies=dependency_identities();catalog={o['id']:o for o in list_operations()};device=None;records=[]
+    dependencies=dependency_identities();catalog={o['id']:o for o in list_operations()};device=None;records=[];compiler_dump=None;projection_program=None
     try:
         if gpu:
             import slangpy as spy
@@ -122,12 +141,15 @@ def run(*,gpu=False,iterations=50,warmups=5,device_index=0):
             if not device_index<len(adapters):raise ValueError('invalid hardware device index')
             info=adapters[device_index]
             if info.vendor_id==0x10005:raise ValueError('hardware GPU required for timing')
-            device=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=info.luid,compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,'matrix_layout':spy.SlangMatrixLayout.row_major})
+            compiler_dump=tempfile.TemporaryDirectory(prefix='sintergpu-xsplat-compiler-')
+            program_proof=json.loads((Path(__file__).resolve().parents[1]/'qualification/evidence/xsplat-project-program-0.2.3.json').read_text())
+            device=spy.Device(type=spy.DeviceType.vulkan,adapter_luid=info.luid,compiler_options={'floating_point_mode':spy.SlangFloatingPointMode.precise,'matrix_layout':spy.SlangMatrixLayout.row_major,'dump_intermediates':True,'dump_intermediates_prefix':str(Path(compiler_dump.name)/'actual-')})
             limits=device.info.limits
             if limits.max_compute_threads_per_group<128 or limits.max_compute_thread_group_size.x<128 or int(device.info.timestamp_frequency)<=0:raise RuntimeError('128-thread groups and GPU timestamps required')
             adapter=SlangPyAdapter(device,allow_experimental=True)
             compiler=list(Path(spy.__file__).parent.glob('libslang-compiler*'))
             if len(compiler)!=1:raise RuntimeError('identify exactly one bundled compiler')
+            if hashlib.sha256(compiler[0].read_bytes()).hexdigest()!=program_proof['compiler_sha256']:raise RuntimeError('pixel-model compiler identity requires qualification')
             env.update(gpu=device.info.adapter_name,api=device.info.api_name,vendor_id=info.vendor_id,device_id=info.device_id,slangpy=importlib.metadata.version('slangpy'),compiler_sha256=hashlib.sha256(compiler[0].read_bytes()).hexdigest(),floating_point_mode='precise',matrix_layout='row-major',timestamp_frequency=int(device.info.timestamp_frequency),buffer_budget_bytes=BUDGET,abi_profile=ABI_PROFILE)
             try:
                 diagnostic=subprocess.run(['vulkaninfo','--summary'],capture_output=True,text=True,timeout=30);env['vulkaninfo_summary']=diagnostic.stdout if diagnostic.returncode==0 else 'unavailable'
@@ -135,12 +157,17 @@ def run(*,gpu=False,iterations=50,warmups=5,device_index=0):
         for case in cases():
             op=catalog[case['operation']];arrays=case['arrays'];outputs=case['outputs'];execute=lambda:reference_call(case)
             expected=execute();metrics=dict(cpu_reference_wall_ms=sample_cpu(execute,iterations=iterations,warmups=warmups))
-            row={**dependencies,'operation':op['id'],'variant':op['variant'],'source_sha256':op['sha256'],'reference_sha256':hashlib.sha256(Path(reference.__file__).read_bytes()).hexdigest(),'runner_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'runner_helper_sha256':hashlib.sha256(Path(__file__).with_name('locus_timings.py').read_bytes()).hexdigest(),'workload':workload_identity(case),'environment':dict(env),'metrics':metrics,'iterations':iterations,'warmups':warmups,'scope':'Independent float64 NumPy math oracle plus byte-output construction/copies/temporary arrays. Prepared inputs outside both regions. GPU per-entry timestamps exclude compilation, allocation and all output/inout resets. Host submit/complete and complete storage-buffer uploads/full output readbacks are separate. Uniform fields are serialized by SlangPy on every dispatch and included in host/transfer time. Fixed AD probe is diagnostic only. No full renderer/training loop, optimized CPU, controlled performance comparison, variant selection or full-domain qualification.'}
+            row={**dependencies,'operation':op['id'],'variant':op['variant'],'source_sha256':op['sha256'],'reference_sha256':hashlib.sha256(Path(reference.__file__).read_bytes()).hexdigest(),'runner_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'runner_helper_sha256':hashlib.sha256(Path(__file__).with_name('locus_timings.py').read_bytes()).hexdigest(),'pixel_model_sha256':hashlib.sha256(Path(pixel_bounds.__file__).read_bytes()).hexdigest(),'program_inspector_sha256':hashlib.sha256(Path(program_precision.__file__).read_bytes()).hexdigest(),'workload':workload_identity(case),'environment':dict(env),'metrics':metrics,'iterations':iterations,'warmups':warmups,'scope':'Independent float64 NumPy math oracle plus byte-output construction/copies/temporary arrays. Prepared inputs outside both regions. GPU per-entry timestamps exclude compilation, allocation and all output/inout resets. Host submit/complete and complete storage-buffer uploads/full output readbacks are separate. Uniform fields are serialized by SlangPy on every dispatch and included in host/transfer time. Fixed AD probe is diagnostic only. No full renderer/training loop, optimized CPU, controlled performance comparison, variant selection or full-domain qualification.'}
             if gpu:
                 if (case['thread_count'][0]+({'adam':32,'project':128,'probe':1}[case['kind']])-1)//({'adam':32,'project':128,'probe':1}[case['kind']])>int(limits.max_compute_dispatch_thread_groups.x) or any(a.nbytes>BUDGET for a in arrays.values()):raise ValueError('fixture exceeds dispatch or declared per-buffer budget')
                 usage=spy.BufferUsage.shader_resource|spy.BufferUsage.unordered_access
                 buffers={name:device.create_buffer(element_count=a.nbytes//case['strides'][name],struct_size=case['strides'][name],usage=usage,data=a) for name,a in arrays.items() if name!='camera'}
                 kernel=adapter.kernel(op['id']);row['reflected_abi']=validate_layout(kernel,case)
+                if case['kind']=='project':
+                    if projection_program is None:
+                        _=kernel.pipeline  # Force actual code generation before timing/dispatch.
+                        projection_program=program_precision.require_reviewed_program(compiler_dump.name,program_proof['binary_sha256'])
+                    row['compiled_program']=dict(projection_program,reviewed_proof='qualification/evidence/xsplat-project-program-0.2.3.json')
                 bindings=dict(buffers)
                 if case['kind']=='project':
                     cam=arrays['camera'].view(CAMERA_DTYPE)[0]
@@ -167,15 +194,17 @@ def run(*,gpu=False,iterations=50,warmups=5,device_index=0):
                 for _ in range(iterations):
                     start=time.perf_counter_ns();actual=transfer();transfer_ms.append((time.perf_counter_ns()-start)/1e6)
                 check_parity(case,actual,expected)
+                if case['kind']=='project':row['pixel_validation']=pixel_validation_summary(case,actual,expected)
                 metrics.update(gpu_kernel_ms=kernel_ms,host_submit_complete_ms=host_ms,transfer_inclusive_ms=transfer_ms)
                 uniform_bytes=92 if case['kind']=='project' else 24 if case['kind']=='adam' else 0
                 buffer_bytes=sum(arrays[k].nbytes for k in buffers)
-                row.update(uploaded_bytes_per_iteration=buffer_bytes+uniform_bytes,uploaded_buffer_bytes_per_iteration=buffer_bytes,uniform_bytes_per_dispatch=uniform_bytes,uniform_payload_scope="Logical field bytes; not physical bus traffic or driver allocation size",readback_bytes_per_iteration=sum(arrays[k].nbytes for k in outputs),correctness='Independent math parity before/after isolated and transfer samples. Defined live floats2e-6absolute/relative, visible flags and complete tail structs exact; within-live-struct padding is unspecified. All Adam inout state reset between samples.')
+                row.update(uploaded_bytes_per_iteration=buffer_bytes+uniform_bytes,uploaded_buffer_bytes_per_iteration=buffer_bytes,uniform_bytes_per_dispatch=uniform_bytes,uniform_payload_scope="Logical field bytes; not physical bus traffic or driver allocation size",readback_bytes_per_iteration=sum(arrays[k].nbytes for k in outputs),correctness='Independent math parity before/after isolated and transfer samples. Conic/depth/Adam/probe and visible pixels2e-6absolute/relative; all pixels also input-derived FP32 enclosure; ambiguous classifications fail. Visible flags and complete tail structs exact; within-live-struct padding is unspecified. All Adam inout state reset between samples.')
             for samples in metrics.values():summarize(samples)
             records.append(row)
         return dict(schema_version=1,environment=env,measurements=records,scope='Paired xsplat math snapshots; no renderer/training-loop/performance qualification')
     finally:
         if device is not None:device.close()
+        if compiler_dump is not None:compiler_dump.cleanup()
 
 
 if __name__=='__main__':
