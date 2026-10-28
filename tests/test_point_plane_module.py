@@ -33,7 +33,7 @@ def test_real_import_matches_baseline_executable_and_resource_layout(tmp_path):
     assert result['example_compiled']
 
 
-@pytest.fixture
+@pytest.fixture(scope='module')
 def gpu():
     if os.getenv('SINTERGPU_GPU_TESTS')!='1':pytest.skip('explicit GPU opt-in')
     import slangpy as spy
