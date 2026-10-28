@@ -123,3 +123,38 @@ def test_scan_stage_uniforms_and_roles_match_actual_recursive_recipe():
     assert first['bindings']['values']=='values'
     assert first['bindings']['segmentIds']=='segment_ids'
     assert first['bindings']['output']=='output'
+
+
+def test_reflected_binding_names_dummy_resources_and_descriptor_layout():
+    p=make()
+    assert p['resources']['action_words']['logical_bytes']==0
+    assert p['resources']['action_words']['allocated_bytes']==4
+    assert p['shape_strides_u32']==[2,771,257,3,3,1]
+    assert p['resources']['shape_strides']['allocated_bytes']==24
+    scatter=next(x for x in p['stages'] if x['entry']=='compactScatterMetadata')
+    assert scatter['bindings']['actionWords']=='action_words'
+    assert scatter['bindings']['prefix']=='output'
+    assert scatter['params']['actionBytes']==0
+    gather=next(x for x in p['stages'] if x['entry']=='compactGatherWords')
+    assert gather['bindings']['shapeStrides']=='shape_strides'
+    assert gather['params']['rank']==3
+
+
+def test_zero_capacity_reflected_writable_dummies_are_distinct():
+    p=plan_compact((2,3),capacity=0,item_bytes=4,value_strides=(12,4),value_storage_bytes=24,
+        mask_strides=(3,1),mask_storage_bytes=8,max_workgroups_x=100,max_buffer_bytes=4096,max_threads_per_group=256,max_group_size_x=256)
+    init=p['stages'][0]
+    names=[init['bindings'][k] for k in ('slotToSource','indicesOut','validOut','actionsOut')]
+    assert len(set(names))==4
+    assert all(p['resources'][name]['logical_bytes']==0 and p['resources'][name]['allocated_bytes']==4 for name in names)
+    assert p['resources']['counts_out']['allocated_bytes']==16
+
+
+def test_all_candidate_stage_bindings_match_shader_reflection_contract():
+    from test_vkl_compact_shader import ENTRIES
+    p=make()
+    for stage in p['stages']:
+        if stage['entry'] in ENTRIES:
+            assert set(stage['bindings'])|{'params'}==ENTRIES[stage['entry']]
+            assert set(stage['bindings'].values()) <= set(p['resources'])
+            assert all(p['resources'][name]['allocated_bytes']>=4 for name in stage['bindings'].values())

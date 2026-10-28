@@ -97,13 +97,50 @@ def plan_compact(shape,*,capacity,item_bytes,value_strides,value_storage_bytes,m
         add('compactScatterMetadata',candidates)
         add('compactFinalizeCounts',b)
     if logical_bytes: add('compactGatherWords',(logical_bytes+3)//4)
+    # Every reflected buffer has valid scalar storage even when the shader's
+    # logical branch performs no access. Writable dummies are separate resources.
+    resources={}
+    def resource(name,logical_bytes,access):
+        allocated=max(4,logical_bytes)
+        if allocated>limit: raise ValueError('reflected resource exceeds device limit')
+        resources[name]={'logical_bytes':logical_bytes,'allocated_bytes':allocated,'access':access}
+    resource('value_words',value_storage_bytes,'read')
+    resource('mask_words',mask_storage_bytes,'read')
+    resource('action_words',action_storage_bytes,'read')
+    resource('shape_strides',len(shape)*8,'read')
+    resource('slot_to_source',slots*4,'write')
+    resource('indices_out',slots*8,'write')
+    resource('valid_out',slots*4,'write')
+    resource('actions_out',slots*(8 if action_item_bytes==8 else 4),'write')
+    resource('counts_out',b*8,'write')
+    resource('values_out',rounded_bytes,'write')
+    for name,size in scan_sizes.items(): resource(name,size*4,'scratch')
+    descriptor=[item for pair in zip(shape,values['strides_bytes']) for item in pair]
+    params={'batches':b,'items':n,'capacity':capacity,'rank':len(shape),
+            'itemBytes':item_bytes,'payloadItems':payload_items,'logicalValueBytes':logical_bytes,
+            'actionBytes':action_item_bytes,'valueBase':value_base_byte,'maskBase':mask_base_byte,
+            'maskBatchStride':mask['strides_bytes'][0],'maskItemStride':mask['strides_bytes'][1],
+            'actionBase':action_base_byte,'actionBatchStride':actions['strides_bytes'][0] if actions else 0,
+            'actionItemStride':actions['strides_bytes'][1] if actions else 0}
+    compact_bindings={
+      'compactInit':{'slotToSource':'slot_to_source','indicesOut':'indices_out','validOut':'valid_out','actionsOut':'actions_out','countsOut':'counts_out'},
+      'compactFlags':{'maskWords':'mask_words','flags':'values','segmentIds':'segment_ids'},
+      'compactScatterMetadata':{'maskWords':'mask_words','actionWords':'action_words','prefix':'output','slotToSource':'slot_to_source','indicesOut':'indices_out','validOut':'valid_out','actionsOut':'actions_out'},
+      'compactFinalizeCounts':{'prefix':'output','countsOut':'counts_out'},
+      'compactGatherWords':{'valueWords':'value_words','shapeStrides':'shape_strides','slotToSource':'slot_to_source','valuesOut':'values_out'},
+    }
+    for stage in stages:
+        if stage['entry'] in compact_bindings:
+            stage['bindings']=compact_bindings[stage['entry']]
+            stage['params']=dict(params)
+            stage['source']='benchmarks/shaders/vkl_compact_candidate.slang'
     return {'status':'design_only_no_gpu_implementation','inputs':{'values':values,'mask':mask,'actions':actions},
             'outputs':{'values':{'shape':(b,capacity,*tail),'item_bytes':item_bytes,'logical_bytes':logical_bytes,'buffer_bytes':rounded_bytes,'encoding':'packed_bytes_little_endian_words'},
                        'indices':{'shape':(b,capacity),'elements':slots*2,'encoding':'little_endian_i64_from_u32_words'},
                        'valid':{'shape':(b,capacity),'elements':slots,'encoding':'uint32_logical'},
                        'actions':{'shape':(b,capacity),'elements':slots*(2 if action_item_bytes==8 else 1),'encoding':'little_endian_i64_from_u32_words' if action_item_bytes==8 else 'int32_bits'},
                        'counts':{'shape':(b,),'elements':b*2,'encoding':'little_endian_i64_from_u32_words'}},
-            'scratch':{'slot_to_source_u32_elements':slots,'scan_u32_elements':scan_sizes},'stages':stages,'capacity':capacity,
+            'scratch':{'slot_to_source_u32_elements':slots,'scan_u32_elements':scan_sizes},'resources':resources,'shape_strides_u32':descriptor,'stages':stages,'capacity':capacity,
             'sentinel':UINT_MAX,'autograd':'backward_required_before_differentiable_use',
             'ownership':'all buffers and command submission belong to caller; no hidden readback',
             'limitations':'No shader/adapter implementation; positive and zero strides only; packed outputs use low-address byte in low uint32 bits; caller supplies actual device limits.'}

@@ -7,8 +7,10 @@ CPU reference retain provenance and separate licensing as documented by
 
 The caller supplies B, N, capacity C, value shape `[B,N,...]`, item byte width,
 nonnegative byte strides and base offsets for values, byte-valued 0/1 masks,
-and optional int32/int64 actions. Shape and stride pairs must be uploaded as
-caller-owned uint32 descriptor buffers. Source ranges are allocated as complete
+and optional int32/int64 actions. Shape and stride pairs must be uploaded as a caller-owned contiguous `uint2`
+descriptor buffer: one pair `(extent, byte_stride)` per input dimension,
+including batch and source-item dimensions, with an 8-byte stride. The
+`shape_strides_u32` plan value is the interleaved scalar32 representation. Source ranges are allocated as complete
 uint32 words; the final word contains any caller padding needed for an aligned
 word read. Read-only inputs may overlap, including zero strides. Negative strides,
 object/reference dtypes, non-byte-addressable storage and input/output aliasing
@@ -16,7 +18,17 @@ are not covered. The byte ABI treats the low-address byte as the low 8 bits of
 a word and copies opaque little-endian value bits; dtype interpretation stays
 with the caller. All dimensions, addresses, lengths, metadata offsets and device
 range/workgroup limits are checked on the host and must fit the declared uint32
-ABI. The caller validates source mask values; unsupported masks are not silently
+ABI. Each candidate stage lists the exact reflected binding names, shared 15-field
+`CompactParams` values, and source path. All reflected buffers require a valid
+nonzero physical allocation: an absent action input uses a caller-owned four-byte
+`action_words` read-only dummy, and any other zero-logical-length bound resource
+uses its own four-byte allocation. Writable dummy ranges remain disjoint.
+A zero-length values input needs a `value_words` dummy if the gather stage is
+present. The plan records logical and minimum allocated byte sizes separately.
+Base offsets and strides are in bytes within each whole-buffer binding; all
+read-word boundaries must fit the supplied padded range.
+
+The caller validates source mask values; unsupported masks are not silently
 reinterpreted.
 
 The intended sequence, separated by an explicit global storage barrier before
@@ -58,8 +70,15 @@ codes preserve int32/int64 bits. Device storage buffer limits apply to physical
 padded ranges, not just logical byte lengths. Read-only input ranges may overlap each other, including zero-stride views.
 Every writable output or scratch range must be disjoint from all other input,
 output and scratch ranges; repeated scan labels identify the same intentional
-resource across passes. A future adapter must verify actual device allocation
-identities and byte ranges before recording; the host plan cannot prove them.
+resource across passes. The current fixture binds whole Buffer objects: it rejects nonzero binding
+offsets and requires declared ranges to cover the whole Buffer. It rejects a
+shared Buffer identity whenever either role is writable. A future adapter may
+support subranges only when actual verified views are bound. The runner must
+verify backing allocation identities/ranges independently; the host plan cannot
+prove them. The fixture checks `shape_strides.struct_size == 8`, but cannot
+verify device contents without a readback: the runner must upload the exact
+`shape_strides_u32` values and verify their contents outside the recording path
+before dispatch.
 
 Forward compaction alone is not differentiable integration: a backward operation
 must scatter output gradients to input logical positions and **accumulate** for
