@@ -156,3 +156,26 @@ def test_loader_rejects_mutated_package_inputs(synthetic_archive, tmp_path, monk
         stream.write(b'\nchanged\n')
     with pytest.raises(ValueError, match='source closure'):
         archive.load_fixture(payload, directory, root=root)
+
+
+def test_historical_camera_loader_binds_old_version_and_all_current_code(tmp_path):
+    import shutil
+    from benchmarks.camera_registration_fixture_history import load_canonical, FROZEN_VERSION
+    root = tmp_path / 'source'
+    for relative in archive.source_identities():
+        target = root / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(archive.ROOT / relative, target)
+    # A changed current release version is allowed only by verifying a separate
+    # exact historical VERSION, while all executable closure bytes remain bound.
+    (root / 'src/sintergpu/data/VERSION').write_text('9.9.9\n')
+    directory = archive.ROOT / 'qualification/evidence/vkl-camera-registration-frozen-0.2.6-closure-v2'
+    assert len(load_canonical(directory, root=root)) == 80
+    bad_version = tmp_path / 'bad-version'
+    bad_version.write_bytes(FROZEN_VERSION.read_bytes() + b'x')
+    with pytest.raises(ValueError, match='historical fixture version'):
+        load_canonical(directory, root=root, frozen_version=bad_version)
+    with (root / 'src/sintergpu/references/camera_registration_numeric.py').open('ab') as stream:
+        stream.write(b'\n# modified\n')
+    with pytest.raises(ValueError, match='executable source closure'):
+        load_canonical(directory, root=root)

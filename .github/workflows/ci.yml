@@ -24,12 +24,53 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install '.[test]' build
       - run: python -m pytest tests -q
+      - name: Verify compact SlangPy adapter with fake devices
+        env:
+          PYTHONPATH: src:.
+          VK_DRIVER_FILES: /nonexistent/sintergpu-no-vulkan-icd.json
+          VK_ICD_FILENAMES: /nonexistent/sintergpu-no-vulkan-icd.json
+        run: |
+          python -m pip install 'slangpy==0.43.1'
+          python -c "import importlib.metadata; assert importlib.metadata.version('slangpy') == '0.43.1'"
+          python -m pytest tests/test_compact_record.py -q --junitxml=build/compact-record.xml
+          python - <<'PYCHECK'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('build/compact-record.xml').getroot()
+          suites = [root] if root.tag == 'testsuite' else root.findall('testsuite')
+          tests = sum(int(s.get('tests', 0)) for s in suites)
+          skipped = sum(int(s.get('skipped', 0)) for s in suites)
+          assert tests == 12 and skipped == 0, f'compact adapter gate: {tests} tests, {skipped} skipped'
+          PYCHECK
       - name: Run frozen VKL Torch references on CPU
         env:
           PYTHONPATH: src
         run: |
           python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
           python -m pytest tests/test_vkl*.py -q
+          python -m pytest tests/test_compact_backward_torch_cpu_profile.py -q -k 'not test_compiles_and_reflects' --junitxml=build/compact-torch.xml
+          python - <<'PYCHECK'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('build/compact-torch.xml').getroot()
+          suites = [root] if root.tag == 'testsuite' else root.findall('testsuite')
+          tests = sum(int(s.get('tests', 0)) for s in suites)
+          skipped = sum(int(s.get('skipped', 0)) for s in suites)
+          assert tests >= 65 and skipped == 0, f'compact Torch gate: {tests} tests, {skipped} skipped'
+          PYCHECK
+      - name: Verify compact backward profile fake-device fixtures
+        env:
+          PYTHONPATH: src:.
+          VK_DRIVER_FILES: /nonexistent/sintergpu-no-vulkan-icd.json
+          VK_ICD_FILENAMES: /nonexistent/sintergpu-no-vulkan-icd.json
+        run: |
+          python -m pytest tests/test_compact_backward_profile_gpu_fixture.py -q --junitxml=build/compact-backward-fixture.xml
+          python - <<'PYCHECK'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('build/compact-backward-fixture.xml').getroot()
+          suites = [root] if root.tag == 'testsuite' else root.findall('testsuite')
+          tests = sum(int(s.get('tests', 0)) for s in suites)
+          skipped = sum(int(s.get('skipped', 0)) for s in suites)
+          assert tests == 17 and skipped == 0, f'compact backward fixture gate: {tests} tests, {skipped} skipped'
+          PYCHECK
       - run: python tools/check_provenance.py
       - run: python tools/update_timings.py --check
       - name: Require changelog classification and versioning
@@ -58,15 +99,51 @@ jobs:
           mv /tmp/sintergpu-install /tmp/sintergpu-relocated
           cmake -S examples/cmake -B build/consumer -DCMAKE_PREFIX_PATH=/tmp/sintergpu-relocated
           cmake --build build/consumer
+          mkdir -p build/compact-discovery
+          cat > build/compact-discovery/CMakeLists.txt <<'CMAKE'
+          cmake_minimum_required(VERSION 3.25)
+          project(compact_discovery LANGUAGES CXX)
+          find_package(sintergpu CONFIG REQUIRED)
+          foreach(shader compact_batched compact_backward_torch_cpu_profile)
+            file(SHA256 "${SINTERGPU_KERNEL_DIR}/vkl/${shader}.slang" installed_hash)
+            file(SHA256 "${SOURCE_ROOT}/src/sintergpu/kernels/vkl/${shader}.slang" source_hash)
+            if(NOT installed_hash STREQUAL source_hash)
+              message(FATAL_ERROR "Installed compact shader differs: ${shader}")
+            endif()
+          endforeach()
+          CMAKE
+          cmake -S build/compact-discovery -B build/compact-discovery-build -DCMAKE_PREFIX_PATH=/tmp/sintergpu-relocated -DSOURCE_ROOT="$GITHUB_WORKSPACE"
       - name: Verify source and wheel installs without GPU extras
         run: |
           python -m venv /tmp/sintergpu-wheel
           /tmp/sintergpu-wheel/bin/pip install dist/*.whl
           cd /tmp
-          /tmp/sintergpu-wheel/bin/python -c "import sintergpu; from sintergpu.catalog import validate_catalog; assert not validate_catalog()"
+          cat > /tmp/check-compact-install.py <<'PYINSTALL'
+          import hashlib, os
+          from pathlib import Path
+          import sintergpu
+          from sintergpu import kernel_path, module_path
+          from sintergpu.catalog import validate_catalog
+          from sintergpu.compact_plan import plan_compact
+          from sintergpu.compact_record import PreparedCompact
+          assert not validate_catalog()
+          source = Path(os.environ['GITHUB_WORKSPACE']).resolve()
+          assert not Path(sintergpu.__file__).resolve().is_relative_to(source)
+          for module, entries in {
+              'compact_batched': ('compactInit', 'compactFlags', 'compactScatterMetadata', 'compactFinalizeCounts', 'compactGatherWords'),
+              'compact_backward_torch_cpu_profile': ('backwardProfileInit', 'backwardProfileInverse', 'backwardProfileGather'),
+          }.items():
+              path = module_path('vkl.' + module).resolve()
+              assert not path.is_relative_to(source)
+              expected = source / 'src/sintergpu/kernels/vkl' / (module + '.slang')
+              assert hashlib.sha256(path.read_bytes()).digest() == hashlib.sha256(expected.read_bytes()).digest()
+              for entry in entries:
+                  assert kernel_path('vkl.' + module + '.' + entry).resolve() == path
+          PYINSTALL
+          /tmp/sintergpu-wheel/bin/python /tmp/check-compact-install.py
           python -m venv /tmp/sintergpu-source
           /tmp/sintergpu-source/bin/pip install "$GITHUB_WORKSPACE"/dist/*.tar.gz
-          /tmp/sintergpu-source/bin/python -c "import sintergpu; from sintergpu.catalog import validate_catalog; assert not validate_catalog()"
+          /tmp/sintergpu-source/bin/python /tmp/check-compact-install.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: packages
@@ -125,6 +202,24 @@ jobs:
           tests = sum(int(s.get('tests', 0)) for s in suites)
           skipped = sum(int(s.get('skipped', 0)) for s in suites)
           assert tests >= 19 and skipped == 0, f'camera ABI gate: {tests} tests, {skipped} skipped'
+          PYCHECK
+      - name: Verify compact shader reflection (Slang ${{ matrix.version }})
+        env:
+          SLANG_VERSION: ${{ matrix.version }}
+          SINTERGPU_SPIRV_DIS: /usr/bin/spirv-dis
+        run: |
+          test -x /tmp/slang/bin/slangc
+          test -x "$SINTERGPU_SPIRV_DIS"
+          test "$(/tmp/slang/bin/slangc -version 2>&1)" = "$SLANG_VERSION"
+          export "SINTERGPU_SLANGC_${SLANG_VERSION//./_}=/tmp/slang/bin/slangc"
+          PYTHONPATH=src:. python -m pytest tests/test_vkl_compact_shader.py tests/test_vkl_compact_backward_shader.py tests/test_compact_backward_torch_cpu_profile.py tests/test_packaged_vkl_compact_assets.py -q -k "$SLANG_VERSION" --junitxml=build/compact-abi.xml
+          python - <<'PYCHECK'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('build/compact-abi.xml').getroot()
+          suites = [root] if root.tag == 'testsuite' else root.findall('testsuite')
+          tests = sum(int(s.get('tests', 0)) for s in suites)
+          skipped = sum(int(s.get('skipped', 0)) for s in suites)
+          assert tests == 19 and skipped == 0, f'compact ABI gate: {tests} tests, {skipped} skipped'
           PYCHECK
       - name: Verify point-plane module imports, instructions and ABI
         env:

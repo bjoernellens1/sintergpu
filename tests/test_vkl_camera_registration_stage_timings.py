@@ -146,3 +146,36 @@ def test_bad_archive_fails_before_device_initialization(tmp_path, monkeypatch):
     (tmp_path / 'manifest.json').write_text('{}')
     with pytest.raises(ValueError, match='manifest digest'):
         run(archive=tmp_path, manifest_sha256='0' * 64, case_ids=['collisions-tie'])
+
+
+def test_recipe_loads_historical_canonical_archive_after_version_change():
+    from benchmarks.vkl_camera_registration import canonical_records
+    from benchmarks.camera_registration_fixtures import payloads
+    from benchmarks.camera_registration_fixture_history import MANIFEST_SHA256, ROOT
+    directory = ROOT / 'qualification/evidence/vkl-camera-registration-frozen-0.2.6-closure-v2'
+    records = canonical_records(directory, MANIFEST_SHA256)
+    assert len(records) == 80
+    assert set(records) == {p['case_id'] for p in payloads()}
+    with pytest.raises(ValueError, match='manifest digest'):
+        canonical_records(directory, '0' * 64)
+
+
+def test_timing_source_identity_binds_historical_fixture_inputs():
+    import hashlib
+    from benchmarks.camera_registration_timing_support import source_identities, ROOT
+    identities = source_identities()
+    for relative in ('benchmarks/camera_registration_fixture_history.py',
+                     'qualification/evidence/vkl-camera-registration-frozen-version-0.2.6.txt'):
+        assert identities[relative] == hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
+
+
+def test_source_manifest_includes_historical_fixture_version():
+    from pathlib import Path
+    from setuptools._distutils.filelist import FileList
+    root = Path(__file__).resolve().parents[1]
+    relative = 'qualification/evidence/vkl-camera-registration-frozen-version-0.2.6.txt'
+    files = FileList()
+    files.allfiles = [relative]
+    for line in (root / 'MANIFEST.in').read_text().splitlines():
+        files.process_template_line(line)
+    assert relative in files.files

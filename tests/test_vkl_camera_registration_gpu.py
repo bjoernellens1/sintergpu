@@ -43,11 +43,11 @@ def test_cpu_mapping_covers_all_current_fixtures():
 
 
 def validated_archive(directory):
-    from benchmarks.camera_registration_fixture_archive import load_all
+    from benchmarks.camera_registration_fixture_history import load_canonical
     path = Path(directory) / 'manifest.json'
     if path.is_symlink() or hashlib.sha256(path.read_bytes()).hexdigest() != MANIFEST_SHA256:
         raise ValueError('canonical camera fixture manifest digest mismatch')
-    return load_all(directory)
+    return load_canonical(directory)
 
 
 @pytest.fixture(scope='module')

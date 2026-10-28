@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0 (original owner authorization 2026-10-27)",
+  "author": "Original VKL owner numerical contract; SinterGPU standalone experimental implementation",
+  "operation_prefix": "vkl",
+  "dependencies": [
+    {
+      "path": "src/sintergpu/kernels/primitives/scan_uint.slang",
+      "license": "MIT",
+      "provenance": "provenance/primitives.json",
+      "notices": [
+        "LICENSES/nerfacc-MIT.txt",
+        "LICENSES/nerfacc-AMD.txt"
+      ],
+      "detail": "Forward uses existing segmented uint scan; notices remain separate."
+    }
+  ],
+  "qualification": "Experimental; source relocation requires source-matched execution. No full donor, Torch GPU, performance or consumer qualification.",
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/compact.py",
+      "source_sha256": "f4a323c1940f32a61a50dbe61d4669658804d7e82df040fd7d7940ac4bb62aff",
+      "destination": "src/sintergpu/kernels/vkl/compact_batched.slang",
+      "imported_sha256": "5b3c39fd67eff503510f4eed677a983bba20e9de8eeff77079fd5e2f88f67d50",
+      "candidate_path": "benchmarks/shaders/vkl_compact_candidate.slang",
+      "candidate_sha256": "5b3c39fd67eff503510f4eed677a983bba20e9de8eeff77079fd5e2f88f67d50",
+      "changes": [
+        "New standalone Slang stages derived from frozen Torch numerical behavior; no Torch implementation text copied.",
+        "Exact byte copy of independently reviewed experimental candidate."
+      ],
+      "contract_limits": "Experimental stable per-batch compact with truncated int64 retained counts, bounded uint32 ABI, nonnegative strides, fixed capacity and zero-filled padding; caller supplies explicit barriers, device limits, disjoint writable resources and all allocation/submission ownership. GPU, performance and end-to-end autograd qualification remain pending for this packaged source.",
+      "contract_profile": "vkl-compact-batched-scalar32-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-compact-integration.md",
+      "entry_points": [
+        "compactInit",
+        "compactFlags",
+        "compactScatterMetadata",
+        "compactFinalizeCounts",
+        "compactGatherWords"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/compact.py",
+      "source_sha256": "f4a323c1940f32a61a50dbe61d4669658804d7e82df040fd7d7940ac4bb62aff",
+      "destination": "src/sintergpu/kernels/vkl/compact_backward_torch_cpu_profile.slang",
+      "imported_sha256": "1f09f5a0756c23c9e11183b8f600233cf5cfa06371b80650e66dc6a0101ac711",
+      "candidate_path": "benchmarks/shaders/vkl_compact_backward_torch_cpu_profile.slang",
+      "candidate_sha256": "1f09f5a0756c23c9e11183b8f600233cf5cfa06371b80650e66dc6a0101ac711",
+      "changes": [
+        "New standalone Slang stages derived from frozen Torch numerical behavior; no Torch implementation text copied.",
+        "Exact byte copy of independently reviewed experimental candidate."
+      ],
+      "contract_limits": "Experimental logical dense gradient bit profile matching observed frozen Torch CPU behavior for floating and complex components. Caller retains validated unique forward slot map, supplies explicit barriers and disjoint writable resources; no Torch GPU parity, view-base accumulation, framework autograd integration or performance qualification.",
+      "contract_profile": "vkl-compact-logical-backward-torch-cpu-observed",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-compact-integration.md",
+      "entry_points": [
+        "backwardProfileInit",
+        "backwardProfileInverse",
+        "backwardProfileGather"
+      ]
+    }
+  ]
+}

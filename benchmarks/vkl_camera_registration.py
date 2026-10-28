@@ -14,6 +14,7 @@ from benchmarks.camera_registration_fixtures import payloads
 from benchmarks.camera_registration_gpu_fixture import fixture_graph, FixtureResources
 from benchmarks.camera_registration_timing_support import measure_graph
 from benchmarks.camera_registration_fixture_archive import payload_identity, load_all
+from benchmarks.camera_registration_fixture_history import load_canonical, MANIFEST_SHA256
 
 
 def cases(*, case_ids=None, max_workgroups_x=65535):
@@ -41,7 +42,8 @@ def canonical_records(directory, expected_sha256):
     path = Path(directory) / 'manifest.json'
     if path.is_symlink() or len(expected_sha256) != 64 or hashlib.sha256(path.read_bytes()).hexdigest() != expected_sha256:
         raise ValueError('canonical fixture manifest digest mismatch')
-    return {payload['case_id']: expected for payload, expected in load_all(directory)}
+    records = load_canonical(directory) if expected_sha256 == MANIFEST_SHA256 else load_all(directory)
+    return {payload['case_id']: expected for payload, expected in records}
 
 
 def _compare_reference(actual, donor):

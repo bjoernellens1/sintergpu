@@ -4689,6 +4689,286 @@
       "fixture": null
     },
     {
+      "id": "vkl.compact_backward_torch_cpu_profile.backwardProfileGather",
+      "path": "kernels/vkl/compact_backward_torch_cpu_profile.slang",
+      "entrypoint": "backwardProfileGather",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1f09f5a0756c23c9e11183b8f600233cf5cfa06371b80650e66dc6a0101ac711",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/compact.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-compact-logical-backward-torch-cpu-observed",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-compact-integration.md",
+        "numerical_behavior": "Experimental logical dense gradient bit profile matching observed frozen Torch CPU behavior for floating and complex components. Caller retains validated unique forward slot map, supplies explicit barriers and disjoint writable resources; no Torch GPU parity, view-base accumulation, framework autograd integration or performance qualification."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.compact_backward_torch_cpu_profile.backwardProfileInit",
+      "path": "kernels/vkl/compact_backward_torch_cpu_profile.slang",
+      "entrypoint": "backwardProfileInit",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1f09f5a0756c23c9e11183b8f600233cf5cfa06371b80650e66dc6a0101ac711",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/compact.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-compact-logical-backward-torch-cpu-observed",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-compact-integration.md",
+        "numerical_behavior": "Experimental logical dense gradient bit profile matching observed frozen Torch CPU behavior for floating and complex components. Caller retains validated unique forward slot map, supplies explicit barriers and disjoint writable resources; no Torch GPU parity, view-base accumulation, framework autograd integration or performance qualification."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.compact_backward_torch_cpu_profile.backwardProfileInverse",
+      "path": "kernels/vkl/compact_backward_torch_cpu_profile.slang",
+      "entrypoint": "backwardProfileInverse",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "1f09f5a0756c23c9e11183b8f600233cf5cfa06371b80650e66dc6a0101ac711",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/compact.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-compact-logical-backward-torch-cpu-observed",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-compact-integration.md",
+        "numerical_behavior": "Experimental logical dense gradient bit profile matching observed frozen Torch CPU behavior for floating and complex components. Caller retains validated unique forward slot map, supplies explicit barriers and disjoint writable resources; no Torch GPU parity, view-base accumulation, framework autograd integration or performance qualification."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.compact_batched.compactFinalizeCounts",
+      "path": "kernels/vkl/compact_batched.slang",
+      "entrypoint": "compactFinalizeCounts",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5b3c39fd67eff503510f4eed677a983bba20e9de8eeff77079fd5e2f88f67d50",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/compact.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-compact-batched-scalar32-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-compact-integration.md",
+        "numerical_behavior": "Experimental stable per-batch compact with truncated int64 retained counts, bounded uint32 ABI, nonnegative strides, fixed capacity and zero-filled padding; caller supplies explicit barriers, device limits, disjoint writable resources and all allocation/submission ownership. GPU, performance and end-to-end autograd qualification remain pending for this packaged source."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.compact_batched.compactFlags",
+      "path": "kernels/vkl/compact_batched.slang",
+      "entrypoint": "compactFlags",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5b3c39fd67eff503510f4eed677a983bba20e9de8eeff77079fd5e2f88f67d50",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/compact.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-compact-batched-scalar32-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-compact-integration.md",
+        "numerical_behavior": "Experimental stable per-batch compact with truncated int64 retained counts, bounded uint32 ABI, nonnegative strides, fixed capacity and zero-filled padding; caller supplies explicit barriers, device limits, disjoint writable resources and all allocation/submission ownership. GPU, performance and end-to-end autograd qualification remain pending for this packaged source."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.compact_batched.compactGatherWords",
+      "path": "kernels/vkl/compact_batched.slang",
+      "entrypoint": "compactGatherWords",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5b3c39fd67eff503510f4eed677a983bba20e9de8eeff77079fd5e2f88f67d50",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/compact.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-compact-batched-scalar32-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-compact-integration.md",
+        "numerical_behavior": "Experimental stable per-batch compact with truncated int64 retained counts, bounded uint32 ABI, nonnegative strides, fixed capacity and zero-filled padding; caller supplies explicit barriers, device limits, disjoint writable resources and all allocation/submission ownership. GPU, performance and end-to-end autograd qualification remain pending for this packaged source."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.compact_batched.compactInit",
+      "path": "kernels/vkl/compact_batched.slang",
+      "entrypoint": "compactInit",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5b3c39fd67eff503510f4eed677a983bba20e9de8eeff77079fd5e2f88f67d50",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/compact.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-compact-batched-scalar32-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-compact-integration.md",
+        "numerical_behavior": "Experimental stable per-batch compact with truncated int64 retained counts, bounded uint32 ABI, nonnegative strides, fixed capacity and zero-filled padding; caller supplies explicit barriers, device limits, disjoint writable resources and all allocation/submission ownership. GPU, performance and end-to-end autograd qualification remain pending for this packaged source."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.compact_batched.compactScatterMetadata",
+      "path": "kernels/vkl/compact_batched.slang",
+      "entrypoint": "compactScatterMetadata",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "5b3c39fd67eff503510f4eed677a983bba20e9de8eeff77079fd5e2f88f67d50",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/compact.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-compact-batched-scalar32-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-compact-integration.md",
+        "numerical_behavior": "Experimental stable per-batch compact with truncated int64 retained counts, bounded uint32 ABI, nonnegative strides, fixed capacity and zero-filled padding; caller supplies explicit barriers, device limits, disjoint writable resources and all allocation/submission ownership. GPU, performance and end-to-end autograd qualification remain pending for this packaged source."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
       "id": "vkl.depth_convert.depthConvert",
       "path": "kernels/vkl/depth_convert.slang",
       "entrypoint": "depthConvert",

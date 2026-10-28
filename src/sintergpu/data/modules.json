@@ -39,6 +39,10 @@
     "path": "kernels/common/brown_conrady.slang",
     "sha256": "216ae78b2280317c4840ed8acde4bc8916ae072c332a08ff41e4308a7247d4c4"
   },
+  "common.depth_pyramid_core": {
+    "path": "kernels/common/depth_pyramid_core.slang",
+    "sha256": "d4fc879ba28812fc2f5c1e9bf2f6f1d9c382c15ec9ac3013ae2d024d77a4745a"
+  },
   "common.float32_bits": {
     "path": "kernels/common/float32_bits.slang",
     "sha256": "d82c66e6543b3fe890a7c02f4680918038e336269fd0f939798c192f1c5c2729"
@@ -238,6 +242,14 @@
   "vkl.camera_registration": {
     "path": "kernels/vkl/camera_registration.slang",
     "sha256": "b8a7700b209db2d8774aee28d3666b1b0c2f4165bfdee7585da474db219cd07a"
+  },
+  "vkl.compact_backward_torch_cpu_profile": {
+    "path": "kernels/vkl/compact_backward_torch_cpu_profile.slang",
+    "sha256": "1f09f5a0756c23c9e11183b8f600233cf5cfa06371b80650e66dc6a0101ac711"
+  },
+  "vkl.compact_batched": {
+    "path": "kernels/vkl/compact_batched.slang",
+    "sha256": "5b3c39fd67eff503510f4eed677a983bba20e9de8eeff77079fd5e2f88f67d50"
   },
   "vkl.depth_convert": {
     "path": "kernels/vkl/depth_convert.slang",
