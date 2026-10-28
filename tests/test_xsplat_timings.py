@@ -101,3 +101,13 @@ def test_projection_oracle_matches_frozen_cpp_on_their_shared_valid_domain(tmp_p
     assert np.any(~valid)
     np.testing.assert_array_equal(actual[~valid],0)
     assert np.any(expected['depth'][~valid]!=0)
+
+
+@pytest.mark.skipif(__import__('os').environ.get('SINTERGPU_GPU_TESTS')!='1',reason='explicit GPU execution only')
+def test_gpu_entry_uniforms_and_repeated_adam_inout_reset(monkeypatch):
+    m=recipe();case=next(c for c in m.cases() if c['kind']=='adam')
+    monkeypatch.setattr(m,'cases',lambda:iter([case]))
+    # Real dispatch and independent oracle parity before/after repeated samples:
+    # an ignored entry-point count or missing inout reset cannot pass this path.
+    result=m.run(gpu=True,iterations=2,warmups=2)
+    row,=result['measurements'];assert len(row['metrics']['gpu_kernel_ms'])==2

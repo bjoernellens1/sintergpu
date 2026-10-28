@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/benchmarks/xsplat_timings.py", line 174, in <module>
+    args=vars(parser.parse_args());output=args.pop('output');report=run(**args)
+                                                                    ~~~^^^^^^^^
+  File "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/benchmarks/xsplat_timings.py", line 150, in run
+    check_parity(case,read(),expected);kernel_ms=[];host_ms=[];transfer_ms=[]
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/benchmarks/xsplat_timings.py", line 82, in check_parity
+    np.testing.assert_allclose(a.view(np.float32)[:n],e.view(np.float32)[:n],rtol=2e-6,atol=2e-6)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.cache/vkl-qualification-venv/lib/python3.13/site-packages/numpy/testing/_private/utils.py", line 1780, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         verbose=verbose, header=header, equal_nan=equal_nan,
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         strict=strict)
+                         ^^^^^^^^^^^^^^
+  File "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.cache/vkl-qualification-venv/lib/python3.13/site-packages/numpy/testing/_private/utils.py", line 988, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=2e-06, atol=2e-06
+
+Mismatched elements: 31 / 31 (100%)
+First 5 mismatches are at indices:
+ [0]: -0.7785744071006775 (ACTUAL), -0.7791395783424377 (DESIRED)
+ [1]: -0.6343882083892822 (ACTUAL), -0.6340651512145996 (DESIRED)
+ [2]: -0.7312783598899841 (ACTUAL), -0.733008623123169 (DESIRED)
+ [3]: 0.3083863854408264 (ACTUAL), 0.30794066190719604 (DESIRED)
+ [4]: -0.16089455783367157 (ACTUAL), -0.16076938807964325 (DESIRED)
+Max absolute difference among violations: 0.00173026
+Max relative difference among violations: 0.11334405
+ ACTUAL: array([-0.778574, -0.634388, -0.731278,  0.308386, -0.160895, -0.65733 ,
+        0.856292,  0.341508,  0.224089,  0.75485 ,  0.562331,  0.396331,
+        0.881461, -0.001896, -0.149058, -0.622335, -0.528327, -0.109286,...
+ DESIRED: array([-0.77914 , -0.634065, -0.733009,  0.307941, -0.160769, -0.656751,
+        0.856572,  0.341505,  0.223417,  0.755954,  0.563229,  0.39663 ,
+        0.881642, -0.002139, -0.149091, -0.622194, -0.527919, -0.110453,...

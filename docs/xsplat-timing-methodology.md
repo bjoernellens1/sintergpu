@@ -19,7 +19,10 @@ Adam uses31/32/1025/65539 elements and steps0/1/37, including zero gradients,
 nonzero prior moments and positive second moments. Step0 follows the existing
 shader's max(step,1) bias correction. Every sample resets values and both moments;
 repeated dispatch is not allowed to change the measured workload. The shader's
-32-thread profile is retained. Prepared random inputs are outside both regions.
+32-thread profile is retained. Adam’s entry-point uniform `p` is passed as a
+dispatch keyword; `vars` binds its global resource buffers. Treating `p` as a
+global silently leaves count zero. A real GPU regression exercises this binding
+and repeated full inout resets. See the [SlangPy compute tutorial](https://slangpy.shader-slang.org/en/stable/src/tutorials/compute_shader.html). Prepared random inputs are outside both regions.
 
 Projection uses127/128/1025/65539 Gaussians, nonunit quaternions, anisotropic scales,
 a nontrivial row-major camera rotation/translation, and visible, off-screen and

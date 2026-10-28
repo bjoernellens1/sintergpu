@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "collector-defect-fixed-no-samples-accepted",
+  "failed_collector_revision": "ac795bb43cd8ddb2b375720ae1eee65858340659",
+  "cause": "Adam entry-point uniform p was passed in global vars; count stayed zero and GPU preserved seed values. Both collectors stopped at first parity check, before any report was written.",
+  "fix": "Global resource buffers remain in vars; entry-point uniform p uses dispatch keyword per SlangPy compute API. No shader/tolerance/layout change.",
+  "regression": "tests/test_xsplat_timings.py::test_gpu_entry_uniforms_and_repeated_adam_inout_reset observed RED then GREEN on Radeon8060S with2warmups2samples; proves real update plus per-sample state reset.",
+  "source": "https://slangpy.shader-slang.org/en/stable/src/tutorials/compute_shader.html",
+  "evidence_sha256": {
+    "qualification/evidence/xsplat-binding-failure-8060s-0.2.3.log": "e06cdae22d7067469222993a9b059a061069e9cec3f6016998b0630381bec111",
+    "qualification/evidence/xsplat-binding-failure-4070ti-0.2.3.log": "0cb1d82d2b7e025415f18d6d1cf70155d26c6740438399b89ee5c4fe7cb20164"
+  }
+}

@@ -2833,7 +2833,10 @@
     "benchmarks/results/primitives-irregular-cpu-gpu-8060s-0.2.2.json": "b04ca4874c77c4dc527928ffdbebcda0701d26a3c8c873744e4f880ddcb35d85",
     "benchmarks/results/primitives-irregular-cpu-gpu-4070ti-0.2.2.json": "53d65ade9e6179290f18fc637c54fd408bfe891e719aef42395965a85816bf15",
     "qualification/evidence/primitive-irregular-timings-0.2.2.json": "d42dc863c080020d0476fa26564b9e8b4d7eef42c42bbd0ca79f0fa7e0fdf18d",
-    "qualification/delivery-0.2.2.json": "287f804ef20ea51d7f5a396a7d4dffb2308475943f904666afa465fcfd92c334"
+    "qualification/delivery-0.2.2.json": "287f804ef20ea51d7f5a396a7d4dffb2308475943f904666afa465fcfd92c334",
+    "qualification/evidence/xsplat-binding-failure-8060s-0.2.3.log": "e06cdae22d7067469222993a9b059a061069e9cec3f6016998b0630381bec111",
+    "qualification/evidence/xsplat-binding-failure-4070ti-0.2.3.log": "0cb1d82d2b7e025415f18d6d1cf70155d26c6740438399b89ee5c4fe7cb20164",
+    "qualification/evidence/xsplat-binding-fix-0.2.3.json": "e1232c95ef626ebbe04db076ccecf77375f49bc79c809c5afedd064930e8bd29"
   },
   "pending_gates": [
     "Full NVIDIA RTX 4070 Ti operation/variant/adapter qualification beyond retained regression and retained stage timing fixtures",

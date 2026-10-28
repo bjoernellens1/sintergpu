@@ -139,12 +139,12 @@ def run(*,gpu=False,iterations=50,warmups=5,device_index=0):
                 usage=spy.BufferUsage.shader_resource|spy.BufferUsage.unordered_access
                 buffers={name:(device.create_buffer(size=a.nbytes,usage=spy.BufferUsage.constant_buffer,data=a) if name=='camera' else device.create_buffer(element_count=a.nbytes//case['strides'][name],struct_size=case['strides'][name],usage=usage,data=a)) for name,a in arrays.items()}
                 kernel=adapter.kernel(op['id']);row['reflected_abi']=validate_layout(kernel,case)
-                bindings={**buffers,**({'p':case['params']} if case['kind']=='adam' else {})};pool=device.create_query_pool(spy.QueryType.timestamp,2)
+                bindings=buffers;entry_uniforms={'p':case['params']} if case['kind']=='adam' else {};pool=device.create_query_pool(spy.QueryType.timestamp,2)
                 row['adapter_source_identity']=adapter.source_identities[op['id']]
                 def reset():
                     for name in outputs:buffers[name].copy_from_numpy(arrays[name])
                     device.wait()
-                def dispatch(**kwargs):kernel.dispatch(thread_count=case['thread_count'],vars=bindings,**kwargs)
+                def dispatch(**kwargs):kernel.dispatch(thread_count=case['thread_count'],vars=bindings,**entry_uniforms,**kwargs)
                 def read():return {name:buffers[name].to_numpy().view(arrays[name].dtype).reshape(-1) for name in outputs}
                 for _ in range(warmups):reset();dispatch();device.wait()
                 check_parity(case,read(),expected);kernel_ms=[];host_ms=[];transfer_ms=[]
