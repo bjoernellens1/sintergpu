@@ -2962,7 +2962,7 @@
       "driver": "radv Mesa 26.2.3 / 26.2.3",
       "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
         "vendor_id": "0x1002",
@@ -2984,7 +2984,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.finalizeRaster",
@@ -2998,7 +2999,7 @@
       "driver": "radv Mesa 26.2.3 / 26.2.3",
       "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
         "vendor_id": "0x1002",
@@ -3020,7 +3021,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.finalizeReference",
@@ -3034,7 +3036,7 @@
       "driver": "radv Mesa 26.2.3 / 26.2.3",
       "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
         "vendor_id": "0x1002",
@@ -3056,7 +3058,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.packTemporal",
@@ -3070,7 +3073,7 @@
       "driver": "radv Mesa 26.2.3 / 26.2.3",
       "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
         "vendor_id": "0x1002",
@@ -3092,7 +3095,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.projectPoints",
@@ -3106,7 +3110,7 @@
       "driver": "radv Mesa 26.2.3 / 26.2.3",
       "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
         "vendor_id": "0x1002",
@@ -3128,7 +3132,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.rasterMin",
@@ -3142,7 +3147,7 @@
       "driver": "radv Mesa 26.2.3 / 26.2.3",
       "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
         "vendor_id": "0x1002",
@@ -3164,7 +3169,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.rasterSupport",
@@ -3178,7 +3184,7 @@
       "driver": "radv Mesa 26.2.3 / 26.2.3",
       "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
         "vendor_id": "0x1002",
@@ -3200,7 +3206,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.reduceProjection",
@@ -3214,7 +3221,7 @@
       "driver": "radv Mesa 26.2.3 / 26.2.3",
       "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
         "vendor_id": "0x1002",
@@ -3236,7 +3243,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.sampleTemporal",
@@ -3250,7 +3258,7 @@
       "driver": "radv Mesa 26.2.3 / 26.2.3",
       "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
         "vendor_id": "0x1002",
@@ -3272,7 +3280,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-8060s-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.clearRaster",
@@ -3286,7 +3295,7 @@
       "driver": "NVIDIA 595.99.02 / 595.99.2.0",
       "device": "NVIDIA GeForce RTX 4070 Ti",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
         "vendor_id": "0x10de",
@@ -3308,7 +3317,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.finalizeRaster",
@@ -3322,7 +3332,7 @@
       "driver": "NVIDIA 595.99.02 / 595.99.2.0",
       "device": "NVIDIA GeForce RTX 4070 Ti",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
         "vendor_id": "0x10de",
@@ -3344,7 +3354,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.finalizeReference",
@@ -3358,7 +3369,7 @@
       "driver": "NVIDIA 595.99.02 / 595.99.2.0",
       "device": "NVIDIA GeForce RTX 4070 Ti",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
         "vendor_id": "0x10de",
@@ -3380,7 +3391,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.packTemporal",
@@ -3394,7 +3406,7 @@
       "driver": "NVIDIA 595.99.02 / 595.99.2.0",
       "device": "NVIDIA GeForce RTX 4070 Ti",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
         "vendor_id": "0x10de",
@@ -3416,7 +3428,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.projectPoints",
@@ -3430,7 +3443,7 @@
       "driver": "NVIDIA 595.99.02 / 595.99.2.0",
       "device": "NVIDIA GeForce RTX 4070 Ti",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
         "vendor_id": "0x10de",
@@ -3452,7 +3465,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.rasterMin",
@@ -3466,7 +3480,7 @@
       "driver": "NVIDIA 595.99.02 / 595.99.2.0",
       "device": "NVIDIA GeForce RTX 4070 Ti",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
         "vendor_id": "0x10de",
@@ -3488,7 +3502,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.rasterSupport",
@@ -3502,7 +3517,7 @@
       "driver": "NVIDIA 595.99.02 / 595.99.2.0",
       "device": "NVIDIA GeForce RTX 4070 Ti",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
         "vendor_id": "0x10de",
@@ -3524,7 +3539,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.reduceProjection",
@@ -3538,7 +3554,7 @@
       "driver": "NVIDIA 595.99.02 / 595.99.2.0",
       "device": "NVIDIA GeForce RTX 4070 Ti",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
         "vendor_id": "0x10de",
@@ -3560,7 +3576,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     },
     {
       "operation": "vkl.reprojection.sampleTemporal",
@@ -3574,7 +3591,7 @@
       "driver": "NVIDIA 595.99.02 / 595.99.2.0",
       "device": "NVIDIA GeForce RTX 4070 Ti",
       "status": "compositional-fixture-parity-passed",
-      "scope": "All four public numerical operation output sets across63cases/113states; stages composed on borrowed encoder. Not isolated-stage timing, full-domain, gradients, application or performance adoption.",
+      "scope": "All four public numerical output sets across63cases/113states; stages composed on borrowed encoder. Isolated-stage fixture timings and state checks recorded separately. No full-domain, gradient, application or optimized-selection claim.",
       "configuration": {
         "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
         "vendor_id": "0x10de",
@@ -3596,7 +3613,8 @@
         },
         "source_checkpoint": "1100590842501e6e0ae07cda5a655c73fff7d5d9"
       },
-      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log"
+      "evidence": "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log",
+      "timing_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
     }
   ],
   "evidence_sha256": {
@@ -3636,8 +3654,8 @@
     "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf",
     "qualification/delivery-0.1.5.json": "5b0343aa119753b572aedee0982a5dc7ccd0a804595cb037492ca2b3d85fc9a2",
     "benchmarks/results/locus-cpu-gpu-8060s.json": "36f05cb3ac40bf40f5f1f878884495bcd6c933767d112e58e89a4e3290388ea2",
-    "src/sintergpu/data/timings.json": "f776270f72ff0cda1028b68d8ab7b666d013093cc5de48c16e46a581a97da7c8",
-    "docs/kernel-timings.md": "5c3e1f1efae66ddf166267a1f9a05ab907d00b3a7463984a3c0a18c737d8e4bd",
+    "src/sintergpu/data/timings.json": "56770a43676b72290c382e8fe31cf026efe3a18a89760f693680fd1d9d60689e",
+    "docs/kernel-timings.md": "ec8ed6c3da1e7aa856c06989a55e5047527d5306b9d4b91dcc8680500a96cf68",
     "qualification/delivery-0.1.6.json": "61fbdbde082cf212b82804e27fd16ee266479c1273b9eb13df9488a98d5921b8",
     "benchmarks/results/color-cpu-gpu-8060s.json": "1d34cd705e7096f28651c04521958027e60c038b65648a83baa8332c863ab864",
     "qualification/delivery-0.1.7.json": "a09a8871e40f76d78b4f42bc3c258e8e609692653c949785937292b1cb4eb57b",
@@ -3865,10 +3883,49 @@
     "qualification/evidence/vkl-reprojection-device-8060s-0.2.5.json": "2b82f1240478f96f55be10fd1e2aa2cccb64cdf3dbd52b41de045d945eae9a3b",
     "qualification/evidence/vkl-reprojection-gpu-4070ti-fixed-canonical-0.2.5.log": "4fb21ee9872e1413cd0d05a5c5489eea77ae33f7f616578907e8966b72154ca6",
     "qualification/evidence/vkl-reprojection-device-4070ti-0.2.5.json": "25d2c1407a8d9b8672fcda80b5d0d3ad5169114a3bcb8705b8f86a93d83671f8",
-    "qualification/evidence/vkl-reprojection-driver-full-cpu-0.2.5.log": "3835dc85f8f36ad1ed170b0c20bb72247ce8e223d9483eea1b9863edfaec5d30"
+    "qualification/evidence/vkl-reprojection-driver-full-cpu-0.2.5.log": "3835dc85f8f36ad1ed170b0c20bb72247ce8e223d9483eea1b9863edfaec5d30",
+    "benchmarks/results/color-cpu-gpu-4070ti-0.2.5.json": "0d85c8efa389988a1cf1e8ef54c2dfe5dc8f9ece30fd261cafb96b23afcc2874",
+    "benchmarks/results/color-cpu-gpu-8060s-0.2.5.json": "e8bd04b29460ddd60b60fe232da9ed50f0f45ba0f954e4042bbd9324624a2cff",
+    "benchmarks/results/locus-cpu-gpu-4070ti-0.2.5.json": "faa31f308054f447518627d83d95fec028083b04b978542f9ac3168e7333d3a7",
+    "benchmarks/results/locus-cpu-gpu-8060s-0.2.5.json": "67b9cffff916e915db31e848cdfff387b8d74ce85d46ccc3930b343791555597",
+    "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.5.json": "e242f519f81dc7ef11e7bce0747e556c4c9553182e5966b3544aa9e93dab6742",
+    "benchmarks/results/primitives-cpu-gpu-8060s-0.2.5.json": "7ed4c00d9903593d7393045cb9a485de876ad5431ad076a290bf79e9c4ea6e77",
+    "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.5.json": "ea1cfb2a77c422fd76abdf421ffbbc49ecca5c0e1a260a3593bccabe60e5a0cc",
+    "benchmarks/results/vkl-cpu-gpu-8060s-0.2.5.json": "b503736516a89c32c0f43dd720d8c97b59479e0ef555b4d90b440daed51e6f3b",
+    "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.5.json": "2855518264c7bd58b94982c4c7b0a4cca8e0eb2965348db828f05c617365fc70",
+    "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.5.json": "226bf6159114e0110087e1de473ebe94cf9600607d45661435865ef550ee2bef",
+    "benchmarks/results/vkl-reprojection-cpu-gpu-4070ti-0.2.5.json": "a577d1f6b7889f8673e64052816cfebd49e7a151da442826c4ac7a97fb710e4b",
+    "benchmarks/results/vkl-reprojection-cpu-gpu-8060s-0.2.5.json": "0e030b630c04dc40f5769021be8a0f1efe9f004edcd6b5ed254e2aa983286c6e",
+    "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.5.json": "606788ffdac3235b2ec360fb2a488d6338598c86e5934a9a55453e230fcdee01",
+    "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.5.json": "f54ffee2578904cff1afb7d9d9d12f51c5954c803b541cc9267afb629903e4f9",
+    "qualification/evidence/vkl-reprojection-collection-0.2.5.json": "2198260136f2267585677ee0f4cd16ed5c62c57740c6475fdadb6a6f013c68dd",
+    "qualification/evidence/vkl-reprojection-packaging-0.2.5.json": "81608e95278c7de424e0f17e128f6d8da3ce908cdb04dd3b9fa3e7bdb0ab3f5d",
+    "qualification/evidence/vkl-reprojection-packaging-0.2.5.log": "9cb37c4cebae6400929f3d40fc4d799b7320d526291e1fe5336838821428188d",
+    "qualification/evidence/reprojection-collect-4070ti-after-0.2.5.sha256": "aba4a28de47782e9e38f5a6497e0c9016babbfba0537eb3809bbb0f11ef0d9af",
+    "qualification/evidence/reprojection-collect-4070ti-before-0.2.5.sha256": "aba4a28de47782e9e38f5a6497e0c9016babbfba0537eb3809bbb0f11ef0d9af",
+    "qualification/evidence/reprojection-collect-4070ti-color-0.2.5.log": "8aa121ee66e6ee81faaad24f7c7feaaa099e266cf721d6ce97feebcd302e36e9",
+    "qualification/evidence/reprojection-collect-4070ti-locus-0.2.5.log": "08a574f9ecf6946d79b5f8b70b6193d7ef16e21c1ca705d15e3a8ee37793e8b6",
+    "qualification/evidence/reprojection-collect-4070ti-primitives-0.2.5.log": "4675d134c478a44204e95198cf7bf28cf4201ee2cdde0be3c206d4f29aa08fa5",
+    "qualification/evidence/reprojection-collect-4070ti-receipt-0.2.5.log": "16b089144da90b59a207521dcd24596e04b97caa990089390f488ace4db74691",
+    "qualification/evidence/reprojection-collect-4070ti-validation-0.2.5.log": "8449111755887ef9e8e6d3cd6528c00faa94e9d25b54c8f8e34ce552e3066a21",
+    "qualification/evidence/reprojection-collect-4070ti-vkl-features-0.2.5.log": "1fe25429f6eacb5e7555d37873a0230a40cbf4d9482ec9e0f8cca3f6b4b39877",
+    "qualification/evidence/reprojection-collect-4070ti-vkl-reprojection-0.2.5.log": "d04e39893bc94693fc1eac1c7eb4a08287b2c7a122a542637db8922bd4959635",
+    "qualification/evidence/reprojection-collect-4070ti-vkl-0.2.5.log": "d98017eddbd7ecabe1554e5ed83254b9a8b661bab18d27366d3228156499b306",
+    "qualification/evidence/reprojection-collect-4070ti-xsplat-0.2.5.log": "48e2dcde0e661cb285a633474140282b974890219df8b657ad9462ba79547746",
+    "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-color-0.2.5.log": "dc648911c072b127c05290fff83f6baea8b48783a454ff4bf931d330f0e9e7c8",
+    "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-locus-0.2.5.log": "6203ed1de7bd9603543471cb63b5bffdf9262abc89b788c0a708ffbcdf503080",
+    "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-primitives-0.2.5.log": "9d9b2a5bd07a19c60b76f59f4c56d6fa62f51adfbebb24017cf24bd22b0f060b",
+    "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-receipt-0.2.5.json": "ee53466c8d8f92694a5ea396d7a09683c1e2c3c1c947f4ad6c2b208bc25db9a9",
+    "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-vkl-features-0.2.5.log": "f674ac817e87ec4bab93a78742c283f98428a6fb77860bf1a91fd65ecd69fa4f",
+    "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-vkl-reprojection-0.2.5.log": "d04e39893bc94693fc1eac1c7eb4a08287b2c7a122a542637db8922bd4959635",
+    "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-vkl-0.2.5.log": "1fdb87a4ab7d6fcb02a1a6a07c829aff550a01f64903f8cdf9465eeb119a4a0c",
+    "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-xsplat-0.2.5.log": "8c49db9e5725d0c51b8f3fba26582c7c2dcf0d6ffe6742a9da9c3d0473e84120",
+    "qualification/evidence/reprojection-timing-registry-ingest-0.2.5.log": "a08b14c45c81d7bc9fce446a44ff0377e4298efa67ec46d41f20f396fc795f52",
+    "qualification/evidence/reprojection-timing-registry-verification-0.2.5.log": "75e7d1763fa6decc19cae5c1355c903d435ff46373bd3cc456c857a0e6a689e2",
+    "qualification/evidence/reprojection-timing-registry-tests-0.2.5.log": "917e935f43c8c9ebe60956f29629994cbf1e93bc7983b15c4c77a66f1694dddd"
   },
   "pending_gates": [
-    "VKL D4/T0 full-domain/gradient and downstream application qualification beyond63cases/113states on both target devices; isolated-stage timing collection and fresh packaging/installation verification remain pending",
+    "VKL D4/T0 full-domain/gradient and downstream application qualification beyond63cases/113states on both target devices; final release package must be rebuilt from final source and checked",
     "Full NVIDIA RTX 4070 Ti operation/variant/adapter qualification beyond retained regression and retained stage timing fixtures",
     "Full Radeon 8060S operation/variant/adapter qualification beyond retained fixtures",
     "34 VKL reference modules remain without Slang translation; thirteen covered modules include experimental partial-forward profiles, and consumer policy remains reference-only by design",
@@ -3877,7 +3934,7 @@
     "Optional vrdx C++ runtime and HIP backend runtime qualification",
     "SLAM pose/trajectory/gradient and full-capacity reconstruction qualification",
     "Publisher App administrative permission path and downstream App execution; six private consumer CI jobs blocked by account billing/spending restrictions",
-    "Fresh source-current CPU/GPU timing collection for all146 pending catalog entries after source settles;54 prior paired operations remain historical,83 existing plus nine new stage timing targets lack complete prior paired timing; four optional native variants remain pending",
+    "CPU/GPU baseline timing coverage for 83 remaining portable catalog entries and four optional native variants; fixture baselines do not establish production performance",
     "Shared point-plane full-domain and performance qualification, and consumer adoption beyond retained fixture evidence"
   ],
   "timing_reference": {
@@ -3909,30 +3966,43 @@
       "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.4.json",
       "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.4.json",
       "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.4.json",
-      "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.4.json"
+      "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.4.json",
+      "benchmarks/results/color-cpu-gpu-4070ti-0.2.5.json",
+      "benchmarks/results/color-cpu-gpu-8060s-0.2.5.json",
+      "benchmarks/results/locus-cpu-gpu-4070ti-0.2.5.json",
+      "benchmarks/results/locus-cpu-gpu-8060s-0.2.5.json",
+      "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.5.json",
+      "benchmarks/results/primitives-cpu-gpu-8060s-0.2.5.json",
+      "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.5.json",
+      "benchmarks/results/vkl-cpu-gpu-8060s-0.2.5.json",
+      "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.5.json",
+      "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.5.json",
+      "benchmarks/results/vkl-reprojection-cpu-gpu-4070ti-0.2.5.json",
+      "benchmarks/results/vkl-reprojection-cpu-gpu-8060s-0.2.5.json",
+      "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.5.json",
+      "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.5.json"
     ],
     "catalog_entries": 146,
-    "paired_cpu_gpu_entries": 0,
-    "pending_portable_entries": 146,
+    "paired_cpu_gpu_entries": 63,
+    "pending_portable_entries": 83,
     "additional_native_pending": 4,
-    "scope": "Draft0.2.5: all prior samples retained historical under their original source closure. Both-vendor D4/T0 compositional fixture parity passed; fresh genuine per-stage and existing baseline timing collection pending. No optimized selection or speedup claim.",
-    "color_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
-    "color_workloads": 0,
-    "workloads": 0,
-    "locus_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
+    "scope": "Fixture baseline measurements from seven recipes per device: 50 paired samples per row under shared host load; separate full NumPy pipeline reference has three samples. No controlled speedup, default-selection or application qualification claim. Prior 910 samples retain original source context and are historical.",
+    "color_workloads": 60,
+    "workloads": 752,
     "retained_historical_workloads": 910,
-    "feature_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
-    "feature_workloads": 0,
-    "vkl_workloads": 0,
-    "vkl_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
-    "locus_workloads": 0,
-    "nvidia_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
-    "workloads_by_device": {},
-    "primitive_workloads": 0,
-    "primitive_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
-    "primitive_additional_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b",
-    "xsplat_workloads": 0,
-    "xsplat_collector_revision": "6ac032bf5d076b29ad044e9de4ac31938d33c75b"
+    "feature_workloads": 20,
+    "vkl_workloads": 76,
+    "locus_workloads": 56,
+    "workloads_by_device": {
+      "8060s": 376,
+      "4070ti": 376
+    },
+    "primitive_workloads": 146,
+    "xsplat_workloads": 34,
+    "reprojection_workloads": 360,
+    "reprojection_pipeline_workloads": 60,
+    "collection_source_commit": "a3fa2e733cce9dd1a3b6536edbdd008fe9896adc",
+    "collection_evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json"
   },
   "native_packaging": {
     "status": "installed-native-static-link-passed",
@@ -3974,7 +4044,7 @@
     "frozen_revision": "3384023a311651ea4260cf12ddab1567972f89f3",
     "independent_reference_tests": 102,
     "full_cpu_tests": 533,
-    "scope": "Nine new dispatches compose four complete float32 numerical operations; both target vendors pass all63cases/113states against the same strict NumPy and canonical frozen-donor profiles. Per-stage timing collection/full-domain/gradients/adoption remain pending.",
+    "scope": "Nine new dispatches compose four complete float32 numerical operations; both target vendors pass all63cases/113states against the same strict NumPy and canonical frozen-donor profiles. Isolated stage and pipeline fixture timings recorded; full-domain/gradients/adoption remain pending.",
     "reference_execution_window": "Working-tree reference additions at base3f88024, before GPU implementation; full CPU533 test run preceded version0.2.5 integration. Counts are scoped observations, not whole-batch qualification.",
     "reference_source_sha256": {
       "src/sintergpu/references/reprojection_numeric.py": "df56256f46d64803e35d9b5b043fcaade9f1b01d8da9b59a9ef7d98ab15da27b",
@@ -4097,7 +4167,23 @@
     "driver_metadata_review": {
       "status": "cleared",
       "independent_tests": 81,
-      "scope": "Actual Vulkan driver/device snapshots validated against raw evidence and current host/API/adapter, bound by raw/file SHA in each timing row, loaded outside clocks. Hardware measurements remain pending."
+      "scope": "Actual Vulkan driver/device snapshots validated against raw evidence and current host/API/adapter, bound by raw/file SHA. The new reprojection timing embeds snapshots during collection; legacy rows carry an explicitly postcollection association."
+    },
+    "stage_timing": {
+      "status": "measurement_only_fixture_baseline",
+      "operations": 9,
+      "rows_per_device": 180,
+      "pipeline_cases_per_device": 30,
+      "samples_per_paired_metric": 50,
+      "full_numpy_oracle_samples_per_pipeline": 3,
+      "source_checkpoint": "a3fa2e733cce9dd1a3b6536edbdd008fe9896adc",
+      "evidence": "qualification/evidence/vkl-reprojection-collection-0.2.5.json",
+      "scope": "All isolated stage writes, read-only inputs and tails checked before replay. Resident GPU pipeline and transfer-inclusive timing retained separately. Shared-host measurements are not a controlled performance or adoption qualification."
+    },
+    "packaging_verification": {
+      "status": "provisional_pass_final_rebuild_required",
+      "evidence": "qualification/evidence/vkl-reprojection-packaging-0.2.5.json",
+      "scope": "Wheel/sdist installs, relocated CMake and both pinned compilers passed; concurrent timing data changed, so final release artifacts require a fresh source-matched build."
     }
   }
 }

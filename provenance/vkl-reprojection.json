@@ -5,9 +5,9 @@
   "license": "Apache-2.0 (original owner authorization 2026-10-27)",
   "author": "Original owner numerical contracts; standalone SinterGPU implementation and independent NumPy oracles",
   "operation_prefix": "vkl",
-  "qualification": "All146 entries compile/reflect under both standalone pins. Both Radeon8060S and RTX4070Ti pass63cases/113states against independent NumPy and the identical pinned frozen-donor CPU archive after confirmed source rounding/diagnostic fixes. Numerical profiles remain experimental: per-stage timings, full-domain/gradient and application adoption gates remain pending.",
+  "qualification": "All146 entries compile/reflect under both standalone pins. Both Radeon8060S and RTX4070Ti pass63cases/113states against independent NumPy and the identical pinned frozen-donor CPU archive after confirmed source rounding/diagnostic fixes. Numerical profiles remain experimental: both-vendor isolated-stage and pipeline fixture baselines are recorded; full-domain/gradient and application adoption gates remain pending.",
   "coverage": {
-    "stage": "both_vendor_compositional_fixture_parity_timing_pending",
+    "stage": "both_vendor_compositional_fixture_parity_and_stage_timing",
     "newly_forward_ported_modules": [
       "reproject",
       "temporal_reproject"

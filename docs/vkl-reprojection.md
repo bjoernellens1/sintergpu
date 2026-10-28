@@ -4,9 +4,10 @@ This0.2.5 working batch implements the complete numerical forward output sets of
 frozen VKL `reproject.py` and `temporal_reproject.py` at
 `3384023a311651ea4260cf12ddab1567972f89f3`. Independent scalar NumPy references
 pass102 literal/frozen-donor comparisons. All nine new entries compile under
-standalone Slang2026.12 and2026.19. New GPU execution, full-domain and controlled
-performance qualification are still pending; consult the versioned qualification
-record rather than inferring runtime support from compilation.
+standalone Slang2026.12 and2026.19. Radeon 8060S and RTX 4070 Ti each passed
+63 cases / 113 states against independent and canonical frozen references.
+Full-domain and controlled performance qualification remain pending; consult the
+versioned qualification record for the exact profile and hardware identities.
 
 The donor's `depth_reproject` alias names the same projection operation; it is not
 a fifth algorithm. There are four forward operations, two newly translated source
@@ -141,8 +142,9 @@ evaluation and state resets belong outside each stage clock. Complete public
 function CPU timings remain a separate scope.
 
 New source changes the conservative global timing identity. Earlier samples are
-retained at their original source/compiler/device context and are historical until
-fresh collection; no raw samples are rekeyed. GPU timestamps for one dispatch,
+retained at their original source/compiler/device context as historical; fresh
+paired fixture baselines cover 63 of 146 portable entries on each device. GPU
+timestamps for one dispatch,
 resident complete pipelines and transfer-inclusive wall time are separate costs.
 Stateful per-stage timing must replay/reset prerequisites outside each measured
 GPU interval. CPU whole-operation time is never copied onto a stage. There is no

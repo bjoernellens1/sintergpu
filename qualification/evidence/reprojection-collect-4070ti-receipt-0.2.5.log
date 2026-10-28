@@ -1,0 +1,114 @@
+COLLECTOR_PID=222028
+Wed Oct 28 12:56:13 PM UTC 2026
+GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 0 %
+8bf904abc1c5d6428a1f27cc5d4a3c9783d15231f17ce1ef8d25e9cab1f60d1c  /usr/share/vulkan/icd.d/nvidia_icd.json
+Wed Oct 28 13:56:13 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.99.02              Driver Version: 595.99.02      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 4070 Ti     Off |   00000000:01:00.0 Off |                  N/A |
+|  0%   45C    P8             14W /  285W |      94MiB /  12282MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            3329      G   /usr/lib/xorg/Xorg                       57MiB |
+|    0   N/A  N/A            3579      G   /usr/bin/gnome-shell                      7MiB |
++-----------------------------------------------------------------------------------------+
+'DISPLAY' environment variable not set... skipping surface info
+==========
+VULKANINFO
+==========
+
+Vulkan Instance Version: 1.3.275
+
+
+Instance Extensions: count = 23
+-------------------------------
+VK_EXT_acquire_drm_display             : extension revision 1
+VK_EXT_acquire_xlib_display            : extension revision 1
+VK_EXT_debug_report                    : extension revision 10
+VK_EXT_debug_utils                     : extension revision 2
+VK_EXT_direct_mode_display             : extension revision 1
+VK_EXT_display_surface_counter         : extension revision 1
+VK_EXT_surface_maintenance1            : extension revision 1
+VK_EXT_swapchain_colorspace            : extension revision 5
+VK_KHR_device_group_creation           : extension revision 1
+VK_KHR_display                         : extension revision 23
+VK_KHR_external_fence_capabilities     : extension revision 1
+VK_KHR_external_memory_capabilities    : extension revision 1
+VK_KHR_external_semaphore_capabilities : extension revision 1
+VK_KHR_get_display_properties2         : extension revision 1
+VK_KHR_get_physical_device_properties2 : extension revision 2
+VK_KHR_get_surface_capabilities2       : extension revision 1
+VK_KHR_portability_enumeration         : extension revision 1
+VK_KHR_surface                         : extension revision 25
+VK_KHR_surface_protected_capabilities  : extension revision 1
+VK_KHR_wayland_surface                 : extension revision 6
+VK_KHR_xcb_surface                     : extension revision 6
+VK_KHR_xlib_surface                    : extension revision 6
+VK_LUNARG_direct_driver_loading        : extension revision 1
+
+Instance Layers: count = 5
+--------------------------
+VK_LAYER_INTEL_nullhw       INTEL NULL HW                1.1.73   version 1
+VK_LAYER_MESA_device_select Linux device selection layer 1.4.303  version 1
+VK_LAYER_MESA_overlay       Mesa Overlay layer           1.4.303  version 1
+VK_LAYER_NV_optimus         NVIDIA Optimus layer         1.4.329  version 1
+VK_LAYER_NV_present         NVIDIA Presentation Layer    1.4.329  version 1
+
+Devices:
+========
+GPU0:
+	apiVersion         = 1.4.329
+	driverVersion      = 595.99.2.0
+	vendorID           = 0x10de
+	deviceID           = 0x2782
+	deviceType         = PHYSICAL_DEVICE_TYPE_DISCRETE_GPU
+	deviceName         = NVIDIA GeForce RTX 4070 Ti
+	driverID           = DRIVER_ID_NVIDIA_PROPRIETARY
+	driverName         = NVIDIA
+	driverInfo         = 595.99.02
+	conformanceVersion = 1.4.3.3
+	deviceUUID         = 96d2dba0-95fd-5c00-e849-2e0610f24e06
+	driverUUID         = c9bf27cc-ad5e-57db-8930-96d25aad2e91
+slangpy_file /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/__init__.py
+{'slangpy': '0.43.1', 'numpy': '2.5.4'}
+START vkl_reprojection.py 2026-10-28T12:56:14Z
+{"status": "measurement_only", "adoption": "unqualified", "paired_stage_rows": 180, "pipelines": ["projection/ordinary/b1-n1-3x5-to3x5", "projection/collision/b1-n1-3x5-to3x5", "projection/sparse/b1-n1-3x5-to3x5", "projection/all_invalid/b1-n1-3x5-to3x5", "projection/odd_tail/b1-n1-17x19-to17x19", "raster/ordinary/b1-n1-3x5-to3x5", "raster/collision/b1-n1-3x5-to3x5", "raster/sparse/b1-n1-3x5-to3x5", "raster/all_invalid/b1-n1-3x5-to3x5", "raster/odd_tail/b1-n1-17x19-to17x19", "temporal/ordinary/b1-n1-3x5-to3x5", "temporal/ordinary/b1-n3-3x5-to3x5", "temporal/collision/b1-n1-3x5-to3x5", "temporal/collision/b1-n3-3x5-to3x5", "temporal/sparse/b1-n1-3x5-to3x5", "temporal/sparse/b1-n3-3x5-to3x5", "temporal/all_invalid/b1-n1-3x5-to3x5", "temporal/all_invalid/b1-n3-3x5-to3x5", "temporal/odd_tail/b1-n1-17x19-to17x19", "temporal/odd_tail/b1-n3-17x19-to17x19", "reference/ordinary/b1-n1-3x5-to3x5", "reference/ordinary/b1-n3-3x5-to3x5", "reference/collision/b1-n1-3x5-to3x5", "reference/collision/b1-n3-3x5-to3x5", "reference/sparse/b1-n1-3x5-to3x5", "reference/sparse/b1-n3-3x5-to3x5", "reference/all_invalid/b1-n1-3x5-to3x5", "reference/all_invalid/b1-n3-3x5-to3x5", "reference/odd_tail/b1-n1-17x19-to17x19", "reference/odd_tail/b1-n3-17x19-to17x19"]}
+DONE vkl_reprojection.py 2026-10-28T12:57:10Z
+START locus_timings.py 2026-10-28T12:57:10Z
+{"cases": 28, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.5/locus-cpu-gpu-4070ti-0.2.5.json"}
+DONE locus_timings.py 2026-10-28T12:57:14Z
+START color_timings.py 2026-10-28T12:57:14Z
+{"cases": 30, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.5/color-cpu-gpu-4070ti-0.2.5.json"}
+DONE color_timings.py 2026-10-28T12:57:35Z
+START vkl_features.py 2026-10-28T12:57:35Z
+{"cases": 10, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.5/vkl-features-cpu-gpu-4070ti-0.2.5.json"}
+DONE vkl_features.py 2026-10-28T12:57:39Z
+START vkl_timings.py 2026-10-28T12:57:39Z
+{"cases": 38, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.5/vkl-cpu-gpu-4070ti-0.2.5.json"}
+DONE vkl_timings.py 2026-10-28T12:58:29Z
+START primitive_timings.py 2026-10-28T12:58:29Z
+[[33mWARN[0m] Slang compiler warnings:
+warning[E15205]: undefined identifier in preprocessor
+ --> /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/source-0.2.5-a3fa2e7/src/sintergpu/kernels/primitives/scan.slang:6:5
+  |
+6 | #if SINTERGPU_SCAN_UINT
+  |     ^^^^^^^^^^^^^^^^^^^ undefined identifier 'SINTERGPU_SCAN_UINT' in preprocessor expression will evaluate to zero
+--'
+
+{"cases": 73, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.5/primitives-cpu-gpu-4070ti-0.2.5.json"}
+DONE primitive_timings.py 2026-10-28T12:58:43Z
+START xsplat_timings.py 2026-10-28T12:58:43Z
+{"cases": 17, "output": "/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/evidence-0.2.5/xsplat-cpu-gpu-4070ti-0.2.5.json"}
+DONE xsplat_timings.py 2026-10-28T12:58:51Z
+COLLECTION_SUCCESS
