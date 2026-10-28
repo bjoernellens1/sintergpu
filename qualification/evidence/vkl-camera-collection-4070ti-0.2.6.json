@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "source_commit": "6aa0f7cc2bfd07a61cd4d0a8b8540ef59b12bbe6",
+  "scope": "measurement-only fixture baselines under shared load; no controlled performance or adoption claim",
+  "association": "Snapshot observed before collection and checked at lock acquisition; eight recipes completed under one exclusive lock and source hashes before and after match. Legacy environment association was added after collection; collector_revision and other originally observed fields remain unchanged.",
+  "artifacts": {
+    "vkl-camera-collector-4070ti-0.2.6-camera.log": "bbc90fbfa7a0f002702607271c229337d5ac5b8e1a2a5e432fa396d583bade59",
+    "vkl-camera-collector-4070ti-0.2.6-color.log": "186b558e238257f4c7a1e4a6dca297bd926e10f7c09a06fb772ccc50a7fa7838",
+    "vkl-camera-collector-4070ti-0.2.6-device-snapshot.json": "90e4d67f750f4dfcfcbeae6ca4704ac01862571f70e787cb70f721aa36d95808",
+    "vkl-camera-collector-4070ti-0.2.6-locus.log": "2b328440a3e4a71e6d754a393772422f9da40ead597a8446215383d973881e0e",
+    "vkl-camera-collector-4070ti-0.2.6-primitives.log": "469f3b2e29fd1738e75fdf1fca113fd206ea0b86fbcabb6858dea5d72057c6aa",
+    "vkl-camera-collector-4070ti-0.2.6-receipt.log": "07c615b52dbe53646e4a01caa94022c78aa025497b7772ad6a657ea53df4eefa",
+    "vkl-camera-collector-4070ti-0.2.6-source-after.sha256": "6a640c60da85bddeec8e72fb6d9e3ce3bc377c9a7acf08eb4a14a2f1f4da101c",
+    "vkl-camera-collector-4070ti-0.2.6-source-before.sha256": "6a640c60da85bddeec8e72fb6d9e3ce3bc377c9a7acf08eb4a14a2f1f4da101c",
+    "vkl-camera-collector-4070ti-0.2.6-validation.log": "3cec5721ce851b09b4f6f99fe9dc229b62521d65716d65c3e8aba16d6df8d539",
+    "vkl-camera-collector-4070ti-0.2.6-vkl-features.log": "f57aa9aef27ea80965c0acf6962b1b4f2ef2bd8638ba5461e17887eb231c983b",
+    "vkl-camera-collector-4070ti-0.2.6-vkl-reprojection.log": "d04e39893bc94693fc1eac1c7eb4a08287b2c7a122a542637db8922bd4959635",
+    "vkl-camera-collector-4070ti-0.2.6-vkl.log": "d76287e6f0a76945f6a77e729076b03389a5ce78098f2c70d6aebe5e00a96314",
+    "vkl-camera-collector-4070ti-0.2.6-xsplat.log": "26ac63b4688688aa67fdabb9b7ac3f4983161a997a2ca6d1cff46be6c796df9a"
+  },
+  "reports": [
+    {
+      "path": "benchmarks/results/camera-cpu-gpu-4070ti-0.2.6.json",
+      "original_sha256": "2bc263bfc2f941afcc91833afad0b1e2781d4e06cbc8a39cc2d1751e7a25adf2",
+      "original_semantic_sha256": "e701d4ed776fd46e19dc75f4eaa20cce02b0d2d9dc4e136bc98207f6ce937820",
+      "enriched_sha256": "2bc263bfc2f941afcc91833afad0b1e2781d4e06cbc8a39cc2d1751e7a25adf2",
+      "raw_metrics_semantic_sha256": "cb9498700a93fbb0033d7653bb171840ffeae7499ac8510ab96bd23af6afb25f",
+      "rows": 32,
+      "legacy_snapshot_binding": false,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/color-cpu-gpu-4070ti-0.2.6.json",
+      "original_sha256": "6c4c46fdb0d024a6116a852932361bef6c1793b17cd917034a18f93f904000bd",
+      "original_semantic_sha256": "1b7db53ced63ae0e251e860955bf5a1a6e1384ae50ac2a0d78f6f3b289399c9c",
+      "enriched_sha256": "fc25a68455cfad789ddb4ec6c3db7909df4184dbe427c55fd226c507ea818633",
+      "raw_metrics_semantic_sha256": "49ba7df5c44051d1d2f6443fc0e787a6044989ff3ae44d8feec61794890bb542",
+      "rows": 30,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/locus-cpu-gpu-4070ti-0.2.6.json",
+      "original_sha256": "2078e9ce548635e3719a0133873854059a584fae051d2fbe677ea36dac8ba2b8",
+      "original_semantic_sha256": "08d3040c55feea5e468d9de32f116ceadf3b936526daff5f9e9daa670cb62fda",
+      "enriched_sha256": "47ef33ad63798215b2d221c00a508ccffbe3113ba85d2c7da0c7d7ca077b44e4",
+      "raw_metrics_semantic_sha256": "d01238709a04143f3c7e2bedd9c54f516dc6ba9039216167697089e03a20707d",
+      "rows": 28,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.6.json",
+      "original_sha256": "34929f945ab37ccb3fb0079c9ca9cf6815341ae127b8493607595fe9d01b2696",
+      "original_semantic_sha256": "734a559a7501f9e6a348820e17648750c4f308b524c4c9ca6a701731d244e21a",
+      "enriched_sha256": "573151ebf18326808692a0a0d1325694fe6aed1113f014297a15dc6895cff774",
+      "raw_metrics_semantic_sha256": "1201b63af5d05831aa07ff6786127f0aa8a69f55b7d88770d57c783fce0e8b2d",
+      "rows": 73,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.6.json",
+      "original_sha256": "90a6428a3da9a1c0f7ec6eec43e9b022e8e8af83d4410b03ff19fa63ed097253",
+      "original_semantic_sha256": "dc25a716ec8283eb7035db9a839d9cef26f35f2b5ff63d4417968375eeb93b2a",
+      "enriched_sha256": "2627a6b62f457910fbc1deaadb2e7351212077d79124be9eaa86d0bdd175696d",
+      "raw_metrics_semantic_sha256": "a04d3eba6a4be7bdadfb4081aee26fa8cc5da1ebdbdd0b6cbb2e76805ec99c6c",
+      "rows": 38,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.6.json",
+      "original_sha256": "5c69838113f7f146af8782e6cbfe16eb6b678a03605cf7306e542c532eeb4e62",
+      "original_semantic_sha256": "8c44d207d5c9e4a8e37e0b0604b32c6f02fb0cbebc8acbbbe38f4b0e0c435ced",
+      "enriched_sha256": "eed018fc369bb82a4ad5d04e636c7cccd81202fb580fdcc6d77adf63cadb2e57",
+      "raw_metrics_semantic_sha256": "13baaa83bf4f3c384aff103774ee503e69e022b7275a0dc9a38db19e2e1669ce",
+      "rows": 10,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/vkl-reprojection-cpu-gpu-4070ti-0.2.6.json",
+      "original_sha256": "a5869dd2c1b40b934f03d208ee29e6f2bf893c8a36f772439b1098008a7b241c",
+      "original_semantic_sha256": "93753b994772ba2b5dacfd474cb24d9b850b1f4094b2df10c9ee5334b2cc5e18",
+      "enriched_sha256": "a5869dd2c1b40b934f03d208ee29e6f2bf893c8a36f772439b1098008a7b241c",
+      "raw_metrics_semantic_sha256": "0703ad998686f4dc2abffddd256e0170768fd58af123daad7e9e6a98b4c90251",
+      "rows": 180,
+      "legacy_snapshot_binding": false,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.6.json",
+      "original_sha256": "f462907a31ddebe521aa745757ae2f044ba3a43adbc84739a2b1102c1542ca90",
+      "original_semantic_sha256": "683e6346bb4c593d21f4aa6dbab7e83881cfdc25f34da1afc3b455508cfdc567",
+      "enriched_sha256": "8c1f4a8056d73fcd85145f2582673db8aaee9597af8c51fcea987ebd518f3243",
+      "raw_metrics_semantic_sha256": "f3c8b3c3b8bd5a2819d07d314485b868133fe0c31942f266e6844a2a62c93139",
+      "rows": 17,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    }
+  ]
+}

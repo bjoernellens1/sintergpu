@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "source_commit": "6aa0f7cc2bfd07a61cd4d0a8b8540ef59b12bbe6",
+  "scope": "measurement-only fixture baselines under shared load; no controlled performance or adoption claim",
+  "collector_receipt": "vkl-camera-collector-8060s-0.2.6.json",
+  "collector_receipt_sha256": "bc8b53fd50315992d503dae0f0d1d50c1b893af1c99ee8ea17874b0356b07b6e",
+  "snapshot": "vkl-camera-snapshot-8060s-0.2.6.json",
+  "snapshot_sha256": "c98952ba052f9f77e43f4ef6f534b4634e4361646606184258a74782f300995d",
+  "association": "Snapshot observed before collection and confirmed by current snapshot at lock acquisition; all eight recipes completed under the same exclusive lock with unchanged source and compiler hashes. Legacy report environment fields are associated after collection, not individually observed driver metadata.",
+  "reports": [
+    {
+      "path": "benchmarks/results/color-cpu-gpu-8060s-0.2.6.json",
+      "original_sha256": "d39983c1f94af68c3708cea6f725b82d85562074c6454d3affc1a3fa1a98fade",
+      "original_semantic_sha256": "3de0b9ee76e7fec45b7d4a083ece9906eea0437021662784f57c4196236278f6",
+      "enriched_sha256": "a4081b1e61a75772292c2624a23da2c4545c9299d40187589367420069178d3c",
+      "rows": 30,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/locus-cpu-gpu-8060s-0.2.6.json",
+      "original_sha256": "3154c8152d94492fd36d3b7c828cce141f09dde6bf0380cdbd1e6031bc3fbfa1",
+      "original_semantic_sha256": "097cf84aae3bac91da4c14087280ca07df205dc208dbc10258f64ab238acbbe2",
+      "enriched_sha256": "517a5270fadcb5fec3de46cf652f023dd185ecbc05af2b065fde0cd90acf9228",
+      "rows": 28,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/primitives-cpu-gpu-8060s-0.2.6.json",
+      "original_sha256": "840a6d56c96c86d7471881dd272e3b48f8f1383af6c0dbb47459b54e03726b03",
+      "original_semantic_sha256": "0f1b321c13158cec2991c5f79d4309d56b32ce7076aef869d3f6fe76224be4f5",
+      "enriched_sha256": "c4842d3753304f07da90b168acb9ef4aee08be0e1955bb8471c050c535fb9fd6",
+      "rows": 73,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/vkl-camera-cpu-gpu-8060s-0.2.6.json",
+      "original_sha256": "29dde600696dcaaeed2c3dbfabf7b9b21f994a3bb16e4606782033fbb3c7f1c3",
+      "original_semantic_sha256": "452642559d1bb7baa87de8aa897fe150a5588822c4274c1e446a2e1a5ac53c1e",
+      "enriched_sha256": "29dde600696dcaaeed2c3dbfabf7b9b21f994a3bb16e4606782033fbb3c7f1c3",
+      "rows": 32,
+      "legacy_snapshot_binding": false,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/vkl-cpu-gpu-8060s-0.2.6.json",
+      "original_sha256": "e9879e8361680ed61c95230879f2b543e8032058f5f1d611dca7a4bf2e466e6a",
+      "original_semantic_sha256": "ab4afbeac59c353d6b9832563e3808cbdd4556382cb01d2dec0bacd114da2e4a",
+      "enriched_sha256": "097a6ccc2bd5131c30bf9c19ed3cc475f805d6d2925b46aef0c880840973fe08",
+      "rows": 38,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.6.json",
+      "original_sha256": "b2cae4e807f1bad8225a5a9f8f83ba151478eaf6f7f1245d366c797a59c459a9",
+      "original_semantic_sha256": "41505b6a1f568517c74983e66aa29177392398d3383a42ae298382b4b7e84ba2",
+      "enriched_sha256": "e47cdabf7e8d710121cc3217911cb49f4543735ddb6fa2da787e86f5272b7225",
+      "rows": 10,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/vkl-reprojection-cpu-gpu-8060s-0.2.6.json",
+      "original_sha256": "3ff228dbc7f924e9e0553f860038c331bf5b2b810ab073a980a7e2df2f4f3053",
+      "original_semantic_sha256": "93acc106404d266f43d253524e3ae5c740a83996e13e9ea764be0dc2f7530ffc",
+      "enriched_sha256": "3ff228dbc7f924e9e0553f860038c331bf5b2b810ab073a980a7e2df2f4f3053",
+      "rows": 180,
+      "legacy_snapshot_binding": false,
+      "semantic_without_binding_matches": true
+    },
+    {
+      "path": "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.6.json",
+      "original_sha256": "d16fa0bb01812d0e0d4548002a6e47943d4033b5cc6a8ed40f402a10c4d4f20a",
+      "original_semantic_sha256": "f93ec3e98cc4009f9fad05305933a11fcd2b361cc6ea0a8e8fcdcd6cdff34329",
+      "enriched_sha256": "d13202d94cf1102cc4fd69d551c3e6309c54eb54bf52ec6ec2ce4c2b99002987",
+      "rows": 17,
+      "legacy_snapshot_binding": true,
+      "semantic_without_binding_matches": true
+    }
+  ],
+  "logs": {
+    "vkl-camera-collector-8060s-0.2.6-vkl-camera.log": "bbc90fbfa7a0f002702607271c229337d5ac5b8e1a2a5e432fa396d583bade59",
+    "vkl-camera-collector-8060s-0.2.6-vkl-reprojection.log": "d04e39893bc94693fc1eac1c7eb4a08287b2c7a122a542637db8922bd4959635",
+    "vkl-camera-collector-8060s-0.2.6-locus.log": "44cd0fd614f4b8d9a4eebda77d2fc58b2bf80c6de7aa91a8a84c8365fefa9f9f",
+    "vkl-camera-collector-8060s-0.2.6-color.log": "6218f50f8dff5f1df8f645eae5af91e9b098a24a5ce34a866e7106590d4ea517",
+    "vkl-camera-collector-8060s-0.2.6-vkl-features.log": "8e78c09f0f4f9ae460d6b3f9553b714fd76365a56c1f5487cee64e5aa379fef4",
+    "vkl-camera-collector-8060s-0.2.6-vkl.log": "86eddce1e39332adede845dfa6164e944ea728c655fcaf6df3890b8e982f84fc",
+    "vkl-camera-collector-8060s-0.2.6-primitives.log": "0d8dcb5fcaa48c403cd52730b6aa9d0884392cb4fa9bb2a06328b3bb28f99fa2",
+    "vkl-camera-collector-8060s-0.2.6-xsplat.log": "bb6593dfc29355203ca2dfae4a66e02339e9e1c6092368b7f0b8fa93572dae8c"
+  }
+}

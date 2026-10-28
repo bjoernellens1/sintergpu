@@ -4,6 +4,7 @@
 
 - Add experimental VKL eager float32 camera rectification, reusable grid and ray preparation, and staged depth registration: five public functions use nine dispatches and caller-owned resources. Preserve complete diagnostics, collision and tie semantics, and the explicit little-endian two-word int64 diagnostic ABI. Existing Locus contracts and defaults remain unchanged.
 - Validate the canonical 80-state, 347-output donor fixture profile with 89 tests on each Radeon 8060S and RTX 4070 Ti. The initial incomplete source-closure archive remains historical evidence. Wider domains, gradients, controlled no-regression and consumer adoption remain pending; no speedup or optimized default is claimed.
+- Record 816 source-current CPU/GPU fixture timing rows across 72 of 155 portable operations, split evenly between Radeon 8060S and RTX 4070 Ti. The remaining 83 portable and four native timing targets remain pending.
 
 ## 0.2.5 — 2026-10-28
 

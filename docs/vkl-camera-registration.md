@@ -53,3 +53,6 @@ it was not used to qualify the GPU profile. See
 for identities and logs. These results establish fixture parity only; wider
 numerical domains, gradients, live camera/application adoption and controlled
 no-regression comparisons remain pending. No optimized default is selected.
+
+
+The current fixture baseline contains 32 paired camera stage rows across seven workloads on each target device. CPU reference, isolated GPU dispatch, complete resident pipeline and transfer-inclusive timings are separate; the full CPU pipeline oracle uses three samples and each paired stage uses 50. See the [timing table](kernel-timings.md) and [Radeon collection receipt](../qualification/evidence/vkl-camera-collection-8060s-0.2.6.json) and [RTX collection receipt](../qualification/evidence/vkl-camera-collection-4070ti-0.2.6.json). These small shared-host fixtures establish a reference, not a controlled no-regression comparison.

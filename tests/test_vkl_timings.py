@@ -19,10 +19,14 @@ def test_cases_cover_every_existing_nonfeature_vkl_entry_and_full_output_tails()
     graphs=list(reprojection.cases())
     new_entries={stage['operation'] for case in graphs for stage in case['graph']['stages']
                  if stage['operation'].startswith('vkl.reprojection.')}
-    established=expected-{op for op in expected if op.startswith('vkl.reprojection.')}
+    camera=importlib.import_module('benchmarks.vkl_camera_registration')
+    camera_entries={stage['operation'] for case in camera.cases() for stage in case['graph']['stages']
+                    if stage['operation'].startswith('vkl.camera_registration.')}
+    established={op for op in expected if not op.startswith(('vkl.reprojection.', 'vkl.camera_registration.'))}
     assert len(established)==13
+    assert len(camera_entries)==9
     assert {c['operation'] for c in cases}==established
-    assert {c['operation'] for c in cases}|new_entries==expected
+    assert {c['operation'] for c in cases}|new_entries|camera_entries==expected
     assert {case['family'] for case in graphs}=={'projection','raster','temporal','reference'}
     assert len(cases)==38
     for c in cases:

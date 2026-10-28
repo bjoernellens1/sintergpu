@@ -1,0 +1,1 @@
+{"status": "measurement_only", "paired_stage_rows": 32, "pipelines": ["rectify-bilinear-b1-3x4-c3-brown1", "register-b1-3x4-c3-brown1", "rectify-nearest-b8-4x7-c4-brown0", "register-b8-4x7-c4-brown1", "register-nodebug", "rotated-depth1-rgb1", "collisions-tie"]}
