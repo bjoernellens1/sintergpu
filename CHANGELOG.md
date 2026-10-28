@@ -5,7 +5,7 @@
 - Correct camera-ray and fused-depth float32 division, and preserve point/weighted-product rounding boundaries, so reciprocal/FMA differences no longer amplify into out-of-tolerance normals. This numerical-output change increments the pre-1.0 minor version; recheck geometry consumers before adoption.
 - Add paired CPU/GPU baseline recipes for the remaining 13 already-ported VKL entries, with 38 seeded workloads covering projection, image conditioning, depth conversion/pyramids/geometry/fusion, temporal selection and depth resampling.
 - Retain exact output/mask/tail and existing floating-point parity requirements, separate kernel/host/transfer timing, and full workload/source/compiler identities. No optimized CPU or complete pipeline claim.
-- Record 106 current-source paired timing workloads across 43/137 catalog entries; retain historical samples and explicit remaining coverage.
+- Record 212 current-source paired timing workload records across 43/137 catalog entries: 106 each on Radeon 8060S and the user-selected RTX 4070 Ti. Retain historical samples and explicit remaining coverage. Add source-bound NVIDIA Vulkan regression and fixture evidence.
 - Document candidate draft PR intake, validation and separate promotion, including the no-regression gate for general-purpose consolidation.
 - Clarify that the reusable binary32 helper does not specify input NaN payloads; feature numerical behavior is unchanged.
 
