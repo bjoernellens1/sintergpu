@@ -171,7 +171,7 @@ def test_benchmark_owner_closes_one_device_on_success_and_exception(monkeypatch)
     monkeypatch.setattr(recipe, 'validate_outputs', lambda *args: None)
     monkeypatch.setattr(recipe, 'measure_graph', lambda *args, **kwargs: {})
     result = recipe.run(family='projection', variants=('ordinary',), max_cases=1, iterations=1, warmups=1)
-    assert len(result['measurements']) == 1 and events == ['create', 'close']
+    assert len(result['pipeline_measurements']) == 1 and result['measurements'] == [] and events == ['create', 'close']
     events.clear()
     def fail(*args): raise AssertionError('injected parity failure')
     monkeypatch.setattr(recipe, 'validate_outputs', fail)

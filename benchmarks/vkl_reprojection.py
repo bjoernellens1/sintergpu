@@ -3,11 +3,11 @@
 
 SINTERGPU_GPU_TESTS=1 PYTHONPATH=src:. python benchmarks/vkl_reprojection.py \
     --family reference --case collision --neighbors 3 --max-cases 1 \
-    --iterations 30 --output build/vkl-reprojection-timings.json
+    --iterations 50 --output build/vkl-reprojection-timings.json
 
 Defaults are small fixtures. Full-sized dimensions require explicit --height /
---width. CPU timing measures independent NumPy public-function oracles; no
-per-entry CPU implementation or per-entry CPU timing counterpart is claimed.
+--width. Complete CPU timing measures the independent NumPy public-function oracle.
+Per-entry CPU timing measures the matching prepared dispatch oracle separately.
 """
 import functools
 import hashlib
@@ -16,7 +16,7 @@ from pathlib import Path
 
 import numpy as np
 
-from benchmarks.reprojection_support import PreparedGraph, measure_graph, validate_outputs
+from benchmarks.reprojection_support import PreparedGraph, measure_graph, validate_outputs, stage_cases
 
 VARIANTS = ('ordinary', 'collision', 'sparse', 'all_invalid', 'odd_tail')
 FAMILIES = ('projection', 'raster', 'temporal', 'reference')
@@ -140,7 +140,7 @@ build_cases = cases
 def run(*, family='all', batches=1, neighbors=None, height=None, width=None,
         target_height=None, target_width=None, source_depth=False,
         source_confidence=False, target_depth=False, variants=VARIANTS,
-        max_cases=None, iterations=30, warmups=5, cli_arguments=None):
+        max_cases=None, iterations=50, warmups=5, cli_arguments=None):
     """Own exactly one Device, close it even on parity/measurement failure."""
     import os
     if type(iterations) is not int or iterations < 1 or type(warmups) is not int or warmups < 1:
@@ -155,7 +155,7 @@ def run(*, family='all', batches=1, neighbors=None, height=None, width=None,
     device = spy.Device(type=spy.DeviceType.vulkan, compiler_options={'floating_point_mode': spy.SlangFloatingPointMode.precise})
     try:
         limit = int(device.info.limits.max_compute_dispatch_thread_groups[0])
-        records = {}
+        records = {}; paired_measurements = []
         for case in cases(family=family, batches=batches, neighbors=neighbors, height=height, width=width,
                           target_height=target_height, target_width=target_width, source_depth=source_depth,
                           source_confidence=source_confidence, target_depth=target_depth, variants=variants,
@@ -163,11 +163,13 @@ def run(*, family='all', batches=1, neighbors=None, height=None, width=None,
             prepared = PreparedGraph(device, case['graph'], case['inputs'])
             expected = case['reference']()
             validate_outputs(prepared, expected)
-            record = measure_graph(prepared, iterations=iterations, warmups=warmups, reference=case['reference'])
+            case['workload_identity'] = workload_identity(case, arguments=arguments)
+            record = measure_graph(prepared, graph_case=case, iterations=iterations, warmups=warmups, reference=case['reference'])
+            paired_measurements.extend(record.pop('paired_measurements', []))
             record['workload_identity'] = workload_identity(case, arguments=arguments)
             record['family'] = case['family']; record['variant'] = case['variant']
             records[case['name']] = record
-        return dict(status='measurement_only', adoption='unqualified', arguments=arguments, measurements=records)
+        return dict(schema_version=1, status='measurement_only', adoption='unqualified', arguments=arguments, measurements=paired_measurements, pipeline_measurements=records)
     finally:
         device.close()
 
@@ -176,7 +178,7 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--family', choices=['all', *FAMILIES], default='all')
-    for name, default in [('batches', 1), ('neighbors', None), ('height', None), ('width', None), ('iterations', 30), ('warmups', 5), ('max-cases', None)]:
+    for name, default in [('batches', 1), ('neighbors', None), ('height', None), ('width', None), ('iterations', 50), ('warmups', 5), ('max-cases', None)]:
         parser.add_argument('--' + name, type=int, default=default)
     for name in ('target-height', 'target-width'):
         parser.add_argument('--' + name, type=int)
@@ -191,4 +193,4 @@ if __name__ == '__main__':
     result = run(**arguments, cli_arguments=cli_arguments)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2) + '\n')
-    print(json.dumps(dict(status=result['status'], adoption=result['adoption'], measurements=list(result['measurements']))))
+    print(json.dumps(dict(status=result['status'], adoption=result['adoption'], paired_stage_rows=len(result['measurements']), pipelines=list(result['pipeline_measurements']))))

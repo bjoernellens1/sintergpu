@@ -1,0 +1,3 @@
+/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/src/sintergpu/references/temporal_reprojection_numeric.py:58: RuntimeWarning: overflow encountered in divide
+  confidence *= np.exp(-projected['depth_consistency'] / _F(consistency_threshold))
+Exported 113 CPU frozen fixture states to qualification/evidence/vkl-reprojection-frozen-0.2.5
