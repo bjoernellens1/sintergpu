@@ -1492,6 +1492,43 @@
       "fixture": null
     },
     {
+      "id": "optimization.point_plane_aosoa_256.main",
+      "path": "kernels/optimization/point_plane_aosoa_256.slang",
+      "entrypoint": "main",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "experimental-fixture-only",
+      "sha256": "86cc3d94eff9193c4000d95aceed9cedf6fce5dcbd8971f8e8e6eab5b8751d91",
+      "source": {
+        "repository": "bjoernellens1/sintergpu",
+        "revision": "2def63bb85adfcb0cb5b1b8d0910bed31dda0539",
+        "paths": [
+          "candidates/sintergpu-optimization-families/benchmarks/inlined_point_support.py",
+          "candidates/sintergpu-optimization-families/kernels/optimization/point_plane_inlined.slang"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "point-plane-aosoa-frozen-1025",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/point-plane-aosoa-256-experimental.md",
+        "numerical_behavior": "Experimental fixture-only AoSoA point-plane dispatch; caller independently verifies fixed fixture contents, extents, indices, allocation ranges, disjoint writes and device limits. Imported compilation requires new GPU and performance qualification.",
+        "fixture_resource": "fixtures/point_plane_aosoa/point_plane_aosoa_1025.npz"
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned verified resources and synchronization"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
       "id": "perception.cosine_similarity",
       "path": "kernels/locus/semantics/similarity.slang",
       "entrypoint": "main",

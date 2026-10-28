@@ -105,3 +105,25 @@ def test_checked_fixture_plan_and_guards():
     # Read-only sharing is allowed only when the attested byte ranges do not conflict with outputs.
     changed = {k: dict(v) for k, v in ranges.items()}; changed['targets']['allocation_id'] = 'points'
     assert fixture_plan(**dict(kwargs, ranges=changed))['groups'] == (5, 1, 1)
+
+
+def test_packaged_fixture_and_discovery():
+    from importlib.resources import files
+    from sintergpu import kernel_path, module_path
+    from sintergpu.catalog import get_operation
+    op = get_operation('optimization.point_plane_aosoa_256.main')
+    assert op['qualification'] == {'status': 'experimental', 'records': []}
+    assert kernel_path(op['id']) == module_path('optimization.point_plane_aosoa_256') == ADAPTER
+    resources = files('sintergpu').joinpath('fixtures/point_plane_aosoa')
+    assert resources.joinpath(FIXTURE.name).read_bytes() == FIXTURE.read_bytes()
+    assert resources.joinpath(CANDIDATE.name).read_bytes() == CANDIDATE.read_bytes()
+
+
+def test_cli_reference_reports_fixture_pending(capsys):
+    from sintergpu.cli import main
+    operation = 'optimization.point_plane_aosoa_256.main'
+    assert main(['test', operation, '--backend', 'reference']) == 2
+    result = json.loads(capsys.readouterr().out)
+    assert result['status'] == 'pending'
+    assert result['unavailable_operations'] == [operation]
+    assert result['cases'] == []

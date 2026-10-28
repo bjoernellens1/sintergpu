@@ -16,3 +16,6 @@ recursive-include tests *.py *.json *.cpp
 recursive-include benchmarks *.py *.md *.json *.slang *.c
 recursive-include references *.py *.slang *.json *.md *.toml LICENSE NOTICE *.txt *.cpp *.h *.hpp *.cu *.cuh
 recursive-include src/sintergpu *.slang *.json VERSION
+
+include tests/fixtures/point_plane_aosoa_1025.npz tests/fixtures/point_plane_aosoa_1025_candidate.slang
+recursive-include src/sintergpu/fixtures/point_plane_aosoa *.npz *.slang

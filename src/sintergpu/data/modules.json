@@ -155,6 +155,10 @@
     "path": "kernels/optimization/point_plane.slang",
     "sha256": "9763495aa01821c4a9fa52db689310cf787cee01b63b8b50bf0daaae43131bcc"
   },
+  "optimization.point_plane_aosoa_256": {
+    "path": "kernels/optimization/point_plane_aosoa_256.slang",
+    "sha256": "86cc3d94eff9193c4000d95aceed9cedf6fce5dcbd8971f8e8e6eab5b8751d91"
+  },
   "primitives.compact": {
     "path": "kernels/primitives/compact.slang",
     "sha256": "785ddbf1d2b1dc98021052ac2ab1a85aae0c15aabe1b89ad97d2c7cef3950fbb"
