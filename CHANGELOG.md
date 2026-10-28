@@ -2,7 +2,7 @@
 
 ## 0.2.2 — 2026-10-28
 
-- Add per-entry CPU/GPU timing recipes for all eight existing segmented scan and stable compaction entries, with independent stage oracles, source-bound raw samples and explicit initialization/tail checks. Kernel sources and numerical contracts are unchanged.
+- Add per-entry CPU/GPU timing recipes for all eight existing segmented scan and stable compaction entries, with independent stage oracles, source-bound raw samples and explicit initialization/tail checks. Record 61 workloads on each Radeon 8060S/RTX 4070 Ti: paired coverage is 51/137 entries with 334 current records; 86 portable and four native timing targets remain pending. Kernel sources and numerical contracts are unchanged.
 
 ## 0.2.1 — 2026-10-28
 
