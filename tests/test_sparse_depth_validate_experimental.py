@@ -120,3 +120,13 @@ def test_threshold_endpoint_is_inclusive():
         assert model['valid'].item() is expected
         assert ref['valid'].item() is expected
         np.testing.assert_array_equal(model['edge_risk'],ref['edge_risk'].numpy())
+
+
+def test_reference_cli_reports_pending(capsys):
+    from sintergpu.cli import main
+    operation='vkl.sparse_depth_validate.sparseDepthValidate'
+    assert main(['test',operation,'--backend','reference'])==2
+    result=json.loads(capsys.readouterr().out)
+    assert result['status']=='pending'
+    assert result['unavailable_operations']==[operation]
+    assert result['cases']==[]

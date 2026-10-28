@@ -5846,6 +5846,40 @@
       "fixture": null
     },
     {
+      "id": "vkl.sparse_depth_validate.sparseDepthValidate",
+      "path": "kernels/experimental/sparse_depth_validate.slang",
+      "entrypoint": "sparseDepthValidate",
+      "workgroup": [
+        64,
+        1,
+        1
+      ],
+      "variant": "experimental-float32",
+      "sha256": "42203ab6dc4ccf4873d4dd31e2c0185d9b3726a1af81dba10979295d947f8470",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/sparse_geometry.py"
+        ],
+        "license": "Apache-2.0"
+      },
+      "contract": {
+        "profile": "vkl-sparse-depth-validation-float32",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/sparse-depth-validate-experimental.md",
+        "numerical_behavior": "Experimental 3x3 sparse depth validation; caller checks launch, inputs, signed int32 coordinates, uint32 counts, nonaliasing and synchronization. CPU model and compiler checks only; GPU parity and performance pending."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "caller-owned validated resources and synchronization"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
       "id": "vkl.temporal_best.temporalBest",
       "path": "kernels/vkl/temporal_best.slang",
       "entrypoint": "temporalBest",

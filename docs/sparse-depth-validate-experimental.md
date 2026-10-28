@@ -5,7 +5,7 @@ float32 forward profile of VKL `src/vkl/kernels/reference/sparse_geometry.py`
 `sparse_depth_validate`, pinned at `3384023a311651ea4260cf12ddab1567972f89f3`
 (owner-authorized Apache-2.0). The frozen donor source SHA-256 is
 `c56224f9313c21c0fa4315ae09f14a1e43e61417a3cd4819a5ac096395a56fc9`.
-This is unqualified, not catalogued or selected as a default.
+This unqualified operation is catalogued as `vkl.sparse_depth_validate.sparseDepthValidate`; it is not selected as a default.
 
 Input depth is contiguous float32 `[B,1,H,W]`, points are contiguous int32
 `[B,P,2]` in (x,y) order, and pixel-valid flags are uint32 `[B,P]`; nonzero is

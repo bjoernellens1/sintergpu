@@ -115,6 +115,19 @@ jobs:
           skipped = sum(int(s.get('skipped', 0)) for s in suites)
           assert tests == 13 and skipped == 0, f'dense regularization CPU gate: {tests} tests, {skipped} skipped'
           PYCHECK
+      - name: Verify sparse depth validation CPU model against frozen donor
+        env:
+          PYTHONPATH: src:.
+        run: |
+          python -m pytest tests/test_sparse_depth_validate_experimental.py -q -k 'not 2026.12 and not 2026.19' --junitxml=build/sparse-depth-cpu.xml
+          python - <<'PYCHECK'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('build/sparse-depth-cpu.xml').getroot()
+          suites = [root] if root.tag == 'testsuite' else root.findall('testsuite')
+          tests = sum(int(s.get('tests', 0)) for s in suites)
+          skipped = sum(int(s.get('skipped', 0)) for s in suites)
+          assert tests == 10 and skipped == 0, f'sparse depth CPU gate: {tests} tests, {skipped} skipped'
+          PYCHECK
       - name: Verify compact backward profile fake-device fixtures
         env:
           PYTHONPATH: src:.
@@ -170,7 +183,7 @@ jobs:
               message(FATAL_ERROR "Installed compact shader differs: ${shader}")
             endif()
           endforeach()
-          foreach(shader depth_evidence depth_evidence_map dense_depth_regularize)
+          foreach(shader depth_evidence depth_evidence_map dense_depth_regularize sparse_depth_validate)
             file(SHA256 "${SINTERGPU_KERNEL_DIR}/experimental/${shader}.slang" installed_hash)
             file(SHA256 "${SOURCE_ROOT}/src/sintergpu/kernels/experimental/${shader}.slang" source_hash)
             if(NOT installed_hash STREQUAL source_hash)
@@ -195,6 +208,13 @@ jobs:
           assert not validate_catalog()
           source = Path(os.environ['GITHUB_WORKSPACE']).resolve()
           assert not Path(sintergpu.__file__).resolve().is_relative_to(source)
+          from sintergpu.sparse_depth_validate_contract import checked_sparse_depth_validate_launch
+          assert checked_sparse_depth_validate_launch(1, 2, 2, 2, 1, .1, 64).point_elements == 2
+          sparse_path = module_path('experimental.sparse_depth_validate').resolve()
+          assert not sparse_path.is_relative_to(source)
+          expected = source / 'src/sintergpu/kernels/experimental/sparse_depth_validate.slang'
+          assert hashlib.sha256(sparse_path.read_bytes()).digest() == hashlib.sha256(expected.read_bytes()).digest()
+          assert kernel_path('vkl.sparse_depth_validate.sparseDepthValidate').resolve() == sparse_path
           from sintergpu.dense_depth_regularize_contract import checked_dense_depth_regularize_launch
           assert checked_dense_depth_regularize_launch(1, 2, 2, 3, 1, .1, .1, 64).pixels == 4
           dense_path = module_path('experimental.dense_depth_regularize').resolve()
@@ -350,6 +370,24 @@ jobs:
           tests = sum(int(s.get('tests', 0)) for s in suites)
           skipped = sum(int(s.get('skipped', 0)) for s in suites)
           assert tests == 1 and skipped == 0, f'dense regularization ABI gate: {tests} tests, {skipped} skipped'
+          PYCHECK
+      - name: Verify sparse depth ABI and strides (Slang ${{ matrix.version }})
+        env:
+          SLANG_VERSION: ${{ matrix.version }}
+          SINTERGPU_SPIRV_DIS: /usr/bin/spirv-dis
+        run: |
+          test -x /tmp/slang/bin/slangc
+          test -x "$SINTERGPU_SPIRV_DIS"
+          test "$(/tmp/slang/bin/slangc -version 2>&1)" = "$SLANG_VERSION"
+          export "SINTERGPU_SLANGC_${SLANG_VERSION//./_}=/tmp/slang/bin/slangc"
+          PYTHONPATH=src:. python -m pytest tests/test_sparse_depth_validate_experimental.py -q -k "$SLANG_VERSION" --junitxml=build/sparse-depth-abi.xml
+          python - <<'PYCHECK'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('build/sparse-depth-abi.xml').getroot()
+          suites = [root] if root.tag == 'testsuite' else root.findall('testsuite')
+          tests = sum(int(s.get('tests', 0)) for s in suites)
+          skipped = sum(int(s.get('skipped', 0)) for s in suites)
+          assert tests == 1 and skipped == 0, f'sparse depth ABI gate: {tests} tests, {skipped} skipped'
           PYCHECK
       - name: Verify point-plane module imports, instructions and ABI
         env:

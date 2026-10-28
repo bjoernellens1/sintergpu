@@ -37,16 +37,18 @@ def test_cases_cover_every_existing_nonfeature_vkl_entry_and_full_output_tails()
     assert depth_evidence <= expected
     dense_regularize = {'vkl.dense_depth_regularize.regularizeDenseDepth'}
     assert dense_regularize <= expected
-    established={op for op in expected-compact-depth_evidence-dense_regularize if not op.startswith(('vkl.reprojection.', 'vkl.camera_registration.'))}
+    sparse_validate = {'vkl.sparse_depth_validate.sparseDepthValidate'}
+    assert sparse_validate <= expected
+    established={op for op in expected-compact-depth_evidence-dense_regularize-sparse_validate if not op.startswith(('vkl.reprojection.', 'vkl.camera_registration.'))}
     assert len(established)==13
     assert len(camera_entries)==9
     assert {c['operation'] for c in cases}==established
-    assert {c['operation'] for c in cases}|new_entries|camera_entries|compact|depth_evidence|dense_regularize==expected
+    assert {c['operation'] for c in cases}|new_entries|camera_entries|compact|depth_evidence|dense_regularize|sparse_validate==expected
     registry=json.loads(files('sintergpu').joinpath('data/timings.json').read_text())
-    pending={row['operation']:row for row in registry['operations'] if row['operation'] in compact|depth_evidence|dense_regularize}
-    assert set(pending)==compact|depth_evidence|dense_regularize
+    pending={row['operation']:row for row in registry['operations'] if row['operation'] in compact|depth_evidence|dense_regularize|sparse_validate}
+    assert set(pending)==compact|depth_evidence|dense_regularize|sparse_validate
     assert all(row['status']=='pending' for row in pending.values())
-    assert not any(row['operation'] in compact|depth_evidence|dense_regularize for row in registry['measurements'])
+    assert not any(row['operation'] in compact|depth_evidence|dense_regularize|sparse_validate for row in registry['measurements'])
     assert {case['family'] for case in graphs}=={'projection','raster','temporal','reference'}
     assert len(cases)==38
     for c in cases:
