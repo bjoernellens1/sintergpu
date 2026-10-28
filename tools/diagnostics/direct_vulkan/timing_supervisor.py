@@ -18,7 +18,7 @@ class QuarantineRequired(RuntimeError):
 
 def supervise(command,monitor,journal,lease_check,quarantine,*,label,pass_fds=(),timeout_s=120,poll_s=.05,popen=subprocess.Popen):
     if not command or not callable(lease_check) or not callable(quarantine) or not label or '/' in label or timeout_s<=0 or poll_s<=0:raise ValueError('supervision arguments')
-    child=None;started=None;ended=None;error=None;monitor_started=False;ready=False;clean=False;returncode=None;receipt=None;quarantined=False
+    child=None;started=None;ended=None;error=None;monitor_started=False;ready=False;released=False;clean=False;returncode=None;receipt=None;quarantined=False
     handshake=CooperativeHandshake()
     with tempfile.TemporaryFile() as out,tempfile.TemporaryFile() as err:
         try:
@@ -27,6 +27,7 @@ def supervise(command,monitor,journal,lease_check,quarantine,*,label,pass_fds=()
             env,fds=handshake.child_options(os.environ,pass_fds)
             child=popen(command,stdout=out,stderr=err,pass_fds=fds,env=env)
             handshake.parent_after_spawn();handshake.await_ready(monitor.failed);ready=True
+            monitor.bind_child_pid(child.pid);monitor.release_if_healthy(handshake.release);released=True
             deadline=time.monotonic()+timeout_s
             while child.poll() is None:
                 if monitor.failed.is_set():raise RuntimeError('sampled control violation')
@@ -40,7 +41,8 @@ def supervise(command,monitor,journal,lease_check,quarantine,*,label,pass_fds=()
             error=exc
             if child is not None:
                 # Never signal before the child's handler confirms readiness.
-                if ready and child.poll() is None:
+                if not released:handshake.cancel_gate()
+                if ready and released and child.poll() is None:
                     try:child.send_signal(signal.SIGUSR1);child.wait(timeout=10)
                     except Exception as stop_error:error=ExceptionGroup('operation and cooperative stop failure',[error,stop_error])
                 if child.poll() is not None:
@@ -64,7 +66,7 @@ def supervise(command,monitor,journal,lease_check,quarantine,*,label,pass_fds=()
                 out.seek(0);err.seek(0)
                 journal.put(label+'.stdout',out.read());journal.put(label+'.stderr',err.read())
                 data={'receipt':receipt,'samples':list(monitor.samples),'monitor_error':str(monitor.error) if monitor.error else None,
-                      'returncode':returncode,'ready':ready,'cleanup_claim':clean,'started_ns':started,'ended_ns':ended,
+                      'returncode':returncode,'child_pid':child.pid if child is not None else None,'ready':ready,'gate_released':released,'cleanup_claim':clean,'started_ns':started,'ended_ns':ended,
                       'error':str(error) if error else None,'scope':'sampled unqualified evidence; peer absence and device cleanup unproven'}
                 journal.put(label+'.monitor.json',(json.dumps(data,sort_keys=True)+'\n').encode())
             except Exception as failure:error=ExceptionGroup('operation and evidence failure',[error,failure]) if error else failure

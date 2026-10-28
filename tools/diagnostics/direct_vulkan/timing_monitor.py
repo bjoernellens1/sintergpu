@@ -37,7 +37,7 @@ class SampledMonitor:
     def __init__(self,collector,*,interval_s=.25,max_gap_s=1.,shutdown_timeout_s=7.,sample_hook=None):
         if not callable(collector) or not math.isfinite(interval_s) or not math.isfinite(max_gap_s) or not math.isfinite(shutdown_timeout_s) or shutdown_timeout_s<=0 or interval_s<=0 or max_gap_s<interval_s:raise ValueError('monitor configuration')
         self.collector=collector;self.interval_s=interval_s;self.max_gap_s=max_gap_s;self.shutdown_timeout_s=shutdown_timeout_s;self.sample_hook=sample_hook
-        self._stop=threading.Event();self._ready=threading.Event();self.failed=threading.Event();self._thread=None;self.samples=[];self.error=None
+        self._stop=threading.Event();self._ready=threading.Event();self.failed=threading.Event();self._latch=threading.Lock();self._thread=None;self.samples=[];self.error=None
     def _loop(self):
         try:
             stopping=False
@@ -46,11 +46,16 @@ class SampledMonitor:
                 if not isinstance(data,dict) or set(data)!={'gpu_query','compute_query','full_snapshot'} or any(not isinstance(v,str) for v in data.values()):raise ValueError('telemetry sample')
                 sample={'start_ns':start,'end_ns':end,**data};self.samples.append(sample)
                 if end-start>self.max_gap_s*1e9 or (len(self.samples)>1 and start-self.samples[-2]['start_ns']>self.max_gap_s*1e9):raise ValueError('monitor gap')
-                if self.sample_hook:self.sample_hook(sample)
+                with self._latch:
+                    if self.sample_hook:
+                        try:self.sample_hook(sample)
+                        except Exception as failure:self.error=failure;self.failed.set();raise
                 self._ready.set()
                 if stopping:break
                 stopping=self._stop.wait(self.interval_s)
-        except Exception as exc:self.error=exc;self.failed.set();self._ready.set()
+        except Exception as exc:
+            with self._latch:self.error=exc;self.failed.set()
+            self._ready.set()
     def start(self):
         if self._thread is not None:raise RuntimeError('monitor already started')
         self._thread=threading.Thread(target=self._loop,name='sinter-nvidia-telemetry',daemon=True);self._thread.start()
@@ -59,6 +64,10 @@ class SampledMonitor:
             if self._thread.is_alive():raise RuntimeError('monitor startup timeout; sampler remains alive')
             raise RuntimeError('monitor startup timeout')
         if self.error:raise RuntimeError('monitor failed') from self.error
+    def release_if_healthy(self,release):
+        with self._latch:
+            if self.failed.is_set():raise RuntimeError('monitor failed before child release')
+            release()
     def stop(self,work_start_ns,work_end_ns):
         if self._thread is None or work_start_ns>=work_end_ns:raise ValueError('monitor window')
         self._stop.set();self._thread.join(timeout=self.shutdown_timeout_s)
@@ -127,4 +136,15 @@ def validate_policy(policy):
 def make_policy_monitor(collector,policy,**options):
     validate_policy(policy)
     frozen=dict(policy);frozen['allowed_compute_pids']=frozenset(policy['allowed_compute_pids'])
-    return SampledMonitor(collector,sample_hook=lambda sample:check_sample(sample,frozen),**options)
+    lock=threading.Lock();bound=[]
+    def check(sample):
+        with lock:
+            live=dict(frozen);live['allowed_compute_pids']=frozen['allowed_compute_pids']|frozenset(bound)
+        check_sample(sample,live)
+    def bind(pid):
+        if type(pid)!=int or pid<=0:raise ValueError('child PID')
+        with lock:
+            if bound:raise ValueError('child PID already bound')
+            bound.append(pid)
+    monitor=SampledMonitor(collector,sample_hook=check,**options);monitor.bind_child_pid=bind
+    return monitor

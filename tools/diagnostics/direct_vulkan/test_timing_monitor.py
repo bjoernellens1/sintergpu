@@ -72,3 +72,13 @@ def test_policy_hook_detects_reported_peer_during_run():
     m=make_policy_monitor(collect,policy,interval_s=.001,max_gap_s=.2);m.start()
     assert m.failed.wait(.5) and 'unexpected sampled compute peer' in str(m.error) and len(m.samples)>=2
     with pytest.raises(RuntimeError,match='monitor failed'):m.stop(m.samples[0]['end_ns'],time.monotonic_ns())
+
+def test_bound_child_pid_is_allowed_and_other_peer_still_aborts():
+    from timing_monitor import make_policy_monitor
+    row=f'{GPU}, RTX, 595.99.02, 2000, 10000, 50, 100, 10, 5';pids=[]
+    def collect():return {'gpu_query':row,'compute_query':f'{GPU}, {pids[-1]}, 10' if pids else '', 'full_snapshot':'graphics'}
+    policy={'driver':'595.99.02','min_sm_mhz':0,'max_sm_mhz':3000,'min_memory_mhz':0,'max_temperature_c':80,'max_power_w':300,'allowed_compute_pids':set()}
+    m=make_policy_monitor(collect,policy,interval_s=.001,max_gap_s=.2);m.start();m.bind_child_pid(1234);pids.append(1234);time.sleep(.005)
+    assert not m.failed.is_set()
+    with pytest.raises(ValueError,match='already bound'):m.bind_child_pid(9999)
+    pids.append(9999);assert m.failed.wait(.5) and 'unexpected sampled compute peer' in str(m.error)

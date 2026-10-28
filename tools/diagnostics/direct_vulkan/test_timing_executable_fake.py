@@ -27,10 +27,11 @@ def test_fake_end_to_end(tmp_path,source):
         args=[str(binary),UUID,'2497233024',str(shader),str(shader),str(ARTIFACTS/'input.bin'),str(out),str(lease.fileno()),'50']
         def launch(args,env):
             if source!='timing_cooperative.cpp':return subprocess.run(args,env=env,pass_fds=(lease.fileno(),),capture_output=True,text=True),None
-            r,w=os.pipe();child_env=dict(env,SINTERGPU_COOPERATIVE_FD=str(w))
-            try:p=subprocess.run(args,env=child_env,pass_fds=(lease.fileno(),w),capture_output=True,text=True)
-            finally:os.close(w)
-            handshake=os.read(r,8);os.close(r);return p,handshake
+            r,w=os.pipe();gr,gw=os.pipe();child_env=dict(env,SINTERGPU_COOPERATIVE_FD=str(w),SINTERGPU_COOPERATIVE_GATE_FD=str(gr))
+            child=subprocess.Popen(args,env=child_env,pass_fds=(lease.fileno(),w,gr),stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+            os.close(w);os.close(gr);ready=os.read(r,1);assert ready==b'R';os.write(gw,b'G');os.close(gw)
+            stdout,stderr=child.communicate();handshake=ready+os.read(r,8);os.close(r)
+            return subprocess.CompletedProcess(args,child.returncode,stdout,stderr),handshake
         p,handshake=launch(args,env)
         assert p.returncode==0,p.stderr
         if handshake is not None:assert handshake==b'RC'

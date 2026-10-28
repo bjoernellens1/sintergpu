@@ -17,7 +17,7 @@ def make_manifest(commit,identities,policy):
     validate_policy(policy)
     controls=dict(policy);controls['allowed_compute_pids']=sorted(policy['allowed_compute_pids'])
     return {'schema':'sintergpu-point-plane-trial-v1','commit':commit,'identities_sha256':dict(sorted(identities.items())),
-            'controls':controls,'run_count':3,'samples_per_run':50,'warmups_per_run':5,'sequence':['old_before','candidate','old_after'],
+            'controls':controls,'child_pid_rule':'allow only actual ready child PID bound before gate release in addition to explicit allowed PIDs','run_count':3,'samples_per_run':50,'warmups_per_run':5,'sequence':['old_before','candidate','old_after'],
             'analysis':{'metrics':list(METRICS),'p95':'nearest-rank','p95_limit':P95_REGRESSION_LIMIT,'drift_limit':DRIFT_LIMIT,
                         'minimum_pipeline_improvement':PIPELINE_IMPROVEMENT_MIN,'bootstrap_replicates':BOOTSTRAP_REPLICATES,'bootstrap_seed':SEED,
                         'bootstrap_block_length':BLOCK_LENGTH,'one_sided_alpha_per_test':ALPHA},

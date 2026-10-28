@@ -22,7 +22,9 @@ static void sinter_checkpoint(){if(sinter_stop)throw std::runtime_error("coopera
 int main(int argc,char** argv) try {
  if(std::signal(SIGUSR1,sinter_signal)==SIG_ERR||std::signal(SIGPIPE,SIG_IGN)==SIG_ERR)throw std::runtime_error("signal handler unavailable");
  const char* handshakeEnv=std::getenv("SINTERGPU_COOPERATIVE_FD");if(!handshakeEnv)throw std::runtime_error("cooperative channel required");int handshake=int(parse32(handshakeEnv));
+ const char* gateEnv=std::getenv("SINTERGPU_COOPERATIVE_GATE_FD");if(!gateEnv)throw std::runtime_error("cooperative gate required");int gate=int(parse32(gateEnv));
  if(write(handshake,"R",1)!=1)throw std::runtime_error("cooperative ready failed");
+ char go=0;if(read(gate,&go,1)!=1||go!='G')throw std::runtime_error("cooperative gate denied");close(gate);sinter_checkpoint();
 #ifdef SINTERGPU_CPU_TEST_ONLY
  sintergpu_test_only_fake_vulkan_marker();
 #endif

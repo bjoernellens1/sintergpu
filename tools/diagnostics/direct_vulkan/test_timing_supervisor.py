@@ -13,13 +13,17 @@ class Monitor:
     def __init__(self,violate=False):self.failed=threading.Event();self.samples=[];self.error=None;self.violate=violate
     def start(self):self.samples.append({'telemetry':'initial'})
     def stop(self,a,b):return {'scope':'unqualified'}
+    def bind_child_pid(self,pid):assert pid==1234
+    def release_if_healthy(self,release):
+        if self.failed.is_set():raise RuntimeError('monitor failed before child release')
+        release()
 class Child:
-    def __init__(self,monitor,fd,*,ready=True,rc=0,cleanup=True):
-        self.returncode=None;self.monitor=monitor;self.fd=os.dup(fd);self.terminated=False;self.rc=rc;self.cleanup=cleanup
+    def __init__(self,monitor,fd,gate_fd,*,ready=True,rc=0,cleanup=True):
+        self.returncode=None;self.pid=1234;self.monitor=monitor;self.fd=os.dup(fd);self.terminated=False;self.rc=rc;self.cleanup=cleanup;self.gate_fd=os.dup(gate_fd)
         if ready:os.write(self.fd,b'R')
     def finish(self):
         if self.cleanup:os.write(self.fd,b'C')
-        os.close(self.fd);self.fd=-1;self.returncode=self.rc
+        os.close(self.fd);self.fd=-1;os.close(self.gate_fd);self.gate_fd=-1;self.returncode=self.rc
     def poll(self):
         if self.returncode is None and self.monitor.violate:self.monitor.error=ValueError('peer');self.monitor.failed.set()
         elif self.returncode is None:self.finish()
@@ -31,7 +35,7 @@ class Child:
 def fake_process(m,**opts):
     holder=[]
     def popen(*a,**k):
-        c=Child(m,int(k['env']['SINTERGPU_COOPERATIVE_FD']),**opts);holder.append(c);return c
+        c=Child(m,int(k['env']['SINTERGPU_COOPERATIVE_FD']),int(k['env']['SINTERGPU_COOPERATIVE_GATE_FD']),**opts);holder.append(c);return c
     return holder,popen
 
 def test_success_has_lease_and_retained_monitor_evidence():
@@ -60,7 +64,7 @@ def test_real_sampled_policy_stops_fake_child_on_reported_peer():
     m=make_policy_monitor(collect,policy,interval_s=.001,max_gap_s=.2);journal=Journal();quarantined=[]
     class WaitingChild(Child):
         def poll(self):return self.returncode
-    def popen(*a,**k):return WaitingChild(m,int(k['env']['SINTERGPU_COOPERATIVE_FD']))
+    def popen(*a,**k):return WaitingChild(m,int(k['env']['SINTERGPU_COOPERATIVE_FD']),int(k['env']['SINTERGPU_COOPERATIVE_GATE_FD']))
     with pytest.raises(ExceptionGroup):supervise(['fake'],m,journal,lambda:None,lambda c,e:quarantined.append(c),label='run',poll_s=.01,popen=popen)
     assert quarantined and quarantined[0].terminated and b'unexpected sampled compute peer' in journal.files['run.monitor.json']
 
@@ -69,12 +73,20 @@ def test_violation_before_ready_never_signals_and_quarantines():
     class NotReady(Child):
         def poll(self):return self.returncode
     def popen(*a,**k):
-        c=NotReady(monitor,int(k['env']['SINTERGPU_COOPERATIVE_FD']),ready=False);children.append(c);monitor.failed.set();return c
+        c=NotReady(monitor,int(k['env']['SINTERGPU_COOPERATIVE_FD']),int(k['env']['SINTERGPU_COOPERATIVE_GATE_FD']),ready=False);children.append(c);monitor.failed.set();return c
     with pytest.raises(ExceptionGroup):supervise(['fake'],monitor,journal,lambda:None,lambda c,e:quarantined.append(c),label='run',popen=popen)
     assert children and not children[0].terminated and quarantined==children
-    os.close(children[0].fd)
+    os.close(children[0].fd);os.close(children[0].gate_fd)
 
 def test_abnormal_exit_with_cleanup_still_quarantines():
     monitor=Monitor();children,popen=fake_process(monitor,rc=2);quarantined=[]
     with pytest.raises(ExceptionGroup):supervise(['fake'],monitor,Journal(),lambda:None,lambda c,e:quarantined.append(c),label='run',popen=popen)
     assert quarantined==children and children[0].returncode==2
+
+
+def test_monitor_failure_during_pid_binding_never_releases_or_signals():
+    class BindFails(Monitor):
+        def bind_child_pid(self,pid):self.failed.set()
+    monitor=BindFails();children,popen=fake_process(monitor);quarantined=[]
+    with pytest.raises(ExceptionGroup):supervise(['fake'],monitor,Journal(),lambda:None,lambda c,e:quarantined.append(c),label='run',popen=popen)
+    assert quarantined==children and not children[0].terminated
