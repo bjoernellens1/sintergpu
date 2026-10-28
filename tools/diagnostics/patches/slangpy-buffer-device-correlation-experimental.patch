@@ -1,0 +1,32 @@
+diff --git a/src/slangpy_ext/device/resource.cpp b/src/slangpy_ext/device/resource.cpp
+index 96c147f..ba63f48 100644
+--- a/src/slangpy_ext/device/resource.cpp
++++ b/src/slangpy_ext/device/resource.cpp
+@@ -410,6 +410,27 @@ SGL_PY_EXPORT(device_resource)
+     nb::implicitly_convertible<nb::dict, BufferDesc>();
+ 
+     nb::class_<Buffer, Resource>(m, "Buffer", D(Buffer))
++        .def_prop_ro("vulkan_buffer_device_correlation_v1", [](const Buffer& buffer) -> nb::object {
++            // Caller serializes use with device close, resource release and native operations.
++            if (!buffer.device() || buffer.device()->is_closed() || !buffer.rhi_buffer()) return nb::none();
++            Slang::ComPtr<rhi::IVulkanBufferDeviceCorrelationV1> query;
++            auto result = buffer.rhi_buffer()->queryInterface(
++                rhi::IVulkanBufferDeviceCorrelationV1::getTypeGuid(), reinterpret_cast<void**>(query.writeRef()));
++            if (SLANG_FAILED(result) || !query) return nb::none();
++            rhi::VulkanBufferDeviceCorrelationV1 value{};
++            if (SLANG_FAILED(query->getDeviceCorrelation(&value))) return nb::none();
++            nb::dict out;
++            out["schema_version"] = value.schemaVersion;
++            out["buffer_generation"] = value.allocation.ownerGeneration;
++            out["buffer"] = value.allocation.buffer;
++            out["memory"] = value.allocation.memory;
++            out["binding_offset"] = value.allocation.bindingOffset;
++            out["buffer_size"] = value.allocation.bufferSize;
++            out["allocation_size"] = value.allocation.allocationSize;
++            out["device_generation"] = value.deviceGeneration;
++            out["device"] = value.device;
++            return out;
++        }, "Diagnostic copied observation, not a lease; controlled process only.")
+         .def_prop_ro("vulkan_allocation_observation_v1", [](const Buffer& buffer) -> nb::object {
+             // Caller must serialize against device close and resource release.
+             if (!buffer.device() || buffer.device()->is_closed() || !buffer.rhi_buffer())

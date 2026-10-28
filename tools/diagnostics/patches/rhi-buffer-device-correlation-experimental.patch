@@ -1,0 +1,111 @@
+diff --git a/include/slang-rhi.h b/include/slang-rhi.h
+index 759a019..21be86a 100644
+--- a/include/slang-rhi.h
++++ b/include/slang-rhi.h
+@@ -822,6 +822,22 @@ public:
+         VulkanBufferAllocationObservationV1* outObservation) = 0;
+ };
+ 
++// Experimental controlled-process correlation. Copy is not a lifetime lease.
++struct VulkanBufferDeviceCorrelationV1
++{
++    uint32_t structSize = sizeof(VulkanBufferDeviceCorrelationV1);
++    uint32_t schemaVersion = 1;
++    VulkanBufferAllocationObservationV1 allocation;
++    uint64_t deviceGeneration = 0;
++    uint64_t device = 0; // typed VkDevice, compared to creation receipt
++};
++class IVulkanBufferDeviceCorrelationV1 : public ISlangUnknown
++{
++    SLANG_COM_INTERFACE(0xe5f813bd, 0xa3c1, 0x4acb, {0xa9, 0x4c, 0x86, 0x59, 0xf5, 0x74, 0x6f, 0x31});
++public:
++    virtual SLANG_NO_THROW Result SLANG_MCALL getDeviceCorrelation(VulkanBufferDeviceCorrelationV1* out) = 0;
++};
++
+ struct DepthStencilClearValue
+ {
+     float depth = 1.0f;
+diff --git a/src/vulkan/vk-device.h b/src/vulkan/vk-device.h
+index 2b98537..a1314be 100644
+--- a/src/vulkan/vk-device.h
++++ b/src/vulkan/vk-device.h
+@@ -236,6 +236,21 @@ public:
+         VkImageLayout newLayout
+     );
+ 
++    // Snapshot is valid only while caller serializes all backend lifecycle operations.
++    bool getObservedDeviceIdentity(uint64_t& generation, uint64_t& handle) const
++    {
++        const auto& r = m_creationReceipt;
++        if (!r.finalized || !r.ownerGeneration || !r.deviceUUIDKnown || r.instanceExternal ||
++            r.physicalDeviceExternal || r.deviceExternal || r.device.type != NativeHandleType::VkDevice ||
++            !r.device.value || r.device.value != uint64_t(m_device)) return false;
++        bool uuidNonzero = false;
++        for (auto byte : r.deviceUUID) uuidNonzero |= byte != 0;
++        if (!uuidNonzero) return false;
++        generation = r.ownerGeneration;
++        handle = r.device.value;
++        return true;
++    }
++
+     uint32_t getQueueFamilyIndex(QueueType queueType);
+ 
+ private:
+diff --git a/src/vulkan/vk-buffer.h b/src/vulkan/vk-buffer.h
+index d6dca27..cd3df0f 100644
+--- a/src/vulkan/vk-buffer.h
++++ b/src/vulkan/vk-buffer.h
+@@ -42,7 +42,7 @@ public:
+     const VulkanApi* m_api;
+ };
+ 
+-class BufferImpl : public Buffer, public IVulkanBufferAllocationObservationV1
++class BufferImpl : public Buffer, public IVulkanBufferAllocationObservationV1, public IVulkanBufferDeviceCorrelationV1
+ {
+ public:
+     BufferImpl(Device* device, const BufferDesc& desc);
+@@ -53,6 +53,7 @@ public:
+     SLANG_NO_THROW uint32_t SLANG_MCALL addRef() override { return Buffer::addRef(); }
+     SLANG_NO_THROW uint32_t SLANG_MCALL release() override { return Buffer::release(); }
+     SLANG_NO_THROW Result SLANG_MCALL getObservation(VulkanBufferAllocationObservationV1* out) override;
++    SLANG_NO_THROW Result SLANG_MCALL getDeviceCorrelation(VulkanBufferDeviceCorrelationV1* out) override;
+     uint64_t m_observationGeneration = 0;
+     bool m_observationTainted = false;
+ 
+diff --git a/src/vulkan/vk-buffer.cpp b/src/vulkan/vk-buffer.cpp
+index f3941e6..0ae8f34 100644
+--- a/src/vulkan/vk-buffer.cpp
++++ b/src/vulkan/vk-buffer.cpp
+@@ -157,6 +157,12 @@ Result BufferImpl::queryInterface(const SlangUUID& uuid, void** outObject)
+ {
+     if (!outObject) return SLANG_FAIL;
+     *outObject = nullptr;
++    if (uuid == IVulkanBufferDeviceCorrelationV1::getTypeGuid())
++    {
++        *outObject = static_cast<IVulkanBufferDeviceCorrelationV1*>(this);
++        Buffer::addRef();
++        return SLANG_OK;
++    }
+     if (uuid == IVulkanBufferAllocationObservationV1::getTypeGuid())
+     {
+         *outObject = static_cast<IVulkanBufferAllocationObservationV1*>(this);
+@@ -183,6 +189,19 @@ Result BufferImpl::getObservation(VulkanBufferAllocationObservationV1* out)
+     return SLANG_OK;
+ }
+ 
++Result BufferImpl::getDeviceCorrelation(VulkanBufferDeviceCorrelationV1* out)
++{
++    if (!out || out->structSize != sizeof(*out) || out->schemaVersion != 1)
++        return SLANG_E_NOT_AVAILABLE;
++    VulkanBufferDeviceCorrelationV1 value{};
++    if (SLANG_FAILED(getObservation(&value.allocation))) return SLANG_E_NOT_AVAILABLE;
++    auto* device = getDevice<DeviceImpl>();
++    if (!device || !device->getObservedDeviceIdentity(value.deviceGeneration, value.device))
++        return SLANG_E_NOT_AVAILABLE;
++    *out = value;
++    return SLANG_OK;
++}
++
+ BufferImpl::BufferImpl(Device* device, const BufferDesc& desc)
+     : Buffer(device, desc)
+ {
