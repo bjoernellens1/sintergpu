@@ -64,7 +64,7 @@ def controlled_runs(*,lease_fd, executable, shader_paths, fixture_path, journal,
     The test injects a fake process. Peer/clock/power controls are external and
     recorded separately; no performance qualification follows from this helper.
     """
-    if type(samples)!=int or samples<50 or samples>10000: raise ValueError('sample count')
+    if type(samples)!=int or samples!=50: raise ValueError('exactly 50 samples required')
     runs=[]
     for index in range(3):
         helpers['lease_event'](lease_fd,journal,f'run-{index}-before')

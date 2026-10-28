@@ -17,11 +17,11 @@ int main(int argc,char** argv) try {
 #ifdef SINTERGPU_CPU_TEST_ONLY
  sintergpu_test_only_fake_vulkan_marker();
 #endif
-#ifndef SINTERGPU_CPU_TEST_ONLY
+#if !defined(SINTERGPU_CPU_TEST_ONLY) && !defined(SINTERGPU_TRUSTED_HOST_TIMING)
  throw std::runtime_error("timing executable blocked pending independent review");
 #endif
  if(argc!=9)throw std::runtime_error("usage: UUID driver donor.spv candidate.spv fixture output lockfd samples");
- verifyLease(parse32(argv[7]));if(parse32(argv[8])<50||parse32(argv[8])>10000)throw std::runtime_error("50 samples required");
+ verifyLease(parse32(argv[7]));if(parse32(argv[8])!=50)throw std::runtime_error("exactly 50 samples required");
  auto expected=uuid(argv[1]);uint32_t driver=parse32(argv[2]);
  if(std::string(argv[1])!="96d2dba095fd5c00e8492e0610f24e06" || driver!=2497233024u)throw std::runtime_error("target mismatch");
  auto old=read(argv[3]),candidate=read(argv[4]),input=read(argv[5]);

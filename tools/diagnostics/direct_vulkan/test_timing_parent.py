@@ -77,3 +77,29 @@ def test_double_build_uses_staged_source(tmp_path,monkeypatch):
     monkeypatch.setattr(parent.subprocess,'run',compile_fake)
     assert parent.build_native({'timing_executable.cpp':b'native-source','dependency.h':b'verified-dependency'},compiler)==b'identical-binary'
     assert len(calls)==2
+
+def test_early_source_failure_emits_failure_receipt(tmp_path,monkeypatch):
+    import inspect
+    import timing_parent as parent
+    # Exercise the otherwise blocked implementation using an in-memory test copy;
+    # failure is injected before helper import, child creation, or any GPU API.
+    source=inspect.getsource(parent.run).replace("    raise RuntimeError('timing parent execution blocked pending independent review')\n",'',1)
+    scope=dict(parent.__dict__);exec(compile(source,'<cpu-preflight-test>','exec'),scope)
+    def fail(_): raise ValueError('commit source mismatch')
+    scope['committed_sources']=fail
+    args=SimpleNamespace(execute=True,output=tmp_path/'failure.json',commit='a'*40)
+    with pytest.raises(ValueError,match='commit source mismatch'):scope['run'](args)
+    assert 'source_or_journal_setup' in args.output.read_text()
+    args.output=tmp_path/'unwritable.json'
+    scope['receipt_once']=lambda *a:(_ for _ in ()).throw(OSError('receipt fail'))
+    with pytest.raises(ExceptionGroup) as errors:scope['run'](args)
+    assert any(isinstance(e,ValueError) for e in errors.value.exceptions)
+    assert any(isinstance(e,OSError) for e in errors.value.exceptions)
+
+def test_sample_count_is_bounded_before_controls(tmp_path):
+    journal=Journal(tmp_path)
+    try:
+        for count in (49,51,10000):
+            with pytest.raises(ValueError,match='exactly 50'):
+                controlled_runs(lease_fd=42,executable='probe',shader_paths=['old','new'],fixture_path='fixture',journal=journal,helpers={},parse_report=parse,arrays={},controls=lambda *args:None,samples=count)
+    finally:journal.close()

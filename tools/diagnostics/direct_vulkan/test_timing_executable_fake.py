@@ -4,17 +4,19 @@ import fcntl
 import os
 from pathlib import Path
 import subprocess
+import pytest
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 ARTIFACTS = ROOT / 'diagnostics/direct-point-plane-4070-1e4af42/retained-receipt.json.artifacts'
 UUID = '96d2dba095fd5c00e8492e0610f24e06'
 
-def test_fake_end_to_end(tmp_path):
+@pytest.mark.parametrize('source',['timing_executable.cpp','timing_4070_trusted.cpp'])
+def test_fake_end_to_end(tmp_path,source):
     lock=tmp_path/'lock'; lock.touch()
     fake=tmp_path/'fake.o'; obj=tmp_path/'main.o'; binary=tmp_path/'timing'
     subprocess.run(['cc','-std=c11','-Wall','-Wextra','-Werror','-c',str(HERE/'fake_vulkan_timing.c'),'-o',str(fake)],check=True)
-    subprocess.run(['c++','-std=c++17','-Wall','-Wextra','-Werror','-Wno-missing-field-initializers','-DSINTERGPU_CPU_TEST_ONLY',f'-DSINTERGPU_LOCK_PATH="{lock}"','-c',str(HERE/'timing_executable.cpp'),'-o',str(obj)],check=True)
+    subprocess.run(['c++','-std=c++17','-Wall','-Wextra','-Werror','-Wno-missing-field-initializers','-DSINTERGPU_CPU_TEST_ONLY',f'-DSINTERGPU_LOCK_PATH="{lock}"','-c',str(HERE/source),'-o',str(obj)],check=True)
     subprocess.run(['c++',str(obj),str(fake),'-lcrypto','-o',str(binary)],check=True)
     assert 'libvulkan' not in subprocess.check_output(['ldd',str(binary)],text=True)
     shader=tmp_path/'test.spv';shader.write_bytes(bytes.fromhex('0302230701000000'))
