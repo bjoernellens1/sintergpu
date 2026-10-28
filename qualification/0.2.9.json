@@ -4000,7 +4000,7 @@
     "Experimental point-plane fixture-bound imported dispatch requires source-matched GPU parity and controlled kernel, resident and transfer no-regression qualification on each intended device; candidate native measurements do not qualify the changed compilation or any default.",
     "Relocated compact forward and backward profile sources require GPU qualification, including Radeon 8060S, source-matched parity, performance, framework autograd and consumer adoption; original RTX 4070 Ti candidate probes do not qualify these paths",
     "Camera full-domain, gradient and downstream application qualification beyond retained80 canonical states on both devices; performance no-regression and adoption remain pending",
-    "Source-current CPU/GPU baseline timing coverage for all 164 portable entries and four optional native variants; prior measurements remain historical under conservative whole-tree identity",
+    "Source-current CPU/GPU baseline timing coverage for all 166 portable entries and four optional native variants; prior measurements remain historical under conservative whole-tree identity",
     "Full NVIDIA RTX 4070 Ti and Radeon 8060S operation/variant/adapter qualification beyond retained fixtures",
     "VKL remaining unported modules and profiles; consumer tracking/keyframe/transaction policy remains reference-only by design",
     "Reviewed consumer migration adoption and configured automatic cross-repository App delivery",
