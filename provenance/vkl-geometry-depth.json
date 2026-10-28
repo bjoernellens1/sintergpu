@@ -9,12 +9,14 @@
       "source_path": "src/vkl/kernels/reference/geometry.py",
       "destination": "src/sintergpu/kernels/vkl/geometry.slang",
       "source_sha256": "72b9d246b18f078516834b3a8a15f608772e1554ae9c31fd8d3824f1fd85151c",
-      "imported_sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+      "imported_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
       "changes": [
         "Independent portable float32 forward port/oracle; typed scalar32 ABI; no changes to retained Torch source",
-        "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics"
+        "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics",
+        "Correctly rounded scalar32 integer division for camera rays prevents approximate native reciprocal error from amplifying in normals; no shaderInt64 requirement added.",
+        "Explicit SPIR-V NoContraction on point products preserves their rounding before neighbor subtraction, including pinned Slang2026.12."
       ],
-      "contract_limits": "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics",
+      "contract_limits": "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics; camera-ray division is IEEE binary32 nearest/even with subnormal preservation; point products preserve their native float32 rounding before neighbor subtraction",
       "contract_profile": "vkl-geometry-depth-forward",
       "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
       "entry_points": [
@@ -43,12 +45,13 @@
       "source_path": "src/vkl/kernels/reference/depth_fuse.py",
       "destination": "src/sintergpu/kernels/vkl/depth_fusion.slang",
       "source_sha256": "b22b3c3bdc46d2aaeab78aa9680a45f4a62bd84c6651f8c20c6bf1fd93f62fa7",
-      "imported_sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "imported_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
       "changes": [
         "Independent portable float32 forward port/oracle; typed scalar32 ABI; no changes to retained Torch source",
-        "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned"
+        "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned",
+        "Use exact scalar32 nearest/even ratios and noncontracted weighted depth products so rounding error is not amplified by downstream geometry."
       ],
-      "contract_limits": "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned",
+      "contract_limits": "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned; ratios use IEEE binary32 nearest/even division and weighted depth products keep their native float32 rounding before accumulation",
       "contract_profile": "vkl-geometry-depth-forward",
       "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
       "entry_points": [
@@ -75,12 +78,13 @@
       "source_path": "src/vkl/kernels/reference/temporal_depth_fuse.py",
       "destination": "src/sintergpu/kernels/vkl/depth_fusion.slang",
       "source_sha256": "72b316a30402843b8eec506f15d58ab37a25eb5fa516483fda602e3935cf5e6c",
-      "imported_sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "imported_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
       "changes": [
         "Independent portable float32 forward port/oracle; typed scalar32 ABI; no changes to retained Torch source",
-        "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation"
+        "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation",
+        "Use exact scalar32 nearest/even ratios and noncontracted weighted depth products so rounding error is not amplified by downstream geometry."
       ],
-      "contract_limits": "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation",
+      "contract_limits": "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation; ratios use IEEE binary32 nearest/even division and weighted depth products keep their native float32 rounding before accumulation",
       "contract_profile": "vkl-geometry-depth-forward",
       "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
       "entry_points": [
@@ -101,6 +105,26 @@
       "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
       "entry_points": [
         "temporalDepthFuse"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/geometry.py",
+      "source_sha256": "72b9d246b18f078516834b3a8a15f608772e1554ae9c31fd8d3824f1fd85151c",
+      "destination": "src/sintergpu/kernels/common/float32_divide.slang",
+      "imported_sha256": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+      "dispatchable": false,
+      "changes": [
+        "Original independent scalar32 long division implementing the frozen float32 camera-ray division contract; no external implementation copied."
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/geometry.py",
+      "source_sha256": "72b9d246b18f078516834b3a8a15f608772e1554ae9c31fd8d3824f1fd85151c",
+      "destination": "src/sintergpu/kernels/common/float32_multiply.slang",
+      "imported_sha256": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3",
+      "dispatchable": false,
+      "changes": [
+        "Original explicit noncontracted scalar32 multiply and vector scale wrappers preserving the frozen staged float32 point calculation; native FP denormal mode unchanged."
       ]
     }
   ],

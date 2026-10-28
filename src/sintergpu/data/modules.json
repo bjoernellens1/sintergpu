@@ -39,6 +39,14 @@
     "path": "kernels/common/float32_bits.slang",
     "sha256": "d82c66e6543b3fe890a7c02f4680918038e336269fd0f939798c192f1c5c2729"
   },
+  "common.float32_divide": {
+    "path": "kernels/common/float32_divide.slang",
+    "sha256": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f"
+  },
+  "common.float32_multiply": {
+    "path": "kernels/common/float32_multiply.slang",
+    "sha256": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
+  },
   "generated.dense_factors.generated": {
     "path": "kernels/generated/dense_factors.generated.slang",
     "sha256": "2afa8aeab83a06678792ba93a918ac14e41d945336f629ebba41f777e1793f44"
@@ -225,7 +233,7 @@
   },
   "vkl.depth_fusion": {
     "path": "kernels/vkl/depth_fusion.slang",
-    "sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089"
+    "sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127"
   },
   "vkl.depth_pyramid": {
     "path": "kernels/vkl/depth_pyramid.slang",
@@ -237,7 +245,7 @@
   },
   "vkl.geometry": {
     "path": "kernels/vkl/geometry.slang",
-    "sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2"
+    "sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9"
   },
   "vkl.photometric_isp": {
     "path": "kernels/vkl/photometric_isp.slang",

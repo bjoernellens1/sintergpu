@@ -26,3 +26,15 @@ def test_every_frozen_public_candidate_has_explicit_disposition_and_lineage():
                 for op in c['slang_operations']:
                     record=get_operation(op)
                     assert record['source']['revision']==inventory['revision']
+
+
+def test_documented_candidate_dispositions_match_the_provenance_inventory():
+    root=Path(__file__).resolve().parents[1]
+    inventory=json.loads((root/'provenance/vkl-candidates.json').read_text())
+    rows={}
+    for line in (root/'docs/vkl-source-inventory.md').read_text().splitlines():
+        if line.startswith('| `'):
+            fields=line.split('|')
+            rows[fields[1].strip().strip('`')]=fields[2].strip()
+    expected={m['module']+'.'+c['symbol']:c['disposition'] for m in inventory['modules'] for c in m['candidates']}
+    assert rows==expected

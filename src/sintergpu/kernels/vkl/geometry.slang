@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // VKL float32 forward geometry. B3HW planar storage; row-major cameras.
+#include "../common/float32_divide.slang"
+#include "../common/float32_multiply.slang"
 struct GeometryParams { uint batches; uint height; uint width; uint useWorld; uint useConfidence; };
 ConstantBuffer<GeometryParams> params;
 StructuredBuffer<float> depth;
@@ -17,13 +19,13 @@ RWStructuredBuffer<float> xyz_worldOut;
 float3 cameraRay(uint b,uint x,uint y)
 {
     uint k=b*9;
-    return float3((float(x)-intrinsics[k+2])/intrinsics[k],
-                  (float(y)-intrinsics[k+5])/intrinsics[k+4],1.0);
+    return float3(asfloat(sintergpuF32DivideBits(asuint(float(x)-intrinsics[k+2]),asuint(intrinsics[k]))),
+                  asfloat(sintergpuF32DivideBits(asuint(float(y)-intrinsics[k+5]),asuint(intrinsics[k+4]))),1.0);
 }
 float3 cameraPoint(uint b,uint x,uint y)
 {
     float z=depth[b*params.height*params.width+y*params.width+x];
-    return cameraRay(b,x,y)*(isfinite(z)&&z>0 ? z : 0.0);
+    return sintergpuF32ScaleNoContract(cameraRay(b,x,y),isfinite(z)&&z>0 ? z : 0.0);
 }
 float3 transformPoint(uint b,float3 p)
 {
@@ -40,7 +42,7 @@ void depthGeometry(uint3 tid : SV_DispatchThreadID)
     if(i>=params.batches*plane)return;
     uint b=i/plane,q=i%plane,x=q%params.width,y=q/params.width;
     float z=depth[i];bool valid=isfinite(z)&&z>0;
-    float3 ray=cameraRay(b,x,y),point=ray*(valid?z:0.0),normal=0.0;
+    float3 ray=cameraRay(b,x,y),point=sintergpuF32ScaleNoContract(ray,valid?z:0.0),normal=0.0;
     bool stencil=false;
     if(x+1<params.width && y+1<params.height)
     {

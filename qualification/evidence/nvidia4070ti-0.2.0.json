@@ -1,0 +1,405 @@
+{
+  "schema_version": 1,
+  "status": "regression-and-timing-fixture-parity-passed",
+  "environment": {
+    "captured_at_utc": "2026-10-28T06:33:06.704626+00:00",
+    "source_revision": "32bec9b5c527ce412a8c8801b25cd999a80ae602",
+    "hostname": "cps-wkstn-nvidia4070",
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "packages": {
+      "numpy": "2.5.4",
+      "pytest": "9.2.0",
+      "torch": "2.14.1+cpu",
+      "slangpy": "0.43.1"
+    },
+    "gpu": "NVIDIA GeForce RTX 4070 Ti",
+    "vendor_id": 4318,
+    "device_id": 10114,
+    "api": "Vulkan",
+    "compiler_sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678",
+    "nvidia_smi": "NVIDIA GeForce RTX 4070 Ti, GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 00000000:01:00.0, 166 MiB, 0 %",
+    "icd": "/usr/share/vulkan/icd.d/nvidia_icd.json",
+    "floating_point_mode": "precise"
+  },
+  "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+  "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+  "gpu_regression": {
+    "result": "563 passed,2 skipped,3 existing strict expected failures,193 subtests passed in39.32s",
+    "command": "VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia_icd.json SINTERGPU_GPU_TESTS=1 PYTHONPATH=src:. venv/bin/python -m pytest tests -q",
+    "log": "qualification/evidence/nvidia4070ti-0.2.0-gpu.log",
+    "log_sha256": "4299aa4f6d7164d03b12f9871152c8bdbc89130b0b82ea941802591d385201e4",
+    "test_sources_sha256": {
+      "tests/test_autodiff_probe.py": "94b3759115b53ad9601d411b915de159eea3446951dfa857711a4ba417ae1b03",
+      "tests/test_catalog.py": "b93b047da894dbd7775b76d96f1d12eb998e82c6ad847c8f852ff8331ab331bb",
+      "tests/test_changes.py": "c897a8c4662530a39d68f579587faa9d4edf857d8a6a7f0a29aee73b193a39c8",
+      "tests/test_color.py": "83d2a923590af697986e6f06887145f8c0acd351f51ee54e9b5bc152077f85eb",
+      "tests/test_color_hot_path.py": "3e0af6c0c9fc270826280d39dcc7411544bd7a5f4006a0104c0c15b5a600e0a0",
+      "tests/test_color_timings.py": "f611cc3dca8f4b5a578f3027b67803a44e73e32f4accab30dd853a5ed2aeb56c",
+      "tests/test_consumers.py": "68818b7bed1fba0a7ee0a5abc43e597bae77f5b1488c7dce1f94da17ec888747",
+      "tests/test_current_qualification.py": "af3806fcb4c95485a6788bc0215e651c7612d770976ee11e1d866f14342bff3e",
+      "tests/test_feature_timings.py": "864a4b4d123c8f7fd6d68c6643999b2d01f4856be2c021763ccb2627bb48b5db",
+      "tests/test_geometry_division.py": "db898b0dd9d6e325a428ff8a6f72daf520fb48df3318980b03d58970ec0079d5",
+      "tests/test_gpu_fixtures.py": "eb961ba7b5f896cc762379b65005231b359c920e15cd9daf7b95c012b90b67f0",
+      "tests/test_hot_path.py": "0a2d81c9cd7a2971c0c032082c6c8ae2b4f8a5891674d19214a3157882aea98a",
+      "tests/test_import_sources.py": "adfef340a3806ab2212b3a13513dcffdba621d8d48e04186668521b5bffde62a",
+      "tests/test_native_packaging.py": "11277dae6e710c7d54600ec7575fdd3c43592c10c171e9eeff8e442b31458338",
+      "tests/test_primitives.py": "438c43d9c7b870f6eb8ebabafd40eaeb6b152f6dd5aaa4e57bf6375423518a4f",
+      "tests/test_provenance.py": "088877f219b54e0d9438293773c897fe3261e80df0ecbe430a59bd238b123dcb",
+      "tests/test_reflection_compatibility.py": "d8c2a9de6f913e1c706a1f68d2907e0c9ca9ab606098a3981b2fad09d23ad3c9",
+      "tests/test_release.py": "ce1e51ac5c214bf6a2f3eeeb70657ebf8fd3f55769756afb76587356e1794db1",
+      "tests/test_shared_reduction.py": "0c1682055f9ec507d03eccc92b217e9d20b69b1392a097566030133714ca8f6d",
+      "tests/test_timings.py": "f2069420ba099cfe1c0df59d073a34dca2dcc1c1a9b615362a41701c2ac5b621",
+      "tests/test_vkl_depth_resampling.py": "4d3d5c7a44985daea50ec65b7ab665de04f1dd377d70ac849ecca20660a66c16",
+      "tests/test_vkl_features.py": "754de48fab39679a49fc17f5a14af2ebbdf51445ea0d0ce9a166391f00b4e7f6",
+      "tests/test_vkl_geometry_depth.py": "5302f18b182a36a304ef22f665a5969289debd544211ccbf5c6887e08bf02013",
+      "tests/test_vkl_hot_path.py": "da507919da7496625db51f17b0611cd0132805498cc24347ad7af07df281e73d",
+      "tests/test_vkl_inventory.py": "816abc4745f104997f0db59caddf3ad9585c60e5b40827e7a4fb810168931e7e",
+      "tests/test_vkl_layouts.py": "2412bb0c13f0cee9bc810146d00230b9979e79bf08c2a6de3525994d98130470",
+      "tests/test_vkl_ports.py": "dacb1cc1fb4867fce89b802e46c4d816f1dd2b609559cc204604e2e9e084daa4",
+      "tests/test_vkl_reference_package.py": "773dcd4532687bb3afad529b9ddad9c64ce42035d4defc83e5f2bda5aeb5bf0f",
+      "tests/test_vkl_temporal_best.py": "62d14dc9ca8ea3495f2d32ce9d43e7386925a601fae1c2885795bb58754d29a0",
+      "tests/test_vkl_timings.py": "09c599f83bab67453c410fd4534a6e6023310efb2b8cc7409fd600add459268c"
+    }
+  },
+  "operations": {
+    "depth.bilateral": {
+      "source_sha256": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
+      "workloads": [
+        "locus-fixture/bilateral-invalid"
+      ]
+    },
+    "depth.register": {
+      "source_sha256": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
+      "workloads": [
+        "locus-fixture/identity-registration",
+        "locus-fixture/nearest-depth-collision"
+      ]
+    },
+    "depth.resolve": {
+      "source_sha256": "e5416309a1d2e09a5549e558a74f42baad0af9a96ad4721c46c467f300cf9ea4",
+      "workloads": [
+        "locus-fixture/resolve-invalid"
+      ]
+    },
+    "depth.validity": {
+      "source_sha256": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
+      "workloads": [
+        "locus-fixture/invalid-depth-nan"
+      ]
+    },
+    "geometry.backproject": {
+      "source_sha256": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
+      "workloads": [
+        "locus-fixture/optical-backproject"
+      ]
+    },
+    "geometry.coverage_heatmap": {
+      "source_sha256": "b23581c8b5348522c3ee7ad05b2f9b97d954e7d9c5070fa80341fe52216d94d8",
+      "workloads": [
+        "locus-fixture/coverage-pitched"
+      ]
+    },
+    "geometry.coverage_points": {
+      "source_sha256": "5e8ea4892df9d48caae31b75885f49f6fd63b4170a75c2a411688a052149a30c",
+      "workloads": [
+        "locus-fixture/coverage-point-preview"
+      ]
+    },
+    "geometry.transform_points": {
+      "source_sha256": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
+      "workloads": [
+        "locus-fixture/transform-validity"
+      ]
+    },
+    "image.crop_normalize": {
+      "source_sha256": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
+      "workloads": [
+        "locus-fixture/crop-normalize"
+      ]
+    },
+    "image.nv12_to_rgb": {
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "workloads": [
+        "color-pitched/nv12_decode/6x4-to-6x4/bt601-limited",
+        "color-pitched/nv12_decode/6x4-to-6x4/bt601-full",
+        "color-pitched/nv12_decode/6x4-to-6x4/bt709-limited",
+        "color-pitched/nv12_decode/6x4-to-6x4/bt709-full",
+        "color-pitched/nv12_decode/640x480-to-640x480/bt709-limited"
+      ]
+    },
+    "image.planar_yuv_to_rgb": {
+      "source_sha256": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
+      "workloads": [
+        "locus-fixture/yuv-matrix0-range0",
+        "locus-fixture/yuv-matrix0-range1",
+        "locus-fixture/yuv-matrix1-range0",
+        "locus-fixture/yuv-matrix1-range1"
+      ]
+    },
+    "image.remap_bilinear": {
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "workloads": [
+        "color-pitched/remap/6x4-to-7x5/bt601-limited",
+        "color-pitched/remap/6x4-to-7x5/bt601-full",
+        "color-pitched/remap/6x4-to-7x5/bt709-limited",
+        "color-pitched/remap/6x4-to-7x5/bt709-full",
+        "color-pitched/remap/640x480-to-64x48/bt709-limited"
+      ]
+    },
+    "image.resize_bilinear": {
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "workloads": [
+        "color-pitched/resize/6x4-to-7x5/bt601-limited",
+        "color-pitched/resize/6x4-to-7x5/bt601-full",
+        "color-pitched/resize/6x4-to-7x5/bt709-limited",
+        "color-pitched/resize/6x4-to-7x5/bt709-full",
+        "color-pitched/resize/640x480-to-64x48/bt709-limited"
+      ]
+    },
+    "image.resize_nearest": {
+      "source_sha256": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
+      "workloads": [
+        "locus-fixture/resize-odd-pitched"
+      ]
+    },
+    "image.rgb_to_nv12": {
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "workloads": [
+        "color-pitched/nv12_encode/6x4-to-6x4/bt601-limited",
+        "color-pitched/nv12_encode/6x4-to-6x4/bt601-full",
+        "color-pitched/nv12_encode/6x4-to-6x4/bt709-limited",
+        "color-pitched/nv12_encode/6x4-to-6x4/bt709-full",
+        "color-pitched/nv12_encode/640x480-to-640x480/bt709-limited"
+      ]
+    },
+    "image.undistort": {
+      "source_sha256": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
+      "workloads": [
+        "locus-fixture/identity-undistort",
+        "locus-fixture/distortion-outside"
+      ]
+    },
+    "image.yuyv_remap_fused": {
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "workloads": [
+        "color-pitched/fused_remap/6x4-to-7x5/bt601-limited",
+        "color-pitched/fused_remap/6x4-to-7x5/bt601-full",
+        "color-pitched/fused_remap/6x4-to-7x5/bt709-limited",
+        "color-pitched/fused_remap/6x4-to-7x5/bt709-full",
+        "color-pitched/fused_remap/640x480-to-64x48/bt709-limited"
+      ]
+    },
+    "image.yuyv_to_rgb": {
+      "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
+      "workloads": [
+        "color-pitched/yuyv_decode/6x4-to-6x4/bt601-limited",
+        "color-pitched/yuyv_decode/6x4-to-6x4/bt601-full",
+        "color-pitched/yuyv_decode/6x4-to-6x4/bt709-limited",
+        "color-pitched/yuyv_decode/6x4-to-6x4/bt709-full",
+        "color-pitched/yuyv_decode/640x480-to-640x480/bt709-limited"
+      ]
+    },
+    "perception.cosine_similarity": {
+      "source_sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975",
+      "workloads": [
+        "locus-fixture/similarity-count0",
+        "locus-fixture/similarity-count3",
+        "locus-fixture/similarity-nan-zero"
+      ]
+    },
+    "perception.mask_postprocess": {
+      "source_sha256": "5de5a3648d315cd126e40e181aa11ec2b3b479583be57f77605def4e5d772688",
+      "workloads": [
+        "locus-fixture/mask-mode0",
+        "locus-fixture/mask-mode1",
+        "locus-fixture/mask-mode2"
+      ]
+    },
+    "quality.metrics": {
+      "source_sha256": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
+      "workloads": [
+        "locus-fixture/quality-metrics",
+        "locus-fixture/quality-nan"
+      ]
+    },
+    "quality.reduce": {
+      "source_sha256": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
+      "workloads": [
+        "locus-fixture/quality-reduction"
+      ]
+    },
+    "spatial.voxel_insert": {
+      "source_sha256": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
+      "workloads": [
+        "locus-fixture/voxel-contention",
+        "locus-fixture/voxel-capacity-overflow"
+      ]
+    },
+    "vkl.binary_match.finalizeMatch": {
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "workloads": [
+        "vkl-features/finalizeMatch/chunk-0-129"
+      ]
+    },
+    "vkl.binary_match.initializeMatch": {
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "workloads": [
+        "vkl-features/initializeMatch/chunk-0-129"
+      ]
+    },
+    "vkl.binary_match.matchPairs": {
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "workloads": [
+        "vkl-features/matchPairs/chunk-0-129",
+        "vkl-features/matchPairs/chunk-258-1"
+      ]
+    },
+    "vkl.binary_match.packBinary": {
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "workloads": [
+        "vkl-features/packBinary/chunk-0-129"
+      ]
+    },
+    "vkl.binary_match.reverseMinimum": {
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "workloads": [
+        "vkl-features/reverseMinimum/chunk-0-129",
+        "vkl-features/reverseMinimum/chunk-258-1"
+      ]
+    },
+    "vkl.binary_match.rowMinimum": {
+      "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
+      "workloads": [
+        "vkl-features/rowMinimum/chunk-0-129",
+        "vkl-features/rowMinimum/chunk-258-1"
+      ]
+    },
+    "vkl.brief.briefDescribe": {
+      "source_sha256": "60e627e96653eef9e02645fea25a6f83c63bbd371c2c71a1fa5a47befab356d2",
+      "workloads": [
+        "vkl-features/briefDescribe/chunk-0-0"
+      ]
+    },
+    "vkl.depth_convert.depthConvert": {
+      "source_sha256": "2ced5aa077ac8484e0bbd2426f468caf69ce707b25f740b206541303fb2a18f5",
+      "workloads": [
+        "vkl-synthetic/convert/2x31x35/representation-0",
+        "vkl-synthetic/convert/2x31x35/representation-1",
+        "vkl-synthetic/convert/2x31x35/representation-2",
+        "vkl-synthetic/convert/1x47x61/representation-0",
+        "vkl-synthetic/convert/1x47x61/representation-1",
+        "vkl-synthetic/convert/1x47x61/representation-2"
+      ]
+    },
+    "vkl.depth_fusion.fuseDepth": {
+      "source_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
+      "workloads": [
+        "vkl-synthetic/fusion/2x31x35/relative-0",
+        "vkl-synthetic/fusion/2x31x35/relative-1",
+        "vkl-synthetic/fusion/1x47x61/relative-0",
+        "vkl-synthetic/fusion/1x47x61/relative-1"
+      ]
+    },
+    "vkl.depth_fusion.temporalDepthFuse": {
+      "source_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
+      "workloads": [
+        "vkl-synthetic/temporal_fusion/2x31x35",
+        "vkl-synthetic/temporal_fusion/1x47x61"
+      ]
+    },
+    "vkl.depth_pyramid.depthPyramidLevel": {
+      "source_sha256": "55fea213f1f1614ed3307a6c7a2a3e62765e20db86fbe7da9790c1379f4d4aa2",
+      "workloads": [
+        "vkl-synthetic/pyramid/2x31x35",
+        "vkl-synthetic/pyramid/1x47x61"
+      ]
+    },
+    "vkl.depth_resampling.densifyDepth": {
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "workloads": [
+        "vkl-synthetic/densify/2x31x35/channels-1",
+        "vkl-synthetic/densify/1x47x61/channels-3"
+      ]
+    },
+    "vkl.depth_resampling.depthUpsample": {
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "workloads": [
+        "vkl-synthetic/lift/2x31x35",
+        "vkl-synthetic/lift/1x47x61"
+      ]
+    },
+    "vkl.depth_resampling.initializeDepth": {
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "workloads": [
+        "vkl-synthetic/initialize/2x31x35/confidence-0",
+        "vkl-synthetic/initialize/1x47x61/confidence-1"
+      ]
+    },
+    "vkl.depth_resampling.labelDirectDepth": {
+      "source_sha256": "2995689fdbc2a0ae022f031d26c287f193ea4a37d40e5f281bad96f2153185a2",
+      "workloads": [
+        "vkl-synthetic/labels/2x31x35",
+        "vkl-synthetic/labels/1x47x61"
+      ]
+    },
+    "vkl.geometry.depthGeometry": {
+      "source_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
+      "workloads": [
+        "vkl-synthetic/geometry/2x31x35/options-0",
+        "vkl-synthetic/geometry/2x31x35/options-1",
+        "vkl-synthetic/geometry/1x47x61/options-0",
+        "vkl-synthetic/geometry/1x47x61/options-1"
+      ]
+    },
+    "vkl.geometry.worldTransform": {
+      "source_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
+      "workloads": [
+        "vkl-synthetic/world/2x31x35",
+        "vkl-synthetic/world/1x47x61"
+      ]
+    },
+    "vkl.photometric_isp.photometricISP": {
+      "source_sha256": "2cda8c2b898d3dea595b547d5de4fcd83acf4799711a826bdc6c9b2a6328474e",
+      "workloads": [
+        "vkl-synthetic/photometric/2x31x35/options-0",
+        "vkl-synthetic/photometric/2x31x35/options-1",
+        "vkl-synthetic/photometric/1x47x61/options-0",
+        "vkl-synthetic/photometric/1x47x61/options-1"
+      ]
+    },
+    "vkl.project_depth_evidence.projectDepthEvidence": {
+      "source_sha256": "48419b4308fcafc4682a92233bcbf85618d7148f4c09763dff28387a88f8bc27",
+      "workloads": [
+        "vkl-synthetic/projection/2x31x35",
+        "vkl-synthetic/projection/1x47x61"
+      ]
+    },
+    "vkl.temporal_best.temporalBest": {
+      "source_sha256": "20b0ebc40ee1d96c45bd4ea2a3fb281b46a614d6514571b36f003142d68b65fa",
+      "workloads": [
+        "vkl-synthetic/best/2x31x35/options-0",
+        "vkl-synthetic/best/2x31x35/options-1",
+        "vkl-synthetic/best/1x47x61/options-0",
+        "vkl-synthetic/best/1x47x61/options-1"
+      ]
+    }
+  },
+  "raw_samples_sha256": {
+    "benchmarks/results/locus-cpu-gpu-4070ti-0.2.0.json": "36a26373e6edeac42cd72045b3f3f81f9f2cb81c205a362f1412653975a56a36",
+    "benchmarks/results/color-cpu-gpu-4070ti-0.2.0.json": "f343842cf126a3354a0b8783663360cefce07b0b31746e8fd893907be032cd09",
+    "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.0.json": "98a92c46c01f98ce70f9e2c54878591ac7b58d62648bec4a9c1eb731b12a18de",
+    "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.0.json": "47fb456092525c10a951e80fe9a9714ccd1168abda3241a3607d44a262a900c7"
+  },
+  "runtime_snapshots": {
+    "nvidia-before.csv": "name, uuid, driver_version, pci.bus_id, memory.used [MiB], utilization.gpu [%]\nNVIDIA GeForce RTX 4070 Ti, GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 00000000:01:00.0, 93 MiB, 0 %\n",
+    "nvidia-after.csv": "name, uuid, driver_version, pci.bus_id, memory.used [MiB], utilization.gpu [%]\nNVIDIA GeForce RTX 4070 Ti, GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 00000000:01:00.0, 94 MiB, 60 %\n"
+  },
+  "collector_logs_sha256": {
+    "color-timings.log": "e3ebde42d117534d98d83fe0f88d9e12637755319db2e3374e4fbd7d6ff4c787",
+    "locus-timings.log": "116944ddaeebd82695d6f35e1e07b27a6189b7f5bba54941bbbd38dbe4d4ba75",
+    "vkl-features-timings.log": "2345925ff4ddc15f45329afd9614c79197e62e43e5847862217bfd253fd7b129",
+    "vkl-timings.log": "8f0197e94db739eb7e586bb252bdfd54c31343218b83b77e0e0443311301fddc"
+  },
+  "scope": "Actual NVIDIA Vulkan regression suite and parity-checked synthetic fixtures for43operations/106workloads,50samples5warmups. CPU reference wall, GPU timestamp, host completion and complete-buffer transfer scopes remain distinct. Shared-device snapshots do not establish exclusive-device timing, optimized CPU speedup, full-domain operation/adapter qualification, default variant selection, trajectory quality, controlled fusion benefit or consumer adoption."
+}

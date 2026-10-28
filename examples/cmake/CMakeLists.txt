@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
 project(sintergpu_consumer LANGUAGES CXX)
-find_package(sintergpu 0.1 CONFIG REQUIRED)
+find_package(sintergpu 0.2 CONFIG REQUIRED)
 find_package(Vulkan REQUIRED)
 add_library(consumer OBJECT main.cpp)
 target_link_libraries(consumer PRIVATE sintergpu::kernels Vulkan::Vulkan)
