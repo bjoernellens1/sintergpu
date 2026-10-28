@@ -152,3 +152,9 @@ SINTERGPU_GPU_TESTS=1 PYTHONPATH=src python benchmarks/vkl_geometry_depth.py \
   --height 480 --width 640 --sources 4 --trust mixed --iterations 30 \
   --output geometry-depth-results.json
 ```
+
+## 0.2.0 camera-ray rounding migration
+
+New seeded camera workloads exposed native GPU reciprocal approximation in camera-ray division: one-ULP ray differences amplified into normals outside the existing tolerance. Camera rays now use a resource-independent scalar32 integer division helper, rounded to IEEE binary32 nearest/even, including subnormals and signed zero. It introduces no shaderInt64 capability. Point and normal output bits can change; re-run downstream geometry/residual/pose parity before adopting 0.2.0. The original geometry masks, stencil, layouts and floating tolerances remain unchanged. Frozen Torch and independent NumPy references are preserved. Native arithmetic elsewhere retains its separately documented qualification limits.
+
+Point products also carry explicit SPIR-V `NoContraction`, preserving the multiplication boundary before tangent subtraction even under pinned Slang 2026.12. Fused-depth ratios reuse the same rounded division helper; weighted depth products retain their multiplication rounding before accumulation. This is required by the borrowed fusion→geometry pipeline, where a one-ULP predecessor depth difference can exceed the normal tolerance. The composed pipeline must pass independently of isolated per-entry tolerances.

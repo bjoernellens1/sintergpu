@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Source-major [S,B,1,H,W], contiguous float32; typed uint32 logical masks.
 // No image-wide loops or hidden state: one independent pixel per invocation.
+#include "../common/float32_divide.slang"
+#include "../common/float32_multiply.slang"
 struct FusionParams { uint count; uint sources; uint relative; uint minSupport; uint minTemporalSupport; float threshold; };
 ConstantBuffer<FusionParams> params;
 StructuredBuffer<float> depths;
@@ -21,19 +23,10 @@ RWStructuredBuffer<int> dominant_contributorOut;
 RWStructuredBuffer<float> temporal_weight_fractionOut;
 RWStructuredBuffer<float> source_disagreementOut;
 static const float EPS=1.1920928955078125e-7;
-// GPU division permits approximation. Preserve exact power-of-two ratios without
-// float64: equal significands differ only by exponent. This keeps constant-depth
-// fields fixed instead of creating false normals in a following geometry pass.
-// Other ratios retain ordinary target float32 division accuracy.
+// Preserve staged float32 ratios before downstream geometry differentiates depth.
 float stableRatio(float a,float b)
 {
-    uint ua=asuint(a),ub=asuint(b);
-    uint ea=(ua>>23)&255,eb=(ub>>23)&255;
-    int exponent=int(ea)-int(eb)+127;
-    if((ua&0x80000000)==0&&(ub&0x80000000)==0&&ea>0&&ea<255&&eb>0&&eb<255
-       &&(ua&0x7fffff)==(ub&0x7fffff)&&exponent>0&&exponent<255)
-        return asfloat(uint(exponent)<<23);
-    return a/b;
+    return asfloat(sintergpuF32DivideBits(asuint(a),asuint(b)));
 }
 bool usable(uint s,uint i)
 {
@@ -55,7 +48,7 @@ void fuseDepth(uint3 tid : SV_DispatchThreadID)
     {
         uint j=s*params.count+i;bool use=usable(s,i);
         float w=use?confidences[j]:0.0,d=use?depths[j]:0.0;
-        total+=w;numerator+=w*d;support+=uint(use);
+        total+=w;numerator+=sintergpuF32MulNoContract(w,d);support+=uint(use);
         float score=params.relative!=0?w*.5:w;
         if(score>bestScore){bestScore=score;winner=int(s);}
     }
@@ -65,7 +58,7 @@ void fuseDepth(uint3 tid : SV_DispatchThreadID)
         uint j=s*params.count+i;
         bool agree=usable(s,i)&&abs(depths[j]-mean)<=params.threshold*max(mean,EPS);
         float w=agree?confidences[j]:0.0,d=agree?depths[j]:0.0;
-        agrees+=uint(agree);agreeW+=w;agreeD+=w*d;
+        agrees+=uint(agree);agreeW+=w;agreeD+=sintergpuF32MulNoContract(w,d);
     }
     bool valid=support>0,allConsistent=agrees>0&&agrees==support;
     depthOut[i]=!valid?0.0:(allConsistent?stableRatio(agreeD,max(agreeW,EPS)):depths[uint(winner)*params.count+i]);
@@ -112,7 +105,7 @@ void temporalDepthFuse(uint3 tid : SV_DispatchThreadID)
         float weight=agree?confidences[j]:0.0,safeDepth=agree?depths[j]:0.0;
         support+=int(agree);temporalSupport+=int(agree&&s>0);
         trustedSupport=trustedSupport||(agree&&trusted[j]!=0);
-        weightSum+=weight;temporalW+=s>0?weight:0.0;numerator+=weight*safeDepth;
+        weightSum+=weight;temporalW+=s>0?weight:0.0;numerator+=sintergpuF32MulNoContract(weight,safeDepth);
         if(weight>bestWeight){bestWeight=weight;dominant=int(s);}
         if(use)disagreement=max(disagreement,abs(depths[j]-reference));
     }

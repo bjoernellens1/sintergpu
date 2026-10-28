@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "entries": 137,
+  "scope": "All 2026.12 reflection fields match 2026.19 exactly, including types, bindings, offsets, sizes, strides, ordering and workgroups. New-only metadata is retained in compiler records but has no cross-version counterpart.",
+  "known_schema_additions": {
+    "sizes": 7510,
+    "scope": 137,
+    "version": 137,
+    "globalScope": 137
+  },
+  "compiler_sha256": {
+    "2026.12": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+    "2026.19": "19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145"
+  },
+  "inputs_sha256": {
+    "build/vkl-rounded-compile-2026.12/results.json": "65008f3e8477eb79256d7700af978f25255381cc8fcf1520e65811697d6d2e4a",
+    "build/vkl-rounded-compile-2026.19/results.json": "5f35a7fdf9f8fbdbf0ea501583515c50f6f1f0fb92825715c24a12552b73ab59"
+  }
+}

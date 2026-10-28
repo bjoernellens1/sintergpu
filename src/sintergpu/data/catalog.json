@@ -4418,7 +4418,7 @@
         1
       ],
       "variant": "portable-port",
-      "sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
       "source": {
         "repository": "bjoernellens1/vkl",
         "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
@@ -4430,7 +4430,7 @@
       "contract": {
         "profile": "vkl-geometry-depth-forward",
         "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
-        "numerical_behavior": "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned"
+        "numerical_behavior": "Source-major SxBx1xHxW float32; uint32 masks; signed int32 source indices; confidence-weighted mean-consistency and first-max conflict winner; relative/metric status validation remains caller-owned; ratios use IEEE binary32 nearest/even division and weighted depth products keep their native float32 rounding before accumulation"
       },
       "requirements": [
         "Vulkan compute",
@@ -4453,7 +4453,7 @@
         1
       ],
       "variant": "portable-port",
-      "sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
       "source": {
         "repository": "bjoernellens1/vkl",
         "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
@@ -4465,7 +4465,7 @@
       "contract": {
         "profile": "vkl-geometry-depth-forward",
         "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
-        "numerical_behavior": "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation"
+        "numerical_behavior": "Source-major float32 fields, typed uint32 masks and signed int32 counts/source indices; full forward temporal fusion including asymmetric clusters, explicit trust, target visibility exemption, counts retained when invalid, and all eleven outputs; caller owns support/threshold validation; ratios use IEEE binary32 nearest/even division and weighted depth products keep their native float32 rounding before accumulation"
       },
       "requirements": [
         "Vulkan compute",
@@ -4663,7 +4663,7 @@
         1
       ],
       "variant": "portable-port",
-      "sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+      "sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
       "source": {
         "repository": "bjoernellens1/vkl",
         "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
@@ -4675,7 +4675,7 @@
       "contract": {
         "profile": "vkl-geometry-depth-forward",
         "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
-        "numerical_behavior": "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics"
+        "numerical_behavior": "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics; camera-ray division is IEEE binary32 nearest/even with subnormal preservation; point products preserve their native float32 rounding before neighbor subtraction"
       },
       "requirements": [
         "Vulkan compute",
@@ -4698,7 +4698,7 @@
         1
       ],
       "variant": "portable-port",
-      "sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+      "sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
       "source": {
         "repository": "bjoernellens1/vkl",
         "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
@@ -4710,7 +4710,7 @@
       "contract": {
         "profile": "vkl-geometry-depth-forward",
         "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-geometry-depth.md",
-        "numerical_behavior": "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics"
+        "numerical_behavior": "B3HW float32 rays/points/normals; depth validity finite-positive, forward right/down stencil with inclusive relative 25% threshold, camera-facing normals, remasked world points only in depthGeometry; standalone worldTransform never remasks; optional confidence retains NaN/Inf and signed zero semantics; camera-ray division is IEEE binary32 nearest/even with subnormal preservation; point products preserve their native float32 rounding before neighbor subtraction"
       },
       "requirements": [
         "Vulkan compute",

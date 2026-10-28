@@ -1,6 +1,6 @@
 # VKL timing baseline methodology
 
-The standalone recipe measures each of the 13 non-feature VKL entries independently. The binary-feature recipe covers the other seven entries. Kernel, reference and adapter sources remain unchanged by this measurement work.
+The standalone recipe measures each of the 13 non-feature VKL entries independently. The binary-feature recipe covers the other seven entries. The measurement recipes leave runtime ownership explicit. Release 0.2.0 also corrects camera-ray division after these new workloads exposed out-of-tolerance normals; that numerical change is versioned separately in the migration guidance.
 
 Run from a source checkout with the optional GPU/test dependencies installed:
 

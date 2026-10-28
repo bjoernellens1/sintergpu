@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "status": "fixture-and-composed-pipeline-parity-passed",
+  "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+  "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+  "sources": {
+    "vkl.depth_fusion.fuseDepth": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
+    "vkl.depth_fusion.temporalDepthFuse": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
+    "vkl.geometry.depthGeometry": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
+    "vkl.geometry.worldTransform": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9"
+  },
+  "helper_sources_sha256": {
+    "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+    "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
+  },
+  "compiler_matrix": {
+    "2026.12": {
+      "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "controls": {
+        "vkl.depth_fusion.fuseDepth": {
+          "spirv_sha256": "a684349c17674d68ae0dfc5614837f4cb256115c2c4a3a921fbbf791a3b8dc99",
+          "capabilities": [
+            1
+          ],
+          "no_contraction_decorations": 2,
+          "native_fdiv_instructions": 0
+        },
+        "vkl.depth_fusion.temporalDepthFuse": {
+          "spirv_sha256": "0776f7ea5a29574b130e86df964ccf3c449491ceb9f0e89edfe4cb631c90f7af",
+          "capabilities": [
+            1
+          ],
+          "no_contraction_decorations": 1,
+          "native_fdiv_instructions": 0
+        },
+        "vkl.geometry.depthGeometry": {
+          "spirv_sha256": "00b3e4c2f3a0cdbc5ec69374bc3e72ef5ef334d1161667df1f21c4cffdd13181",
+          "capabilities": [
+            1
+          ],
+          "no_contraction_decorations": 9,
+          "native_fdiv_instructions": 1
+        },
+        "vkl.geometry.worldTransform": {
+          "spirv_sha256": "41e891418d9481cb0aec4538c3d4b27015af7580fd3142d6cc27fd8725d7fa8e",
+          "capabilities": [
+            1
+          ],
+          "no_contraction_decorations": 0,
+          "native_fdiv_instructions": 0
+        }
+      },
+      "record_sha256": "65008f3e8477eb79256d7700af978f25255381cc8fcf1520e65811697d6d2e4a"
+    },
+    "2026.19": {
+      "compiler_sha256": "19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145",
+      "controls": {
+        "vkl.depth_fusion.fuseDepth": {
+          "spirv_sha256": "a684349c17674d68ae0dfc5614837f4cb256115c2c4a3a921fbbf791a3b8dc99",
+          "capabilities": [
+            1
+          ],
+          "no_contraction_decorations": 2,
+          "native_fdiv_instructions": 0
+        },
+        "vkl.depth_fusion.temporalDepthFuse": {
+          "spirv_sha256": "0776f7ea5a29574b130e86df964ccf3c449491ceb9f0e89edfe4cb631c90f7af",
+          "capabilities": [
+            1
+          ],
+          "no_contraction_decorations": 1,
+          "native_fdiv_instructions": 0
+        },
+        "vkl.geometry.depthGeometry": {
+          "spirv_sha256": "00b3e4c2f3a0cdbc5ec69374bc3e72ef5ef334d1161667df1f21c4cffdd13181",
+          "capabilities": [
+            1
+          ],
+          "no_contraction_decorations": 9,
+          "native_fdiv_instructions": 1
+        },
+        "vkl.geometry.worldTransform": {
+          "spirv_sha256": "41e891418d9481cb0aec4538c3d4b27015af7580fd3142d6cc27fd8725d7fa8e",
+          "capabilities": [
+            1
+          ],
+          "no_contraction_decorations": 0,
+          "native_fdiv_instructions": 0
+        }
+      },
+      "record_sha256": "5f35a7fdf9f8fbdbf0ea501583515c50f6f1f0fb92825715c24a12552b73ab59"
+    }
+  },
+  "runtime": {
+    "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+    "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+    "slangpy": "0.43.1",
+    "compiler_sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+  },
+  "gpu_regression": {
+    "result": "561passed,2skipped,3preexisting strict expected failures,193subtests passed in24.55s",
+    "command": "SINTERGPU_GPU_TESTS=1 PYTHONPATH=src:. .cache/vkl-qualification-venv/bin/python -m pytest -q",
+    "log_sha256": "70362fd7ccb302d69e3c024b7e712fb1e909349fb527bc40c55f609a6ec724b4",
+    "focused_result": "64passed in4.26s",
+    "focused_log_sha256": "a5bf94b992f66dd415b0ca7d5d7567aefa2eea90bdae1c553b1db4572d82fb88",
+    "test_sha256": "d0b0edd29fd3f57a738aa68dba867e53f42886e1411580b4a8c724e6bdf5468e"
+  },
+  "cause": {
+    "initial_normals_max_absolute_error": 1.6018748e-06,
+    "ray_numeric_differences": 1612,
+    "neighbor_fma_stencil_component_matches_per_tangent": 7050,
+    "predecessor_fused_depth_numeric_differences": 26,
+    "diagnostic_logs_sha256": {
+      "build/geometry-first-diagnostic.log": "5b9762715cad20e202e1e6775350e92c43023b6eb1e180b4fbf4f6c5b1eeacae",
+      "build/normal-stages.log": "9e0dc568c4bf8fd00fc21ad06b74c5e1fc2d47c4fad353d13b1783782134ceac",
+      "build/fusion-depth-diagnostic.log": "d4b57d418a9a91b41a6600d216c5233237afade968ff0193c6a4eb0f9703ba80"
+    }
+  },
+  "scope": "Exact randomized/edge binary32 divider probe, contraction-cancellation probe, controlled3/4source frozen-depth parity, seeded rays/normal existing tolerances, broad existing geometry/fusion and borrowed-encoder composition tests. No arbitrary-source-count exact reduction, full-domain geometry, native denormal/subnormal guarantees outside divider, trajectory, performance selection or cross-vendor qualification."
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "0.1.10",
+  "version": "0.2.0",
   "status": "experimental",
   "qualifications": [
     {
@@ -395,102 +395,6 @@
       "evidence": "qualification/evidence/locus-amd8060s.json"
     },
     {
-      "operation": "vkl.geometry.depthGeometry",
-      "variant": "portable-float32-forward",
-      "adapter": "SlangPy 0.43.1 / Vulkan",
-      "compiler": {
-        "version": "2026.12 (SlangPy bundled)",
-        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
-      },
-      "source_sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
-      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
-      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
-      "status": "fixture-parity-passed",
-      "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification",
-      "configuration": {
-        "max_workgroups_x": 4294967295,
-        "floating_point_mode": "precise",
-        "float_tolerance": {
-          "relative": 8e-06,
-          "absolute": 5e-07
-        },
-        "logical_and_provenance": "exact"
-      },
-      "evidence": "qualification/evidence/vkl-geometry-depth-parity.json"
-    },
-    {
-      "operation": "vkl.geometry.worldTransform",
-      "variant": "portable-float32-forward",
-      "adapter": "SlangPy 0.43.1 / Vulkan",
-      "compiler": {
-        "version": "2026.12 (SlangPy bundled)",
-        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
-      },
-      "source_sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
-      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
-      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
-      "status": "fixture-parity-passed",
-      "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification",
-      "configuration": {
-        "max_workgroups_x": 4294967295,
-        "floating_point_mode": "precise",
-        "float_tolerance": {
-          "relative": 8e-06,
-          "absolute": 5e-07
-        },
-        "logical_and_provenance": "exact"
-      },
-      "evidence": "qualification/evidence/vkl-geometry-depth-parity.json"
-    },
-    {
-      "operation": "vkl.depth_fusion.fuseDepth",
-      "variant": "portable-float32-forward",
-      "adapter": "SlangPy 0.43.1 / Vulkan",
-      "compiler": {
-        "version": "2026.12 (SlangPy bundled)",
-        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
-      },
-      "source_sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
-      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
-      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
-      "status": "fixture-parity-passed",
-      "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification",
-      "configuration": {
-        "max_workgroups_x": 4294967295,
-        "floating_point_mode": "precise",
-        "float_tolerance": {
-          "relative": 8e-06,
-          "absolute": 5e-07
-        },
-        "logical_and_provenance": "exact"
-      },
-      "evidence": "qualification/evidence/vkl-geometry-depth-parity.json"
-    },
-    {
-      "operation": "vkl.depth_fusion.temporalDepthFuse",
-      "variant": "portable-float32-forward",
-      "adapter": "SlangPy 0.43.1 / Vulkan",
-      "compiler": {
-        "version": "2026.12 (SlangPy bundled)",
-        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
-      },
-      "source_sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
-      "driver": "RADV Mesa 26.2.3 / Vulkan 1.4.354",
-      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
-      "status": "fixture-parity-passed",
-      "scope": "Frozen donor and independent NumPy forward outputs, optional flags, finite/nonfinite depth and confidence, source counts 1/2/3/4/9, exact power-of-two depth fixed points, poisoned output padding and borrowed-encoder fusion to geometry composition; not a full-operation, gradient or application qualification",
-      "configuration": {
-        "max_workgroups_x": 4294967295,
-        "floating_point_mode": "precise",
-        "float_tolerance": {
-          "relative": 8e-06,
-          "absolute": 5e-07
-        },
-        "logical_and_provenance": "exact"
-      },
-      "evidence": "qualification/evidence/vkl-geometry-depth-parity.json"
-    },
-    {
       "operation": "vkl.temporal_best.temporalBest",
       "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
       "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
@@ -756,6 +660,106 @@
         "numerical_profile": "vkl-binary-features-forward-f32-i64"
       },
       "evidence": "qualification/evidence/vkl-binary-features-0.1.9.json"
+    },
+    {
+      "operation": "vkl.depth_fusion.fuseDepth",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
+      "source_dependencies_sha256": {
+        "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+        "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
+      },
+      "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact randomized/edge binary32 divider probe, contraction-cancellation probe, controlled3/4source frozen-depth parity, seeded rays/normal existing tolerances, broad existing geometry/fusion and borrowed-encoder composition tests. No arbitrary-source-count exact reduction, full-domain geometry, native denormal/subnormal guarantees outside divider, trajectory, performance selection or cross-vendor qualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "extra_int64_or_float64_capability": false,
+        "numerical_change": "rounded camera/fused ratios and staged native product boundaries"
+      },
+      "evidence": "qualification/evidence/rounded-vkl-0.2.0.json"
+    },
+    {
+      "operation": "vkl.depth_fusion.temporalDepthFuse",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
+      "source_dependencies_sha256": {
+        "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+        "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
+      },
+      "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact randomized/edge binary32 divider probe, contraction-cancellation probe, controlled3/4source frozen-depth parity, seeded rays/normal existing tolerances, broad existing geometry/fusion and borrowed-encoder composition tests. No arbitrary-source-count exact reduction, full-domain geometry, native denormal/subnormal guarantees outside divider, trajectory, performance selection or cross-vendor qualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "extra_int64_or_float64_capability": false,
+        "numerical_change": "rounded camera/fused ratios and staged native product boundaries"
+      },
+      "evidence": "qualification/evidence/rounded-vkl-0.2.0.json"
+    },
+    {
+      "operation": "vkl.geometry.depthGeometry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
+      "source_dependencies_sha256": {
+        "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+        "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
+      },
+      "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact randomized/edge binary32 divider probe, contraction-cancellation probe, controlled3/4source frozen-depth parity, seeded rays/normal existing tolerances, broad existing geometry/fusion and borrowed-encoder composition tests. No arbitrary-source-count exact reduction, full-domain geometry, native denormal/subnormal guarantees outside divider, trajectory, performance selection or cross-vendor qualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "extra_int64_or_float64_capability": false,
+        "numerical_change": "rounded camera/fused ratios and staged native product boundaries"
+      },
+      "evidence": "qualification/evidence/rounded-vkl-0.2.0.json"
+    },
+    {
+      "operation": "vkl.geometry.worldTransform",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
+      "source_dependencies_sha256": {
+        "src/sintergpu/kernels/common/float32_divide.slang": "2fb02147eccf789b3407b30f8aa989ea138ae4710b19e907cdc828b6e49ae09f",
+        "src/sintergpu/kernels/common/float32_multiply.slang": "07f3dddf7ae1dae190a5ff280a12dfdc09a25ee06f41617c5936c36bd08ea6c3"
+      },
+      "driver": "RADV Mesa26.2.3 / Vulkan1.4.354",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "forward-fixture-parity-passed",
+      "scope": "Exact randomized/edge binary32 divider probe, contraction-cancellation probe, controlled3/4source frozen-depth parity, seeded rays/normal existing tolerances, broad existing geometry/fusion and borrowed-encoder composition tests. No arbitrary-source-count exact reduction, full-domain geometry, native denormal/subnormal guarantees outside divider, trajectory, performance selection or cross-vendor qualification.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "extra_int64_or_float64_capability": false,
+        "numerical_change": "rounded camera/fused ratios and staged native product boundaries"
+      },
+      "evidence": "qualification/evidence/rounded-vkl-0.2.0.json"
     }
   ],
   "evidence_sha256": {
@@ -795,8 +799,8 @@
     "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf",
     "qualification/delivery-0.1.5.json": "5b0343aa119753b572aedee0982a5dc7ccd0a804595cb037492ca2b3d85fc9a2",
     "benchmarks/results/locus-cpu-gpu-8060s.json": "36f05cb3ac40bf40f5f1f878884495bcd6c933767d112e58e89a4e3290388ea2",
-    "src/sintergpu/data/timings.json": "ee4443e091510a67faa016a7b99bc5acfbd0587ea3d8fdf90e79d06b7c56e1d2",
-    "docs/kernel-timings.md": "f61eb0f3eaf2b0b1a88532d8d6449ed165da330f1fbd2dadc96cdc85aa510526",
+    "src/sintergpu/data/timings.json": "eb6a40bab4e18d415fd87c437f650b1f89ead851182f48e4427d0c0276510b9a",
+    "docs/kernel-timings.md": "af54d04e41f3bd4753e5c504943c0e9eaeb706dc861b8516c591a46d1712f980",
     "qualification/delivery-0.1.6.json": "61fbdbde082cf212b82804e27fd16ee266479c1273b9eb13df9488a98d5921b8",
     "benchmarks/results/color-cpu-gpu-8060s.json": "1d34cd705e7096f28651c04521958027e60c038b65648a83baa8332c863ab864",
     "qualification/delivery-0.1.7.json": "a09a8871e40f76d78b4f42bc3c258e8e609692653c949785937292b1cb4eb57b",
@@ -809,7 +813,9 @@
     "qualification/delivery-0.1.8.json": "66f11498d08c44e9b6635aca08de564354b90535d568bdad35c7436f1fa3afa1",
     "qualification/evidence/native-install-release-ci-0.1.8.json": "130bf14c12c030722d2e5d7d5d727826d117a68ffd9c34a55331aed9162eef6d",
     "qualification/delivery-0.1.9.json": "f6a9ee077a6237d6aba5ebe63b2e62776f772c8353f2c7d6f5033623e2b3213f",
-    "qualification/evidence/native-install-release-ci-0.1.9.json": "87b77333ebcd01e86288a5fc4caf534072045eb97b304df0ba80ac7124e426d7"
+    "qualification/evidence/native-install-release-ci-0.1.9.json": "87b77333ebcd01e86288a5fc4caf534072045eb97b304df0ba80ac7124e426d7",
+    "qualification/evidence/rounded-vkl-0.2.0.json": "0304f6c6975701dbd9e36f8a1d841d675c638b62c346428a4da6e7d7eb6cd9e4",
+    "qualification/evidence/reflection-compatibility-0.2.0.json": "3d1ea5bf4050320e4fc66678b7830b26704047de7d08fe22c586f097a419c7a9"
   },
   "pending_gates": [
     "NVIDIA RTX 3090 execution: selected workstation unreachable",
@@ -820,7 +826,7 @@
     "Optional vrdx C++ runtime and HIP backend runtime qualification",
     "SLAM pose/trajectory/gradient and full-capacity reconstruction qualification",
     "Publisher App administrative permission path and downstream App execution; six private consumer CI jobs blocked by account billing/spending restrictions",
-    "CPU/GPU baseline timing coverage for 107 remaining portable catalog entries and four optional native radix variants"
+    "CPU/GPU baseline timing coverage for 137 remaining portable catalog entries and four optional native radix variants"
   ],
   "timing_reference": {
     "database": "src/sintergpu/data/timings.json",
@@ -831,15 +837,15 @@
       "benchmarks/results/vkl-features-cpu-gpu-8060s-0.1.9.json"
     ],
     "catalog_entries": 137,
-    "paired_cpu_gpu_entries": 30,
-    "pending_portable_entries": 107,
+    "paired_cpu_gpu_entries": 0,
+    "pending_portable_entries": 137,
     "additional_native_pending": 4,
     "scope": "68 current-source workloads (28 Locus,30camera-color,10feature-stage),50samples5warmups on shared Radeon8060S. Retain58 historical workload rows as stale because whole-tree dependencies changed. Independent CPU reference, GPU kernel timestamps, host completion and all-bound-buffer upload/readback are separate; no optimizedCPU, production pipeline, controlled fusion or cross-vendor qualification.",
     "color_collector_revision": "be04ef6ff8600a5fa1328b02dbeb7384967f050d",
     "color_workloads": 30,
-    "workloads": 68,
+    "workloads": 0,
     "locus_collector_revision": "be04ef6ff8600a5fa1328b02dbeb7384967f050d",
-    "retained_historical_workloads": 58,
+    "retained_historical_workloads": 126,
     "feature_collector_revision": "be04ef6ff8600a5fa1328b02dbeb7384967f050d",
     "feature_workloads": 10
   },

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "dependencies": {
-    "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
+    "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
     "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29"
   },
   "units": "milliseconds",
@@ -9,10 +9,10 @@
   "scope": "Explicit workload/configuration timings, not optimization or application qualification. CPU reference implementations are not necessarily optimized CPU alternatives.",
   "coverage": {
     "catalog_entries": 137,
-    "cpu_measured": 30,
-    "gpu_measured": 30,
-    "both_measured": 30,
-    "pending": 107
+    "cpu_measured": 0,
+    "gpu_measured": 0,
+    "both_measured": 0,
+    "pending": 137
   },
   "operations": [
     {
@@ -173,141 +173,141 @@
       "operation": "depth.bilateral",
       "variant": "portable-imported",
       "source_sha256": "1b80b30f3f1bc25631c5b28eeaebedb433d5fb700bd26897c7b04fdfea21c7fa",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "depth.register",
       "variant": "portable-imported",
       "source_sha256": "06be1af3110363bf7750899e61598dd854b1c5f08767edf6cc07ee6761cd471f",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "depth.resolve",
       "variant": "portable-imported",
       "source_sha256": "e5416309a1d2e09a5549e558a74f42baad0af9a96ad4721c46c467f300cf9ea4",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "depth.validity",
       "variant": "portable-imported",
       "source_sha256": "569a83fda342563c8cc13f3700cb576256b5bf8e58acbda89eba693889e80687",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "geometry.backproject",
       "variant": "portable-imported",
       "source_sha256": "ba94d1c5223318094a70cec22b1ab9e94c77b6b5d6d7244e1f4aafd16cee8b4c",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "geometry.coverage_heatmap",
       "variant": "portable-imported",
       "source_sha256": "b23581c8b5348522c3ee7ad05b2f9b97d954e7d9c5070fa80341fe52216d94d8",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "geometry.coverage_points",
       "variant": "portable-imported",
       "source_sha256": "5e8ea4892df9d48caae31b75885f49f6fd63b4170a75c2a411688a052149a30c",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "geometry.transform_points",
       "variant": "portable-imported",
       "source_sha256": "ba48103478ac9e0e41128ed4fd27e00dc76f36d01bc2e46d7a572437c5958986",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "image.crop_normalize",
       "variant": "portable-imported",
       "source_sha256": "f482685b96f5ebd8174a63dfb5bf0708fff023aeedce003b501ecb3f2c6a7842",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "image.nv12_to_rgb",
       "variant": "portable-port",
       "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "image.planar_yuv_to_rgb",
       "variant": "portable-imported",
       "source_sha256": "f4f3b5a5b8cd18a4119b3de8dd4cca626e1e0bfff8b872e0379701859fcc11e7",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "image.remap_bilinear",
       "variant": "portable-port",
       "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "image.resize_bilinear",
       "variant": "portable-port",
       "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "image.resize_nearest",
       "variant": "portable-imported",
       "source_sha256": "246172e2e086d949b154b314cca13674f3ac47a9ef7ebf4555c6ee2ea30ed19e",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "image.rgb_to_nv12",
       "variant": "portable-port",
       "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "image.undistort",
       "variant": "portable-imported",
       "source_sha256": "3e9092c7e8fc39c282771d963c3e44533ba1c7b1094f25ac25d5bb65a993c230",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "image.yuyv_remap_fused",
       "variant": "portable-port",
       "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "image.yuyv_to_rgb",
       "variant": "portable-port",
       "source_sha256": "7ca4286ab7bf5382d2ad434c046e8d78140e6accf9c4e50470281d06ea28b16d",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "perception.cosine_similarity",
       "variant": "portable-imported",
       "source_sha256": "e1a85aecae06d63ff2800adbcc9f0ef30bbd825071754167852c9462ea9b7975",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "perception.mask_postprocess",
       "variant": "portable-imported",
       "source_sha256": "5de5a3648d315cd126e40e181aa11ec2b3b479583be57f77605def4e5d772688",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "primitives.compact.compactPrepare",
@@ -369,15 +369,15 @@
       "operation": "quality.metrics",
       "variant": "portable-imported",
       "source_sha256": "fa9a4792497b728eead30c6c7bd80ba578d3e06f688513f5b33183861f2316bb",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "quality.reduce",
       "variant": "portable-imported",
       "source_sha256": "7c838379310ad3e0ffffa4729f84179d4aceb4f815e832ce71810d2970ef105b",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "slang_rgbd_slam.dense_ba.commitDensePoses",
@@ -810,57 +810,57 @@
       "operation": "spatial.voxel_insert",
       "variant": "portable-imported",
       "source_sha256": "04663010640a46c38cf97696c3bf52e370ac087dcdf4887f15936c053bbfce34",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "vkl.binary_match.finalizeMatch",
       "variant": "portable-port",
       "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "vkl.binary_match.initializeMatch",
       "variant": "portable-port",
       "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "vkl.binary_match.matchPairs",
       "variant": "portable-port",
       "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "vkl.binary_match.packBinary",
       "variant": "portable-port",
       "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "vkl.binary_match.reverseMinimum",
       "variant": "portable-port",
       "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "vkl.binary_match.rowMinimum",
       "variant": "portable-port",
       "source_sha256": "c4a9779325be87029438d31ab7108b723660612e049202b651932afc1366a757",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "vkl.brief.briefDescribe",
       "variant": "portable-port",
       "source_sha256": "60e627e96653eef9e02645fea25a6f83c63bbd371c2c71a1fa5a47befab356d2",
-      "status": "measured",
-      "reason": ""
+      "status": "stale",
+      "reason": "Dependency/source changed; rerun this workload."
     },
     {
       "operation": "vkl.depth_convert.depthConvert",
@@ -872,14 +872,14 @@
     {
       "operation": "vkl.depth_fusion.fuseDepth",
       "variant": "portable-port",
-      "source_sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "source_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
       "status": "pending",
       "reason": "No executable timing recipe recorded yet."
     },
     {
       "operation": "vkl.depth_fusion.temporalDepthFuse",
       "variant": "portable-port",
-      "source_sha256": "04c7948668fef9085473d56c13027adf4c292b66fbfdffad132a6e825cdfa089",
+      "source_sha256": "332145ad3e6e0e1d823f9cfb34ae91b805f6420da9c231be725526d4625c3127",
       "status": "pending",
       "reason": "No executable timing recipe recorded yet."
     },
@@ -921,14 +921,14 @@
     {
       "operation": "vkl.geometry.depthGeometry",
       "variant": "portable-port",
-      "source_sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+      "source_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
       "status": "pending",
       "reason": "No executable timing recipe recorded yet."
     },
     {
       "operation": "vkl.geometry.worldTransform",
       "variant": "portable-port",
-      "source_sha256": "ab386f5d406d2551256e3eaea6db98e8483f49fe655c9ed64505cec14ab530b2",
+      "source_sha256": "a85b87e91a3d884818fed69c3118e560a7734dff1e415c6be42ff592524f1eb9",
       "status": "pending",
       "reason": "No executable timing recipe recorded yet."
     },
@@ -18439,7 +18439,7 @@
       "uploaded_bytes_per_iteration": 306992,
       "readback_bytes_per_iteration": 269384,
       "correctness": "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -18754,7 +18754,7 @@
       "uploaded_bytes_per_iteration": 1106352,
       "readback_bytes_per_iteration": 37176,
       "correctness": "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -19067,7 +19067,7 @@
       "uploaded_bytes_per_iteration": 4136,
       "readback_bytes_per_iteration": 4136,
       "correctness": "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -19385,7 +19385,7 @@
       "uploaded_bytes_per_iteration": 319000,
       "readback_bytes_per_iteration": 265236,
       "correctness": "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -19699,7 +19699,7 @@
       "uploaded_bytes_per_iteration": 269372,
       "readback_bytes_per_iteration": 4136,
       "correctness": "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -20012,7 +20012,7 @@
       "uploaded_bytes_per_iteration": 267320,
       "readback_bytes_per_iteration": 2084,
       "correctness": "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -20330,7 +20330,7 @@
       "uploaded_bytes_per_iteration": 319000,
       "readback_bytes_per_iteration": 265236,
       "correctness": "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -20644,7 +20644,7 @@
       "uploaded_bytes_per_iteration": 269372,
       "readback_bytes_per_iteration": 4136,
       "correctness": "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -20957,7 +20957,7 @@
       "uploaded_bytes_per_iteration": 267320,
       "readback_bytes_per_iteration": 2084,
       "correctness": "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -21276,7 +21276,7 @@
       "uploaded_bytes_per_iteration": 22752,
       "readback_bytes_per_iteration": 10340,
       "correctness": "Exact independent CPU stage parity, including entire outputs/state and poisoned tails before and after isolated and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -21566,7 +21566,7 @@
       "uploaded_bytes_per_iteration": 592,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -21856,7 +21856,7 @@
       "uploaded_bytes_per_iteration": 592,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -22146,7 +22146,7 @@
       "uploaded_bytes_per_iteration": 592,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -22436,7 +22436,7 @@
       "uploaded_bytes_per_iteration": 592,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -22726,7 +22726,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -23016,7 +23016,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -23306,7 +23306,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -23596,7 +23596,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -23886,7 +23886,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -24176,7 +24176,7 @@
       "uploaded_bytes_per_iteration": 816,
       "readback_bytes_per_iteration": 240,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -24466,7 +24466,7 @@
       "uploaded_bytes_per_iteration": 132,
       "readback_bytes_per_iteration": 36,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -24756,7 +24756,7 @@
       "uploaded_bytes_per_iteration": 816,
       "readback_bytes_per_iteration": 240,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -25046,7 +25046,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -25336,7 +25336,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -25626,7 +25626,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -25916,7 +25916,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -26206,7 +26206,7 @@
       "uploaded_bytes_per_iteration": 208,
       "readback_bytes_per_iteration": 64,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -26496,7 +26496,7 @@
       "uploaded_bytes_per_iteration": 716,
       "readback_bytes_per_iteration": 236,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -26786,7 +26786,7 @@
       "uploaded_bytes_per_iteration": 148,
       "readback_bytes_per_iteration": 52,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -27076,7 +27076,7 @@
       "uploaded_bytes_per_iteration": 864,
       "readback_bytes_per_iteration": 288,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -27366,7 +27366,7 @@
       "uploaded_bytes_per_iteration": 288,
       "readback_bytes_per_iteration": 144,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -27656,7 +27656,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -27946,7 +27946,7 @@
       "uploaded_bytes_per_iteration": 1216,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -28236,7 +28236,7 @@
       "uploaded_bytes_per_iteration": 1216,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -28526,7 +28526,7 @@
       "uploaded_bytes_per_iteration": 1216,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -28816,7 +28816,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -29106,7 +29106,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -29396,7 +29396,7 @@
       "uploaded_bytes_per_iteration": 784,
       "readback_bytes_per_iteration": 208,
       "correctness": "Frozen scalar reference parity passed for all output/state values",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -29697,7 +29697,7 @@
       "uploaded_bytes_per_iteration": 140,
       "readback_bytes_per_iteration": 84,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -29998,7 +29998,7 @@
       "uploaded_bytes_per_iteration": 140,
       "readback_bytes_per_iteration": 56,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -30299,7 +30299,7 @@
       "uploaded_bytes_per_iteration": 144,
       "readback_bytes_per_iteration": 84,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -30600,7 +30600,7 @@
       "uploaded_bytes_per_iteration": 484,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -30901,7 +30901,7 @@
       "uploaded_bytes_per_iteration": 204,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -31202,7 +31202,7 @@
       "uploaded_bytes_per_iteration": 460,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -31503,7 +31503,7 @@
       "uploaded_bytes_per_iteration": 140,
       "readback_bytes_per_iteration": 84,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -31804,7 +31804,7 @@
       "uploaded_bytes_per_iteration": 140,
       "readback_bytes_per_iteration": 56,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -32105,7 +32105,7 @@
       "uploaded_bytes_per_iteration": 144,
       "readback_bytes_per_iteration": 84,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -32406,7 +32406,7 @@
       "uploaded_bytes_per_iteration": 484,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -32707,7 +32707,7 @@
       "uploaded_bytes_per_iteration": 204,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -33008,7 +33008,7 @@
       "uploaded_bytes_per_iteration": 460,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -33309,7 +33309,7 @@
       "uploaded_bytes_per_iteration": 140,
       "readback_bytes_per_iteration": 84,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -33610,7 +33610,7 @@
       "uploaded_bytes_per_iteration": 140,
       "readback_bytes_per_iteration": 56,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -33911,7 +33911,7 @@
       "uploaded_bytes_per_iteration": 144,
       "readback_bytes_per_iteration": 84,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -34212,7 +34212,7 @@
       "uploaded_bytes_per_iteration": 484,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -34513,7 +34513,7 @@
       "uploaded_bytes_per_iteration": 204,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -34814,7 +34814,7 @@
       "uploaded_bytes_per_iteration": 460,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -35115,7 +35115,7 @@
       "uploaded_bytes_per_iteration": 140,
       "readback_bytes_per_iteration": 84,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -35416,7 +35416,7 @@
       "uploaded_bytes_per_iteration": 140,
       "readback_bytes_per_iteration": 56,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -35717,7 +35717,7 @@
       "uploaded_bytes_per_iteration": 144,
       "readback_bytes_per_iteration": 84,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -36018,7 +36018,7 @@
       "uploaded_bytes_per_iteration": 484,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -36319,7 +36319,7 @@
       "uploaded_bytes_per_iteration": 204,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -36620,7 +36620,7 @@
       "uploaded_bytes_per_iteration": 460,
       "readback_bytes_per_iteration": 120,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -36921,7 +36921,7 @@
       "uploaded_bytes_per_iteration": 1386000,
       "readback_bytes_per_iteration": 923040,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -37222,7 +37222,7 @@
       "uploaded_bytes_per_iteration": 1386000,
       "readback_bytes_per_iteration": 462960,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -37523,7 +37523,7 @@
       "uploaded_bytes_per_iteration": 1538880,
       "readback_bytes_per_iteration": 923040,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -37824,7 +37824,7 @@
       "uploaded_bytes_per_iteration": 956976,
       "readback_bytes_per_iteration": 9360,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -38125,7 +38125,7 @@
       "uploaded_bytes_per_iteration": 932400,
       "readback_bytes_per_iteration": 9360,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     },
     {
       "shader_tree_sha256": "88e186862462663fe67ff3e08577d986bcc952ddfe6a75d2c601a4d0daaf5e6c",
@@ -38426,10 +38426,10 @@
       "uploaded_bytes_per_iteration": 649776,
       "readback_bytes_per_iteration": 9360,
       "correctness": "All output bytes within independent float64 oracle 1-LSB contract; every padding byte exact before/after kernel and transfer samples",
-      "current_source": true
+      "current_source": false
     }
   ],
-  "library_version": "0.1.10",
+  "library_version": "0.2.0",
   "additional_pending_targets": [
     {
       "operation": "vrdx.upsweep",
