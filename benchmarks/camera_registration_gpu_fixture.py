@@ -4,6 +4,8 @@
 No device is created here. Allocation metadata is captured at allocation time;
 readback and submission are explicit test boundaries, never recorder behavior.
 """
+import sys
+
 import numpy as np
 
 from sintergpu.camera_registration import (camera_rectify_grid_plan, camera_rectify_from_grid_plan,
@@ -67,6 +69,8 @@ def fixture_graph(payload, *, max_workgroups_x):
 
 class FixtureResources:
     def __init__(self, device, graph, inputs, *, enabled_features, padding=13):
+        if sys.byteorder != 'little':
+            raise RuntimeError('camera diagnostic int64 readback requires little-endian host')
         import slangpy as spy
         self.graph = graph; self.buffers = {}; self.initial = {}; descriptors = {}
         usage = spy.BufferUsage.shader_resource | spy.BufferUsage.unordered_access

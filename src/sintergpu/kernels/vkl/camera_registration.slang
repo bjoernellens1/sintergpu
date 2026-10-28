@@ -20,7 +20,9 @@ RWStructuredBuffer<float> sourceUVOut, targetRayOut, displacementOut, imageOut, 
 RWStructuredBuffer<float> projectedZOut, depthOut;
 RWStructuredBuffer<uint> validOut, sourceValidOut, destinationIndexOut;
 RWStructuredBuffer<uint> minDepthBits, winnerIndex, collisionCount;
-RWStructuredBuffer<int64_t> winnerSourceIndexOut, collisionCountOut;
+// Each int64 host diagnostic is stored as low/high uint32 words. Host readback
+// requires little-endian two's-complement int64 and an 8-byte buffer stride.
+RWStructuredBuffer<uint2> winnerSourceIndexOut, collisionCountOut;
 static const float EPS=1.1920928955078125e-7;
 float ratio(float a,float b) { return asfloat(sintergpuF32DivideBits(asuint(a),asuint(b))); }
 float mul(float a,float b) { return sintergpuF32MulNoContract(a,b); }
@@ -156,5 +158,6 @@ void finalizeRegistrationDebug(uint3 tid : SV_DispatchThreadID)
 {
     uint i=tid.x;if(i>=registrationParams.batches*registrationParams.targetHeight*registrationParams.targetWidth)return;
     float z=asfloat(minDepthBits[i]);bool ok=isfinite(z);depthOut[i]=ok?z:0.0;validOut[i]=uint(ok);
-    winnerSourceIndexOut[i]=ok?int64_t(winnerIndex[i]):int64_t(-1);collisionCountOut[i]=int64_t(collisionCount[i]);
+    winnerSourceIndexOut[i]=ok?uint2(winnerIndex[i],0u):uint2(0xffffffffu,0xffffffffu);
+    collisionCountOut[i]=uint2(collisionCount[i],0u);
 }

@@ -67,11 +67,9 @@ def device(canonical):
 
 
 def enabled_features(device, graph):
-    # SlangPy feature enumeration reports support, not logical-device enablement.
-    # The owner must supply a verifiable device-specific bridge before debug GPU
-    # dispatch can be qualified; do not infer enabled shaderInt64 from support.
+    # No feature is inferred from device support; unknown requirements fail closed.
     if graph['features']:
-        raise RuntimeError('shaderInt64 logical-device enablement evidence required')
+        raise RuntimeError('unverified logical-device features: ' + ', '.join(graph['features']))
     return ()
 
 
@@ -187,3 +185,66 @@ def test_fake_device_allocation_record_and_output_guards(monkeypatch):
     fixture.buffers[name].array[-1] = 73
     fixture.buffers['input_image'].array[0] += 1
     with pytest.raises(AssertionError, match='input changed'): fixture.outputs_and_guards(expected)
+
+
+def test_diagnostic_word_encoding_cpu_contract():
+    values = np.array([0, 1, 0xfffffffe, -1], dtype='<i8')
+    words = values.view('<u4').reshape(-1, 2)
+    np.testing.assert_array_equal(words, [[0,0], [1,0], [0xfffffffe,0], [0xffffffff,0xffffffff]])
+    assert values.dtype.itemsize == 8
+
+
+@optin
+def test_gpu_debug_diagnostics_match_exact_int64_words(device, canonical):
+    # These are actual shader stores: empty sentinels and positive collision counts.
+    for case_id in ('collisions-tie', 'collisions-empty', 'collisions-ulp'):
+        payload, donor = canonical[case_id]
+        graph, inputs = fixture_graph(payload, max_workgroups_x=65535)
+        fixture = FixtureResources(device, graph, inputs, enabled_features=enabled_features(device, graph))
+        execute(device, fixture, payload, donor)
+        state = fixture.read()
+        for key in ('winner_source_index', 'collision_count'):
+            assert donor[key].dtype == np.dtype('int64')
+            expected_words = donor[key].astype('<i8', copy=False).view('<u4').reshape(-1, 2)
+            actual_words = state[graph['outputs'][key]][:donor[key].size].view('<u4').reshape(-1, 2)
+            np.testing.assert_array_equal(actual_words, expected_words, err_msg=key)
+
+
+@optin
+def test_gpu_finalizer_writes_max_word_and_negative_sentinel(device, canonical):
+    # Isolated finalizer dispatch checks boundary encodings impractical to
+    # produce with billions of source points; no claim about scene parity.
+    payload = dict(canonical['collisions-tie'][0])
+    payload['kwargs'] = dict(payload['kwargs'], output_hw=(1, 2))
+    graph, inputs = fixture_graph(payload, max_workgroups_x=65535)
+    fixture = FixtureResources(device, graph, inputs, enabled_features=enabled_features(device, graph))
+    for name, live in {'min_depth_bits': [0x3f800000, 0x7f800000],
+                       'winner_index': [0xfffffffe, 5],
+                       'collision_count_scratch': [0xfffffffe, 0]}.items():
+        spec = graph['resources'][name]
+        data = np.full(spec['elements'] + 13, 73, dtype=np.uint32)
+        data[:spec['elements']] = live
+        fixture.buffers[name].copy_from_numpy(data)
+    kernel, threads, bindings, barrier = fixture.prepared._dispatches[-1]
+    encoder = device.create_command_encoder()
+    if barrier: encoder.global_barrier()
+    kernel.dispatch(thread_count=threads, vars=bindings, command_encoder=encoder)
+    device.submit_command_buffer(encoder.finish()); device.wait_for_idle()
+    state = fixture.read()
+    expected = {'winner_source_index': [0xfffffffe, -1], 'collision_count': [0xfffffffe, 0]}
+    for key, values in expected.items():
+        result = state[graph['outputs'][key]][:2]
+        assert result.dtype == np.dtype('int64')
+        np.testing.assert_array_equal(result, np.array(values, dtype=np.int64))
+        np.testing.assert_array_equal(result.view('<u4').reshape(-1, 2),
+            np.array(values, dtype='<i8').view('<u4').reshape(-1, 2))
+        np.testing.assert_array_equal(state[graph['outputs'][key]][2:], 73)
+
+
+def test_big_endian_host_is_rejected_before_device_allocation(monkeypatch):
+    import sys
+    monkeypatch.setattr(sys, 'byteorder', 'big')
+    payload = next(p for p in CASES if p['case_id'] == 'collisions-tie')
+    graph, inputs = fixture_graph(payload, max_workgroups_x=65535)
+    with pytest.raises(RuntimeError, match='little-endian'):
+        FixtureResources(object(), graph, inputs, enabled_features=())

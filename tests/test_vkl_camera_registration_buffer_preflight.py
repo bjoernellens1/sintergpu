@@ -57,7 +57,8 @@ def test_unsafe_shared_allocation_and_missing_features_rejected():
     descriptions[other] = replace(descriptions[other], allocation=descriptions[a].allocation)
     with pytest.raises(ValueError, match='alias'): prepare(g, d, b, descriptions)
     g, d, b, descriptions = setup()
-    with pytest.raises(ValueError, match='shaderInt64'): prepare(g, d, b, descriptions, ())
+    g['features'] = ['test_required_feature']
+    with pytest.raises(ValueError, match='test_required_feature'): prepare(g, d, b, descriptions, ())
     assert not d.created
 
 

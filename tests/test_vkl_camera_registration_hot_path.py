@@ -24,7 +24,9 @@ def test_source_guards():
     for name in ENTRIES:
         assert re.search(r'void\s+' + name + r'\s*\(', source)
     assert 'InterlockedMin' in source and 'InterlockedAdd' in source
-    assert 'RWStructuredBuffer<int64_t>' in source
+    assert 'RWStructuredBuffer<uint2> winnerSourceIndexOut, collisionCountOut' in source
+    assert 'uint2(winnerIndex[i],0u)' in source and 'uint2(0xffffffffu,0xffffffffu)' in source
+    assert 'uint2(collisionCount[i],0u)' in source
     assert 'NoContraction' in source
     assert not any(x in source for x in ('cuda', 'to_numpy', 'submit', 'wait'))
 
@@ -57,4 +59,10 @@ def test_reflection_matches_plans_and_int64_capabilities(compiler, tmp_path):
         param = next(v for v in data['parameters'] if v['name'] == stage['params_binding'])
         assert {x['name'] for x in param['type']['elementType']['fields']} == set(stage['params'])
         asm = subprocess.run([disassembler, str(spv)], text=True, capture_output=True, check=True).stdout
-        assert ('OpCapability Int64' in asm) == (name == 'finalizeRegistrationDebug')
+        assert 'OpCapability Int64' not in asm
+        if name == 'finalizeRegistrationDebug':
+            assert 'ArrayStride 8' in asm
+            for binding in ('winnerSourceIndexOut', 'collisionCountOut'):
+                typ = next(v for v in data['parameters'] if v['name'] == binding)['type']['resultType']
+                assert typ['kind'] == 'vector' and typ['elementCount'] == 2
+                assert typ['elementType']['scalarType'] == 'uint32'

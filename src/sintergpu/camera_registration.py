@@ -269,4 +269,6 @@ def depth_register_plan(batches, depth_height, depth_width, target_height, targe
     profile = _profile('depth_register', (b, h, w, th, tw), depth_distortion=depth_distortion,
                        rgb_distortion=rgb_distortion, cached_rays=cached_rays, min_depth=minimum,
                        max_depth=maximum, debug=debug)
-    return g.finish(out, profile, ('shaderInt64',) if debug else ())
+    if debug:
+        profile['diagnostic_storage'] = 'little-endian int64 represented as uint32 low/high words; 8-byte stride; -1 uses all-one words'
+    return g.finish(out, profile)

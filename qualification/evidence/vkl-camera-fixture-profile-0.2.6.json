@@ -12,7 +12,7 @@
   "historical_scope": "Initial preserved export omitted executed package initializer and data/VERSION from source closure; no observed numerical output corruption. Not used for GPU qualification.",
   "recording_benchmark": "qualification/evidence/vkl-camera-recording-fake-0.2.6.json",
   "recording_scope": "CPU fake-encoder recording only; no GPU speedup or no-regression claim.",
-  "gpu_debug_scope": "Debug and reuse cases blocked pending authoritative logical-device shaderInt64 enablement evidence.",
+  "gpu_debug_scope": "Portable two-word debug encoding now compiles without shaderInt64 on both pinned compilers. Debug cases and reuse have not yet been executed on GPU.",
   "non_debug_gpu_fixture_parity": {
     "status": "passed",
     "source_commit": "cb404183fe38a291d6c5c34087650a615df27348",

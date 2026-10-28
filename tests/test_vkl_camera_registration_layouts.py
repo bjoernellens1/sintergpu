@@ -40,7 +40,7 @@ def test_rays_and_registration_output_layouts_and_order():
         assert resource['shape'] == (2, 1, 5, 6)
     assert plan['resources']['source_uv']['shape'] == (2, 12, 2)
     assert plan['resources']['projected_z']['shape'] == (2, 12)
-    assert 'shaderInt64' in plan['features']
+    assert plan['features'] == []
     stages = {s['entrypoint']: s for s in plan['stages']}
     assert {'min_depth_bits', 'winner_index', 'collision_count_scratch'} <= set(stages['clearRegistration']['barriers'])
     assert {'depth_rays'} <= set(stages['projectRegistration']['barriers'])

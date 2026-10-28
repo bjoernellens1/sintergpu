@@ -64,12 +64,13 @@ def test_record_two_invocations_prepared_bindings_and_declared_order():
 
 def test_setup_rejects_incomplete_inputs_and_missing_required_features():
     graph = depth_register_plan(1,3,4,5,6,max_workgroups_x=10,debug=True)
-    with pytest.raises(ValueError, match='shaderInt64'):
+    graph['features'] = ['test_required_feature']
+    with pytest.raises(ValueError, match='test_required_feature'):
         make(graph)
     with pytest.raises(ValueError, match='resource'):
-        PreparedCameraGraph(FakeDevice(), graph, {}, descriptors={}, enabled_features=('shaderInt64',))
+        PreparedCameraGraph(FakeDevice(), graph, {}, descriptors={}, enabled_features=('test_required_feature',))
     with pytest.raises(ValueError, match='device'):
-        PreparedCameraGraph(None, graph, {}, descriptors={}, enabled_features=('shaderInt64',))
+        PreparedCameraGraph(None, graph, {}, descriptors={}, enabled_features=('test_required_feature',))
 
 
 def assert_record_safe(source):
