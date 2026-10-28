@@ -34,8 +34,9 @@ def test_sdist_contains_tracked_and_new_source_types(tmp_path, monkeypatch):
     temp.mkdir()
     import os
     env = dict(os.environ, TMPDIR=str(temp))
-    subprocess.run([sys.executable, '-m', 'build', '--sdist', '--no-isolation', '--outdir', str(output)],
-                   cwd=tree, env=env, check=True, capture_output=True, text=True)
+    build = subprocess.run([sys.executable, '-m', 'build', '--sdist', '--no-isolation', '--outdir', str(output)],
+                           cwd=tree, env=env, capture_output=True, text=True)
+    assert build.returncode == 0, build.stdout + build.stderr
     archives = list(output.glob('*.tar.gz'))
     assert len(archives) == 1
     spec = importlib.util.spec_from_file_location('sinter_release_sdist_test', tree / 'tools/release.py')
