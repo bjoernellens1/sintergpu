@@ -1,0 +1,8 @@
+vkl-reprojection 180 paired rows: PASS; 50 samples per metric finite positive; sha256 a577d1f6b7889f8673e64052816cfebd49e7a151da442826c4ac7a97fb710e4b
+locus 28 paired rows: PASS; 50 samples per metric finite positive; sha256 e91390c3d8af63ee345c890d277084cfbfa9619a129cdbca74248b5f0d473e27
+color 30 paired rows: PASS; 50 samples per metric finite positive; sha256 b59798f7160b3cd9cca8db0b966b8ce0f1b6c7a3c705faeb96c1016a6db9c842
+vkl-features 10 paired rows: PASS; 50 samples per metric finite positive; sha256 f503432307fed454dc59631e98d9fc7268ac969f1982c5c83cca2338facc0e7e
+vkl 38 paired rows: PASS; 50 samples per metric finite positive; sha256 2123bdf1934c478b20dec416278b56ad6d23573002ced464770b61e774f57014
+primitives 73 paired rows: PASS; 50 samples per metric finite positive; sha256 dfedc7498f4d1d0feab15b437ffe8820b04c9e0991d56a7bb6750777a2eff5c7
+xsplat 17 paired rows: PASS; 50 samples per metric finite positive; sha256 a4bd008fcc8f02b664ac0c68bbcd8a99f97dfe674cdad6eb56705a4369c571ba
+Logs: no failure/new GPU skips. Source closure: 168 files unchanged. PID 222028/session 32875 terminal exit 0.

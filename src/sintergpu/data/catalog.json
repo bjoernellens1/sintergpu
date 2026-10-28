@@ -4795,6 +4795,321 @@
       "fixture": null
     },
     {
+      "id": "vkl.reprojection.clearRaster",
+      "path": "kernels/vkl/reprojection.slang",
+      "entrypoint": "clearRaster",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/reproject.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-reprojection-temporal-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+        "numerical_behavior": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.reprojection.finalizeRaster",
+      "path": "kernels/vkl/reprojection.slang",
+      "entrypoint": "finalizeRaster",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/reproject.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-reprojection-temporal-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+        "numerical_behavior": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.reprojection.finalizeReference",
+      "path": "kernels/vkl/reprojection.slang",
+      "entrypoint": "finalizeReference",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/temporal_reproject.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-reprojection-temporal-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+        "numerical_behavior": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.reprojection.packTemporal",
+      "path": "kernels/vkl/reprojection.slang",
+      "entrypoint": "packTemporal",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/temporal_reproject.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-reprojection-temporal-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+        "numerical_behavior": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.reprojection.projectPoints",
+      "path": "kernels/vkl/reprojection.slang",
+      "entrypoint": "projectPoints",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/reproject.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-reprojection-temporal-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+        "numerical_behavior": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.reprojection.rasterMin",
+      "path": "kernels/vkl/reprojection.slang",
+      "entrypoint": "rasterMin",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/reproject.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-reprojection-temporal-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+        "numerical_behavior": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.reprojection.rasterSupport",
+      "path": "kernels/vkl/reprojection.slang",
+      "entrypoint": "rasterSupport",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/reproject.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-reprojection-temporal-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+        "numerical_behavior": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.reprojection.reduceProjection",
+      "path": "kernels/vkl/reprojection.slang",
+      "entrypoint": "reduceProjection",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/reproject.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-reprojection-temporal-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+        "numerical_behavior": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
+      "id": "vkl.reprojection.sampleTemporal",
+      "path": "kernels/vkl/reprojection.slang",
+      "entrypoint": "sampleTemporal",
+      "workgroup": [
+        256,
+        1,
+        1
+      ],
+      "variant": "portable-port",
+      "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "source": {
+        "repository": "bjoernellens1/vkl",
+        "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+        "paths": [
+          "src/vkl/kernels/reference/temporal_reproject.py"
+        ],
+        "license": "Apache-2.0 (original owner authorization 2026-10-27)"
+      },
+      "contract": {
+        "profile": "vkl-reprojection-temporal-forward",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+        "numerical_behavior": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified."
+      },
+      "requirements": [
+        "Vulkan compute",
+        "reflected resource layout",
+        "caller-owned initialized state and validated extents"
+      ],
+      "qualification": {
+        "status": "experimental",
+        "records": []
+      },
+      "fixture": null
+    },
+    {
       "id": "vkl.temporal_best.temporalBest",
       "path": "kernels/vkl/temporal_best.slang",
       "entrypoint": "temporalBest",
@@ -4850,7 +5165,7 @@
       },
       "contract": {
         "profile": "xsplat-vk-source-compatible",
-        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/xsplat-contracts.md",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/xsplat-vk/docs/VALIDATION.md",
         "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
       },
       "requirements": [
@@ -4885,7 +5200,7 @@
       },
       "contract": {
         "profile": "xsplat-vk-source-compatible",
-        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/xsplat-contracts.md",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/xsplat-vk/docs/VALIDATION.md",
         "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
       },
       "requirements": [
@@ -4920,7 +5235,7 @@
       },
       "contract": {
         "profile": "xsplat-vk-source-compatible",
-        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/xsplat-contracts.md",
+        "documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/references/donors/xsplat-vk/docs/VALIDATION.md",
         "numerical_behavior": "Preserve imported source behavior; no cross-profile substitution."
       },
       "requirements": [

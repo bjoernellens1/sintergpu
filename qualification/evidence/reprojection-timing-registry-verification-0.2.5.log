@@ -1,0 +1,23 @@
+{
+  "historical_rows_semantically_unchanged_excluding_current_source": 910,
+  "current_rows": 752,
+  "total_rows": 1662,
+  "coverage": {
+    "catalog_entries": 146,
+    "cpu_measured": 63,
+    "gpu_measured": 63,
+    "both_measured": 63,
+    "pending": 83
+  },
+  "additional_native_pending": 4,
+  "source_matched_rows_per_device": 376,
+  "raw_metric_samples_per_array": 50,
+  "separate_pipeline_cpu_oracle_samples": 3,
+  "new_reports": 14,
+  "all_samples_finite_positive": true,
+  "raw_reports_original_semantics_preserved": true,
+  "registry_path": "src/sintergpu/data/timings.json",
+  "registry_sha256": "56770a43676b72290c382e8fe31cf026efe3a18a89760f693680fd1d9d60689e",
+  "markdown_path": "docs/kernel-timings.md",
+  "markdown_sha256": "ec8ed6c3da1e7aa856c06989a55e5047527d5306b9d4b91dcc8680500a96cf68"
+}

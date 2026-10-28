@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.5 — 2026-10-28
+
+- Add experimental VKL reprojection and prior-only temporal RGB-D reference profiles, preserving collision support, diagnostic projections, normalized-coordinate sampling and every numerical output. Reuse released geometry and depth fusion with explicit caller-owned resources, independent references and source-bound validation. Existing dispatch contracts and defaults remain unchanged.
+- Validate all 63 retained cases / 113 states on Radeon 8060S and RTX 4070 Ti against the same frozen CPU reference profile; retain initial failed attempts, precision fixes and exact compiler/device identities. Record 752 paired fixture timing rows across both devices, covering 63 of 146 portable operations; 83 portable and four native targets remain pending. These measurements do not select an optimized default.
+
 ## 0.2.4 — 2026-10-28
 
 - Consolidate point-plane symbolic algebra behind shared vector/scalar generation adapters while retaining all five generated math modules byte-for-byte. Install reusable Slang residual/Jacobian functions with explicit preserved FMA schedules, actual import/instruction/layout checks, optional generation inputs and integration examples. Existing dispatches and defaults remain unchanged; qualification is configuration-specific.

@@ -253,6 +253,12 @@ The VKL port retains radius gating, first-index ties, optional mutual ownership 
 
 **Required before deduplication:** All optional transforms/order, black with gamma<1, saturation,1x1 dimensions, per-batch/channel metadata, forward errors, Torch gradients and evidence results before any route replacement.
 
+## D4/T0 reuse follow-up
+
+The new experimental reprojection family reuses `vkl.geometry.depthGeometry` for camera XYZ/validity and `vkl.depth_fusion.temporalDepthFuse` for prior-depth clustering. Projection and temporal RGB warping share the same normalized-coordinate float32 sampling functions in `vkl/reprojection.slang`; no separate copies are maintained per public operation. This is shared implementation within a named profile, not another historical audit group.
+
+G10 still keeps Locus registration separate: half-pixel bounds, rounding, initialization and confidence/support contracts differ. G20 still keeps sensor evidence and optimization/Gaussian projections separate. Direct pixel rounding cannot replace D4's normalized roundtrip (width4 pixel0.5 becomes0.50000006), and this planar float sampler cannot replace quantized YUYV decode/remap. Prior-only reference depth, unmasked RGB/diagnostics and epsilon-close raster support are pinned by independent CPU and frozen-donor tests. Both standalone compiler ABIs pass and each target vendor passes63cases/113states against the canonical donor profile; isolated-stage fixture timings are recorded; controlled no-regression and replacement/default selection remain pending.
+
 ## Recommended order and rejected alternatives
 
 1. G18 is centralized through one maintained point-plane symbolic factory; both scalar and AoSoA exports and the independent CPU oracle remain. The other historical audit groups retain their stated qualification gates.

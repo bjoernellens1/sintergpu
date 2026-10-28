@@ -1,0 +1,902 @@
+{
+  "source_commit": "a3fa2e733cce9dd1a3b6536edbdd008fe9896adc",
+  "started_at": "2026-10-28T13:04:04.572977+00:00",
+  "scope": "Packaging behavior and CPU-only installation/link/compilation verification; provisional artifacts include timing database snapshot while final timing integration is in progress; final release prepare must rebuild exact tagged source. No GPU execution.",
+  "commands": [
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.venv/bin/python",
+        "-m",
+        "venv",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/wheel-venv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/wheel-venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/dist/sintergpu-0.2.5-py3-none-any.whl"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/wheel-venv/bin/sinter",
+        "list",
+        "--json"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/wheel-venv/bin/sinter",
+        "info",
+        "vkl.reprojection.projectPoints"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/wheel-venv/bin/sinter",
+        "validate"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/wheel-venv/bin/python",
+        "-c",
+        "import sintergpu; from sintergpu.catalog import validate_catalog; from importlib.resources import files; assert not validate_catalog(); assert files(\"sintergpu\").joinpath(\"kernels/vkl/reprojection.slang\").is_file(); print(sintergpu.__version__, sintergpu.__file__)"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/wheel-venv/bin/sinter",
+        "test",
+        "image.resize_nearest",
+        "--backend",
+        "reference"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.venv/bin/python",
+        "-m",
+        "venv",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/sdist-venv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/sdist-venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/dist/sintergpu-0.2.5.tar.gz"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/sdist-venv/bin/sinter",
+        "list",
+        "--json"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/sdist-venv/bin/sinter",
+        "info",
+        "vkl.reprojection.projectPoints"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/sdist-venv/bin/sinter",
+        "validate"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/sdist-venv/bin/python",
+        "-c",
+        "import sintergpu; from sintergpu.catalog import validate_catalog; from importlib.resources import files; assert not validate_catalog(); assert files(\"sintergpu\").joinpath(\"kernels/vkl/reprojection.slang\").is_file(); print(sintergpu.__version__, sintergpu.__file__)"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/sdist-venv/bin/sinter",
+        "test",
+        "image.resize_nearest",
+        "--backend",
+        "reference"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.cache/native-package-venv/bin/cmake",
+        "-S",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+        "-B",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/cmake",
+        "-DCMAKE_INSTALL_PREFIX=/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/prefix"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.cache/native-package-venv/bin/cmake",
+        "--install",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/cmake"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.cache/native-package-venv/bin/cmake",
+        "-S",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/examples/cmake",
+        "-B",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/consumer",
+        "-DCMAKE_PREFIX_PATH=/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.cache/native-package-venv/bin/cmake",
+        "--build",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/consumer"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.tools/slang-2026.12/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "clearRaster",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.12/clearRaster.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.tools/slang-2026.12/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "finalizeRaster",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.12/finalizeRaster.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.tools/slang-2026.12/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "finalizeReference",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.12/finalizeReference.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.tools/slang-2026.12/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "packTemporal",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.12/packTemporal.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.tools/slang-2026.12/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "projectPoints",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.12/projectPoints.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.tools/slang-2026.12/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "rasterMin",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.12/rasterMin.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.tools/slang-2026.12/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "rasterSupport",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.12/rasterSupport.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.tools/slang-2026.12/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "reduceProjection",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.12/reduceProjection.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.tools/slang-2026.12/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "sampleTemporal",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.12/sampleTemporal.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_native_packaging.py",
+        "-q"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.local/opt/slang-2026.19/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "clearRaster",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.19/clearRaster.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.local/opt/slang-2026.19/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "finalizeRaster",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.19/finalizeRaster.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.local/opt/slang-2026.19/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "finalizeReference",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.19/finalizeReference.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.local/opt/slang-2026.19/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "packTemporal",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.19/packTemporal.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.local/opt/slang-2026.19/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "projectPoints",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.19/projectPoints.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.local/opt/slang-2026.19/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "rasterMin",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.19/rasterMin.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.local/opt/slang-2026.19/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "rasterSupport",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.19/rasterSupport.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.local/opt/slang-2026.19/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "reduceProjection",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.19/reduceProjection.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.local/opt/slang-2026.19/bin/slangc",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/relocated/share/sintergpu/kernels/vkl/reprojection.slang",
+        "-target",
+        "spirv",
+        "-profile",
+        "spirv_1_5",
+        "-entry",
+        "sampleTemporal",
+        "-o",
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/installed-shader-2026.19/sampleTemporal.spv"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_native_packaging.py",
+        "-q"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu",
+      "returncode": 0
+    },
+    {
+      "args": [
+        "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5/wheel-venv/bin/python",
+        "-c",
+        "import sintergpu.reprojection; print(\"host planner imports without GPU extras\")"
+      ],
+      "cwd": "/home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/build/package-verification-0.2.5",
+      "returncode": 0
+    }
+  ],
+  "package_source_comparison": {
+    "wheel": {
+      "expected_concurrent_timing_integration_mismatch": [
+        "sintergpu/data/timings.json"
+      ],
+      "requires_final_release_rebuild": true
+    },
+    "sdist": {
+      "expected_concurrent_timing_integration_mismatch": [
+        "docs/kernel-timings.md",
+        "src/sintergpu/data/timings.json"
+      ],
+      "requires_final_release_rebuild": true
+    }
+  },
+  "artifacts": [
+    {
+      "file": "build/package-verification-0.2.5/dist/sintergpu-0.2.5-py3-none-any.whl",
+      "sha256": "5ac37b886082887aa7eacd28c4791268e898b3ae510096c1004f12f5af4f1844",
+      "bytes": 1192751
+    },
+    {
+      "file": "build/package-verification-0.2.5/dist/sintergpu-0.2.5.tar.gz",
+      "sha256": "4f61cda2885d98a87598fc4d5ad939aae38de0c462d2ada46060edd6f88f097c",
+      "bytes": 7558735
+    }
+  ],
+  "wheel_verified_new_files": [
+    "reprojection.py",
+    "references/reprojection_numeric.py",
+    "references/temporal_reprojection_numeric.py",
+    "references/reprojection_stage_numeric.py",
+    "kernels/vkl/reprojection.slang"
+  ],
+  "packaged_timings_sha256": "f776270f72ff0cda1028b68d8ab7b666d013093cc5de48c16e46a581a97da7c8",
+  "sdist_extra_evidence": {
+    "files": {
+      "qualification/evidence/vkl-reprojection-compile-2026.12-0.2.5.json.gz": "aa9cfd5113f66773afeee58beb60d95f512419c4fee7d70b5a3063e2e51ba8cd",
+      "qualification/evidence/vkl-reprojection-compile-2026.19-0.2.5.json.gz": "87dba69cad4856736b1532c92998296f6f68803bdc3ed44e4f5e0527eb3a62d7",
+      "qualification/evidence/vkl-reprojection-fixed-compile-2026.12-0.2.5.json.gz": "d60c30fef846dc69679b0e81a4c08b51c2f526991b76091b3eb8af847f24acf5",
+      "qualification/evidence/vkl-reprojection-fixed-compile-2026.19-0.2.5.json.gz": "aa424a548cb94e28e89c69df34d93499c5e661ef198fe344c5c54e962089e2c6",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/087d00f28eaee3781faed7bca20aa40d1394b0b765a897a7896c7c7983eb0111.npz": "35852f1b1f744adfd87f99fd59aeb1a107892efdfc6bcafa054bd0a296c830d5",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/0989c475186151b22a8b8f52b83b7c25ba7d7d241bfbdb0a670baaee39108e97.npz": "449125969ca90844c26fdd5be219a794bb89eba3c3c2e6179bbeee821cb02405",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/0b723bc923575e47bb4e111b3888cdf87f96452b95478f5ce37b325883bb3f46.npz": "46acbb1888daeec77974bbda478df78b209697e67d8b4717df6f3b44a6a70319",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/0bab9011aa5cf86411469f5d62411f13d8a764ebf407fcc6aa803cbdee5e0c49.npz": "2dfb0c93e09f58c0efa282a2ff70fb0308fd49c1c12a79893870ef1ed6317d77",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/0bcdd563f6452b41c743253f1343eea4ade7ff89a0f25c4e18b7ef7530dea8d1.npz": "19dc38a0ff1032490c5dffbf750297104c600a620c137ee3e746827174efdcd5",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/0f97faaa42412d90384fcd8f65ef8c1fab84ee2036305acd64ee7d24b518a00b.npz": "3435c91d5a1b6e4ca77dff32251ca6a9663ff48421f92e9ca0c245ad5f009b99",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/0ffa7b5cf9e5f631fc18f538adf8f8412b08e048b02dc8f5170f0c0123d31018.npz": "ebbc405cfd11825655d9aa6dc3efaf8cb8e0d626375f74a94490f42b387a0d60",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/1069634c72beef80c67b5f820dcb2b38ce5ecaef9ac22b7f645a4d71c58c34da.npz": "5263931371e02a4b30b2f4f5fec6ef6baa91eac50655c83167719503bcac5b17",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/10e44e9ff0aea8d15da3ad0a19c417d1365a6ae10a59ce3a34b23c8df9436ffe.npz": "e15458f456a75b16762258a5814184c1caec4daea196589444ce28e8d73aee90",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/1168ce70d60ba2d07bdfde2a471c910c9887a2b0aac57648bbf234d14a301158.npz": "603665b1cb22315e9856cf92c355300e4d12ad30127dec6b27ba81da1416c913",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/124d9c29986639cb03286cf2ab524196df2e2f795caf993b895a3d946abf0388.npz": "facc8222b9a55a307f753f090cfe0ddf7ba3125383d316b9bdcb19d6a22a31d3",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/1262e7c62c7b339e3a950acbea71da43a4bfac5795d82f6462061dd04503c7b4.npz": "b247204636f253a625ed19929fd28029989e9bd56f6d78237c6467218809519f",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/1305e722b565e0b82d7b2c52b172d9b069aa75a89cbd634d6debac4df8fc1d5b.npz": "7a87ddec0f4fcba211f09c693cd011fc101b4b230df706033a51861ea9a29154",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/13da31b9a52634c5d0a36399aaaf72e6f3ce705dca6ec8222b0176599f856669.npz": "b247204636f253a625ed19929fd28029989e9bd56f6d78237c6467218809519f",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/1406234490d47819f8840f56893bab3c5c8d546e439b2569930624dfbcfdd714.npz": "03b8007d9fd00fd940676c6e3a4c234b736f446c3244e33c8b54bb14f550a58b",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/149a5dfc56a0c5791c415cb276439ce1a3de25d84d9170ad9531738de0865e59.npz": "03b8007d9fd00fd940676c6e3a4c234b736f446c3244e33c8b54bb14f550a58b",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/181c7eb89732210b3e1e561393a1331f11f8a8a398b8c38ab8ecb418466e36cc.npz": "f8751a5d3b89826c1b9b2cbce1fb2b4321d019b0b90b41aec14def0345c4dba6",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/1d59a48391efffb44224ede6c04d4d5c8138d804c1a160c8d80ca112d89f1abf.npz": "72666fbd7965d7fab7129e13a93211b18243a037b0158248c77b9756208ef776",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/1ef96cd2f166be12ac188cf6a268704758153e591469e1869ad568512df0bdae.npz": "830198d999b8afb3acb31df5ce78a9e83185c01a9fb7514370b7810deb0d4e6f",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/21309d19943255b033f498311aede1d2477b4622c6bad1ce4f1e4a7172e8a49d.npz": "f04862376484699ddc8eed5685af3e984d8872c5df295686a6aa115787010059",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/22d4dc247d5b258de70bdf8c80ea6f25290c99f79bf252b91fb0bb68de368f7f.npz": "62f30664860f1b0e41f82c8c726b23680678755809233d33fb9396fb99ad5f41",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/243f64b203e38236c836e979ae9bd1efa890d5a3caaeb18b415ae726af043117.npz": "62f30664860f1b0e41f82c8c726b23680678755809233d33fb9396fb99ad5f41",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/24d1e0dab81bdcef563d253e512df58fcfd60cece051412fb055b0ff59af3734.npz": "9f7446a0d41dcea8060ce02e6de348fec062f47a444ecbe0105ccf422f6f8ca9",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/25c7ee28e5eccf2090d5c671b5f408276459ab89261175a99024172de269c92a.npz": "7457a36ab7231ca8465845b603cffb02b207878285ffe2247136eee6e1ffa0d1",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/274a7809d40a2b80693fa6a3761eafaef6fd5c071062720b9a7349be8e1380e8.npz": "7457a36ab7231ca8465845b603cffb02b207878285ffe2247136eee6e1ffa0d1",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/28b971624c6bb8a378d6f7e44ebe41aca451f6d44d2c4f5e076385db1eabe2c5.npz": "3435c91d5a1b6e4ca77dff32251ca6a9663ff48421f92e9ca0c245ad5f009b99",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/2d4d3eb51192ea6835816dd8994b5ab0730f19ee289dcc1c8eba1c7a7d594dde.npz": "3435c91d5a1b6e4ca77dff32251ca6a9663ff48421f92e9ca0c245ad5f009b99",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/30a1a2688049288786745a4ba3557919481b792c230c1a37115bea97289c8133.npz": "3cec22b80322c84a80a1e85139b5d245c62beedc9294eccb1f45360322e73e66",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/32a35031c9bf41f05ecae57adb8917441829fd5ed288d46ee97d881cf1f40066.npz": "a28de2d4113642d89f752203b545b412856c0901265b30822fce5f9c7daa5a4b",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/3903ef3de34db118f641ec1e4e6060473e40e852fe0c967b330dd95fbaad9fa1.npz": "d959dde551e43a4b670e938f58d176764b0c9910ef3f7d01a5a44419f2d1d380",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/3e8cbd3ddd42ed92a35d182a34c6977e7eeb595390e69ca6ac205e770c7e322a.npz": "7457a36ab7231ca8465845b603cffb02b207878285ffe2247136eee6e1ffa0d1",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/40bb7cf5bdc9654cc9ad4179c427d52471f030c6cccb7589a07e8799fdb5ea1d.npz": "6b99c99a158bd6f77cbb0515d83f698a842d2e6c3b2a2067c99dca7670a58070",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/47d9ebbc25d0739b1e0fe036761b475d84bc22bcece77dddc2d26d354ad47f2a.npz": "4df2c0dab57760cf36ed3f8befe4899f584f1aff3acc1610ec3b73b686936ad4",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/4857e42cf4e7b1851b308cc60967f3824a49693020b0c45745d500cb7647b2f3.npz": "b87e64461e174b9b6125f5ff137a97062014f5a847b25f39c90e934f380be526",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/4ded074ae350d84aebffcd02b48ae5276dc0bf4105113361348f3b5e1c845d4b.npz": "3435c91d5a1b6e4ca77dff32251ca6a9663ff48421f92e9ca0c245ad5f009b99",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/4df370d37a212bb4b9ab32bda986a096acd7054080faa0872e86d55b0f77d85a.npz": "3435c91d5a1b6e4ca77dff32251ca6a9663ff48421f92e9ca0c245ad5f009b99",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/52751e87b0692adad51b0eebfa65e5f90dafdc7cdeb1abd3f74c5b3fd10794a7.npz": "01002e79c1bec9e4d0ec0d6da9d7f0922ea637be94b9b3f277f840f5ce6d8214",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/52961104944f41ceedd1780d369a8865fbe0a7e3f144553b3eed73ab29c09adb.npz": "e15458f456a75b16762258a5814184c1caec4daea196589444ce28e8d73aee90",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/533b9c84cff739ca4092e987f4ebc4dff6b18bf91e23d348d1c373124fe3db4e.npz": "ee94452704004eced09cf9e51f17c172ad55c81cb0afbf2e6e0c8fc984a6d411",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/5357f5b900722767c391c1f1e0b431a2f87284b874324e7e5220f92e80871fca.npz": "dd442c9085bf834fa614a524da101707e64bc88379b5fd8e04c5aad18845a16d",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/54e79368ad500669efb9e205aad6d39db9c43a4ea7b783da1305b9d7510ac39d.npz": "47fe6d77e6f8c0a6e63bdc5f78d439d4aab185a9f08cd80366bf6e7c2d4a4617",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/56e900310eb82d666e34b0b934c3011587391cd13db567d9394ad121837f5aea.npz": "10e286b539c05fc04912764e96348e48753f227a81cca39d3e0b6c9b7e547697",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/5a7f7bff4169a8ac7c416c342c6ac789e712a467474ae55c5cf507642ab4dd5c.npz": "5823eac3270b2484420789a23884169459ec1001e1a0dc46975e2b3232dad895",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/602d42738aeeb64f2f54dd73c905207c5dd36c87b438b52f5ac804afb8bd3952.npz": "10e286b539c05fc04912764e96348e48753f227a81cca39d3e0b6c9b7e547697",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/6285e4ae4a91f4e5481821804d13607f262557cdb1332f9c7a6b639d33cf8f6f.npz": "a913f7f18a686d8e21a6d1e9c26f77d5309ea0131c98e8ec0f863196560350aa",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/6290b6156e31dbade2904b788541348730456ccaca1dfe7e4c319edfc6a09db5.npz": "19dc38a0ff1032490c5dffbf750297104c600a620c137ee3e746827174efdcd5",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/6693e3a017c1dcc562e65efbe5f4d1bbca6a07f335fe4449f6c241992ce142ec.npz": "fca25fde72f9129942126e2bc5469463494b3d231dd2c86ab8e7502baa0d4801",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/669d98dad45c45307d733d159adc3383687213a6c9ca8f609c59f17f540099ac.npz": "c2e06935ff1e07d3a5f120e9ac0928949ee801e093c6da79672efd18cfb1662a",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/6aa49cd419c4e2519d87187712fba67202c786aa65f3ec62c04da09b780e8e5e.npz": "dd442c9085bf834fa614a524da101707e64bc88379b5fd8e04c5aad18845a16d",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/6c897c6a5661e5c4238cd19907c0696314ce7429ec91b43281251acd6b8df1cb.npz": "578aa3d95b3271595b1a6629a17a21fc5ff4bf8a5f0c8a99ab27380f703409ce",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/6f258169526b52242245f8e387beaa8b9efe7d85e381891bfc94d42290172d0b.npz": "b0340162d923e7b6333a4a349444680d55976ea65c2d2672a1f1079ec0091e0b",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/7165e27c56ca53016555f93e051e553baa8e304a42e745ff22a1210dc5683305.npz": "46acbb1888daeec77974bbda478df78b209697e67d8b4717df6f3b44a6a70319",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/74c5928a30aee44c5913c9d27fac7d76ca8776bafd1203b85dbd2c5c5c833096.npz": "03b8007d9fd00fd940676c6e3a4c234b736f446c3244e33c8b54bb14f550a58b",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/75faf11e8e59ca5ac35fb4fc8dd74cda51e5e19bfc92d847c56619cfcec8e461.npz": "ebbc405cfd11825655d9aa6dc3efaf8cb8e0d626375f74a94490f42b387a0d60",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/76395c42f4912de9005a54ab5e8a58d41d013112753bc662135848001572a6f2.npz": "3eb01a94fcd2608c2ffeec04aa38c943d31b8a7cb4699b20f8d3fb50d3341b5a",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/76c4117a0693924b788754491425126a60e5c9440d510ac3ead57f10395916e9.npz": "ebbc405cfd11825655d9aa6dc3efaf8cb8e0d626375f74a94490f42b387a0d60",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/7970e01e8b9c26b4791a1782345a3fdfa92015334151b4f25be83672bd8b4294.npz": "7457a36ab7231ca8465845b603cffb02b207878285ffe2247136eee6e1ffa0d1",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/797ce235ece5873c03596d7359ea8a1a53cbb86ef140b67ae011cc6b3da36735.npz": "fca25fde72f9129942126e2bc5469463494b3d231dd2c86ab8e7502baa0d4801",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/7c61157bd9a23198bebdaf59207112fefd06cc28112b6743283b6d7e1d5a6dc7.npz": "cb998b54bf21c5119aed4ce939ef0ca4916fe0ff3855ad128ff53b66ef803f45",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/7cb077eec784d2cdd1b22334ab36baa5e1965bf0a0bfc4f72ae0573a133a80a4.npz": "15c9ef7a2cd0517b05eaeff6368f0a6d0c4ef742b703e5576125cc1a348db119",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/801237af147249cf2f105d116628608d9cfbbadfdedf4176e3e6b1c2ef031696.npz": "7b8138211b24dc7b4f1e6d36a9723fa34172b33038491399f6083560f1d8cfd6",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/828a5b25511b7588cd6b668cba2ded9f546ceda1e1650f132466dc53f157f9e9.npz": "3435c91d5a1b6e4ca77dff32251ca6a9663ff48421f92e9ca0c245ad5f009b99",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/841724ee1895eaa0042df3fbc6ce7899454a23a5071af8c2cf472a9454093ae6.npz": "3bc195dbd9b04458dac351395e1029b123b4d6b9c2c04a4d9415f8aa840d931b",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/843f6fd4d7ac20800173aba41c23f38c30389022bc24b54e9460eace2d1e2329.npz": "46acbb1888daeec77974bbda478df78b209697e67d8b4717df6f3b44a6a70319",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/8447512c65f61c6029e02e729a0162b90cd1ccc375538c0e218fdc76306473a6.npz": "1cbffccad3c2c817af6a7c4f937676761e5d8e707a9573fca6d157eb96d62a26",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/847241b0b28a94150122132660dfec85f1b0c79e2545999b09c8a5b78cb5c5b5.npz": "3435c91d5a1b6e4ca77dff32251ca6a9663ff48421f92e9ca0c245ad5f009b99",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/857b96a3cd6ceca80b83dadd24fa79aa3e07e180ef9a799d0a1c0484892f2cb2.npz": "fca25fde72f9129942126e2bc5469463494b3d231dd2c86ab8e7502baa0d4801",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/8759959ce2de06e85ef38010c0513b78df6dae224e1bfb3ef21fff8980d81f70.npz": "3cec22b80322c84a80a1e85139b5d245c62beedc9294eccb1f45360322e73e66",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/8994ada0e641f339ca4e86458a5b7ba2bbcf46a17d64eb78216461d463d4cb27.npz": "dd442c9085bf834fa614a524da101707e64bc88379b5fd8e04c5aad18845a16d",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/8cba461e62febecefdf9083785db1181e9b19d5a3f9780f6b540df565fc1dc36.npz": "c09afdefb7bbb50807ddf8cd2d650ba9485f7eb2dda1fb2cd32a452fa57e60d3",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/8f7c9c1fce28d9485917b8f44e1b3fb374a4349805507d3eb98f028982599a9a.npz": "773cf0e718b66147b881f46fb33f35052dc3351190778b13cdcbb4f2a24f1e49",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/91123e9a0523aa70deb1e9b52c00a58aad6d40282ccede98dd8f8737902212a4.npz": "2a6a004c14768b8a2ec17a1f8fc6b761b16b1ce306c1dca06cb293c767969aa5",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/93a89cf250229e803e8bb129ac49a543faa68a66ff3be41ef70152ef477c2059.npz": "e15458f456a75b16762258a5814184c1caec4daea196589444ce28e8d73aee90",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/973560d87992a21c71f0be1a3f48381f20a3bd67298c0f73cbbf61aadb4bb8b9.npz": "15900fcde65845868c9fe434828c3f0bfa85f4c03843e590571c98314603cad5",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/9e630cec6ff7250d95c3ed15bb8139252bf4811b46bf6670d81b068c7f86275b.npz": "2c20ff69be610a456837be555dc28c51f85f53197bdf504da68469678f713eaf",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/a0b646d5e70e3bccf84030b350b6ed014fd877ba0cf11ba7b7ce0ed0602642a2.npz": "603665b1cb22315e9856cf92c355300e4d12ad30127dec6b27ba81da1416c913",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/a3e5424b98fe95b31ae767cb19809851d2ae2a13a09f9c1bc551976ed3379b38.npz": "46acbb1888daeec77974bbda478df78b209697e67d8b4717df6f3b44a6a70319",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/a912dd7163235afcc310d2596e291f5fe1a438d0f0baf5ca14deb7be42e86c57.npz": "e15458f456a75b16762258a5814184c1caec4daea196589444ce28e8d73aee90",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/ab0c76f3c4c0fd7c8c7036b94ef7246eaefedd1f1a72e853869761cc997fda29.npz": "c09afdefb7bbb50807ddf8cd2d650ba9485f7eb2dda1fb2cd32a452fa57e60d3",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/ae46c3d183c804d10d52fb1aa4cf7434a9b4a04e50af94ed1ba0d14b2d8b1243.npz": "da4fdc83cdc839db179efffaeb50ba2c5337109e08b270cab76f4617b2043757",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/ae4c1d59089e5a7d12a9b5f8f6470c339f44d2a383f0f29923418f3550b29106.npz": "d344645674d1f9b2a666b0b76c663cb62b821ea78bfbf018268be8c28dea505b",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/b4e686908a5bde0a2d3be89c0b231b8da9b5e49a9c4a503b23aec819c3b34568.npz": "19dc38a0ff1032490c5dffbf750297104c600a620c137ee3e746827174efdcd5",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/bb0955dd5ba914b95b159ede25b6349480fe1bb0365ca14fdadc05d2ef04e4b9.npz": "d344645674d1f9b2a666b0b76c663cb62b821ea78bfbf018268be8c28dea505b",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/bcb6789f50fb73ba07cb5afcc30814ca1d9adc5d899c229a2529452d26ca76ad.npz": "72666fbd7965d7fab7129e13a93211b18243a037b0158248c77b9756208ef776",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/bfb9015b6aa78f7878902df40af915b931d75111404ddd2a806a7915f6cac683.npz": "97372f1e4bb774e5c18f578de368c1c870815adf95fb841cf30028db9e08565e",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/c0e90900404791f0f4fb9fd3e95169fd83c4777edabde1a91f9322a210dcb960.npz": "ebbc405cfd11825655d9aa6dc3efaf8cb8e0d626375f74a94490f42b387a0d60",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/c368af64bcc88750b60c4fce2d40d310034756d98faf0e06ed30f67b98b75cd4.npz": "dd442c9085bf834fa614a524da101707e64bc88379b5fd8e04c5aad18845a16d",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/c3bd5f080034cc5ea519f97a833fd4c46d35c0bef00b78a1ebafd58c577e1e28.npz": "2a12c96bfefdb3eabb1147092811bb275ab93e69d5444ba74709fcc4cc3b1cfe",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/c520893e90ad59cf07c896af8cff546284bc8fee8d7c8392bb76e676b0d12ed9.npz": "603665b1cb22315e9856cf92c355300e4d12ad30127dec6b27ba81da1416c913",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/c5bfad2bdf8da8574405377ae6127c43b15c164d64d5a5f4619575a6f2aa66a8.npz": "b886eade974b1e5f91653ed61536791776fb7412be3794641939fa11c9999be2",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/c5f075014509642ec8a48a748fe2ad7044bc1c6f6525db6a457670e893289abe.npz": "15c9ef7a2cd0517b05eaeff6368f0a6d0c4ef742b703e5576125cc1a348db119",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/c8be324198d1b41b8320089f3f47a25329b0bde2d22da7e6d8ec8ffd0e6f68cf.npz": "869c13fb6dca8222e2615e4a6abbd6421dd92998f90b1e594822582a6c4b07b4",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/c8e32e95f9f471c6119d83dea10acb549b65a30aed1b4909b77912d1f9fb5420.npz": "3435c91d5a1b6e4ca77dff32251ca6a9663ff48421f92e9ca0c245ad5f009b99",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/cd17bc7b4a251e60ed5f97b66e79a22f9c4c059be6bfa6f6fcbc76590bf53a64.npz": "15c9ef7a2cd0517b05eaeff6368f0a6d0c4ef742b703e5576125cc1a348db119",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/cd4e2d77f69c051d9445f6c02f5b351454df3b3d8682fdc20ff05bcdca571283.npz": "cef92056e316809de2559e77f220c46703e7e2ba51165f17d56fa343d3a5f614",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/d237b819918b41c61153805d89ccfba5bdea8d90183d3010cc694511233804ae.npz": "7b8138211b24dc7b4f1e6d36a9723fa34172b33038491399f6083560f1d8cfd6",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/d292714bfe6c53cb520a6472881f627815c3082db7bc8509b5afa5c6f8a51e98.npz": "511ba98d5fa84e5eccb36233170714840ad3f4eab424c7fb1ab21ca78aec5da5",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/d77d2f7cdd762d1d39c79f14a5b967badd55206a620816e56e20d9593543c2eb.npz": "ea840fb84afe8781772f4caaf37c1fc21c75e0becb9adc45324a717ae53a61bf",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/d8f851ab3997125b5a0f59d89677594cf1cd0616e2c3b1911689dcec29c1a1d2.npz": "b247204636f253a625ed19929fd28029989e9bd56f6d78237c6467218809519f",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/de483216fa63353354ada90c444b29e536641409774565a51d567f020c838602.npz": "03b8007d9fd00fd940676c6e3a4c234b736f446c3244e33c8b54bb14f550a58b",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/de866eea49d99ad7c70f2ec0c6efb86585aa5984a1d624c9446b9cf8896bdd7f.npz": "603665b1cb22315e9856cf92c355300e4d12ad30127dec6b27ba81da1416c913",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/df877b7ae37462eeb299268dd7629ebd282be281308949e3100a445758e8a286.npz": "3d2f24f5fb719fcd9672580f507d2dd1aae599edbb4c0020c3836f7dc5c92815",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/e2ff9bf0384e9942550ea5b02721cd5d7d34ea3973eed1df00812b0a6e33eb30.npz": "7457a36ab7231ca8465845b603cffb02b207878285ffe2247136eee6e1ffa0d1",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/e44a6b0cc4b57c4e94dcd1dffec336a899f5d767b5604367c26cd41b18c5844f.npz": "639e161fde7ab10235c5e60232cb56cc213a664665ac9c1117797fc3bba89369",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/e4e2762adc084e347a522891d5c2fed5aea178a5f784b590116456c9319fcae1.npz": "19dc38a0ff1032490c5dffbf750297104c600a620c137ee3e746827174efdcd5",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/e854d90dc12c79d0794100c82f4b04f085193a1465caf1413cfd105685561f0b.npz": "23b483f596265de85e10788f4c57a3183228e615982f28e9cceb7b467de0fc5c",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/e91de18bdd9f3a14cc0963c31ad34d722fd20519f9174c8108db5589a5d77193.npz": "15c9ef7a2cd0517b05eaeff6368f0a6d0c4ef742b703e5576125cc1a348db119",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/f024ee992fa1910065e8a1753bcbbd5bfde48d3e194d560e4d3bf5af20274372.npz": "2dddc9ef4cdb176d7906b4f6ae771a6f4c733b38467654de9394136ffe16dbb0",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/f5f0bec2db45c1881ffac0fce75775d82741554ce7d2b635708cfabda2c90629.npz": "b247204636f253a625ed19929fd28029989e9bd56f6d78237c6467218809519f",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/f7761dc6c718d385253755a06e3d1de6b0667540f6826618a25b485dee1569b9.npz": "98755f22433bcc1e8b5dc6a910d293a3e4997f62bc7079735b3634ee4e2417ea",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/f7b85e5f6df32268ce4812a377efbb5cdf604e9b878ba5752d5cb35452e80e28.npz": "3cec22b80322c84a80a1e85139b5d245c62beedc9294eccb1f45360322e73e66",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/fce5b11668a89d7ecfcea327a5803b219ec8d0bc1f320d29a813ecf1f89fa19e.npz": "fca25fde72f9129942126e2bc5469463494b3d231dd2c86ab8e7502baa0d4801",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/fe3a2cbf9c59c0589e1ff7ef6860e62a5457d97abda957c670d6ad5563f30193.npz": "3cec22b80322c84a80a1e85139b5d245c62beedc9294eccb1f45360322e73e66",
+      "qualification/evidence/vkl-reprojection-frozen-0.2.5/manifest.json": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+      "qualification/evidence/vkl-reprojection-torch-cpu-probe-0.2.5.py": "7a7dd246121394d3556358c0dd930d8827fe7f4bf9977f8da6a651259d8a25d2"
+    },
+    "npz_count": 113,
+    "gz_count": 4,
+    "python_probe_count": 1
+  },
+  "installed_shader_compilation": {
+    "2026.12": {
+      "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "shader_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "entries": [
+        {
+          "operation": "vkl.reprojection.clearRaster",
+          "spirv_sha256": "3b66b8db2ec63a2d3aca067411bdf5d1a36edfd9df7726c12ede3a8189229dca"
+        },
+        {
+          "operation": "vkl.reprojection.finalizeRaster",
+          "spirv_sha256": "3cf3e533de361f5ee7fafa6b7729b258c9763fc78e76ea5740d27c2617ea68e5"
+        },
+        {
+          "operation": "vkl.reprojection.finalizeReference",
+          "spirv_sha256": "b3aecbd3d072b5cc86d4a04ae17814b518311dbc6b0a084646d1fc2c25346d30"
+        },
+        {
+          "operation": "vkl.reprojection.packTemporal",
+          "spirv_sha256": "8da2c177c1bea3a8eced02bc75356b752d48148db458b98dfb4a6342ef38c6ff"
+        },
+        {
+          "operation": "vkl.reprojection.projectPoints",
+          "spirv_sha256": "665fa308c160bf8d89e9398bf0e8a3fa45e0e34712e8bbebe6c9a854239b0741"
+        },
+        {
+          "operation": "vkl.reprojection.rasterMin",
+          "spirv_sha256": "fda2936f3a39f0ac0db5b68312f345deda49241f6e97bc1088ca40c72fa55d15"
+        },
+        {
+          "operation": "vkl.reprojection.rasterSupport",
+          "spirv_sha256": "03ce21204d8b3cf6c104903186d62375e6d24a722f9be034c39eb7e059d3a63c"
+        },
+        {
+          "operation": "vkl.reprojection.reduceProjection",
+          "spirv_sha256": "471d95be622d817faef95347a07c75069bd255debb73d422e2c459222133cb9d"
+        },
+        {
+          "operation": "vkl.reprojection.sampleTemporal",
+          "spirv_sha256": "02e1a1a735b3473c2eaac84fcbd0077dc3a078535d41f9e1ca7004247a78f9ee"
+        }
+      ]
+    },
+    "2026.19": {
+      "compiler_sha256": "19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145",
+      "shader_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "entries": [
+        {
+          "operation": "vkl.reprojection.clearRaster",
+          "spirv_sha256": "3b66b8db2ec63a2d3aca067411bdf5d1a36edfd9df7726c12ede3a8189229dca"
+        },
+        {
+          "operation": "vkl.reprojection.finalizeRaster",
+          "spirv_sha256": "3cf3e533de361f5ee7fafa6b7729b258c9763fc78e76ea5740d27c2617ea68e5"
+        },
+        {
+          "operation": "vkl.reprojection.finalizeReference",
+          "spirv_sha256": "b3aecbd3d072b5cc86d4a04ae17814b518311dbc6b0a084646d1fc2c25346d30"
+        },
+        {
+          "operation": "vkl.reprojection.packTemporal",
+          "spirv_sha256": "8da2c177c1bea3a8eced02bc75356b752d48148db458b98dfb4a6342ef38c6ff"
+        },
+        {
+          "operation": "vkl.reprojection.projectPoints",
+          "spirv_sha256": "665fa308c160bf8d89e9398bf0e8a3fa45e0e34712e8bbebe6c9a854239b0741"
+        },
+        {
+          "operation": "vkl.reprojection.rasterMin",
+          "spirv_sha256": "fda2936f3a39f0ac0db5b68312f345deda49241f6e97bc1088ca40c72fa55d15"
+        },
+        {
+          "operation": "vkl.reprojection.rasterSupport",
+          "spirv_sha256": "03ce21204d8b3cf6c104903186d62375e6d24a722f9be034c39eb7e059d3a63c"
+        },
+        {
+          "operation": "vkl.reprojection.reduceProjection",
+          "spirv_sha256": "471d95be622d817faef95347a07c75069bd255debb73d422e2c459222133cb9d"
+        },
+        {
+          "operation": "vkl.reprojection.sampleTemporal",
+          "spirv_sha256": "02e1a1a735b3473c2eaac84fcbd0077dc3a078535d41f9e1ca7004247a78f9ee"
+        }
+      ]
+    }
+  },
+  "native_2026.12": {
+    "namespace.json": {
+      "build_kind": "namespace",
+      "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "volk_revision": "59d26900f53c7621a8ba8ab0e3f18d3bd883fa9a",
+      "consumer_modes": 4,
+      "scope": "Real archive compilation, relocated install, static linking and CPU-only link probe; no Vulkan initialization/GPU execution",
+      "library_version": "0.2.5",
+      "cmake_version": "cmake version 3.25.2",
+      "cxx_compiler": "c++ (GCC) 16.2.1 20260819 (Red Hat 16.2.1-2)",
+      "archive_sha256": "1d2bc5199c260a5779bd2c389ab40e6ff61fbc0d801227fd5d153db390dc2729",
+      "generated_shader_headers_sha256": {
+        "upsweep_slang.h": "5fb54f3df2c6bd51529e45dd4adff3b97352f4980bf672826cc8ca40ca667230",
+        "downsweep_key_value_slang.h": "5f7856d07c61b299464871f09ee411d9a43553471bacc248e199ab3df09c9001",
+        "downsweep_slang.h": "4749aa1946e06cabbab47e3158646e2356a8f852a31cdb0c204d0d0c9049ce77",
+        "spine_slang.h": "7cf8bbd9d202c59a4d1c2aec6933bfb914f7aa805ad902aba6490ffd5cb03c63"
+      },
+      "volk_files_sha256": {
+        "volk.c": "a7dd4404fa43f31602b9c657d9df0e9106ddf52e3df3e0d3d26d65bc267c5729",
+        "volk.h": "0cde6969d9447e6043c867c324251ad362e4bea56d45be11301c53b829f94b74"
+      },
+      "source_sha256": {
+        "VERSION": "e959f750e92dbb7614ae28ac96f0a37272caed81d8bbb758791af7bfbb6106a0",
+        "CMakeLists.txt": "a9741c01cdab7d1f0721eda294a874f10c0d1204fca900ef9f876d668cd50f2c",
+        "cmake/SinterGPURadix.cmake": "1fa0a84e190c706ca0b0bd887a510205f2831bbb342a5c069b6bc7751579199c",
+        "cmake/sintergpuConfig.cmake.in": "9af016c2b5bc9cf56164a88bd0d62e495867442d24980cfe2d0eec6d446b0c18",
+        "third_party/vrdx/src/vk_radix_sort.cc": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa",
+        "third_party/vrdx/include/vk_radix_sort.h": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+        "third_party/vrdx/src/shader/constants.slang": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+        "third_party/vrdx/src/shader/downsweep.slang": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+        "third_party/vrdx/src/shader/spine.slang": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+        "third_party/vrdx/src/shader/upsweep.slang": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be"
+      }
+    },
+    "plain.json": {
+      "build_kind": "plain",
+      "compiler_sha256": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "volk_revision": "59d26900f53c7621a8ba8ab0e3f18d3bd883fa9a",
+      "consumer_modes": 4,
+      "scope": "Real archive compilation, relocated install, static linking and CPU-only link probe; no Vulkan initialization/GPU execution",
+      "library_version": "0.2.5",
+      "cmake_version": "cmake version 3.25.2",
+      "cxx_compiler": "c++ (GCC) 16.2.1 20260819 (Red Hat 16.2.1-2)",
+      "archive_sha256": "fd9ad78c2e0ca7111aa03ed2dfeac28a4b4e8a93195026bdeb4a9bb434a5964d",
+      "generated_shader_headers_sha256": {
+        "upsweep_slang.h": "5fb54f3df2c6bd51529e45dd4adff3b97352f4980bf672826cc8ca40ca667230",
+        "downsweep_key_value_slang.h": "5f7856d07c61b299464871f09ee411d9a43553471bacc248e199ab3df09c9001",
+        "spine_slang.h": "7cf8bbd9d202c59a4d1c2aec6933bfb914f7aa805ad902aba6490ffd5cb03c63",
+        "downsweep_slang.h": "4749aa1946e06cabbab47e3158646e2356a8f852a31cdb0c204d0d0c9049ce77"
+      },
+      "volk_files_sha256": {
+        "volk.c": "a7dd4404fa43f31602b9c657d9df0e9106ddf52e3df3e0d3d26d65bc267c5729",
+        "volk.h": "0cde6969d9447e6043c867c324251ad362e4bea56d45be11301c53b829f94b74"
+      },
+      "source_sha256": {
+        "VERSION": "e959f750e92dbb7614ae28ac96f0a37272caed81d8bbb758791af7bfbb6106a0",
+        "CMakeLists.txt": "a9741c01cdab7d1f0721eda294a874f10c0d1204fca900ef9f876d668cd50f2c",
+        "cmake/SinterGPURadix.cmake": "1fa0a84e190c706ca0b0bd887a510205f2831bbb342a5c069b6bc7751579199c",
+        "cmake/sintergpuConfig.cmake.in": "9af016c2b5bc9cf56164a88bd0d62e495867442d24980cfe2d0eec6d446b0c18",
+        "third_party/vrdx/src/vk_radix_sort.cc": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa",
+        "third_party/vrdx/include/vk_radix_sort.h": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+        "third_party/vrdx/src/shader/constants.slang": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+        "third_party/vrdx/src/shader/downsweep.slang": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+        "third_party/vrdx/src/shader/spine.slang": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+        "third_party/vrdx/src/shader/upsweep.slang": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be"
+      }
+    }
+  },
+  "native_2026.19": {
+    "namespace.json": {
+      "build_kind": "namespace",
+      "compiler_sha256": "19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145",
+      "volk_revision": "59d26900f53c7621a8ba8ab0e3f18d3bd883fa9a",
+      "consumer_modes": 4,
+      "scope": "Real archive compilation, relocated install, static linking and CPU-only link probe; no Vulkan initialization/GPU execution",
+      "library_version": "0.2.5",
+      "cmake_version": "cmake version 3.25.2",
+      "cxx_compiler": "c++ (GCC) 16.2.1 20260819 (Red Hat 16.2.1-2)",
+      "archive_sha256": "b9bcad505ed1eee80618b9a4210864ae55422f4ea346e665882818dcc22627d7",
+      "generated_shader_headers_sha256": {
+        "upsweep_slang.h": "5fb54f3df2c6bd51529e45dd4adff3b97352f4980bf672826cc8ca40ca667230",
+        "downsweep_key_value_slang.h": "5f7856d07c61b299464871f09ee411d9a43553471bacc248e199ab3df09c9001",
+        "downsweep_slang.h": "4749aa1946e06cabbab47e3158646e2356a8f852a31cdb0c204d0d0c9049ce77",
+        "spine_slang.h": "7cf8bbd9d202c59a4d1c2aec6933bfb914f7aa805ad902aba6490ffd5cb03c63"
+      },
+      "volk_files_sha256": {
+        "volk.c": "a7dd4404fa43f31602b9c657d9df0e9106ddf52e3df3e0d3d26d65bc267c5729",
+        "volk.h": "0cde6969d9447e6043c867c324251ad362e4bea56d45be11301c53b829f94b74"
+      },
+      "source_sha256": {
+        "VERSION": "e959f750e92dbb7614ae28ac96f0a37272caed81d8bbb758791af7bfbb6106a0",
+        "CMakeLists.txt": "a9741c01cdab7d1f0721eda294a874f10c0d1204fca900ef9f876d668cd50f2c",
+        "cmake/SinterGPURadix.cmake": "1fa0a84e190c706ca0b0bd887a510205f2831bbb342a5c069b6bc7751579199c",
+        "cmake/sintergpuConfig.cmake.in": "9af016c2b5bc9cf56164a88bd0d62e495867442d24980cfe2d0eec6d446b0c18",
+        "third_party/vrdx/src/vk_radix_sort.cc": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa",
+        "third_party/vrdx/include/vk_radix_sort.h": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+        "third_party/vrdx/src/shader/constants.slang": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+        "third_party/vrdx/src/shader/downsweep.slang": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+        "third_party/vrdx/src/shader/spine.slang": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+        "third_party/vrdx/src/shader/upsweep.slang": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be"
+      }
+    },
+    "plain.json": {
+      "build_kind": "plain",
+      "compiler_sha256": "19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145",
+      "volk_revision": "59d26900f53c7621a8ba8ab0e3f18d3bd883fa9a",
+      "consumer_modes": 4,
+      "scope": "Real archive compilation, relocated install, static linking and CPU-only link probe; no Vulkan initialization/GPU execution",
+      "library_version": "0.2.5",
+      "cmake_version": "cmake version 3.25.2",
+      "cxx_compiler": "c++ (GCC) 16.2.1 20260819 (Red Hat 16.2.1-2)",
+      "archive_sha256": "b7dd3c342e7240fdeb35013d471a1992d44f93c82807a83125794721867e43a6",
+      "generated_shader_headers_sha256": {
+        "upsweep_slang.h": "5fb54f3df2c6bd51529e45dd4adff3b97352f4980bf672826cc8ca40ca667230",
+        "downsweep_key_value_slang.h": "5f7856d07c61b299464871f09ee411d9a43553471bacc248e199ab3df09c9001",
+        "downsweep_slang.h": "4749aa1946e06cabbab47e3158646e2356a8f852a31cdb0c204d0d0c9049ce77",
+        "spine_slang.h": "7cf8bbd9d202c59a4d1c2aec6933bfb914f7aa805ad902aba6490ffd5cb03c63"
+      },
+      "volk_files_sha256": {
+        "volk.c": "a7dd4404fa43f31602b9c657d9df0e9106ddf52e3df3e0d3d26d65bc267c5729",
+        "volk.h": "0cde6969d9447e6043c867c324251ad362e4bea56d45be11301c53b829f94b74"
+      },
+      "source_sha256": {
+        "VERSION": "e959f750e92dbb7614ae28ac96f0a37272caed81d8bbb758791af7bfbb6106a0",
+        "CMakeLists.txt": "a9741c01cdab7d1f0721eda294a874f10c0d1204fca900ef9f876d668cd50f2c",
+        "cmake/SinterGPURadix.cmake": "1fa0a84e190c706ca0b0bd887a510205f2831bbb342a5c069b6bc7751579199c",
+        "cmake/sintergpuConfig.cmake.in": "9af016c2b5bc9cf56164a88bd0d62e495867442d24980cfe2d0eec6d446b0c18",
+        "third_party/vrdx/src/vk_radix_sort.cc": "d6dd98e041e5cf1611faf893be4fa390f3f83d0a2ee7f6bea6a70a495736ccaa",
+        "third_party/vrdx/include/vk_radix_sort.h": "9905bf976fa5d8f904e96a325a700923463b854ed927eac62cdfdf7e7461b66f",
+        "third_party/vrdx/src/shader/constants.slang": "e56dd519db2135a1d01b19a034d57175e0f183becf61553268cff3b3abd7bfaa",
+        "third_party/vrdx/src/shader/downsweep.slang": "0b722424304f62ca25731336349891862b512d44a545043fce9e9993c34f6684",
+        "third_party/vrdx/src/shader/spine.slang": "b26de7feade1758d29abef0499b6dfcb8402d6e2f5cd4a0036a6089923a79e8a",
+        "third_party/vrdx/src/shader/upsweep.slang": "fa3fa4c656134a202520ae579d65537109d953a8fda811fb881ed461b94b43be"
+      }
+    }
+  },
+  "status": "packaging_behavior_passed_final_release_rebuild_required",
+  "finished_at": "2026-10-28T13:04:27.192717+00:00",
+  "timings_current_sha256": "56770a43676b72290c382e8fe31cf026efe3a18a89760f693680fd1d9d60689e",
+  "verification_log_sha256": "88ae90e000157b9471d9eb2e327884f102090c31d643f27a55672c0fb60ecb06",
+  "sdist_tracked_files_count": 925,
+  "sdist_missing_tracked_files": [],
+  "build_command": [
+    ".venv/bin/python",
+    "-m",
+    "build",
+    "--outdir",
+    "build/package-verification-0.2.5/dist"
+  ],
+  "build_script_sha256": "c906c8eaf4a34d9e6d6b29ba5f6910effd0b4446c5ff3cf2aa144ed78acd8ccf",
+  "build_log_sha256": "86ec48cfbd3e1aef2ba4d5911f00cbd94cc46e5e755d011bf5f456fc235a7591",
+  "combined_log_sha256": "9cb37c4cebae6400929f3d40fc4d799b7320d526291e1fe5336838821428188d",
+  "combined_log_path": "qualification/evidence/vkl-reprojection-packaging-0.2.5.log"
+}

@@ -1,0 +1,21 @@
+s...............................s..................................... [  7%]
+.......................s.s.sss.......ss..sssss..sssssssssssssssssss [ 14%]
+ssssssssssssss................sss....................................... [ 21%]
+..........................s............................................. [ 28%]
+.sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 36%]
+sssssssssssssssssssssssssss........................sssssssssssssssssssss [ 43%]
+..............................sssssssssssssssssssssssssss............... [ 50%]
+.................sssssssssssssss........................................ [ 58%]
+..........................................................ssssssssssssss [ 65%]
+sssssssssssssssssssssssssssssssssssssssssssssssss....................... [ 73%]
+........................................................................ [ 80%]
+........................................................................ [ 87%]
+...........ssssssssssssssss............................................. [ 95%]
+..........................................sss.                           [100%]
+=============================== warnings summary ===============================
+tests/test_vkl_reprojection_fixture_export.py::test_complete_synthetic_cpu_archive_round_trip
+  /home/bjoern/.codex/worktrees/kernel-consolidation/sintergpu/src/sintergpu/references/temporal_reprojection_numeric.py:58: RuntimeWarning: overflow encountered in divide
+    confidence *= np.exp(-projected['depth_consistency'] / _F(consistency_threshold))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+681 passed, 294 skipped, 1 warning, 151 subtests passed in 28.25s

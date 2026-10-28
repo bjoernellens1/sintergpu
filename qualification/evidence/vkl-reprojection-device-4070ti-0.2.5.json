@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "hostname": "cps-wkstn-nvidia4070",
+  "captured_at_utc": "2026-10-28T12:33:29.162825+00:00",
+  "api": "vulkan",
+  "adapter_name": "NVIDIA GeForce RTX 4070 Ti",
+  "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+  "driver": {
+    "name": "NVIDIA",
+    "info": "595.99.02",
+    "version": "595.99.2.0",
+    "uuid": "c9bf27cc-ad5e-57db-8930-96d25aad2e91"
+  },
+  "vendor_id": "0x10de",
+  "device_id": "0x2782",
+  "vulkan_api_version": "1.4.329",
+  "raw_vulkaninfo": "==========\nVULKANINFO\n==========\n\nVulkan Instance Version: 1.3.275\n\n\nInstance Extensions: count = 23\n-------------------------------\nVK_EXT_acquire_drm_display             : extension revision 1\nVK_EXT_acquire_xlib_display            : extension revision 1\nVK_EXT_debug_report                    : extension revision 10\nVK_EXT_debug_utils                     : extension revision 2\nVK_EXT_direct_mode_display             : extension revision 1\nVK_EXT_display_surface_counter         : extension revision 1\nVK_EXT_surface_maintenance1            : extension revision 1\nVK_EXT_swapchain_colorspace            : extension revision 5\nVK_KHR_device_group_creation           : extension revision 1\nVK_KHR_display                         : extension revision 23\nVK_KHR_external_fence_capabilities     : extension revision 1\nVK_KHR_external_memory_capabilities    : extension revision 1\nVK_KHR_external_semaphore_capabilities : extension revision 1\nVK_KHR_get_display_properties2         : extension revision 1\nVK_KHR_get_physical_device_properties2 : extension revision 2\nVK_KHR_get_surface_capabilities2       : extension revision 1\nVK_KHR_portability_enumeration         : extension revision 1\nVK_KHR_surface                         : extension revision 25\nVK_KHR_surface_protected_capabilities  : extension revision 1\nVK_KHR_wayland_surface                 : extension revision 6\nVK_KHR_xcb_surface                     : extension revision 6\nVK_KHR_xlib_surface                    : extension revision 6\nVK_LUNARG_direct_driver_loading        : extension revision 1\n\nInstance Layers: count = 5\n--------------------------\nVK_LAYER_INTEL_nullhw       INTEL NULL HW                1.1.73   version 1\nVK_LAYER_MESA_device_select Linux device selection layer 1.4.303  version 1\nVK_LAYER_MESA_overlay       Mesa Overlay layer           1.4.303  version 1\nVK_LAYER_NV_optimus         NVIDIA Optimus layer         1.4.329  version 1\nVK_LAYER_NV_present         NVIDIA Presentation Layer    1.4.329  version 1\n\nDevices:\n========\nGPU0:\n\tapiVersion         = 1.4.329\n\tdriverVersion      = 595.99.2.0\n\tvendorID           = 0x10de\n\tdeviceID           = 0x2782\n\tdeviceType         = PHYSICAL_DEVICE_TYPE_DISCRETE_GPU\n\tdeviceName         = NVIDIA GeForce RTX 4070 Ti\n\tdriverID           = DRIVER_ID_NVIDIA_PROPRIETARY\n\tdriverName         = NVIDIA\n\tdriverInfo         = 595.99.02\n\tconformanceVersion = 1.4.3.3\n\tdeviceUUID         = 96d2dba0-95fd-5c00-e849-2e0610f24e06\n\tdriverUUID         = c9bf27cc-ad5e-57db-8930-96d25aad2e91\n",
+  "raw_vulkaninfo_sha256": "720f313dcad1305a0941c3b2f2fe7babe38677fbf196612cf3a8fdae03a67a1e",
+  "collector": {
+    "binary_sha256": "f850851cd176c646851f42287902d5ee737849f275c1a64cb319b4985bdfbb4c",
+    "package": "vulkan-tools_1.3.275.0+dfsg1-1_amd64.deb",
+    "package_sha256": "994e429b5a4550b46c5bd9a938af1f60c4aa4890e08f661603b9518a8df824d1",
+    "source": "Ubuntu noble package extracted into owner scratch; no global installation"
+  },
+  "raw_stderr": "'DISPLAY' environment variable not set... skipping surface info\n"
+}

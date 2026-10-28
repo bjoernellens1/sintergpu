@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "scope": "CPU-only canonical donor export and complete independent archive reload; no GPU qualification",
+  "profile": "vkl-f32-torch-cpu-2.14.1-rocm7.2",
+  "source_checkpoint": "e4aab5a65ab4b89bbd230beaf3e4d04c91c9651d",
+  "manifest": "qualification/evidence/vkl-reprojection-frozen-0.2.5/manifest.json",
+  "manifest_sha256": "57610467745bd4d42980ff65677473d7ee71ef0e64cd120ccb11c58c5ce457b5",
+  "states": 113,
+  "cases": 63,
+  "files": 114,
+  "bytes": 8622225,
+  "runtime": {
+    "torch": "2.14.1+rocm7.2",
+    "numpy": "2.5.4",
+    "execution_device": "cpu",
+    "threads": {
+      "interop": 1,
+      "intraop": 1
+    }
+  }
+}

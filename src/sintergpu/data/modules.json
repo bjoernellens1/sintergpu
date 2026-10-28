@@ -259,6 +259,10 @@
     "path": "kernels/vkl/project_depth_evidence.slang",
     "sha256": "48419b4308fcafc4682a92233bcbf85618d7148f4c09763dff28387a88f8bc27"
   },
+  "vkl.reprojection": {
+    "path": "kernels/vkl/reprojection.slang",
+    "sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278"
+  },
   "vkl.temporal_best": {
     "path": "kernels/vkl/temporal_best.slang",
     "sha256": "20b0ebc40ee1d96c45bd4ea2a3fb281b46a614d6514571b36f003142d68b65fa"

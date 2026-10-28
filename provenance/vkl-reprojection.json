@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0 (original owner authorization 2026-10-27)",
+  "author": "Original owner numerical contracts; standalone SinterGPU implementation and independent NumPy oracles",
+  "operation_prefix": "vkl",
+  "qualification": "All146 entries compile/reflect under both standalone pins. Both Radeon8060S and RTX4070Ti pass63cases/113states against independent NumPy and the identical pinned frozen-donor CPU archive after confirmed source rounding/diagnostic fixes. Numerical profiles remain experimental: both-vendor isolated-stage and pipeline fixture baselines are recorded; full-domain/gradient and application adoption gates remain pending.",
+  "coverage": {
+    "stage": "both_vendor_compositional_fixture_parity_and_stage_timing",
+    "newly_forward_ported_modules": [
+      "reproject",
+      "temporal_reproject"
+    ],
+    "planned_modules": [
+      "reproject",
+      "temporal_reproject"
+    ],
+    "planned_entrypoints": 9,
+    "entrypoints": 9
+  },
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/reproject.py",
+      "destination": "src/sintergpu/references/reprojection_numeric.py",
+      "source_sha256": "9e40eed34717ffb14c81b79df9c7b3000f6c6e3102d4b809c19fabf66e36a94d",
+      "imported_sha256": "df56256f46d64803e35d9b5b043fcaade9f1b01d8da9b59a9ef7d98ab15da27b",
+      "dispatchable": false,
+      "changes": [
+        "Independent scalar NumPy numerical reference and compositional oracle; frozen Torch executable code remains unchanged",
+        "Explicit float32 normalized-coordinate rounding, full diagnostic outputs and prior-only temporal reference semantics"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal_reproject.py",
+      "destination": "src/sintergpu/references/temporal_reprojection_numeric.py",
+      "source_sha256": "19e38b1583f5225aab3ad098239dbedda655a891607d348d3ecbca051cdf8166",
+      "imported_sha256": "1f506285f60120d3dc5597c358b34a6dcae380df7c5c10d990885b85035c9fe6",
+      "dispatchable": false,
+      "changes": [
+        "Independent scalar NumPy numerical reference and compositional oracle; frozen Torch executable code remains unchanged",
+        "Explicit float32 normalized-coordinate rounding, full diagnostic outputs and prior-only temporal reference semantics"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/reproject.py",
+      "destination": "src/sintergpu/kernels/vkl/reprojection.slang",
+      "source_sha256": "9e40eed34717ffb14c81b79df9c7b3000f6c6e3102d4b809c19fabf66e36a94d",
+      "imported_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "changes": [
+        "Standalone staged float32 forward port; no changes to frozen donor references",
+        "Reuse released depthGeometry and temporalDepthFuse rather than duplicate their complete algorithms",
+        "Explicit device pair mapping and source-major packing without intermediate host transfers"
+      ],
+      "contract_limits": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified.",
+      "contract_profile": "vkl-reprojection-temporal-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+      "entry_points": [
+        "projectPoints",
+        "reduceProjection",
+        "clearRaster",
+        "rasterMin",
+        "rasterSupport",
+        "finalizeRaster"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/temporal_reproject.py",
+      "destination": "src/sintergpu/kernels/vkl/reprojection.slang",
+      "source_sha256": "19e38b1583f5225aab3ad098239dbedda655a891607d348d3ecbca051cdf8166",
+      "imported_sha256": "61c4a0b28444c25e91ed6f075dc165beab5e7ce4e4d26b1cc442689bee9f2278",
+      "changes": [
+        "Standalone staged float32 forward port; no changes to frozen donor references",
+        "Reuse released depthGeometry and temporalDepthFuse rather than duplicate their complete algorithms",
+        "Explicit device pair mapping and source-major packing without intermediate host transfers"
+      ],
+      "contract_limits": "Experimental float32 B/BN planar D4/T0 profile: unconditional raw projection diagnostics, raw positive-Z visibility, normalized float32 align-corners zero-padded ties-even nearest/bilinear sampling including singleton axes; minimum positive target-Z raster with every epsilon-close supporter and maximum confidence; bounded scalar32 masks/counts; prior-only source-major D9 composition; unmasked aligned RGB and retained fusion support/disagreement; caller owns all buffers, scratch resets, barriers, commands and synchronization. Gradients/full-domain/application/performance adoption remain unqualified.",
+      "contract_profile": "vkl-reprojection-temporal-forward",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-reprojection.md",
+      "entry_points": [
+        "sampleTemporal",
+        "packTemporal",
+        "finalizeReference"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/reproject.py",
+      "source_sha256": "9e40eed34717ffb14c81b79df9c7b3000f6c6e3102d4b809c19fabf66e36a94d",
+      "additional_source_paths": [
+        "src/vkl/kernels/reference/temporal_reproject.py"
+      ],
+      "destination": "src/sintergpu/references/reprojection_stage_numeric.py",
+      "imported_sha256": "de9258cc853e184e443876940674b47f5d8b1ba84bfd4ba5eac41c0fbaa7bf52",
+      "dispatchable": false,
+      "changes": [
+        "Independent NumPy computations for the nine new GPU dispatch boundaries, consuming prepared inputs and caller-preallocated output/inout arrays",
+        "Frozen donor implementations remain unchanged; CPU prefix construction and persistent state resets occur outside per-stage timing"
+      ]
+    }
+  ]
+}

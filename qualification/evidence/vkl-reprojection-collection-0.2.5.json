@@ -1,0 +1,399 @@
+{
+  "schema_version": 1,
+  "source_context_commit": "a3fa2e733cce9dd1a3b6536edbdd008fe9896adc",
+  "scope": "Postcollection association with the matching persisted Vulkan snapshot and whole-job collection context; not a field measured by this legacy collector. Source identity is from collection receipts and unchanged source hashes while the canonical GPU lock covered the job. This is a measurement-only fixture baseline under shared host load, not controlled speedup, default-selection, or application qualification evidence.",
+  "association_fields": [
+    "collection_device_snapshot",
+    "collection_context_source_commit",
+    "collection_context_note"
+  ],
+  "raw_originals_directory": "build/reprojection-timing-originals-0.2.5",
+  "originals_note": "Unmodified preassociation bytes retained in this ignored build directory; byte and semantic hashes below bind them. Tracked reports retain all original values and metrics; stripping only association_fields exactly recovers original semantic content.",
+  "collection_artifacts": [
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-after-0.2.5.sha256",
+      "sha256": "aba4a28de47782e9e38f5a6497e0c9016babbfba0537eb3809bbb0f11ef0d9af",
+      "bytes": 18873
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-before-0.2.5.sha256",
+      "sha256": "aba4a28de47782e9e38f5a6497e0c9016babbfba0537eb3809bbb0f11ef0d9af",
+      "bytes": 18873
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-color-0.2.5.log",
+      "sha256": "8aa121ee66e6ee81faaad24f7c7feaaa099e266cf721d6ce97feebcd302e36e9",
+      "bytes": 131
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-locus-0.2.5.log",
+      "sha256": "08a574f9ecf6946d79b5f8b70b6193d7ef16e21c1ca705d15e3a8ee37793e8b6",
+      "bytes": 131
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-primitives-0.2.5.log",
+      "sha256": "4675d134c478a44204e95198cf7bf28cf4201ee2cdde0be3c206d4f29aa08fa5",
+      "bytes": 519
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-receipt-0.2.5.log",
+      "sha256": "16b089144da90b59a207521dcd24596e04b97caa990089390f488ace4db74691",
+      "bytes": 7806
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-validation-0.2.5.log",
+      "sha256": "8449111755887ef9e8e6d3cd6528c00faa94e9d25b54c8f8e34ce552e3066a21",
+      "bytes": 1107
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-vkl-features-0.2.5.log",
+      "sha256": "1fe25429f6eacb5e7555d37873a0230a40cbf4d9482ec9e0f8cca3f6b4b39877",
+      "bytes": 138
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-vkl-reprojection-0.2.5.log",
+      "sha256": "d04e39893bc94693fc1eac1c7eb4a08287b2c7a122a542637db8922bd4959635",
+      "bytes": 1255
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-vkl-0.2.5.log",
+      "sha256": "d98017eddbd7ecabe1554e5ed83254b9a8b661bab18d27366d3228156499b306",
+      "bytes": 129
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-4070ti-xsplat-0.2.5.log",
+      "sha256": "48e2dcde0e661cb285a633474140282b974890219df8b657ad9462ba79547746",
+      "bytes": 132
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-color-0.2.5.log",
+      "sha256": "dc648911c072b127c05290fff83f6baea8b48783a454ff4bf931d330f0e9e7c8",
+      "bytes": 77
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-locus-0.2.5.log",
+      "sha256": "6203ed1de7bd9603543471cb63b5bffdf9262abc89b788c0a708ffbcdf503080",
+      "bytes": 77
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-primitives-0.2.5.log",
+      "sha256": "9d9b2a5bd07a19c60b76f59f4c56d6fa62f51adfbebb24017cf24bd22b0f060b",
+      "bytes": 439
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-receipt-0.2.5.json",
+      "sha256": "ee53466c8d8f92694a5ea396d7a09683c1e2c3c1c947f4ad6c2b208bc25db9a9",
+      "bytes": 1768435
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-vkl-features-0.2.5.log",
+      "sha256": "f674ac817e87ec4bab93a78742c283f98428a6fb77860bf1a91fd65ecd69fa4f",
+      "bytes": 84
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-vkl-reprojection-0.2.5.log",
+      "sha256": "d04e39893bc94693fc1eac1c7eb4a08287b2c7a122a542637db8922bd4959635",
+      "bytes": 1255
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-vkl-0.2.5.log",
+      "sha256": "1fdb87a4ab7d6fcb02a1a6a07c829aff550a01f64903f8cdf9465eeb119a4a0c",
+      "bytes": 75
+    },
+    {
+      "path": "qualification/evidence/reprojection-collect-8060s-20261028T125523Z-xsplat-0.2.5.log",
+      "sha256": "8c49db9e5725d0c51b8f3fba26582c7c2dcf0d6ffe6742a9da9c3d0473e84120",
+      "bytes": 78
+    },
+    {
+      "path": "qualification/evidence/reprojection-timing-registry-ingest-0.2.5.log",
+      "sha256": "a08b14c45c81d7bc9fce446a44ff0377e4298efa67ec46d41f20f396fc795f52",
+      "bytes": 101
+    },
+    {
+      "path": "qualification/evidence/reprojection-timing-registry-verification-0.2.5.log",
+      "sha256": "75e7d1763fa6decc19cae5c1355c903d435ff46373bd3cc456c857a0e6a689e2",
+      "bytes": 809
+    },
+    {
+      "path": "qualification/evidence/reprojection-timing-registry-tests-0.2.5.log",
+      "sha256": "917e935f43c8c9ebe60956f29629994cbf1e93bc7983b15c4c77a66f1694dddd",
+      "bytes": 113
+    }
+  ],
+  "reports": [
+    {
+      "path": "benchmarks/results/vkl-reprojection-cpu-gpu-8060s-0.2.5.json",
+      "original_bytes_sha256": "0e030b630c04dc40f5769021be8a0f1efe9f004edcd6b5ed254e2aa983286c6e",
+      "original_semantic_sha256": "7a635493733f8fb0946d241966afe2176ed027c5cef722d6bbe5090e7c0a7e9e",
+      "associated_bytes_sha256": "0e030b630c04dc40f5769021be8a0f1efe9f004edcd6b5ed254e2aa983286c6e",
+      "recovered_original_semantic_sha256": "7a635493733f8fb0946d241966afe2176ed027c5cef722d6bbe5090e7c0a7e9e",
+      "metrics_sha256": "81858b2b3924f2bc314e219b8cd9188a098e08683f0cb7fc341006dc1810305e",
+      "rows": 180,
+      "unique_operations": 9,
+      "association_added": false,
+      "collector_revision_values_preserved": [
+        "absent"
+      ],
+      "pipeline_records": 30
+    },
+    {
+      "path": "benchmarks/results/locus-cpu-gpu-8060s-0.2.5.json",
+      "original_bytes_sha256": "1f78d73d3d3ca84702d5fe73ff73b3db1f99c3401b280a1778a8d116f0f4f3c5",
+      "original_semantic_sha256": "5ea9a8e2b6f1df1de86e0242b552f6fa61f81bf08debe9fa870abca2e2a76b72",
+      "associated_bytes_sha256": "67b9cffff916e915db31e848cdfff387b8d74ce85d46ccc3930b343791555597",
+      "recovered_original_semantic_sha256": "5ea9a8e2b6f1df1de86e0242b552f6fa61f81bf08debe9fa870abca2e2a76b72",
+      "metrics_sha256": "365779301b8ac47b7b52eec7815d399815893f137e442c88813e4dfbf8ebfa1f",
+      "rows": 28,
+      "unique_operations": 17,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        "absent"
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/color-cpu-gpu-8060s-0.2.5.json",
+      "original_bytes_sha256": "04887e7e7eb947e7c2011ff9422e7227ae6b91abd3c0b6850cb0c4c500d5adce",
+      "original_semantic_sha256": "aab791d55d8f9c4b3782bacc805266c45352f4d6b4151967347f0876aba8515d",
+      "associated_bytes_sha256": "e8bd04b29460ddd60b60fe232da9ed50f0f45ba0f954e4042bbd9324624a2cff",
+      "recovered_original_semantic_sha256": "aab791d55d8f9c4b3782bacc805266c45352f4d6b4151967347f0876aba8515d",
+      "metrics_sha256": "3ade837c2aac705a11ceec48e2dffed7d8ed7507e2fce3864bedf7ab21c620f8",
+      "rows": 30,
+      "unique_operations": 6,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        "absent"
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.5.json",
+      "original_bytes_sha256": "ea2a75580ffa23e8b9d8481c514da45b410a0fd346e7578befcd0191a2837023",
+      "original_semantic_sha256": "c541db45a05fbc5fe431e314ed5a3d84121118c72a448768c0146015aafa7919",
+      "associated_bytes_sha256": "226bf6159114e0110087e1de473ebe94cf9600607d45661435865ef550ee2bef",
+      "recovered_original_semantic_sha256": "c541db45a05fbc5fe431e314ed5a3d84121118c72a448768c0146015aafa7919",
+      "metrics_sha256": "21581ab5298ff4d673c4536b4a87238e217d47913183c6240c5cb441cd65f2b0",
+      "rows": 10,
+      "unique_operations": 7,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        "absent"
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/vkl-cpu-gpu-8060s-0.2.5.json",
+      "original_bytes_sha256": "71b30d1145120dfea8b3d1a68ed9fa8e819ac96a7cf7717d0108ed04472bf651",
+      "original_semantic_sha256": "5af75da312600b11365ca35102cf8e86e8fb20fa8a1a2ded66c54ff34eef8ab1",
+      "associated_bytes_sha256": "b503736516a89c32c0f43dd720d8c97b59479e0ef555b4d90b440daed51e6f3b",
+      "recovered_original_semantic_sha256": "5af75da312600b11365ca35102cf8e86e8fb20fa8a1a2ded66c54ff34eef8ab1",
+      "metrics_sha256": "6314e535c025d8f7b34bde8caefdb46d41a52387219aff6b7268f6ba145ddb32",
+      "rows": 38,
+      "unique_operations": 13,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        "absent"
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/primitives-cpu-gpu-8060s-0.2.5.json",
+      "original_bytes_sha256": "5cfe236aa2a7c636c5ff1fe8b0b7152618b7baa98791b87573b619debcd4e126",
+      "original_semantic_sha256": "981df7a2fd7178b475ea088cfa7ca66c09061bff605bcbc4b379d0d07c185ec2",
+      "associated_bytes_sha256": "7ed4c00d9903593d7393045cb9a485de876ad5431ad076a290bf79e9c4ea6e77",
+      "recovered_original_semantic_sha256": "981df7a2fd7178b475ea088cfa7ca66c09061bff605bcbc4b379d0d07c185ec2",
+      "metrics_sha256": "e228a194e22479410be222fb6483595e76b16ff079872e2bb4bcbf99fd99ad60",
+      "rows": 73,
+      "unique_operations": 8,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        "a3fa2e733cce9dd1a3b6536edbdd008fe9896adc"
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/xsplat-cpu-gpu-8060s-0.2.5.json",
+      "original_bytes_sha256": "1ed965d8d720ffc76e8b42cf16b3792a621a02970e2051f5833dff8da56f924b",
+      "original_semantic_sha256": "3ac4ede7b5a2a67b925a331cae840bb6263e95cd11f6a50d8cb29c0c15c300b1",
+      "associated_bytes_sha256": "f54ffee2578904cff1afb7d9d9d12f51c5954c803b541cc9267afb629903e4f9",
+      "recovered_original_semantic_sha256": "3ac4ede7b5a2a67b925a331cae840bb6263e95cd11f6a50d8cb29c0c15c300b1",
+      "metrics_sha256": "ce8278f9a4d89125870300739c754b6f1039cbd37fc2d34fed52a4150bb10fde",
+      "rows": 17,
+      "unique_operations": 3,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        "a3fa2e733cce9dd1a3b6536edbdd008fe9896adc"
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/vkl-reprojection-cpu-gpu-4070ti-0.2.5.json",
+      "original_bytes_sha256": "a577d1f6b7889f8673e64052816cfebd49e7a151da442826c4ac7a97fb710e4b",
+      "original_semantic_sha256": "d5d668cb3163b2910b07d08c2ff2fe8b875926373673a4c79addf46f6b6a0b5d",
+      "associated_bytes_sha256": "a577d1f6b7889f8673e64052816cfebd49e7a151da442826c4ac7a97fb710e4b",
+      "recovered_original_semantic_sha256": "d5d668cb3163b2910b07d08c2ff2fe8b875926373673a4c79addf46f6b6a0b5d",
+      "metrics_sha256": "55f3b9cef1c464141ab0a95d282969506615089f68677b02ba1e96cf265ab4a4",
+      "rows": 180,
+      "unique_operations": 9,
+      "association_added": false,
+      "collector_revision_values_preserved": [
+        "absent"
+      ],
+      "pipeline_records": 30
+    },
+    {
+      "path": "benchmarks/results/locus-cpu-gpu-4070ti-0.2.5.json",
+      "original_bytes_sha256": "e91390c3d8af63ee345c890d277084cfbfa9619a129cdbca74248b5f0d473e27",
+      "original_semantic_sha256": "0200a207d667713ba68c13dcb26d43f586e51b88a7ac9d81bb288e63e71f1180",
+      "associated_bytes_sha256": "faa31f308054f447518627d83d95fec028083b04b978542f9ac3168e7333d3a7",
+      "recovered_original_semantic_sha256": "0200a207d667713ba68c13dcb26d43f586e51b88a7ac9d81bb288e63e71f1180",
+      "metrics_sha256": "17e33dfda6d77f631b67a76271d07aec088e11361b8531a6225fb93cf5c9918a",
+      "rows": 28,
+      "unique_operations": 17,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        "absent"
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/color-cpu-gpu-4070ti-0.2.5.json",
+      "original_bytes_sha256": "b59798f7160b3cd9cca8db0b966b8ce0f1b6c7a3c705faeb96c1016a6db9c842",
+      "original_semantic_sha256": "1b55aec97a5a20c1a9b2ef9e05dd16f1dc1e4e9d9f28ea93090cc603c715b3e3",
+      "associated_bytes_sha256": "0d85c8efa389988a1cf1e8ef54c2dfe5dc8f9ece30fd261cafb96b23afcc2874",
+      "recovered_original_semantic_sha256": "1b55aec97a5a20c1a9b2ef9e05dd16f1dc1e4e9d9f28ea93090cc603c715b3e3",
+      "metrics_sha256": "3e91b15b012b1d652a576549add12c2b86308491835f679994b751dcf14c80bd",
+      "rows": 30,
+      "unique_operations": 6,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        "absent"
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.5.json",
+      "original_bytes_sha256": "f503432307fed454dc59631e98d9fc7268ac969f1982c5c83cca2338facc0e7e",
+      "original_semantic_sha256": "604984c19a48113737481a54a3dc54e20af8bc23b9008efbfaf3db73754ce9a0",
+      "associated_bytes_sha256": "2855518264c7bd58b94982c4c7b0a4cca8e0eb2965348db828f05c617365fc70",
+      "recovered_original_semantic_sha256": "604984c19a48113737481a54a3dc54e20af8bc23b9008efbfaf3db73754ce9a0",
+      "metrics_sha256": "14b796f9d5fcb8d999ae9eb40df59b0d23ecf096080aa554b595d17de7439045",
+      "rows": 10,
+      "unique_operations": 7,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        "absent"
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.5.json",
+      "original_bytes_sha256": "2123bdf1934c478b20dec416278b56ad6d23573002ced464770b61e774f57014",
+      "original_semantic_sha256": "081724717db896e24a8a62f132cdaa4bdad52c2f376c95d0f2721d95ec4812e4",
+      "associated_bytes_sha256": "ea1cfb2a77c422fd76abdf421ffbbc49ecca5c0e1a260a3593bccabe60e5a0cc",
+      "recovered_original_semantic_sha256": "081724717db896e24a8a62f132cdaa4bdad52c2f376c95d0f2721d95ec4812e4",
+      "metrics_sha256": "566069eccf06a4957d00887cc10220106ee3eb2a6216c87f85adb73ac6cfe166",
+      "rows": 38,
+      "unique_operations": 13,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        "absent"
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.5.json",
+      "original_bytes_sha256": "dfedc7498f4d1d0feab15b437ffe8820b04c9e0991d56a7bb6750777a2eff5c7",
+      "original_semantic_sha256": "d8a2f42922ab02fcdb82cb65d8871b821444a15d7358b4ff9d763ec36a603b0d",
+      "associated_bytes_sha256": "e242f519f81dc7ef11e7bce0747e556c4c9553182e5966b3544aa9e93dab6742",
+      "recovered_original_semantic_sha256": "d8a2f42922ab02fcdb82cb65d8871b821444a15d7358b4ff9d763ec36a603b0d",
+      "metrics_sha256": "5a8524c6ff72af94415ad2154245d590820e0369518aec85acf49c8321575e13",
+      "rows": 73,
+      "unique_operations": 8,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        null
+      ],
+      "pipeline_records": 0
+    },
+    {
+      "path": "benchmarks/results/xsplat-cpu-gpu-4070ti-0.2.5.json",
+      "original_bytes_sha256": "a4bd008fcc8f02b664ac0c68bbcd8a99f97dfe674cdad6eb56705a4369c571ba",
+      "original_semantic_sha256": "e4b1609e9b103db863acb7cd8f25d89beb3fd43ebd9003511768398318cb5dcf",
+      "associated_bytes_sha256": "606788ffdac3235b2ec360fb2a488d6338598c86e5934a9a55453e230fcdee01",
+      "recovered_original_semantic_sha256": "e4b1609e9b103db863acb7cd8f25d89beb3fd43ebd9003511768398318cb5dcf",
+      "metrics_sha256": "e4253d264155a70f5998d7351a6b3fe05b1ff6810fda5ab576ce730465e06d74",
+      "rows": 17,
+      "unique_operations": 3,
+      "association_added": true,
+      "collector_revision_values_preserved": [
+        null
+      ],
+      "pipeline_records": 0
+    }
+  ],
+  "devices": {
+    "8060s": {
+      "snapshot_path": "qualification/evidence/vkl-reprojection-device-8060s-0.2.5.json",
+      "snapshot_file_sha256": "2b82f1240478f96f55be10fd1e2aa2cccb64cdf3dbd52b41de045d945eae9a3b",
+      "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+      "driver": {
+        "name": "radv",
+        "info": "Mesa 26.2.3",
+        "version": "26.2.3",
+        "uuid": "414d442d-4d45-5341-2d44-525600000000"
+      },
+      "source_unchanged": true,
+      "canonical_gpu_lock": "/tmp/sintergpu-gpu.lock",
+      "rows": 376
+    },
+    "4070ti": {
+      "snapshot_path": "qualification/evidence/vkl-reprojection-device-4070ti-0.2.5.json",
+      "snapshot_file_sha256": "25d2c1407a8d9b8672fcda80b5d0d3ad5169114a3bcb8705b8f86a93d83671f8",
+      "physical_device_uuid": "96d2dba0-95fd-5c00-e849-2e0610f24e06",
+      "driver": {
+        "name": "NVIDIA",
+        "info": "595.99.02",
+        "version": "595.99.2.0",
+        "uuid": "c9bf27cc-ad5e-57db-8930-96d25aad2e91"
+      },
+      "source_unchanged": true,
+      "canonical_gpu_lock": "/tmp/sintergpu-gpu.lock",
+      "rows": 376
+    }
+  },
+  "historical_registry": {
+    "rows": 910,
+    "before_sha256": "f776270f72ff0cda1028b68d8ab7b666d013093cc5de48c16e46a581a97da7c8"
+  },
+  "integration_verification": {
+    "historical_rows_semantically_unchanged_excluding_current_source": 910,
+    "current_rows": 752,
+    "total_rows": 1662,
+    "coverage": {
+      "catalog_entries": 146,
+      "cpu_measured": 63,
+      "gpu_measured": 63,
+      "both_measured": 63,
+      "pending": 83
+    },
+    "additional_native_pending": 4,
+    "source_matched_rows_per_device": 376,
+    "raw_metric_samples_per_array": 50,
+    "separate_pipeline_cpu_oracle_samples": 3,
+    "new_reports": 14,
+    "all_samples_finite_positive": true,
+    "raw_reports_original_semantics_preserved": true,
+    "registry_path": "src/sintergpu/data/timings.json",
+    "registry_sha256": "56770a43676b72290c382e8fe31cf026efe3a18a89760f693680fd1d9d60689e",
+    "markdown_path": "docs/kernel-timings.md",
+    "markdown_sha256": "ec8ed6c3da1e7aa856c06989a55e5047527d5306b9d4b91dcc8680500a96cf68",
+    "timing_registry_unit_tests": {
+      "passed": 22,
+      "deselected": 1,
+      "deselected_reason": "Parent owns qualification/0.2.5.json timing counts; current-release crosscheck will be rerun after those counts are updated.",
+      "log": "qualification/evidence/reprojection-timing-registry-tests-0.2.5.log"
+    }
+  }
+}
