@@ -214,3 +214,17 @@ def test_journal_syncs_directory_on_event_creation(tmp_path,monkeypatch):
         for path in (tmp_path,journal.root):
             st=path.stat();assert (st.st_dev,st.st_ino) in synced
     finally:journal.close()
+
+def test_journal_constructor_fsync_failure_closes_descriptors(tmp_path,monkeypatch):
+    opened=[];calls=[];real_open=os.open;real_fsync=os.fsync
+    def tracking_open(*args,**kwargs):
+        fd=real_open(*args,**kwargs);opened.append(fd);return fd
+    def failing_fsync(fd):
+        calls.append(fd)
+        if len(calls)==2:raise OSError('event directory sync failed')
+        return real_fsync(fd)
+    monkeypatch.setattr(r.os,'open',tracking_open);monkeypatch.setattr(r.os,'fsync',failing_fsync)
+    with pytest.raises(OSError,match='event directory sync failed'):r.ArtifactJournal(tmp_path/'receipt')
+    assert len(opened)==3
+    for fd in opened:
+        with pytest.raises(OSError):os.fstat(fd)

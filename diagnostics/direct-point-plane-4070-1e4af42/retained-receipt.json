@@ -1,0 +1,78 @@
+{
+  "artifact_directory": "/home/bjoern/.cache/sintergpu-qualification/direct-point-plane-4070-PdRxNvIk/retained-receipt.json.artifacts",
+  "commit": "1e4af42e4ce1c2f491e0a3620d05a27edbdba513",
+  "compiler_file_sha256": "19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145",
+  "device_output": {
+    "candidate": "device=NVIDIA GeForce RTX 4070 Ti driver=2497233024 queue_family=0 shader_sha256=8e56c1349d3a3fdf0ce9c88ee008f977818abbfae368adb4216d74720691afc6",
+    "candidate_abi": {
+      "bindings": 7,
+      "entry": "main",
+      "group": [
+        256,
+        1,
+        1
+      ],
+      "storage_stride": 4,
+      "uniform_allocated_bytes": 32,
+      "uniform_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20
+      ]
+    },
+    "donor": "device=NVIDIA GeForce RTX 4070 Ti driver=2497233024 queue_family=0 shader_sha256=b34c971681eba7c1c7d9a885a13223fc3d481ab72fa39f2b9bf0ddbda2f00f76",
+    "donor_abi": {
+      "bindings": 7,
+      "entry": "main",
+      "group": [
+        1024,
+        1,
+        1
+      ],
+      "storage_stride": 4,
+      "uniform_allocated_bytes": 32,
+      "uniform_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20
+      ]
+    }
+  },
+  "device_uuid": "96d2dba095fd5c00e8492e0610f24e06",
+  "icd_configuration_sha256": "8bf904abc1c5d6428a1f27cc5d4a3c9783d15231f17ce1ef8d25e9cab1f60d1c",
+  "native_binary_sha256": "b04a1e4d73dd2b4db1820a6d6816ecb9fc03c32f8a47f96b0bcbaa0dbbe431ad",
+  "native_source_sha256": "ab1da2441f8554828e2bc792d84aad71ce0ba0ce838428fb16e4653cf34471d2",
+  "packed_fixture_sha256": "e8d3cf128e6f3c547433f2bc457efc26ce0e24147592dc76bcbe4aee726178f7",
+  "raw_driver": 2497233024,
+  "result_sha256": {
+    "normals": "42d007a18b4c5224bec68a1da97feb005f3ddaa2aaf3cb7956cf1df50c5358a5",
+    "out_0": "030b5cd3d3373eda75b2f571916d1816fa48b93a21d168bc1cadba1c24f78818",
+    "out_1": "bfcd506957c6386fc314464f6b75701292db95d01f2bb78bd02b1186325174de",
+    "points": "9356b9a9f7c6da238d8e562942e4db275a3f5740a45e2a88712a5cce559282db",
+    "points_indices": "c21621b4a3f582931d4923825af64bfd8343e34e858f32c9545b8698d604e46d",
+    "targets": "2e4f91760969b5f15650ba54d5dfe97e1241c3b84c2e67bcd18e431164fe2037"
+  },
+  "scope": "trusted workstation; not provider, physical-backing, SlangPy, performance or device qualification",
+  "source_sha256": {
+    "candidate": "86cc3d94eff9193c4000d95aceed9cedf6fce5dcbd8971f8e8e6eab5b8751d91",
+    "core": "9763495aa01821c4a9fa52db689310cf787cee01b63b8b50bf0daaae43131bcc",
+    "donor": "b425f7562662c7d4fedfa9c0ca5c8c83ac45b764bf75ca1bf8d2cb50147eeeb6",
+    "fixture": "3a9e10f09ee3a312c52c00fe683bae8af09cf7e43b026c51c5ffa974c6edae9f"
+  },
+  "spirv_sha256": {
+    "candidate": "8e56c1349d3a3fdf0ce9c88ee008f977818abbfae368adb4216d74720691afc6",
+    "donor": "b34c971681eba7c1c7d9a885a13223fc3d481ab72fa39f2b9bf0ddbda2f00f76"
+  },
+  "status": "trusted_host_engineering_parity_only",
+  "tool_source_sha256": {
+    "runner.py": "26e6e23e257e071b2a104b4b607109ec012b03e43fd4153c0ec9fe1b915f3680",
+    "spirv_contract.py": "75308b054e628fdf01da6489e85c3354b13687ad7565ee03392a60980c93d0d4",
+    "verified_build.py": "36511db30c78105a1876e4897beec1b126044cd5b97b6d6fcfba1237f941961d"
+  }
+}

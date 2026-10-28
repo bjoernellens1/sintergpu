@@ -1,0 +1,24 @@
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 286835 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1160565908993645, "pid": 286835, "stage": "acquired"}
+{"event": "artifact", "monotonic_ns": 1160565911758591, "name": "input.bin", "sha256": "e8d3cf128e6f3c547433f2bc457efc26ce0e24147592dc76bcbe4aee726178f7", "size": 74268}
+{"event": "process_exit", "label": "donor-compiler", "monotonic_ns": 1160566085884337, "returncode": 0}
+{"event": "artifact", "monotonic_ns": 1160566091471336, "name": "donor-compiler.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1160566093866719, "name": "donor-compiler.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 286835 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1160566096046156, "pid": 286835, "stage": "donor-before"}
+{"event": "process_exit", "label": "donor-native", "monotonic_ns": 1160566288905733, "returncode": 0}
+{"event": "artifact", "monotonic_ns": 1160566291176403, "name": "donor-native.stdout", "sha256": "37b6161ba1b25d9e7cf07475761bbdb7858aee112d5d8d015a6c7b912041ac47", "size": 146}
+{"event": "artifact", "monotonic_ns": 1160566293569064, "name": "donor-native.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 286835 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1160566295274983, "pid": 286835, "stage": "donor-after"}
+{"event": "readback", "monotonic_ns": 1160566298268566, "name": "donor.bin", "role": "donor", "sha256": "5420738f46011e48fc62a80d4139f1f15b0b210544e8e7cfec403282cea045dd", "size": 74268}
+{"event": "process_exit", "label": "candidate-compiler", "monotonic_ns": 1160566480754003, "returncode": 0}
+{"event": "artifact", "monotonic_ns": 1160566486237784, "name": "candidate-compiler.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1160566488407739, "name": "candidate-compiler.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 286835 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1160566489679533, "pid": 286835, "stage": "candidate-before"}
+{"event": "process_exit", "label": "candidate-native", "monotonic_ns": 1160566669882671, "returncode": 0}
+{"event": "artifact", "monotonic_ns": 1160566675700036, "name": "candidate-native.stdout", "sha256": "c228ee304674f1e5b23f6f2baee2b49ad680ebf8a5c532dcf41c957b8e1cad20", "size": 146}
+{"event": "artifact", "monotonic_ns": 1160566678224977, "name": "candidate-native.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 286835 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1160566679927782, "pid": 286835, "stage": "candidate-after"}
+{"event": "readback", "monotonic_ns": 1160566683202501, "name": "candidate.bin", "role": "candidate", "sha256": "5420738f46011e48fc62a80d4139f1f15b0b210544e8e7cfec403282cea045dd", "size": 74268}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 286835 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1160566730957646, "pid": 286835, "stage": "validated"}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 286835 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1160566732404911, "pid": 286835, "stage": "before-close"}
+{"acquired": true, "event": "lock_closed", "monotonic_ns": 1160566733771760, "pid": 286835}
+{"event": "validation_passed", "monotonic_ns": 1160566734986090}
