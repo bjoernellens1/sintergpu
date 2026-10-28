@@ -12,7 +12,7 @@
   "historical_scope": "Initial preserved export omitted executed package initializer and data/VERSION from source closure; no observed numerical output corruption. Not used for GPU qualification.",
   "recording_benchmark": "qualification/evidence/vkl-camera-recording-fake-0.2.6.json",
   "recording_scope": "CPU fake-encoder recording only; no GPU speedup or no-regression claim.",
-  "gpu_debug_scope": "Portable two-word debug encoding now compiles without shaderInt64 on both pinned compilers. Debug cases and reuse have not yet been executed on GPU.",
+  "gpu_debug_scope": "Portable two-word debug encoding passes canonical fixtures and explicit word tests on both target devices; broader domains remain pending.",
   "non_debug_gpu_fixture_parity": {
     "status": "passed",
     "source_commit": "cb404183fe38a291d6c5c34087650a615df27348",
@@ -38,10 +38,39 @@
     "qualification/evidence/vkl-camera-gpu-4070ti-after-0.2.6.sha256": "4f997b411ec10957fabb298a03c8e1feae110fea2e4ee942e6125c3362e7da91",
     "qualification/evidence/vkl-camera-gpu-4070ti-before-0.2.6.sha256": "4f997b411ec10957fabb298a03c8e1feae110fea2e4ee942e6125c3362e7da91",
     "qualification/evidence/vkl-camera-gpu-4070ti-compiler-0.2.6.log": "d3899c1f84fe6ba01f937813286ed38253a9fa5e522c711fb2877eca337deeb3",
+    "qualification/evidence/vkl-camera-gpu-4070ti-full-0.2.6.log": "0470915f4549d1ca08f1ad67ea8f7eb4e70335d9860d44d8eec7b2021d4d2023",
+    "qualification/evidence/vkl-camera-gpu-4070ti-full-after-0.2.6.sha256": "273f32b492c50680ad630ef711b2e20eb92101a6e502044d2c6b2c3cad1a72e2",
+    "qualification/evidence/vkl-camera-gpu-4070ti-full-before-0.2.6.sha256": "273f32b492c50680ad630ef711b2e20eb92101a6e502044d2c6b2c3cad1a72e2",
+    "qualification/evidence/vkl-camera-gpu-4070ti-full-compiler-0.2.6.log": "d3899c1f84fe6ba01f937813286ed38253a9fa5e522c711fb2877eca337deeb3",
+    "qualification/evidence/vkl-camera-gpu-4070ti-full-receipt-0.2.6.log": "951de0557a459ea20b341390be236dea358af328e37ebeb50dd1ce39c8ad91de",
     "qualification/evidence/vkl-camera-gpu-4070ti-initial-0.2.6.log": "18797822a8bdbd06da48ddd251c37c3e43913384d8d581790750088f4438ee80",
     "qualification/evidence/vkl-camera-gpu-4070ti-nodeids-0.2.6.json": "fd9fff03f1c85038c894302d9ea39341e72f0a18fbeb3b7ec06a041051bf914b",
     "qualification/evidence/vkl-camera-gpu-4070ti-receipt-0.2.6.log": "5df6d43d394379aa570d29c05d8a5690b17c44cce99ce805e1edaf90fd0c27cb",
+    "qualification/evidence/vkl-camera-gpu-8060s-full-0.2.6.json": "17c39bfc4c2b1027ede917c4d74f4cd39a3bb25fbbdd79f91969ae6f8310fec1",
+    "qualification/evidence/vkl-camera-gpu-8060s-full-0.2.6.log": "10aa8bde5ec5921aea07db1337d9474b0d59fccd6c81fe3a4aa020fb28129cee",
     "qualification/evidence/vkl-camera-gpu-8060s-initial-0.2.6.json": "408433170ca1f2974807dd24e90d108220b03a1927354f4c37b95c70f2ce692f",
     "qualification/evidence/vkl-camera-gpu-8060s-initial-0.2.6.log": "307bb7df70abda5cda87eb6ec9edd3351336e8b93f3f63136c29a099dac6f672"
+  },
+  "full_gpu_fixture_parity": {
+    "status": "passed",
+    "source_commit": "2b881707a5cc2a6ae459524559f7692e1f22f40d",
+    "tests_per_device": 89,
+    "canonical_states_per_device": 80,
+    "scope": "All canonical cases, scratch reuse and two diagnostic word checks plus CPU preflight tests; masks/counts/indices exact, floats strict and NaNs equal. No full-domain, gradients, trajectory, performance or adoption claim.",
+    "compiler_sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678",
+    "devices": [
+      {
+        "device": "Radeon 8060S",
+        "log": "qualification/evidence/vkl-camera-gpu-8060s-full-0.2.6.log",
+        "receipt": "qualification/evidence/vkl-camera-gpu-8060s-full-0.2.6.json"
+      },
+      {
+        "device": "RTX 4070 Ti",
+        "physical_device_uuid": "GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06",
+        "driver": "595.99.02",
+        "log": "qualification/evidence/vkl-camera-gpu-4070ti-full-0.2.6.log",
+        "receipt": "qualification/evidence/vkl-camera-gpu-4070ti-full-receipt-0.2.6.log"
+      }
+    ]
   }
 }

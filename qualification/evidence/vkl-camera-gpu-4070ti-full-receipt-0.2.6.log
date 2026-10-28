@@ -1,0 +1,33 @@
+LOCK_ACQUIRED pid=254017 commit=2b881707a5cc2a6ae459524559f7692e1f22f40d
+Wed Oct 28 04:39:55 PM UTC 2026
+GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 0 %
+Wed Oct 28 17:39:55 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.99.02              Driver Version: 595.99.02      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 4070 Ti     Off |   00000000:01:00.0 Off |                  N/A |
+|  0%   41C    P8             13W /  285W |      94MiB /  12282MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            3329      G   /usr/lib/xorg/Xorg                       57MiB |
+|    0   N/A  N/A            3579      G   /usr/bin/gnome-shell                      7MiB |
++-----------------------------------------------------------------------------------------+
+PYTHONPATH=src:. TMPDIR=/home/bjoern/.cache/sintergpu-qualification/camera-4070ti-full-2b881707-cMY5hwYz/tmp SINTERGPU_GPU_TESTS=1 VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia_icd.json PYTHON=/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/bin/python
+8bf904abc1c5d6428a1f27cc5d4a3c9783d15231f17ce1ef8d25e9cab1f60d1c  /usr/share/vulkan/icd.d/nvidia_icd.json
+slangpy 0.43.1 /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/__init__.py
+/home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/libslang-compiler.so.0.2026.12 195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678
+........................................................................ [ 80%]
+.................                                                        [100%]
+89 passed in 7.41s
+QUALIFICATION_TERMINAL_EXIT=0
+Wed Oct 28 04:40:04 PM UTC 2026
