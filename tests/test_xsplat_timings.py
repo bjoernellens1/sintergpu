@@ -55,7 +55,7 @@ def test_probe_gradient_is_analytic_and_all_output_tails_are_exact():
     m=recipe();c=next(c for c in m.cases() if c['kind']=='probe')
     out=m.reference_call(c)['output'].view(np.float32)
     np.testing.assert_allclose(out[:5],[.15624,-.04464,.1116,.324,.2695],rtol=2e-7,atol=2e-7)
-    np.testing.assert_array_equal(out.view(np.uint8)[32:],c['arrays']['output'][32:])
+    np.testing.assert_array_equal(out.view(np.uint8)[20:],c['arrays']['output'][20:])
 
 
 def test_workload_hash_binds_camera_layout_uniforms_and_inout_seeds():
@@ -111,3 +111,12 @@ def test_gpu_entry_uniforms_and_repeated_adam_inout_reset(monkeypatch):
     # an ignored entry-point count or missing inout reset cannot pass this path.
     result=m.run(gpu=True,iterations=2,warmups=2)
     row,=result['measurements'];assert len(row['metrics']['gpu_kernel_ms'])==2
+
+
+@pytest.mark.skipif(__import__('os').environ.get('SINTERGPU_GPU_TESTS')!='1',reason='explicit GPU execution only')
+@pytest.mark.parametrize('kind',('project','probe'))
+def test_gpu_uses_actual_bound_resource_layout_and_preserves_tails(monkeypatch,kind):
+    m=recipe();case=next(c for c in m.cases() if c['kind']==kind)
+    monkeypatch.setattr(m,'cases',lambda:iter([case]))
+    report=m.run(gpu=True,iterations=2,warmups=2)
+    row,=report['measurements'];assert row['reflected_abi']['structs']

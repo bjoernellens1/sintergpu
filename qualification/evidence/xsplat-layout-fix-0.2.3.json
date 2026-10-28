@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "status": "collector-abi-and-binding-fixed-no-failed-samples-accepted",
+  "failed_collector_revision": "f68a902b870895d3f3fb207d16b8aa3a34daf357",
+  "runner_sha256": "cd1e331d2f454a3ceb0cc69710db5bb06902bc52c270f9123aa066bfc3a6c4df",
+  "cause": "Standalone compiler standard-layout reflection differs from actual SlangPy0.43.1 Vulkan scalar bound layout; runtimeguard stopped before projection dispatch. Initial17fixture reports were never written.",
+  "actual_bound_abi": {
+    "GaussianData": {
+      "stride": 56,
+      "offsets": [
+        0,
+        12,
+        24,
+        40,
+        44
+      ]
+    },
+    "ProjectedGaussian": {
+      "stride": 28,
+      "offsets": [
+        0,
+        8,
+        20,
+        24
+      ]
+    },
+    "CameraData": {
+      "stride": 92,
+      "offsets": [
+        0,
+        64,
+        72,
+        80,
+        88
+      ]
+    },
+    "BackwardProbe": {
+      "stride": 20,
+      "offsets": [
+        0,
+        12,
+        16
+      ]
+    }
+  },
+  "fix": "Explicit adapter-profile byte fixtures, guard actual resource element layouts, camera ConstantBuffer fielddict instead of unsupported rawBuffer/ShaderObject. Uniformserialization included inhost/transfer;uniformbytes separatefromexplicitstorageuploads. No shader/tolerance change.",
+  "runtime_regression": "Actualprojection/probeREDABI\u2192GREEN,all10xsplatCPU/GPUtests pass2.51s. Camera nontrivial rotation/translation and independent donorC++ valid-domain parity retained.",
+  "primary_api_sources": {
+    "shader_cursor.cpp": {
+      "url": "https://github.com/shader-slang/slangpy/blob/v0.43.1/src/sgl/device/shader_cursor.cpp",
+      "sha256": "1f410b9fdbc9f31b1c78449d782255ec0fee76cd07edf8d5706c669d03a90b0b"
+    },
+    "cursor_utils.h": {
+      "url": "https://github.com/shader-slang/slangpy/blob/v0.43.1/src/slangpy_ext/device/cursor_utils.h",
+      "sha256": "b09d354874e7639824547ca680c9c182639c36260415606cdcc1d8e7adfeca95"
+    }
+  },
+  "evidence_sha256": {
+    "qualification/evidence/xsplat-layout-failure-8060s-0.2.3.log": "326c207499d9f60f25b43b38d82e40bb16ef6e1cc4100a44348dd4462f78d604",
+    "qualification/evidence/xsplat-layout-failure-4070ti-0.2.3.log": "87c6c668e10372f91348cb2c3971dc7923ddaa6ef9847d03abf22d9430bbd54c",
+    "qualification/evidence/xsplat-runtime-regressions-8060s-0.2.3.log": "a21a7a7da12d0347457dccda6ace63f205288132f744d208494611f0a8138765"
+  }
+}

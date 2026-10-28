@@ -26,8 +26,9 @@ and repeated full inout resets. See the [SlangPy compute tutorial](https://slang
 
 Projection uses127/128/1025/65539 Gaussians, nonunit quaternions, anisotropic scales,
 a nontrivial row-major camera rotation/translation, and visible, off-screen and
-behind-camera points. Storage has80-byte Gaussian and48-byte projected strides;
-camera uniform storage is96 bytes. The collector verifies actual runtime field
+behind-camera points. The explicit SlangPy0.43.1 Vulkan scalar profile has56-byte Gaussian and28-byte
+projected strides; camera uniform storage is92 bytes. Standalone compiler layouts
+(80/48/96 bytes) are a different context and must not be substituted. The collector verifies actual bound-resource runtime field
 offsets, strides and workgroup sizes before dispatch. It requests explicit
 row-major matrix compilation. Input and complete output storage have13 extra
 records. Defined projected fields are compared; padding within a live struct is
@@ -48,18 +49,23 @@ fixed gradient test retains its original2e-6 bounds. Projection's exact centered
 CPU example is retained by independent analytical tests.
 
 The backward probe always computes one fixed compositing derivative and launches
-exactly one thread. Its result contains five defined floats in32-byte storage;
-the remaining live padding is unspecified. This is a diagnostic cost, not a
+exactly one thread. Its result contains five defined floats in20-byte scalar-profile storage. This is a diagnostic cost, not a
 scalable rasterizer or full-gradient benchmark.
 
 CPU wall time includes oracle computation, temporary arrays and copying seeded
 output storage. This is not an optimized CPU alternative. GPU timestamps cover
 one entry after compilation/allocation/warmup and full output/inout reset. Host
 submission/completion time is separate. Transfer-inclusive time uploads every
-bound input/output seed and camera uniform buffer, dispatches, waits and reads all
-complete output allocations. Parity is checked before and after each region.
+bound storage input/output seed, dispatches, waits and reads all
+complete output allocations. SlangPy0.43.1 constant buffers accept field dictionaries,
+not raw Buffer or ShaderObject bindings. Camera fields and Adam entry uniforms are
+serialized by SlangPy on every dispatch, included in host and transfer timings;
+logical uniform payload bytes (92/24) are recorded separately from explicit
+storage-buffer uploads. They do not measure physical bus traffic or driver
+allocation/alignment sizes.
+Parity is checked before and after each region.
 Raw samples bind workload bytes, all uniforms, ordered bindings, launch extent,
-strides, compiler matrix layout, exact committed collector/reference/helper hashes,
+strides, actual adapter ABI profile, compiler matrix layout, exact committed collector/reference/helper hashes,
 shader/reference trees, actual bundled compiler, device and software environment.
 The8MiB per-buffer budget is a conservative fixture guard. These snapshots do not
 select an optimized variant or establish controlled speedups, full-domain device
