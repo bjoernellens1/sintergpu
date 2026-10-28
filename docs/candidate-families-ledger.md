@@ -67,9 +67,9 @@ readback, and independent CPU reference separately. Compilation/allocation are
 outside timed regions and their changes are stated. No baseline reset is omitted.
 Only compare identical operations/layouts/profiles and output boundaries.
 
-Per run and boundary, pair each block's candidate mean with baseline mean. Fixed
-seed bootstrap (10,000 resamples) reports 95% upper bounds on median and p95
-candidate/baseline ratios. On-par requires upper bounds <=1.03 median and <=1.05
+Per run and boundary, resample whole ABBA blocks, retaining their four samples.
+Fixed seed bootstrap (10,000 resamples) reports 95% upper bounds on ratios of
+candidate/baseline raw-sample medians and p95s. On-par requires upper bounds <=1.03 median and <=1.05
 p95, in every independent run and supported workload. Faster requires median
 upper bound <1.0 and the same p95 gate. These margins are declared before timing,
 not fitted to results. Retain baseline for failures, missing or noisy evidence.
@@ -85,4 +85,8 @@ are separate. Any changes to this recipe require a recorded reason before runs.
 
 - Worktree created from parent's numerical corrections; central worktree untouched.
 - Audit groups ranked; baseline source schedules inspected.
-- Candidate implementation and qualification pending.
+- Two importable helper implementations and symbolic export adapters written.
+- 35 numerical tests passed on Radeon8060S before timing (2026-10-28).
+- Shared local timing lock: `/tmp/sintergpu-gpu.lock`; ownership evidence:
+  `/tmp/sintergpu-gpu-owner.json`. No other timing process observed before testing.
+- Candidate performance qualification pending.
