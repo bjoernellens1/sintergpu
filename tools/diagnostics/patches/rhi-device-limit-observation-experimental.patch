@@ -1,0 +1,71 @@
+diff --git a/include/slang-rhi.h b/include/slang-rhi.h
+--- a/include/slang-rhi.h
++++ b/include/slang-rhi.h
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: same-backend limit and dispatch diagnostics.
+ // Modified by SinterGPU: draft diagnostic query interface.
+ // Modified by EliGSiR on 2026-10-09: optional Vulkan creator receipt.
+ #pragma once
+@@ -4111,7 +4112,7 @@
+ /// This const view does not authenticate the creator binary or authorize admission.
+ struct VulkanDeviceCreationReceipt
+ {
+-    uint32_t schemaVersion = 1;
++    uint32_t schemaVersion = 2;
+     uint32_t structSize = sizeof(VulkanDeviceCreationReceipt);
+     bool finalized = false;
+     uint64_t ownerGeneration = 0;
+@@ -4139,6 +4140,19 @@
+     uint32_t vendorID = 0;
+     uint32_t deviceID = 0;
+     uint32_t driverVersion = 0;
++    // Backend-observed physical properties and dispatch addresses. An address
++    // may be a loader trampoline; it does not authenticate an ICD/provider.
++    bool deviceLimitsKnown = false;
++    uint64_t maxStorageBufferRange = 0;
++    uint64_t maxUniformBufferRange = 0;
++    uint64_t minStorageBufferOffsetAlignment = 0;
++    uint64_t minUniformBufferOffsetAlignment = 0;
++    uint32_t maxComputeWorkGroupCount[3] = {};
++    uint32_t maxComputeWorkGroupSize[3] = {};
++    uint32_t maxComputeWorkGroupInvocations = 0;
++    bool dispatchAddressesKnown = false;
++    uint64_t getInstanceProcAddrAddress = 0;
++    uint64_t getPhysicalDevicePropertiesAddress = 0;
+ };
+ 
+ struct VulkanDeviceCreationReceiptDesc
+diff --git a/src/vulkan/vk-device.cpp b/src/vulkan/vk-device.cpp
+--- a/src/vulkan/vk-device.cpp
++++ b/src/vulkan/vk-device.cpp
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: same-backend limit and dispatch diagnostics.
+ // Modified by EliGSiR on 2026-10-09: optional Vulkan creator receipt.
+ #include "vk-device.h"
+ #include "vk-backend.h"
+@@ -222,6 +223,25 @@
+     m_creationReceipt.vendorID = properties.vendorID;
+     m_creationReceipt.deviceID = properties.deviceID;
+     m_creationReceipt.driverVersion = properties.driverVersion;
++    const auto& limits = properties.limits;
++    m_creationReceipt.maxStorageBufferRange = limits.maxStorageBufferRange;
++    m_creationReceipt.maxUniformBufferRange = limits.maxUniformBufferRange;
++    m_creationReceipt.minStorageBufferOffsetAlignment = limits.minStorageBufferOffsetAlignment;
++    m_creationReceipt.minUniformBufferOffsetAlignment = limits.minUniformBufferOffsetAlignment;
++    for (unsigned i = 0; i < 3; ++i)
++    {
++        m_creationReceipt.maxComputeWorkGroupCount[i] = limits.maxComputeWorkGroupCount[i];
++        m_creationReceipt.maxComputeWorkGroupSize[i] = limits.maxComputeWorkGroupSize[i];
++    }
++    m_creationReceipt.maxComputeWorkGroupInvocations = limits.maxComputeWorkGroupInvocations;
++    m_creationReceipt.deviceLimitsKnown = true;
++#if defined(__linux__) && defined(__x86_64__)
++    // Explicitly scoped diagnostic: observations only, not ICD identity.
++    m_creationReceipt.getInstanceProcAddrAddress = reinterpret_cast<uintptr_t>(m_api.vkGetInstanceProcAddr);
++    m_creationReceipt.getPhysicalDevicePropertiesAddress = reinterpret_cast<uintptr_t>(m_api.vkGetPhysicalDeviceProperties);
++    m_creationReceipt.dispatchAddressesKnown = m_creationReceipt.getInstanceProcAddrAddress &&
++        m_creationReceipt.getPhysicalDevicePropertiesAddress;
++#endif
+ }
+ 
+ void DeviceImpl::sealCreationReceipt(const VulkanDeviceCreationReceipt** sink)

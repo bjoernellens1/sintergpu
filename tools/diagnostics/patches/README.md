@@ -159,3 +159,95 @@ runtime's `PYTHONPATH` and `LD_LIBRARY_PATH`; provide `--uuid`, `--driver`,
 come from independently collected device evidence. The local build is not a
 build or identity receipt for the 4070 workstation. The CPU fake tests do not
 exercise Vulkan. No GPU execution has been performed for this smoke.
+
+## Same-backend physical limits and dispatch-address candidate
+
+The additional `rhi-device-limit-observation-experimental.patch` and
+`slangpy-device-limit-observation-experimental.patch` layer on the earlier
+allocation-observation experimental patches and the EliGSiR creator receipt.
+They are an isolated source configuration, not a compatible replacement for a
+released SlangPy/RHI ABI: the output creation receipt changes from schema 1 to
+schema 2, and both RHI and SlangPy must be rebuilt together. The existing
+receipt *request descriptor* remains schema 1. The schema-2 output captures the
+limits from the `VkPhysicalDeviceProperties` already queried by the backend
+for its selected physical device, and on Linux x86-64 records the backend's
+actual `vkGetInstanceProcAddr` and `vkGetPhysicalDeviceProperties` function
+addresses. The Python validation helper rejects missing, invalid or mismatched
+receipts. A separate optional `dladdr`/`/proc/self/maps` observation never calls
+the recorded pointer; it does not authenticate mapped pages, rule out
+interposition or establish whether an address is an ICD rather than a loader
+trampoline. Foreign native manipulation and physical backing identity remain
+outside the observation. No runtime promotion or GPU execution is authorized by
+this candidate.
+
+Layered input SHA-256 values: RHI `include/slang-rhi.h`
+`861508fe63a9d496f299bd7d5f697e5a4bb3947fe7672182bfe016d6e36d18cb` and
+`src/vulkan/vk-device.cpp` `5ce3c4d5dfd53a4b06cc14ee93a3232edde0f6504836927f6ca9803f6c67d813`;
+SlangPy `src/sgl/device/device.cpp`
+`1fdd14494516445a6fcbb0212713b56e5ae09dda6956e64563e3a7b26a5066bb` and
+`src/slangpy_ext/device/device.cpp`
+`0367c195fd70e11e32ec5136dc97616efdeaf2c7110978ff6e9aeef829bb8fd3`.
+Modified source carries SinterGPU notices and retains upstream
+`SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception` licensing and
+existing EliGSiR provenance. The diagnostic consumer is
+`rhi_device_limits_observation.py`; its tests use CPU fakes and an ordinary
+libc function address only, never initialize Vulkan. Local patch tests require
+the audited source and skip if absent; they do not prove CI coverage.
+
+The local isolated paired Debug build linked with GCC 16.2.1, Python 3.13.12
+and `SGL_WARNINGS_AS_ERRORS=OFF`; it reported existing Python/glibc macro
+redefinition warnings. `slangpy-device-limits-cpu-smoke.py` confirms the
+schema-2 binding fields exist and a CPU device returns no Vulkan receipt before
+or after close. The CPU fake checks do not establish Vulkan field values. The
+local build was not executed on a GPU. Local patch SHA-256 values are
+`396d99141696c8a0b4cfcd38e99736f5bb9d72f2564389cf7f11fa34c15cf298` (RHI)
+and `748ed81ecb03d8c3d2746fcdb5ca91d5389f874950dbb2bda93e9d05e6824e49`
+(SlangPy). The resulting local `libsgl.so` was
+`0cd4c582faa8405188c520f856b569682c9e57717bbdcfb6e8672ce6576e0e1f` and
+Python extension was
+`943accb68cb5ba9ed1c2c903f00c5ddedd94ea5f293aba1e2e1e0f8b87b180a4`;
+these local hashes do not authenticate another build or host.
+
+To reproduce the local source application and build, start from the separately
+acquired EliGSiR creator-receipt-patched `rhi-source`, `slangpy-source`,
+`parent-source/CMakeLists.txt`, `dependency-source` and `slang-sdk` for the
+pinned configuration described above. On the original host they were under
+`/home/bjoern/git/eligsir-refactor-execution/quality-current-receipt-sdk-build-v1`.
+That path and its local checkout are not release artifacts. Copy the sources
+into a fresh scratch root and verify the **base** identities in the table below
+before applying the allocation patches. Then verify the **limit input** hashes
+immediately before applying the corresponding limit patches. Finally verify
+all **limit output** hashes. The RHI and SlangPy source files listed in the
+allocation section above also have to match their documented base and
+post-allocation hashes. These checks bind only the named files, not the complete
+dependency closure.
+
+| Source file | Creator-patched base SHA-256 | Limit input SHA-256 | Limit output SHA-256 |
+|---|---|---|---|
+| RHI `include/slang-rhi.h` | `516a4390911cae8b3ca93e9191ef145c39f232aaef80fa9f4c8c1ed2111f9111` | `861508fe63a9d496f299bd7d5f697e5a4bb3947fe7672182bfe016d6e36d18cb` | `5fdfd45c7bed85d4ab98a9116cc50782a55858c011daee6756f1cf0ba2518903` |
+| RHI `src/vulkan/vk-device.cpp` | `5ce3c4d5dfd53a4b06cc14ee93a3232edde0f6504836927f6ca9803f6c67d813` | `5ce3c4d5dfd53a4b06cc14ee93a3232edde0f6504836927f6ca9803f6c67d813` | `52a57fc7b08bba8f06402a987da3e535b714785a22018e8a42dc17172baf222b` |
+| SlangPy `src/sgl/device/device.cpp` | `1fdd14494516445a6fcbb0212713b56e5ae09dda6956e64563e3a7b26a5066bb` | `1fdd14494516445a6fcbb0212713b56e5ae09dda6956e64563e3a7b26a5066bb` | `020948db4622a3e16135791376215e39629241ba7b9d48fab0aff8f78ce9a04d` |
+| SlangPy `src/slangpy_ext/device/device.cpp` | `0367c195fd70e11e32ec5136dc97616efdeaf2c7110978ff6e9aeef829bb8fd3` | `0367c195fd70e11e32ec5136dc97616efdeaf2c7110978ff6e9aeef829bb8fd3` | `39917999f068d437a7b6714110458c3d95e7a9a532aab57e83d3bbd295d53721` |
+
+Apply the RHI allocation patch in `rhi-source` and the SlangPy allocation patch
+in `slangpy-source`, verify the limit-input hashes, then apply the respective
+limit patches and verify the limit-output hashes. Point copied
+`parent-source/CMakeLists.txt` at those sibling source directories and the
+pinned sibling dependencies. Configure and build:
+
+```sh
+cmake -S "$scratch/parent-source" -B "$scratch/build" -G Ninja \
+  -DPython_EXECUTABLE=/home/bjoern/miniforge3/bin/python \
+  -DCMAKE_BUILD_TYPE=Debug -DSGL_WARNINGS_AS_ERRORS=OFF
+cmake --build "$scratch/build" --target slangpy_ext -j 3
+LD_LIBRARY_PATH="$scratch/build" PYTHONPATH="$scratch/slangpy-source" \
+  /home/bjoern/miniforge3/bin/python \
+  tools/diagnostics/patches/slangpy-device-limits-cpu-smoke.py
+```
+
+`$scratch` denotes the new isolated root, not an installed runtime. This
+procedure uses host-specific dependencies and records a CPU-only build; the
+checked-in CI runs the fake-receipt and libc address tests, not this build or
+the local-source-dependent patch checks. Reconstructing an equivalent build on
+another machine requires acquiring and verifying the same complete dependencies
+and source identities separately.

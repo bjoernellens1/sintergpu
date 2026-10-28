@@ -113,7 +113,9 @@ def test_packaged_fixture_and_discovery():
     from sintergpu.catalog import get_operation
     op = get_operation('optimization.point_plane_aosoa_256.main')
     assert op['qualification'] == {'status': 'experimental', 'records': []}
-    assert kernel_path(op['id']) == module_path('optimization.point_plane_aosoa_256') == ADAPTER
+    installed = kernel_path(op['id'])
+    assert installed == module_path('optimization.point_plane_aosoa_256')
+    assert installed.read_bytes() == ADAPTER.read_bytes()
     resources = files('sintergpu').joinpath('fixtures/point_plane_aosoa')
     assert resources.joinpath(FIXTURE.name).read_bytes() == FIXTURE.read_bytes()
     assert resources.joinpath(CANDIDATE.name).read_bytes() == CANDIDATE.read_bytes()

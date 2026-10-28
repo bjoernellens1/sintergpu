@@ -27,13 +27,36 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y libvulkan-dev
       - run: python -m pip install '.[test]' build 'setuptools>=77' wheel
-      - run: python -m pytest tests -q
+      - name: Run CPU suite with verified user and mount namespaces
+        run: |
+          # Ubuntu's AppArmor policy can deny unprivileged user namespaces. The
+          # snapshot tests require a real private mount namespace and fail closed.
+          # Adjust only this disposable GitHub-hosted VM, then restore its policy.
+          changed=0
+          restore_policy() {
+            if [ "$changed" = 1 ]; then sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=1; fi
+          }
+          trap restore_policy EXIT
+          if ! /usr/bin/unshare -Urnm /bin/true; then
+            test "${RUNNER_ENVIRONMENT:-}" = github-hosted
+            test "$(sysctl -n kernel.apparmor_restrict_unprivileged_userns)" = 1
+            sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+            changed=1
+            /usr/bin/unshare -Urnm /bin/true
+          fi
+          python -m pytest tests -q
       - name: Verify allocation diagnostic CPU guards
         env:
           PYTHONPATH: src:.
           VK_DRIVER_FILES: /nonexistent/sintergpu-no-vulkan-icd.json
           VK_ICD_FILENAMES: /nonexistent/sintergpu-no-vulkan-icd.json
         run: python -m pytest tools/diagnostics/patches/test_rhi_allocation_vulkan_cases.py tools/diagnostics/patches/test_rhi_allocation_vulkan_runner.py tools/diagnostics/patches/test_rhi_allocation_exploratory_smoke.py -q
+      - name: Verify device-limit diagnostic CPU guards
+        env:
+          PYTHONPATH: src:.
+          VK_DRIVER_FILES: /nonexistent/sintergpu-no-vulkan-icd.json
+          VK_ICD_FILENAMES: /nonexistent/sintergpu-no-vulkan-icd.json
+        run: python -m pytest tools/diagnostics/patches/test_rhi_device_limits_observation.py -q
       - name: Verify compact SlangPy adapter with fake devices
         env:
           PYTHONPATH: src:.
