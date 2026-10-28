@@ -38,6 +38,17 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: python tools/check_changes.py --base "$BASE_SHA"
       - run: python -m build
+      - name: Check package bytes against tracked sources before release
+        run: |
+          python - <<'PYVERIFY'
+          from pathlib import Path
+          from tools.release import verify_package_sources
+          root = Path.cwd()
+          version = (root / 'VERSION').read_text().strip()
+          wheel, = (root / 'dist').glob('sintergpu-' + version + '-*.whl')
+          verify_package_sources(root, wheel, 'wheel')
+          verify_package_sources(root, root / 'dist' / ('sintergpu-' + version + '.tar.gz'), 'sdist')
+          PYVERIFY
       - name: Build a C++ consumer from a relocated installation
         run: |
           sudo apt-get update -qq

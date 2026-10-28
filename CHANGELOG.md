@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 — 2026-10-28
+
+- Include retained qualification logs in source packages and verify complete package source bytes in PR CI. The 0.2.0 publication stopped before attestation/upload because the new NVIDIA log was omitted; its tag is preserved. This patch publishes the 0.2.0 numerical and timing batch with unchanged kernel sources.
+
 ## 0.2.0 — 2026-10-28
 
 - Correct camera-ray and fused-depth float32 division, and preserve point/weighted-product rounding boundaries, so reciprocal/FMA differences no longer amplify into out-of-tolerance normals. This numerical-output change increments the pre-1.0 minor version; recheck geometry consumers before adoption.

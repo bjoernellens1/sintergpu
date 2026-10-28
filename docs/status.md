@@ -25,9 +25,11 @@ cross-vendor qualification remain incomplete. Evidence below was obtained on
 | NVIDIA | User-selected canonical `rtx4070` host reports RTX 4070 Ti (driver 595.99.02). Fresh GPU regression: 563 passed, two skipped, three existing strict expected failures; 106 parity-checked timing fixtures across 43 operations. Full-domain/runtime/application and controlled-performance qualification remain pending |
 | Release lifecycle | [0.1.9 is published and immutable](https://github.com/bjoernellens1/sintergpu/releases/tag/v0.1.9); hosted attestations and released checksums verified. Seven registration PRs delivered per release; a real 0.1.0 retry reused all seven PR URLs and commit hashes. The 0.1.9 delivery, verified changelog excerpts and fresh check annotations are retained in qualification/delivery-0.1.9.json. StereoForge integrity checks passed; its default CPU workflow still has a benchmark import-path failure addressed in the opt-in migration PR; six private consumers' hosted checks were blocked before starting by account billing/spending restrictions. Automatic publisher-App and downstream-App execution require dedicated configuration and remain unverified |
 
-The upcoming [0.2.0 batch](https://github.com/bjoernellens1/sintergpu/pull/12)
+The merged [0.2.0 batch](https://github.com/bjoernellens1/sintergpu/pull/12)
 corrects geometry/fusion float32 rounding and records the timing coverage above.
-Those changes remain under review until that PR is merged and released.
+Its publication stopped at source-package integrity because the NVIDIA regression
+log was omitted. Version 0.2.1 includes the log, preserves the 0.2.0 tag and adds
+that integrity check to PR CI; numerical kernel sources are unchanged.
 
 Do not infer full application, physical camera, tracking accuracy or cross-vendor
 qualification from a kernel fixture, CPU test, compiler pass or historical result.
