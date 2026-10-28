@@ -1,0 +1,138 @@
+diff --git a/include/slang-rhi.h b/include/slang-rhi.h
+--- a/include/slang-rhi.h
++++ b/include/slang-rhi.h
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: experimental shader-byte observation.
+ // Modified by SinterGPU: same-backend limit and dispatch diagnostics.
+ // Modified by SinterGPU: draft diagnostic query interface.
+ // Modified by EliGSiR on 2026-10-09: optional Vulkan creator receipt.
+@@ -309,6 +310,20 @@
+     virtual SLANG_NO_THROW slang::TypeReflection* SLANG_MCALL findTypeByName(const char* name) = 0;
+ };
+ 
++// Experimental diagnostic interface, not a dispatch/pipeline identity proof.
++// Query through IShaderProgram. Retain the returned interface, and serialize
++// access with compilation, reload, close and destruction. Byte pointers are
++// borrowed until release; copy immediately. Only successful Vulkan module
++// creations are observable. This interface adds no GPU submission or wait.
++class IVulkanShaderBytesObservationV1 : public ISlangUnknown
++{
++    SLANG_COM_INTERFACE(0xc9b6db16, 0x4ac0, 0x45a1, {0xa6, 0x90, 0x6d, 0x02, 0xab, 0x14, 0x2e, 0x39});
++public:
++    virtual SLANG_NO_THROW Result SLANG_MCALL getModuleCount(uint32_t* outCount) = 0;
++    virtual SLANG_NO_THROW Result SLANG_MCALL getModule(uint32_t index, const void** outBytes,
++        size_t* outSize, const char** outEntryName, uint64_t* outShaderModule) = 0;
++};
++
+ // clang-format on
+ 
+ // TODO: This should be generated from above
+diff --git a/src/vulkan/vk-shader-program.h b/src/vulkan/vk-shader-program.h
+--- a/src/vulkan/vk-shader-program.h
++++ b/src/vulkan/vk-shader-program.h
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: experimental shader-byte observation.
+ #pragma once
+ 
+ #include "vk-base.h"
+@@ -6,17 +7,25 @@
+ 
+ namespace rhi::vk {
+ 
+-class ShaderProgramImpl : public ShaderProgram
++class ShaderProgramImpl : public ShaderProgram, public IVulkanShaderBytesObservationV1
+ {
+ public:
+     ShaderProgramImpl(Device* device, const ShaderProgramDesc& desc);
+     ~ShaderProgramImpl();
++    SLANG_NO_THROW Result SLANG_MCALL queryInterface(const SlangUUID& uuid, void** outObject) override;
++    SLANG_NO_THROW uint32_t SLANG_MCALL addRef() override { return ShaderProgram::addRef(); }
++    SLANG_NO_THROW uint32_t SLANG_MCALL release() override { return ShaderProgram::release(); }
++    SLANG_NO_THROW Result SLANG_MCALL getModuleCount(uint32_t* outCount) override;
++    SLANG_NO_THROW Result SLANG_MCALL getModule(uint32_t index, const void** outBytes,
++        size_t* outSize, const char** outEntryName, uint64_t* outShaderModule) override;
+ 
+     RefPtr<RootShaderObjectLayoutImpl> m_rootShaderObjectLayout;
+ 
+     struct Module
+     {
+         ComPtr<ISlangBlob> code;
++        std::vector<uint32_t> observedCode;
++        bool observedCreationSucceeded = false;
+         std::string entryPointName;
+         VkShaderModule shaderModule;
+         bool hasBindlessDescriptorSet;
+diff --git a/src/vulkan/vk-shader-program.cpp b/src/vulkan/vk-shader-program.cpp
+--- a/src/vulkan/vk-shader-program.cpp
++++ b/src/vulkan/vk-shader-program.cpp
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: experimental shader-byte observation.
+ #include "vk-shader-program.h"
+ #include "vk-shader-object-layout.h"
+ #include "vk-device.h"
+@@ -123,6 +124,43 @@
+     return SLANG_OK;
+ }
+ 
++Result ShaderProgramImpl::queryInterface(const SlangUUID& uuid, void** outObject)
++{
++    if (!outObject) return SLANG_FAIL;
++    *outObject = nullptr;
++    if (uuid == IVulkanShaderBytesObservationV1::getTypeGuid())
++    {
++        *outObject = static_cast<IVulkanShaderBytesObservationV1*>(this);
++        ShaderProgram::addRef();
++        return SLANG_OK;
++    }
++    return ShaderProgram::queryInterface(uuid, outObject);
++}
++
++Result ShaderProgramImpl::getModuleCount(uint32_t* outCount)
++{
++    if (!outCount || !m_compiledShaders || m_modules.empty() || m_modules.size() > UINT32_MAX) return SLANG_E_NOT_AVAILABLE;
++    for (auto& module : m_modules)
++        if (!module.observedCreationSucceeded) return SLANG_E_NOT_AVAILABLE;
++    *outCount = uint32_t(m_modules.size());
++    return SLANG_OK;
++}
++
++Result ShaderProgramImpl::getModule(uint32_t index, const void** outBytes, size_t* outSize,
++                                    const char** outEntryName, uint64_t* outShaderModule)
++{
++    uint32_t count = 0;
++    if (!outBytes || !outSize || !outEntryName || !outShaderModule ||
++        SLANG_FAILED(getModuleCount(&count)) || index >= count) return SLANG_E_NOT_AVAILABLE;
++    auto& module = m_modules[index];
++    if (module.observedCode.empty() || !module.shaderModule) return SLANG_E_NOT_AVAILABLE;
++    *outBytes = module.observedCode.data();
++    *outSize = module.observedCode.size() * sizeof(uint32_t);
++    *outEntryName = module.entryPointName.c_str();
++    *outShaderModule = uint64_t(module.shaderModule);
++    return SLANG_OK;
++}
++
+ Result ShaderProgramImpl::createShaderModule(slang::EntryPointReflection* entryPointInfo, ComPtr<ISlangBlob> kernelCode)
+ {
+     DeviceImpl* device = getDevice<DeviceImpl>();
+@@ -142,12 +180,19 @@
+     module.hasBindlessDescriptorSet = module.bindlessDescriptorSet != uint32_t(-1);
+ 
+     VkShaderModuleCreateInfo moduleCreateInfo = {VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO};
+-    moduleCreateInfo.pCode = (uint32_t*)module.code->getBufferPointer();
+-    moduleCreateInfo.codeSize = module.code->getBufferSize();
++    const size_t codeSize = module.code->getBufferSize();
++    if (!codeSize || (codeSize % sizeof(uint32_t)) != 0 || !module.code->getBufferPointer())
++        return SLANG_E_NOT_AVAILABLE;
++    module.observedCode.resize(codeSize / sizeof(uint32_t));
++    memcpy(module.observedCode.data(), module.code->getBufferPointer(), codeSize);
++    // The retained copy is the exact byte array supplied to vkCreateShaderModule.
++    moduleCreateInfo.pCode = module.observedCode.data();
++    moduleCreateInfo.codeSize = codeSize;
+     SLANG_VK_RETURN_ON_FAIL_REPORT(
+         device->m_api.vkCreateShaderModule(device->m_device, &moduleCreateInfo, nullptr, &module.shaderModule),
+         device
+     );
++    module.observedCreationSucceeded = true;
+ 
+ #if SLANG_RHI_ENABLE_AFTERMATH
+     if (device->m_aftermathCrashDumper)

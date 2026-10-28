@@ -1,0 +1,277 @@
+diff --git a/include/slang-rhi.h b/include/slang-rhi.h
+--- a/include/slang-rhi.h
++++ b/include/slang-rhi.h
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: experimental recorded-dispatch observation.
+ // Modified by SinterGPU: experimental shader-byte observation.
+ // Modified by SinterGPU: same-backend limit and dispatch diagnostics.
+ // Modified by SinterGPU: draft diagnostic query interface.
+@@ -2516,6 +2517,29 @@
+     virtual SLANG_NO_THROW Result SLANG_MCALL getNativeHandle(NativeHandle* outHandle) = 0;
+ };
+ 
++// Diagnostic record-time observation only; does not prove submission or execution.
++// Query while the originating command buffer is alive and serialize with reset,
++// pool reuse, submit and close. Returned byte pointers are borrowed until release.
++struct VulkanRecordedDispatchV1
++{
++    uint32_t structSize = sizeof(VulkanRecordedDispatchV1);
++    uint32_t schemaVersion = 1;
++    uint64_t recordingGeneration = 0;
++    uint64_t commandBuffer = 0;
++    uint64_t pipeline = 0;
++    uint64_t shaderModule = 0;
++    uint32_t groups[3] = {};
++    const void* code = nullptr;
++    size_t codeSize = 0;
++};
++class IVulkanRecordedDispatchObservationV1 : public ISlangUnknown
++{
++    SLANG_COM_INTERFACE(0x7d01de37, 0x1599, 0x43db, {0x93, 0x9e, 0x9b, 0x59, 0x14, 0xec, 0x64, 0x23});
++public:
++    virtual SLANG_NO_THROW Result SLANG_MCALL getDispatchCount(uint32_t* outCount) = 0;
++    virtual SLANG_NO_THROW Result SLANG_MCALL getDispatch(uint32_t index, VulkanRecordedDispatchV1* out) = 0;
++};
++
+ class IPassEncoder : public ISlangUnknown
+ {
+     SLANG_COM_INTERFACE(0x159cd708, 0x4762, 0x4f30, {0xb5, 0x3f, 0xbe, 0x2a, 0xb5, 0x7d, 0x7c, 0x46});
+diff --git a/src/vulkan/vk-command.h b/src/vulkan/vk-command.h
+--- a/src/vulkan/vk-command.h
++++ b/src/vulkan/vk-command.h
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: experimental recorded-dispatch observation.
+ #pragma once
+ 
+ #include "vk-base.h"
+@@ -94,7 +95,7 @@
+     virtual SLANG_NO_THROW Result SLANG_MCALL getNativeHandle(NativeHandle* outHandle) override;
+ };
+ 
+-class CommandBufferImpl : public CommandBuffer
++class CommandBufferImpl : public CommandBuffer, public IVulkanRecordedDispatchObservationV1
+ {
+ public:
+     CommandQueueImpl* m_queue;
+@@ -104,6 +105,23 @@
+     DescriptorSetAllocator m_descriptorSetAllocator;
+     BindingCache m_bindingCache;
+     uint64_t m_submissionID = 0;
++    struct DispatchObservation
++    {
++        uint64_t pipeline = 0;
++        uint64_t shaderModule = 0;
++        uint32_t groups[3] = {};
++        std::vector<uint32_t> code;
++    };
++    std::vector<DispatchObservation> m_dispatchObservations;
++    uint64_t m_observationGeneration = 0;
++    bool m_observationReady = false;
++    bool m_observationEligible = false;
++    SLANG_NO_THROW Result SLANG_MCALL queryInterface(const SlangUUID& uuid, void** outObject) override;
++    SLANG_NO_THROW uint32_t SLANG_MCALL addRef() override { return CommandBuffer::addRef(); }
++    SLANG_NO_THROW uint32_t SLANG_MCALL release() override { return CommandBuffer::release(); }
++    SLANG_NO_THROW Result SLANG_MCALL getDispatchCount(uint32_t* outCount) override;
++    SLANG_NO_THROW Result SLANG_MCALL getDispatch(uint32_t index, VulkanRecordedDispatchV1* out) override;
++
+ 
+ #if SLANG_RHI_ENABLE_AFTERMATH
+     AftermathMarkerTracker m_aftermathMarkerTracker;
+@@ -119,4 +137,8 @@
+     virtual SLANG_NO_THROW Result SLANG_MCALL getNativeHandle(NativeHandle* outHandle) override;
+ };
+ 
++// Internal diagnostic helper; appends only on complete, unambiguous match.
++bool appendDirectDispatchObservation(CommandBufferImpl* command, ComputePipelineImpl* pipeline,
++                                     uint32_t x, uint32_t y, uint32_t z);
++
+ } // namespace rhi::vk
+diff --git a/src/vulkan/vk-command.cpp b/src/vulkan/vk-command.cpp
+--- a/src/vulkan/vk-command.cpp
++++ b/src/vulkan/vk-command.cpp
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: experimental recorded-dispatch observation.
+ #include "vk-command.h"
+ #include "vk-device.h"
+ #include "vk-buffer.h"
+@@ -7,6 +8,8 @@
+ #include "vk-acceleration-structure.h"
+ #include "vk-shader-table.h"
+ #include "vk-pipeline.h"
++#include "vk-shader-program.h"
++#include <atomic>
+ #include "vk-utils.h"
+ #include "vk-shader-object.h"
+ #include "vk-shader-object-layout.h"
+@@ -31,6 +34,7 @@
+     VulkanApi& m_api;
+ 
+     VkCommandBuffer m_cmdBuffer;
++    CommandBufferImpl* m_observedCommandBuffer = nullptr;
+ 
+     StateTracking m_stateTracking;
+ 
+@@ -134,8 +138,15 @@
+     );
+ };
+ 
++static std::atomic<uint64_t> s_dispatchObservationGeneration{0};
++
+ Result CommandRecorder::record(CommandBufferImpl* commandBuffer)
+ {
++    m_observedCommandBuffer = commandBuffer;
++    commandBuffer->m_observationReady = false;
++    commandBuffer->m_observationEligible = true;
++    commandBuffer->m_dispatchObservations.clear();
++    commandBuffer->m_observationGeneration = ++s_dispatchObservationGeneration;
+     m_cmdBuffer = commandBuffer->m_commandBuffer;
+ 
+ #if SLANG_RHI_ENABLE_AFTERMATH
+@@ -194,7 +205,8 @@
+     m_stateTracking.clear();
+ 
+     SLANG_VK_RETURN_ON_FAIL_REPORT(m_api.vkEndCommandBuffer(m_cmdBuffer), m_device);
+-
++    commandBuffer->m_observationReady = commandBuffer->m_observationEligible &&
++        commandBuffer->m_observationGeneration && !commandBuffer->m_dispatchObservations.empty();
+     return SLANG_OK;
+ }
+ 
+@@ -1036,16 +1048,32 @@
+     m_rayTracingStateValid = false;
+ }
+ 
++bool appendDirectDispatchObservation(CommandBufferImpl* command, ComputePipelineImpl* pipeline, uint32_t x, uint32_t y, uint32_t z)
++{
++    if (!command || !pipeline || !pipeline->m_pipeline || !pipeline->m_dispatchObservationReady ||
++        !pipeline->m_dispatchObservationModule || pipeline->m_dispatchObservationCode.empty()) return false;
++    CommandBufferImpl::DispatchObservation item;
++    item.pipeline = uint64_t(pipeline->m_pipeline);
++    item.shaderModule = uint64_t(pipeline->m_dispatchObservationModule);
++    item.groups[0] = x; item.groups[1] = y; item.groups[2] = z;
++    item.code = pipeline->m_dispatchObservationCode;
++    command->m_dispatchObservations.push_back(std::move(item));
++    return true;
++}
++
+ void CommandRecorder::cmdDispatchCompute(const commands::DispatchCompute& cmd)
+ {
+     if (!m_computeStateValid)
+         return;
+ 
++    if (!appendDirectDispatchObservation(m_observedCommandBuffer, m_computePipeline.get(), cmd.x, cmd.y, cmd.z))
++        m_observedCommandBuffer->m_observationEligible = false;
+     m_api.vkCmdDispatch(m_cmdBuffer, cmd.x, cmd.y, cmd.z);
+ }
+ 
+ void CommandRecorder::cmdDispatchComputeIndirect(const commands::DispatchComputeIndirect& cmd)
+ {
++    m_observedCommandBuffer->m_observationEligible = false;
+     if (!m_computeStateValid)
+         return;
+ 
+@@ -1590,6 +1618,7 @@
+ 
+ void CommandRecorder::cmdExecuteCallback(const commands::ExecuteCallback& cmd)
+ {
++    m_observedCommandBuffer->m_observationEligible = false;
+     commitBarriers();
+ 
+     NativeHandle nativeHandle{
+@@ -2260,8 +2289,48 @@
+     return SLANG_OK;
+ }
+ 
++Result CommandBufferImpl::queryInterface(const SlangUUID& uuid, void** outObject)
++{
++    if (!outObject) return SLANG_FAIL;
++    *outObject = nullptr;
++    if (uuid == IVulkanRecordedDispatchObservationV1::getTypeGuid())
++    {
++        *outObject = static_cast<IVulkanRecordedDispatchObservationV1*>(this);
++        CommandBuffer::addRef();
++        return SLANG_OK;
++    }
++    return CommandBuffer::queryInterface(uuid, outObject);
++}
++Result CommandBufferImpl::getDispatchCount(uint32_t* outCount)
++{
++    if (!outCount || !m_observationReady || !m_observationEligible || !m_observationGeneration ||
++        m_dispatchObservations.empty() || m_dispatchObservations.size() > UINT32_MAX) return SLANG_E_NOT_AVAILABLE;
++    *outCount = uint32_t(m_dispatchObservations.size());
++    return SLANG_OK;
++}
++Result CommandBufferImpl::getDispatch(uint32_t index, VulkanRecordedDispatchV1* out)
++{
++    uint32_t count = 0;
++    if (!out || out->structSize != sizeof(*out) || out->schemaVersion != 1 ||
++        SLANG_FAILED(getDispatchCount(&count)) || index >= count || !m_commandBuffer) return SLANG_E_NOT_AVAILABLE;
++    const auto& item = m_dispatchObservations[index];
++    if (!item.pipeline || !item.shaderModule || item.code.empty()) return SLANG_E_NOT_AVAILABLE;
++    VulkanRecordedDispatchV1 value{};
++    value.recordingGeneration = m_observationGeneration;
++    value.commandBuffer = uint64_t(m_commandBuffer);
++    value.pipeline = item.pipeline; value.shaderModule = item.shaderModule;
++    for (unsigned i = 0; i < 3; ++i) value.groups[i] = item.groups[i];
++    value.code = item.code.data(); value.codeSize = item.code.size()*sizeof(uint32_t);
++    *out = value;
++    return SLANG_OK;
++}
++
+ Result CommandBufferImpl::reset()
+ {
++    m_observationReady = false;
++    m_observationEligible = false;
++    m_observationGeneration = 0;
++    m_dispatchObservations.clear();
+     DeviceImpl* device = getDevice<DeviceImpl>();
+     m_commandList.reset();
+     SLANG_VK_RETURN_ON_FAIL_REPORT(device->m_api.vkResetCommandPool(device->m_device, m_commandPool, 0), device);
+diff --git a/src/vulkan/vk-pipeline.h b/src/vulkan/vk-pipeline.h
+--- a/src/vulkan/vk-pipeline.h
++++ b/src/vulkan/vk-pipeline.h
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: experimental recorded-dispatch observation.
+ #pragma once
+ 
+ #include "vk-base.h"
+@@ -23,6 +24,10 @@
+ class ComputePipelineImpl : public ComputePipeline
+ {
+ public:
++    // Successful concrete-pipeline creation snapshot, not execution evidence.
++    bool m_dispatchObservationReady = false;
++    VkShaderModule m_dispatchObservationModule = VK_NULL_HANDLE;
++    std::vector<uint32_t> m_dispatchObservationCode;
+     RefPtr<RootShaderObjectLayoutImpl> m_rootObjectLayout;
+     VkPipeline m_pipeline = VK_NULL_HANDLE;
+ 
+diff --git a/src/vulkan/vk-pipeline.cpp b/src/vulkan/vk-pipeline.cpp
+--- a/src/vulkan/vk-pipeline.cpp
++++ b/src/vulkan/vk-pipeline.cpp
+@@ -1,3 +1,4 @@
++// Modified by SinterGPU: experimental recorded-dispatch observation.
+ #include "vk-pipeline.h"
+ #include "vk-device.h"
+ #include "vk-shader-object-layout.h"
+@@ -822,6 +823,20 @@
+     pipeline->m_program = program;
+     pipeline->m_rootObjectLayout = program->m_rootShaderObjectLayout;
+     pipeline->m_pipeline = vkPipeline;
++    // The createInfo stage is the stage used for this concrete VkPipeline.
++    // Restrict this diagnostic to a single compute module with no separate
++    // Vulkan specialization-info payload and no pipeline-binary cache hit;
++    // otherwise the supplied shader module may not define the created pipeline.
++    if (!cached && program->m_compiledShaders && program->m_modules.size() == 1 &&
++        program->m_modules[0].observedCreationSucceeded && !program->m_modules[0].observedCode.empty() &&
++        createInfo.stage.module == program->m_modules[0].shaderModule &&
++        createInfo.stage.stage == VK_SHADER_STAGE_COMPUTE_BIT && !createInfo.stage.pSpecializationInfo &&
++        createInfo.stage.pName && std::strcmp(createInfo.stage.pName, "main") == 0)
++    {
++        pipeline->m_dispatchObservationModule = createInfo.stage.module;
++        pipeline->m_dispatchObservationCode = program->m_modules[0].observedCode;
++        pipeline->m_dispatchObservationReady = true;
++    }
+     returnComPtr(outPipeline, pipeline);
+     return SLANG_OK;
+ }
