@@ -24,8 +24,12 @@ validation. Its actual native module receives those exact shader bytes. Seven
 separate Vulkan allocations are bound; their handles do not prove physical
 independence. It compares the frozen Caspar donor against the packaged candidate
 bitwise, against an independent float64 oracle, and checks inputs and output
-tails. A receipt is written exclusively after teardown; error receipts describe
-failure without qualification. Compiler/linker dependencies and loaded runtime
+tails. A receipt is published exclusively after teardown; error receipts describe
+failure without qualification. A fresh `<receipt>.artifacts` directory retains
+packed input, complete donor/candidate raw readbacks, subprocess stdout/stderr,
+exit codes and lock-verification events. Files and relevant directories are
+flushed; filesystem and hardware guarantees still apply. Partial files and
+events may remain after a failed attempt. Compiler/linker dependencies and loaded runtime
 mappings are not authenticated and remain trusted-host assumptions.
 
 After independent review and with all files committed, reproduce the native build
@@ -60,3 +64,7 @@ This verifies copied regular files at preparation time, not all symlinks, loaded
 libraries or future runtime state. Target CPU tests passed 13 cases using that
 compiler and existing NumPy 2.5.4 venv. The isolated source checkout and
 compiler paths are preparation artifacts and may need recreation.
+
+The earlier `c07b54c` engineering attempt predates artifact retention: its raw
+readback bytes were deleted after validation and cannot be recovered from its
+receipt. This newer mechanism does not retroactively change that evidence.

@@ -59,17 +59,49 @@ def test_orchestration_lock_parity_and_failure(tmp_path,monkeypatch):
         finally:os.close(competing)
         if command[0]==str(compiler):
             role=Path(command[1]).stem;Path(command[-1]).write_bytes((role+'-spv').encode())
-            return SimpleNamespace(stdout='')
+            return SimpleNamespace(stdout='',stderr='',returncode=0)
         assert command[0]==str(binary) and kw['pass_fds']
         native_fd[:]=[kw['pass_fds'][0]]
         assert Path(command[7]).read_bytes()==packed
         Path(command[8]).write_bytes(b''.join(out[n].tobytes() for n in r.NAMES))
-        return SimpleNamespace(stdout='fake device')
+        return SimpleNamespace(stdout='fake device',stderr='',returncode=0)
     monkeypatch.setattr(r.subprocess,'run',fake_run)
     args=SimpleNamespace(execute=True,output=str(tmp_path/'result.json'),uuid='96d2dba095fd5c00e8492e0610f24e06',driver=2497233024,commit='a'*40,
                          slangc=str(compiler),binary=str(binary),binary_sha=r.sha(b'native'),icd='/fake/icd.json',icd_sha='mock')
     r.run(args);assert len(calls)==4 and Path(args.output).is_file()
+    evidence=Path(args.output+'.artifacts')
+    assert (evidence/'input.bin').read_bytes()==packed
+    assert (evidence/'donor.bin').read_bytes()==(evidence/'candidate.bin').read_bytes()
+    events=[__import__('json').loads(line) for line in (evidence/'events.jsonl').read_text().splitlines()]
+    assert [e['stage'] for e in events if e['event']=='lock_verified']==['acquired','donor-before','donor-after','candidate-before','candidate-after','validated','before-close']
+    assert [e['returncode'] for e in events if e['event']=='process_exit']==[0,0,0,0]
+    assert events[-1]['event']=='validation_passed' and events[-2]['event']=='lock_closed'
     with pytest.raises(FileExistsError):r.run(args)
+    # A failed native process retains any partial bytes, stderr and exit code.
+    args.output=str(tmp_path/'partial.json')
+    def partial(command,**kw):
+        if command[0]==str(compiler):return fake_run(command,**kw)
+        Path(command[8]).write_bytes(b'partial')
+        return SimpleNamespace(stdout='partial out',stderr='device failed',returncode=17)
+    monkeypatch.setattr(r.subprocess,'run',partial)
+    with pytest.raises(subprocess.CalledProcessError):r.run(args)
+    partial_dir=Path(args.output+'.artifacts')
+    assert (partial_dir/'donor.bin').read_bytes()==b'partial'
+    assert (partial_dir/'donor-native.stderr').read_bytes()==b'device failed'
+    partial_events=[__import__('json').loads(line) for line in (partial_dir/'events.jsonl').read_text().splitlines()]
+    assert any(e['event']=='process_exit' and e['label']=='donor-native' and e['returncode']==17 for e in partial_events)
+    assert not (partial_dir/'candidate.bin').exists()
+    # Journal write failure preserves the raw buffer already written by native.
+    args.output=str(tmp_path/'journal-failure.json');monkeypatch.setattr(r.subprocess,'run',fake_run)
+    original_put=r.ArtifactJournal.put
+    def failing_put(self,name,data):
+        if name=='donor-native.stderr': raise OSError('journal write failed')
+        return original_put(self,name,data)
+    monkeypatch.setattr(r.ArtifactJournal,'put',failing_put)
+    with pytest.raises(OSError,match='journal write failed'):r.run(args)
+    assert (Path(args.output+'.artifacts')/'donor.bin').is_file()
+    assert __import__('json').loads(Path(args.output).read_text())['status']=='failure'
+    monkeypatch.setattr(r.ArtifactJournal,'put',original_put)
     args.output=str(tmp_path/'failure.json')
     def fail(*a,**kw):raise subprocess.CalledProcessError(1,a[0])
     monkeypatch.setattr(r.subprocess,'run',fail)
@@ -84,6 +116,16 @@ def test_orchestration_lock_parity_and_failure(tmp_path,monkeypatch):
     monkeypatch.setattr(r.os,'close',close_then_fail)
     with pytest.raises(OSError,match='lock close failure'):r.run(args)
     assert __import__('json').loads(Path(args.output).read_text())['status']=='failure'
+    monkeypatch.setattr(r.os,'close',original_close)
+    args.output=str(tmp_path/'success-write-failure.json')
+    original_write=r.write_once
+    def fail_success(path,payload):
+        if payload['status']=='trusted_host_engineering_parity_only': raise OSError('success receipt failed')
+        return original_write(path,payload)
+    monkeypatch.setattr(r,'write_once',fail_success)
+    with pytest.raises(OSError,match='success receipt failed'):r.run(args)
+    assert __import__('json').loads(Path(args.output).read_text())['status']=='failure'
+    assert (Path(args.output+'.artifacts')/'candidate.bin').is_file()
 
 
 def test_lease_verification_rejects_unlocked_and_other_inode(tmp_path,monkeypatch):
@@ -141,3 +183,21 @@ def test_checked_helpers_do_not_execute_timestamp_matched_stale_pyc(tmp_path,mon
     assert build_fn(None)==b'ok' and validate_fn(None,3)==3 and not marker.exists()
     files[build.relative_to(tmp_path).as_posix()]=b'modified'
     with pytest.raises(ValueError,match='helper source changed'):r.load_checked_helpers('a'*40,identities)
+
+
+def test_receipt_publication_fsync_failure_does_not_publish(tmp_path,monkeypatch):
+    out=tmp_path/'receipt.json'
+    def fail(fd): raise OSError('fsync failed')
+    monkeypatch.setattr(r.os,'fsync',fail)
+    with pytest.raises(OSError,match='fsync failed'):r.write_once(out,{'status':'success'})
+    assert not out.exists() and not list(tmp_path.glob('.sinter-receipt-*'))
+
+def test_journal_refuses_reuse_and_symlink(tmp_path):
+    receipt=tmp_path/'receipt';j=r.ArtifactJournal(receipt)
+    try:
+        j.put('input.bin',b'input')
+        with pytest.raises(FileExistsError):j.put('input.bin',b'changed')
+        (j.root/'donor.bin').symlink_to(j.root/'input.bin')
+        with pytest.raises(OSError):j.readback('donor.bin','donor')
+        with pytest.raises(FileExistsError):r.ArtifactJournal(receipt)
+    finally:j.close()

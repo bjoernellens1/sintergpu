@@ -11,9 +11,11 @@ import io
 import json
 import os
 import re
+import stat
 from pathlib import Path
 import subprocess
 import tempfile
+import time
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[4]
@@ -116,9 +118,87 @@ def validate(arrays, a, b):
         if a[name][sl].tobytes()!=arrays[name][sl].tobytes(): raise AssertionError('tail changed: '+name)
 
 def write_once(path,payload):
-    fd=os.open(path,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW,0o600)
-    with os.fdopen(fd,'w') as out:
-        json.dump(payload,out,sort_keys=True,indent=2);out.write('\n');out.flush();os.fsync(out.fileno())
+    path=Path(path)
+    directory=os.open(path.parent,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+    temporary='.sinter-receipt-'+os.urandom(16).hex();published=False
+    try:
+        fd=os.open(temporary,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW,0o600,dir_fd=directory)
+        with os.fdopen(fd,'w') as out:
+            json.dump(payload,out,sort_keys=True,indent=2);out.write('\n');out.flush();os.fsync(out.fileno())
+        os.link(temporary,path.name,src_dir_fd=directory,dst_dir_fd=directory,follow_symlinks=False)
+        published=True
+        os.unlink(temporary,dir_fd=directory)
+        os.fsync(directory)
+    except Exception as original:
+        errors=[original]
+        if published:
+            try: os.unlink(path.name,dir_fd=directory);os.fsync(directory)
+            except Exception as rollback: errors.append(rollback)
+        try: os.unlink(temporary,dir_fd=directory)
+        except FileNotFoundError: pass
+        except Exception as cleanup: errors.append(cleanup)
+        if len(errors)>1: raise ExceptionGroup('receipt publication failed',errors)
+        raise
+    finally: os.close(directory)
+
+class ArtifactJournal:
+    """Unique private directory; fixed filenames and durable, append-only events."""
+    def __init__(self, receipt):
+        self.root=Path(str(receipt)+'.artifacts')
+        os.mkdir(self.root,0o700)  # Refuse existing directories and symlinks.
+        parent=os.open(self.root.parent,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+        try: os.fsync(parent)
+        finally: os.close(parent)
+        self.directory=os.open(self.root,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+        try: self.events=os.open('events.jsonl',os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_APPEND|os.O_NOFOLLOW,0o600,dir_fd=self.directory)
+        except Exception:
+            os.close(self.directory)
+            raise
+    def put(self,name,data):
+        if '/' in name or name in ('','.','..'): raise ValueError('artifact name')
+        fd=os.open(name,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW,0o600,dir_fd=self.directory)
+        with os.fdopen(fd,'wb') as out: out.write(data);out.flush();os.fsync(out.fileno())
+        os.fsync(self.directory)
+        self.event('artifact',name=name,size=len(data),sha256=sha(data))
+    def readback(self,name,role):
+        try: fd=os.open(name,os.O_RDONLY|os.O_NOFOLLOW,dir_fd=self.directory)
+        except FileNotFoundError: return None
+        try:
+            info=os.fstat(fd)
+            if not stat.S_ISREG(info.st_mode) or info.st_size>1024*1024: raise ValueError('readback file')
+            with os.fdopen(fd,'rb',closefd=False) as source: data=source.read()
+            if len(data)!=info.st_size: raise ValueError('readback changed')
+            os.fsync(fd);os.fsync(self.directory)
+        finally: os.close(fd)
+        self.event('readback',role=role,name=name,size=len(data),sha256=sha(data))
+        return data
+    def event(self,kind,**fields):
+        data=(json.dumps({'event':kind,'monotonic_ns':time.monotonic_ns(),**fields},sort_keys=True)+'\n').encode()
+        if os.write(self.events,data)!=len(data): raise OSError('short event write')
+        os.fsync(self.events)
+    def close(self):
+        try: os.close(self.events)
+        finally: os.close(self.directory)
+
+
+def lease_event(fd,journal,stage):
+    verify_lease(fd)
+    st=os.fstat(fd);info=Path('/proc/self/fdinfo',str(fd)).read_text()
+    journal.event('lock_verified',stage=stage,pid=os.getpid(),fd=fd,device=st.st_dev,inode=st.st_ino,fdinfo=info)
+
+
+def captured_process(cmd, journal, label, **kwargs):
+    try:
+        result=subprocess.run(cmd,check=False,capture_output=True,**kwargs)
+    except Exception as exc:
+        journal.event('process_exception',label=label,error_type=type(exc).__name__,error=str(exc))
+        raise
+    def as_bytes(value):
+        if value is None: return b''
+        return value.encode() if isinstance(value,str) else value
+    journal.event('process_exit',label=label,returncode=result.returncode)
+    journal.put(label+'.stdout',as_bytes(result.stdout));journal.put(label+'.stderr',as_bytes(result.stderr))
+    return result
 
 def verify_lease(fd):
     actual=os.fstat(fd);expected=LOCK.lstat()
@@ -127,7 +207,7 @@ def verify_lease(fd):
     entries=re.findall(r'^lock:\s*\d+:\s+FLOCK\s+ADVISORY\s+WRITE\s+(\d+)\s+[0-9a-fA-F]+:[0-9a-fA-F]+:(\d+)\s+0\s+EOF\s*$',text,re.MULTILINE)
     if (str(os.getpid()),str(actual.st_ino)) not in entries: raise ValueError('exclusive lock unavailable')
 
-def _run_impl(args):
+def _run_impl(args,journal):
     if not args.execute: raise ValueError('explicit execute required after independent review')
     if Path(args.output).exists() or Path(args.output).is_symlink(): raise FileExistsError(args.output)
     if args.uuid!='96d2dba095fd5c00e8492e0610f24e06' or args.driver!=2497233024: raise ValueError('approved RTX 4070 Ti identity required')
@@ -142,55 +222,81 @@ def _run_impl(args):
     committed_native=subprocess.check_output(['git','-C',str(ROOT),'show',args.commit+':tools/diagnostics/direct_vulkan/engineering_attempt/point_plane.cpp'])
     if build_native(committed_native)!=binary.read_bytes(): raise ValueError('native source/build mismatch')
     fd=os.open(LOCK,os.O_RDWR|os.O_CREAT|os.O_NOFOLLOW,0o600)
-    primary=None;close_error=None;payload=None
+    primary=None;close_error=None;event_error=None;payload=None;acquired=False
     try:
-        fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        verify_lease(fd)
+        fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB);acquired=True
+        lease_event(fd,journal,'acquired')
+        journal.put('input.bin',packed)
         with tempfile.TemporaryDirectory(prefix='sinter-direct-point-plane-') as temp:
             d=Path(temp);(d/'optimization').mkdir();(d/'optimization/point_plane.slang').write_bytes(sources['core'])
-            inp=d/'input.bin';inp.write_bytes(packed);results={};metadata={}
+            inp=journal.root/'input.bin';results={};metadata={}
             for role,groups,entry in (('donor',2,'computeMain'),('candidate',5,'main')):
                 source=d/(role+'.slang');source.write_bytes(sources[role]);spv=d/(role+'.spv')
                 cmd=[str(compiler),str(source),'-I',str(d),'-entry',entry,'-target','spirv','-o',str(spv)]
-                subprocess.run(cmd,check=True,capture_output=True)
+                compiled=captured_process(cmd,journal,role+'-compiler')
+                if compiled.returncode!=0: raise subprocess.CalledProcessError(compiled.returncode,cmd)
                 if sha(spv.read_bytes())!=SPV_SHA[role]: raise ValueError('compiled shader mismatch: '+role)
                 metadata[role+'_abi']=validate_spirv(spv.read_bytes(),1024 if role=='donor' else 256)
-                output=d/(role+'.bin')
+                output=journal.root/(role+'.bin')
                 call=[str(binary),args.uuid,str(args.driver),str(spv),SPV_SHA[role],'main',str(groups),str(inp),str(output),str(fd)]
-                verify_lease(fd)
-                result=subprocess.run(call,check=True,capture_output=True,text=True,pass_fds=(fd,))
-                verify_lease(fd)
-                results[role]=decode(output.read_bytes());metadata[role]=result.stdout.strip()
+                lease_event(fd,journal,role+'-before')
+                result=captured_process(call,journal,role+'-native',text=True,pass_fds=(fd,))
+                lease_event(fd,journal,role+'-after')
+                raw=journal.readback(output.name,role)
+                if result.returncode!=0: raise subprocess.CalledProcessError(result.returncode,call)
+                if raw is None: raise ValueError('native output unavailable')
+                results[role]=decode(raw);metadata[role]=result.stdout.strip()
             validate(arrays,results['donor'],results['candidate'])
             if sha(binary.read_bytes())!=args.binary_sha or sha(compiler.read_bytes())!=COMPILER_SHA: raise ValueError('binary changed')
             if checked_tool_sources(args.commit)!=tool_ids or checked_icd(args.icd,args.icd_sha)!=icd_hash: raise ValueError('tool or ICD configuration changed')
-            verify_lease(fd)
-            payload={'device_uuid':args.uuid,'raw_driver':args.driver,'packed_fixture_sha256':INPUT_SHA,'tool_source_sha256':tool_ids,'icd_configuration_sha256':icd_hash,'status':'trusted_host_engineering_parity_only','commit':args.commit,'source_sha256':SOURCE_SHA,
+            lease_event(fd,journal,'validated')
+            payload={'artifact_directory':str(journal.root),'device_uuid':args.uuid,'raw_driver':args.driver,'packed_fixture_sha256':INPUT_SHA,'tool_source_sha256':tool_ids,'icd_configuration_sha256':icd_hash,'status':'trusted_host_engineering_parity_only','commit':args.commit,'source_sha256':SOURCE_SHA,
                 'spirv_sha256':SPV_SHA,'native_binary_sha256':NATIVE_BINARY_SHA,'native_source_sha256':NATIVE_SOURCE_SHA,'compiler_file_sha256':COMPILER_SHA,
                 'device_output':metadata,'result_sha256':{n:sha(results['candidate'][n].tobytes()) for n in NAMES},
                 'scope':'trusted workstation; not provider, physical-backing, SlangPy, performance or device qualification'}
-            verify_lease(fd)
+            lease_event(fd,journal,'before-close')
     except Exception as exc:
         primary=exc
     finally:
         try: os.close(fd)
         except Exception as exc: close_error=exc
-    if primary and close_error: raise ExceptionGroup('operation and lock close failed',[primary,close_error])
-    if primary: raise primary
-    if close_error: raise close_error
+    if not close_error:
+        try: journal.event('lock_closed',pid=os.getpid(),acquired=acquired)
+        except Exception as exc: event_error=exc
+    errors=[error for error in (primary,close_error,event_error) if error is not None]
+    if len(errors)>1: raise ExceptionGroup('operation, lock close or evidence failed',errors)
+    if errors: raise errors[0]
     return payload
 
 
 def run(args):
     # Deliberate engineering attempt; independent review and external GPU lock required.
     if Path(args.output).exists() or Path(args.output).is_symlink(): raise FileExistsError(args.output)
+    journal=None;created=False
     try:
-        payload=_run_impl(args)
+        journal=ArtifactJournal(args.output);created=True
+        payload=_run_impl(args,journal)
+        journal.event('validation_passed')
+        journal.close();journal=None
     except Exception as exc:
-        try: write_once(args.output,{'status':'failure','error_type':type(exc).__name__,'error':str(exc),'scope':'no GPU qualification'})
-        except Exception as receipt_error: raise ExceptionGroup('operation and failure receipt failed',[exc,receipt_error])
+        errors=[exc]
+        if journal is not None:
+            try: journal.event('failure',error_type=type(exc).__name__,error=str(exc))
+            except Exception as log_error: errors.append(log_error)
+            try: journal.close()
+            except Exception as close_error: errors.append(close_error)
+        failure={'status':'failure','error_type':type(exc).__name__,'error':str(exc),'scope':'no GPU qualification'}
+        if created: failure['artifact_directory']=str(args.output)+'.artifacts'
+        try: write_once(args.output,failure)
+        except Exception as receipt_error: errors.append(receipt_error)
+        if len(errors)>1: raise ExceptionGroup('operation and evidence handling failed',errors)
         raise
-    write_once(args.output,payload)
+    try: write_once(args.output,payload)
+    except Exception as exc:
+        try: write_once(args.output,{'status':'failure','error_type':type(exc).__name__,'error':str(exc),
+                                    'artifact_directory':str(args.output)+'.artifacts','scope':'no GPU qualification'})
+        except Exception as receipt_error: raise ExceptionGroup('success and failure receipt publication failed',[exc,receipt_error])
+        raise
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--execute',action='store_true')
