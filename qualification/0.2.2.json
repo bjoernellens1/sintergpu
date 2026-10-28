@@ -2447,6 +2447,318 @@
         "floating_point_mode": "precise"
       },
       "evidence": "qualification/evidence/primitive-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan/scanBlocks/1025/sum",
+          "primitive-stage/scan/scanBlocks/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan/scanCarry/1025/sum",
+          "primitive-stage/scan/scanCarry/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan/scanExclusive/1025/sum",
+          "primitive-stage/scan/scanExclusive/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan_uint/scanBlocks/1025/sum",
+          "primitive-stage/scan_uint/scanBlocks/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan_uint/scanCarry/1025/sum",
+          "primitive-stage/scan_uint/scanCarry/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "RADV Mesa26.2.3",
+      "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x1002",
+        "device_id": "0x1586",
+        "workloads": [
+          "primitive-stage/scan_uint/scanExclusive/1025/sum",
+          "primitive-stage/scan_uint/scanExclusive/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan/scanBlocks/1025/sum",
+          "primitive-stage/scan/scanBlocks/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan/scanCarry/1025/sum",
+          "primitive-stage/scan/scanCarry/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "4c134d369a52fbef7cb8615658d858e61b35552d6df7915bc39a8a0789f1f506",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan/scanExclusive/1025/sum",
+          "primitive-stage/scan/scanExclusive/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanBlocks",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan_uint/scanBlocks/1025/sum",
+          "primitive-stage/scan_uint/scanBlocks/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanCarry",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan_uint/scanCarry/1025/sum",
+          "primitive-stage/scan_uint/scanCarry/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
+    },
+    {
+      "operation": "primitives.scan_uint.scanExclusive",
+      "variant": "portable-port",
+      "adapter": "SlangPy0.43.1 / Vulkan",
+      "compiler": {
+        "version": "2026.12 (SlangPy bundled)",
+        "sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
+      },
+      "source_sha256": "e7d107c32f4753f791e183460004a8c9f6764ecea5ff41b0b2538d8212208851",
+      "driver": "NVIDIA595.99.02",
+      "device": "NVIDIA GeForce RTX 4070 Ti",
+      "status": "timing-fixture-parity-passed",
+      "scope": "Supplemental1025-element irregular segmented stage fixtures: float/uint SUM/PRODUCT, explicit IDs0/3/8 at17/1000, both matching and rejected later-block carry. Parity before/after50samples5warmups. Exact uint/blockIDs/padding/untouchedcarry; existing float2e-4. Original61/device records and collector9759cb4 retained unchanged. Prepared-stage snapshots, no completehierarchy/optimizedCPU/controlledperformance/variantselection/full-domain claim.",
+      "configuration": {
+        "vendor_id": "0x10de",
+        "device_id": "0x2782",
+        "workloads": [
+          "primitive-stage/scan_uint/scanExclusive/1025/sum",
+          "primitive-stage/scan_uint/scanExclusive/1025/product"
+        ],
+        "shader_tree_sha256": "a748fb713405c00eb32f52bc9c9fec76ba42ad5040cb0cf77a80b431e4556947",
+        "reference_tree_sha256": "f79e767c37ebe4a7522136d2bed48948a5f5b24493108b53eda2c672c5721b29",
+        "floating_point_mode": "precise"
+      },
+      "evidence": "qualification/evidence/primitive-irregular-timings-0.2.2.json"
     }
   ],
   "evidence_sha256": {
@@ -2486,8 +2798,8 @@
     "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf",
     "qualification/delivery-0.1.5.json": "5b0343aa119753b572aedee0982a5dc7ccd0a804595cb037492ca2b3d85fc9a2",
     "benchmarks/results/locus-cpu-gpu-8060s.json": "36f05cb3ac40bf40f5f1f878884495bcd6c933767d112e58e89a4e3290388ea2",
-    "src/sintergpu/data/timings.json": "10a7c503f502ef8181f3542fc77c827ad2f171dde3034eca7e223361591e38c6",
-    "docs/kernel-timings.md": "a96ceb7aef816d2a60e7f466830148e5d3a93dd9cf13340b41249b171b0cb3df",
+    "src/sintergpu/data/timings.json": "c640c2cc3924db99d92f60079e111c7391424a3b1ec7b90e1c696da7781ba75c",
+    "docs/kernel-timings.md": "7f1a67d67bbb8ad76672a0d4bc0f9e63dd8d90589b180c4154b1c73fa346c0b9",
     "qualification/delivery-0.1.6.json": "61fbdbde082cf212b82804e27fd16ee266479c1273b9eb13df9488a98d5921b8",
     "benchmarks/results/color-cpu-gpu-8060s.json": "1d34cd705e7096f28651c04521958027e60c038b65648a83baa8332c863ab864",
     "qualification/delivery-0.1.7.json": "a09a8871e40f76d78b4f42bc3c258e8e609692653c949785937292b1cb4eb57b",
@@ -2517,10 +2829,13 @@
     "qualification/evidence/native-install-release-ci-0.2.1.json": "ef779b442be8086865731482d0a590eda5264e9125f72468bd0475d0c009ffe5",
     "benchmarks/results/primitives-cpu-gpu-8060s-0.2.2.json": "dac26bf8416c916acd059ccbb68581b4fe59bb963db01553c017adf0e134d200",
     "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.2.json": "4bc046c45633b750d100312c644cd1c0f2fa7e1112337429308d7b9770c56f0b",
-    "qualification/evidence/primitive-timings-0.2.2.json": "9d7b5dabe07048fe3472b2eed51de832efded78c1ca51279538717b5eca1071d"
+    "qualification/evidence/primitive-timings-0.2.2.json": "9d7b5dabe07048fe3472b2eed51de832efded78c1ca51279538717b5eca1071d",
+    "benchmarks/results/primitives-irregular-cpu-gpu-8060s-0.2.2.json": "b04ca4874c77c4dc527928ffdbebcda0701d26a3c8c873744e4f880ddcb35d85",
+    "benchmarks/results/primitives-irregular-cpu-gpu-4070ti-0.2.2.json": "53d65ade9e6179290f18fc637c54fd408bfe891e719aef42395965a85816bf15",
+    "qualification/evidence/primitive-irregular-timings-0.2.2.json": "d42dc863c080020d0476fa26564b9e8b4d7eef42c42bbd0ca79f0fa7e0fdf18d"
   },
   "pending_gates": [
-    "Full NVIDIA RTX 4070 Ti operation/variant/adapter qualification beyond retained regression and43-operation timing fixtures",
+    "Full NVIDIA RTX 4070 Ti operation/variant/adapter qualification beyond retained regression and retained stage timing fixtures",
     "Full Radeon 8060S operation/variant/adapter qualification beyond retained fixtures",
     "36 VKL reference modules remain without Slang translation; eleven covered modules include partial-forward profiles",
     "Reviewed consumer migration adoption and configured automatic cross-repository App delivery; seven initial registration PRs delivered",
@@ -2543,16 +2858,18 @@
       "benchmarks/results/vkl-features-cpu-gpu-4070ti-0.2.0.json",
       "benchmarks/results/vkl-cpu-gpu-4070ti-0.2.0.json",
       "benchmarks/results/primitives-cpu-gpu-8060s-0.2.2.json",
-      "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.2.json"
+      "benchmarks/results/primitives-cpu-gpu-4070ti-0.2.2.json",
+      "benchmarks/results/primitives-irregular-cpu-gpu-8060s-0.2.2.json",
+      "benchmarks/results/primitives-irregular-cpu-gpu-4070ti-0.2.2.json"
     ],
     "catalog_entries": 137,
     "paired_cpu_gpu_entries": 51,
     "pending_portable_entries": 86,
     "additional_native_pending": 4,
-    "scope": "334current-source synthetic stage workload records:167perdevice(106prior+61primitive)onRadeon8060SandRTX4070Ti,50samples5warmups. Retain126historical rows. Independent CPUreference/GPUtimestamp/hostcompletion/full-bound-buffer-transfer costs separate. NooptimizedCPU, completeproductionpipeline, exclusiveperformance, optimizedselection, trajectory/full-domainqualification.",
+    "scope": "358current-source synthetic stage workload records:179perdevice(106prior+61originalprimitive+12irregular)onRadeon8060SandRTX4070Ti,50samples5warmups. Retain126historical rows. Independent CPUreference/GPUtimestamp/hostcompletion/full-bound-buffer-transfer costs separate. NooptimizedCPU, completeproductionpipeline, exclusiveperformance, optimizedselection, trajectory/full-domainqualification.",
     "color_collector_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3",
     "color_workloads": 60,
-    "workloads": 334,
+    "workloads": 358,
     "locus_collector_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3",
     "retained_historical_workloads": 126,
     "feature_collector_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3",
@@ -2562,11 +2879,12 @@
     "locus_workloads": 56,
     "nvidia_collector_revision": "32bec9b5c527ce412a8c8801b25cd999a80ae602",
     "workloads_by_device": {
-      "AMD Radeon8060S": 167,
-      "NVIDIA GeForce RTX4070Ti": 167
+      "AMD Radeon8060S": 179,
+      "NVIDIA GeForce RTX4070Ti": 179
     },
-    "primitive_workloads": 122,
-    "primitive_collector_revision": "9759cb4b2e0e201aae04d37d79dbfb0d49a44b43"
+    "primitive_workloads": 146,
+    "primitive_collector_revision": "9759cb4b2e0e201aae04d37d79dbfb0d49a44b43",
+    "primitive_additional_collector_revision": "c875c0d964d2959e5848f268c4c19d5f9863af5a"
   },
   "native_packaging": {
     "status": "installed-native-static-link-passed",
