@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 import importlib.util
+import os
 from pathlib import Path
 import struct
 import subprocess
@@ -7,7 +8,7 @@ import pytest
 
 HERE=Path(__file__).resolve().parent; ROOT=HERE.parents[3]
 spec=importlib.util.spec_from_file_location('contract',HERE/'spirv_contract.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
-COMPILER=Path('/home/bjoern/.local/opt/slang-2026.19/bin/slangc')
+COMPILER=Path(os.environ.get('SINTERGPU_SLANGC','/home/bjoern/.local/opt/slang-2026.19/bin/slangc'))
 
 def mutate(data,op,predicate,change):
     words=list(struct.unpack('<%dI'%(len(data)//4),data));i=5

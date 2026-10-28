@@ -9,7 +9,7 @@ import pytest
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[3]
-COMPILER=Path('/home/bjoern/.local/opt/slang-2026.19/bin/slangc')
+COMPILER=Path(os.environ.get('SINTERGPU_SLANGC','/home/bjoern/.local/opt/slang-2026.19/bin/slangc'))
 SHA='b34c971681eba7c1c7d9a885a13223fc3d481ab72fa39f2b9bf0ddbda2f00f76'
 
 def test_cpu_fake_preflight_and_rejections(tmp_path):

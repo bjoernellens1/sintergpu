@@ -11,9 +11,9 @@ import tempfile
 ROOT=Path(__file__).resolve().parents[4]
 SOURCE='tools/diagnostics/direct_vulkan/engineering_attempt/point_plane.cpp'
 SOURCE_SHA='ab1da2441f8554828e2bc792d84aad71ce0ba0ce838428fb16e4653cf34471d2'
-BINARY_SHA='44b5e6b2d27e159201bce180984b4a1450c1b1c8dcd745ab8d04f3c4ce7fe301'
+BINARY_SHA='b04a1e4d73dd2b4db1820a6d6816ecb9fc03c32f8a47f96b0bcbaa0dbbe431ad'
 COMPILER=Path('/usr/bin/c++')
-COMPILER_SHA='579d25c2d1e45abeed0c63a517b5c52f6d09ea811a787bf7a7c677a7fd0726f6'
+COMPILER_SHA='1353e9bdd29a7295c7226bf6c63abccce056d8cac31f112e5cdbecc3f28c2769'
 FLAGS=['-std=c++17','-O0','-g0','-Wall','-Wextra','-Werror','-Wno-missing-field-initializers']
 
 def sha(data): return hashlib.sha256(data).hexdigest()

@@ -33,7 +33,7 @@ COMPILER_SHA='19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145'
 INPUT_SHA='e8d3cf128e6f3c547433f2bc457efc26ce0e24147592dc76bcbe4aee726178f7'
 # This pin identifies the proposed engineering build only; it is not runtime attestation.
 NATIVE_SOURCE_SHA='ab1da2441f8554828e2bc792d84aad71ce0ba0ce838428fb16e4653cf34471d2'
-NATIVE_BINARY_SHA='44b5e6b2d27e159201bce180984b4a1450c1b1c8dcd745ab8d04f3c4ce7fe301'
+NATIVE_BINARY_SHA='b04a1e4d73dd2b4db1820a6d6816ecb9fc03c32f8a47f96b0bcbaa0dbbe431ad'
 SHAPES={'points':((512,4),'<f4'), 'targets':((1032,4),'<f4'), 'normals':((1032,4),'<f4'),
         'out_0':((1039,),'<f4'), 'out_1':((6199,),'<f4'), 'points_indices':((1025,),'<u4')}
 

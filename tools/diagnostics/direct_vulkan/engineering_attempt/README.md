@@ -34,8 +34,8 @@ Set `VK_DRIVER_FILES` to exactly one trusted absolute ICD JSON path; do not set
 `VK_ICD_FILENAMES`, `VK_ADD_DRIVER_FILES`, `VK_LAYER_PATH`, `VK_ADD_LAYER_PATH`,
 `VK_INSTANCE_LAYERS`, or `LD_PRELOAD`. Run `runner.py --execute --commit COMMIT
 --uuid 96d2dba095fd5c00e8492e0610f24e06 --driver 2497233024 --binary BINARY
---binary-sha 44b5e6b2d27e159201bce180984b4a1450c1b1c8dcd745ab8d04f3c4ce7fe301
---slangc /home/bjoern/.local/opt/slang-2026.19/bin/slangc --icd ICD_JSON
+--binary-sha b04a1e4d73dd2b4db1820a6d6816ecb9fc03c32f8a47f96b0bcbaa0dbbe431ad
+--slangc SLANGC --icd ICD_JSON
 --icd-sha ICD_JSON_SHA256 --output NEW_RECEIPT`. The execution host must have
 all pinned tools and the committed source; paths above are local to the current
 build environment and must be checked on the target host. The runner requires
@@ -46,3 +46,17 @@ library in the fake executable. The fake dispatch copies independent CPU oracle
 output; it exercises setup, guards and cleanup, not shader computation. Run
 `/home/bjoern/miniforge3/bin/python3.13 -m pytest -q tools/diagnostics/direct_vulkan/engineering_attempt`.
 No GPU execution has been performed in this attempt.
+
+Target-specific CPU preparation (no GPU execution): on `cps-wkstn-nvidia4070`,
+Ubuntu GCC 13.3.0 `/usr/bin/c++` SHA-256
+`1353e9bdd29a7295c7226bf6c63abccce056d8cac31f112e5cdbecc3f28c2769`
+produced the pinned native binary in three local builds. A user-owned isolated
+copy of Slang 2026.19 at
+`/home/bjoern/.cache/sintergpu-qualification/direct-point-plane-4070-PdRxNvIk/slang-2026.19`
+produced the two pinned shader hashes. Its complete regular-file hash manifest
+matched the pinned local tree using `LC_ALL=C` (manifest digest
+`794d004679ce9e5773143100959e149277acf221d8467bc7a17d1158a6302669`).
+This verifies copied regular files at preparation time, not all symlinks, loaded
+libraries or future runtime state. Target CPU tests passed 13 cases using that
+compiler and existing NumPy 2.5.4 venv. The isolated source checkout and
+compiler paths are preparation artifacts and may need recreation.
