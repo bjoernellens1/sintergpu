@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "status": "incumbent_fixture_attempt",
+  "source_checkpoint": "4ebaf979aef9a775e14d7cf683cdc8d73f9b4145",
+  "scope": "Original unmodified VKL and SLAM entrypoints passed fixture GPU test file on Radeon 8060S: 72 tests including frozen VKL donor, input/tails/reuse. Raw SLAM shader nonfinite cases do not establish tracker pose or trajectory parity. 4070 incumbent attempt blocked by a different active GPU lease. No candidate or performance qualification.",
+  "device": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+  "physical_device_uuid": "00000000-c400-0000-0000-000000000000",
+  "compiler_sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678",
+  "evidence_sha256": {
+    "qualification/evidence/depth-pyramid-incumbent-8060s-0.2.7.log": "db7ba33cd8c571796a88e0893e7dc03288f9dccadef602e4141048fae3a2b5a9",
+    "qualification/evidence/depth-pyramid-incumbent-8060s-receipt-0.2.7.json": "39b25422b4bfde7c75856fc5abbba702c2bf7f4a6e081db7d95175cafbb47c65",
+    "qualification/evidence/depth-pyramid-incumbent-8060s-snapshot-0.2.7.json": "92e2f522d0d32482e01c43017b6a002552a68693424256ae4e6e04378b44a554"
+  }
+}

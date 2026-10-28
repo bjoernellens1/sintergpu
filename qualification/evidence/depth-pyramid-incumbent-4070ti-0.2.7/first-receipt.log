@@ -1,0 +1,100 @@
+LOCK_ACQUIRED PID=270763 COMMIT=4ebaf979aef9a775e14d7cf683cdc8d73f9b4145
+Wed Oct 28 05:26:59 PM UTC 2026
+EXACT_TREE_VERIFIED 1226
+GPU-96d2dba0-95fd-5c00-e849-2e0610f24e06, 595.99.02, 0 %
+PYTHONPATH=src:. TMPDIR=/home/bjoern/.cache/sintergpu-qualification/depth-pyramid-incumbent-4070ti-dc6y4Jgj/tmp SINTERGPU_GPU_TESTS=1 VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia_icd.json
+8bf904abc1c5d6428a1f27cc5d4a3c9783d15231f17ce1ef8d25e9cab1f60d1c  /usr/share/vulkan/icd.d/nvidia_icd.json
+e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f  /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/bin/python
+python 3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0] /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/bin/python
+slangpy 0.43.1 /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/__init__.py
+torch 2.14.1+cpu /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/torch/__init__.py
+BINARY /usr/bin/python3.12 e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f
+BINARY /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/vulkan-tools-0.2.5/root/usr/bin/vulkaninfo f850851cd176c646851f42287902d5ee737849f275c1a64cb319b4985bdfbb4c
+BINARY /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/libslang-compiler.so.0.2026.12 195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678
+BINARY /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/torch/_C.cpython-312-x86_64-linux-gnu.so b09d26e7781dffdf26001f7f89d85fc1e7866c9d241cde7ecc5277e11950d6e0
+snapshot NVIDIA GeForce RTX 4070 Ti {'name': 'NVIDIA', 'info': '595.99.02', 'version': '595.99.2.0', 'uuid': 'c9bf27cc-ad5e-57db-8930-96d25aad2e91'}
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/bjoern/.cache/sintergpu-qualification/depth-pyramid-incumbent-4070ti-dc6y4Jgj/source
+configfile: pyproject.toml
+collecting ... collected 72 items
+
+tests/test_depth_pyramid_gpu.py::test_preflight_and_all_fixture_mappings PASSED [  1%]
+tests/test_depth_pyramid_gpu.py::test_invalid_host_resources PASSED      [  2%]
+tests/test_depth_pyramid_gpu.py::test_record_uses_borrowed_encoder_only PASSED [  4%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-0] PASSED [  5%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-0] PASSED [  6%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-1] PASSED [  8%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-1] PASSED [  9%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-2] PASSED [ 11%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-2] PASSED [ 12%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-3] PASSED [ 13%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-3] PASSED [ 15%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-4] PASSED [ 16%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-4] PASSED [ 18%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-5] PASSED [ 19%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-5] PASSED [ 20%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-6] PASSED [ 22%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-6] PASSED [ 23%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-7] PASSED [ 25%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-7] PASSED [ 26%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-8] PASSED [ 27%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-8] PASSED [ 29%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-9] PASSED [ 30%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-9] PASSED [ 31%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-10] PASSED [ 33%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-10] PASSED [ 34%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-11] PASSED [ 36%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-11] PASSED [ 37%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-12] PASSED [ 38%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-12] PASSED [ 40%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-13] PASSED [ 41%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-13] PASSED [ 43%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-14] PASSED [ 44%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-14] PASSED [ 45%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-mask-15] PASSED [ 47%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-mask-15] PASSED [ 48%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-near-zero-np.float32(1e-08)] PASSED [ 50%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-near-zero-np.float32(1e-08)] PASSED [ 51%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-near-zero-np.float32(1e-30)] PASSED [ 52%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-near-zero-np.float32(1e-30)] PASSED [ 54%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-near-zero-np.float32(-0.0)] PASSED [ 55%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-near-zero-np.float32(-0.0)] PASSED [ 56%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-near-zero-np.float32(0.0)] PASSED [ 58%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-near-zero-np.float32(0.0)] PASSED [ 59%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-shape-(2, 1, 1)] PASSED [ 61%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-shape-(2, 1, 7)] PASSED [ 62%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-shape-(2, 7, 1)] PASSED [ 63%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-shape-(3, 5, 7)] PASSED [ 65%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-shape-(2, 34, 38)] PASSED [ 66%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-tracker-api-finite] PASSED [ 68%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-shape-(2, 2)] PASSED [ 69%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-shape-(34, 38)] PASSED [ 70%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-shape-(70, 68)] PASSED [ 72%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-shape-(240, 320)] PASSED [ 73%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-threshold-np.float32(0.99999994)] PASSED [ 75%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-threshold-np.float32(1.0)] PASSED [ 76%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-threshold-np.float32(1.0000001)] PASSED [ 77%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-threshold-np.float32(1.0000037)] PASSED [ 79%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-threshold-np.float32(1.0000038)] PASSED [ 80%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[vkl-threshold-np.float32(1.0000039)] PASSED [ 81%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-edge-[inf, 0, 0, 0]-inf] PASSED [ 83%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-edge-[1e+21, 0, 0, 0]-0] PASSED [ 84%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-edge-[1e+21, 0, 0, 0]-1e+21] PASSED [ 86%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_full_output[slam-edge-[1, 2, 0, 0]-1] PASSED [ 87%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_reused_buffers[vkl] PASSED [ 88%]
+tests/test_depth_pyramid_gpu.py::test_incumbent_reused_buffers[slam] PASSED [ 90%]
+tests/test_depth_pyramid_gpu.py::test_vkl_frozen_donor PASSED            [ 91%]
+tests/test_depth_pyramid_gpu.py::test_fake_readback_checks_inputs_and_tails PASSED [ 93%]
+tests/test_depth_pyramid_gpu.py::test_near_zero_and_signed_zero_compare_rejects_wrong_values PASSED [ 94%]
+tests/test_depth_pyramid_gpu.py::test_slam_raw_shader_fixture_scope PASSED [ 95%]
+tests/test_depth_pyramid_gpu.py::test_actual_prepared_fixture_records_prebound_resources PASSED [ 97%]
+tests/test_depth_pyramid_gpu.py::test_record_ast_guard_and_adversarial_mutations PASSED [ 98%]
+tests/test_depth_pyramid_gpu.py::test_fake_recording_benchmark_samples PASSED [100%]
+
+============================== 72 passed in 2.84s ==============================
+COMPILER /home/bjoern/.cache/sintergpu-qualification/0.2.0-qwYoST/venv/lib/python3.12/site-packages/slangpy/libslang-compiler.so.0.2026.12 195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678
+DEVICE_UNCHANGED
+TERMINAL_EXIT=0
+Wed Oct 28 05:27:06 PM UTC 2026
