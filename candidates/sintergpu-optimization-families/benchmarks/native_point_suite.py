@@ -13,7 +13,7 @@ from pathlib import Path
 import platform
 import subprocess
 
-from family_timings import METHOD, compare
+from family_timings import METHOD, compare, summary
 from native_fixture import COUNTS, check_native_outputs, export_fixture
 
 
@@ -24,7 +24,7 @@ def sha(path):
 def run(args):
     args.output.mkdir(parents=True, exist_ok=True)
     identity = dict(schema='sintergpu.native.suite.v1', blocks=args.blocks, warmups=10,
-        runs=3, profiles=['aosoa', 'scalar'], counts=list(COUNTS), method=METHOD,
+        runs=3, profiles=['aosoa', 'scalar'], counts=args.counts, method=METHOD,
         candidate_local_size=args.candidate_local_size,completion_mode=args.completion_mode,
         compiler_lane='2026.19', hostname=platform.node(), vendor=args.vendor,
         device=args.device, affinity_cpu=args.cpu,
@@ -39,7 +39,7 @@ def run(args):
         artifacts={p.name:sha(p) for p in args.compiled.glob('*') if p.is_file()}, results=[])
     (args.output/'suite-plan.json').write_text(json.dumps(identity, indent=2)+'\n')
     for profile in identity['profiles']:
-        for count in COUNTS:
+        for count in args.counts:
             fixture=args.output/f'fixture-{profile}-{count}'
             export_fixture(fixture, count, profile,args.candidate_local_size)
             for run_id in range(1,4):
@@ -67,21 +67,24 @@ def report(args):
     reports=[]
     for directory in args.inputs:
         plan=json.loads((directory/'suite-plan.json').read_text())
-        assert len(plan['results'])==42 and plan['blocks']==1000 and plan['runs']==3
+        assert len(plan['results'])==len(plan['profiles'])*len(plan['counts'])*3 and plan['blocks'] in (1000,10000) and plan['runs']==3
         device=dict(host=plan['hostname'],vendor=plan['vendor'],device=plan['device'],results=[])
         for result in plan['results']:
             path=directory/result['output']
             data=path.read_bytes() if path.exists() else gzip.decompress(path.with_suffix('.json.gz').read_bytes())
             assert hashlib.sha256(data).hexdigest()==result['sha256']
             raw=json.loads(data)
-            assert raw['status']=='passed' and raw['blocks']==1000 and raw['warmups_per_boundary_per_variant']==10
+            assert raw['status']=='passed' and raw['blocks']==plan['blocks'] and raw['warmups_per_boundary_per_variant']==10
+            assert raw['hardware']['vendor_id']==int(plan['vendor'],0)
+            assert raw['hardware']['device_id']==int(plan['device'],0)
+            if 'completion_mode' in plan:assert raw['completion_mode']==plan['completion_mode']
             assert result['oracle']['independent_float64_oracle'] and result['oracle']['full_byte_differential']
             row={key:result[key] for key in ('profile','count','run')};row['boundaries']={}
             for boundary in ('gpu_timestamp','resident_completion','transfer_inclusive'):
                 samples=[s for s in raw['samples'] if s['boundary']==boundary]
-                assert len(samples)==4000
+                assert len(samples)==4*plan['blocks']
                 blocks=[]
-                for index in range(1000):
+                for index in range(plan['blocks']):
                     group=samples[4*index:4*index+4]
                     assert [s['variant'] for s in group]==METHOD['order']
                     assert [s['position'] for s in group]==[0,1,2,3]
@@ -89,6 +92,10 @@ def report(args):
                     key='gpu_ns' if boundary=='gpu_timestamp' else 'wall_ns'
                     blocks.append([s[key]/1e6 for s in group])
                 row['boundaries'][boundary]=compare(blocks)
+                if all('thread_cpu_ns' in s for s in samples):
+                    row['boundaries'][boundary]['thread_cpu_ms']={
+                        v:summary([s['thread_cpu_ns']/1e6 for s in samples if s['variant']==v])
+                        for v in ('baseline','candidate')}
             row['all_boundaries_pass']=all(b['decision']!='retain-baseline' for b in row['boundaries'].values())
             device['results'].append(row)
             print(plan['hostname'],row['profile'],row['count'],row['run'],row['all_boundaries_pass'],flush=True)
@@ -108,6 +115,7 @@ def main():
     p.add_argument('--source-commit',help='Full source commit for an exported archive without .git; source hashes remain mandatory')
     p.add_argument('--candidate-local-size',type=int,choices=(256,1024),default=1024)
     p.add_argument('--completion-mode',choices=('wait','spin'),default='wait')
+    p.add_argument('--counts',type=int,nargs='+',default=list(COUNTS),choices=COUNTS)
     p=sub.add_parser('report');p.add_argument('--inputs',type=Path,nargs='+',required=True);p.add_argument('--output',type=Path,required=True)
     args=parser.parse_args();globals()[args.action](args)
 
