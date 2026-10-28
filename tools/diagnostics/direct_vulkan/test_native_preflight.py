@@ -66,6 +66,10 @@ def test_cpu_fake_preflight_and_rejections(tmp_path):
         trace=events.read_text().splitlines()
         assert 'queue_submit' in trace and 'queue_wait' not in trace
         assert trace.count('free_memory')==7 and trace[-2:]==['destroy_device','destroy_instance']
+        events.unlink();env.pop('SINTERGPU_FAKE_FAIL_SUBMIT');env['SINTERGPU_FAKE_FAIL_TEARDOWN']='1'
+        failed=run(good);assert failed.returncode!=0 and not output.exists()
+        trace=events.read_text().splitlines()
+        assert 'queue_wait' in trace and trace.count('free_memory')==7 and trace[-2:]==['destroy_device','destroy_instance']
     finally:os.close(fd)
 
 def test_native_production_gate_blocks_before_vulkan(tmp_path):

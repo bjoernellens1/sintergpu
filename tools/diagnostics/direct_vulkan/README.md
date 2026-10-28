@@ -14,8 +14,9 @@ file hashes. The native code selects a physical device by same-instance UUID,
 checks raw driver version and dispatch/descriptor limits, verifies exact SPIR-V
 and fixture bytes plus all indices, allocates and binds one host-coherent Vulkan
 memory object per buffer, submits explicit host/compute barriers, reads every
-buffer and cleans up. The parent holds the canonical GPU lock across both
-children and validation. Paired bytes, independent float64 oracle, input bytes
+buffer and cleans up. The parent verifies its exclusive canonical GPU lock across both
+children, validation and native teardown. Success is recorded after teardown
+and lock close; failures produce a write-once failure receipt. Paired bytes, independent float64 oracle, input bytes
 and all output tails are checked. Same-source snapshot and compiler-binary file
 hashes do not prove loaded native dependency identity; raw driver and device
 information rely on the trusted workstation.
@@ -27,21 +28,20 @@ also check invalid identity and fixture arguments, lock ownership, output guards
 write-once behavior and both production guards. Run:
 
 ```sh
-/home/bjoern/miniforge3/bin/python3.13 -m pytest -q tools/diagnostics/direct_vulkan/test_runner.py tools/diagnostics/direct_vulkan/test_native_preflight.py
+/home/bjoern/miniforge3/bin/python3.13 -m pytest -q tools/diagnostics/direct_vulkan/test_runner.py tools/diagnostics/direct_vulkan/test_native_preflight.py tools/diagnostics/direct_vulkan/test_spirv_contract.py tools/diagnostics/direct_vulkan/test_verified_build.py
 ```
 
 The preflight test compiles the donor with the locally pinned Slang compiler and
 skips if that compiler is unavailable; a skip is not evidence. Missing before
-hardware: independently reviewed complete native fake failure/teardown and
-lock coverage, independently bound reviewed source and executable identity, trusted build and source provenance,
-failure-receipt handling, shader reflection/layout verification, and independent
-review of the unblocked production path. The existing hard blocks must stay in
+hardware: complete native failure/teardown and lock coverage, independently
+verified source/build and loaded runtime closure, independently reviewed failure
+receipts and SPIR-V ABI checks, and review of the unblocked production path. The existing hard blocks must stay in
 place until these are resolved. No GPU test has been run.
 
 The scaffold pins its native source SHA-256
-`777ae9d98ff5eba0f43e3ce230dc8ed655ec71946b7d7217b2128fc5f53064d5`
+`24c32e16b2d560514925d70ae6d61ced4a051488ff544a32a54a6f8a7366be32`
 and the **still blocked** local executable SHA-256
-`d2c6a0b7427fc2cb3b3c5b53209f71798ca22db89980bcb4dff1c6f85bcae16f`.
+`c623778a0db171127b20e21bbd3ac63bbcfcae8d79691b60a4857c1a7a45f06b`.
 Two local builds matched with GCC 16.2.1 using:
 
 ```sh
@@ -52,3 +52,16 @@ This local repeat is not independent build authentication or complete toolchain
 closure. Removing either production guard changes the relevant source/binary
 and requires new reviewed pins. The CPU-test executable links only the fake
 Vulkan object, without `libvulkan`; a fake-only marker is required at link time.
+
+`spirv_contract.py` inspects the actual compiled SPIR-V for entry point,
+workgroup, descriptor sets and bindings, scalar storage types and stride, and
+uniform field offsets; the uniform buffer allocates 32 bytes. Tests compile both
+modules and reject targeted layout mutations. This targeted parser is not a
+general SPIR-V validator; the runner also checks exact pinned shader hashes.
+`verified_build.py` rebuilds the pinned native source twice with the pinned
+local compiler and compares exact blocked binary bytes. The runner requires the
+source from the specified Git commit and compares this rebuild with the
+requested executable. Toolchain dependencies, dynamic loading and the Python
+execution closure are not authenticated; both production guards remain.
+Native fake tests include failed submission and failed device-wait teardown;
+those cases destroy all fake allocations without publishing output.

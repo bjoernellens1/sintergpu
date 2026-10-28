@@ -43,9 +43,12 @@ def test_orchestration_lock_parity_and_failure(tmp_path,monkeypatch):
     monkeypatch.setattr(r,'COMPILER_SHA',r.sha(b'compiler'))
     monkeypatch.setattr(r,'NATIVE_BINARY_SHA',r.sha(b'native'))
     monkeypatch.setattr(r,'LOCK',tmp_path/'lock')
+    monkeypatch.setattr(r.subprocess,'check_output',lambda *a,**k:b'fake committed source')
+    monkeypatch.setattr(r,'build_native',lambda source:b'native')
     monkeypatch.setattr(r,'checked_sources',lambda commit:{'fixture':FIXTURE.read_bytes(),'core':b'core','donor':b'donor','candidate':b'candidate'})
     monkeypatch.setattr(r,'SPV_SHA',{'donor':r.sha(b'donor-spv'),'candidate':r.sha(b'candidate-spv')})
-    calls=[]
+    monkeypatch.setattr(r,'validate_spirv',lambda *args:{'synthetic':True})
+    calls=[]; native_fd=[]
     def fake_run(command, **kw):
         calls.append(command)
         # A competing open-file description cannot acquire the lock during compilation or dispatch.
@@ -57,6 +60,7 @@ def test_orchestration_lock_parity_and_failure(tmp_path,monkeypatch):
             role=Path(command[1]).stem;Path(command[-1]).write_bytes((role+'-spv').encode())
             return SimpleNamespace(stdout='')
         assert command[0]==str(binary) and kw['pass_fds']
+        native_fd[:]=[kw['pass_fds'][0]]
         assert Path(command[7]).read_bytes()==packed
         Path(command[8]).write_bytes(b''.join(out[n].tobytes() for n in r.NAMES))
         return SimpleNamespace(stdout='fake device')
@@ -69,10 +73,38 @@ def test_orchestration_lock_parity_and_failure(tmp_path,monkeypatch):
     def fail(*a,**kw):raise subprocess.CalledProcessError(1,a[0])
     monkeypatch.setattr(r.subprocess,'run',fail)
     with pytest.raises(subprocess.CalledProcessError):r.run(args,_cpu_test_only=True)
-    assert not Path(args.output).exists()
+    assert __import__('json').loads(Path(args.output).read_text())['status']=='failure'
+    # A lock-descriptor teardown failure cannot leave a success receipt.
+    args.output=str(tmp_path/'close-failure.json');monkeypatch.setattr(r.subprocess,'run',fake_run)
+    original_close=os.close
+    def close_then_fail(fd):
+        original_close(fd)
+        if native_fd and fd==native_fd[0]: raise OSError('simulated lock close failure')
+    monkeypatch.setattr(r.os,'close',close_then_fail)
+    with pytest.raises(OSError,match='lock close failure'):r.run(args,_cpu_test_only=True)
+    assert __import__('json').loads(Path(args.output).read_text())['status']=='failure'
 
 
 def test_production_gate_precedes_everything(monkeypatch):
     monkeypatch.setattr(r,'checked_sources',lambda *args: pytest.fail('must not inspect or create device'))
     with pytest.raises(RuntimeError, match='production path blocked'):
         r.run(object())
+
+def test_lease_verification_rejects_unlocked_and_other_inode(tmp_path,monkeypatch):
+    monkeypatch.setattr(r,'LOCK',tmp_path/'lock')
+    fd=os.open(r.LOCK,os.O_CREAT|os.O_RDWR,0o600)
+    try:
+        with pytest.raises(ValueError,match='exclusive lock'):r.verify_lease(fd)
+        fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB);r.verify_lease(fd)
+        other=tmp_path/'other';wrong=os.open(other,os.O_CREAT|os.O_RDWR,0o600)
+        try:
+            with pytest.raises(ValueError,match='inode'):r.verify_lease(wrong)
+        finally:os.close(wrong)
+    finally:os.close(fd)
+
+def test_failure_receipt_write_error_preserves_both_exceptions(tmp_path,monkeypatch):
+    def fail(*a,**k):raise ValueError('original error')
+    def receipt(*a,**k):raise OSError('receipt error')
+    monkeypatch.setattr(r,'_run_impl',fail);monkeypatch.setattr(r,'write_once',receipt)
+    with pytest.raises(ExceptionGroup) as info:r.run(SimpleNamespace(output=str(tmp_path/'out')),_cpu_test_only=True)
+    assert [str(e) for e in info.value.exceptions]==['original error','receipt error']

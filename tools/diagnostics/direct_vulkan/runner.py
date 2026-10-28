@@ -8,14 +8,22 @@ import argparse
 import fcntl
 import hashlib
 import io
+import importlib.util
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import tempfile
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[3]
+_spec=importlib.util.spec_from_file_location('sinter_direct_spirv_contract',Path(__file__).resolve().parent/'spirv_contract.py')
+_spirv=importlib.util.module_from_spec(_spec);_spec.loader.exec_module(_spirv)
+validate_spirv=_spirv.validate
+_build_spec=importlib.util.spec_from_file_location('sinter_direct_verified_build',Path(__file__).resolve().parent/'verified_build.py')
+_build=importlib.util.module_from_spec(_build_spec);_build_spec.loader.exec_module(_build)
+build_native=_build.build
 LOCK = Path('/tmp/sintergpu-gpu.lock')
 NAMES = ('points','targets','normals','out_0','out_1','points_indices')
 PATHS = {'donor':'src/sintergpu/kernels/caspar_slang/composed/point_plane_residual.slang',
@@ -32,8 +40,8 @@ COMPILER_SHA='19c0217f848537db2a87120eb1b3f882ab2e3eb54fdec4cf5300035943704145'
 INPUT_SHA='e8d3cf128e6f3c547433f2bc457efc26ce0e24147592dc76bcbe4aee726178f7'
 # This pin is a blocked local diagnostic build; a future reviewed executable
 # requires a separately reviewed source/build provenance and updated pins.
-NATIVE_SOURCE_SHA='777ae9d98ff5eba0f43e3ce230dc8ed655ec71946b7d7217b2128fc5f53064d5'
-NATIVE_BINARY_SHA='d2c6a0b7427fc2cb3b3c5b53209f71798ca22db89980bcb4dff1c6f85bcae16f'
+NATIVE_SOURCE_SHA='24c32e16b2d560514925d70ae6d61ced4a051488ff544a32a54a6f8a7366be32'
+NATIVE_BINARY_SHA='c623778a0db171127b20e21bbd3ac63bbcfcae8d79691b60a4857c1a7a45f06b'
 SHAPES={'points':((512,4),'<f4'), 'targets':((1032,4),'<f4'), 'normals':((1032,4),'<f4'),
         'out_0':((1039,),'<f4'), 'out_1':((6199,),'<f4'), 'points_indices':((1025,),'<u4')}
 
@@ -87,10 +95,14 @@ def write_once(path,payload):
     with os.fdopen(fd,'w') as out:
         json.dump(payload,out,sort_keys=True,indent=2);out.write('\n');out.flush();os.fsync(out.fileno())
 
-def run(args, *, _cpu_test_only=False):
-    # Hard gate: an injected CPU test must never be used for GPU execution.
-    if _cpu_test_only is not True:
-        raise RuntimeError('direct Vulkan production path blocked pending review and authenticated executable')
+def verify_lease(fd):
+    actual=os.fstat(fd);expected=LOCK.lstat()
+    if LOCK.is_symlink() or (actual.st_dev,actual.st_ino)!=(expected.st_dev,expected.st_ino): raise ValueError('lock inode')
+    text=Path('/proc/self/fdinfo',str(fd)).read_text()
+    entries=re.findall(r'^lock:\s*\d+:\s+FLOCK\s+ADVISORY\s+WRITE\s+(\d+)\s+[0-9a-fA-F]+:[0-9a-fA-F]+:(\d+)\s+0\s+EOF\s*$',text,re.MULTILINE)
+    if (str(os.getpid()),str(actual.st_ino)) not in entries: raise ValueError('exclusive lock unavailable')
+
+def _run_impl(args):
     if not args.execute: raise ValueError('explicit execute required after independent review')
     if Path(args.output).exists() or Path(args.output).is_symlink(): raise FileExistsError(args.output)
     if len(args.uuid)!=32 or any(x not in '0123456789abcdef' for x in args.uuid) or int(args.uuid,16)==0: raise ValueError('UUID')
@@ -100,9 +112,13 @@ def run(args, *, _cpu_test_only=False):
     if sha(compiler.read_bytes())!=COMPILER_SHA: raise ValueError('compiler identity')
     if sha((Path(__file__).resolve().parent/'point_plane.cpp').read_bytes())!=NATIVE_SOURCE_SHA: raise ValueError('native source identity')
     if args.binary_sha!=NATIVE_BINARY_SHA or sha(binary.read_bytes())!=NATIVE_BINARY_SHA: raise ValueError('binary identity')
+    committed_native=subprocess.check_output(['git','-C',str(ROOT),'show',args.commit+':tools/diagnostics/direct_vulkan/point_plane.cpp'])
+    if build_native(committed_native)!=binary.read_bytes(): raise ValueError('native source/build mismatch')
     fd=os.open(LOCK,os.O_RDWR|os.O_CREAT|os.O_NOFOLLOW,0o600)
+    primary=None;close_error=None;payload=None
     try:
         fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        verify_lease(fd)
         with tempfile.TemporaryDirectory(prefix='sinter-direct-point-plane-') as temp:
             d=Path(temp);(d/'optimization').mkdir();(d/'optimization/point_plane.slang').write_bytes(sources['core'])
             inp=d/'input.bin';inp.write_bytes(packed);results={};metadata={}
@@ -111,18 +127,44 @@ def run(args, *, _cpu_test_only=False):
                 cmd=[str(compiler),str(source),'-I',str(d),'-entry',entry,'-target','spirv','-o',str(spv)]
                 subprocess.run(cmd,check=True,capture_output=True)
                 if sha(spv.read_bytes())!=SPV_SHA[role]: raise ValueError('compiled shader mismatch: '+role)
+                metadata[role+'_abi']=validate_spirv(spv.read_bytes(),1024 if role=='donor' else 256)
                 output=d/(role+'.bin')
                 call=[str(binary),args.uuid,str(args.driver),str(spv),SPV_SHA[role],'main',str(groups),str(inp),str(output),str(fd)]
+                verify_lease(fd)
                 result=subprocess.run(call,check=True,capture_output=True,text=True,pass_fds=(fd,))
+                verify_lease(fd)
                 results[role]=decode(output.read_bytes());metadata[role]=result.stdout.strip()
             validate(arrays,results['donor'],results['candidate'])
             if sha(binary.read_bytes())!=args.binary_sha or sha(compiler.read_bytes())!=COMPILER_SHA: raise ValueError('binary changed')
-            write_once(args.output,{'status':'engineering_parity_only','commit':args.commit,'source_sha256':SOURCE_SHA,
+            verify_lease(fd)
+            payload={'status':'engineering_parity_only','commit':args.commit,'source_sha256':SOURCE_SHA,
                 'spirv_sha256':SPV_SHA,'native_binary_sha256':NATIVE_BINARY_SHA,'native_source_sha256':NATIVE_SOURCE_SHA,'compiler_file_sha256':COMPILER_SHA,
                 'device_output':metadata,'result_sha256':{n:sha(results['candidate'][n].tobytes()) for n in NAMES},
-                'scope':'trusted workstation; not provider, physical-backing, SlangPy, performance or device qualification'})
+                'scope':'trusted workstation; not provider, physical-backing, SlangPy, performance or device qualification'}
+            verify_lease(fd)
+    except Exception as exc:
+        primary=exc
     finally:
-        os.close(fd)
+        try: os.close(fd)
+        except Exception as exc: close_error=exc
+    if primary and close_error: raise ExceptionGroup('operation and lock close failed',[primary,close_error])
+    if primary: raise primary
+    if close_error: raise close_error
+    return payload
+
+
+def run(args, *, _cpu_test_only=False):
+    # This injectable path is CPU-mock-only; the production path remains blocked.
+    if _cpu_test_only is not True:
+        raise RuntimeError('direct Vulkan production path blocked pending review and authenticated executable')
+    if Path(args.output).exists() or Path(args.output).is_symlink(): raise FileExistsError(args.output)
+    try:
+        payload=_run_impl(args)
+    except Exception as exc:
+        try: write_once(args.output,{'status':'failure','error_type':type(exc).__name__,'error':str(exc),'scope':'no GPU qualification'})
+        except Exception as receipt_error: raise ExceptionGroup('operation and failure receipt failed',[exc,receipt_error])
+        raise
+    write_once(args.output,payload)
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--execute',action='store_true')

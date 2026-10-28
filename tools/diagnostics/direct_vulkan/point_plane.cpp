@@ -57,7 +57,13 @@ struct Context {
     VkInstance instance=VK_NULL_HANDLE;VkDevice device=VK_NULL_HANDLE;VkCommandPool pool=VK_NULL_HANDLE;
     VkDescriptorSetLayout layout=VK_NULL_HANDLE;VkDescriptorPool descriptors=VK_NULL_HANDLE;VkPipelineLayout pipelineLayout=VK_NULL_HANDLE;
     VkShaderModule shader=VK_NULL_HANDLE;VkPipeline pipeline=VK_NULL_HANDLE;std::array<Resource,7> res{};
-    ~Context(){if(device){vkDeviceWaitIdle(device);for(auto& r:res){if(r.mapped)vkUnmapMemory(device,r.memory);if(r.buffer)vkDestroyBuffer(device,r.buffer,nullptr);if(r.memory)vkFreeMemory(device,r.memory,nullptr);}if(pipeline)vkDestroyPipeline(device,pipeline,nullptr);if(shader)vkDestroyShaderModule(device,shader,nullptr);if(pipelineLayout)vkDestroyPipelineLayout(device,pipelineLayout,nullptr);if(descriptors)vkDestroyDescriptorPool(device,descriptors,nullptr);if(layout)vkDestroyDescriptorSetLayout(device,layout,nullptr);if(pool)vkDestroyCommandPool(device,pool,nullptr);vkDestroyDevice(device,nullptr);}if(instance)vkDestroyInstance(instance,nullptr);}
+    VkResult close() {
+        VkResult result=VK_SUCCESS;
+        if(device){result=vkDeviceWaitIdle(device);for(auto& r:res){if(r.mapped)vkUnmapMemory(device,r.memory);if(r.buffer)vkDestroyBuffer(device,r.buffer,nullptr);if(r.memory)vkFreeMemory(device,r.memory,nullptr);r={};}if(pipeline)vkDestroyPipeline(device,pipeline,nullptr);if(shader)vkDestroyShaderModule(device,shader,nullptr);if(pipelineLayout)vkDestroyPipelineLayout(device,pipelineLayout,nullptr);if(descriptors)vkDestroyDescriptorPool(device,descriptors,nullptr);if(layout)vkDestroyDescriptorSetLayout(device,layout,nullptr);if(pool)vkDestroyCommandPool(device,pool,nullptr);vkDestroyDevice(device,nullptr);device=VK_NULL_HANDLE;}
+        if(instance){vkDestroyInstance(instance,nullptr);instance=VK_NULL_HANDLE;}
+        return result;
+    }
+    ~Context(){close();}
 };
 #ifdef SINTERGPU_CPU_TEST_ONLY
 extern "C" void sintergpu_test_only_fake_vulkan_marker(void);
@@ -106,7 +112,13 @@ int main(int argc,char** argv) try {
     VkMemoryBarrier before{VK_STRUCTURE_TYPE_MEMORY_BARRIER};before.srcAccessMask=VK_ACCESS_HOST_WRITE_BIT;before.dstAccessMask=VK_ACCESS_SHADER_READ_BIT|VK_ACCESS_SHADER_WRITE_BIT;vkCmdPipelineBarrier(cmd,VK_PIPELINE_STAGE_HOST_BIT,VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT,0,1,&before,0,nullptr,0,nullptr);
     vkCmdBindPipeline(cmd,VK_PIPELINE_BIND_POINT_COMPUTE,c.pipeline);vkCmdBindDescriptorSets(cmd,VK_PIPELINE_BIND_POINT_COMPUTE,c.pipelineLayout,0,1,&ds,0,nullptr);vkCmdDispatch(cmd,groups,1,1);
     VkMemoryBarrier after{VK_STRUCTURE_TYPE_MEMORY_BARRIER};after.srcAccessMask=VK_ACCESS_SHADER_WRITE_BIT;after.dstAccessMask=VK_ACCESS_HOST_READ_BIT;vkCmdPipelineBarrier(cmd,VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT,VK_PIPELINE_STAGE_HOST_BIT,0,1,&after,0,nullptr,0,nullptr);check(vkEndCommandBuffer(cmd));VkSubmitInfo submit{VK_STRUCTURE_TYPE_SUBMIT_INFO};submit.commandBufferCount=1;submit.pCommandBuffers=&cmd;check(vkQueueSubmit(queue,1,&submit,VK_NULL_HANDLE));check(vkQueueWaitIdle(queue));
-    int fd=open(argv[8],O_CREAT|O_EXCL|O_WRONLY|O_CLOEXEC,0600);if(fd<0)throw std::runtime_error("output create");for(size_t i=0;i<6;i++){const char* p=(const char*)c.res[i].mapped;size_t left=c.res[i].size;while(left){ssize_t n=write(fd,p,left);if(n<=0){close(fd);throw std::runtime_error("output write");}p+=n;left-=n;}}if(close(fd))throw std::runtime_error("output close");
+    std::vector<unsigned char> readback;readback.reserve(total);
+    for(size_t i=0;i<6;i++){const auto* begin=(const unsigned char*)c.res[i].mapped;readback.insert(readback.end(),begin,begin+c.res[i].size);}
+    check(c.close()); // Complete device teardown before publishing readbacks.
     verifyLease(parse32(argv[9]));
+    int fd=open(argv[8],O_CREAT|O_EXCL|O_WRONLY|O_CLOEXEC,0600);if(fd<0)throw std::runtime_error("output create");
+    const char* p=(const char*)readback.data();size_t left=readback.size();
+    while(left){ssize_t n=write(fd,p,left);if(n<=0){close(fd);throw std::runtime_error("output write");}p+=n;left-=n;}
+    if(close(fd))throw std::runtime_error("output close");
     std::cout<<"device="<<props.deviceName<<" driver="<<props.driverVersion<<" queue_family="<<qi<<" shader_sha256="<<hash(spv)<<"\n";return 0;
 } catch(const std::exception& e){std::cerr<<e.what()<<"\n";return 1;}
