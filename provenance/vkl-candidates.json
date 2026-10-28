@@ -38,42 +38,59 @@
         {
           "symbol": "camera_rectify_grid",
           "source_line": 164,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Build reusable source-pixel coordinates for target-pinhole rectification.",
+          "disposition": "specialized_variant",
+          "reason": "Experimental eager float32 forward graph with complete outputs and caller-owned resources. Both target devices pass the retained 80-state canonical donor profile and 89 tests; full-domain, gradients, performance and consumer adoption remain pending. See docs/vkl-camera-registration.md.",
           "numerical_contract": "Build reusable source-pixel coordinates for target-pinhole rectification.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.camera_registration.rectifyGrid"
+          ]
         },
         {
           "symbol": "camera_rectify_from_grid",
           "source_line": 232,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Rectify an image from reusable source-pixel coordinates and validity.",
+          "disposition": "specialized_variant",
+          "reason": "Experimental eager float32 forward graph with complete outputs and caller-owned resources. Both target devices pass the retained 80-state canonical donor profile and 89 tests; full-domain, gradients, performance and consumer adoption remain pending. See docs/vkl-camera-registration.md.",
           "numerical_contract": "Rectify an image from reusable source-pixel coordinates and validity.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.camera_registration.rectifyFromGrid"
+          ]
         },
         {
           "symbol": "camera_rectify",
           "source_line": 268,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Sample an explicit target pinhole grid from a pinhole or Brown source camera.",
+          "disposition": "specialized_variant",
+          "reason": "Experimental eager float32 forward graph with complete outputs and caller-owned resources. Both target devices pass the retained 80-state canonical donor profile and 89 tests; full-domain, gradients, performance and consumer adoption remain pending. See docs/vkl-camera-registration.md.",
           "numerical_contract": "Sample an explicit target pinhole grid from a pinhole or Brown source camera.\n\nBrown coefficients are ordered ``k1,k2,p1,p2,k3``. ``sampling`` is caller\npolicy: use bilinear for RGB and normally nearest for metric depth. Public\ncalls validate calibration by default; prevalidated compiled hot paths may\npass ``validate=False`` to avoid data-dependent Python checks.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.camera_registration.rectifyGrid",
+            "vkl.camera_registration.rectifyFromGrid"
+          ]
         },
         {
           "symbol": "depth_camera_rays",
           "source_line": 310,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Build reusable undistorted normalized depth-camera rays ``[B,H,W,2]``.",
+          "disposition": "specialized_variant",
+          "reason": "Experimental eager float32 forward graph with complete outputs and caller-owned resources. Both target devices pass the retained 80-state canonical donor profile and 89 tests; full-domain, gradients, performance and consumer adoption remain pending. See docs/vkl-camera-registration.md.",
           "numerical_contract": "Build reusable undistorted normalized depth-camera rays ``[B,H,W,2]``.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.camera_registration.depthCameraRays"
+          ]
         },
         {
           "symbol": "depth_register",
           "source_line": 351,
-          "disposition": "deferred",
-          "reason": "Slang translation and differential verification are missing for this frozen numerical operation. Register metric depth to an RGB grid using nearest positive RGB-camera Z.",
+          "disposition": "specialized_variant",
+          "reason": "Experimental eager float32 forward graph with complete outputs and caller-owned resources. Both target devices pass the retained 80-state canonical donor profile and 89 tests; full-domain, gradients, performance and consumer adoption remain pending. See docs/vkl-camera-registration.md.",
           "numerical_contract": "Register metric depth to an RGB grid using nearest positive RGB-camera Z.",
-          "slang_operations": []
+          "slang_operations": [
+            "vkl.camera_registration.depthCameraRays",
+            "vkl.camera_registration.clearRegistration",
+            "vkl.camera_registration.projectRegistration",
+            "vkl.camera_registration.registrationMin",
+            "vkl.camera_registration.registrationWinnerCount",
+            "vkl.camera_registration.finalizeRegistration",
+            "vkl.camera_registration.finalizeRegistrationDebug"
+          ]
         }
       ],
       "private_helpers": [

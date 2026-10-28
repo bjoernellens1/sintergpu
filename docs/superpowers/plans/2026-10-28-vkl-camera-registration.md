@@ -6,7 +6,7 @@
 
 **Architecture:** Separate calibration-only grid/ray preparation from per-frame sampling and staged depth registration. A small Brown distortion helper owns shared mathematical expressions; named VKL and Locus operation profiles retain their different rounding, sampling, validity and storage contracts. Setup-only resource plans record on caller-owned Vulkan resources without allocations, submissions, synchronization or readback in the record loop.
 
-**Tech Stack:** Python >=3.11; independent NumPy CPU references; unchanged Torch donor references; Slang 2026.12 and 2026.19; existing SlangPy 0.43.1 adapter; Vulkan typed buffers and uint32 atomics; native int64 diagnostic outputs require shaderInt64.
+**Tech Stack:** Python >=3.11; independent NumPy CPU references; unchanged Torch donor references; Slang 2026.12 and 2026.19; existing SlangPy 0.43.1 adapter; Vulkan typed buffers and uint32 atomics; logical int64 diagnostics use an explicitly little-endian two-word uint32 shader ABI; no shaderInt64 is required.
 
 **Spec:** The parent request for the next camera-registration batch, the accompanying source-grounded analysis in this task, and pinned donor `references/donors/vkl/src/vkl/kernels/reference/camera_registration.py`. This plan contains the proposed numerical and integration boundaries so execution does not depend on chat recollection. Supporting audit: `docs/kernel-overlap.md:G03,G10`; provenance: `provenance/vkl-candidates.json:32-87`.
 
@@ -131,7 +131,7 @@ Workers own only their named surface. Every brief identifies the exact worktree/
 
 **Files:** integration-owner catalog/modules/provenance files; `docs/vkl-camera-registration.md`, `docs/{vkl-source-inventory,kernel-overlap}.md`; tests and installed-source checks. Existing frozen donors stay unchanged.
 
-- [ ] Add RED provenance/catalog tests proving every new entry has explicit float32/mask/int64 ABI, capacities, shaderInt64 diagnostic requirement, profile documentation and experimental status. Include the common helper, all independent references, recipe/helper and fixture generators in source closures.
+- [ ] Add RED provenance/catalog tests proving every new entry has explicit float32/mask/int64 ABI, capacities, the little-endian two-word diagnostic representation, profile documentation and experimental status. Include the common helper, all independent references, recipe/helper and fixture generators in source closures.
 - [ ] Populate `provenance/vkl-camera-registration.json` from the pinned source/hash/license evidence. Update only the five actual numerical candidate dispositions. Consumer-only contract/tracking/keyframe/scheduling functions remain reference-only by design; backend-specific Triton retain_vendor/retain_compile dispositions do not remove Slang backlog.
 - [ ] Generate the catalog with `PYTHONPATH=src:. .venv/bin/python tools/build_catalog.py`; run `PYTHONPATH=src:. .venv/bin/python -m sintergpu.cli validate` and the full CPU suite. Treat opt-in skips as skips in reports.
 - [ ] Compile every portable entry under both pins using `tools/compile_shaders.py --slangc .tools/slang-2026.12/bin/slangc --output build/camera-compile-2026.12` and the analogous 2026.19 command. Require all expected entries and source hashes; retain actual compiler executable hashes, output, reflection and nonzero exits.
@@ -179,3 +179,8 @@ Workers own only their named surface. Every brief identifies the exact worktree/
 - Review-focus cases each have named assertion families in their owning tasks. No stage may be accepted on a final-output-only check that can hide corrupted intermediate state.
 - Shared interfaces use one typed graph vocabulary; source_uv layouts are explicitly different for rectification and registration. Native int64 public diagnostics are not reinterpreted as scalar32 storage.
 - Current activity is planning only. No command in Tasks 1-9 has been executed by writing this file, and no source/GPU/commit permission is implied by its existence.
+
+
+## Qualification checkpoint
+
+The first non-debug run passed 59 canonical states on each device at `cb40418`. The subsequently reviewed two-word debug ABI at `2b88170` passed the full GPU test file on Radeon 8060S and RTX 4070 Ti: 89 tests each, including 80 canonical states, scratch reuse and word checks. See `qualification/evidence/vkl-camera-fixture-profile-0.2.6.json`. Both compiler pins verified 8-byte diagnostic stride and no SPIR-V Int64 capability. These are fixture results; full-domain, gradient, performance and consumer adoption remain pending. The initial 72-state archive is retained as historical because its execution closure omitted the package initializer and version input; the pinned 80-state closure-v2 is the current profile.

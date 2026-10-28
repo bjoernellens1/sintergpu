@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "repository": "bjoernellens1/vkl",
+  "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+  "license": "Apache-2.0 (original owner authorization 2026-10-27)",
+  "author": "Original owner numerical contracts; independent SinterGPU Slang and NumPy forward implementation",
+  "operation_prefix": "vkl",
+  "qualification": "Experimental canonical eager forward fixtures: 80 states and 347 expected output arrays; 89 tests passed per Radeon 8060S and RTX 4070 Ti against pinned donor and independent reference. Full-domain, gradients, performance and consumer adoption remain pending.",
+  "coverage": {
+    "stage": "both_vendor_compositional_fixture_parity",
+    "newly_forward_ported_modules": [
+      "camera_registration"
+    ],
+    "public_functions": 5,
+    "entrypoints": 9
+  },
+  "files": [
+    {
+      "source_path": "src/vkl/kernels/reference/camera_registration.py",
+      "source_sha256": "648628355f4b86cc708f0c22d04e3cb6bd21ad85a8cd51868b37b1e1fd05ad3c",
+      "destination": "src/sintergpu/kernels/vkl/camera_registration.slang",
+      "imported_sha256": "b8a7700b209db2d8774aee28d3666b1b0c2f4165bfdee7585da474db219cd07a",
+      "changes": [
+        "Independent staged forward implementation; direct rectification composes grid and sampling",
+        "Caller owns device buffers, dispatch dependencies, cache lifetime and synchronization"
+      ],
+      "contract_limits": "Experimental VKL eager float32 forward profile: planar [B,C,H,W] images, interleaved grid/rays, uint32 0/1 masks; checked caller-owned typed capacities, scratch, barriers and dispatch limits. Brown coefficients k1,k2,p1,p2,k3; five inverse iterations; normalized align-corners nearest/bilinear sampling; registration selects nearest positive RGB Z and smallest index on exact ties, counting all valid collisions. Debug int64 winner/count are stored as little-endian low/high uint32 words at 8-byte stride; -1 is all-one words. Fixture parity only; full-domain, gradients, performance and consumer adoption remain pending.",
+      "contract_profile": "vkl-camera-registration-eager-float32",
+      "contract_documentation": "https://github.com/bjoernellens1/sintergpu/blob/main/docs/vkl-camera-registration.md",
+      "entry_points": [
+        "rectifyGrid",
+        "rectifyFromGrid",
+        "depthCameraRays",
+        "clearRegistration",
+        "projectRegistration",
+        "registrationMin",
+        "registrationWinnerCount",
+        "finalizeRegistration",
+        "finalizeRegistrationDebug"
+      ]
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/camera_registration.py",
+      "source_sha256": "648628355f4b86cc708f0c22d04e3cb6bd21ad85a8cd51868b37b1e1fd05ad3c",
+      "destination": "src/sintergpu/kernels/common/brown_conrady.slang",
+      "imported_sha256": "216ae78b2280317c4840ed8acde4bc8916ae072c332a08ff41e4308a7247d4c4",
+      "changes": [
+        "Importable VKL Brown forward and five-step inverse helper; Locus retains its independent numerical profile"
+      ],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/camera_registration.py",
+      "source_sha256": "648628355f4b86cc708f0c22d04e3cb6bd21ad85a8cd51868b37b1e1fd05ad3c",
+      "destination": "src/sintergpu/references/camera_registration_numeric.py",
+      "imported_sha256": "c981020528d3f1ff7c252743a8076318e2f21ba176647c71d835507c576f5cef",
+      "changes": [
+        "Independent NumPy forward oracle for all five public functions; frozen donor is unchanged"
+      ],
+      "dispatchable": false
+    },
+    {
+      "source_path": "src/vkl/kernels/reference/camera_registration.py",
+      "source_sha256": "648628355f4b86cc708f0c22d04e3cb6bd21ad85a8cd51868b37b1e1fd05ad3c",
+      "destination": "src/sintergpu/camera_registration.py",
+      "imported_sha256": "267ea8a8ecae87f2d89cf801e1567384558bd60bdb461fbe2698e8deec59c759",
+      "changes": [
+        "Setup-only resource plans, checked capacities and caller-owned cache identity"
+      ],
+      "dispatchable": false
+    }
+  ],
+  "audit_inputs_sha256": {
+    "benchmarks/camera_registration_fixtures.py": "b26b15701038941e6dc044004901427b7150fa72da2ef3b1d19564f61f00893f",
+    "benchmarks/camera_registration_fixture_archive.py": "ab2b2b09f8ed7da7ca7fa5826dde053209dceaad1483ac962fe77c707b685704",
+    "tools/export_camera_registration_fixtures.py": "c0f6866413727944701c36adb51d303a84f942f6723983c86fc5db7f9e5aa860"
+  }
+}

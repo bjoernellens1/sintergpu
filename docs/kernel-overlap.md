@@ -59,6 +59,8 @@ The historical exact algebra duplicate G18 is now consolidated through one maint
 
 **Required before deduplication:** Zero coefficients, radial/tangential fixtures, forward/inverse roundtrip with tolerances, pixel-center/border agreement, warped validity and Torch gradient checks for floating sampling.
 
+**0.2.6 forward port:** `common.brown_conrady` supplies VKL's eager polynomial and five-step inverse to its new grid/ray stages. Locus remains unchanged; sharing a helper across profiles requires separate parity and no-regression evidence. See [camera registration](vkl-camera-registration.md).
+
 ### G04: Depth validity, representation conversion and bilateral cleanup
 
 **Classification: same operation different contract.** All use finite positive depth as a basic predicate, but Locus invalid_depth also applies inclusive min/max after scale and outputs (depth,valid) in float4. VKL depthConvert accepts depth/inverse/disparity, explicit uint validity/confidence, returns depth and inverse and leaves metric status to host policy. SLAM makeVertices checks z>0 at shader level and relies on validated upstream input. Bilateral is a 3x3 spatial/range Gaussian weighted average, not a substitute for either conversion or a pyramid discontinuity rule.
@@ -128,6 +130,8 @@ The historical exact algebra duplicate G18 is now consolidated through one maint
 **Owner and retained variants:** geometry/depth_register owns projection and z-buffer helpers with explicit rounding, support and winner profiles. Preserve ties, half-pixel support, distortion, source-index provenance and confidence; reset/resolve is a caller-visible multipass contract.
 
 **Required before deduplication:** Half-integer projections including negative edge, equal-depth collisions/source indices, epsilon-close winners, distortion, ranges, empty state, sparse confidence/support and two-pass barriers.
+
+**0.2.6 forward port:** VKL now has staged registration with exact-Z winner ties and all-valid collision counts; Locus and reprojection retain their distinct contracts. Both target GPUs passed the retained camera fixture suite, while controlled no-regression and consumer adoption remain pending.
 
 ### G11: Workgroup reductions and quality accumulators
 

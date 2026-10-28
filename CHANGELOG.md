@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.6 — 2026-10-28
+
+- Add experimental VKL eager float32 camera rectification, reusable grid and ray preparation, and staged depth registration: five public functions use nine dispatches and caller-owned resources. Preserve complete diagnostics, collision and tie semantics, and the explicit little-endian two-word int64 diagnostic ABI. Existing Locus contracts and defaults remain unchanged.
+- Validate the canonical 80-state, 347-output donor fixture profile with 89 tests on each Radeon 8060S and RTX 4070 Ti. The initial incomplete source-closure archive remains historical evidence. Wider domains, gradients, controlled no-regression and consumer adoption remain pending; no speedup or optimized default is claimed.
+
 ## 0.2.5 — 2026-10-28
 
 - Add experimental VKL reprojection and prior-only temporal RGB-D reference profiles, preserving collision support, diagnostic projections, normalized-coordinate sampling and every numerical output. Reuse released geometry and depth fusion with explicit caller-owned resources, independent references and source-bound validation. Existing dispatch contracts and defaults remain unchanged.
