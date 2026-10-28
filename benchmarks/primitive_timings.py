@@ -36,7 +36,10 @@ def _block_prefix(values,ids,product):
 def make_scan_case(entry,dtype,count,product=False):
     dtype=np.dtype(dtype);rng=np.random.default_rng(28400+count)
     ids=(np.arange(count,dtype=np.uint32)//1000)*2
-    if count==70001:ids[:]=0
+    if count==1025:
+        # Explicit integer increments: NumPy boolean addition would collapse resets.
+        ids=(np.arange(count)>=17).astype(np.uint32)*3+(np.arange(count)>=1000).astype(np.uint32)*5
+    elif count==70001:ids[:]=0
     else:ids+=(np.arange(count)>=17)+(np.arange(count)>=256)
     if dtype==np.uint32:
         values=rng.choice(np.array([1,3,5,7],np.uint32),count) if product else rng.integers(0,2**32,count,dtype=np.uint32)
@@ -77,7 +80,7 @@ def make_compact_case(entry,count,mode):
 
 
 def cases():
-    for count in (255,256,257,70001):
+    for count in (255,256,257,70001,1025):
         for dtype in (np.float32,np.uint32):
             for product in (False,True):
                 for entry in ('scanBlocks','scanCarry','scanExclusive'):yield make_scan_case(entry,dtype,count,product)
@@ -134,14 +137,15 @@ def check_parity(c,actual,expected):
         np.testing.assert_array_equal(actual['output'][:n][unchanged],c['arrays']['output'][:n][unchanged])
 
 
-def run(*,gpu=False,iterations=50,warmups=5,device_index=0):
+def run(*,gpu=False,iterations=50,warmups=5,device_index=0,fixture_set="all"):
     from sintergpu import __version__
     from sintergpu.catalog import list_operations
     from sintergpu.timings import dependency_identities,summarize
     if type(iterations) is not int or not 1<=iterations<=100000 or type(warmups) is not int or not 1<=warmups<=10000 or type(device_index) is not int or device_index<0:raise ValueError('bounded positive sample/warmup counts and valid device index required')
+    if fixture_set not in ("all","legacy","irregular"):raise ValueError("unknown fixture set")
     if gpu and os.environ.get('SINTERGPU_GPU_TESTS')!='1':raise RuntimeError('explicit GPU opt-in required after independent measurement clearance')
     revision=subprocess.run(['git','rev-parse','HEAD'],cwd=Path(__file__).resolve().parents[1],capture_output=True,text=True)
-    env=dict(cpu=cpu_identity(),logical_cpus=os.cpu_count(),affinity=sorted(os.sched_getaffinity(0)) if hasattr(os,'sched_getaffinity') else None,platform=platform.platform(),python=platform.python_version(),numpy=importlib.metadata.version('numpy'),library_version=__version__,collector_revision=revision.stdout.strip() if revision.returncode==0 else None,captured_at_utc=datetime.now(timezone.utc).isoformat(),gpu=None,compiler_sha256=None)
+    env=dict(fixture_set=fixture_set,cpu=cpu_identity(),logical_cpus=os.cpu_count(),affinity=sorted(os.sched_getaffinity(0)) if hasattr(os,'sched_getaffinity') else None,platform=platform.platform(),python=platform.python_version(),numpy=importlib.metadata.version('numpy'),library_version=__version__,collector_revision=revision.stdout.strip() if revision.returncode==0 else None,captured_at_utc=datetime.now(timezone.utc).isoformat(),gpu=None,compiler_sha256=None)
     for name in ('scaling_governor','scaling_cur_freq'):
         path=Path('/sys/devices/system/cpu/cpu0/cpufreq')/name;env[name]=path.read_text().strip() if path.is_file() else None
     dependencies=dependency_identities();catalog={o['id']:o for o in list_operations()};device=None;records=[]
@@ -164,6 +168,8 @@ def run(*,gpu=False,iterations=50,warmups=5,device_index=0):
                 diagnostic=subprocess.run(['vulkaninfo','--summary'],capture_output=True,text=True,timeout=30);env['vulkaninfo_summary']=diagnostic.stdout if diagnostic.returncode==0 else 'unavailable'
             except (OSError,subprocess.TimeoutExpired):env['vulkaninfo_summary']='unavailable: optional driver diagnostic missing or timed out'
         for case in cases():
+            irregular=case["params"]["count"]==1025
+            if fixture_set=="legacy" and irregular or fixture_set=="irregular" and not irregular:continue
             op=catalog[case['operation']];arrays=case['arrays'];outputs=case['outputs'];execute=lambda:reference_call(case)
             expected=execute();metrics=dict(cpu_reference_wall_ms=sample_cpu(execute,iterations=iterations,warmups=warmups))
             row={**dependencies,'operation':op['id'],'variant':op['variant'],'source_sha256':op['sha256'],'reference_sha256':hashlib.sha256(Path(reference.__file__).read_bytes()).hexdigest(),'runner_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'runner_helper_sha256':hashlib.sha256(Path(__file__).with_name('locus_timings.py').read_bytes()).hexdigest(),'workload':workload_identity(case),'environment':dict(env),'metrics':metrics,'iterations':iterations,'warmups':warmups,'scope':'Independent NumPy/serial per-stage reference work includes output construction, copies and temporary arrays. Upstream stage input preparation is outside both CPU/GPU timings. GPU per-entry timestamps exclude compilation, allocation and full output/inout reset; host submit/complete and complete bound-buffer uploads/full output readbacks are separate. Not a complete scan/compaction hierarchy, optimized CPU alternative, controlled performance comparison or optimized-variant selection.'}
@@ -203,5 +209,6 @@ def run(*,gpu=False,iterations=50,warmups=5,device_index=0):
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--gpu',action='store_true');parser.add_argument('--device-index',type=int,default=0)
     parser.add_argument('--iterations',type=int,default=50);parser.add_argument('--warmups',type=int,default=5);parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--fixture-set',choices=('all','legacy','irregular'),default='all')
     args=vars(parser.parse_args());output=args.pop('output');report=run(**args)
     output.parent.mkdir(parents=True,exist_ok=True);output.write_text(json.dumps(report,indent=2,allow_nan=False)+'\n');print(json.dumps(dict(cases=len(report['measurements']),output=str(output))))

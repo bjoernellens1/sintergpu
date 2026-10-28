@@ -13,10 +13,16 @@ allocation, submission, synchronization and readback. Library recipes/adapters
 continue to borrow caller resources. Hardware execution requires independent
 source/measurement clearance and coordination with other agents using the device.
 
-The 61 fixtures exercise eight existing dispatch entries independently: float32
+The 73 fixtures exercise eight existing dispatch entries independently: float32
 and uint32 scanBlocks, scanCarry and scanExclusive, and compactPrepare/Scatter.
-Scan sizes255/256/257/70001 cover partial/exact/multiple workgroups, nondecreasing
-segment IDs with gaps and boundaries, and long single segments. SUM/PRODUCT
+Scan sizes255/256/257 cover partial/exact workgroups and an early segment boundary;
+70001 retains a long single segment. Twelve additional1025-element fixtures use
+explicit integer segment IDs0/3/8, continuing across block boundaries and resetting
+at17 and1000. These exercise both matching and rejected carry in later blocks,
+with genuine ID gaps. The original61 recorded fixtures retain their original
+collector identity; the additional12 use the reviewed collector revision.
+Use `--fixture-set irregular` to collect just these additions (`legacy` selects
+the original61; `all`, the default, selects73). Selection is recorded in metadata. SUM/PRODUCT
 include uint32 modulo wrap and zero factors. Compaction covers all/none/sparse
 predicates, duplicate payload values, two extents and empty initialization.
 

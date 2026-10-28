@@ -101,3 +101,34 @@ def test_cpu_stage_composition_matches_global_serial_reference():
             actual=m.reference_call(carry)['output'][:n]
             if dtype==np.uint32:np.testing.assert_array_equal(actual,expected)
             else:np.testing.assert_allclose(actual,expected,rtol=2e-4,atol=2e-4)
+
+
+def test_measured_irregular_fixtures_exercise_matching_and_rejected_later_carry():
+    m=recipe();fixtures=[c for c in m.cases() if c['params']['count']==1025]
+    assert len(fixtures)==12
+    for c in fixtures:
+        ids=c['arrays']['segmentIds'][:1025]
+        assert np.any(np.diff(np.unique(ids))>1)
+        if c['kind']!='scanCarry':continue
+        index=np.arange(1025);later=index>=256;block=index//256
+        matching=ids[later]==c['arrays']['blockIds'][block[later]-1]
+        assert np.any(matching) and np.any(~matching)
+        assert ids[767]==ids[768] and ids[999]!=ids[1000]
+        expected=m.reference_call(c)
+        rejected=index[later][~matching]
+        np.testing.assert_array_equal(expected['output'][rejected],c['arrays']['output'][rejected])
+        corrupted={k:v.copy() for k,v in expected.items()}
+        corrupted['output'][rejected[0]]+=1
+        with pytest.raises(AssertionError):m.check_parity(c,corrupted,expected)
+
+
+def test_fixture_selection_is_explicit_and_recorded(monkeypatch):
+    m=recipe();legacy=m.make_scan_case('scanBlocks',np.uint32,257)
+    irregular=m.make_scan_case('scanBlocks',np.uint32,1025)
+    monkeypatch.setattr(m,'cases',lambda:iter([legacy,irregular]))
+    for selection,expected in [('all',2),('legacy',1),('irregular',1)]:
+        report=m.run(iterations=1,warmups=1,fixture_set=selection)
+        assert len(report['measurements'])==expected
+        assert report['environment']['fixture_set']==selection
+        assert all(r['environment']['fixture_set']==selection for r in report['measurements'])
+    with pytest.raises(ValueError):m.run(fixture_set='typo')
