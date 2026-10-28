@@ -33,16 +33,18 @@ def test_cases_cover_every_existing_nonfeature_vkl_entry_and_full_output_tails()
         'vkl.compact_backward_torch_cpu_profile.backwardProfileGather',
     }
     assert compact <= expected
-    established={op for op in expected-compact if not op.startswith(('vkl.reprojection.', 'vkl.camera_registration.'))}
+    depth_evidence = {'vkl.depth_evidence.depthEvidenceGlobal', 'vkl.depth_evidence.depthEvidenceGrid'}
+    assert depth_evidence <= expected
+    established={op for op in expected-compact-depth_evidence if not op.startswith(('vkl.reprojection.', 'vkl.camera_registration.'))}
     assert len(established)==13
     assert len(camera_entries)==9
     assert {c['operation'] for c in cases}==established
-    assert {c['operation'] for c in cases}|new_entries|camera_entries|compact==expected
+    assert {c['operation'] for c in cases}|new_entries|camera_entries|compact|depth_evidence==expected
     registry=json.loads(files('sintergpu').joinpath('data/timings.json').read_text())
-    pending={row['operation']:row for row in registry['operations'] if row['operation'] in compact}
-    assert set(pending)==compact
+    pending={row['operation']:row for row in registry['operations'] if row['operation'] in compact|depth_evidence}
+    assert set(pending)==compact|depth_evidence
     assert all(row['status']=='pending' for row in pending.values())
-    assert not any(row['operation'] in compact for row in registry['measurements'])
+    assert not any(row['operation'] in compact|depth_evidence for row in registry['measurements'])
     assert {case['family'] for case in graphs}=={'projection','raster','temporal','reference'}
     assert len(cases)==38
     for c in cases:

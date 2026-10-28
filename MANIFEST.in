@@ -18,4 +18,4 @@ recursive-include references *.py *.slang *.json *.md *.toml LICENSE NOTICE *.tx
 recursive-include src/sintergpu *.slang *.json VERSION
 include tests/fixtures/point_plane_aosoa_1025.npz tests/fixtures/point_plane_aosoa_1025_candidate.slang
 recursive-include src/sintergpu/fixtures/point_plane_aosoa *.npz *.slang
-recursive-include diagnostics *.py
+recursive-include diagnostics *.py *.md
