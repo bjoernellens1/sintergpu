@@ -799,8 +799,8 @@
     "qualification/evidence/lifecycle-0.1.5.json": "981b614c80afabf0269e32eb0c1d0f1651728c0c5622b9b1808285dcc291baaf",
     "qualification/delivery-0.1.5.json": "5b0343aa119753b572aedee0982a5dc7ccd0a804595cb037492ca2b3d85fc9a2",
     "benchmarks/results/locus-cpu-gpu-8060s.json": "36f05cb3ac40bf40f5f1f878884495bcd6c933767d112e58e89a4e3290388ea2",
-    "src/sintergpu/data/timings.json": "eb6a40bab4e18d415fd87c437f650b1f89ead851182f48e4427d0c0276510b9a",
-    "docs/kernel-timings.md": "af54d04e41f3bd4753e5c504943c0e9eaeb706dc861b8516c591a46d1712f980",
+    "src/sintergpu/data/timings.json": "99afc621b16464f5e1f9b63c34cef79848a03e25aa9485319759f734ca059410",
+    "docs/kernel-timings.md": "b0753f966c792b94a2ed701b6f08f3ebc9d60f3e73a607b72dbd334e1190c9af",
     "qualification/delivery-0.1.6.json": "61fbdbde082cf212b82804e27fd16ee266479c1273b9eb13df9488a98d5921b8",
     "benchmarks/results/color-cpu-gpu-8060s.json": "1d34cd705e7096f28651c04521958027e60c038b65648a83baa8332c863ab864",
     "qualification/delivery-0.1.7.json": "a09a8871e40f76d78b4f42bc3c258e8e609692653c949785937292b1cb4eb57b",
@@ -814,8 +814,12 @@
     "qualification/evidence/native-install-release-ci-0.1.8.json": "130bf14c12c030722d2e5d7d5d727826d117a68ffd9c34a55331aed9162eef6d",
     "qualification/delivery-0.1.9.json": "f6a9ee077a6237d6aba5ebe63b2e62776f772c8353f2c7d6f5033623e2b3213f",
     "qualification/evidence/native-install-release-ci-0.1.9.json": "87b77333ebcd01e86288a5fc4caf534072045eb97b304df0ba80ac7124e426d7",
-    "qualification/evidence/rounded-vkl-0.2.0.json": "0304f6c6975701dbd9e36f8a1d841d675c638b62c346428a4da6e7d7eb6cd9e4",
-    "qualification/evidence/reflection-compatibility-0.2.0.json": "3d1ea5bf4050320e4fc66678b7830b26704047de7d08fe22c586f097a419c7a9"
+    "qualification/evidence/rounded-vkl-0.2.0.json": "bfc69199dcea33904d516d4e1ee7055f745167b3f09113eca52ddcbc2a3157a7",
+    "qualification/evidence/reflection-compatibility-0.2.0.json": "3d1ea5bf4050320e4fc66678b7830b26704047de7d08fe22c586f097a419c7a9",
+    "benchmarks/results/locus-cpu-gpu-8060s-0.2.0.json": "b23b73580c289d8bc2d3b5dcad5029cd8d7d42204de78e941323be6669d7d669",
+    "benchmarks/results/color-cpu-gpu-8060s-0.2.0.json": "8073286234435fc5f6ec550ccada4bbc350bcfaf4c3e8404370ecd55bc06ba3a",
+    "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.0.json": "68e491e4b33c234df454642115a98e9bde46946f26128c4f9b07b6182055cd5a",
+    "benchmarks/results/vkl-cpu-gpu-8060s-0.2.0.json": "a71ed9992853c386fbecd6f80e83cd4d83cf4fbc70dab0afd584f15e6e4e4763"
   },
   "pending_gates": [
     "NVIDIA RTX 3090 execution: selected workstation unreachable",
@@ -826,28 +830,31 @@
     "Optional vrdx C++ runtime and HIP backend runtime qualification",
     "SLAM pose/trajectory/gradient and full-capacity reconstruction qualification",
     "Publisher App administrative permission path and downstream App execution; six private consumer CI jobs blocked by account billing/spending restrictions",
-    "CPU/GPU baseline timing coverage for 137 remaining portable catalog entries and four optional native radix variants"
+    "CPU/GPU baseline timing coverage for 94 remaining portable catalog entries and four optional native radix variants"
   ],
   "timing_reference": {
     "database": "src/sintergpu/data/timings.json",
     "table": "docs/kernel-timings.md",
     "raw_samples": [
-      "benchmarks/results/locus-cpu-gpu-8060s-0.1.9.json",
-      "benchmarks/results/color-cpu-gpu-8060s-0.1.9.json",
-      "benchmarks/results/vkl-features-cpu-gpu-8060s-0.1.9.json"
+      "benchmarks/results/locus-cpu-gpu-8060s-0.2.0.json",
+      "benchmarks/results/color-cpu-gpu-8060s-0.2.0.json",
+      "benchmarks/results/vkl-features-cpu-gpu-8060s-0.2.0.json",
+      "benchmarks/results/vkl-cpu-gpu-8060s-0.2.0.json"
     ],
     "catalog_entries": 137,
-    "paired_cpu_gpu_entries": 0,
-    "pending_portable_entries": 137,
+    "paired_cpu_gpu_entries": 43,
+    "pending_portable_entries": 94,
     "additional_native_pending": 4,
-    "scope": "68 current-source workloads (28 Locus,30camera-color,10feature-stage),50samples5warmups on shared Radeon8060S. Retain58 historical workload rows as stale because whole-tree dependencies changed. Independent CPU reference, GPU kernel timestamps, host completion and all-bound-buffer upload/readback are separate; no optimizedCPU, production pipeline, controlled fusion or cross-vendor qualification.",
-    "color_collector_revision": "be04ef6ff8600a5fa1328b02dbeb7384967f050d",
+    "scope": "106 current-source synthetic workloads (28 Locus,30 camera-color,10 feature-stage,38 remaining VKL),50 samples and5 warmups on shared Radeon8060S. Retain126 historical workload rows as stale because whole-tree dependencies changed. Independent NumPy CPU reference, GPU kernel timestamps, host completion and all-bound-buffer upload/readback are separate. No optimized CPU, production pipeline, controlled fusion or cross-vendor qualification.",
+    "color_collector_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3",
     "color_workloads": 30,
-    "workloads": 0,
-    "locus_collector_revision": "be04ef6ff8600a5fa1328b02dbeb7384967f050d",
+    "workloads": 106,
+    "locus_collector_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3",
     "retained_historical_workloads": 126,
-    "feature_collector_revision": "be04ef6ff8600a5fa1328b02dbeb7384967f050d",
-    "feature_workloads": 10
+    "feature_collector_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3",
+    "feature_workloads": 10,
+    "vkl_workloads": 38,
+    "vkl_collector_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3"
   },
   "native_packaging": {
     "status": "installed-native-static-link-passed",

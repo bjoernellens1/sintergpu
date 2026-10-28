@@ -98,12 +98,12 @@
     "compiler_sha256": "195f1fbbf7342517aed3064657c8cfaaae5791065158189610253dce070c4678"
   },
   "gpu_regression": {
-    "result": "561passed,2skipped,3preexisting strict expected failures,193subtests passed in24.55s",
+    "result": "562 passed,2 skipped,3 preexisting strict expected failures,193 subtests passed in23.29s",
     "command": "SINTERGPU_GPU_TESTS=1 PYTHONPATH=src:. .cache/vkl-qualification-venv/bin/python -m pytest -q",
-    "log_sha256": "70362fd7ccb302d69e3c024b7e712fb1e909349fb527bc40c55f609a6ec724b4",
+    "log_sha256": "0011bf8dd5d60041d178157baec4c236668d918dee85fc0c076ec9e8a38395dc",
     "focused_result": "64passed in4.26s",
     "focused_log_sha256": "a5bf94b992f66dd415b0ca7d5d7567aefa2eea90bdae1c553b1db4572d82fb88",
-    "test_sha256": "d0b0edd29fd3f57a738aa68dba867e53f42886e1411580b4a8c724e6bdf5468e"
+    "test_sha256": "db898b0dd9d6e325a428ff8a6f72daf520fb48df3318980b03d58970ec0079d5"
   },
   "cause": {
     "initial_normals_max_absolute_error": 1.6018748e-06,

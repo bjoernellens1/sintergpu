@@ -4,6 +4,8 @@ SinterGPU is the upstream home for reusable kernel improvements across consuming
 projects. Push a dedicated branch and open a PR; do not directly change a
 consumer's pinned release or mark an untested variant qualified.
 
+For new or upgraded kernels, use the [candidate intake protocol](docs/superpowers/specs/2026-10-28-kernel-candidate-intake-design.md): dedicated candidate branches and draft PRs, explicit validation evidence, then a separate reviewed promotion PR. Unqualified candidates stay outside the installed catalog. Rewrites must outperform or stay on par with equivalent incumbents across their supported configurations.
+
 Include:
 
 - Independent CPU reference, meaningful correctness tests and numerical contract.
