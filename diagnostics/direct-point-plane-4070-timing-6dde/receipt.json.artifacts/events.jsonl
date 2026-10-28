@@ -1,0 +1,37 @@
+{"event": "artifact", "monotonic_ns": 1162380316953228, "name": "native", "sha256": "f8fbce518a37ee0a22e4b74700820b6aa526bfbab273e9984620dffce3ffdca5", "size": 735792}
+{"event": "artifact", "monotonic_ns": 1162380320366566, "name": "input.bin", "sha256": "e8d3cf128e6f3c547433f2bc457efc26ce0e24147592dc76bcbe4aee726178f7", "size": 74268}
+{"event": "process_exit", "label": "donor-compiler", "monotonic_ns": 1162380508145239, "returncode": 0}
+{"event": "artifact", "monotonic_ns": 1162380514219144, "name": "donor-compiler.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1162380516498765, "name": "donor-compiler.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1162380520249571, "name": "donor.spv", "sha256": "b34c971681eba7c1c7d9a885a13223fc3d481ab72fa39f2b9bf0ddbda2f00f76", "size": 3496}
+{"event": "process_exit", "label": "candidate-compiler", "monotonic_ns": 1162380706737915, "returncode": 0}
+{"event": "artifact", "monotonic_ns": 1162380712256477, "name": "candidate-compiler.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1162380714477927, "name": "candidate-compiler.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1162380716906547, "name": "candidate.spv", "sha256": "8e56c1349d3a3fdf0ce9c88ee008f977818abbfae368adb4216d74720691afc6", "size": 3540}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 291431 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1162380718306125, "pid": 291431, "stage": "run-0-before"}
+{"event": "compute_processes", "monotonic_ns": 1162380738527471, "returncode": 0, "stage": "run-0-before", "stderr": "", "stdout": ""}
+{"event": "process_exit", "monotonic_ns": 1162381910185939, "returncode": 0, "run": 0}
+{"event": "artifact", "monotonic_ns": 1162381911994065, "name": "run-0.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1162381913959681, "name": "run-0.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 291431 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1162381915174582, "pid": 291431, "stage": "run-0-after"}
+{"event": "compute_processes", "monotonic_ns": 1162381936941359, "returncode": 0, "stage": "run-0-after", "stderr": "", "stdout": ""}
+{"event": "run_validated", "monotonic_ns": 1162382113033988, "raw_sha256": "906b63472b9a44ac7e6f3de6b9c399ed66814f6e6c591958847cdd524a7e3f1c", "run": 0, "sample_sha256": "e8e6d001d795eb1ec9b2353c5f7dc4c682bc2eef5e306ba0133b9a37a13e51df", "samples": 50}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 291431 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1162382117870109, "pid": 291431, "stage": "run-1-before"}
+{"event": "compute_processes", "monotonic_ns": 1162382138223624, "returncode": 0, "stage": "run-1-before", "stderr": "", "stdout": ""}
+{"event": "process_exit", "monotonic_ns": 1162383305383216, "returncode": 0, "run": 1}
+{"event": "artifact", "monotonic_ns": 1162383307480681, "name": "run-1.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1162383309717414, "name": "run-1.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 291431 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1162383310989941, "pid": 291431, "stage": "run-1-after"}
+{"event": "compute_processes", "monotonic_ns": 1162383333221249, "returncode": 0, "stage": "run-1-after", "stderr": "", "stdout": ""}
+{"event": "run_validated", "monotonic_ns": 1162383489141356, "raw_sha256": "906b63472b9a44ac7e6f3de6b9c399ed66814f6e6c591958847cdd524a7e3f1c", "run": 1, "sample_sha256": "a3e2899c8da0347dc59c0d5bf0d329c46f6b01961b2a99068e41d4d67c56a91d", "samples": 50}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 291431 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1162383493879575, "pid": 291431, "stage": "run-2-before"}
+{"event": "compute_processes", "monotonic_ns": 1162383516584687, "returncode": 0, "stage": "run-2-before", "stderr": "", "stdout": ""}
+{"event": "process_exit", "monotonic_ns": 1162384643749432, "returncode": 0, "run": 2}
+{"event": "artifact", "monotonic_ns": 1162384646174481, "name": "run-2.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1162384648607181, "name": "run-2.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 291431 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1162384649947445, "pid": 291431, "stage": "run-2-after"}
+{"event": "compute_processes", "monotonic_ns": 1162384665449095, "returncode": 0, "stage": "run-2-after", "stderr": "", "stdout": ""}
+{"event": "run_validated", "monotonic_ns": 1162384788031356, "raw_sha256": "906b63472b9a44ac7e6f3de6b9c399ed66814f6e6c591958847cdd524a7e3f1c", "run": 2, "sample_sha256": "9655d6c57f2dc5a05aeefa012f1f6d37b4f293e25da1e54c8ebbced1fd631934", "samples": 50}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 291431 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1162384789542028, "pid": 291431, "stage": "final"}
+{"event": "compute_processes", "monotonic_ns": 1162384805456854, "returncode": 0, "stage": "final", "stderr": "", "stdout": ""}
+{"event": "lock_closed", "monotonic_ns": 1162384829413671}
