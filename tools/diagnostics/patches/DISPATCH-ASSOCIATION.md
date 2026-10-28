@@ -33,9 +33,14 @@ Local isolated Debug RHI/SlangPy build/link passed with GCC 16.2.1, Python
 3.13.12 and `SGL_WARNINGS_AS_ERRORS=OFF`. The C++ CPU probe uses fake Vulkan
 teardown callbacks and synthetic concrete pipeline/program state: it covers two
 pipeline handles and group tuples in order, unavailable snapshots, output schema,
-query reference ownership and exception unwind. It does not exercise actual
-specialization-cache resolution, real Vulkan command recording, failed
-`vkEndCommandBuffer`, reset/reuse, callbacks, indirect dispatch or a driver.
+query reference ownership and exception unwind. It does not itself exercise actual specialization-cache resolution or a driver.
+A second CPU-only mock probe compiles the actual command recorder and calls the
+actual `createComputePipeline2` with fake Vulkan callbacks. It checks direct
+bind/dispatch, an indirect call and callback after a direct dispatch,
+finalization failure, reset failure, reset/reuse, creation failure and
+non-null Vulkan specialization-info rejection. It does not initialize a
+Vulkan loader/device or exercise a real driver, actual specialization/cache
+resolution or GPU execution.
 The SlangPy CPU-device smoke confirms the query is unavailable before and after
 close. Local source-application tests skip without the audited source; they do
 not establish CI or build provenance. No GPU execution has been performed.
@@ -49,3 +54,12 @@ extension SHA-256
 `94af2d6c9bdadb0711500648c511385539be6971fd137d8faebd810c3f1cc111`.
 These do not authenticate another host or build. Review this candidate and the
 entire layer chain independently before any hardware use.
+
+
+The mock-Vulkan probe is `rhi-dispatch-mock-vulkan-cpu-probe.cpp`; its source
+SHA-256 is `50e2a367acf1c1bfd03f807a542b2dcb1ed9d44050d2d04b2adfe2a6b44895ef`.
+Locally it was linked with the isolated diagnostic RHI and executed with both
+Vulkan ICD environment variables pointing to nonexistent files; it exited 0.
+`ldd` showed no linked Vulkan, NVIDIA or AMD library. Its local executable SHA-256
+was `9563e4687c1c83416f24932baf971cb2c09558122d6d4960c2b762533b8789c3`;
+that hash does not authenticate another build.
