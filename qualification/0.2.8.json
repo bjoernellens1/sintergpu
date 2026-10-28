@@ -3993,7 +3993,7 @@
     "qualification/evidence/vkl-compact-correctness-4070ti-c389f32/compact-correctness.json": "c2904e3019b0a2b1fa647e24948262ebe6cbc9d465ca2a0609454fdd763bd803",
     "qualification/evidence/vkl-compact-backward-profile-4070ti-3c5b997/compact-backward-profile.json": "298d25b14bbde9ec99b5f48cc6e17390c48c3de177db1770d7e166b24d5e6971",
     "qualification/evidence/vkl-compact-correctness-8060s-c389f32/report.json": "cb629dd032070b0d5caf0c1365fec38d10d7cd910485e65ee11983d7f765cf8d",
-    "provenance/point-plane-aosoa-256-experimental.json": "08be7aa174e591b3bc699bf3261da21b509188b0dfb70884f0c144d3c401dd0c",
+    "provenance/point-plane-aosoa-256-experimental.json": "7ddabbc76d33d978da69ececdacb2880f8b626336a92ca363bd37f6b6667f485",
     "src/sintergpu/fixtures/point_plane_aosoa/point_plane_aosoa_1025.npz": "3a9e10f09ee3a312c52c00fe683bae8af09cf7e43b026c51c5ffa974c6edae9f"
   },
   "pending_gates": [

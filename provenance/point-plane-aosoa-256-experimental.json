@@ -13,12 +13,32 @@
   "authorship": "Bj\u00f6rn Ellensohn and Caspar-Slang contributors",
   "license": "Apache-2.0",
   "notice": "LICENSES/caspar-slang-LICENSE",
-  "files": {
-    "src/sintergpu/kernels/optimization/point_plane_aosoa_256.slang": "86cc3d94eff9193c4000d95aceed9cedf6fce5dcbd8971f8e8e6eab5b8751d91",
-    "tests/fixtures/point_plane_aosoa_1025.npz": "3a9e10f09ee3a312c52c00fe683bae8af09cf7e43b026c51c5ffa974c6edae9f",
-    "tests/fixtures/point_plane_aosoa_1025_candidate.slang": "349f631d9d523409a5f8859de3e0480913b4a23ff7455306174c165db9391b4e",
-    "src/sintergpu/point_plane_aosoa_1025.py": "10bd3ae07748baa6f8d2084f9a43ef1e09a8e7a7385ff7a0329046fd67855884"
-  },
+  "files": [
+    {
+      "destination": "src/sintergpu/kernels/optimization/point_plane_aosoa_256.slang",
+      "imported_sha256": "86cc3d94eff9193c4000d95aceed9cedf6fce5dcbd8971f8e8e6eab5b8751d91"
+    },
+    {
+      "destination": "tests/fixtures/point_plane_aosoa_1025.npz",
+      "imported_sha256": "3a9e10f09ee3a312c52c00fe683bae8af09cf7e43b026c51c5ffa974c6edae9f"
+    },
+    {
+      "destination": "tests/fixtures/point_plane_aosoa_1025_candidate.slang",
+      "imported_sha256": "349f631d9d523409a5f8859de3e0480913b4a23ff7455306174c165db9391b4e"
+    },
+    {
+      "destination": "src/sintergpu/point_plane_aosoa_1025.py",
+      "imported_sha256": "10bd3ae07748baa6f8d2084f9a43ef1e09a8e7a7385ff7a0329046fd67855884"
+    },
+    {
+      "destination": "src/sintergpu/fixtures/point_plane_aosoa/point_plane_aosoa_1025.npz",
+      "imported_sha256": "3a9e10f09ee3a312c52c00fe683bae8af09cf7e43b026c51c5ffa974c6edae9f"
+    },
+    {
+      "destination": "src/sintergpu/fixtures/point_plane_aosoa/point_plane_aosoa_1025_candidate.slang",
+      "imported_sha256": "349f631d9d523409a5f8859de3e0480913b4a23ff7455306174c165db9391b4e"
+    }
+  ],
   "fixture": "Exact candidate point_case(None, 1025, aosoa, candidate_local_size=256) arrays; NumPy NPZ container generated locally.",
   "scope": "Fixture and inline candidate source are historical. Imported adapter has no GPU or performance qualification; candidate evidence applies only to its original native compilation and workload.",
   "fixture_verification": "All six array bytes/dtypes/shapes and inline candidate source independently regenerated and compared from clean candidate checkout at the recorded commit."

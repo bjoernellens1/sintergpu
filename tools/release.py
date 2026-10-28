@@ -117,7 +117,7 @@ def verify_package_sources(root, package, kind):
             actual = {p: archive.read(p) for p in names if p.startswith('sintergpu/')}
     else:
         selected = ('src/sintergpu/', 'include/', 'cmake/', 'third_party/', 'references/',
-                    'provenance/', 'docs/', 'tools/', 'benchmarks/', 'tests/', 'changes/', 'LICENSES/', 'examples/', 'qualification/')
+                    'provenance/', 'docs/', 'diagnostics/', 'tools/', 'benchmarks/', 'tests/', 'changes/', 'LICENSES/', 'examples/', 'qualification/')
         singles = {'VERSION', 'LICENSE', 'NOTICE', 'README.md', 'pyproject.toml',
                    'MANIFEST.in', 'CMakeLists.txt', 'consumers.json', 'CHANGELOG.md', 'CONTRIBUTING.md'}
         expected = {p: (root/p).read_bytes() for p in tracked if p.startswith(selected) or p in singles}
