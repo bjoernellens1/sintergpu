@@ -1,0 +1,199 @@
+; SPIR-V
+; Version: 1.5
+; Generator: Khronos Slang Compiler; 0
+; Bound: 105
+; Schema: 0
+OpCapability Shader
+OpExtension "SPV_KHR_storage_buffer_storage_class"
+%1 = OpExtInstImport "GLSL.std.450"
+OpMemoryModel Logical GLSL450
+OpEntryPoint GLCompute %main "main" %params %points_indices %normals %points %targets %out_0 %out_1 %gl_GlobalInvocationID
+OpExecutionMode %main LocalSize 1024 1 1
+
+; Debug Information
+OpSource Slang 1
+OpName %global_thread_idx "global_thread_idx"       ; id %11
+OpName %CasparParams_std140 "CasparParams_std140"   ; id %12
+OpMemberName %CasparParams_std140 0 "problem_size"
+OpMemberName %CasparParams_std140 1 "points_num_alloc"
+OpMemberName %CasparParams_std140 2 "targets_num_alloc"
+OpMemberName %CasparParams_std140 3 "normals_num_alloc"
+OpMemberName %CasparParams_std140 4 "out_0_num_alloc"
+OpMemberName %CasparParams_std140 5 "out_1_num_alloc"
+OpName %params "params"                             ; id %3
+OpName %StructuredBuffer "StructuredBuffer"         ; id %13
+OpMemberName %StructuredBuffer 0 "__member0"
+OpName %points_indices "points_indices"             ; id %4
+OpName %StructuredBuffer_0 "StructuredBuffer"       ; id %14
+OpMemberName %StructuredBuffer_0 0 "__member0"
+OpName %normals "normals"                           ; id %5
+OpName %points "points"                             ; id %6
+OpName %targets "targets"                           ; id %7
+OpName %RWStructuredBuffer "RWStructuredBuffer"     ; id %15
+OpMemberName %RWStructuredBuffer 0 "__member0"
+OpName %out_0 "out_0"                               ; id %8
+OpName %r6 "r6"                                     ; id %16
+OpName %r7 "r7"                                     ; id %17
+OpName %r8 "r8"                                     ; id %18
+OpName %out_1 "out_1"                               ; id %9
+OpName %main "main"                                 ; id %2
+
+; Annotations
+OpDecorate %gl_GlobalInvocationID BuiltIn GlobalInvocationId
+OpDecorate %CasparParams_std140 Block
+OpMemberDecorate %CasparParams_std140 0 Offset 0
+OpMemberDecorate %CasparParams_std140 1 Offset 4
+OpMemberDecorate %CasparParams_std140 2 Offset 8
+OpMemberDecorate %CasparParams_std140 3 Offset 12
+OpMemberDecorate %CasparParams_std140 4 Offset 16
+OpMemberDecorate %CasparParams_std140 5 Offset 20
+OpDecorate %params Binding 6
+OpDecorate %params DescriptorSet 0
+OpDecorate %_ptr_StorageBuffer_uint ArrayStride 4
+OpDecorate %_runtimearr_uint ArrayStride 4
+OpDecorate %StructuredBuffer Block
+OpMemberDecorate %StructuredBuffer 0 Offset 0
+OpDecorate %points_indices Binding 5
+OpDecorate %points_indices DescriptorSet 0
+OpDecorate %points_indices NonWritable
+OpDecorate %_ptr_StorageBuffer_float ArrayStride 4
+OpDecorate %_runtimearr_float ArrayStride 4
+OpDecorate %StructuredBuffer_0 Block
+OpMemberDecorate %StructuredBuffer_0 0 Offset 0
+OpDecorate %normals Binding 2
+OpDecorate %normals DescriptorSet 0
+OpDecorate %normals NonWritable
+OpDecorate %points Binding 0
+OpDecorate %points DescriptorSet 0
+OpDecorate %points NonWritable
+OpDecorate %targets Binding 1
+OpDecorate %targets DescriptorSet 0
+OpDecorate %targets NonWritable
+OpDecorate %RWStructuredBuffer Block
+OpMemberDecorate %RWStructuredBuffer 0 Offset 0
+OpDecorate %out_0 Binding 3
+OpDecorate %out_0 DescriptorSet 0
+OpDecorate %out_1 Binding 4
+OpDecorate %out_1 DescriptorSet 0
+
+; Types, variables and constants
+%void = OpTypeVoid
+%24 = OpTypeFunction %void
+%uint = OpTypeInt 32 0
+%v3uint = OpTypeVector %uint 3
+%_ptr_Input_v3uint = OpTypePointer Input %v3uint
+%CasparParams_std140 = OpTypeStruct %uint %uint %uint %uint %uint %uint     ; Block
+%_ptr_Uniform_CasparParams_std140 = OpTypePointer Uniform %CasparParams_std140
+%int = OpTypeInt 32 1
+%int_0 = OpConstant %int 0
+%_ptr_Uniform_uint = OpTypePointer Uniform %uint
+%bool = OpTypeBool
+%_ptr_StorageBuffer_uint = OpTypePointer StorageBuffer %uint    ; ArrayStride 4
+%_runtimearr_uint = OpTypeRuntimeArray %uint                    ; ArrayStride 4
+%StructuredBuffer = OpTypeStruct %_runtimearr_uint              ; Block
+%_ptr_StorageBuffer_StructuredBuffer = OpTypePointer StorageBuffer %StructuredBuffer
+%uint_4 = OpConstant %uint 4
+%float = OpTypeFloat 32
+%_ptr_StorageBuffer_float = OpTypePointer StorageBuffer %float  ; ArrayStride 4
+%_runtimearr_float = OpTypeRuntimeArray %float                  ; ArrayStride 4
+%StructuredBuffer_0 = OpTypeStruct %_runtimearr_float           ; Block
+%_ptr_StorageBuffer_StructuredBuffer_0 = OpTypePointer StorageBuffer %StructuredBuffer_0
+%uint_1 = OpConstant %uint 1
+%uint_2 = OpConstant %uint 2
+%float_n1 = OpConstant %float -1
+%RWStructuredBuffer = OpTypeStruct %_runtimearr_float   ; Block
+%_ptr_StorageBuffer_RWStructuredBuffer = OpTypePointer StorageBuffer %RWStructuredBuffer
+%uint_3 = OpConstant %uint 3
+%int_5 = OpConstant %int 5
+%gl_GlobalInvocationID = OpVariable %_ptr_Input_v3uint Input    ; BuiltIn GlobalInvocationId
+%params = OpVariable %_ptr_Uniform_CasparParams_std140 Uniform  ; Binding 6, DescriptorSet 0
+%points_indices = OpVariable %_ptr_StorageBuffer_StructuredBuffer StorageBuffer     ; Binding 5, DescriptorSet 0, NonWritable
+%normals = OpVariable %_ptr_StorageBuffer_StructuredBuffer_0 StorageBuffer          ; Binding 2, DescriptorSet 0, NonWritable
+%points = OpVariable %_ptr_StorageBuffer_StructuredBuffer_0 StorageBuffer           ; Binding 0, DescriptorSet 0, NonWritable
+%targets = OpVariable %_ptr_StorageBuffer_StructuredBuffer_0 StorageBuffer          ; Binding 1, DescriptorSet 0, NonWritable
+%out_0 = OpVariable %_ptr_StorageBuffer_RWStructuredBuffer StorageBuffer            ; Binding 3, DescriptorSet 0
+%out_1 = OpVariable %_ptr_StorageBuffer_RWStructuredBuffer StorageBuffer            ; Binding 4, DescriptorSet 0
+%uint_0 = OpConstant %uint 0
+
+; Function main
+%main = OpFunction %void None %24
+%44 = OpLabel
+OpSelectionMerge %45 None
+OpSwitch %uint_0 %46
+%46 = OpLabel
+%47 = OpLoad %v3uint %gl_GlobalInvocationID
+%global_thread_idx = OpCompositeExtract %uint %47 0
+%48 = OpAccessChain %_ptr_Uniform_uint %params %int_0
+%49 = OpLoad %uint %48
+%50 = OpUGreaterThanEqual %bool %global_thread_idx %49
+OpSelectionMerge %51 None
+OpBranchConditional %50 %52 %51
+%52 = OpLabel
+OpBranch %45
+%51 = OpLabel
+%53 = OpAccessChain %_ptr_StorageBuffer_uint %points_indices %int_0 %global_thread_idx
+%54 = OpLoad %uint %53
+%55 = OpIMul %uint %global_thread_idx %uint_4
+%56 = OpAccessChain %_ptr_StorageBuffer_float %normals %int_0 %55
+%57 = OpLoad %float %56
+%58 = OpIAdd %uint %55 %uint_1
+%59 = OpAccessChain %_ptr_StorageBuffer_float %normals %int_0 %58
+%60 = OpLoad %float %59
+%61 = OpIAdd %uint %55 %uint_2
+%62 = OpAccessChain %_ptr_StorageBuffer_float %normals %int_0 %61
+%63 = OpLoad %float %62
+%64 = OpIMul %uint %54 %uint_4
+%65 = OpAccessChain %_ptr_StorageBuffer_float %points %int_0 %64
+%66 = OpLoad %float %65
+%67 = OpIAdd %uint %64 %uint_1
+%68 = OpAccessChain %_ptr_StorageBuffer_float %points %int_0 %67
+%69 = OpLoad %float %68
+%70 = OpIAdd %uint %64 %uint_2
+%71 = OpAccessChain %_ptr_StorageBuffer_float %points %int_0 %70
+%72 = OpLoad %float %71
+%73 = OpAccessChain %_ptr_StorageBuffer_float %targets %int_0 %55
+%74 = OpLoad %float %73
+%75 = OpAccessChain %_ptr_StorageBuffer_float %targets %int_0 %58
+%76 = OpLoad %float %75
+%77 = OpAccessChain %_ptr_StorageBuffer_float %targets %int_0 %61
+%78 = OpLoad %float %77
+%79 = OpExtInst %float %1 Fma %78 %float_n1 %72
+%80 = OpExtInst %float %1 Fma %74 %float_n1 %66
+%81 = OpFMul %float %63 %79
+%82 = OpExtInst %float %1 Fma %57 %80 %81
+%83 = OpExtInst %float %1 Fma %76 %float_n1 %69
+%84 = OpExtInst %float %1 Fma %60 %83 %82
+%85 = OpAccessChain %_ptr_StorageBuffer_float %out_0 %int_0 %global_thread_idx
+OpStore %85 %84
+%r6 = OpFMul %float %72 %60
+%86 = OpFMul %float %69 %63
+%87 = OpExtInst %float %1 Fma %float_n1 %r6 %86
+%r7 = OpFMul %float %66 %63
+%88 = OpFMul %float %float_n1 %r7
+%89 = OpExtInst %float %1 Fma %72 %57 %88
+%r8 = OpFMul %float %69 %57
+%90 = OpFMul %float %66 %60
+%91 = OpExtInst %float %1 Fma %float_n1 %r8 %90
+%92 = OpAccessChain %_ptr_StorageBuffer_float %out_1 %int_0 %55
+OpStore %92 %87
+%93 = OpAccessChain %_ptr_StorageBuffer_float %out_1 %int_0 %58
+OpStore %93 %89
+%94 = OpAccessChain %_ptr_StorageBuffer_float %out_1 %int_0 %61
+OpStore %94 %91
+%95 = OpIAdd %uint %55 %uint_3
+%96 = OpAccessChain %_ptr_StorageBuffer_float %out_1 %int_0 %95
+OpStore %96 %57
+%97 = OpAccessChain %_ptr_Uniform_uint %params %int_5
+%98 = OpLoad %uint %97
+%99 = OpIMul %uint %uint_4 %98
+%100 = OpIMul %uint %global_thread_idx %uint_2
+%101 = OpIAdd %uint %99 %100
+%102 = OpAccessChain %_ptr_StorageBuffer_float %out_1 %int_0 %101
+OpStore %102 %60
+%103 = OpIAdd %uint %101 %uint_1
+%104 = OpAccessChain %_ptr_StorageBuffer_float %out_1 %int_0 %103
+OpStore %104 %63
+OpBranch %45
+%45 = OpLabel
+OpReturn
+OpFunctionEnd

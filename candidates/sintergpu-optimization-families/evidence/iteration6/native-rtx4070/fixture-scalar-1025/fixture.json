@@ -1,0 +1,77 @@
+{
+  "schema": "sintergpu.native.point_plane.fixture.v1",
+  "count": 1025,
+  "allocation": 1032,
+  "profile": "scalar",
+  "params": {
+    "problem_size": 1025,
+    "points_num_alloc": 512,
+    "targets_num_alloc": 1032,
+    "normals_num_alloc": 1032,
+    "out_0_num_alloc": 1032,
+    "out_1_num_alloc": 1032
+  },
+  "candidate_local_size": 256,
+  "files": {
+    "points.bin": {
+      "bytes": 8192,
+      "sha256": "9356b9a9f7c6da238d8e562942e4db275a3f5740a45e2a88712a5cce559282db",
+      "dtype": "<f4",
+      "shape": [
+        512,
+        4
+      ]
+    },
+    "targets.bin": {
+      "bytes": 16512,
+      "sha256": "2e4f91760969b5f15650ba54d5dfe97e1241c3b84c2e67bcd18e431164fe2037",
+      "dtype": "<f4",
+      "shape": [
+        1032,
+        4
+      ]
+    },
+    "normals.bin": {
+      "bytes": 16512,
+      "sha256": "42d007a18b4c5224bec68a1da97feb005f3ddaa2aaf3cb7956cf1df50c5358a5",
+      "dtype": "<f4",
+      "shape": [
+        1032,
+        4
+      ]
+    },
+    "out_0.bin": {
+      "bytes": 4156,
+      "sha256": "fbb98629299c807e59b00157162a3791684eb3e07d6414a2bcb182db1d2e2448",
+      "dtype": "<f4",
+      "shape": [
+        1039
+      ]
+    },
+    "out_1.bin": {
+      "bytes": 24796,
+      "sha256": "591f63ae5e2f13386f90af56a19c82539c905982020aac6f9edef90c6c413e15",
+      "dtype": "<f4",
+      "shape": [
+        6199
+      ]
+    },
+    "points_indices.bin": {
+      "bytes": 4100,
+      "sha256": "c21621b4a3f582931d4923825af64bfd8343e34e858f32c9545b8698d604e46d",
+      "dtype": "<u4",
+      "shape": [
+        1025
+      ]
+    },
+    "params.bin": {
+      "bytes": 32,
+      "sha256": "34cdb511080cdb7ec177f73d24408509d53b47c32019bc3cfa4448020f2547c8"
+    }
+  },
+  "source_sha256": {
+    "baseline": "8fc8c09c4339891007947e952c72ea36ab7f0ba3159d2f7dca51f5f09853525f",
+    "candidate": "9a91c0588e93b637e4c484d4f077b10de6133f2824dbed57c3b540066a5cca41"
+  },
+  "source_compilation": "external; attach pinned compiler identity, flags, and SPIR-V SHA256"
+}

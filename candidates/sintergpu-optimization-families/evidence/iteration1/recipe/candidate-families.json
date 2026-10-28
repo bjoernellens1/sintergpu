@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "status": "candidate-only",
+  "base_revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3",
+  "frozen_donor_revisions": {
+    "locus": {
+      "repository": "bjoernellens1/locus",
+      "revision": "66f67d38e2e34ceec626dd13857ca5de76deafba",
+      "provenance_path": "provenance/locus.json"
+    },
+    "caspar-slang": {
+      "repository": "bjoernellens1/caspar-slang",
+      "revision": "cab53390aa111cd5526cb30c9aef484e73521186",
+      "provenance_path": "provenance/caspar-slang.json"
+    },
+    "slang-rgbd-slam": {
+      "repository": "bjoernellens1/slang-rgbd-slam",
+      "revision": "e35e52b35f692b8337696ea3c9d6721d1cc2bc6b",
+      "provenance_path": "provenance/slang-rgbd-slam.json"
+    },
+    "vkl": {
+      "repository": "bjoernellens1/vkl",
+      "revision": "3384023a311651ea4260cf12ddab1567972f89f3",
+      "provenance_path": "provenance/vkl.json"
+    },
+    "eligsir-sim": {
+      "repository": "bjoernellens1/eligsir-sim",
+      "revision": "57a6fc17edfb523f90647dcbccf182db1245a1db",
+      "provenance_path": "provenance/eligsir-sim.json"
+    },
+    "xsplat-vk": {
+      "repository": "bjoernellens1/xsplat-vk",
+      "revision": "5c41a47c9e6ec1ad666d06abd239f1c02424624b",
+      "provenance_path": "provenance/xsplat-vk.json"
+    },
+    "vrdx": {
+      "repository": "bjoernellens1/vk_gaussian_splatting",
+      "revision": "d2f603251b1b007c94ee07dd9c5579b7492af6fe",
+      "provenance_path": "provenance/vrdx.json"
+    },
+    "primitives": {
+      "repository": "bjoernellens1/nerfacc-rocm",
+      "revision": "f90d51e718aa52cbaeaf3f7f74569689026f662e",
+      "provenance_path": "provenance/primitives.json"
+    }
+  },
+  "baseline_sources": [
+    {
+      "path": "src/sintergpu/kernels/caspar_slang/composed/point_plane_residual.slang",
+      "sha256": "b425f7562662c7d4fedfa9c0ca5c8c83ac45b764bf75ca1bf8d2cb50147eeeb6",
+      "revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3"
+    },
+    {
+      "path": "src/sintergpu/kernels/caspar_slang/composed/reprojection.slang",
+      "sha256": "b35001e919b5566b5185a005d63a4bea3fdb58e39a0777682626c75687e59922",
+      "revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3"
+    },
+    {
+      "path": "src/sintergpu/kernels/caspar_slang/gn.slang",
+      "sha256": "a8189cffd5b3e6f839976962e1410f3b50c7a57fa2fe02a69d15bc7a9e4a8b5e",
+      "revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3"
+    },
+    {
+      "path": "src/sintergpu/kernels/slang_rgbd_slam/dense_ba.slang",
+      "sha256": "883db1bab91d43518ca2f2d3fa075c785371a7bda4c2b5b0b0c310762f3a72a9",
+      "revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3"
+    },
+    {
+      "path": "references/donors/caspar-slang/src/caspar_slang/gn.py",
+      "sha256": "76c34c3273326037c75f692bc8513bc9a19117e4428754440d5bd2465a17ab7e",
+      "revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3"
+    },
+    {
+      "path": "references/donors/caspar-slang/src/caspar_slang/reprojection.py",
+      "sha256": "5aa9596180798c0f8ca1a45654fc8996477fd745e5c6cf042dd7d8316c0809a1",
+      "revision": "fe273e6946419c018c3a2dcdb20bb9c518c751e3"
+    }
+  ],
+  "families": [
+    {
+      "id": "G18",
+      "name": "point_plane",
+      "candidate": "src/sintergpu/kernels/candidates/optimization/point_plane.slang",
+      "profiles": [
+        "caspar-indexed-aosoa-fma",
+        "caspar-scalar-fma"
+      ],
+      "baseline_decision": "retained until numerical and per-configuration performance acceptance",
+      "gradient": "analytic Jacobian checked with independent finite differences; no backward runtime provided"
+    },
+    {
+      "id": "G21",
+      "name": "small_cholesky",
+      "candidate": "src/sintergpu/kernels/candidates/optimization/small_cholesky.slang",
+      "profiles": [
+        "caspar6",
+        "slam-schur-runtime6-12-18"
+      ],
+      "baseline_decision": "retained until numerical and per-configuration performance acceptance",
+      "gradient": "forward solver only; no differentiable solver claim"
+    }
+  ],
+  "license": "Apache-2.0; existing LICENSE/NOTICE and frozen donor provenance retained",
+  "nvidia_qualification": "pending selected RTX3090; other devices cannot substitute"
+}

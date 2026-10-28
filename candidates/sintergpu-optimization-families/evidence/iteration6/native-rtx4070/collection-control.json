@@ -1,0 +1,6 @@
+{
+  "cooperating_collectors_excluded": true,
+  "scope": "Advisory GPU lock and coordinated exclusion of parent measurement/compiler jobs; ordinary desktop activity remains possible and raw jitter is retained.",
+  "parent_release": "Explicit terminal release before this experiment",
+  "ineligible_outputs": {}
+}

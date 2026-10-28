@@ -1,0 +1,33 @@
+Wrote "evidence/iteration6/native-rtx4070/aosoa-1025-run1.json" with 120000 individual ABBA invocations
+aosoa 1025 1 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-rtx4070/aosoa-1025-run2.json" with 120000 individual ABBA invocations
+aosoa 1025 2 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-rtx4070/aosoa-1025-run3.json" with 120000 individual ABBA invocations
+aosoa 1025 3 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-rtx4070/aosoa-65539-run1.json" with 120000 individual ABBA invocations
+aosoa 65539 1 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-rtx4070/aosoa-65539-run2.json" with 120000 individual ABBA invocations
+aosoa 65539 2 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-rtx4070/aosoa-65539-run3.json" with 120000 individual ABBA invocations
+aosoa 65539 3 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-rtx4070/scalar-1025-run1.json" with 120000 individual ABBA invocations
+scalar 1025 1 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-rtx4070/scalar-1025-run2.json" with 120000 individual ABBA invocations
+scalar 1025 2 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-rtx4070/scalar-1025-run3.json" with 120000 individual ABBA invocations
+scalar 1025 3 byte-exact and independent oracle passed
+Wrote "evidence/iteration6/native-rtx4070/scalar-65539-run1.json" with 120000 individual ABBA invocations
+scalar 65539 1 byte-exact and independent oracle passed
+point_plane_ab: GPU lock is held; no GPU work started
+Traceback (most recent call last):
+  File "/tmp/sintergpu-family-candidate-01a18122/candidates/sintergpu-optimization-families/benchmarks/native_point_suite.py", line 123, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/sintergpu-family-candidate-01a18122/candidates/sintergpu-optimization-families/benchmarks/native_point_suite.py", line 120, in main
+    args=parser.parse_args();globals()[args.action](args)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/sintergpu-family-candidate-01a18122/candidates/sintergpu-optimization-families/benchmarks/native_point_suite.py", line 55, in run
+    subprocess.run(command, check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['taskset', '-c', '19', '/tmp/sintergpu-native-point-ab', '--baseline', 'evidence/iteration5/compile/2026.19/scalar-baseline.spv', '--candidate', 'evidence/iteration5/compile/2026.19/scalar-candidate.spv', '--fixture-dir', 'evidence/iteration6/native-rtx4070/fixture-scalar-65539', '--count', '65539', '--vendor', '0x10de', '--device', '0x2782', '--output', 'evidence/iteration6/native-rtx4070/scalar-65539-run2.json', '--blocks', '10000', '--warmups', '10', '--completion-mode', 'spin']' returned non-zero exit status 1.

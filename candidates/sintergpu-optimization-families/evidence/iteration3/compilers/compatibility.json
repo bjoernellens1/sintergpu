@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "schema_additions": {
+    "status": "passed",
+    "entries": 15,
+    "scope": "All 2026.12 reflection fields match 2026.19 exactly, including types, bindings, offsets, sizes, strides, ordering and workgroups. New-only metadata is retained in compiler records but has no cross-version counterpart.",
+    "known_schema_additions": {
+      "sizes": 286,
+      "scope": 15,
+      "globalScope": 15,
+      "version": 15
+    },
+    "compiler_sha256": {
+      "2026.12": "82e29ecd96714c64a31021160eaff4bf8604f44934e9f7b98448e962a5d12dad",
+      "2026.19": "b13606619c8959bbd490cb87e6e549e366a22a13c6cbd46cce3f798264778b60"
+    }
+  }
+}

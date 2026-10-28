@@ -1,0 +1,157 @@
+{
+    "parameters": [
+        {
+            "name": "inputTerms",
+            "binding": {"kind": "descriptorTableSlot", "index": 0},
+            "type": {
+                "kind": "resource",
+                "baseShape": "structuredBuffer",
+                "resultType": {
+                    "kind": "scalar",
+                    "scalarType": "float32"
+                }
+            }
+        },
+        {
+            "name": "delta",
+            "binding": {"kind": "descriptorTableSlot", "index": 1},
+            "type": {
+                "kind": "resource",
+                "baseShape": "structuredBuffer",
+                "access": "readWrite",
+                "resultType": {
+                    "kind": "scalar",
+                    "scalarType": "float32"
+                }
+            }
+        },
+        {
+            "name": "status",
+            "binding": {"kind": "descriptorTableSlot", "index": 2},
+            "type": {
+                "kind": "resource",
+                "baseShape": "structuredBuffer",
+                "access": "readWrite",
+                "resultType": {
+                    "kind": "scalar",
+                    "scalarType": "uint32"
+                }
+            }
+        },
+        {
+            "name": "cfg",
+            "binding": {"kind": "descriptorTableSlot", "index": 3},
+            "type": {
+                "kind": "constantBuffer",
+                "elementType": {
+                    "kind": "struct",
+                    "name": "Config",
+                    "fields": [
+                        {
+                            "name": "terms",
+                            "type": {
+                                "kind": "scalar",
+                                "scalarType": "uint32"
+                            },
+                            "binding": {"kind": "uniform", "offset": 0, "size": 4, "elementStride": 0}
+                        },
+                        {
+                            "name": "activeFrames",
+                            "type": {
+                                "kind": "scalar",
+                                "scalarType": "uint32"
+                            },
+                            "binding": {"kind": "uniform", "offset": 4, "size": 4, "elementStride": 0}
+                        },
+                        {
+                            "name": "dofs",
+                            "type": {
+                                "kind": "scalar",
+                                "scalarType": "uint32"
+                            },
+                            "binding": {"kind": "uniform", "offset": 8, "size": 4, "elementStride": 0}
+                        },
+                        {
+                            "name": "damping",
+                            "type": {
+                                "kind": "scalar",
+                                "scalarType": "float32"
+                            },
+                            "binding": {"kind": "uniform", "offset": 12, "size": 4, "elementStride": 0}
+                        }
+                    ]
+                },
+                "containerVarLayout": {
+                    "binding": {"kind": "descriptorTableSlot", "index": 0}
+                },
+                "elementVarLayout": {
+                    "type": {
+                        "kind": "struct",
+                        "name": "Config",
+                        "fields": [
+                            {
+                                "name": "terms",
+                                "type": {
+                                    "kind": "scalar",
+                                    "scalarType": "uint32"
+                                },
+                                "binding": {"kind": "uniform", "offset": 0, "size": 4, "elementStride": 0}
+                            },
+                            {
+                                "name": "activeFrames",
+                                "type": {
+                                    "kind": "scalar",
+                                    "scalarType": "uint32"
+                                },
+                                "binding": {"kind": "uniform", "offset": 4, "size": 4, "elementStride": 0}
+                            },
+                            {
+                                "name": "dofs",
+                                "type": {
+                                    "kind": "scalar",
+                                    "scalarType": "uint32"
+                                },
+                                "binding": {"kind": "uniform", "offset": 8, "size": 4, "elementStride": 0}
+                            },
+                            {
+                                "name": "damping",
+                                "type": {
+                                    "kind": "scalar",
+                                    "scalarType": "float32"
+                                },
+                                "binding": {"kind": "uniform", "offset": 12, "size": 4, "elementStride": 0}
+                            }
+                        ]
+                    },
+                    "binding": {"kind": "uniform", "offset": 0, "size": 16, "elementStride": 0}
+                }
+            }
+        }
+    ],
+    "entryPoints": [
+        {
+            "name": "main",
+            "stage": "compute",
+            "threadGroupSize": [1, 1, 1],
+            "bindings": [
+                {
+                    "name": "inputTerms",
+                    "binding": {"kind": "descriptorTableSlot", "index": 0, "used": 1}
+                },
+                {
+                    "name": "delta",
+                    "binding": {"kind": "descriptorTableSlot", "index": 1, "used": 1}
+                },
+                {
+                    "name": "status",
+                    "binding": {"kind": "descriptorTableSlot", "index": 2, "used": 1}
+                },
+                {
+                    "name": "cfg",
+                    "binding": {"kind": "descriptorTableSlot", "index": 3, "used": 1}
+                }
+            ]
+        }
+    ],
+    "bindlessSpaceIndex": 1
+}

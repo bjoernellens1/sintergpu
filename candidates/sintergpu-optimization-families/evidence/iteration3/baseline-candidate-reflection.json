@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "comparisons": [
+    {
+      "compiler": "2026.12",
+      "baseline": "solve6-caspar-baseline",
+      "candidate": "solve6-caspar-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.12",
+      "baseline": "solve6-schur-baseline",
+      "candidate": "solve6-schur-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.12",
+      "baseline": "solve12-schur-baseline",
+      "candidate": "solve12-schur-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.12",
+      "baseline": "solve18-schur-baseline",
+      "candidate": "solve18-schur-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.12",
+      "baseline": "point-aosoa-baseline",
+      "candidate": "point-aosoa-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.12",
+      "baseline": "point-scalar-baseline",
+      "candidate": "point-scalar-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.19",
+      "baseline": "solve6-caspar-baseline",
+      "candidate": "solve6-caspar-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.19",
+      "baseline": "solve6-schur-baseline",
+      "candidate": "solve6-schur-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.19",
+      "baseline": "solve12-schur-baseline",
+      "candidate": "solve12-schur-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.19",
+      "baseline": "solve18-schur-baseline",
+      "candidate": "solve18-schur-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.19",
+      "baseline": "point-aosoa-baseline",
+      "candidate": "point-aosoa-candidate",
+      "resource_layout_equal": true
+    },
+    {
+      "compiler": "2026.19",
+      "baseline": "point-scalar-baseline",
+      "candidate": "point-scalar-candidate",
+      "resource_layout_equal": true
+    }
+  ]
+}
