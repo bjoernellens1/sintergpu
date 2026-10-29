@@ -8,7 +8,7 @@ def test_production_gate_precedes_any_device_or_source_access(monkeypatch):
 
 def test_experimental_closure_includes_all_new_dependencies():
     required={'timing_cooperative.cpp','timing_handshake.py','timing_monitor.py','timing_supervisor.py','timing_quarantine_guardian.py','timing_quarantine_lease.py','timing_trial_manifest.py','timing_preregistered_analysis.py','timing_4070_monitored_parent.py'}
-    assert required.issubset(set(candidate.LOCAL)) and candidate.NATIVE_SHA is None
+    assert required.issubset(set(candidate.LOCAL)) and candidate.NATIVE_SHA=='9066c395018bc11c83b8eb3614875051d83fc229c68077b5a7495eb0391f1f49'
 
 def exercise_parent(tmp_path,monkeypatch,mode):
     import inspect,json,hashlib

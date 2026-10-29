@@ -23,7 +23,7 @@ LOCAL=('timing_4070_monitored_parent.py','timing_cooperative.cpp','timing_handsh
        'vulkan_transfer_pass.h','vulkan_timestamp_pair.h','engineering_attempt/runner.py',
        'engineering_attempt/spirv_contract.py')
 # Target build is provisional until exact committed source is independently reviewed.
-NATIVE_SHA=None
+NATIVE_SHA='9066c395018bc11c83b8eb3614875051d83fc229c68077b5a7495eb0391f1f49'
 MONITOR_SHA='811a1dab6b66889693b2ef1d3d9d047eaa64857005ab409b9bdc928610cdd84a'
 CPP=Path('/usr/bin/c++')
 CPP_SHA='1353e9bdd29a7295c7226bf6c63abccce056d8cac31f112e5cdbecc3f28c2769'
