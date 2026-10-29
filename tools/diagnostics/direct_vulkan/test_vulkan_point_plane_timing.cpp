@@ -30,6 +30,11 @@ int main(){
  try{t.transfer(p,slots);assert(false);}catch(const std::logic_error&){}
  auto r=t.resident(p);assert((r.rawTicks==std::array<uint64_t,4>({10,11,14,15})));assert(r.hostCompletionUpperBoundNs>0);assert(ev[ev.size()-3]==21&&ev[ev.size()-2]==22&&ev.back()==30);
  try{t.resident(p);assert(false);}catch(const std::logic_error&){}t.markResidentValidated();ev.clear();assert(t.transfer(p,slots)>0);assert(upload==initial&&out==download);assert(ev[ev.size()-2]==21&&ev.back()==22);t.markTransferValidated();
+ // The diagnostic subdivisions share exactly the original host interval.
+ t.resident(p);t.markResidentValidated();SinterTransferComponents parts{};
+ auto total=t.transfer(p,slots,&parts);
+ assert(total==parts.uploadNs+parts.recordNs+parts.submitWaitNs+parts.downloadNs);
+ assert(upload==initial&&out==download);t.markTransferValidated();
  for(int injected=1;injected<=6;++injected){
    SinterTimestampPair fresh((VkDevice)1,32,1,{create,destroy,qreset,timestamp,read});
    SinterPointPlaneTiming f((VkQueue)1,(VkCommandBuffer)1,api,fresh);ev.clear();failure=injected;

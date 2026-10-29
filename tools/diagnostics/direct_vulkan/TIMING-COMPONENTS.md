@@ -59,3 +59,12 @@ TMPDIR=/dev/shm/sinter-timing-tests python3 -m pytest -q tools/diagnostics/direc
 The same CPU fake suite passed on the target host in the isolated `test-root` under the build directory above: 12 tests passed. The transferred test archive SHA-256 was `0f3544cf5ba52a1e3daaba6e358f462142e439c7ce4b103325841aed6ab48d13`. These tests used the fake Vulkan callbacks and did not execute the target GPU. They cover the uncommitted source snapshot; committed-source verification remains outstanding.
 
 A separate proposed entry point, `timing_4070_reviewed_parent.py`, removes only the candidate parent's unconditional review block and includes its own bytes in the committed source closure. It requires `--execute`; do not run it on GPU before independent review of its exact commit, target rebuild and controls. The original `timing_4070_parent.py` and default timing parent stay blocked. On the 4070 host, the isolated `source-retained` checkout was advanced to commit `347b4ef27ff64c57032e9b00143088a62df278c8`; its checked 20-file source closure rebuilt twice to the provisional `f8fbce...` binary above and its CPU-only fake suite passed 12 tests. The proposed separate entry point was added after that commit and therefore needs its own committed-source and target recheck.
+
+Optional `SinterTransferComponents` records host-clock upload, command recording,
+submit plus queue wait, and readback-copy subdivisions within the existing total
+transfer interval. The three additional clock reads and conditional branches perturb the measured interval;
+submit/wait combines GPU execution, driver and host scheduling and cannot locate
+GPU execution time. This is a CPU-tested component only: no executable currently
+retains these subdivisions and no GPU measurements have been made with it.
+The default call does not perform intermediate clock reads. Source-pinned runners
+must be reviewed and repinned before use after any change to this header.

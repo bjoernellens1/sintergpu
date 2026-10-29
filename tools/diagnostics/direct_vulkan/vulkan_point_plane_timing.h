@@ -25,6 +25,9 @@ struct SinterTimingStaging {
     const void* initialBytes;
     void* outputBytes;
 };
+// Optional host-clock subdivision of the same transfer interval. Clock reads
+// perturb the measured path; this is diagnostic, not an acceptance measurement.
+struct SinterTransferComponents { uint64_t uploadNs, recordNs, submitWaitNs, downloadNs; };
 struct SinterResidentTiming { std::array<uint64_t,4> rawTicks; uint64_t hostCompletionUpperBoundNs; };
 
 // The seven staging triplets must be distinct and backed by host-coherent
@@ -55,14 +58,25 @@ public:
     // output interpretation, oracle validation and reset are outside the interval.
     // Recording and its argument checks are included. A failed operation poisons
     // this instance; caller must tear down after any recording/submission error.
-    uint64_t transfer(const SinterPointPlaneCommand& p,const std::array<SinterTimingStaging,7>& slots) {
+    uint64_t transfer(const SinterPointPlaneCommand& p,const std::array<SinterTimingStaging,7>& slots, SinterTransferComponents* diagnostic=nullptr) {
         require(2);std::array<SinterTransferBuffer,7> buffers{};
         for(size_t i=0;i<slots.size();++i){const auto& x=slots[i];if(!x.mappedUpload||!x.mappedDownload||!x.initialBytes||!x.outputBytes||!x.gpu.size||x.gpu.size>std::numeric_limits<size_t>::max())throw std::invalid_argument("staging mapping");buffers[i]=x.gpu;}
         state_=-1;auto before=Clock::now();
         for(const auto& x:slots)std::memcpy(x.mappedUpload,x.initialBytes,(size_t)x.gpu.size);
-        begin();sinterRecordTransferPointPlane(command_,p,buffers,api_.point,api_.copy);end();submitAndWait();
+        auto afterUpload=diagnostic?Clock::now():before;
+        begin();sinterRecordTransferPointPlane(command_,p,buffers,api_.point,api_.copy);end();
+        auto afterRecord=diagnostic?Clock::now():before;
+        submitAndWait();
+        auto afterWait=diagnostic?Clock::now():before;
         for(const auto& x:slots)std::memcpy(x.outputBytes,x.mappedDownload,(size_t)x.gpu.size);
-        uint64_t elapsed=ns(before,Clock::now());state_=3;return elapsed;
+        auto afterDownload=Clock::now();
+        uint64_t elapsed=ns(before,afterDownload);
+        if(diagnostic){
+            auto part=[](Clock::time_point a,Clock::time_point b){return (uint64_t)std::chrono::duration_cast<std::chrono::nanoseconds>(b-a).count();};
+            auto upload=part(before,afterUpload),record=part(before,afterRecord),wait=part(before,afterWait);
+            *diagnostic={upload,record-upload,wait-record,elapsed-wait};
+        }
+        state_=3;return elapsed;
     }
     void markTransferValidated(){require(3);state_=0;}
 private:
