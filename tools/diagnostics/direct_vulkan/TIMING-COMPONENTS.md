@@ -68,3 +68,15 @@ GPU execution time. This is a CPU-tested component only: no executable currently
 retains these subdivisions and no GPU measurements have been made with it.
 The default call does not perform intermediate clock reads. Source-pinned runners
 must be reviewed and repinned before use after any change to this header.
+
+`timing_transfer_components.cpp` is a separate, hard-blocked GPU executable
+with a `.components` journal beside its original sample and full raw readback
+journals. `timing_4070_transfer_components_parent.py` is a separately blocked
+monitored-parent draft: it validates and hashes each component journal and uses
+the existing complete raw-output validator. Its native pin is intentionally
+unset; the C++ production gate also remains closed. Exact committed closure,
+target build and binary pin, enabled variant and independent review remain
+necessary before GPU use. The extra per-record journal fsync and intermediate
+clock reads/branches perturb execution; these results cannot be substituted for
+uninstrumented no-regression measurements. A parent fake test exercises journal
+orchestration, not real Vulkan, GPU synchronization or hardware cleanup.
