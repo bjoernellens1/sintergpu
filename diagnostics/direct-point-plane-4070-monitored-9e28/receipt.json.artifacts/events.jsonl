@@ -1,0 +1,50 @@
+{"available_bytes": 43107577856, "event": "filesystem_capacity", "monotonic_ns": 1163832840212740, "required_bytes": 134217728}
+{"event": "artifact", "monotonic_ns": 1163836452298088, "name": "native", "sha256": "9066c395018bc11c83b8eb3614875051d83fc229c68077b5a7495eb0391f1f49", "size": 740144}
+{"event": "artifact", "monotonic_ns": 1163836455187059, "name": "input.bin", "sha256": "e8d3cf128e6f3c547433f2bc457efc26ce0e24147592dc76bcbe4aee726178f7", "size": 74268}
+{"event": "process_exit", "label": "donor-compiler", "monotonic_ns": 1163836636225149, "returncode": 0}
+{"event": "artifact", "monotonic_ns": 1163836642397379, "name": "donor-compiler.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163836645184719, "name": "donor-compiler.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163836648139661, "name": "donor.spv", "sha256": "b34c971681eba7c1c7d9a885a13223fc3d481ab72fa39f2b9bf0ddbda2f00f76", "size": 3496}
+{"event": "process_exit", "label": "candidate-compiler", "monotonic_ns": 1163836826465321, "returncode": 0}
+{"event": "artifact", "monotonic_ns": 1163836832529423, "name": "candidate-compiler.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163836835188234, "name": "candidate-compiler.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163836838135599, "name": "candidate.spv", "sha256": "8e56c1349d3a3fdf0ce9c88ee008f977818abbfae368adb4216d74720691afc6", "size": 3540}
+{"event": "artifact", "monotonic_ns": 1163836842115818, "name": "preregistration.json", "sha256": "d1907c8cd32c3130a97999b9c6627100a7bfee2c92eea09b43dff2b75d01ee3a", "size": 1619}
+{"event": "guardian_started", "guardian_pid": 297204, "lock_inode": 30411665, "monotonic_ns": 1163836864109084, "scope": "borrowed flock only; quiescence unverified"}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 297135 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1163836865575121, "pid": 297135, "stage": "run-0-before"}
+{"event": "compute_processes", "monotonic_ns": 1163836892985603, "returncode": 0, "stage": "run-0-before", "stderr": "", "stdout": ""}
+{"event": "artifact", "monotonic_ns": 1163838171530828, "name": "watch-0.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163838174074028, "name": "watch-0.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163838176664251, "name": "watch-0.monitor.json", "sha256": "5bba07551941aa744bffa3779893bce803edb7bd0d271d55f3a3ca90745470df", "size": 21719}
+{"event": "process_exit", "monotonic_ns": 1163838178083640, "returncode": 0, "run": 0}
+{"event": "artifact", "monotonic_ns": 1163838180164198, "name": "run-0.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163838182317350, "name": "run-0.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 297135 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1163838183734495, "pid": 297135, "stage": "run-0-after"}
+{"event": "compute_processes", "monotonic_ns": 1163838201259671, "returncode": 0, "stage": "run-0-after", "stderr": "", "stdout": ""}
+{"event": "run_validated", "monotonic_ns": 1163838336440225, "raw_sha256": "906b63472b9a44ac7e6f3de6b9c399ed66814f6e6c591958847cdd524a7e3f1c", "run": 0, "sample_sha256": "b7856480f20e8b2dd1d0649cb33b98990efddcd2d44bde385cc1612089b68f05", "samples": 50}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 297135 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1163838341296844, "pid": 297135, "stage": "run-1-before"}
+{"event": "compute_processes", "monotonic_ns": 1163838356587727, "returncode": 0, "stage": "run-1-before", "stderr": "", "stdout": ""}
+{"event": "artifact", "monotonic_ns": 1163839625728417, "name": "watch-1.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163839627925651, "name": "watch-1.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163839630478142, "name": "watch-1.monitor.json", "sha256": "65bc2fc2295302c4e1a3718efc3c5a3b7be08f0c8f5fd3a315c23be17d84ca28", "size": 21723}
+{"event": "process_exit", "monotonic_ns": 1163839631855349, "returncode": 0, "run": 1}
+{"event": "artifact", "monotonic_ns": 1163839633842156, "name": "run-1.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163839635856157, "name": "run-1.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 297135 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1163839637039503, "pid": 297135, "stage": "run-1-after"}
+{"event": "compute_processes", "monotonic_ns": 1163839652268797, "returncode": 0, "stage": "run-1-after", "stderr": "", "stdout": ""}
+{"event": "run_validated", "monotonic_ns": 1163839784598183, "raw_sha256": "906b63472b9a44ac7e6f3de6b9c399ed66814f6e6c591958847cdd524a7e3f1c", "run": 1, "sample_sha256": "ae0a473ca8fe0e896947ab929825b9ffb5d50aae7a01d125f1d1beb7565fce46", "samples": 50}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 297135 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1163839789471421, "pid": 297135, "stage": "run-2-before"}
+{"event": "compute_processes", "monotonic_ns": 1163839805332232, "returncode": 0, "stage": "run-2-before", "stderr": "", "stdout": ""}
+{"event": "artifact", "monotonic_ns": 1163841080790885, "name": "watch-2.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163841082927828, "name": "watch-2.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163841085333131, "name": "watch-2.monitor.json", "sha256": "d076c24ce1a9aa173eb0e8074b56b01f10d225b35c57694f47462f9289bfffe0", "size": 21723}
+{"event": "process_exit", "monotonic_ns": 1163841086585565, "returncode": 0, "run": 2}
+{"event": "artifact", "monotonic_ns": 1163841088782786, "name": "run-2.stdout", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"event": "artifact", "monotonic_ns": 1163841090760796, "name": "run-2.stderr", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "size": 0}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 297135 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1163841091879837, "pid": 297135, "stage": "run-2-after"}
+{"event": "compute_processes", "monotonic_ns": 1163841110569617, "returncode": 0, "stage": "run-2-after", "stderr": "", "stdout": ""}
+{"event": "run_validated", "monotonic_ns": 1163841230801927, "raw_sha256": "906b63472b9a44ac7e6f3de6b9c399ed66814f6e6c591958847cdd524a7e3f1c", "run": 2, "sample_sha256": "0557742352522490ba12c811bbcf54a1620bcf39d0503913ef7cd7e9cec2a12a", "samples": 50}
+{"device": 66306, "event": "lock_verified", "fd": 5, "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t33\nino:\t30411665\nlock:\t1: FLOCK  ADVISORY  WRITE 297135 103:02:30411665 0 EOF\n", "inode": 30411665, "monotonic_ns": 1163841235646706, "pid": 297135, "stage": "final"}
+{"event": "compute_processes", "monotonic_ns": 1163841251726221, "returncode": 0, "stage": "final", "stderr": "", "stdout": ""}
+{"event": "artifact", "monotonic_ns": 1163841664109020, "name": "analysis.json", "sha256": "f7375ed5ba043308be67976ca8807ba84c14f36535bd792b78b7663f2d66d783", "size": 6105}
+{"event": "lock_closed", "monotonic_ns": 1163841699360680}
